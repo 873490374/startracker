@@ -1,4 +1,4 @@
-__author__ = 'szymon'
+__author__ = 'Szymon Michalski'
 
 
 print('Author: ', __author__)
