@@ -49,3 +49,25 @@ of attitude
                         Attitude Matrix
                     )
 """
+
+"""
+1. Star detection
+- Image thresholding: Otsu's method             <---
+- Formation of star clusters: ???
+- Image centroiding (possible techniques:
+    - Weighted Sum,
+    - Maximum Likelihood Estimator)             <---
+2. Celestial to xy
+3. Pattern Matching
+    - Angle Matching,
+    - Spherical Triangle Pattern Matching,
+    - Planar Triangle Pattern Matching,         <---
+    - Rate Matching
+4. Attitude calculation - quaternion
+    - The Predictive Attitude Determination,
+    - QUEST,                                    <---
+    - TRIAD,
+    - The Singular Value Decomposition,
+    - The Fast Optimal
+    - Attitude Matrix
+"""
