@@ -16,8 +16,3 @@ for x in a.A:
         print(a[i, j])
         j += 1
     i += 1
-
-i_bottom = sum()
-i_top = 0
-i_left = 0
-i_right = 0

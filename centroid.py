@@ -1,19 +1,33 @@
-__author__ = 'Szymon Michalski'
-
 import numpy as np
 from PIL import Image
 
 # 1.
 a_roi = 5
-i_threshold = 5
+i_threshold = 100
 
 
 def image_to_matrix(img):
     return np.asarray(img.convert('L'))
 
-img = Image.open("2.jpg")
-I = image_to_matrix(img)
+image = Image.open("2.jpg")
+I = image_to_matrix(image)
 print(I)
+
+
+def sum_border(start, end, where, constant, matrix):
+    m = matrix
+    i = start
+    border_sum = 0
+    while i < end:
+        if where is 'rows':
+            print(I[i, constant])
+            border_sum += I[i, constant]
+        elif where is 'columns':
+            border_sum += I[constant, i]
+        i += 1
+    return border_sum
+
+blabla = 0
 x = 0
 for k in I:
     y = 0
@@ -28,14 +42,20 @@ for k in I:
                 y += 1
                 continue
     # 3.
-            print(x, y)
-            print(x_start, y_start)
-            i_bottom = sum()
-            i_top = 0
-            i_left = 0
-            i_right = 0
+            #print(x, y)
+            #print(x_start, y_start)
+            i_bottom = sum_border(x_start, x_end-1, 'row', y_start, I)
+            #print(i_bottom)
+            i_top = sum_border(x_start+1, x_end, 'row', y_end, I)
+            #print(i_top)
+            i_left = sum_border(y_start, y_end-1, 'column', x_start, I)
+            #print(i_left)
+            i_right = sum_border(y_start+1, y_end, 'column', x_end, I)
+            #print(i_right)
             i_border = (i_top + i_bottom + i_left + i_right) / 4 * (a_roi - 1)
-
+            #print(i_border)
+            blabla += 1
+            continue
     # 4. - normalization
             I_norm_matrix = np.matrix([])
             i = x_start
@@ -61,3 +81,4 @@ for k in I:
             y += 1
 
     x += 1
+print(blabla)
