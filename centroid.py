@@ -1,17 +1,16 @@
+import itertools
 import numpy as np
 from PIL import Image
 
 # 1.
+pixel_size = 5
+focal_length = 7
 a_roi = 5
-i_threshold = 100
+i_threshold = 130
 
 
 def image_to_matrix(img):
     return np.asarray(img.convert('L'))
-
-image = Image.open("2.jpg")
-I = image_to_matrix(image)
-print(I)
 
 
 def sum_border(start, end, where, constant, matrix):
@@ -19,66 +18,108 @@ def sum_border(start, end, where, constant, matrix):
     i = start
     border_sum = 0
     while i < end:
-        if where is 'rows':
-            print(I[i, constant])
-            border_sum += I[i, constant]
-        elif where is 'columns':
-            border_sum += I[constant, i]
+        if where == 'row':
+            border_sum += m[i, constant]
+        elif where == 'column':
+            border_sum += m[constant, i]
         i += 1
     return border_sum
 
-blabla = 0
+
+def total_mass(x_start, x_end, y_start, y_end, I_norm):
+    mass_sum = 0
+    x = x_start
+    while x < x_end:
+        y = y_start
+        while y < y_end:
+            mass_sum += I_norm[x, y]
+            y += 1
+        x += 1
+    return mass_sum
+
+
+def array_point_mass(x_start, x_end, y_start, y_end, I_norm, b):
+    x_cm = 0
+    y_cm = 0
+    x = x_start
+    while x < x_end:
+        y = y_start
+        while y < y_end:
+            x_cm = I_norm[x, y] * x / b
+            y_cm = I_norm[x, y] * y / b
+            y += 1
+        x += 1
+    return x_cm, y_cm
+
+
+image = Image.open("2.jpg")
+I = image_to_matrix(image)
+# print(I)
+
+star_list = []
 x = 0
+
 for k in I:
     y = 0
     for l in I:
         if I[x, y] > i_threshold:
-            x_start = x - (a_roi - 1)/2
-            y_start = y - (a_roi - 1)/2
-            x_end = x_start + a_roi
-            y_end = y_start + a_roi
+            x_start = int(x - (a_roi - 1)/2)
+            y_start = int(y - (a_roi - 1)/2)
+            x_end = int(x_start + a_roi)
+            y_end = int(y_start + a_roi)
     # 2.
             if x_start < 0 or y_start < 0:
                 y += 1
                 continue
     # 3.
-            #print(x, y)
-            #print(x_start, y_start)
+            # print(x, y)
+            # print(x_start, x_end, y_start, y_end)
             i_bottom = sum_border(x_start, x_end-1, 'row', y_start, I)
-            #print(i_bottom)
             i_top = sum_border(x_start+1, x_end, 'row', y_end, I)
-            #print(i_top)
             i_left = sum_border(y_start, y_end-1, 'column', x_start, I)
-            #print(i_left)
             i_right = sum_border(y_start+1, y_end, 'column', x_end, I)
-            #print(i_right)
             i_border = (i_top + i_bottom + i_left + i_right) / 4 * (a_roi - 1)
-            #print(i_border)
-            blabla += 1
-            continue
+
     # 4. - normalization
             I_norm_matrix = np.matrix([])
-            i = x_start
-            while i <= x_end:
-                j = y_start
-                while j <= y_end:
-                    I_norm_matrix = I - i_border
 
-            # 5.
+            I_norm_matrix = I - i_border
 
-            b = 0
+            # print(I_norm_matrix)
 
-            x_cm = 0
+    # 5.
 
-            y_cm = 0
+            b = total_mass(x_start+1, x_end-1, y_start+1, y_end-1, I_norm_matrix)
+            # print(b)
 
-            # 6.
+            x_cm, y_cm = array_point_mass(x_start+1, x_end-1, y_start+1, y_end-1, I_norm_matrix, b)
 
-            # 7.
-
-            u = 0
-
+            #print(x_cm, y_cm)
+            star_list.append([x_cm, y_cm])
             y += 1
-
     x += 1
-print(blabla)
+
+print(star_list)
+# 6. Clustering
+control = 0
+while control < 1:
+    star_list2 = star_list
+
+for star1, star2 in itertools.combinations(star_list, 2):
+    if (star2[0] + 5 >= star1[0] >= star2[0] - 5 or
+            star2[1] + 5 >= star1[1] >= star2[1] - 5):
+        #print(star1, star2)
+
+        star1[0] = (star1[0] + star2[0]) / 2
+        star1[1] = (star1[1] + star2[1]) / 2
+        #print(star2)
+        star_list.remove(star2)
+
+
+# 7. unit vector u
+for star in star_list:
+    vector = np.array([pixel_size * star[0], pixel_size * star[1], focal_length])
+    u = vector.T / np.linalg.norm(vector)
+    #print(u)
+
+print(len(star_list))
