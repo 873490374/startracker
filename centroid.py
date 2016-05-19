@@ -8,7 +8,7 @@ start_time = time.time()
 pixel_size = 5
 focal_length = 7
 a_roi = 5
-i_threshold = 100
+i_threshold = 150
 
 
 def image_to_matrix(img):
@@ -54,7 +54,7 @@ def array_point_mass(x_start, x_end, y_start, y_end, I_norm, b):
     return x_cm, y_cm
 
 
-image = Image.open("2.jpg")
+image = Image.open("4.jpg")
 I = image_to_matrix(image)
 # print(I)
 
@@ -133,16 +133,21 @@ end_time = time.time()
 
 # validation
 
-print(len(star_list))
+print("No of stars:", len(star_list))
 
-print(end_time - start_time)
-print(star_list)
+print("Time: ", end_time - start_time)
+print("Star coordinates", star_list)
 
 import png
 
-img = np.zeros((len(I), len(I.T)), dtype='float16')
+img = np.zeros((len(I), len(I.T)), dtype='uint64')
 for star in star_list:
-    img[int(star[0]), int(star[1])] = 100
-    print(img[int(star[0]), int(star[1])])
-    print(img[int(star[0]), int(star[1])-1])
-png.from_array(img, 'L').save('test.png')
+    img[int(star[0]), int(star[1])] = 255
+    #img[int(star[0])+1, int(star[1])+1] = 255
+    #img[int(star[0])+1, int(star[1])-1] = 255
+    #img[int(star[0])-1, int(star[1])+1] = 255
+    #img[int(star[0])-1, int(star[1])-1] = 255
+    #print(int(star[0]), int(star[1]))
+    #print(img[int(star[0]), int(star[1])])
+    #print(img[int(star[0]), int(star[1])-1])
+Image.fromarray(img, mode='L').convert('1').save('test.png')
