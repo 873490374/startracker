@@ -1,10 +1,19 @@
 __author__ = 'Szymon Michalski'
+
+import numpy as np
+from PIL import Image
+
 # 1.
 a_roi = 5
 i_threshold = 5
 
-I = image_to_matrix(image)
 
+def image_to_matrix(img):
+    return np.asarray(img.convert('L'))
+
+img = Image.open("2.jpg")
+I = image_to_matrix(img)
+print(I)
 x = 0
 for k in I:
     y = 0
@@ -16,9 +25,11 @@ for k in I:
             y_end = y_start + a_roi
     # 2.
             if x_start < 0 or y_start < 0:
-                l += 1
-                pass
+                y += 1
+                continue
     # 3.
+            print(x, y)
+            print(x_start, y_start)
             i_bottom = sum()
             i_top = 0
             i_left = 0
@@ -26,7 +37,6 @@ for k in I:
             i_border = (i_top + i_bottom + i_left + i_right) / 4 * (a_roi - 1)
 
     # 4. - normalization
-            import numpy as np
             I_norm_matrix = np.matrix([])
             i = x_start
             while i <= x_end:
@@ -48,6 +58,6 @@ for k in I:
 
             u = 0
 
-            l += 1
+            y += 1
 
-    k += 1
+    x += 1
