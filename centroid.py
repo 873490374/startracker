@@ -1,12 +1,14 @@
 import itertools
 import numpy as np
+import time
 from PIL import Image
 
+start_time = time.time()
 # 1.
 pixel_size = 5
 focal_length = 7
 a_roi = 5
-i_threshold = 130
+i_threshold = 100
 
 
 def image_to_matrix(img):
@@ -68,7 +70,8 @@ for k in I:
             x_end = int(x_start + a_roi)
             y_end = int(y_start + a_roi)
     # 2.
-            if x_start < 0 or y_start < 0:
+            #print(len(I), len(I.T))
+            if x_start < 0 or y_start < 0 or x_end > len(I)-1 or y_end > len(I.T)-1:
                 y += 1
                 continue
     # 3.
@@ -96,30 +99,50 @@ for k in I:
 
             #print(x_cm, y_cm)
             star_list.append([x_cm, y_cm])
-            y += 1
+        y += 1
     x += 1
 
-print(star_list)
+#print(star_list)
+
 # 6. Clustering
-control = 0
-while control < 1:
+control = 1
+pixel_diff = 1
+while control > 0:
     star_list2 = star_list
+    control = 0
+    for star1, star2 in itertools.combinations(star_list2, 2):
+        if (star2[0] + pixel_diff >= star1[0] >= star2[0] - pixel_diff or
+                star2[1] + pixel_diff >= star1[1] >= star2[1] - pixel_diff):
+            control += 1
 
-for star1, star2 in itertools.combinations(star_list, 2):
-    if (star2[0] + 5 >= star1[0] >= star2[0] - 5 or
-            star2[1] + 5 >= star1[1] >= star2[1] - 5):
-        #print(star1, star2)
+            star_list.remove(star1)
+            star_list.remove(star2)
+            star_list.append([(star1[0] + star2[0]) / 2, (star1[1] + star2[1]) / 2])
+            break
 
-        star1[0] = (star1[0] + star2[0]) / 2
-        star1[1] = (star1[1] + star2[1]) / 2
-        #print(star2)
-        star_list.remove(star2)
 
+vectors_list = []
 
 # 7. unit vector u
 for star in star_list:
     vector = np.array([pixel_size * star[0], pixel_size * star[1], focal_length])
     u = vector.T / np.linalg.norm(vector)
-    #print(u)
+    vectors_list.append(u)
+
+end_time = time.time()
+
+# validation
 
 print(len(star_list))
+
+print(end_time - start_time)
+print(star_list)
+
+import png
+
+img = np.zeros((len(I), len(I.T)), dtype='float16')
+for star in star_list:
+    img[int(star[0]), int(star[1])] = 100
+    print(img[int(star[0]), int(star[1])])
+    print(img[int(star[0]), int(star[1])-1])
+png.from_array(img, 'L').save('test.png')
