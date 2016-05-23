@@ -8,7 +8,8 @@ start_time = time.time()
 pixel_size = 5
 focal_length = 7
 a_roi = 5
-i_threshold = 150
+i_threshold = 200
+img_name = '2.jpg'
 
 
 def image_to_matrix(img):
@@ -47,14 +48,14 @@ def array_point_mass(x_start, x_end, y_start, y_end, I_norm, b):
     while x < x_end:
         y = y_start
         while y < y_end:
-            x_cm = I_norm[x, y] * x / b
-            y_cm = I_norm[x, y] * y / b
+            x_cm += I_norm[x, y] * x / b
+            y_cm += I_norm[x, y] * y / b
             y += 1
         x += 1
     return x_cm, y_cm
 
 
-image = Image.open("4.jpg")
+image = Image.open(img_name)
 I = image_to_matrix(image)
 # print(I)
 
@@ -87,6 +88,7 @@ for k in I:
             I_norm_matrix = np.matrix([])
 
             I_norm_matrix = I - i_border
+            #I_norm_matrix = I_norm_matrix.clip(min=0)
 
             # print(I_norm_matrix)
 
@@ -104,21 +106,23 @@ for k in I:
 
 #print(star_list)
 
-# 6. Clustering
-control = 1
-pixel_diff = 1
-while control > 0:
-    star_list2 = star_list
-    control = 0
-    for star1, star2 in itertools.combinations(star_list2, 2):
-        if (star2[0] + pixel_diff >= star1[0] >= star2[0] - pixel_diff or
-                star2[1] + pixel_diff >= star1[1] >= star2[1] - pixel_diff):
-            control += 1
+clustering = False
+if clustering:
+    # 6. Clustering
+    control = 1
+    pixel_diff = 1
+    while control > 0:
+        star_list2 = star_list
+        control = 0
+        for star1, star2 in itertools.combinations(star_list2, 2):
+            if (star2[0] + pixel_diff >= star1[0] >= star2[0] - pixel_diff or
+                    star2[1] + pixel_diff >= star1[1] >= star2[1] - pixel_diff):
+                control += 1
 
-            star_list.remove(star1)
-            star_list.remove(star2)
-            star_list.append([(star1[0] + star2[0]) / 2, (star1[1] + star2[1]) / 2])
-            break
+                star_list.remove(star1)
+                star_list.remove(star2)
+                star_list.append([(star1[0] + star2[0]) / 2, (star1[1] + star2[1]) / 2])
+                break
 
 
 vectors_list = []
@@ -138,9 +142,8 @@ print("No of stars:", len(star_list))
 print("Time: ", end_time - start_time)
 print("Star coordinates", star_list)
 
-import png
 
-img = np.zeros((len(I), len(I.T)), dtype='uint64')
+img = np.zeros((len(I), len(I.T)), dtype='uint8')
 for star in star_list:
     img[int(star[0]), int(star[1])] = 255
     #img[int(star[0])+1, int(star[1])+1] = 255
