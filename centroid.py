@@ -8,7 +8,7 @@ start_time = time.time()
 pixel_size = 5
 focal_length = 7
 a_roi = 5
-i_threshold = 200
+i_threshold = 250
 img_name = '2.jpg'
 
 
@@ -106,16 +106,16 @@ for k in I:
 
 #print(star_list)
 
-clustering = False
+clustering = True
 if clustering:
     # 6. Clustering
     control = 1
-    pixel_diff = 1
+    pixel_diff = 5
     while control > 0:
         star_list2 = star_list
         control = 0
         for star1, star2 in itertools.combinations(star_list2, 2):
-            if (star2[0] + pixel_diff >= star1[0] >= star2[0] - pixel_diff or
+            if (star2[0] + pixel_diff >= star1[0] >= star2[0] - pixel_diff and
                     star2[1] + pixel_diff >= star1[1] >= star2[1] - pixel_diff):
                 control += 1
 
@@ -140,7 +140,7 @@ end_time = time.time()
 print("No of stars:", len(star_list))
 
 print("Time: ", end_time - start_time)
-print("Star coordinates", star_list)
+#print("Star coordinates", star_list)
 
 
 img = np.zeros((len(I), len(I.T)), dtype='uint8')
