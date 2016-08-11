@@ -1,60 +1,171 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[polish]{babel}
+\usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-%\usepackage{amssymb}
-\author{Szymon Michalski}
-\title{Praca magisterska - Star-tracker}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+
+\setlength\headheight{15pt}
+\enlargethispage*{0.7\baselineskip}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{MICHALSKI Sz.}
+\lhead{Star-tracker dla Cubesat'ów}
+\rfoot{\thepage}
+
+\author{Szymon MICHALSKI}
+\title{PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT}
+
+
+
 \begin{document}
-Title
-\newline
-• Centroid - Star Recognition
-\newline
-• Star Identification:
-\newline
-• Different methods:
-\newline
-• Angle Matching
-\newline
-• Spherical Triangle Matching
-\newline
-• Planar Triangle
-\newline
-• Rate Matching
-\newline
-• Pyramid
-\newline
-• Voting
-\newline
-• Grid
-\newline
-• Different elements of Algorithm:
-\newline
-• Star Catalogue Generation
-\newline
-• Candidate Matching
-\newline
-• Result Verification
-\newline
-• k-vector
-\newline
-• Attitude Determination
-\newline
-• QUEST
-\newline
-• TRIAD
-\newline
-• The Fast Optimal Attitude Matrix
-\newline
-• The Predictive Attitude Determination
-\newline
-• q-method
-\newline
-• DCM (direction cosine matrix) - (Singular Value Decomposition?)
-\newline
-• Bibliography
-\newline\newline
+
+\begin{titlepage}
+	\centering
+
+	INSTYTUT AUTOMATYKI I INFORMATYKI STOSOWANEJ\par
+	WYDZIAŁ ELEKTRONIKI I TECHNIK INFORMATYJNYCH\par
+	POLITECHNIKA WARSZAWSKA\par
+	\vspace{3cm}
+	MAGISTERSKA PRACA DYPLOMOWA\par
+	\vspace{0.2cm}
+	{\huge PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT\par}
+	\vspace{0.2cm}
+	{\large Szymon MICHALSKI\par}
+	\vspace{3cm}
+	\begin{flushright}
+	Promotor:\par
+	prof. dr hab. inż. Ryszard Romaniuk\par
+	\end{flushright}
+	\vfill
+	{\large Warszawa 2016\par}
+\end{titlepage}
+
+\pagenumbering{arabic}
+\setcounter{page}{2}
+
+\tableofcontents{toc}
+
+\newpage
+\setlength{\parindent}{1cm}
+\setlength{\parskip}{\baselineskip}%
+
+
+\section{Introduction}
+\subsection{Motivation}
+The goal of this work is to make fully operational star-tracker program, that could be used on Cubesat satellites. Such program could be used on space missions and could start Polish state-of-the-art technology in growing space technology sector.
+
+\subsection{Outline of thesis}
+
+
+
+This thesis consists of several chapters. Here they are shortly summarized:\par
+\setlength{\parindent}{0cm}
+\textbf{Chapter 1} serves as introduction to this thesis and describest the motivation and goal of this work. It also describes the background of the topic.\par
+\textbf{Chapter 2} describes all the important foundations for the fully understanding given work.\par
+\textbf{Chapter 3} is the main part of this thesis. It describes how the star-tracker program works and goes through detailed comparison of different approaches.\par
+\textbf{Chapter 4} describes the created prototype of star-tracker in Python language.\par
+\textbf{Chapter 5} talks about the implementation of star-tracker on the existing prototype of on-board computer.\par
+\textbf{Chapter 6} describes how the finished program is performing.\par
+\textbf{Chapter 7} contains conclusons about this work and created star-tracker program.\par
+
+\setlength{\parindent}{1cm}
+
+\subsection{Cubesat}
+Cubesat was designed on Caltech in 1999.
+Dimensions of satellite are measured in units. Each unit (often described simply as u) can be 10x10x10cm and can weight up to 1.33 kg. Satellites can be 1u, 2u, 3u, 6u or even 12u.
+
+Such small satellites are suspectible to noise from densly packed electronics.
+
+\subsection{Means of attitude estimation}
+
+There exist many different types of attitude estimation: sun sensors, star-trackers, magnetometers, etc. However star-tracker gives the best possible accuracy for nowadays and is not suspectible to electrical nor magnetic noise.
+
+Table 1
+
+\subsection{On-board computer}
+This section will describe the on-board computer which was done as part of other thesis.
+
+\newpage
+\section{Preliminaries}
+\subsection{Coordinate frames}
+\subsubsection{ECI frame}
+\subsubsection{ECEF frame}
+\subsubsection{NED frame}
+\subsubsection{BODY frame}
+\subsection{Attitude representations}
+\subsubsection{Euler angles}
+\subsubsection{Quaternions}
+\subsection{Quaternion properties}
+\subsubsection{Advantages of quaternions}
+\subsubsection{Multiplication of quaternions}
+\subsubsection{Quaternions and rotations}
+\subsection{Wahba's problem}
+\begin{equation}
+\sum_j^n ||r_j - Mb_j||
+\end{equation}
+\subsection{Cholesky factorization}
+\subsection{Lyapunov analysis}
+
+\newpage
+\section{Star-tracker program}
+\subsection{Centroid - start recognition}
+\begin{equation}
+f(x) = x^2
+\end{equation}
+\subsection{Star identification}
+\subsubsection{Angle Matching}
+\subsubsection{Spherical Triangle Matching}
+\subsubsection{Planar Triangle}
+\subsubsection{Rate Matching}
+\subsubsection{Pyramid}
+\subsubsection{Voting}
+\subsubsection{Grid}
+\subsubsection{Different elements of algorithm}
+
+\subsection{Star Catalogue Generation}
+\subsection{Candidate Matching}
+\subsection{Result Verification}
+\subsection{k-vector}
+
+\subsection{Attitude Determination}
+\subsubsection{QUEST}
+\subsubsection{TRIAD}
+\subsubsection{The Fast Optimal Attitude Matrix}
+\subsubsection{q-method}
+\subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
+
+\newpage
+\section{Prototype}
+
+\newpage
+\section{Complete program}
+
+\newpage
+\section{Testing of star-tracker}
+%\bibliography{•}
+Cubesat at Caltech
+
+
+
+\newpage
+
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+
+\newpage
+
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+
+\newpage
+
+
 Robot Learning Darmstadt
 Problems with Euler Angles:
 Not Unique: Many angles result in the same rotation
@@ -65,7 +176,7 @@ Easier to compute differences of orientations
 Important if we want to control the orientation of the end-effector
 See Siciliano or Spong Textbook!
 
-https://en.wikipedia.org/wiki/Apparent_magnitude
+%https://en.wikipedia.org/wiki/Apparent_magnitude
 
 Polar moment
 \end{document}
