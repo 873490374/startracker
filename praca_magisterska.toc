@@ -23,27 +23,27 @@
 \contentsline {subsection}{\numberline {2.6}Lyapunov analysis}{7}
 \contentsline {section}{\numberline {3}Star-tracker program}{8}
 \contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{8}
-\contentsline {subsection}{\numberline {3.2}Star identification}{9}
-\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{9}
-\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{9}
-\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{9}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{9}
-\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{9}
-\contentsline {subsubsection}{\numberline {3.2.6}Voting}{9}
-\contentsline {subsubsection}{\numberline {3.2.7}Grid}{9}
-\contentsline {subsubsection}{\numberline {3.2.8}Different elements of algorithm}{9}
-\contentsline {subsection}{\numberline {3.3}Star Catalogue Generation}{9}
-\contentsline {subsection}{\numberline {3.4}Candidate Matching}{9}
-\contentsline {subsection}{\numberline {3.5}Result Verification}{9}
-\contentsline {subsection}{\numberline {3.6}k-vector}{9}
-\contentsline {subsection}{\numberline {3.7}Attitude Determination}{9}
-\contentsline {subsubsection}{\numberline {3.7.1}QUEST}{9}
-\contentsline {subsubsection}{\numberline {3.7.2}TRIAD}{9}
-\contentsline {subsubsection}{\numberline {3.7.3}The Fast Optimal Attitude Matrix}{9}
-\contentsline {subsubsection}{\numberline {3.7.4}q-method}{9}
-\contentsline {subsubsection}{\numberline {3.7.5}DCM (direction cosine matrix) - (Singular Value Decomposition?)}{9}
-\contentsline {section}{\numberline {4}Prototype}{10}
-\contentsline {section}{\numberline {5}Complete program}{11}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{12}
-\contentsline {chapter}{List of Tables}{14}
-\contentsline {chapter}{List of Figures}{15}
+\contentsline {subsection}{\numberline {3.2}Star identification}{10}
+\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{10}
+\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{10}
+\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{10}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{11}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{11}
+\contentsline {subsubsection}{\numberline {3.2.6}Voting}{11}
+\contentsline {subsubsection}{\numberline {3.2.7}Grid}{11}
+\contentsline {subsubsection}{\numberline {3.2.8}Different elements of algorithm}{11}
+\contentsline {subsection}{\numberline {3.3}Star Catalogue Generation}{11}
+\contentsline {subsection}{\numberline {3.4}Candidate Matching}{12}
+\contentsline {subsection}{\numberline {3.5}Result Verification}{12}
+\contentsline {subsection}{\numberline {3.6}k-vector}{12}
+\contentsline {subsection}{\numberline {3.7}Attitude Determination}{12}
+\contentsline {subsubsection}{\numberline {3.7.1}QUEST}{12}
+\contentsline {subsubsection}{\numberline {3.7.2}TRIAD}{12}
+\contentsline {subsubsection}{\numberline {3.7.3}The Fast Optimal Attitude Matrix}{12}
+\contentsline {subsubsection}{\numberline {3.7.4}q-method}{12}
+\contentsline {subsubsection}{\numberline {3.7.5}DCM (direction cosine matrix) - (Singular Value Decomposition?)}{12}
+\contentsline {section}{\numberline {4}Prototype}{13}
+\contentsline {section}{\numberline {5}Complete program}{14}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{15}
+\contentsline {chapter}{List of Tables}{17}
+\contentsline {chapter}{List of Figures}{18}

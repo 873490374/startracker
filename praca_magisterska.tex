@@ -7,6 +7,7 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage{amssymb}
+\usepackage{bm}
 
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
@@ -143,12 +144,86 @@ Due to limitations of camera there exists necessity of calculating star centroid
 If FOV is too small, one star will be considered by program as few stars, and if FOV is too large, few stars placed near each other will be considered as one star. Calculating star centroids is tradeoff between counting few stars as one and counting one star as a few. It seems however that it is worse to count one star as few than few stars as one.
 
 \begin{equation}
-f(x) = x^2
+x_{start} = x - \frac{a_{ROI} - 1}{2}
 \end{equation}
+\begin{equation}
+y_{start} = y - \frac{a_{ROI} - 1}{2}
+\end{equation}
+\begin{equation}
+x_{end} = x_{start} + a_{ROI}
+\end{equation}
+\begin{equation}
+y_{end} = y_{start} + a_{ROI}
+\end{equation}
+\begin{equation}
+I_{bottom} = \sum_{i=1}^{x_{end}-1} I(i, y_{start})
+\end{equation}
+\begin{equation}
+I_{top} = \sum_{i=2}^{x_{end}} I(i, y_{end})
+\end{equation}
+\begin{equation}
+I_{left} = \sum_{j=1}^{y_{end}-1} I(x_{start}, j)
+\end{equation}
+\begin{equation}
+I_{right} = \sum_{j=2}^{y_{end}} I(x_{start}, j)
+\end{equation}
+\begin{equation}
+I_{border} = \frac{I_{top} + I_{bottom} + I_{left} + I_{right}}{4(a_{ROI} - 1)}
+\end{equation}
+
+\begin{equation}
+\tilde{I}(x,y) = I(x,y) - I_{border}
+\end{equation}
+
+\begin{equation}
+B = \sum_{i=x_{start}+1}^{x_{end}-1}\sum_{j=y_{start}+1}^{y_{end}-1}\tilde{I}(i,j)
+\end{equation}
+\begin{equation}
+x_{CM} = \sum_{i=x_{start}+1}^{x_{end}-1}\sum_{j=y_{start}+1}^{y_{end}-1}\frac{i \times \tilde{I}(i,j)}{B}
+\end{equation}
+\begin{equation}
+x_{CM} = \sum_{i=x_{start}+1}^{x_{end}-1}\sum_{j=y_{start}+1}^{y_{end}-1}\frac{j \times \tilde{I}(i,j)}{B}
+\end{equation}
+
+\begin{equation}
+u = \frac{
+\begin{bmatrix}
+\mu x_{CM} & \mu y_{CM} & f
+\end{bmatrix}
+^T}
+{||
+\begin{bmatrix}
+\mu x_{CM} & \mu y_{CM} & f
+\end{bmatrix}
+||}
+\end{equation}
+
 \subsection{Star identification}
 \subsubsection{Angle Matching}
 \subsubsection{Spherical Triangle Matching}
 \subsubsection{Planar Triangle}
+\begin{equation}
+s = \frac{1}{2}(a + b + c)
+\end{equation}
+
+\begin{equation}
+a = ||\bm{u_p} - \bm{u_q}||
+\end{equation}
+\begin{equation}
+b = ||\bm{u_q} - \bm{u_r}||
+\end{equation}
+\begin{equation}
+c = ||\bm{u_p} - \bm{u_r}||
+\end{equation}
+
+\begin{equation}
+A = \sqrt{s(s-a)(s-b)(s-c)}
+\end{equation}
+
+\begin{equation}
+J = A\frac{(a^2 + b^2 + c^2}{36}
+\end{equation}
+
 \subsubsection{Pyramid}
 \subsubsection{Rate Matching}
 \subsubsection{Voting}
@@ -156,6 +231,23 @@ f(x) = x^2
 \subsubsection{Different elements of algorithm}
 
 \subsection{Star Catalogue Generation}
+\begin{equation}
+\bm{u} = \begin{bmatrix}
+\cos \alpha \cos \delta \\
+\sin \alpha \cos \delta \\
+\sin \delta
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+m_i \leq m_{max}
+\end{equation}
+\begin{equation}
+m_j \leq m_{max}
+\end{equation}
+\begin{equation}
+\bm{u_a^T u_b} \geq \cos \theta_{FOV}
+\end{equation}
+
 \subsection{Candidate Matching}
 \subsection{Result Verification}
 \subsection{k-vector}
@@ -166,7 +258,30 @@ f(x) = x^2
 \subsubsection{The Fast Optimal Attitude Matrix}
 \subsubsection{q-method}
 \subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
-
+\cite{6187242}
+\begin{equation}
+\bm{B = \sum_{i=1}^nb_ir_i^T}
+\end{equation}
+\begin{equation}
+\bm{B = USV^T}
+\end{equation}
+\begin{equation}
+\bm{U}_+ = \bm{U}\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & det\bm{U}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\bm{V}_+ = \bm{V}\begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & det\bm{V}
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\bm{A = U_+V_+^T}
+\end{equation}
 \newpage
 \section{Prototype}
 
@@ -198,7 +313,7 @@ f(x) = x^2
 Robot Learning Darmstadt
 Problems with Euler Angles:
 Not Unique: Many angles result in the same rotation
-Hard to quantify diff erences between two Euler Angles
+Hard to quantify differences between two Euler Angles
 Unit-Quaternion
 Solves the problems of singularities with the Euler Angles
 Easier to compute differences of orientations
