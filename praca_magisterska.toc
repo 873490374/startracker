@@ -45,5 +45,5 @@
 \contentsline {section}{\numberline {4}Prototype}{10}
 \contentsline {section}{\numberline {5}Complete program}{11}
 \contentsline {section}{\numberline {6}Testing of star-tracker}{12}
-\contentsline {chapter}{List of Tables}{13}
-\contentsline {chapter}{List of Figures}{14}
+\contentsline {chapter}{List of Tables}{14}
+\contentsline {chapter}{List of Figures}{15}
