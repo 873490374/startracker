@@ -27,8 +27,8 @@
 \contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{9}
 \contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{9}
 \contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{9}
-\contentsline {subsubsection}{\numberline {3.2.4}Rate Matching}{9}
-\contentsline {subsubsection}{\numberline {3.2.5}Pyramid}{9}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{9}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{9}
 \contentsline {subsubsection}{\numberline {3.2.6}Voting}{9}
 \contentsline {subsubsection}{\numberline {3.2.7}Grid}{9}
 \contentsline {subsubsection}{\numberline {3.2.8}Different elements of algorithm}{9}

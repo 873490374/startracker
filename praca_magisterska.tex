@@ -5,6 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\graphicspath{ {images/} }
 \usepackage{amssymb}
 
 \setlength\headheight{15pt}
@@ -14,7 +15,8 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{MICHALSKI Sz.}
-\lhead{Star-tracker dla Cubesat'ów}
+\lhead{Star-tracker for Cubesat satellites}
+%\lhead{Star-tracker dla Cubesat'ów}
 \rfoot{\thepage}
 
 \author{Szymon MICHALSKI}
@@ -27,21 +29,34 @@
 \begin{titlepage}
 	\centering
 
-	INSTYTUT AUTOMATYKI I INFORMATYKI STOSOWANEJ\par
-	WYDZIAŁ ELEKTRONIKI I TECHNIK INFORMATYJNYCH\par
-	POLITECHNIKA WARSZAWSKA\par
-	\vspace{3cm}
-	MAGISTERSKA PRACA DYPLOMOWA\par
+	INSTITUTE OF CONTROL AND COMPUTATION ENGINEERING\par
+	FACULTY OF ELECTRONICS AND INFORMATION TECHNOLOGY\par
+	WARSAW UNIVERSITY OF TECHNOLOGY\par
+%	INSTYTUT AUTOMATYKI I INFORMATYKI STOSOWANEJ\par
+%	WYDZIAŁ ELEKTRONIKI I TECHNIK INFORMATYJNYCH\par
+%	POLITECHNIKA WARSZAWSKA\par
+	\vspace{0.5cm}
+	\includegraphics[scale=0.3]{logo_WEiTI.jpg}
+	\hspace{1cm}
+	\includegraphics[scale=0.2]{Logo-PW-duze.jpg}
+	\hspace{1cm}
+	\includegraphics[scale=1]{ia_600_600.png}
+	\par
+	\vspace{2cm}
+	MASTER OF SCIENCE THESIS\par
+%	MAGISTERSKA PRACA DYPLOMOWA\par
 	\vspace{0.2cm}
-	{\huge PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT\par}
+	{\huge STAR-TRACKER PROGRAM FOR CUBESAT SATELLITES\par}
+%	{\huge PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT\par}
 	\vspace{0.2cm}
 	{\large Szymon MICHALSKI\par}
 	\vspace{3cm}
 	\begin{flushright}
-	Promotor:\par
+	Supervisor:\par
+%	Promotor:\par
 	prof. dr hab. inż. Ryszard Romaniuk\par
 	\end{flushright}
-	\vfill
+	\vspace{6cm}
 	{\large Warszawa 2016\par}
 \end{titlepage}
 
@@ -115,7 +130,18 @@ Hello \cite{RIS_1}
 
 \newpage
 \section{Star-tracker program}
+Generally star-tracker is divided into three main parts\cite{6187242}:
+\begin{itemize}
+\item recogiting stars on the image and converting the data into list of star vectors by calculating star centroids;
+\item identyfing which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
+\item estimating the attitude by calculating the displacement between two frames.
+\end{itemize}
 \subsection{Centroid - start recognition}
+
+Due to limitations of camera there exists necessity of calculating star centroids. Each camera converts image into photo divided by pixels. As it is necessary to have high precision of star coordinates, the pixel accuracy is not enough. Subpixel accuracy is needed. Typically it is done by defocusing the lens of the camera and calculating the lumosity of all pixels around the lightest ones. The idea of how to calculate such centroids is adapted from\cite{6187242}.
+
+If FOV is too small, one star will be considered by program as few stars, and if FOV is too large, few stars placed near each other will be considered as one star. Calculating star centroids is tradeoff between counting few stars as one and counting one star as a few. It seems however that it is worse to count one star as few than few stars as one.
+
 \begin{equation}
 f(x) = x^2
 \end{equation}
@@ -123,8 +149,8 @@ f(x) = x^2
 \subsubsection{Angle Matching}
 \subsubsection{Spherical Triangle Matching}
 \subsubsection{Planar Triangle}
-\subsubsection{Rate Matching}
 \subsubsection{Pyramid}
+\subsubsection{Rate Matching}
 \subsubsection{Voting}
 \subsubsection{Grid}
 \subsubsection{Different elements of algorithm}

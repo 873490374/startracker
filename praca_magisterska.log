@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.11)  12 AUG 2016 12:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.11)  12 AUG 2016 14:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -462,18 +462,18 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -536,10 +536,33 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+<images/logo_WEiTI.jpg, id=1, 226.9278pt x 284.9847pt>
+File: images/logo_WEiTI.jpg Graphic file (type jpg)
+
+<use images/logo_WEiTI.jpg>
+Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 39.
+(pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
+
+<images/Logo-PW-duze.jpg, id=2, 513.8397pt x 513.8397pt>
+File: images/Logo-PW-duze.jpg Graphic file (type jpg)
+
+<use images/Logo-PW-duze.jpg>
+Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 41.
+(pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
+
+<images/ia_600_600.png, id=3, 72.27pt x 59.5023pt>
+File: images/ia_600_600.png Graphic file (type png)
+ <use images/ia_600_600.png>
+Package pdftex.def Info: images/ia_600_600.png used on input line 43.
+(pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
+
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./praca_magisterska.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo_WEiTI.jpg> <
+./images/Logo-PW-duze.jpg> <./images/ia_600_600.png>]
+(./praca_magisterska.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -552,7 +575,15 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout3 = `praca_magisterska.toc'.
 
  [3] [4]
-[5] [6] [7] [8]
+[5] [6] [7]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 135.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 135.
+ [8]
 Overfull \vbox (124.25pt too high) has occurred while \output is active []
 
 
@@ -567,13 +598,13 @@ Overfull \vbox (124.25pt too high) has occurred while \output is active []
 
  [15] [16] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 3232 strings out of 494910
- 40463 string characters out of 6179836
- 107173 words of memory out of 5000000
- 6455 multiletter control sequences out of 15000+600000
+ 3266 strings out of 494910
+ 41124 string characters out of 6179836
+ 107204 words of memory out of 5000000
+ 6480 multiletter control sequences out of 15000+600000
  10449 words of font info for 39 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 37i,12n,43p,270b,284s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,43p,501b,282s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type
 1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
 ic/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
@@ -583,10 +614,10 @@ cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr1
 /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
 live/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on praca_magisterska.pdf (16 pages, 110871 bytes).
+Output written on praca_magisterska.pdf (16 pages, 1037105 bytes).
 PDF statistics:
- 92 PDF objects out of 1000 (max. 8388607)
- 64 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

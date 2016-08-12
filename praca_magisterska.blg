@@ -3,44 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: praca_magisterska.aux
 The style file: ieeetr.bst
 Database file #1: bibfile.bib
-You've used 1 entry,
+You've used 2 entries,
             1876 wiz_defined-function locations,
-            487 strings with 3722 characters,
-and the built_in function-call counts, 365 in all, are:
-= -- 41
-> -- 8
+            494 strings with 3846 characters,
+and the built_in function-call counts, 646 in all, are:
+= -- 68
+> -- 16
 < -- 0
-+ -- 3
-- -- 2
-* -- 25
-:= -- 56
-add.period$ -- 2
-call.type$ -- 1
-change.case$ -- 1
++ -- 6
+- -- 4
+* -- 44
+:= -- 92
+add.period$ -- 3
+call.type$ -- 2
+change.case$ -- 2
 chr.to.int$ -- 0
-cite$ -- 1
-duplicate$ -- 17
-empty$ -- 31
-format.name$ -- 2
-if$ -- 87
+cite$ -- 2
+duplicate$ -- 34
+empty$ -- 63
+format.name$ -- 4
+if$ -- 157
 int.to.chr$ -- 0
-int.to.str$ -- 1
-missing$ -- 1
-newline$ -- 7
-num.names$ -- 1
-pop$ -- 0
+int.to.str$ -- 2
+missing$ -- 2
+newline$ -- 10
+num.names$ -- 2
+pop$ -- 7
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 15
+skip$ -- 25
 stack$ -- 0
-substring$ -- 32
-swap$ -- 9
+substring$ -- 51
+swap$ -- 14
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 4
-width$ -- 2
-write$ -- 15
+while$ -- 8
+width$ -- 3
+write$ -- 24
