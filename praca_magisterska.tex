@@ -8,6 +8,7 @@
 \graphicspath{ {images/} }
 \usepackage{amssymb}
 \usepackage{bm}
+\usepackage[intoc]{nomencl}
 
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
@@ -23,7 +24,7 @@
 \author{Szymon MICHALSKI}
 \title{PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT}
 
-
+\makenomenclature
 
 \begin{document}
 
@@ -70,6 +71,12 @@
 \setlength{\parindent}{1cm}
 \setlength{\parskip}{\baselineskip}%
 
+
+\nomenclature{$c$}{Speed of light in a vacuum inertial frame}
+\nomenclature{$h$}{Planck constant}
+\printnomenclature
+
+\newpage
 
 \section{Introduction}
 \subsection{Motivation}
