@@ -1,4 +1,13 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{heidt2000cubesat}
+H.~Heidt, J.~Puig-Suari, A.~Moore, S.~Nakasuka, and R.~Twiggs, ``{CubeSat: A
+  new generation of picosatellite for education and industry low-cost space
+  experimentation},'' 2000.
+
+\bibitem{hall2003spacecraft}
+C.~D. Hall, ``{Spacecraft attitude dynamics and control},'' {\em Lecture Notes
+  posted on Handouts page [online]}, vol.~12, no.~2003, 2003.
 
 \bibitem{RIS_1}
 {Cheng Yang} and {Shuster Malcolm D.}, ``{Improvement to the Implementation of
@@ -9,5 +18,76 @@
 \bibitem{6187242}
 C.~R. McBryde and E.~G. Lightsey, ``{A star tracker design for CubeSats},'' in
   {\em {Aerospace Conference, 2012 IEEE}}, pp.~1--14, March 2012.
+
+\bibitem{spratling2009survey}
+B.~B. Spratling and D.~Mortari, ``{A survey on star identification
+  algorithms},'' {\em Algorithms}, vol.~2, no.~1, pp.~93--107, 2009.
+
+\bibitem{dong2006brightness}
+Y.~Dong, F.~Xing, and Z.~You, ``{Brightness independent 4-star matching
+  algorithm for lost-in-space 3-axis attitude acquisition},'' {\em Tsinghua
+  Science \& Technology}, vol.~11, no.~5, pp.~543--548, 2006.
+
+\bibitem{mortari1999sp}
+D.~Mortari, ``{SP-search: A new algorithm for star pattern recognition},'' {\em
+  Advances in the Astronautical Sciences}, vol.~102, no.~Pt II, pp.~1165--1174,
+  1999.
+
+\bibitem{miri2012star}
+S.~S. Miri and M.~E. Shiri, ``{Star identification using Delaunay triangulation
+  and distributed neural networks},'' {\em International Journal of Modeling
+  and Optimization}, vol.~2, no.~3, p.~234, 2012.
+
+\bibitem{lindbladstar}
+T.~Lindblad, C.~S. Lindsey, {\AA}.~Eide, {\"O}.~Solberg, and A.~Bolseth,
+  ``{Star Identification using Neural Networks},''
+
+\bibitem{li2003star}
+C.~Li, K.~Li, L.~Zhang, S.~Jin, and J.~Zu, ``{Star pattern recognition method
+  based on neural network},'' {\em Chinese Science Bulletin}, vol.~48, no.~18,
+  pp.~1927--1930, 2003.
+
+\bibitem{cole2006fast}
+C.~L. Cole and J.~L. Crassidis, ``{Fast star-pattern recognition using planar
+  triangles},'' {\em Journal of guidance, control, and dynamics}, vol.~29,
+  no.~1, pp.~64--71, 2006.
+
+\bibitem{mortari2004pyramid}
+D.~Mortari, M.~A. Samaan, C.~Bruccoleri, and J.~L. Junkins, ``{The pyramid star
+  identification technique},'' {\em Navigation}, vol.~51, no.~3, pp.~171--183,
+  2004.
+
+\bibitem{kolomenkin2008geometric}
+M.~Kolomenkin, S.~Pollak, I.~Shimshoni, and M.~Lindenbaum, ``{Geometric voting
+  algorithm for star trackers},'' {\em IEEE Transactions on Aerospace and
+  Electronic Systems}, vol.~44, no.~2, pp.~441--456, 2008.
+
+\bibitem{mortari2013k}
+D.~Mortari and J.~Rogers, ``{A k-vector Approach to Sampling, Interpolation,
+  and Approximation},'' {\em The Journal of the Astronautical Sciences},
+  vol.~60, no.~3-4, pp.~686--706, 2013.
+
+\bibitem{mortari1996fast}
+D.~Mortari, ``{A fast on-board autonomous attitude determination system based
+  on a new star-ID technique for a wide FOV star tracker},'' {\em Advances in
+  the Astronautical Sciences}, vol.~93, pp.~893--904, 1996.
+
+\bibitem{mortari2000k}
+D.~Mortari and B.~Neta, ``{K-vector range searching techniques},'' {\em Adv.
+  Astronaut. Sci}, vol.~105, pp.~449--464, 2000.
+
+\bibitem{jenssen2011comparison}
+K.~L. Jenssen, K.~H. Yabar, and J.~T. Gravdahl, ``{A comparison of attitude
+  determination methods: theory and experiments},'' in {\em {proceedings of the
+  62nd International Astronautical Congress, Cape Town, South Africa}},
+  pp.~3--7, 2011.
+
+\bibitem{markley1999estimate}
+F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
+  observations},'' 1999.
+
+\bibitem{shuster1990kalman}
+M.~Shuster, ``{Kalman filtering of spacecraft attitude and the QUEST model},''
+  {\em Journal of the Astronautical Sciences}, vol.~38, pp.~377--393, 1990.
 
 \end{thebibliography}

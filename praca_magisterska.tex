@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{bm}
 \usepackage[intoc]{nomencl}
+%\usepackage[authoryear,round,longnamesfirst]{natbib}
 
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
@@ -99,16 +100,35 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 \setlength{\parindent}{1cm}
 
 \subsection{Cubesat}
-Cubesat was designed on Caltech in 1999.
+Cubesat was designed on Caltech in 1999\cite{heidt2000cubesat}.
 Dimensions of satellite are measured in units. Each unit (often described simply as u) can be 10x10x10cm and can weight up to 1.33 kg. Satellites can be 1u, 2u, 3u, 6u or even 12u.
 
 Such small satellites are suspectible to noise from densly packed electronics.
+
+Zdjecie Cubesata
 
 \subsection{Means of attitude estimation}
 
 There exist many different types of attitude estimation: sun sensors, star-trackers, magnetometers, etc. However star-tracker gives the best possible accuracy for nowadays and is not suspectible to electrical nor magnetic noise.
 
-Table 1
+[6] Wiley J. Larson and James R. Wertz, editors. Space Mission Analysis and De-
+sign. Microcosm, Inc., Torrance, CA, second edition, 1995.
+\begin{table}[ht]
+
+\begin{tabular}{ccc}
+Sensor & Accuracy & Characteristics and Applicability \\ 
+Magnetometers & 1.0o (5000km alt) 5.0 (200 km alt) & Attitude measured relative to Earth’s local magnetic field. Magnetic field uncertainties and variability dominate accuracy. Usable only below ~ 6,000 km. \\ 
+Earth sensors & 0.05 (GEO) 0.1 (LEO) & Horizon uncertainties dominate accuracy. Highly accurate units use scanning. \\ 
+Sun sensors & 0.01 & Typical field of view +-30 \\ 
+Star sensors & 2 arc-sec & Typical field of view +-6 \\ 
+Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference. \\ 
+Directional antennas & 0.01 to 0.5 & Typically 1 of the antenna beamwidth
+
+\end{tabular} 
+\caption{Sensor Accuracy Ranges. Adapted from \cite{hall2003spacecraft}}
+
+\end{table}
+
 
 \subsection{On-board computer}
 This section will describe the on-board computer which was done as part of other thesis.
@@ -206,9 +226,18 @@ u = \frac{
 \end{equation}
 
 \subsection{Star identification}
+all \cite{spratling2009survey}\par
+Brightness Independent 4-Star Matching Algorithm for Lost-in-Space 3-Axis Attitude Acquisition\cite{dong2006brightness} \par
+SP-Search: A New Algorithm for Star Pattern Recognition \cite{mortari1999sp} \par
+Star Identification using Neural networks \cite{miri2012star} \cite{lindbladstar} \par
+Star pattern recognition using neural networks \cite{li2003star} \par
+
+
 \subsubsection{Angle Matching}
 \subsubsection{Spherical Triangle Matching}
 \subsubsection{Planar Triangle}
+\cite{cole2006fast}\par
+
 \begin{equation}
 s = \frac{1}{2}(a + b + c)
 \end{equation}
@@ -232,8 +261,11 @@ J = A\frac{(a^2 + b^2 + c^2}{36}
 \end{equation}
 
 \subsubsection{Pyramid}
+\cite{mortari2004pyramid}\par
+
 \subsubsection{Rate Matching}
 \subsubsection{Voting}
+\cite{kolomenkin2008geometric} \par
 \subsubsection{Grid}
 \subsubsection{Different elements of algorithm}
 
@@ -259,11 +291,21 @@ m_j \leq m_{max}
 \subsection{Result Verification}
 \subsection{k-vector}
 
+\cite{mortari2013k}\par
+\cite{mortari1996fast}\par
+\cite{mortari2000k}\par
+
 \subsection{Attitude Determination}
+\cite{jenssen2011comparison}\par
+AIM (Attitude estimation using Image Matching)\cite{2012highly}\par
+all \cite{hall2003spacecraft} \cite{markley1999estimate}
+
+\subsubsection{q-method}
 \subsubsection{QUEST}
+improvement to quest implementation \cite{shuster1990kalman} \par
+kallman filtering \cite{shuster1990kalman}
 \subsubsection{TRIAD}
 \subsubsection{The Fast Optimal Attitude Matrix}
-\subsubsection{q-method}
 \subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
 \cite{6187242}
 \begin{equation}

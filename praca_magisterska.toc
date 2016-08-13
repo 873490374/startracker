@@ -24,27 +24,27 @@
 \contentsline {subsection}{\numberline {2.6}Lyapunov analysis}{8}
 \contentsline {section}{\numberline {3}Star-tracker program}{9}
 \contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{9}
-\contentsline {subsection}{\numberline {3.2}Star identification}{11}
+\contentsline {subsection}{\numberline {3.2}Star identification}{10}
 \contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{11}
 \contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{11}
 \contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{11}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{12}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{11}
 \contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{12}
 \contentsline {subsubsection}{\numberline {3.2.6}Voting}{12}
 \contentsline {subsubsection}{\numberline {3.2.7}Grid}{12}
 \contentsline {subsubsection}{\numberline {3.2.8}Different elements of algorithm}{12}
 \contentsline {subsection}{\numberline {3.3}Star Catalogue Generation}{12}
-\contentsline {subsection}{\numberline {3.4}Candidate Matching}{13}
-\contentsline {subsection}{\numberline {3.5}Result Verification}{13}
-\contentsline {subsection}{\numberline {3.6}k-vector}{13}
+\contentsline {subsection}{\numberline {3.4}Candidate Matching}{12}
+\contentsline {subsection}{\numberline {3.5}Result Verification}{12}
+\contentsline {subsection}{\numberline {3.6}k-vector}{12}
 \contentsline {subsection}{\numberline {3.7}Attitude Determination}{13}
-\contentsline {subsubsection}{\numberline {3.7.1}QUEST}{13}
-\contentsline {subsubsection}{\numberline {3.7.2}TRIAD}{13}
-\contentsline {subsubsection}{\numberline {3.7.3}The Fast Optimal Attitude Matrix}{13}
-\contentsline {subsubsection}{\numberline {3.7.4}q-method}{13}
+\contentsline {subsubsection}{\numberline {3.7.1}q-method}{13}
+\contentsline {subsubsection}{\numberline {3.7.2}QUEST}{13}
+\contentsline {subsubsection}{\numberline {3.7.3}TRIAD}{13}
+\contentsline {subsubsection}{\numberline {3.7.4}The Fast Optimal Attitude Matrix}{13}
 \contentsline {subsubsection}{\numberline {3.7.5}DCM (direction cosine matrix) - (Singular Value Decomposition?)}{13}
-\contentsline {section}{\numberline {4}Prototype}{14}
-\contentsline {section}{\numberline {5}Complete program}{15}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{16}
-\contentsline {chapter}{List of Tables}{18}
-\contentsline {chapter}{List of Figures}{19}
+\contentsline {section}{\numberline {4}Prototype}{15}
+\contentsline {section}{\numberline {5}Complete program}{16}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{17}
+\contentsline {chapter}{List of Tables}{20}
+\contentsline {chapter}{List of Figures}{21}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.11)  12 AUG 2016 17:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.11)  13 AUG 2016 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -481,18 +481,18 @@ Writing nomenclature file praca_magisterska.nlo
 (./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
-LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -559,20 +559,20 @@ e
 File: images/logo_WEiTI.jpg Graphic file (type jpg)
 
 <use images/logo_WEiTI.jpg>
-Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 41.
+Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 42.
 (pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
 
 <images/Logo-PW-duze.jpg, id=2, 513.8397pt x 513.8397pt>
 File: images/Logo-PW-duze.jpg Graphic file (type jpg)
 
 <use images/Logo-PW-duze.jpg>
-Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 43.
+Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 44.
 (pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
 
 <images/ia_600_600.png, id=3, 72.27pt x 59.5023pt>
 File: images/ia_600_600.png Graphic file (type png)
  <use images/ia_600_600.png>
-Package pdftex.def Info: images/ia_600_600.png used on input line 45.
+Package pdftex.def Info: images/ia_600_600.png used on input line 46.
 (pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
 
 [1
@@ -594,52 +594,112 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `praca_magisterska.toc'.
 
  [3]
-(./praca_magisterska.nls) [4] [5] [6] [7] [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 143.
+(./praca_magisterska.nls) [4] [5]
+Overfull \hbox (719.46526pt too wide) in paragraph at lines 118--128
+[][] 
+ []
 
+[6] [7] [8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 163.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 143.
- [9] [10] [11] [12]
-[13] [14] [15] [16] (./praca_magisterska.bbl) [17] (./praca_magisterska.lot)
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 163.
+ [9]
+
+LaTeX Warning: Citation `spratling2009survey' on page 10 undefined on input lin
+e 229.
+
+
+LaTeX Warning: Citation `dong2006brightness' on page 10 undefined on input line
+ 230.
+
+
+LaTeX Warning: Citation `mortari1999sp' on page 10 undefined on input line 231.
+
+
+
+LaTeX Warning: Citation `miri2012star' on page 10 undefined on input line 232.
+
+
+LaTeX Warning: Citation `lindbladstar' on page 10 undefined on input line 232.
+
+[10]
+
+LaTeX Warning: Citation `li2003star' on page 11 undefined on input line 233.
+
+
+LaTeX Warning: Citation `cole2006fast' on page 11 undefined on input line 239.
+
+
+LaTeX Warning: Citation `mortari2004pyramid' on page 11 undefined on input line
+ 264.
+
+
+LaTeX Warning: Citation `kolomenkin2008geometric' on page 11 undefined on input
+ line 268.
+
+[11] [12]
+
+LaTeX Warning: Citation `2012highly' on page 13 undefined on input line 300.
+
+
+LaTeX Warning: Citation `markley1999estimate' on page 13 undefined on input lin
+e 301.
+
+
+LaTeX Warning: Citation `shuster1990kalman' on page 13 undefined on input line 
+305.
+
+
+LaTeX Warning: Citation `shuster1990kalman' on page 13 undefined on input line 
+306.
+
+[13] [14] [15] [16] [17] (./praca_magisterska.bbl [18]) [19]
+(./praca_magisterska.lot)
 \tf@lot=\write5
 \openout5 = `praca_magisterska.lot'.
 
-
-[18] (./praca_magisterska.lof)
+ [20] (./praca_magisterska.lof)
 \tf@lof=\write6
 \openout6 = `praca_magisterska.lof'.
 
- [19] [20] (./praca_magisterska.aux) ) 
+ [21] [22]
+(./praca_magisterska.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3446 strings out of 494910
- 43212 string characters out of 6179836
- 108929 words of memory out of 5000000
- 6640 multiletter control sequences out of 15000+600000
+ 3465 strings out of 494910
+ 43544 string characters out of 6179836
+ 108957 words of memory out of 5000000
+ 6659 multiletter control sequences out of 15000+600000
  12911 words of font info for 47 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 37i,11n,43p,501b,280s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmti12.pfb>
-Output written on praca_magisterska.pdf (20 pages, 1094995 bytes).
+ 37i,11n,43p,501b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on praca_magisterska.pdf (22 pages, 1104912 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 136 PDF objects out of 1000 (max. 8388607)
+ 93 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

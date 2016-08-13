@@ -3,44 +3,54 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: praca_magisterska.aux
 The style file: ieeetr.bst
 Database file #1: bibfile.bib
-You've used 2 entries,
+Repeated entry---line 213 of file bibfile.bib
+ : @article{markley1999estimate
+ :                             ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "2012highly"
+Warning--empty journal in heidt2000cubesat
+Warning--empty journal in lindbladstar
+Warning--empty year in lindbladstar
+Warning--empty journal in markley1999estimate
+You've used 19 entries,
             1876 wiz_defined-function locations,
-            494 strings with 3846 characters,
-and the built_in function-call counts, 646 in all, are:
-= -- 68
-> -- 16
+            602 strings with 6785 characters,
+and the built_in function-call counts, 5521 in all, are:
+= -- 575
+> -- 181
 < -- 0
-+ -- 6
-- -- 4
-* -- 44
-:= -- 92
-add.period$ -- 3
-call.type$ -- 2
-change.case$ -- 2
++ -- 68
+- -- 49
+* -- 394
+:= -- 763
+add.period$ -- 19
+call.type$ -- 19
+change.case$ -- 19
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 34
-empty$ -- 63
-format.name$ -- 4
-if$ -- 157
+cite$ -- 23
+duplicate$ -- 289
+empty$ -- 514
+format.name$ -- 49
+if$ -- 1348
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 2
-newline$ -- 10
-num.names$ -- 2
-pop$ -- 7
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 61
+num.names$ -- 19
+pop$ -- 51
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 25
+skip$ -- 208
 stack$ -- 0
-substring$ -- 51
-swap$ -- 14
+substring$ -- 428
+swap$ -- 126
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 0
-while$ -- 8
-width$ -- 3
-write$ -- 24
+warning$ -- 4
+while$ -- 62
+width$ -- 21
+write$ -- 192
+(There was 1 error message)
