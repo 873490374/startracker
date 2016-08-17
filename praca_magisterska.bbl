@@ -1,5 +1,45 @@
 \begin{thebibliography}{10}
 
+\bibitem{jenssen2011comparison}
+K.~L. Jenssen, K.~H. Yabar, and J.~T. Gravdahl, ``{A comparison of attitude
+  determination methods: theory and experiments},'' in {\em {proceedings of the
+  62nd International Astronautical Congress, Cape Town, South Africa}},
+  pp.~3--7, 2011.
+
+\bibitem{valenti2015keeping}
+R.~G. Valenti, I.~Dryanovski, and J.~Xiao, ``{Keeping a Good Attitude: A
+  Quaternion-Based Orientation Filter for IMUs and MARGs},'' {\em Sensors},
+  vol.~15, no.~8, pp.~19302--19330, 2015.
+
+\bibitem{delabie2012highly}
+T.~Delabie, ``{A highly efficient attitude estimation algorithm for star
+  trackers based on optimal image matching},'' in {\em {AIAA Guidance,
+  Navigation and Control Conference, Minneapolis, Minnesota}}, 2012.
+
+\bibitem{jalabert2011optimization}
+E.~Jalabert, E.~Fabacher, N.~Guy, S.~Lizy-Destrez, W.~Rappin, and G.~Rivier,
+  ``{Optimization of star research algorithm for ESMO star tracker},'' 2011.
+
+\bibitem{felikson2011orbit}
+D.~Felikson, J.~Hahmall, M.~F. Vess, and M.~Ekinci, ``{On-Orbit Solar Dynamics
+  Observatory (SDO) Star Tracker Warm Pixel Analysis},'' in {\em {AIAA
+  Guidance, Navigation and Control Conference, Portland, Oregon}}, vol.~6728,
+  2011.
+
+\bibitem{knutson2012fast}
+M.~W. Knutson, {\em {Fast star tracker centroid algorithm for high performance
+  CubeSat with air bearing validation}}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 2012.
+
+\bibitem{rose2003star}
+A.~Rose, ``{STAR integrated tracker},'' {\em arXiv preprint nucl-ex/0307015},
+  2003.
+
+\bibitem{mortari2002starnav}
+D.~Mortari and A.~Romoli, ``{StarNav III: a three fields of view star
+  tracker},'' in {\em {Aerospace Conference Proceedings, 2002. IEEE}}, vol.~1,
+  pp.~1--57, IEEE, 2002.
+
 \bibitem{heidt2000cubesat}
 H.~Heidt, J.~Puig-Suari, A.~Moore, S.~Nakasuka, and R.~Twiggs, ``{CubeSat: A
   new generation of picosatellite for education and industry low-cost space
@@ -9,11 +49,9 @@ H.~Heidt, J.~Puig-Suari, A.~Moore, S.~Nakasuka, and R.~Twiggs, ``{CubeSat: A
 C.~D. Hall, ``{Spacecraft attitude dynamics and control},'' {\em Lecture Notes
   posted on Handouts page [online]}, vol.~12, no.~2003, 2003.
 
-\bibitem{RIS_1}
-{Cheng Yang} and {Shuster Malcolm D.}, ``{Improvement to the Implementation of
-  the QUEST Algorithm},'' {\em Journal of Guidance, Control, and Dynamics},
-  vol.~37, no.~1, pp.~301--305, 2013.
-\newblock doi: 10.2514/1.62549.
+\bibitem{lima2000comparison}
+S.~M. R. C.~P. Lima, ``{Comparison of small satellite attitude determination
+  methods},'' 2000.
 
 \bibitem{6187242}
 C.~R. McBryde and E.~G. Lightsey, ``{A star tracker design for CubeSats},'' in
@@ -76,18 +114,25 @@ D.~Mortari, ``{A fast on-board autonomous attitude determination system based
 D.~Mortari and B.~Neta, ``{K-vector range searching techniques},'' {\em Adv.
   Astronaut. Sci}, vol.~105, pp.~449--464, 2000.
 
-\bibitem{jenssen2011comparison}
-K.~L. Jenssen, K.~H. Yabar, and J.~T. Gravdahl, ``{A comparison of attitude
-  determination methods: theory and experiments},'' in {\em {proceedings of the
-  62nd International Astronautical Congress, Cape Town, South Africa}},
-  pp.~3--7, 2011.
-
 \bibitem{markley1999estimate}
 F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
   observations},'' 1999.
 
+\bibitem{RIS_1}
+{Cheng Yang} and {Shuster Malcolm D.}, ``{Improvement to the Implementation of
+  the QUEST Algorithm},'' {\em Journal of Guidance, Control, and Dynamics},
+  vol.~37, no.~1, pp.~301--305, 2013.
+\newblock doi: 10.2514/1.62549.
+
 \bibitem{shuster1990kalman}
 M.~Shuster, ``{Kalman filtering of spacecraft attitude and the QUEST model},''
   {\em Journal of the Astronautical Sciences}, vol.~38, pp.~377--393, 1990.
+
+\bibitem{RIS_0}
+J.-J. Kim, J.~Tappe, A.~Jordan, and B.~Agrawal, {\em {Star Tracker Attitude
+  Estimation for an Indoor Ground-Based Spacecraft Simulator}}.
+\newblock {Guidance, Navigation, and Control and Co-located Conferences},
+  American Institute of Aeronautics and Astronautics, aug 2011.
+\newblock doi:10.2514/6.2011-6270.
 
 \end{thebibliography}
