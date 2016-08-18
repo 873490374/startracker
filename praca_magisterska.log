@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.17)  17 AUG 2016 16:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.17)  18 AUG 2016 09:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -594,34 +594,40 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `praca_magisterska.toc'.
 
  [3]
-(./praca_magisterska.nls) [4] [5]
-Overfull \hbox (719.46526pt too wide) in paragraph at lines 128--138
+(./praca_magisterska.nls) [4]
+Overfull \hbox (9.54056pt too wide) in paragraph at lines 81--90
+[]\OT1/cmr/m/n/12 http://ssl.mit.edu/publications/theses/SM-2006-HuffmanKara.pd
+f [[]] [[]]
+ []
+
+[5]
+Overfull \hbox (719.46526pt too wide) in paragraph at lines 133--143
 [][] 
  []
 
-[6] [7] [8]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 173.
+[6] [7] [8] [9]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 178.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 173.
- [9]
-[10] [11] [12]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 178.
 
-LaTeX Warning: Citation `2012highly' on page 13 undefined on input line 310.
+[10] [11] [12] [13]
 
-[13] [14] [15] [16] [17] (./praca_magisterska.bbl [18] [19]) [20]
+LaTeX Warning: Citation `2012highly' on page 14 undefined on input line 318.
+
+[14] [15] [16] [17] [18] (./praca_magisterska.bbl [19] [20]) [21]
 (./praca_magisterska.lot)
 \tf@lot=\write5
 \openout5 = `praca_magisterska.lot'.
 
- [21] (./praca_magisterska.lof)
+ [22] (./praca_magisterska.lof)
 \tf@lof=\write6
 \openout6 = `praca_magisterska.lof'.
 
- [22] [23]
+ [23] [24]
 (./praca_magisterska.aux)
 
 LaTeX Warning: There were undefined references.
@@ -634,7 +640,7 @@ Here is how much of TeX's memory you used:
  6667 multiletter control sequences out of 15000+600000
  12911 words of font info for 47 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 37i,11n,43p,501b,302s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,11n,43p,501b,298s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
@@ -648,10 +654,10 @@ amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
 y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on praca_magisterska.pdf (23 pages, 1109487 bytes).
+Output written on praca_magisterska.pdf (24 pages, 1109878 bytes).
 PDF statistics:
- 139 PDF objects out of 1000 (max. 8388607)
- 95 compressed objects within 1 object stream
+ 142 PDF objects out of 1000 (max. 8388607)
+ 97 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
