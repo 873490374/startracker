@@ -155,6 +155,7 @@ This section will describe the on-board computer which was done as part of other
 \subsubsection{ECEF frame}
 \subsubsection{NED frame}
 \subsubsection{BODY frame}
+\subsection{Space environment}
 \subsection{Attitude representations}
 \subsubsection{Euler angles}
 \subsubsection{Quaternions}
@@ -163,7 +164,8 @@ This section will describe the on-board computer which was done as part of other
 \subsubsection{Multiplication of quaternions}
 \subsubsection{Quaternions and rotations}
 \subsection{Wahba's problem}
-
+Wahba, G., “A Least Squares Estimate of Spacecraft Attitude,” SIAM Review, Vol. 7, No.
+3, 1965, p.409.
 
 \begin{equation}
 \sum_j^n ||r_j - Mb_j||
@@ -173,6 +175,9 @@ This section will describe the on-board computer which was done as part of other
 
 \newpage
 \section{Star-tracker program}
+Ju, G. and Junkins, J. L., “Overview of Star Tracker Technology and its Trends in
+Research and Development,” Advances in the Astronautical Sciences, Vol. 115, 2003, pp
+461–477.\par
 Generally star-tracker is divided into three main parts\cite{6187242}:
 \begin{itemize}
 \item recogiting stars on the image and converting the data into list of star vectors by calculating star centroids;
@@ -180,6 +185,8 @@ Generally star-tracker is divided into three main parts\cite{6187242}:
 \item estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 \subsection{Centroid - start recognition}
+Samaan, M.., Mortari, D., Pollock, T., and Junkins, J., “Predictive Centroiding for Single and Multiple FOVs Star Trackers,” AAS/AIAA Space Flight Mechanics Meeting, San
+Antonio,TX, Jan. 2002, AAS 02-103.
 
 Due to limitations of camera there exists necessity of calculating star centroids. Each camera converts image into photo divided by pixels. As it is necessary to have high precision of star coordinates, the pixel accuracy is not enough. Subpixel accuracy is needed. Typically it is done by defocusing the lens of the camera and calculating the lumosity of all pixels around the lightest ones. The idea of how to calculate such centroids is adapted from\cite{6187242}.
 
@@ -249,7 +256,13 @@ Star pattern recognition using neural networks \cite{li2003star} \par
 
 
 \subsubsection{Angle Matching}
+% https://books.google.pl/books?id=GtzzpUN8VEoC&pg=PA259&lpg=PA259&dq=Gottlieb+Star+Identification+Techniques+1978&source=bl&ots=6_y_cnQUJe&sig=TBkqnYn41hOWcswFdt1a1fghNcc&hl=en&sa=X&ved=0ahUKEwjuiriUuNnOAhWE_iwKHX46AIgQ6AEIIDAA#v=onepage&q=Gottlieb%20Star%20Identification%20Techniques%201978&f=false
+Gottlieb, D. M., “Star Identification Techniques,” Spacecraft Attitude Determination and
+Control, 1978, pp. 259-266.
 \subsubsection{Spherical Triangle Matching}
+Cole, C. L., and Crassidis, J. L., “Fast Star Pattern Recognition Using Spherical
+Triangles,” AIAA/AAS Astrodynamics Specialist Conference and Exhibit, Providence, RI,
+Aug. 2004, AIAA Paper #2004-5389.
 \subsubsection{Planar Triangle}
 \cite{cole2006fast}\par
 
@@ -317,7 +330,10 @@ m_j \leq m_{max}
 \cite{jenssen2011comparison}\par
 AIM (Attitude estimation using Image Matching)\cite{2012highly}\par
 all \cite{hall2003spacecraft} \cite{markley1999estimate}
-
+\subsubsection{The Predictive Attitude Determination Algorithm ?}
+Crassidis, J. and Markley, F., “A Predictive Attitude Determination Algorithm,”
+Proceedings of the Flight Mechanics/Estimation Theory Symposium, NASA-Goddard
+Space Flight Center, Greenbelt, MD, May 1997, pp. 249-263.
 \subsubsection{q-method}
 \subsubsection{QUEST}
 improvement to quest implementation \cite{RIS_1} \par
@@ -325,6 +341,9 @@ kallman filtering \cite{shuster1990kalman}
 \subsubsection{TRIAD}
 \subsubsection{The Fast Optimal Attitude Matrix}
 \subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
+An Efficient and Robust Singular Value Method for Star Pattern Recognition and Attitude Determination
+ and
+
 \cite{6187242}
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
@@ -351,7 +370,17 @@ kallman filtering \cite{shuster1990kalman}
 \end{equation}
 \newpage
 \section{Prototype}
-
+For now the following parts are finished in Python:
+\begin{enumerate}
+Centroiding
+Planar Triangle Recognition with variations (nearly)
+Pyramid alg
+k-vector
+QUEST (not started yet)
+\end{enumerate}
+Testing\par
+Kruijff, M., Heide, E. J., de Boom, C. W., and Heiden, N., “Star Sensor Algorithm
+Application and Spin-Off,” AIC-03-A.5.03.
 \newpage
 \section{Complete program}
 
