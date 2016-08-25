@@ -45,6 +45,10 @@ H.~Heidt, J.~Puig-Suari, A.~Moore, S.~Nakasuka, and R.~Twiggs, ``{CubeSat: A
   new generation of picosatellite for education and industry low-cost space
   experimentation},'' 2000.
 
+\bibitem{larson1992space}
+W.~J. Larson and J.~R. Wertz, ``{Space mission analysis and design},'' tech.
+  rep., Microcosm, Inc., Torrance, CA (US), 1992.
+
 \bibitem{hall2003spacecraft}
 C.~D. Hall, ``{Spacecraft attitude dynamics and control},'' {\em Lecture Notes
   posted on Handouts page [online]}, vol.~12, no.~2003, 2003.
@@ -53,9 +57,23 @@ C.~D. Hall, ``{Spacecraft attitude dynamics and control},'' {\em Lecture Notes
 S.~M. R. C.~P. Lima, ``{Comparison of small satellite attitude determination
   methods},'' 2000.
 
+\bibitem{wahba1965least}
+G.~Wahba, ``{A least squares estimate of satellite attitude},'' {\em SIAM
+  review}, vol.~7, no.~3, pp.~409--409, 1965.
+
+\bibitem{ju2003overview}
+G.~Ju and J.~L. Junkins, ``{Overview of star tracker technology and its trends
+  in research and development},'' {\em Advances in the Astronautical Sciences},
+  vol.~115, pp.~461--477, 2003.
+
 \bibitem{6187242}
 C.~R. McBryde and E.~G. Lightsey, ``{A star tracker design for CubeSats},'' in
   {\em {Aerospace Conference, 2012 IEEE}}, pp.~1--14, March 2012.
+
+\bibitem{samaan2002predictive}
+M.~A. Samaan, D.~Mortari, T.~Pollock, and J.~L. Junkins, ``{Predictive
+  centroiding for single and multiple FOVs star trackers},'' {\em Advances in
+  the Astronautical Sciences}, vol.~112, pp.~59--71, 2002.
 
 \bibitem{spratling2009survey}
 B.~B. Spratling and D.~Mortari, ``{A survey on star identification
@@ -85,6 +103,15 @@ C.~Li, K.~Li, L.~Zhang, S.~Jin, and J.~Zu, ``{Star pattern recognition method
   based on neural network},'' {\em Chinese Science Bulletin}, vol.~48, no.~18,
   pp.~1927--1930, 2003.
 
+\bibitem{gottlieb1978star}
+D.~Gottlieb, ``{Star pattern recognition techniques},'' {\em Spacecraft
+  Attitude Determination and Control, The Netherlands}, pp.~257--266, 1978.
+
+\bibitem{cole2004fast}
+C.~L. Cole and J.~Crassidus, ``{Fast star pattern recognition using spherical
+  triangles},'' in {\em {AIAA/AAS Astrodynamics Specialist Conference and
+  Exhibit. Providence, Rhode Island: AIAA}}, 2004.
+
 \bibitem{cole2006fast}
 C.~L. Cole and J.~L. Crassidis, ``{Fast star-pattern recognition using planar
   triangles},'' {\em Journal of guidance, control, and dynamics}, vol.~29,
@@ -95,10 +122,20 @@ D.~Mortari, M.~A. Samaan, C.~Bruccoleri, and J.~L. Junkins, ``{The pyramid star
   identification technique},'' {\em Navigation}, vol.~51, no.~3, pp.~171--183,
   2004.
 
+\bibitem{rao2005fast}
+G.~N. Rao, M.~S. Bhat, and T.~Alex, ``{Fast access method for onboard star
+  catalog},'' {\em Journal of guidance, control, and dynamics}, vol.~28, no.~5,
+  pp.~1032--1037, 2005.
+
 \bibitem{kolomenkin2008geometric}
 M.~Kolomenkin, S.~Pollak, I.~Shimshoni, and M.~Lindenbaum, ``{Geometric voting
   algorithm for star trackers},'' {\em IEEE Transactions on Aerospace and
   Electronic Systems}, vol.~44, no.~2, pp.~441--456, 2008.
+
+\bibitem{padgett1997grid}
+C.~Padgett and K.~Kreutz-Delgado, ``{A grid algorithm for autonomous star
+  identification},'' {\em IEEE Transactions on Aerospace and Electronic
+  Systems}, vol.~33, no.~1, pp.~202--213, 1997.
 
 \bibitem{mortari2013k}
 D.~Mortari and J.~Rogers, ``{A k-vector Approach to Sampling, Interpolation,
@@ -118,6 +155,11 @@ D.~Mortari and B.~Neta, ``{K-vector range searching techniques},'' {\em Adv.
 F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
   observations},'' 1999.
 
+\bibitem{park2006attitude}
+K.~J. Park and J.~L. Crassidis, ``{Attitude determination methods using
+  pseudolite signal phase measurements},'' {\em Navigation}, vol.~53, no.~2,
+  pp.~121--133, 2006.
+
 \bibitem{RIS_1}
 {Cheng Yang} and {Shuster Malcolm D.}, ``{Improvement to the Implementation of
   the QUEST Algorithm},'' {\em Journal of Guidance, Control, and Dynamics},
@@ -127,6 +169,16 @@ F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
 \bibitem{shuster1990kalman}
 M.~Shuster, ``{Kalman filtering of spacecraft attitude and the QUEST model},''
   {\em Journal of the Astronautical Sciences}, vol.~38, pp.~377--393, 1990.
+
+\bibitem{juang2003efficient}
+J.-N. Juang, H.-Y. Kim, and J.~L. Junkins, ``{An efficient and robust singular
+  value method for star pattern recognition and attitude determination},''
+  2003.
+
+\bibitem{kruijff2003star}
+M.~Kruijff, E.~Heide, C.~{De Boom}, and N.~Heiden, ``{Star sensor algorithm
+  application and spin-off},'' in {\em {54th International Astronautical
+  Congress of the International Astronautical Federation(IAF)}}, 2003.
 
 \bibitem{RIS_0}
 J.-J. Kim, J.~Tappe, A.~Jordan, and B.~Agrawal, {\em {Star Tracker Attitude

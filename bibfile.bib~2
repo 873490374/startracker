@@ -1,0 +1,297 @@
+@comment{x-kbibtex-personnameformatting=<%l><, %f>}
+
+@inproceedings{6187242,
+	author = "McBryde, C. R. and Lightsey, E. G.",
+	booktitle = "{Aerospace Conference, 2012 IEEE}",
+	doi = "10.1109/AERO.2012.6187242",
+	issn = "1095-323X",
+	keywords = "CCD image sensors; attitude measurement; computer vision; singular value decomposition; star trackers; 3-unit CubeSat missions; Austin; CCD sensor; Markley singular value decomposition; University of Texas; accurate star tracker; arc-minute star tracker; attitude determination; centroiding; grey-scale charge coupled device; low-cost star tracker; low-power star tracker; machine vision systems; pyramid star identification; star identification code; star tracking; Accuracy; Cameras; Catalogs; Position measurement; Satellite broadcasting; Satellites; Vectors",
+	month = "March",
+	pages = "1--14",
+	title = "{A star tracker design for CubeSats}",
+	year = "2012"
+}
+
+@inbook{RIS_0,
+	author = "Kim, Jae-Jun and Tappe, Jack and Jordan, Albert and Agrawal, Brij",
+	doi = "10.2514/6.2011-6270",
+	month = "aug",
+	note = "doi:10.2514/6.2011-6270",
+	publisher = "American Institute of Aeronautics and Astronautics",
+	risfield_0_m1 = "0",
+	risfield_1_do = "doi:10.2514/6.2011-6270",
+	risfield_2_m3 = "doi:10.2514/6.2011-6270",
+	risfield_3_t2 = "AIAA Modeling and Simulation Technologies Conference",
+	series = "{Guidance, Navigation, and Control and Co-located Conferences}",
+	title = "{Star Tracker Attitude Estimation for an Indoor Ground-Based Spacecraft Simulator}",
+	year = "2011"
+}
+
+@article{mortari2000k,
+	author = "Mortari, Daniele and Neta, Beny",
+	journal = "Adv. Astronaut. Sci",
+	pages = "449--464",
+	title = "{K-vector range searching techniques}",
+	volume = "105",
+	year = "2000"
+}
+
+@article{mortari2013k,
+	author = "Mortari, Daniele and Rogers, Jonathan",
+	journal = "The Journal of the Astronautical Sciences",
+	number = "3-4",
+	pages = "686--706",
+	publisher = "Springer",
+	title = "{A k-vector Approach to Sampling, Interpolation, and Approximation}",
+	volume = "60",
+	year = "2013"
+}
+
+@article{mortari1996fast,
+	author = "Mortari, Daniele",
+	journal = "Advances in the Astronautical Sciences",
+	pages = "893--904",
+	title = "{A fast on-board autonomous attitude determination system based on a new star-ID technique for a wide FOV star tracker}",
+	volume = "93",
+	year = "1996"
+}
+
+@article{kolomenkin2008geometric,
+	author = "Kolomenkin, Michael and Pollak, Sharon and Shimshoni, Ilan and Lindenbaum, Michael",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "2",
+	pages = "441--456",
+	publisher = "IEEE",
+	title = "{Geometric voting algorithm for star trackers}",
+	volume = "44",
+	year = "2008"
+}
+
+@article{spratling2009survey,
+	author = "Spratling, Benjamin B and Mortari, Daniele",
+	journal = "Algorithms",
+	number = "1",
+	pages = "93--107",
+	publisher = "Molecular Diversity Preservation International",
+	title = "{A survey on star identification algorithms}",
+	volume = "2",
+	year = "2009"
+}
+
+@article{dong2006brightness,
+	author = "Dong, Ying and Xing, Fei and You, Zheng",
+	journal = "Tsinghua Science \& Technology",
+	number = "5",
+	pages = "543--548",
+	publisher = "Elsevier",
+	title = "{Brightness independent 4-star matching algorithm for lost-in-space 3-axis attitude acquisition}",
+	volume = "11",
+	year = "2006"
+}
+
+@article{cole2006fast,
+	author = "Cole, Craig L and Crassidis, John L",
+	journal = "Journal of guidance, control, and dynamics",
+	number = "1",
+	pages = "64--71",
+	title = "{Fast star-pattern recognition using planar triangles}",
+	volume = "29",
+	year = "2006"
+}
+
+@article{miri2012star,
+	author = "Miri, Saeideh Sadat and Shiri, Mohammad Ebrahim",
+	journal = "International Journal of Modeling and Optimization",
+	number = "3",
+	pages = "234",
+	publisher = "IACSIT Press",
+	title = "{Star identification using Delaunay triangulation and distributed neural networks}",
+	volume = "2",
+	year = "2012"
+}
+
+@article{lindbladstar,
+	author = "Lindblad, Thomas and Lindsey, Clark S and Eide, {\AA}ge and Solberg, {\"O}ystein and Bolseth, Andrew",
+	title = "{Star Identification using Neural Networks}"
+}
+
+@article{li2003star,
+	author = "Li, Chunyan and Li, Ke and Zhang, Longyun and Jin, Shengzhen and Zu, Jifeng",
+	journal = "Chinese Science Bulletin",
+	number = "18",
+	pages = "1927--1930",
+	publisher = "Springer",
+	title = "{Star pattern recognition method based on neural network}",
+	volume = "48",
+	year = "2003"
+}
+
+@inproceedings{delabie2012highly,
+	author = "Delabie, Tjorven",
+	booktitle = "{AIAA Guidance, Navigation and Control Conference, Minneapolis, Minnesota}",
+	title = "{A highly efficient attitude estimation algorithm for star trackers based on optimal image matching}",
+	year = "2012"
+}
+
+@article{hall2003spacecraft,
+	author = "Hall, Christopher D",
+	journal = "Lecture Notes posted on Handouts page [online]",
+	number = "2003",
+	publisher = "Citeseer",
+	title = "{Spacecraft attitude dynamics and control}",
+	url = "http://www.dept.aoe.vt.edu/~cdhall/courses/aoe4140/attde.pdf",
+	volume = "12",
+	year = "2003"
+}
+
+@article{markley1999estimate,
+	author = "Markley, F Landis and Mortari, Daniele",
+	title = "{How to estimate attitude from vector observations}",
+	year = "1999"
+}
+
+@article{liebe2002accuracy,
+	author = "Liebe, Carl Christian",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "2",
+	pages = "587--599",
+	publisher = "IEEE",
+	title = "{Accuracy performance of star trackers-a tutorial}",
+	volume = "38",
+	year = "2002"
+}
+
+@article{liebe2002accuracy,
+	author = "Liebe, Carl Christian",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "2",
+	pages = "587--599",
+	publisher = "IEEE",
+	title = "{Accuracy performance of star trackers-a tutorial}",
+	volume = "38",
+	year = "2002"
+}
+
+@article{jalabert2011optimization,
+	author = "Jalabert, Eva and Fabacher, Emilien and Guy, Nicolas and Lizy-Destrez, St{\'e}phanie and Rappin, William and Rivier, Guillaume",
+	title = "{Optimization of star research algorithm for ESMO star tracker}",
+	year = "2011"
+}
+
+@inproceedings{felikson2011orbit,
+	author = "Felikson, Denis and Hahmall, JA and Vess, Melissa F and Ekinci, Matthew",
+	booktitle = "{AIAA Guidance, Navigation and Control Conference, Portland, Oregon}",
+	title = "{On-Orbit Solar Dynamics Observatory (SDO) Star Tracker Warm Pixel Analysis}",
+	volume = "6728",
+	year = "2011"
+}
+
+@phdthesis{knutson2012fast,
+	author = "Knutson, Matthew Walter",
+	school = "Massachusetts Institute of Technology",
+	title = "{Fast star tracker centroid algorithm for high performance CubeSat with air bearing validation}",
+	year = "2012"
+}
+
+@article{rose2003star,
+	author = "Rose, A",
+	journal = "arXiv preprint nucl-ex/0307015",
+	title = "{STAR integrated tracker}",
+	year = "2003"
+}
+
+@inproceedings{mortari2002starnav,
+	author = "Mortari, Daniele and Romoli, Andrea",
+	booktitle = "{Aerospace Conference Proceedings, 2002. IEEE}",
+	organization = "IEEE",
+	pages = "1--57",
+	title = "{StarNav III: a three fields of view star tracker}",
+	volume = "1",
+	year = "2002"
+}
+
+@article{markley1999estimate,
+	author = "Markley, F Landis and Mortari, Daniele",
+	title = "{How to estimate attitude from vector observations}",
+	year = "1999"
+}
+
+@article{valenti2015keeping,
+	author = "Valenti, Roberto G and Dryanovski, Ivan and Xiao, Jizhong",
+	journal = "Sensors",
+	number = "8",
+	pages = "19302--19330",
+	publisher = "Multidisciplinary Digital Publishing Institute",
+	title = "{Keeping a Good Attitude: A Quaternion-Based Orientation Filter for IMUs and MARGs}",
+	volume = "15",
+	year = "2015"
+}
+
+@article{lima2000comparison,
+	author = "Lima, Sonia Marquesf Roberts ClementsJ Pedro",
+	title = "{Comparison of small satellite attitude determination methods}",
+	year = "2000"
+}
+
+@article{mortari2004pyramid,
+	author = "Mortari, Daniele and Samaan, Malak A and Bruccoleri, Christian and Junkins, John L",
+	journal = "Navigation",
+	number = "3",
+	pages = "171--183",
+	publisher = "Wiley Online Library",
+	title = "{The pyramid star identification technique}",
+	volume = "51",
+	year = "2004"
+}
+
+@article{RIS_1,
+	author = "{Cheng Yang} and {Shuster Malcolm D.}",
+	doi = "10.2514/1.62549",
+	issn = "0731-5090",
+	journal = "Journal of Guidance, Control, and Dynamics",
+	note = "doi: 10.2514/1.62549",
+	number = "1",
+	pages = "301--305",
+	publisher = "American Institute of Aeronautics and Astronautics",
+	risfield_0_da = "2014/01/01",
+	risfield_1_do = "10.2514/1.62549",
+	risfield_2_t2 = "Journal of Guidance, Control, and Dynamics",
+	risfield_3_m3 = "doi: 10.2514/1.62549",
+	title = "{Improvement to the Implementation of the QUEST Algorithm}",
+	volume = "37",
+	year = "2013"
+}
+
+@inproceedings{jenssen2011comparison,
+	author = "Jenssen, Kristian Lindg{\aa}rd and Yabar, Kaan Huseby and Gravdahl, Jan Tommy",
+	booktitle = "{proceedings of the 62nd International Astronautical Congress, Cape Town, South Africa}",
+	pages = "3--7",
+	title = "{A comparison of attitude determination methods: theory and experiments}",
+	year = "2011"
+}
+
+@article{shuster1990kalman,
+	author = "Shuster, MD",
+	journal = "Journal of the Astronautical Sciences",
+	pages = "377--393",
+	title = "{Kalman filtering of spacecraft attitude and the QUEST model}",
+	volume = "38",
+	year = "1990"
+}
+
+@article{mortari1999sp,
+	author = "Mortari, Daniele",
+	journal = "Advances in the Astronautical Sciences",
+	number = "Pt II",
+	pages = "1165--1174",
+	title = "{SP-search: A new algorithm for star pattern recognition}",
+	volume = "102",
+	year = "1999"
+}
+
+@article{heidt2000cubesat,
+	author = "Heidt, Hank and Puig-Suari, Jordi and Moore, Augustus and Nakasuka, Shinichi and Twiggs, Robert",
+	title = "{CubeSat: A new generation of picosatellite for education and industry low-cost space experimentation}",
+	year = "2000"
+}
+

@@ -78,7 +78,7 @@
 \printnomenclature
 
 \newpage
-http://ssl.mit.edu/publications/theses/SM-2006-HuffmanKara.pdf
+%http://ssl.mit.edu/publications/theses/SM-2006-HuffmanKara.pdf
 \cite{jenssen2011comparison}
 \cite{valenti2015keeping}
 \cite{delabie2012highly}
@@ -113,7 +113,7 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 
 %https://en.wikipedia.org/wiki/CubeSat#cite_note-SpaceNews-2015-06-08-1
 
-Cubesat was designed on Caltech in 1999\cite{heidt2000cubesat}.
+Cubesat was designed on CalPoly in 1999\cite{heidt2000cubesat}.
 Dimensions of satellite are measured in units. Each unit (often described simply as u) can be 10x10x10cm and can weight up to 1.33 kg. Satellites can be 1u, 2u, 3u, 6u or even 12u.
 
 Such small satellites are suspectible to noise from densly packed electronics.
@@ -126,8 +126,7 @@ CubeSat missions, goals, what can they be and are used for? Why is it innovative
 
 There exist many different types of attitude estimation: sun sensors, star-trackers, magnetometers, etc. However star-tracker gives the best possible accuracy for nowadays and is not suspectible to electrical nor magnetic noise.
 
-[6] Wiley J. Larson and James R. Wertz, editors. Space Mission Analysis and De-
-sign. Microcosm, Inc., Torrance, CA, second edition, 1995.
+\cite{larson1992space}
 \begin{table}[ht]
 
 \begin{tabular}{ccc}
@@ -164,8 +163,7 @@ This section will describe the on-board computer which was done as part of other
 \subsubsection{Multiplication of quaternions}
 \subsubsection{Quaternions and rotations}
 \subsection{Wahba's problem}
-Wahba, G., “A Least Squares Estimate of Spacecraft Attitude,” SIAM Review, Vol. 7, No.
-3, 1965, p.409.
+\cite{wahba1965least}
 
 \begin{equation}
 \sum_j^n ||r_j - Mb_j||
@@ -175,9 +173,7 @@ Wahba, G., “A Least Squares Estimate of Spacecraft Attitude,” SIAM Review, V
 
 \newpage
 \section{Star-tracker program}
-Ju, G. and Junkins, J. L., “Overview of Star Tracker Technology and its Trends in
-Research and Development,” Advances in the Astronautical Sciences, Vol. 115, 2003, pp
-461–477.\par
+\cite{ju2003overview}\par
 Generally star-tracker is divided into three main parts\cite{6187242}:
 \begin{itemize}
 \item recogiting stars on the image and converting the data into list of star vectors by calculating star centroids;
@@ -185,8 +181,7 @@ Generally star-tracker is divided into three main parts\cite{6187242}:
 \item estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 \subsection{Centroid - start recognition}
-Samaan, M.., Mortari, D., Pollock, T., and Junkins, J., “Predictive Centroiding for Single and Multiple FOVs Star Trackers,” AAS/AIAA Space Flight Mechanics Meeting, San
-Antonio,TX, Jan. 2002, AAS 02-103.
+\cite{samaan2002predictive}
 
 Due to limitations of camera there exists necessity of calculating star centroids. Each camera converts image into photo divided by pixels. As it is necessary to have high precision of star coordinates, the pixel accuracy is not enough. Subpixel accuracy is needed. Typically it is done by defocusing the lens of the camera and calculating the lumosity of all pixels around the lightest ones. The idea of how to calculate such centroids is adapted from\cite{6187242}.
 
@@ -257,12 +252,60 @@ Star pattern recognition using neural networks \cite{li2003star} \par
 
 \subsubsection{Angle Matching}
 % https://books.google.pl/books?id=GtzzpUN8VEoC&pg=PA259&lpg=PA259&dq=Gottlieb+Star+Identification+Techniques+1978&source=bl&ots=6_y_cnQUJe&sig=TBkqnYn41hOWcswFdt1a1fghNcc&hl=en&sa=X&ved=0ahUKEwjuiriUuNnOAhWE_iwKHX46AIgQ6AEIIDAA#v=onepage&q=Gottlieb%20Star%20Identification%20Techniques%201978&f=false
-Gottlieb, D. M., “Star Identification Techniques,” Spacecraft Attitude Determination and
-Control, 1978, pp. 259-266.
+\cite{gottlieb1978star}
+\begin{equation}
+\theta = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
+\end{equation}
+\begin{equation}
+\bm{b}_i = A\bm{r}_i
+\end{equation}
+\begin{equation}
+\tilde{\bm{b}}_i = A\bm{r}_i + \bm{v}_i, \hspace{0.5cm} \bm{v}_i^TA\bm{r}_i = 0
+\end{equation}
+\begin{subequations}
+\begin{align*}
+E\left\{\bm{v}_i\right\} &= 0 \\
+E\left\{\bm{v}_i\bm{v}_i^T\right\} &= \sigma_i^2 [\bm{I} - (A\bm{r}_i)(A\bm{r}_i)^T]
+\end{align*}
+\end{subequations}
+\begin{equation}
+\bm{b}_i^T\bm{b}_j = \bm{r}_i^TA^TA\bm{r}_j = \bm{r}_i^T\bm{r}_j
+\end{equation}
+\begin{subequations}
+\begin{align*}
+\tilde{\bm{b}}_i = A\bm{r}_i + \bm{v}_i\\
+\tilde{\bm{b}}_j = A\bm{r}_j + \bm{v}_j
+\end{align*}
+\end{subequations}
+\begin{equation}
+z \equiv \tilde{\bm{b}}_i^T\tilde{\bm{b}}_j = \bm{r}_i^T\bm{r}_j + \bm{r}_i^TA^T\bm{v}_J + \bm{r}_j^TA^T\bm{v}_i + \bm{v}_i^T\bm{v}_j
+\end{equation}
+\begin{equation}
+E\left\{z\right\} = \bm{r}_i^T\bm{r}_j
+\end{equation}
+\begin{equation}
+p \equiv z - E\left\{z\right\} = \bm{r}_i^TA^T\bm{v}_J + \bm{r}_j^TA^T\bm{v}_i + \bm{v}_i^T\bm{v}_j
+\end{equation}
+\begin{equation}
+\sigma_p^2 \equiv E\left\{p\right\} = \bm{r}_1^TA^TR_2A\bm{r}_1 + \bm{r}_2^TA^TR_aA\bm{r}_2 + Trace(R_1R_2) = Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
+\end{equation}
 \subsubsection{Spherical Triangle Matching}
-Cole, C. L., and Crassidis, J. L., “Fast Star Pattern Recognition Using Spherical
-Triangles,” AIAA/AAS Astrodynamics Specialist Conference and Exhibit, Providence, RI,
-Aug. 2004, AIAA Paper #2004-5389.
+\cite{cole2004fast}
+
+\begin{equation}
+A = 4\tan^{-1}\sqrt{\tan\frac{s}{2}\tan\frac{s-a}{2}\tan\frac{s-b}{2}\tan\frac{s-c}{2}}
+\end{equation}
+\begin{subequations}
+\begin{align*}
+s = \frac{1}{2}(a + b + c) \\
+a = \cos^{-1} \bigg(\frac{b_1 \cdot b_2}{|b_1||b_2|}\bigg) \\
+b = \cos^{-1} \bigg(\frac{b_2 \cdot b_3}{|b_2||b_3|}\bigg) \\
+c = \cos^{-1} \bigg(\frac{b_3 \cdot b_1}{|b_3||b_1|}\bigg) 
+\end{align*}
+\end{subequations}
+\begin{equation}
+I_p = \sum\theta^2dA
+\end{equation}
 \subsubsection{Planar Triangle}
 \cite{cole2006fast}\par
 
@@ -288,16 +331,94 @@ A = \sqrt{s(s-a)(s-b)(s-c)}
 J = A\frac{(a^2 + b^2 + c^2}{36}
 \end{equation}
 
+Derivatives
+\begin{equation}
+H = \begin{bmatrix}
+\bm{h}_1^T & \bm{h}_2^T & \bm{h}_3^T
+\end{bmatrix}
+\end{equation}
+\begin{subequations}
+\begin{align*}
+\bm{h}_1^T \equiv \frac{\delta A}{\delta a}\frac{\delta a}{\delta\bm{b}_1} + \frac{\delta A}{\delta c}\frac{\delta c}{\delta\bm{b}_1} \\
+\bm{h}_2^T \equiv \frac{\delta A}{\delta a}\frac{\delta a}{\delta\bm{b}_2} + \frac{\delta A}{\delta b}\frac{\delta b}{\delta\bm{b}_2}  \\
+\bm{h}_3^T \equiv \frac{\delta A}{\delta b}\frac{\delta b}{\delta\bm{b}_3} + \frac{\delta A}{\delta c}\frac{\delta c}{\delta\bm{b}_3} 
+\end{align*}
+\end{subequations}
+
+\begin{subequations}
+\begin{align*}
+\frac{\delta A}{\delta a} = \frac{u_1 - u_2 + u_3 + u_4}{4A} \\
+\frac{\delta A}{\delta b} = \frac{u_1 + u_2 - u_3 + u_4}{4A} \\
+\frac{\delta A}{\delta c} = \frac{u_1 + u_2 + u_3 - u_4}{4A}
+\end{align*}
+\end{subequations}
+
+\begin{subequations}
+\begin{align*}
+u_1 = (s - a)(s - b)(s - c) \\
+u_2 = s(s - b)(s - c) \\
+u_3 = s(s - a)(s - c) \\
+u_4 = s(s - a)(s - b) \\
+\end{align*}
+\end{subequations}
+
+\begin{subequations}
+\begin{align*}
+\frac{\delta a}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_2)^T /a, \hspace{0.5cm} \frac{\delta a}{\delta \bm{b}_2} = -\frac{\delta a}{\delta \bm{b}_1} \\
+\frac{\delta b}{\delta \bm{b}_2} = (\bm{b}_2 - \bm{b}_3)^T /b, \hspace{0.5cm} \frac{\delta b}{\delta \bm{b}_3} = -\frac{\delta b}{\delta \bm{b}_2} \\
+\frac{\delta c}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_3)^T /c, \hspace{0.5cm} \frac{\delta c}{\delta \bm{b}_3} = -\frac{\delta c}{\delta \bm{b}_1}
+\end{align*}
+\end{subequations}
+
+\begin{equation}
+\sigma_A^2 = HRH^T
+\end{equation}
+
+\begin{equation}
+R \equiv \begin{bmatrix}
+R_1 & 0_{3x3} & 0_{3x3} \\
+0_{3x3} & R_2 & 0_{3x3} \\
+0_{3x3} & 0_{3x3} & R_3
+\end{bmatrix}
+\end{equation}
+
+Polar Moment
+
+\begin{equation}
+\bar{H} = \begin{bmatrix}
+\bar{\bm{h}}_1^T & \bar{\bm{h}}_2^T & \bar{\bm{h}}_3^T
+\end{bmatrix}
+\end{equation}
+
+\begin{subequations}
+\begin{align*}
+\bar{\bm{h}}_1^T \equiv \frac{\delta J}{\delta a}\frac{\delta a}{\delta\bm{b}_1} + \frac{\delta J}{\delta c}\frac{\delta c}{\delta\bm{b}_1} + \frac{\delta J}{\delta A}\bm{h}_1^T\\
+\bar{\bm{h}}_2^T \equiv \frac{\delta J}{\delta a}\frac{\delta a}{\delta\bm{b}_2} + \frac{\delta J}{\delta b}\frac{\delta b}{\delta\bm{b}_2} + \frac{\delta J}{\delta A}\bm{h}_2^T \\
+\bar{\bm{h}}_3^T \equiv \frac{\delta J}{\delta b}\frac{\delta b}{\delta\bm{b}_3} + \frac{\delta J}{\delta c}\frac{\delta c}{\delta\bm{b}_3} + \frac{\delta J}{\delta A}\bm{h}_3^T
+\end{align*}
+\end{subequations}
+
+\begin{subequations}
+\begin{align*}
+\frac{\delta J}{\delta a} = A a/18, \hspace{0.5cm} \frac{\delta J}{\delta a} = A b/18, \hspace{0.5cm} \frac{\delta J}{\delta a} = A c/18 \\
+\frac{\delta J}{\delta A} = (a^2 + b^2 + c^2)/36
+\end{align*}
+\end{subequations}
+
+\begin{equation}
+\sigma_J^2 = \bar{H}R\bar{H}^T
+\end{equation}
+
 \subsubsection{Pyramid}
 \cite{mortari2004pyramid}\par
 
 \subsubsection{Rate Matching}
-Samaan, M. A., Mortari, D., Junkins, J. L., “Recursive Mode Star Identification
-Algorithms,” AAS Paper No. 01-149, pp. 677-692. 
+\cite{rao2005fast} 
 \subsubsection{Voting}
 \cite{kolomenkin2008geometric} \par
 \subsubsection{Grid}
-http://dsp.ucsd.edu/~kreutz/Publications/Padgett1997.pdf
+%http://dsp.ucsd.edu/~kreutz/Publications/Padgett1997.pdf
+\cite{padgett1997grid}
 \subsection{Star-catalogue and searching for matching stars}
 
 \subsubsection{Star Catalogue Generation}
@@ -328,12 +449,10 @@ m_j \leq m_{max}
 
 \subsection{Attitude Determination}
 \cite{jenssen2011comparison}\par
-AIM (Attitude estimation using Image Matching)\cite{2012highly}\par
+AIM (Attitude estimation using Image Matching)\cite{delabie2012highly}\par
 all \cite{hall2003spacecraft} \cite{markley1999estimate}
 \subsubsection{The Predictive Attitude Determination Algorithm ?}
-Crassidis, J. and Markley, F., “A Predictive Attitude Determination Algorithm,”
-Proceedings of the Flight Mechanics/Estimation Theory Symposium, NASA-Goddard
-Space Flight Center, Greenbelt, MD, May 1997, pp. 249-263.
+\cite{park2006attitude}
 \subsubsection{q-method}
 \subsubsection{QUEST}
 improvement to quest implementation \cite{RIS_1} \par
@@ -341,7 +460,7 @@ kallman filtering \cite{shuster1990kalman}
 \subsubsection{TRIAD}
 \subsubsection{The Fast Optimal Attitude Matrix}
 \subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
-An Efficient and Robust Singular Value Method for Star Pattern Recognition and Attitude Determination
+\cite{juang2003efficient}
  and
 
 \cite{6187242}
@@ -372,15 +491,14 @@ An Efficient and Robust Singular Value Method for Star Pattern Recognition and A
 \section{Prototype}
 For now the following parts are finished in Python:
 \begin{enumerate}
-Centroiding
-Planar Triangle Recognition with variations (nearly)
-Pyramid alg
-k-vector
-QUEST (not started yet)
+\item Centroiding
+\item Planar Triangle Recognition with variations (nearly)
+\item Pyramid alg
+\item k-vector
+\item QUEST (not started yet)
 \end{enumerate}
 Testing\par
-Kruijff, M., Heide, E. J., de Boom, C. W., and Heiden, N., “Star Sensor Algorithm
-Application and Spin-Off,” AIC-03-A.5.03.
+\cite{kruijff2003star}
 \newpage
 \section{Complete program}
 
