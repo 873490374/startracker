@@ -2,8 +2,36 @@
 
  \nomgroup{A}
 
-  \item [{$c$}]\begingroup Speed of light in a vacuum inertial frame\nomeqref {0}
+  \item [{$\bm{b}$}]\begingroup Known directional unit vector in the BODY frame\nomeqref {0}
 		\nompageref{4}
-  \item [{$h$}]\begingroup Planck constant\nomeqref {0}\nompageref{4}
+  \item [{$\bm{I}$}]\begingroup Identity matrix\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{M}$}]\begingroup Least squares estimate of rotation matrix\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{n}$}]\begingroup Unit vector\nomeqref {0}\nompageref{4}
+  \item [{$\bm{Q}$}]\begingroup Quaternion matrix\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{q}$}]\begingroup Unit quaternion\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{q}_{vec}$}]\begingroup Vector part of unit quaternion\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{r}$}]\begingroup Known directional unit vector in the NED frame\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{R}(\cdot)$}]\begingroup Rotation matrix using Euler angles\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{R}_n^b$}]\begingroup Rotation matrix representing a rotation from n to b\nomeqref {0}
+		\nompageref{4}
+  \item [{$\bm{S}(\cdot)$}]\begingroup Skew symmetric matrix\nomeqref {0}
+		\nompageref{4}
+  \item [{$\phi$}]\begingroup Euler angle, roll\nomeqref {0}
+		\nompageref{4}
+  \item [{$\psi$}]\begingroup Euler angle, yaw\nomeqref {0}
+		\nompageref{4}
+  \item [{$\theta$}]\begingroup Euler angle, pitch\nomeqref {0}
+		\nompageref{4}
+  \item [{$q_0$}]\begingroup Scalar part of unit quaternion\nomeqref {0}
+		\nompageref{4}
+  \item [{$v$}]\begingroup General Euler angle\nomeqref {0}
+		\nompageref{4}
 
 \end{thenomenclature}

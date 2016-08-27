@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
@@ -73,8 +74,23 @@
 \setlength{\parskip}{\baselineskip}%
 
 
-\nomenclature{$c$}{Speed of light in a vacuum inertial frame}
-\nomenclature{$h$}{Planck constant}
+\nomenclature{$\phi$}{Euler angle, roll}
+\nomenclature{$\theta$}{Euler angle, pitch}
+\nomenclature{$\psi$}{Euler angle, yaw}
+\nomenclature{$\bm{R}(\cdot)$}{Rotation matrix using Euler angles}
+\nomenclature{$\bm{q}$}{Unit quaternion}
+\nomenclature{$q_0$}{Scalar part of unit quaternion}
+\nomenclature{$\bm{q}_{vec}$}{Vector part of unit quaternion}
+\nomenclature{$\bm{Q}$}{Quaternion matrix}
+\nomenclature{$v$}{General Euler angle}
+\nomenclature{$\bm{n}$}{Unit vector}
+\nomenclature{$\bm{I}$}{Identity matrix}
+\nomenclature{$\bm{S}(\cdot)$}{Skew symmetric matrix}
+\nomenclature{$\bm{R}_n^b$}{Rotation matrix representing a rotation from n to b}
+\nomenclature{$\bm{M}$}{Least squares estimate of rotation matrix}
+\nomenclature{$\bm{r}$}{Known directional unit vector in the NED frame}
+\nomenclature{$\bm{b}$}{Known directional unit vector in the BODY frame}
+
 \printnomenclature
 
 \newpage
@@ -88,6 +104,9 @@
 \cite{rose2003star}
 \cite{mortari2002starnav}
 
+\section{Abstract}
+
+\section{Abstract po polsku}
 
 \section{Introduction}
 \subsection{Motivation}
@@ -164,7 +183,78 @@ This section will describe the on-board computer which was done as part of other
 \subsection{Space environment}
 \subsection{Attitude representations}
 \subsubsection{Euler angles}
+L. Eulero (Leonhard Euler), "Formulae generales pro translatione quacunque cor-
+porum rigidorum (General formulas for the translation of arbitrary rigid bodies)",
+presented to the St. Petersburg Academy on October 9, 1775, and first published in
+Novi Commentarii academiae scientiarum Petropolitanae 20, pp. 189-207, 1776.
+\begin{equation}
+\bm{R}_x(\phi) = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos(\phi) & -sin(\phi) \\
+0 & \sin(\phi) & \cos(\phi)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\bm{R}_y(\theta) = \begin{bmatrix}
+\cos(\theta) & 0 & \sin(\theta) \\
+0 & 1 & 0 \\
+-\sin(\theta) & 0 & \cos(\theta)
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\bm{R}_z(\psi) = \begin{bmatrix}
+\cos(\psi) & -\sin(\psi) & 0 \\
+\sin(\psi) & \cos(\psi) & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\end{equation}
 \subsubsection{Quaternions}
+Sir W. R. Hamilton, "On Quaternions; or on a new system of imaginaries in algebra", Philosophical magazine, Vol.25, July 1844.\par
+[12] A. Cayley, "On certain results relating to quaternions", Philosophical magazine, Vol.6, February 1845.\par
+[13] R. Courant and D. Hilbert, "Methods of Mathematical Physics", Vol. 1, 1953, Interscience Publishers, Inc, New York, USA.\par
+[14] J. E. Mebius, "A matrix-based proof of the quaternion representation theorem for four-dimensional matrices", arXiv General Mathematics 0501249 v.1, January 2005.\par
+[15] M. Barile, "Conjugate elements", MathWorld-A Wolfram Web Resource, http://mathworld.wolfram.com/ConjugateElements.html \par
+[16] K. Shoemake, "Animating Rotation with Quaternion Curves", Siggraph, Vol. 19, No. 3, July, 1985. \par
+[17] B. K. P. Horn, "Closed-form solution of absolute orientation using unit quaternions", Journal of the Optical Society of America, Vol. 4, p. 629-642, April 1987. \par
+\begin{equation}
+\bm{q} \coloneqq \begin{bmatrix}
+q_0 \\
+q_1 \\
+q_2 \\
+q_3
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+q_0 = \cos(v/2)
+\end{equation}
+\begin{equation}
+\bm{n} = \frac{\bm{n}}{||\bm{n}||}
+\end{equation}
+\begin{equation}
+\bm{q}_{vec} \coloneqq \begin{bmatrix}
+q_1 \\
+q_2 \\
+q_3
+\end{bmatrix}
+= [\bm{n}\sin(v/2)]
+\end{equation}
+\begin{equation}
+\bm{q} \coloneqq q_0 + \bm{q}_vec = q_0 + q_1i + q_2j+ q_3k
+\end{equation}
+\begin{equation}
+\bm{Q} = \begin{bmatrix}
+q_0 & -q_1 & -q_2 & -q_3 \\
+q_1 & q_0 & -q_3 & q_2 \\
+q_2 & q_3 & q_0 & -q_1 \\
+q_3 & -q_2 & q_1 & q_0
+\end{bmatrix}
+\end{equation}
+\begin{equation}
+\bm{q}^* \coloneqq q_0 - \bm{q}_{vec} = q_0 + q_1i + q_2j+ q_3k
+\end{equation}
+\begin{equation}
+\bm{q}^T\bm{q} = 1
+\end{equation}
 \subsection{Quaternion properties}
 \subsubsection{Advantages of quaternions}
 \subsubsection{Multiplication of quaternions}
@@ -294,7 +384,11 @@ E\left\{z\right\} = \bm{r}_i^T\bm{r}_j
 p \equiv z - E\left\{z\right\} = \bm{r}_i^TA^T\bm{v}_J + \bm{r}_j^TA^T\bm{v}_i + \bm{v}_i^T\bm{v}_j
 \end{equation}
 \begin{equation}
-\sigma_p^2 \equiv E\left\{p\right\} = \bm{r}_1^TA^TR_2A\bm{r}_1 + \bm{r}_2^TA^TR_aA\bm{r}_2 + Trace(R_1R_2) = Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
+\begin{split}
+\sigma_p^2 \equiv E\left\{p\right\} = \\
+\bm{r}_1^TA^TR_2A\bm{r}_1 + \bm{r}_2^TA^TR_aA\bm{r}_2 + Trace(R_1R_2) = \\
+Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
+\end{split}
 \end{equation}
 \subsubsection{Spherical Triangle Matching}
 \cite{cole2004fast}
@@ -453,7 +547,35 @@ m_j \leq m_{max}
 \cite{mortari2013k}\par
 \cite{mortari1996fast}\par
 \cite{mortari2000k}\par
-
+Trzeba dodać pogrubienia vectorów
+\begin{equation}
+z(x) = mx + q
+\end{equation}
+\begin{equation}
+m = \frac{y_{max} - y_{min} + \delta\epsilon}{n - 1}
+\end{equation}
+\begin{equation}
+q = y_{min} - m - \delta\epsilon
+\end{equation}
+\begin{equation}
+\epsilon \approx 22.2 \times 10^{-16}
+\end{equation}
+\begin{equation}
+\delta\epsilon = (n - 1)\epsilon
+\end{equation}
+\begin{equation}
+k(i) = j \hspace{0.5cm} where \hspace{0.5cm} s(j) \leq z(i) < s(j + 1)
+\end{equation}
+or
+\begin{equation}
+k(i) = j \hspace{0.5cm} where j is the greatest index such \hspace{0.5cm} s(j) \leq y(I(i)) \hspace{0.5cm} is satisfied.
+\end{equation}
+\begin{equation}
+j_b = \Big\lfloor\frac{y_a - q}{m}\Big\rfloor \hspace{0.5cm} and \hspace{0.5cm} j_t = \Big\lceil\frac{y_b - q}{m}\Big\rceil
+\end{equation}
+\begin{equation}
+k_{start} = k(j_b) + 1 \hspace{0.5cm} and \hspace{0.5cm} k_{end} = k(j_t)
+\end{equation}
 \subsection{Attitude Determination}
 \cite{jenssen2011comparison}\par
 AIM (Attitude estimation using Image Matching)\cite{delabie2012highly}\par
@@ -464,9 +586,18 @@ all \cite{hall2003spacecraft} \cite{markley1999estimate}
 \subsubsection{QUEST}
 improvement to quest implementation \cite{RIS_1} \par
 kallman filtering \cite{shuster1990kalman}
+\begin{equation}
+\begin{split}
+J(\bm{q}) = \frac{1}{2}\sum_{j=1}^n\frac{1}{\sigma_j^2}(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j)^T(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j) = \\
+\frac{1}{2}\sum_{j=1}^n\frac{1}{\sigma_j^2}(\bm{b}_j^T\bm{b}_j - 2\bm{b}_j^T\bm{R}_b^i(\bm{q})\bm{r}_j + \bm{r}_j^T\bm{r}_j)
+\end{split}
+\end{equation}
+\begin{equation}
+J(\bm{q}) = \sum_{j=1}^n\frac{1}{\sigma_j^2}(1 - \bm{b}_j^T\bm{R}_b^i(\bm{q})\bm{r}_j)
+\end{equation}
 \subsubsection{TRIAD}
 \subsubsection{The Fast Optimal Attitude Matrix}
-\subsubsection{DCM (direction cosine matrix) - (Singular Value Decomposition?)}
+\subsubsection{DCM (Direction Cosine Matrix) - (Singular Value Decomposition?)}
 \cite{juang2003efficient}
  and
 
