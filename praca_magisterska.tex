@@ -1,6 +1,11 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+\usepackage[english, polish]{babel}
+
+%%% fix for \lll
+\let\babellll\lll
+\let\lll\relax
+
 \usepackage{amsmath}
 \usepackage{mathtools}
 \usepackage{amsfonts}
@@ -8,8 +13,14 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 \usepackage{amssymb}
+
+%%% fix for \lll
+\let\mathlll\lll
+\let\lll\babellll
+
+\usepackage[nottoc]{tocbibind}
 \usepackage{bm}
-\usepackage[intoc]{nomencl}
+\usepackage{nomencl}
 %\usepackage[authoryear,round,longnamesfirst]{natbib}
 
 \setlength\headheight{15pt}
@@ -29,6 +40,7 @@
 \makenomenclature
 
 \begin{document}
+\selectlanguage{english}
 
 \begin{titlepage}
 	\centering
@@ -66,8 +78,19 @@
 
 \pagenumbering{arabic}
 \setcounter{page}{2}
+\newpage
+\begin{abstract}
 
-\tableofcontents{toc}
+\end{abstract}
+\newpage
+\begin{otherlanguage}{polish}
+\begin{abstract}
+
+\end{abstract}
+\end{otherlanguage}
+\newpage
+
+\tableofcontents
 
 \newpage
 \setlength{\parindent}{1cm}
@@ -104,9 +127,6 @@
 \cite{rose2003star}
 \cite{mortari2002starnav}
 
-\section{Abstract}
-
-\section{Abstract po polsku}
 
 \section{Introduction}
 \subsection{Motivation}
@@ -152,17 +172,20 @@ There exist many different types of attitude estimation: sun sensors, star-track
 \subsubsection{Star trackers}
 
 \cite{larson1992space}
+\renewcommand{\arraystretch}{1.5}
 \begin{table}[ht]
 
-\begin{tabular}{ccc}
-Sensor & Accuracy & Characteristics and Applicability \\ 
-Magnetometers & 1.0o (5000km alt) 5.0 (200 km alt) & Attitude measured relative to Earth’s local magnetic field. Magnetic field uncertainties and variability dominate accuracy. Usable only below ~ 6,000 km. \\ 
-Earth sensors & 0.05 (GEO) 0.1 (LEO) & Horizon uncertainties dominate accuracy. Highly accurate units use scanning. \\ 
+\begin{tabular}{|p{3cm}|p{3.3cm}|p{6cm}|}
+\hline
+\textbf{Sensor} & \textbf{Accuracy} & \textbf{Characteristics \newline and Applicability} \\ 
+\hline
+Magnetometers & 1.0o (5000km alt) \newline 5.0 (200 km alt) & Attitude measured relative to \newline Earth’s local magnetic field. \newline Magnetic field uncertainties and \newline variability dominate accuracy. \newline Usable only below $\approx$6,000 km. \\ 
+Earth sensors & 0.05 (GEO) \newline 0.1 (LEO) & Horizon uncertainties dominate \newline accuracy. Highly accurate units \newline use scanning. \\ 
 Sun sensors & 0.01 & Typical field of view +-30 \\ 
 Star sensors & 2 arc-sec & Typical field of view +-6 \\ 
 Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference. \\ 
-Directional antennas & 0.01 to 0.5 & Typically 1 of the antenna beamwidth
-
+Directional \newline antennas & 0.01 to 0.5 & Typically 1 of the antenna \newline beamwidth \\
+\hline
 \end{tabular} 
 \caption{Sensor Accuracy Ranges. Adapted from \cite{hall2003spacecraft}}
 
@@ -290,12 +313,6 @@ q_3 & -q_2 & q_1 & q_0
 \subsubsection{Advantages of quaternions}
 \subsubsection{Multiplication of quaternions}
 \subsubsection{Quaternions and rotations}
-\subsection{Wahba's problem}
-\cite{wahba1965least}
-
-\begin{equation}
-\sum_j^n ||r_j - Mb_j||
-\end{equation}
 \subsection{Cholesky factorization}
 \subsection{Lyapunov analysis}
 
@@ -434,7 +451,7 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \begin{figure}[h]
 \includegraphics[scale=0.29]{spherical_triangle_method.jpg}
 \centering
-\label{fig:body_frame}
+\label{fig:spherical_triangle_method}
 \caption{Spherical Triangle Method, Image \cite{cole2004fast}?}
 \end{figure}
 
@@ -459,7 +476,7 @@ I_p = \sum\theta^2dA
 \begin{figure}[h]
 \includegraphics[scale=0.30]{planar_triangle_method.jpg}
 \centering
-\label{fig:body_frame}
+\label{fig:planar_triangle_method}
 \caption{Planar Triangle Method, Image \cite{cole2006fast}?}
 \end{figure}
 
@@ -568,9 +585,9 @@ Polar Moment
 \subsubsection{Pyramid}
 
 \begin{figure}
-\includegraphics[scale=0.6]{pyramid_method.jpg}
+\includegraphics[scale=0.57]{pyramid_method.jpg}
 \centering
-\label{fig:body_frame}
+\label{fig:pyramid_method}
 \caption{Pyramid Method Flowchart, Image \cite{mortari2004pyramid}}
 \end{figure}
 
@@ -578,7 +595,7 @@ Polar Moment
 
 
 \subsubsection{Rate Matching}
-\cite{rao2005fast}
+\cite{samaan2005recursive}
 \subsubsection{Voting}
 \cite{kolomenkin2008geometric} \par
 \subsubsection{Grid}
@@ -647,6 +664,12 @@ all \cite{hall2003spacecraft} \cite{markley1999estimate}
 \subsubsection{The Predictive Attitude Determination Algorithm ?}
 \cite{park2006attitude}
 \subsubsection{q-method}
+\subsection{Wahba's problem}
+\cite{wahba1965least}
+
+\begin{equation}
+\sum_j^n ||r_j - Mb_j||
+\end{equation}
 \subsubsection{QUEST}
 improvement to quest implementation \cite{RIS_1} \par
 kallman filtering \cite{shuster1990kalman}
@@ -661,7 +684,7 @@ J(\bm{q}) = \sum_{j=1}^n\frac{1}{\sigma_j^2}(1 - \bm{b}_j^T\bm{R}_b^i(\bm{q})\bm
 \end{equation}
 \subsubsection{TRIAD}
 \subsubsection{The Fast Optimal Attitude Matrix}
-\subsubsection{DCM (Direction Cosine Matrix) - (Singular Value Decomposition?)}
+\subsubsection{DCM (Direction Cosine Matrix)}
 \cite{juang2003efficient}
  and
 
@@ -717,12 +740,10 @@ Testing\par
 
 \newpage
 
-\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 
 \newpage
 
-\addcontentsline{toc}{chapter}{List of Figures}
 \listoffigures
 
 \newpage

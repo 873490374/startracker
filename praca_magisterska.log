@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.11)  28 AUG 2016 14:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.28)  28 AUG 2016 20:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **praca_magisterska.tex
 (./praca_magisterska.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 5 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 6 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -347,6 +347,14 @@ File: babel.def 2016/02/24 3.9q Babel common definitions
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-polish/polish.ldf
+Language: polish 2005/03/31 v1.2l Polish support from the babel system
+Package babel Info: Making " an active character on input line 83.
+\pl@left=\dimen104
+\pl@down=\dimen105
+\pl@right=\dimen106
+\pl@temp=\dimen107
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2016/03/03 v2.15a AMS math features
@@ -359,11 +367,11 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks16
-\ex@=\dimen104
+\ex@=\dimen108
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen105
+\pmbraise@=\dimen109
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
@@ -380,7 +388,7 @@ LaTeX Info: Redefining \dots on input line 397.
 LaTeX Info: Redefining \cdots on input line 518.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
-\big@size=\dimen106
+\big@size=\dimen110
 LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \macc@depth=\count93
@@ -393,12 +401,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \column@=\count98
 \maxfields@=\count99
 \andhelp@=\toks18
-\eqnshift@=\dimen107
-\alignsep@=\dimen108
-\tagshift@=\dimen109
-\tagwidth@=\dimen110
-\totwidth@=\dimen111
-\lineht@=\dimen112
+\eqnshift@=\dimen111
+\alignsep@=\dimen112
+\tagshift@=\dimen113
+\tagwidth@=\dimen114
+\totwidth@=\dimen115
+\lineht@=\dimen116
 \@envbody=\toks19
 \multlinegap=\skip44
 \multlinetaggap=\skip45
@@ -417,8 +425,8 @@ Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count100
 \calc@Bcount=\count101
-\calc@Adimen=\dimen113
-\calc@Bdimen=\dimen114
+\calc@Adimen=\dimen117
+\calc@Bdimen=\dimen118
 \calc@Askip=\skip46
 \calc@Bskip=\skip47
 LaTeX Info: Redefining \setlength on input line 80.
@@ -434,14 +442,14 @@ LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \g_MT_multlinerow_int=\count103
-\l_MT_multwidth_dim=\dimen115
+\l_MT_multwidth_dim=\dimen119
 \origjot=\skip49
-\l_MT_shortvdotswithinadjustabove_dim=\dimen116
-\l_MT_shortvdotswithinadjustbelow_dim=\dimen117
-\l_MT_above_intertext_sep=\dimen118
-\l_MT_below_intertext_sep=\dimen119
-\l_MT_above_shortintertext_sep=\dimen120
-\l_MT_below_shortintertext_sep=\dimen121
+\l_MT_shortvdotswithinadjustabove_dim=\dimen120
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen121
+\l_MT_above_intertext_sep=\dimen122
+\l_MT_below_intertext_sep=\dimen123
+\l_MT_above_shortintertext_sep=\dimen124
+\l_MT_below_shortintertext_sep=\dimen125
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -486,13 +494,20 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count104
 ))
-\Gin@req@height=\dimen122
-\Gin@req@width=\dimen123
+\Gin@req@height=\dimen126
+\Gin@req@width=\dimen127
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+Package: tocbibind 2010/10/13 v1.5k extra ToC listings
+Package tocbibind Info: The document has section divisions on input line 50.
+
+
+Package tocbibind Note: Using section or other style headings.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
@@ -502,8 +517,8 @@ LaTeX Info: Redefining \bm on input line 207.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/nomencl/nomencl.sty
 Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
-\nomlabelwidth=\dimen124
-\nom@tempdim=\dimen125
+\nomlabelwidth=\dimen128
+\nom@tempdim=\dimen129
 \nomitemsep=\skip59
 )
 \@nomenclaturefile=\write3
@@ -511,41 +526,32 @@ Package: nomencl 2005/09/22 v4.2 Nomenclature package (LN)
 
 
 Writing nomenclature file praca_magisterska.nlo
-(./praca_magisterska.aux
-
-LaTeX Warning: Label `fig:body_frame' multiply defined.
-
-
-LaTeX Warning: Label `fig:body_frame' multiply defined.
-
-
-LaTeX Warning: Label `fig:body_frame' multiply defined.
-
-)
+(./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
-LaTeX Font Info:    ... okay on input line 31.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count105
-\scratchdimen=\dimen126
+\scratchdimen=\dimen130
 \scratchbox=\box28
 \nofMPsegments=\count106
 \nofMParguments=\count107
 \everyMPshowfont=\toks22
 \MPscratchCnt=\count108
-\MPscratchDim=\dimen127
+\MPscratchDim=\dimen131
 \MPnumerator=\count109
 \makeMPintoPDFobject=\count110
 \everyMPtoPDFconversion=\toks23
@@ -601,26 +607,26 @@ e
 File: images/logo_WEiTI.jpg Graphic file (type jpg)
 
 <use images/logo_WEiTI.jpg>
-Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 43.
+Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 55.
 (pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
 
 <images/Logo-PW-duze.jpg, id=2, 513.8397pt x 513.8397pt>
 File: images/Logo-PW-duze.jpg Graphic file (type jpg)
 
 <use images/Logo-PW-duze.jpg>
-Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 45.
+Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 57.
 (pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
 
 <images/ia_600_600.png, id=3, 72.27pt x 59.5023pt>
 File: images/ia_600_600.png Graphic file (type png)
  <use images/ia_600_600.png>
-Package pdftex.def Info: images/ia_600_600.png used on input line 47.
+Package pdftex.def Info: images/ia_600_600.png used on input line 59.
 (pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./images/logo_WEiTI.jpg> <
-./images/Logo-PW-duze.jpg> <./images/ia_600_600.png>]
+./images/Logo-PW-duze.jpg> <./images/ia_600_600.png>] [2] [3]
 (./praca_magisterska.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 6.
 
@@ -631,113 +637,104 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 6.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [2])
+) [4])
 \tf@toc=\write4
 \openout4 = `praca_magisterska.toc'.
 
- [3]
-(./praca_magisterska.nls) [4] [5]
-Overfull \hbox (719.46526pt too wide) in paragraph at lines 157--167
-[][] 
- []
-
-[6] [7] <images/eci_frame.jpg, id=38, 496.85625pt x 562.1pt>
+ [5]
+(./praca_magisterska.nls) [6] [7] [8] [9]
+<images/eci_frame.jpg, id=45, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 185.
+Package pdftex.def Info: images/eci_frame.jpg used on input line 208.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [8 <./images/eci_frame.jpg>]
-<images/body_frame.jpg, id=42, 416.55624pt x 415.5525pt>
+ [10 <./images/eci_frame.jpg>]
+<images/body_frame.jpg, id=49, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 208.
+Package pdftex.def Info: images/body_frame.jpg used on input line 231.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
- [9 <./images/body_frame.jpg>] [10] [11] [12]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 307.
+ [11 <./images/body_frame.jpg>] [12] [13] [14]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 324.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 307.
- [13] [14]
-<images/vector_angle_method.jpg, id=65, 332.24126pt x 233.87375pt>
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 324.
+ [15] [16]
+<images/vector_angle_method.jpg, id=72, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 385.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 402.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
- [15 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=69, 831.105pt x 633.36626pt>
+ [17 <./images/vector_angle_method.jpg>]
+<images/spherical_triangle_method.jpg, id=76, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 435.
+e 452.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
- [16 <./images/spherical_triangle_method.jpg>] <images/planar_triangle_method.j
-pg, id=73, 831.105pt x 633.36626pt>
+ [18 <./images/spherical_triangle_method.jpg>] <images/planar_triangle_method.j
+pg, id=80, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 4
-60.
+77.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [17 <./images/planar_triangle_method.jpg>] [18] <images/pyramid_method.jpg, id
-=81, 566.115pt x 982.67125pt>
+ [19 <./images/planar_triangle_method.jpg>] [20] <images/pyramid_method.jpg, id
+=89, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 571.
-(pdftex.def)             Requested size: 339.67162pt x 589.6073pt.
-
-
-LaTeX Warning: Float too large for page by 25.1073pt on input line 575.
-
-[19] [20 <./images/pyramid_method.jpg>] [21] [22] [23] [24] [25] [26]
-(./praca_magisterska.bbl [27] [28] [29]) [30] (./praca_magisterska.lot)
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 588.
+(pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
+ [21] [22 <./images/pyramid_method.jpg>]
+[23] [24] [25] [26] [27] [28] [29] (./praca_magisterska.bbl [30] [31] [32])
+[33] (./praca_magisterska.lot)
 \tf@lot=\write5
 \openout5 = `praca_magisterska.lot'.
 
-
-[31] (./praca_magisterska.lof)
+ [34] (./praca_magisterska.lof)
 \tf@lof=\write6
 \openout6 = `praca_magisterska.lof'.
 
- [32] [33] (./praca_magisterska.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+ [35] [36]
+(./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 4066 strings out of 494910
- 54397 string characters out of 6179836
- 122279 words of memory out of 5000000
- 7244 multiletter control sequences out of 15000+600000
- 12911 words of font info for 47 fonts, out of 8000000 for 9000
- 36 hyphenation exceptions out of 8191
- 37i,15n,43p,501b,318s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cms
-y10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on praca_magisterska.pdf (33 pages, 1330328 bytes).
+ 4255 strings out of 494877
+ 56893 string characters out of 6179086
+ 125411 words of memory out of 5000000
+ 7427 multiletter control sequences out of 15000+600000
+ 13519 words of font info for 49 fonts, out of 8000000 for 9000
+ 56 hyphenation exceptions out of 8191
+ 38i,15n,43p,501b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+bx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmti12.pfb>
+Output written on praca_magisterska.pdf (36 pages, 1342901 bytes).
 PDF statistics:
- 178 PDF objects out of 1000 (max. 8388607)
- 117 compressed objects within 2 object streams
+ 191 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

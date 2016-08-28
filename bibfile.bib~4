@@ -144,6 +144,23 @@
 	year = "2003"
 }
 
+@article{markley1999estimate,
+	author = "Markley, F Landis and Mortari, Daniele",
+	title = "{How to estimate attitude from vector observations}",
+	year = "1999"
+}
+
+@article{liebe2002accuracy,
+	author = "Liebe, Carl Christian",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "2",
+	pages = "587--599",
+	publisher = "IEEE",
+	title = "{Accuracy performance of star trackers-a tutorial}",
+	volume = "38",
+	year = "2002"
+}
+
 @article{liebe2002accuracy,
 	author = "Liebe, Carl Christian",
 	journal = "IEEE Transactions on Aerospace and Electronic Systems",

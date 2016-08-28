@@ -1,2 +1,5 @@
+\select@language {polish}
 \select@language {english}
-\contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges. Adapted from \cite {hall2003spacecraft}}}{7}
+\select@language {polish}
+\select@language {english}
+\contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges. Adapted from \cite {hall2003spacecraft}}}{9}

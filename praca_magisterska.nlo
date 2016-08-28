@@ -1,16 +1,16 @@
-\nomenclatureentry{a$\phi$@[{$\phi$}]\begingroup Euler angle, roll\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\theta$@[{$\theta$}]\begingroup Euler angle, pitch\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\psi$@[{$\psi$}]\begingroup Euler angle, yaw\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{R}(\cdot)$@[{$\bm{R}(\cdot)$}]\begingroup Rotation matrix using Euler angles\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{q}$@[{$\bm{q}$}]\begingroup Unit quaternion\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$q_0$@[{$q_0$}]\begingroup Scalar part of unit quaternion\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{q}_{vec}$@[{$\bm{q}_{vec}$}]\begingroup Vector part of unit quaternion\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{Q}$@[{$\bm{Q}$}]\begingroup Quaternion matrix\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$v$@[{$v$}]\begingroup General Euler angle\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{n}$@[{$\bm{n}$}]\begingroup Unit vector\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{I}$@[{$\bm{I}$}]\begingroup Identity matrix\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{S}(\cdot)$@[{$\bm{S}(\cdot)$}]\begingroup Skew symmetric matrix\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{R}_n^b$@[{$\bm{R}_n^b$}]\begingroup Rotation matrix representing a rotation from n to b\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{M}$@[{$\bm{M}$}]\begingroup Least squares estimate of rotation matrix\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{r}$@[{$\bm{r}$}]\begingroup Known directional unit vector in the NED frame\nomeqref {0}|nompageref}{4}
-\nomenclatureentry{a$\bm{b}$@[{$\bm{b}$}]\begingroup Known directional unit vector in the BODY frame\nomeqref {0}|nompageref}{4}
+\nomenclatureentry{a$\phi$@[{$\phi$}]\begingroup Euler angle, roll\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\theta$@[{$\theta$}]\begingroup Euler angle, pitch\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\psi$@[{$\psi$}]\begingroup Euler angle, yaw\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{R}(\cdot)$@[{$\bm{R}(\cdot)$}]\begingroup Rotation matrix using Euler angles\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{q}$@[{$\bm{q}$}]\begingroup Unit quaternion\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$q_0$@[{$q_0$}]\begingroup Scalar part of unit quaternion\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{q}_{vec}$@[{$\bm{q}_{vec}$}]\begingroup Vector part of unit quaternion\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{Q}$@[{$\bm{Q}$}]\begingroup Quaternion matrix\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$v$@[{$v$}]\begingroup General Euler angle\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{n}$@[{$\bm{n}$}]\begingroup Unit vector\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{I}$@[{$\bm{I}$}]\begingroup Identity matrix\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{S}(\cdot)$@[{$\bm{S}(\cdot)$}]\begingroup Skew symmetric matrix\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{R}_n^b$@[{$\bm{R}_n^b$}]\begingroup Rotation matrix representing a rotation from n to b\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{M}$@[{$\bm{M}$}]\begingroup Least squares estimate of rotation matrix\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{r}$@[{$\bm{r}$}]\begingroup Known directional unit vector in the NED frame\nomeqref {0}|nompageref}{6}
+\nomenclatureentry{a$\bm{b}$@[{$\bm{b}$}]\begingroup Known directional unit vector in the BODY frame\nomeqref {0}|nompageref}{6}

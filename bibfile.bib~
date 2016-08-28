@@ -374,3 +374,69 @@
 	year = "2003"
 }
 
+@article{euler1775formulae,
+	author = "Euler, Leonhard",
+	journal = "Novi Acad. Sci. Petrop",
+	pages = "189--207",
+	title = "{Formulae generales pro translatione quacunque corporum rigidorum}",
+	volume = "20",
+	year = "1775"
+}
+
+@article{hamilton1844lxxviii,
+	author = "Hamilton, William Rowan",
+	publisher = "Taylor \& Francis",
+	title = "{LXXVIII. On quaternions; or on a new system of imaginaries in Algebra: To the editors of the Philosophical Magazine and Journal}",
+	year = "1844"
+}
+
+@article{cayley1845xiii,
+	author = "Cayley, Arthur",
+	publisher = "Taylor \& Francis",
+	title = "{XIII. On certain results relating to quaternions: To the editors of the Philosophical Magazine and Journal}",
+	year = "1845"
+}
+
+@misc{courant1953methods,
+	author = "Courant, Richard and Hilbert, David",
+	publisher = "Interscience Publishers, New York",
+	title = "{Methods of mathematical physics, Volume I}",
+	year = "1953"
+}
+
+@article{mebius2005matrix,
+	author = "Mebius, Johan Ernest",
+	journal = "arXiv preprint math/0501249",
+	title = "{A matrix-based proof of the quaternion representation theorem for four-dimensional rotations}",
+	year = "2005"
+}
+
+@misc{mathworldconjugate,
+	author = "Barile, M.",
+	title = "{Conjugate elements}",
+	type = "MathWorld-A Wolfram Web Resource",
+	url = "http://mathworld.wolfram.com/ConjugateElements.html"
+}
+
+@inproceedings{shoemake1985animating,
+	author = "Shoemake, Ken",
+	booktitle = "{ACM SIGGRAPH computer graphics}",
+	number = "3",
+	organization = "ACM",
+	pages = "245--254",
+	title = "{Animating rotation with quaternion curves}",
+	volume = "19",
+	year = "1985"
+}
+
+@article{horn1987closed,
+	author = "Horn, Berthold KP",
+	journal = "JOSA A",
+	number = "4",
+	pages = "629--642",
+	publisher = "Optical Society of America",
+	title = "{Closed-form solution of absolute orientation using unit quaternions}",
+	volume = "4",
+	year = "1987"
+}
+
