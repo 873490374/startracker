@@ -3,54 +3,56 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: praca_magisterska.aux
 The style file: ieeetr.bst
 Database file #1: bibfile.bib
-Warning--I didn't find a database entry for "2012highly"
 Warning--empty journal in jalabert2011optimization
 Warning--empty journal in heidt2000cubesat
 Warning--empty journal in lima2000comparison
+Warning--empty journal in hamilton1844lxxviii
+Warning--empty journal in cayley1845xiii
+Warning--can't use both volume and number fields in shoemake1985animating
 Warning--empty journal in lindbladstar
 Warning--empty year in lindbladstar
 Warning--empty journal in markley1999estimate
 Warning--empty journal in juang2003efficient
 Warning--empty chapter and pages in RIS_0
-You've used 39 entries,
+You've used 47 entries,
             1876 wiz_defined-function locations,
-            703 strings with 10085 characters,
-and the built_in function-call counts, 10370 in all, are:
-= -- 1050
-> -- 362
+            746 strings with 11181 characters,
+and the built_in function-call counts, 11979 in all, are:
+= -- 1210
+> -- 398
 < -- 0
-+ -- 137
-- -- 98
-* -- 726
-:= -- 1452
-add.period$ -- 42
-call.type$ -- 39
-change.case$ -- 38
++ -- 154
+- -- 107
+* -- 820
+:= -- 1670
+add.period$ -- 49
+call.type$ -- 47
+change.case$ -- 46
 chr.to.int$ -- 0
-cite$ -- 47
-duplicate$ -- 555
-empty$ -- 1002
-format.name$ -- 98
-if$ -- 2523
+cite$ -- 58
+duplicate$ -- 644
+empty$ -- 1186
+format.name$ -- 107
+if$ -- 2921
 int.to.chr$ -- 0
-int.to.str$ -- 39
-missing$ -- 38
-newline$ -- 124
-num.names$ -- 39
-pop$ -- 129
+int.to.str$ -- 47
+missing$ -- 44
+newline$ -- 148
+num.names$ -- 47
+pop$ -- 164
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 360
+skip$ -- 420
 stack$ -- 0
-substring$ -- 719
-swap$ -- 214
+substring$ -- 815
+swap$ -- 243
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 8
-while$ -- 109
-width$ -- 41
-write$ -- 380
-(There were 9 warnings)
+warning$ -- 11
+while$ -- 126
+width$ -- 49
+write$ -- 447
+(There were 11 warnings)

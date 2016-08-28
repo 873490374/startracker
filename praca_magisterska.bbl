@@ -57,6 +57,38 @@ C.~D. Hall, ``{Spacecraft attitude dynamics and control},'' {\em Lecture Notes
 S.~M. R. C.~P. Lima, ``{Comparison of small satellite attitude determination
   methods},'' 2000.
 
+\bibitem{euler1775formulae}
+L.~Euler, ``{Formulae generales pro translatione quacunque corporum
+  rigidorum},'' {\em Novi Acad. Sci. Petrop}, vol.~20, pp.~189--207, 1775.
+
+\bibitem{hamilton1844lxxviii}
+W.~R. Hamilton, ``{LXXVIII. On quaternions; or on a new system of imaginaries
+  in Algebra: To the editors of the Philosophical Magazine and Journal},''
+  1844.
+
+\bibitem{cayley1845xiii}
+A.~Cayley, ``{XIII. On certain results relating to quaternions: To the editors
+  of the Philosophical Magazine and Journal},'' 1845.
+
+\bibitem{courant1953methods}
+R.~Courant and D.~Hilbert, ``{Methods of mathematical physics, Volume I},''
+  1953.
+
+\bibitem{mebius2005matrix}
+J.~E. Mebius, ``{A matrix-based proof of the quaternion representation theorem
+  for four-dimensional rotations},'' {\em arXiv preprint math/0501249}, 2005.
+
+\bibitem{mathworldconjugate}
+M.~Barile, ``{Conjugate elements}.''
+
+\bibitem{shoemake1985animating}
+K.~Shoemake, ``{Animating rotation with quaternion curves},'' in {\em {ACM
+  SIGGRAPH computer graphics}}, vol.~19, pp.~245--254, ACM, 1985.
+
+\bibitem{horn1987closed}
+B.~K. Horn, ``{Closed-form solution of absolute orientation using unit
+  quaternions},'' {\em JOSA A}, vol.~4, no.~4, pp.~629--642, 1987.
+
 \bibitem{wahba1965least}
 G.~Wahba, ``{A least squares estimate of satellite attitude},'' {\em SIAM
   review}, vol.~7, no.~3, pp.~409--409, 1965.

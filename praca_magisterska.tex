@@ -176,17 +176,48 @@ This section will describe the on-board computer which was done as part of other
 \section{Preliminaries}
 \subsection{Coordinate frames}
 \subsubsection{ECI frame}
+The Earth Centered Inertial frame has its x-axis pointing towards the vernal equinox, and
+its z-axis pointing along the rotation axis of the Earth at some initial time. The y-axis
+completes a right handed orthogonal coordinate system. The frame’s origin is at the center
+of the Earth.
 \cite{larson1992space}
+\begin{figure}[h]
+\includegraphics[scale=0.4]{eci_frame.jpg}
+\centering
+\label{fig:eci_frame}
+\caption{ECI frame, Image \cite{larson1992space}}
+\end{figure}
 \subsubsection{ECEF frame}
+This frame also has its origin at the center of the Earth, but the Earth Centered Earth
+Fixed frame has its x-axis pointing towards the point where the intersection between the
+longitude and latitude have zero value. It can also be described as the intersection between
+the Greenwich meridian and the Equator. The frame’s z-axis is pointing along the Earth’s
+rotation axis. The y-axis completes the right handed orthogonal system. The ECEF frame
+is not an inertial frame, it rotates relative to the ECI frame along the Earth rotation.
 \subsubsection{NED frame}
+The North East Down frame has its z-axis pointing downwards, perpendicular to the tan-
+gent plane of the Earth’s reference ellipsoid. The ellipsoid is mathematically defined and
+fitted for approximation of the Earth. The x-axis points towards true north and the y-axis
+points East. The NED frame is an inertial frame.
 \subsubsection{BODY frame}
+This frame is attached to the satellite, and is moving and rotating with it. The origin
+coincides with the origin of the NED frame. The axes coincide with the principle axes
+of inertia; the x-axis is pointing forwards, the y-axis is pointing to the right side and the
+z-axis is pointing downwards through the camera side of the satellite.
+\begin{figure}[h]
+\includegraphics[scale=0.5]{body_frame.jpg}
+\centering
+\label{fig:body_frame}
+\caption{BODY frame, Image \cite{larson1992space}}
+\end{figure}
 \subsection{Space environment}
 \subsection{Attitude representations}
+Several representations for describing attitude are available, the most common being Euler
+angles. More complicated attitude representations are quaternions. Quaternions are used
+for all the estimation methods presented in this thesis. They are singular-free, and are
+therefore well suited for attitude determination.
 \subsubsection{Euler angles}
-L. Eulero (Leonhard Euler), "Formulae generales pro translatione quacunque cor-
-porum rigidorum (General formulas for the translation of arbitrary rigid bodies)",
-presented to the St. Petersburg Academy on October 9, 1775, and first published in
-Novi Commentarii academiae scientiarum Petropolitanae 20, pp. 189-207, 1776.
+\cite{euler1775formulae}
 \begin{equation}
 \bm{R}_x(\phi) = \begin{bmatrix}
 1 & 0 & 0 \\
@@ -209,13 +240,13 @@ Novi Commentarii academiae scientiarum Petropolitanae 20, pp. 189-207, 1776.
 \end{bmatrix}
 \end{equation}
 \subsubsection{Quaternions}
-Sir W. R. Hamilton, "On Quaternions; or on a new system of imaginaries in algebra", Philosophical magazine, Vol.25, July 1844.\par
-[12] A. Cayley, "On certain results relating to quaternions", Philosophical magazine, Vol.6, February 1845.\par
-[13] R. Courant and D. Hilbert, "Methods of Mathematical Physics", Vol. 1, 1953, Interscience Publishers, Inc, New York, USA.\par
-[14] J. E. Mebius, "A matrix-based proof of the quaternion representation theorem for four-dimensional matrices", arXiv General Mathematics 0501249 v.1, January 2005.\par
-[15] M. Barile, "Conjugate elements", MathWorld-A Wolfram Web Resource, http://mathworld.wolfram.com/ConjugateElements.html \par
-[16] K. Shoemake, "Animating Rotation with Quaternion Curves", Siggraph, Vol. 19, No. 3, July, 1985. \par
-[17] B. K. P. Horn, "Closed-form solution of absolute orientation using unit quaternions", Journal of the Optical Society of America, Vol. 4, p. 629-642, April 1987. \par
+\cite{hamilton1844lxxviii}\par
+\cite{cayley1845xiii}\par
+\cite{courant1953methods}\par
+\cite{mebius2005matrix}\par
+\cite{mathworldconjugate}\par
+\cite{shoemake1985animating}\par
+\cite{horn1987closed}\par
 \begin{equation}
 \bm{q} \coloneqq \begin{bmatrix}
 q_0 \\
@@ -349,6 +380,14 @@ Star pattern recognition using neural networks \cite{li2003star} \par
 
 \subsubsection{Angle Matching}
 % https://books.google.pl/books?id=GtzzpUN8VEoC&pg=PA259&lpg=PA259&dq=Gottlieb+Star+Identification+Techniques+1978&source=bl&ots=6_y_cnQUJe&sig=TBkqnYn41hOWcswFdt1a1fghNcc&hl=en&sa=X&ved=0ahUKEwjuiriUuNnOAhWE_iwKHX46AIgQ6AEIIDAA#v=onepage&q=Gottlieb%20Star%20Identification%20Techniques%201978&f=false
+
+\begin{figure}[h]
+\includegraphics[scale=0.7]{vector_angle_method.jpg}
+\centering
+\label{fig:angle_matching}
+\caption{Vector angle method, Image \cite{gottlieb1978star}?}
+\end{figure}
+
 \cite{gottlieb1978star}
 \begin{equation}
 \theta = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
@@ -391,6 +430,14 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \end{split}
 \end{equation}
 \subsubsection{Spherical Triangle Matching}
+
+\begin{figure}[h]
+\includegraphics[scale=0.29]{spherical_triangle_method.jpg}
+\centering
+\label{fig:body_frame}
+\caption{Spherical Triangle Method, Image \cite{cole2004fast}?}
+\end{figure}
+
 \cite{cole2004fast}
 
 \begin{equation}
@@ -408,6 +455,14 @@ c = \cos^{-1} \bigg(\frac{b_3 \cdot b_1}{|b_3||b_1|}\bigg)
 I_p = \sum\theta^2dA
 \end{equation}
 \subsubsection{Planar Triangle}
+
+\begin{figure}[h]
+\includegraphics[scale=0.30]{planar_triangle_method.jpg}
+\centering
+\label{fig:body_frame}
+\caption{Planar Triangle Method, Image \cite{cole2006fast}?}
+\end{figure}
+
 \cite{cole2006fast}\par
 
 \begin{equation}
@@ -511,10 +566,19 @@ Polar Moment
 \end{equation}
 
 \subsubsection{Pyramid}
+
+\begin{figure}
+\includegraphics[scale=0.6]{pyramid_method.jpg}
+\centering
+\label{fig:body_frame}
+\caption{Pyramid Method Flowchart, Image \cite{mortari2004pyramid}}
+\end{figure}
+
 \cite{mortari2004pyramid}\par
 
+
 \subsubsection{Rate Matching}
-\cite{rao2005fast} 
+\cite{rao2005fast}
 \subsubsection{Voting}
 \cite{kolomenkin2008geometric} \par
 \subsubsection{Grid}
