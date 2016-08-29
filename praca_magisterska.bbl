@@ -89,10 +89,6 @@ K.~Shoemake, ``{Animating rotation with quaternion curves},'' in {\em {ACM
 B.~K. Horn, ``{Closed-form solution of absolute orientation using unit
   quaternions},'' {\em JOSA A}, vol.~4, no.~4, pp.~629--642, 1987.
 
-\bibitem{wahba1965least}
-G.~Wahba, ``{A least squares estimate of satellite attitude},'' {\em SIAM
-  review}, vol.~7, no.~3, pp.~409--409, 1965.
-
 \bibitem{ju2003overview}
 G.~Ju and J.~L. Junkins, ``{Overview of star tracker technology and its trends
   in research and development},'' {\em Advances in the Astronautical Sciences},
@@ -106,6 +102,11 @@ C.~R. McBryde and E.~G. Lightsey, ``{A star tracker design for CubeSats},'' in
 M.~A. Samaan, D.~Mortari, T.~Pollock, and J.~L. Junkins, ``{Predictive
   centroiding for single and multiple FOVs star trackers},'' {\em Advances in
   the Astronautical Sciences}, vol.~112, pp.~59--71, 2002.
+
+\bibitem{liebe2002accuracy}
+C.~C. Liebe, ``{Accuracy performance of star trackers-a tutorial},'' {\em IEEE
+  Transactions on Aerospace and Electronic Systems}, vol.~38, no.~2,
+  pp.~587--599, 2002.
 
 \bibitem{spratling2009survey}
 B.~B. Spratling and D.~Mortari, ``{A survey on star identification
@@ -189,6 +190,10 @@ F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
 K.~J. Park and J.~L. Crassidis, ``{Attitude determination methods using
   pseudolite signal phase measurements},'' {\em Navigation}, vol.~53, no.~2,
   pp.~121--133, 2006.
+
+\bibitem{wahba1965least}
+G.~Wahba, ``{A least squares estimate of satellite attitude},'' {\em SIAM
+  review}, vol.~7, no.~3, pp.~409--409, 1965.
 
 \bibitem{RIS_1}
 {Cheng Yang} and {Shuster Malcolm D.}, ``{Improvement to the Implementation of

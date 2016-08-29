@@ -17,45 +17,45 @@ Warning--empty year in samaan2005recursive
 Warning--empty journal in markley1999estimate
 Warning--empty journal in juang2003efficient
 Warning--empty chapter and pages in RIS_0
-You've used 47 entries,
+You've used 48 entries,
             1876 wiz_defined-function locations,
-            743 strings with 11128 characters,
-and the built_in function-call counts, 11709 in all, are:
-= -- 1174
-> -- 388
+            747 strings with 11224 characters,
+and the built_in function-call counts, 12023 in all, are:
+= -- 1211
+> -- 392
 < -- 0
-+ -- 151
-- -- 104
-* -- 803
-:= -- 1632
-add.period$ -- 48
-call.type$ -- 47
-change.case$ -- 46
++ -- 153
+- -- 105
+* -- 824
+:= -- 1672
+add.period$ -- 49
+call.type$ -- 48
+change.case$ -- 47
 chr.to.int$ -- 0
-cite$ -- 61
-duplicate$ -- 634
-empty$ -- 1170
-format.name$ -- 104
-if$ -- 2852
+cite$ -- 62
+duplicate$ -- 651
+empty$ -- 1200
+format.name$ -- 105
+if$ -- 2931
 int.to.chr$ -- 0
-int.to.str$ -- 47
-missing$ -- 44
-newline$ -- 148
-num.names$ -- 46
-pop$ -- 171
+int.to.str$ -- 48
+missing$ -- 45
+newline$ -- 151
+num.names$ -- 47
+pop$ -- 172
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 405
+skip$ -- 419
 stack$ -- 0
-substring$ -- 775
-swap$ -- 232
+substring$ -- 807
+swap$ -- 241
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 14
-while$ -- 122
-width$ -- 49
-write$ -- 441
+while$ -- 126
+width$ -- 50
+write$ -- 452
 (There were 14 warnings)

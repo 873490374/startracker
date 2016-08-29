@@ -36,25 +36,25 @@
 \contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{18}
 \contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{19}
 \contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{21}
-\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{23}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{21}
 \contentsline {subsubsection}{\numberline {3.2.6}Voting}{23}
 \contentsline {subsubsection}{\numberline {3.2.7}Grid}{23}
 \contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{23}
 \contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{23}
-\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{24}
-\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{24}
+\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{23}
+\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{23}
 \contentsline {subsubsection}{\numberline {3.3.4}k-vector}{24}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{24}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{25}
 \contentsline {subsubsection}{\numberline {3.4.1}The Predictive Attitude Determination Algorithm ?}{25}
 \contentsline {subsubsection}{\numberline {3.4.2}q-method}{25}
-\contentsline {subsection}{\numberline {3.5}Wahba's problem}{25}
-\contentsline {subsubsection}{\numberline {3.5.1}QUEST}{25}
-\contentsline {subsubsection}{\numberline {3.5.2}TRIAD}{26}
-\contentsline {subsubsection}{\numberline {3.5.3}The Fast Optimal Attitude Matrix}{26}
-\contentsline {subsubsection}{\numberline {3.5.4}DCM (Direction Cosine Matrix)}{26}
-\contentsline {section}{\numberline {4}Prototype}{27}
-\contentsline {section}{\numberline {5}Complete program}{28}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{29}
-\contentsline {section}{References}{30}
-\contentsline {section}{List of Tables}{34}
-\contentsline {section}{List of Figures}{35}
+\contentsline {subsubsection}{\numberline {3.4.3}Wahba's problem}{26}
+\contentsline {subsubsection}{\numberline {3.4.4}QUEST}{27}
+\contentsline {subsubsection}{\numberline {3.4.5}TRIAD}{27}
+\contentsline {subsubsection}{\numberline {3.4.6}The Fast Optimal Attitude Matrix}{27}
+\contentsline {subsubsection}{\numberline {3.4.7}DCM (Direction Cosine Matrix)}{27}
+\contentsline {section}{\numberline {4}Prototype}{29}
+\contentsline {section}{\numberline {5}Complete program}{30}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{31}
+\contentsline {section}{References}{32}
+\contentsline {section}{List of Tables}{36}
+\contentsline {section}{List of Figures}{37}

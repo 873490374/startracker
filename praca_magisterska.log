@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.28)  28 AUG 2016 20:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.29)  29 AUG 2016 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -670,7 +670,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 402.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 405.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
  [17 <./images/vector_angle_method.jpg>]
@@ -679,7 +679,7 @@ File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 452.
+e 457.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
  [18 <./images/spherical_triangle_method.jpg>] <images/planar_triangle_method.j
 pg, id=80, 831.105pt x 633.36626pt>
@@ -687,54 +687,54 @@ File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 4
-77.
+82.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
  [19 <./images/planar_triangle_method.jpg>] [20] <images/pyramid_method.jpg, id
 =89, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 588.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 617.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
  [21] [22 <./images/pyramid_method.jpg>]
-[23] [24] [25] [26] [27] [28] [29] (./praca_magisterska.bbl [30] [31] [32])
-[33] (./praca_magisterska.lot)
+[23] [24] [25] [26] [27] [28] [29] [30] [31] (./praca_magisterska.bbl [32]
+[33] [34]) [35] (./praca_magisterska.lot)
 \tf@lot=\write5
 \openout5 = `praca_magisterska.lot'.
 
- [34] (./praca_magisterska.lof)
+ [36] (./praca_magisterska.lof)
 \tf@lof=\write6
 \openout6 = `praca_magisterska.lof'.
 
- [35] [36]
-(./praca_magisterska.aux) ) 
+
+[37] [38] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 4255 strings out of 494877
- 56893 string characters out of 6179086
- 125411 words of memory out of 5000000
- 7427 multiletter control sequences out of 15000+600000
+ 4256 strings out of 494877
+ 56912 string characters out of 6179086
+ 124416 words of memory out of 5000000
+ 7428 multiletter control sequences out of 15000+600000
  13519 words of font info for 49 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
  38i,15n,43p,501b,344s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-bx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmti12.pfb>
-Output written on praca_magisterska.pdf (36 pages, 1342901 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+2.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmti12.pfb>
+Output written on praca_magisterska.pdf (38 pages, 1349117 bytes).
 PDF statistics:
- 191 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
+ 200 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
