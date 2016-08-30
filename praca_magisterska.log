@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.28)  30 AUG 2016 23:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.28)  30 AUG 2016 23:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -919,53 +919,54 @@ File: images/body_frame.jpg Graphic file (type jpg)
 Package pdftex.def Info: images/body_frame.jpg used on input line 234.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
  [11 <./images/body_frame.jpg>] [12] [13] [14]
-[15] [16] <images/vector_angle_method.jpg, id=74, 332.24126pt x 233.87375pt>
+[15] [16] [17]
+<images/vector_angle_method.jpg, id=77, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 424.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 468.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
- [17 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=78, 831.105pt x 633.36626pt>
+ [18 <./images/vector_angle_method.jpg>]
+<images/spherical_triangle_method.jpg, id=81, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 476.
+e 520.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
- [18 <./images/spherical_triangle_method.jpg>] <images/planar_triangle_method.j
-pg, id=82, 831.105pt x 633.36626pt>
+ [19 <./images/spherical_triangle_method.jpg>] <images/planar_triangle_method.j
+pg, id=86, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 5
-01.
+45.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [19 <./images/planar_triangle_method.jpg>] [20] <images/pyramid_method.jpg, id
-=90, 566.115pt x 982.67125pt>
+ [20 <./images/planar_triangle_method.jpg>] [21] <images/pyramid_method.jpg, id
+=93, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 636.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 680.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
- [21] [22 <./images/pyramid_method.jpg>]
-[23] [24] [25] [26] [27] [28] [29] [30] [31] (./praca_magisterska.bbl [32]
-[33] [34]) [35] (./praca_magisterska.lot)
+ [22] [23 <./images/pyramid_method.jpg>]
+[24] [25] [26] [27] [28] [29] [30] [31] [32] (./praca_magisterska.bbl [33]
+[34] [35]) [36] (./praca_magisterska.lot)
 \tf@lot=\write5
 \openout5 = `praca_magisterska.lot'.
 
- [36] (./praca_magisterska.lof)
+ [37] (./praca_magisterska.lof)
 \tf@lof=\write6
 \openout6 = `praca_magisterska.lof'.
 
 
-[37] (./praca_magisterska.aux) ) 
+[38] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 5212 strings out of 494877
- 70321 string characters out of 6179086
+ 5214 strings out of 494877
+ 70352 string characters out of 6179086
  128169 words of memory out of 5000000
- 8333 multiletter control sequences out of 15000+600000
+ 8335 multiletter control sequences out of 15000+600000
  54604 words of font info for 55 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
  38i,15n,43p,584b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -983,10 +984,10 @@ r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmsy8.pfb>
-Output written on praca_magisterska.pdf (37 pages, 1415254 bytes).
+Output written on praca_magisterska.pdf (38 pages, 1419089 bytes).
 PDF statistics:
- 204 PDF objects out of 1000 (max. 8388607)
- 138 compressed objects within 2 object streams
+ 207 PDF objects out of 1000 (max. 8388607)
+ 140 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -23,38 +23,36 @@
 \contentsline {subsection}{\numberline {2.3}Attitude representations}{12}
 \contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{12}
 \contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{13}
-\contentsline {subsection}{\numberline {2.4}Quaternion properties}{14}
-\contentsline {subsubsection}{\numberline {2.4.1}Advantages of quaternions}{14}
-\contentsline {subsubsection}{\numberline {2.4.2}Multiplication of quaternions}{14}
-\contentsline {subsubsection}{\numberline {2.4.3}Quaternions and rotations}{14}
-\contentsline {subsection}{\numberline {2.5}Cholesky factorization}{14}
-\contentsline {subsection}{\numberline {2.6}Lyapunov analysis}{14}
-\contentsline {section}{\numberline {3}Star-tracker program}{15}
-\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{15}
-\contentsline {subsection}{\numberline {3.2}Star identification}{17}
-\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{17}
-\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{18}
-\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{19}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{21}
-\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{21}
-\contentsline {subsubsection}{\numberline {3.2.6}Voting}{23}
-\contentsline {subsubsection}{\numberline {3.2.7}Grid}{23}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{23}
-\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{23}
-\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{23}
-\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{23}
-\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{24}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{25}
-\contentsline {subsubsection}{\numberline {3.4.1}The Predictive Attitude Determination Algorithm ?}{25}
-\contentsline {subsubsection}{\numberline {3.4.2}q-method}{25}
-\contentsline {subsubsection}{\numberline {3.4.3}Wahba's problem}{26}
-\contentsline {subsubsection}{\numberline {3.4.4}QUEST}{27}
-\contentsline {subsubsection}{\numberline {3.4.5}TRIAD}{27}
-\contentsline {subsubsection}{\numberline {3.4.6}The Fast Optimal Attitude Matrix}{27}
-\contentsline {subsubsection}{\numberline {3.4.7}DCM (Direction Cosine Matrix)}{27}
-\contentsline {section}{\numberline {4}Prototype}{29}
-\contentsline {section}{\numberline {5}Complete program}{30}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{31}
-\contentsline {section}{References}{32}
-\contentsline {section}{List of Tables}{36}
-\contentsline {section}{List of Figures}{37}
+\contentsline {subsection}{\numberline {2.4}Quaternion properties}{15}
+\contentsline {subsubsection}{\numberline {2.4.1}Advantages of quaternions}{15}
+\contentsline {subsubsection}{\numberline {2.4.2}Multiplication of quaternions}{15}
+\contentsline {subsubsection}{\numberline {2.4.3}Quaternions and rotations}{15}
+\contentsline {section}{\numberline {3}Star-tracker program}{16}
+\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{16}
+\contentsline {subsection}{\numberline {3.2}Star identification}{18}
+\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{18}
+\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{19}
+\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{20}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{22}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{22}
+\contentsline {subsubsection}{\numberline {3.2.6}Voting}{24}
+\contentsline {subsubsection}{\numberline {3.2.7}Grid}{24}
+\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{24}
+\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{24}
+\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{24}
+\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{24}
+\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{25}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{26}
+\contentsline {subsubsection}{\numberline {3.4.1}The Predictive Attitude Determination Algorithm ?}{26}
+\contentsline {subsubsection}{\numberline {3.4.2}q-method}{26}
+\contentsline {subsubsection}{\numberline {3.4.3}Wahba's problem}{27}
+\contentsline {subsubsection}{\numberline {3.4.4}QUEST}{28}
+\contentsline {subsubsection}{\numberline {3.4.5}TRIAD}{28}
+\contentsline {subsubsection}{\numberline {3.4.6}The Fast Optimal Attitude Matrix}{28}
+\contentsline {subsubsection}{\numberline {3.4.7}DCM (Direction Cosine Matrix)}{28}
+\contentsline {section}{\numberline {4}Prototype}{30}
+\contentsline {section}{\numberline {5}Complete program}{31}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{32}
+\contentsline {section}{References}{33}
+\contentsline {section}{List of Tables}{37}
+\contentsline {section}{List of Figures}{38}

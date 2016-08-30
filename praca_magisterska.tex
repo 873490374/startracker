@@ -260,6 +260,14 @@ See Siciliano or Spong Textbook!
 
 Polar moment
 
+Euler angles were first described by Leonhard Euler in 1776, and are used to represent the
+orientation of a body [10]. Three parameters are required for a full understanding of the
+orientation between two frames, one angle for the rotation around each of the axes. The
+angles are called roll, pitch and yaw and are usually written as phi, ro and psi. The Euler
+angles are often used for the definition of rotation matrices about the x, y and z-axis. In
+R 3 , the coordinate system rotations in a counter-clockwise direction looking towards the
+origin are given from:
+
 \begin{equation}
 \bm{R}_x(\phi) = \begin{bmatrix}
 1 & 0 & 0 \\
@@ -289,6 +297,13 @@ Polar moment
 \cite{mathworldconjugate}\par
 \cite{shoemake1985animating}\par
 \cite{horn1987closed}\par
+
+Quaternions were first described by Sir William Rowan Hamilton in 1843 [11]. His inten-
+sion was to find an extension of vector algebra, and in 1845 Arthur Cayley published an
+article where he used multiplication of quaternions to describe rotations [12]. Three of the
+four elements of a quaternion give the coordinates for the axis of rotation, while the fourth
+is described by the angle of rotation [13].
+A quaternion can be written as a four-dimensional vector:
 \begin{equation}
 \bm{q} \coloneqq \begin{bmatrix}
 q_0 \\
@@ -297,12 +312,19 @@ q_2 \\
 q_3
 \end{bmatrix}
 \end{equation}
+The real part of the quaternion behaves like a scalar in the three-dimensional vector space.
+Using a rotation angle vi, the real part can be written as:
 \begin{equation}
 q_0 = \cos(v/2)
 \end{equation}
+
 \begin{equation}
 \bm{n} = \frac{\bm{n}}{||\bm{n}||}
 \end{equation}
+The imaginary part uses a unit vector given from n = n/||n|| (wzor)
+where the norm of the vector, ||n||, is defined as the square root of each of the squared elements of n added together.
+Throughout the thesis, vectors and matrices will be written in bold print.
+The imaginary part can be written as a vector:
 \begin{equation}
 \bm{q}_{vec} \coloneqq \begin{bmatrix}
 q_1 \\
@@ -311,9 +333,14 @@ q_3
 \end{bmatrix}
 = [\bm{n}\sin(v/2)]
 \end{equation}
+There are several ways to write quaternions. Sometimes it is convenient to think of a
+quaternion as the sum of a scalar and a vector written as:
 \begin{equation}
 \bm{q} \coloneqq q_0 + \bm{q}_vec = q_0 + q_1i + q_2j+ q_3k
 \end{equation}
+Complex numbers can be represented as matrices, and so can quaternions. A quaternion
+describes a point in 4D space, and can be represented by a 4 × 4 matrix by using a left-
+isoclinic rotation as proved in [14], and used in [16] and [17]:
 \begin{equation}
 \bm{Q} = \begin{bmatrix}
 q_0 & -q_1 & -q_2 & -q_3 \\
@@ -322,18 +349,35 @@ q_2 & q_3 & q_0 & -q_1 \\
 q_3 & -q_2 & q_1 & q_0
 \end{bmatrix}
 \end{equation}
+The transpose of the matrix is the same as the conjugate of the quaternion:
 \begin{equation}
 \bm{q}^* \coloneqq q_0 - \bm{q}_{vec} = q_0 + q_1i + q_2j+ q_3k
 \end{equation}
+Two quaternions are conjugate if they are orthogonal with respect to their inner product.
+[15]. The inverse of a quaternion q is defined as q -1 = 1/q . In this report, the mathematics
+are based on unit quaternions, which satisfies the constraint:
 \begin{equation}
 \bm{q}^T\bm{q} = 1
 \end{equation}
+The length of a unit quaternion is 1, which leads its inverse to be its conjugate.
 \subsection{Quaternion properties}
 \subsubsection{Advantages of quaternions}
+The unit quaternion notation is compact, and round off errors are easier to handle than for
+matrix representation. The nearest orthonormal matrix to one that is not quite orthonormal,
+is difficult to find. Multiplying unit quaternions may similarly lead to quaternions that are
+no longer of unit length, but these can easily be normalized to make sure they correspond
+to valid rotations. The computational cost of normalizing a quaternion is much less than
+for normalizing a matrix.
+Quaternions are safe from a phenomenon called gimbal lock. When the pitch angle
+in a pitch/roll/yaw-system is rotated 90 ◦ up or down, and the yaw and roll correspond to
+the same motion, a degree of freedom of rotation can be lost. In a gimbal-based aerospace
+inertial navigation system, this could have disastrous results if the aircraft is in a steep
+dive or ascent [16]. The quaternion elements vary continuously over the unit sphere in R 4 ,
+(denoted by S 3 ) as the orientation changes, avoiding this problem.
+Due to the possible spin in the CubeSat, combined with the singularity problem for
+Euler angles, an attitude estimation method based on unit quaternions is preferred [4].
 \subsubsection{Multiplication of quaternions}
 \subsubsection{Quaternions and rotations}
-\subsection{Cholesky factorization}
-\subsection{Lyapunov analysis}
 
 \newpage
 \section{Star-tracker program}
