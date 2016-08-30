@@ -1,6 +1,11 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[english, polish]{babel}
+\usepackage[OT4]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp, gensymb}
+
+
 
 %%% fix for \lll
 \let\babellll\lll
@@ -80,12 +85,12 @@
 \setcounter{page}{2}
 \newpage
 \begin{abstract}
-
+Last years directed space industry towards small satellites. Many countries which did not have possibility to enter this branch of industry before now create their own solutions. The goal of this work is to create fully functioning star-tracker program eligible to be used in future satellites as Polish sulition of determination of satellite attitude towards Earth. Work contains also description of individual parts and variants of solutions connected with star-tracker.
 \end{abstract}
 \newpage
 \begin{otherlanguage}{polish}
 \begin{abstract}
-
+Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tą gałąź przemysłu, teraz tworzą własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego programu star-tracker nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity względem ziemi. Praca zawiera też opis poszczególnych części i wariantów rozwiazania problemów związanych ze star-trackerem.
 \end{abstract}
 \end{otherlanguage}
 \newpage
@@ -134,8 +139,6 @@ The goal of this work is to make fully operational star-tracker program, that co
 
 \subsection{Outline of thesis}
 
-
-
 This thesis consists of several chapters. Here they are shortly summarized:\par
 \setlength{\parindent}{0cm}
 \textbf{Chapter 1} serves as introduction to this thesis and describest the motivation and goal of this work. It also describes the background of the topic.\par
@@ -179,12 +182,12 @@ There exist many different types of attitude estimation: sun sensors, star-track
 \hline
 \textbf{Sensor} & \textbf{Accuracy} & \textbf{Characteristics \newline and Applicability} \\ 
 \hline
-Magnetometers & 1.0o (5000km alt) \newline 5.0 (200 km alt) & Attitude measured relative to \newline Earth’s local magnetic field. \newline Magnetic field uncertainties and \newline variability dominate accuracy. \newline Usable only below $\approx$6,000 km. \\ 
-Earth sensors & 0.05 (GEO) \newline 0.1 (LEO) & Horizon uncertainties dominate \newline accuracy. Highly accurate units \newline use scanning. \\ 
-Sun sensors & 0.01 & Typical field of view +-30 \\ 
-Star sensors & 2 arc-sec & Typical field of view +-6 \\ 
+Magnetometers & 1.0\degree (5000km alt) \newline 5.0\degree (200 km alt) & Attitude measured relative to \newline Earth’s local magnetic field. \newline Magnetic field uncertainties and \newline variability dominate accuracy. \newline Usable only below $\approx$6,000 km. \\ 
+Earth sensors & 0.05\degree (GEO) \newline 0.1\degree (LEO) & Horizon uncertainties dominate \newline accuracy. Highly accurate units \newline use scanning. \\ 
+Sun sensors & 0.01\degree & Typical field of view +-30\degree \\ 
+Star sensors & 2 arc-sec & Typical field of view +-6\degree \\ 
 Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference. \\ 
-Directional \newline antennas & 0.01 to 0.5 & Typically 1 of the antenna \newline beamwidth \\
+Directional \newline antennas & 0.01\degree to 0.5\degree & Typically 1 of the antenna \newline beamwidth \\
 \hline
 \end{tabular} 
 \caption{Sensor Accuracy Ranges. Adapted from \cite{hall2003spacecraft}}
@@ -241,6 +244,22 @@ for all the estimation methods presented in this thesis. They are singular-free,
 therefore well suited for attitude determination.
 \subsubsection{Euler angles}
 \cite{euler1775formulae}
+
+
+Robot Learning Darmstadt
+Problems with Euler Angles:
+Not Unique: Many angles result in the same rotation
+Hard to quantify differences between two Euler Angles
+Unit-Quaternion
+Solves the problems of singularities with the Euler Angles
+Easier to compute differences of orientations
+Important if we want to control the orientation of the end-effector
+See Siciliano or Spong Textbook!
+
+%https://en.wikipedia.org/wiki/Apparent_magnitude
+
+Polar moment
+
 \begin{equation}
 \bm{R}_x(\phi) = \begin{bmatrix}
 1 & 0 & 0 \\
@@ -863,19 +882,5 @@ Testing\par
 
 \newpage
 
-
-Robot Learning Darmstadt
-Problems with Euler Angles:
-Not Unique: Many angles result in the same rotation
-Hard to quantify differences between two Euler Angles
-Unit-Quaternion
-Solves the problems of singularities with the Euler Angles
-Easier to compute differences of orientations
-Important if we want to control the orientation of the end-effector
-See Siciliano or Spong Textbook!
-
-%https://en.wikipedia.org/wiki/Apparent_magnitude
-
-Polar moment
 
 \end{document}

@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {2.2}Space environment}{12}
 \contentsline {subsection}{\numberline {2.3}Attitude representations}{12}
 \contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{12}
-\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{12}
+\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{13}
 \contentsline {subsection}{\numberline {2.4}Quaternion properties}{14}
 \contentsline {subsubsection}{\numberline {2.4.1}Advantages of quaternions}{14}
 \contentsline {subsubsection}{\numberline {2.4.2}Multiplication of quaternions}{14}
