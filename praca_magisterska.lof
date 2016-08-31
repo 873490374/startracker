@@ -2,9 +2,10 @@
 \select@language {english}
 \select@language {polish}
 \select@language {english}
-\contentsline {figure}{\numberline {1}{\ignorespaces ECI frame, Image \cite {larson1992space}}}{10}
-\contentsline {figure}{\numberline {2}{\ignorespaces BODY frame, Image \cite {larson1992space}}}{11}
-\contentsline {figure}{\numberline {3}{\ignorespaces Vector angle method, Image \cite {gottlieb1978star}?}}{18}
-\contentsline {figure}{\numberline {4}{\ignorespaces Spherical Triangle Method, Image \cite {cole2004fast}?}}{19}
-\contentsline {figure}{\numberline {5}{\ignorespaces Planar Triangle Method, Image \cite {cole2006fast}?}}{20}
-\contentsline {figure}{\numberline {6}{\ignorespaces Pyramid Method Flowchart, Image \cite {mortari2004pyramid}}}{23}
+\contentsline {figure}{\numberline {1}{\ignorespaces ECI frame, Image \cite {larson1992space}}}{11}
+\contentsline {figure}{\numberline {2}{\ignorespaces BODY frame, Image \cite {larson1992space}}}{12}
+\contentsline {figure}{\numberline {3}{\ignorespaces Startracker conceptual algorithm diagram}}{16}
+\contentsline {figure}{\numberline {4}{\ignorespaces Vector angle method, Image \cite {gottlieb1978star}}}{20}
+\contentsline {figure}{\numberline {5}{\ignorespaces Spherical Triangle Method, Image \cite {cole2004fast}}}{21}
+\contentsline {figure}{\numberline {6}{\ignorespaces Planar Triangle Method, Image \cite {cole2006fast}}}{22}
+\contentsline {figure}{\numberline {7}{\ignorespaces Pyramid Method Flowchart, Image \cite {mortari2004pyramid}}}{40}
