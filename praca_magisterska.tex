@@ -1,11 +1,11 @@
 \documentclass[12pt,a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
+\usepackage[acronym, toc, nonumberlist, nogroupskip]{glossaries}
+
 \usepackage[english, polish]{babel}
 \usepackage[OT4]{fontenc}
 \usepackage{lmodern}
 \usepackage{textcomp, gensymb}
-
-
 
 %%% fix for \lll
 \let\babellll\lll
@@ -25,8 +25,10 @@
 
 \usepackage[nottoc]{tocbibind}
 \usepackage{bm}
-\usepackage{nomencl}
-%\usepackage[authoryear,round,longnamesfirst]{natbib}
+\makenoidxglossaries
+\usepackage{filecontents}
+\glsnoexpandfields
+\usepackage[numbers]{natbib}
 
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
@@ -42,7 +44,38 @@
 \author{Szymon MICHALSKI}
 \title{PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT}
 
-\makenomenclature
+
+\begin{filecontents}{gloss.tex}
+%================ACRONYMS=================%
+\newacronym{leo}{LEO}{Low Earth Orbit}
+\newacronym{adcs}{ADCS}{Attitude Control and Determination System}
+\newacronym{lis}{LIS}{Lost-In-Space}
+\newacronym{gps}{GPS}{Global Positioning System}
+%================SYMBOLS=================%
+\newglossaryentry{phi}{type=symbols, name=$\phi$, sort=phi, description={Euler angle, roll}}
+\newglossaryentry{theta}{type=symbols, name=$\theta$, sort=theta, description={Euler angle, pitch}}
+\newglossaryentry{psi}{type=symbols, name=$\psi$, sort=psi, description={Euler angle, yaw}}
+\newglossaryentry{euler_rotation_matrix}{type=symbols, name=$\bm{R}(\cdot)$, sort=euler_rotation_matrix, description={Rotation matrix using Euler angles}}
+\newglossaryentry{unit_quaterion}{type=symbols, name=$\bm{q}$, sort=unit_quaterion, description={Unit quaternion}}
+\newglossaryentry{scalar_quaternion_part}{type=symbols, name=$q_0$, sort=sigma, description={Scalar part of unit quaternion}}
+\newglossaryentry{vector_quaternion_part}{type=symbols, name=$\bm{q}_{vec}$, sort=scalar_quaternion_part, description={Vector part of unit quaternion}}
+\newglossaryentry{quaternion_matrix}{type=symbols, name=$\bm{Q}$, sort=quaternion_matrix, description={Quaternion matrix}}
+\newglossaryentry{general_euler_angle}{type=symbols, name=$v$, sort=general_euler_angle, description={General Euler angle}}
+\newglossaryentry{unit_vector}{type=symbols, name=$\bm{n}$, sort=unit_vector, description={Unit vector}}
+\newglossaryentry{identity_matrix}{type=symbols, name=$\bm{I}$, sort=identity_matrix, description={Identity matrix}}
+\newglossaryentry{skew_symmetrix_matrix}{type=symbols, name=$\bm{S}(\cdot)$, sort=skew_symmetrix_matrix, description={Skew symmetric matrix}}
+\newglossaryentry{rotation_matrix}{type=symbols, name=$\bm{R}_n^b$, sort=rotation_matrix, description={Rotation matrix representing a rotation from n to b}}
+\newglossaryentry{least_squares_estimate_rotation_matrix}{type=symbols, name=$\bm{M}$, sort=least_squares_estimate_rotation_matrix, description={Least squares estimate of rotation matrix}}
+\newglossaryentry{unit_vector_ned}{type=symbols, name=$\bm{r}$, sort=unit_vector_ned, description={Known directional unit vector in the NED frame}}
+\newglossaryentry{unit_vector_body}{type=symbols, name=$\bm{b}$, sort=unit_vector_body, description={Known directional unit vector in the BODY frame}}
+
+\end{filecontents}
+
+\newglossary{symbols}{sym}{sbl}{List of Symbols}
+\makenoidxglossaries
+\glsnoexpandfields
+\loadglsentries{gloss.tex}
+
 
 \begin{document}
 \selectlanguage{english}
@@ -102,35 +135,25 @@ Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajó
 \setlength{\parskip}{\baselineskip}%
 
 
-\nomenclature{$\phi$}{Euler angle, roll}
-\nomenclature{$\theta$}{Euler angle, pitch}
-\nomenclature{$\psi$}{Euler angle, yaw}
-\nomenclature{$\bm{R}(\cdot)$}{Rotation matrix using Euler angles}
-\nomenclature{$\bm{q}$}{Unit quaternion}
-\nomenclature{$q_0$}{Scalar part of unit quaternion}
-\nomenclature{$\bm{q}_{vec}$}{Vector part of unit quaternion}
-\nomenclature{$\bm{Q}$}{Quaternion matrix}
-\nomenclature{$v$}{General Euler angle}
-\nomenclature{$\bm{n}$}{Unit vector}
-\nomenclature{$\bm{I}$}{Identity matrix}
-\nomenclature{$\bm{S}(\cdot)$}{Skew symmetric matrix}
-\nomenclature{$\bm{R}_n^b$}{Rotation matrix representing a rotation from n to b}
-\nomenclature{$\bm{M}$}{Least squares estimate of rotation matrix}
-\nomenclature{$\bm{r}$}{Known directional unit vector in the NED frame}
-\nomenclature{$\bm{b}$}{Known directional unit vector in the BODY frame}
 
-\printnomenclature
+\glsaddall
+\setlength{\glsdescwidth}{0.5\linewidth}
+\setlength{\glspagelistwidth}{0.1\linewidth}
+
+\printnoidxglossary[type=acronym,sort=letter]
+\newpage
+
+\printnoidxglossary[type=symbols,sort=use]
 
 \newpage
-%http://ssl.mit.edu/publications/theses/SM-2006-HuffmanKara.pdf
-\cite{jenssen2011comparison}
-\cite{valenti2015keeping}
-\cite{delabie2012highly}
-\cite{jalabert2011optimization}
-\cite{felikson2011orbit}
-\cite{knutson2012fast}
-\cite{rose2003star}
-\cite{mortari2002starnav}
+\citet{jenssen2011comparison}
+\citet{valenti2015keeping}
+\citet{delabie2012highly}
+\citet{jalabert2011optimization}
+\citet{felikson2011orbit}
+\citet{knutson2012fast}
+\citet{rose2003star}
+\citet{mortari2002starnav}
 
 
 \section{Introduction}
@@ -162,13 +185,13 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 
 %https://en.wikipedia.org/wiki/CubeSat#cite_note-SpaceNews-2015-06-08-1
 
-In recent years there has been the development of microsatellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University\cite{heidt2000cubesat}, which is used for low-cost microsatellites. CubeSats are measured in units. Most are 1-U, 2-U and 3-U. CubeSat 1-U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2-U is 20x10x10 cm and can weigh up to 2.666 kg.
+In recent years there has been the development of microsatellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University\citet{heidt2000cubesat}, which is used for low-cost microsatellites. CubeSats are measured in units. Most are 1-U, 2-U and 3-U. CubeSat 1-U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2-U is 20x10x10 cm and can weigh up to 2.666 kg.
 
-The advantage of the standard is primarily to reduce the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60 procent of all satellites in orbit, and only CubeSats make up about half of the small satellites that are fired every year.
+The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites in orbit, and only CubeSats make up about half of the small satellites that are fired every year.
 
 TODO
 Zdjecie Cubesata
-CubeSat missions, goals, what can they be and are used for?
+CubeSat missions, goals, examples, what can they be used for?
 
 \subsection{Means of attitude determination}
 
@@ -180,20 +203,40 @@ Devices such as planes and satellites have so called Attitude Determination and 
 
 Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionably winner here is the startracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
 
-\subsubsection{Megnetometers}
-\subsubsection{Sun sensors}
-\subsubsection{Earth sensors}
-\subsubsection{GPS}
-\subsubsection{Star trackers}
+\subsubsection{Inertial Meaurement Unit}
+\subsubsection{Sun Sensors}
+\subsubsection{Star Sensors}
+\subsubsection{Horizon Sensors}
+\subsubsection{Magnetometer}
+\subsubsection{GPS - maybe}
 \subsubsection{Conclusons}
-Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30 procent of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements of the proper calibration. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
+Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements of the proper calibration. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
 Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is by using star-trackers.
 
-\cite{larson1992space}
-\cite{lima2000comparison}
+\citet{larson1992space}
+\citet{lima2000comparison}
+
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[ht]
+\begin{tabular}{|p{4.5cm}|p{8cm}|}
+\hline 
+Sensor & Typical Performance Range \\ 
+\hline 
+Inertial \newline Measurement Unit \newline (Gyros and Accelerometers) & Gyro drift rate = 0.003 deg/hr to 1 deg/hr,\newline accel. \newline Linearity = 1 to 5 x $10^{-6} g/g^2$ over range\newline of 20 to 60 g \\ 
+\hline 
+Sun Sensors & Accuracy = 0.005 deg to 3 deg \\ 
+\hline 
+Star Sensors\newline (Scanners and Mappers) & Attitude accuraty = 1 arc sec to 1 arc min \newline 0.0003 deg to 0.01 deg \\ 
+\hline 
+Horizon Sensors\newline -Scanner/Pipper\newline -Fixed Head (Static) & Attitude accuracuracy: \newline 0.1 deg to 1 deg (LEO) \newline $<0.1$ deg to 0.25 deg \\ 
+\hline 
+Magnetometer & Attitude accuracy = 0.5 deg to 3 deg \\ 
+\hline 
+\end{tabular}
+\caption{Sensor Accuracy Ranges. Adapted from \citet{larson1992space}}
+\end{table}
 
+\begin{table}[h!bt]
 \begin{tabular}{|p{3cm}|p{3.3cm}|p{6cm}|}
 \hline
 \textbf{Sensor} & \textbf{Accuracy} & \textbf{Characteristics \newline and Applicability} \\ 
@@ -206,7 +249,7 @@ Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference
 Directional \newline antennas & 0.01\degree to 0.5\degree & Typically 1 of the antenna \newline beamwidth \\
 \hline
 \end{tabular} 
-\caption{Sensor Accuracy Ranges. Adapted from \cite{hall2003spacecraft}}
+\caption{Sensor Accuracy Ranges. Adapted from \citet{hall2003spacecraft}}
 \end{table}
 
 \subsection{On-board computer}
@@ -216,46 +259,31 @@ This section will describe the on-board computer which was done as part of other
 \section{Preliminaries}
 \subsection{Coordinate frames}
 \subsubsection{ECI frame}
-The Earth Centered Inertial frame has its x-axis pointing towards the vernal equinox, and
-its z-axis pointing along the rotation axis of the Earth at some initial time. The y-axis
-completes a right handed orthogonal coordinate system. The frame’s origin is at the center
+The Earth Centered Inertial frame has its x-axis pointing towards the vernal equinox, and its z-axis pointing along the rotation axis of the Earth at some initial time. The y-axis completes a right handed orthogonal coordinate system. The frame’s origin is at the center
 of the Earth.
-\cite{larson1992space}
+\citet{larson1992space}
 \begin{figure}[ht]
 \includegraphics[scale=0.4]{eci_frame.jpg}
 \centering
 \label{fig:eci_frame}
-\caption{ECI frame, Image \cite{larson1992space}}
+\caption{ECI frame, Image \citet{larson1992space}}
 \end{figure}
 \subsubsection{ECEF frame}
-This frame also has its origin at the center of the Earth, but the Earth Centered Earth
-Fixed frame has its x-axis pointing towards the point where the intersection between the
-longitude and latitude have zero value. It can also be described as the intersection between
-the Greenwich meridian and the Equator. The frame’s z-axis is pointing along the Earth’s
-rotation axis. The y-axis completes the right handed orthogonal system. The ECEF frame
-is not an inertial frame, it rotates relative to the ECI frame along the Earth rotation.
+This frame also has its origin at the center of the Earth, but the Earth Centered Earth Fixed frame has its x-axis pointing towards the point where the intersection between the longitude and latitude have zero value. It can also be described as the intersection between the Greenwich meridian and the Equator. The frame’s z-axis is pointing along the Earth’s rotation axis. The y-axis completes the right handed orthogonal system. The ECEF frame is not an inertial frame, it rotates relative to the ECI frame along the Earth rotation.
 \subsubsection{NED frame}
-The North East Down frame has its z-axis pointing downwards, perpendicular to the tan-
-gent plane of the Earth’s reference ellipsoid. The ellipsoid is mathematically defined and
-fitted for approximation of the Earth. The x-axis points towards true north and the y-axis
-points East. The NED frame is an inertial frame.
+The North East Down frame has its z-axis pointing downwards, perpendicular to the tangent plane of the Earth’s reference ellipsoid. The ellipsoid is mathematically defined and fitted for approximation of the Earth. The x-axis points towards true north and the y-axis points East. The NED frame is an inertial frame.
 \subsubsection{BODY frame}
-This frame is attached to the satellite, and is moving and rotating with it. The origin
-coincides with the origin of the NED frame. The axes coincide with the principle axes
-of inertia; the x-axis is pointing forwards, the y-axis is pointing to the right side and the
+This frame is attached to the satellite, and is moving and rotating with it. The origin coincides with the origin of the NED frame. The axes coincide with the principle axes of inertia; the x-axis is pointing forwards, the y-axis is pointing to the right side and the
 z-axis is pointing downwards through the camera side of the satellite.
 \begin{figure}[h]
 \includegraphics[scale=0.5]{body_frame.jpg}
 \centering
 \label{fig:body_frame}
-\caption{BODY frame, Image \cite{larson1992space}}
+\caption{BODY frame, Image \citet{larson1992space}}
 \end{figure}
 \subsection{Space environment}
 \subsection{Attitude representations}
-Several representations for describing attitude are available, the most common being Euler
-angles. More complicated attitude representations are quaternions. Quaternions are used
-for all the estimation methods presented in this thesis. They are singular-free, and are
-therefore well suited for attitude determination.
+Several representations for describing attitude are available, the most common being Euler angles. More complicated attitude representations are quaternions. Quaternions are used for all the estimation methods presented in this thesis. They are singular-free, and are therefore well suited for attitude determination.
 \subsubsection{Euler angles}
 
 %Robot Learning Darmstadt
@@ -270,13 +298,8 @@ therefore well suited for attitude determination.
 %https://en.wikipedia.org/wiki/Apparent_magnitude
 %Polar moment
 
-Euler angles were first described by Leonhard Euler in 1776, and are used to represent the
-orientation of a body \cite{euler1775formulae}. Three parameters are required for a full understanding of the
-orientation between two frames, one angle for the rotation around each of the axes. The
-angles are called roll, pitch and yaw and are usually written as phi, ro and psi. The Euler
-angles are often used for the definition of rotation matrices about the x, y and z-axis. In
-R 3 , the coordinate system rotations in a counter-clockwise direction looking towards the
-origin are given from:
+Euler angles were first described by Leonhard Euler in 1776, and are used to represent the orientation of a body \citet{euler1775formulae}. Three parameters are required for a full understanding of the
+orientation between two frames, one angle for the rotation around each of the axes. The angles are called roll, pitch and yaw and are usually written as phi, ro and psi. The Euler angles are often used for the definition of rotation matrices about the x, y and z-axis. In R 3 , the coordinate system rotations in a counter-clockwise direction looking towards the origin are given from:
 
 \begin{equation}
 \bm{R}_x(\phi) = \begin{bmatrix}
@@ -300,16 +323,15 @@ origin are given from:
 \end{bmatrix}
 \end{equation}
 \subsubsection{Quaternions}
-\cite{hamilton1844lxxviii}
-\cite{cayley1845xiii}
-\cite{courant1953methods}
-\cite{mebius2005matrix}
-\cite{mathworldconjugate}
-\cite{shoemake1985animating}
-\cite{horn1987closed}
+\citet{hamilton1844lxxviii}
+\citet{cayley1845xiii}
+\citet{courant1953methods}
+\citet{mebius2005matrix}
+\citet{mathworldconjugate}
+\citet{shoemake1985animating}
+\citet{horn1987closed}
 
-Quaternions were first described by Sir William Rowan Hamilton in 1843 \cite{hamilton1844lxxviii}. His intension was to find an extension of vector algebra, and in 1845 Arthur Cayley published an
-article where he used multiplication of quaternions to describe rotations \cite{cayley1845xiii}. Three of the four elements of a quaternion give the coordinates for the axis of rotation, while the fourth is described by the angle of rotation \cite{courant1953methods}.
+Quaternions were first described by Sir William Rowan Hamilton in 1843 \citet{hamilton1844lxxviii}. His intension was to find an extension of vector algebra, and in 1845 Arthur Cayley published an article where he used multiplication of quaternions to describe rotations \citet{cayley1845xiii}. Three of the four elements of a quaternion give the coordinates for the axis of rotation, while the fourth is described by the angle of rotation \citet{courant1953methods}.
 A quaternion can be written as a four-dimensional vector:
 \begin{equation}
 \bm{q} \coloneqq \begin{bmatrix}
@@ -344,7 +366,7 @@ There are several ways to write quaternions. Sometimes it is convenient to think
 \begin{equation}
 \bm{q} \coloneqq q_0 + \bm{q}_vec = q_0 + q_1i + q_2j+ q_3k
 \end{equation}
-Complex numbers can be represented as matrices, and so can quaternions. A quaternion describes a point in 4D space, and can be represented by a 4 × 4 matrix by using a left-isoclinic rotation as proved in \cite{mebius2005matrix}, and used in \cite{mathworldconjugate} and \cite{shoemake1985animating}:
+Complex numbers can be represented as matrices, and so can quaternions. A quaternion describes a point in 4D space, and can be represented by a 4 × 4 matrix by using a left-isoclinic rotation as proved in \citet{mebius2005matrix}, and used in \citet{mathworldconjugate} and \citet{shoemake1985animating}:
 \begin{equation}
 \bm{Q} = \begin{bmatrix}
 q_0 & -q_1 & -q_2 & -q_3 \\
@@ -357,26 +379,17 @@ The transpose of the matrix is the same as the conjugate of the quaternion:
 \begin{equation}
 \bm{q}^* \coloneqq q_0 - \bm{q}_{vec} = q_0 + q_1i + q_2j+ q_3k
 \end{equation}
-Two quaternions are conjugate if they are orthogonal with respect to their inner product \cite{horn1987closed}. The inverse of a quaternion q is defined as q -1 = 1/q . In this report, the mathematics
+Two quaternions are conjugate if they are orthogonal with respect to their inner product \citet{horn1987closed}. The inverse of a quaternion q is defined as q -1 = 1/q . In this report, the mathematics
 are based on unit quaternions, which satisfies the constraint:
 \begin{equation}
 \bm{q}^T\bm{q} = 1
 \end{equation}
 The length of a unit quaternion is 1, which leads its inverse to be its conjugate.
 \subsubsection{Advantages of quaternions}
-The unit quaternion notation is compact, and round off errors are easier to handle than for
-matrix representation. The nearest orthonormal matrix to one that is not quite orthonormal,
-is difficult to find. Multiplying unit quaternions may similarly lead to quaternions that are
-no longer of unit length, but these can easily be normalized to make sure they correspond
-to valid rotations. The computational cost of normalizing a quaternion is much less than
+The unit quaternion notation is compact, and round off errors are easier to handle than for matrix representation. The nearest orthonormal matrix to one that is not quite orthonormal, is difficult to find. Multiplying unit quaternions may similarly lead to quaternions that are no longer of unit length, but these can easily be normalized to make sure they correspond to valid rotations. The computational cost of normalizing a quaternion is much less than
 for normalizing a matrix.
-Quaternions are safe from a phenomenon called gimbal lock. When the pitch angle
-in a pitch/roll/yaw-system is rotated 90\degree up or down, and the yaw and roll correspond to
-the same motion, a degree of freedom of rotation can be lost. In a gimbal-based aerospace
-inertial navigation system, this could have disastrous results if the aircraft is in a steep
-dive or ascent \cite{shoemake1985animating}. The quaternion elements vary continuously over the unit sphere in $R^4$ , (denoted by $S^3$ ) as the orientation changes, avoiding this problem.
-Due to the possible spin in the CubeSat, combined with the singularity problem for
-Euler angles, an attitude estimation method based on unit quaternions is preferred.
+Quaternions are safe from a phenomenon called gimbal lock. When the pitch angle in a pitch/roll/yaw-system is rotated 90\degree up or down, and the yaw and roll correspond to the same motion, a degree of freedom of rotation can be lost. In a gimbal-based aerospace inertial navigation system, this could have disastrous results if the aircraft is in a steep dive or ascent \citet{shoemake1985animating}. The quaternion elements vary continuously over the unit sphere in $R^4$ , (denoted by $S^3$ ) as the orientation changes, avoiding this problem.
+Due to the possible spin in the CubeSat, combined with the singularity problem for Euler angles, an attitude estimation method based on unit quaternions is preferred.
 
 \newpage
 \section{Star-tracker program}
@@ -399,8 +412,8 @@ If the database does not contain corresponding stars, the algorithm returns to t
 %converts the results of the Cartesian coordinates to the ecliptic (the stars in the directory board are created using images of the Earth, which results in other coordinates) 
 %does not transform coordinates, and
 
-not available\cite{ju2003overview}\par
-Generally star-tracker is divided into three main parts\cite{6187242}:
+not available\citet{ju2003overview}\par
+Generally star-tracker is divided into three main parts\citet{6187242}:
 \begin{itemize}
 \item recogiting stars on the image and converting the data into list of star vectors by calculating star centroids;
 \item identyfing which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
@@ -408,9 +421,9 @@ Generally star-tracker is divided into three main parts\cite{6187242}:
 \end{itemize}
 
 \subsection{Centroid - start recognition}
-\cite{samaan2002predictive}
+\citet{samaan2002predictive}
 
-\cite{liebe2002accuracy}
+\citet{liebe2002accuracy}
 
 
 The whole algorithm star-tracker is based on a very precise calculations. For this reason, the calculation based on the position of the pixels themselves can give incorrect results. It is necessary to calculate the position of the stars with an accuracy exceeding pixels. This is why the calculation of the star centroids is necessary.
@@ -424,7 +437,7 @@ The algorithm requires specification of the light intensity threshold (to select
 Please note that $a_{ROI}$ must be a positive odd number for the proper functioning of the algorithm.
 
 
-The idea of how to calculate such centroids is adapted from\cite{6187242} and described below:
+The idea of how to calculate such centroids is adapted from\citet{6187242} and described below:
 
 \begin{equation}
 x_{start} = x - \frac{a_{ROI} - 1}{2}
@@ -483,11 +496,11 @@ u = \frac{
 \end{equation}
 
 \subsection{Star identification}
-all \cite{spratling2009survey}\par
-Brightness Independent 4-Star Matching Algorithm for Lost-in-Space 3-Axis Attitude Acquisition\cite{dong2006brightness} \par
-SP-Search: A New Algorithm for Star Pattern Recognition \cite{mortari1999sp} \par
-Star Identification using Neural networks \cite{miri2012star} \cite{lindbladstar} \par
-Star pattern recognition using neural networks \cite{li2003star} \par
+all \citet{spratling2009survey}\par
+Brightness Independent 4-Star Matching Algorithm for Lost-in-Space 3-Axis Attitude Acquisition\citet{dong2006brightness} \par
+SP-Search: A New Algorithm for Star Pattern Recognition \citet{mortari1999sp} \par
+Star Identification using Neural networks \citet{miri2012star} \citet{lindbladstar} \par
+Star pattern recognition using neural networks \citet{li2003star} \par
 
 
 \subsubsection{Angle Matching}
@@ -497,10 +510,10 @@ Star pattern recognition using neural networks \cite{li2003star} \par
 \includegraphics[scale=0.7]{vector_angle_method.jpg}
 \centering
 \label{fig:angle_matching}
-\caption{Vector angle method, Image \cite{gottlieb1978star}}
+\caption{Vector angle method, Image \citet{gottlieb1978star}}
 \end{figure}
 
-\cite{gottlieb1978star}
+\citet{gottlieb1978star}
 \begin{equation}
 \theta = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
 \end{equation}
@@ -549,10 +562,10 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \includegraphics[scale=0.29]{spherical_triangle_method.jpg}
 \centering
 \label{fig:spherical_triangle_method}
-\caption{Spherical Triangle Method, Image \cite{cole2004fast}}
+\caption{Spherical Triangle Method, Image \citet{cole2004fast}}
 \end{figure}
 
-\cite{cole2004fast}
+\citet{cole2004fast}
 
 \begin{equation}
 A = 4\tan^{-1}\sqrt{\tan\frac{s}{2}\tan\frac{s-a}{2}\tan\frac{s-b}{2}\tan\frac{s-c}{2}}
@@ -574,10 +587,10 @@ I_p = \sum\theta^2dA
 \includegraphics[scale=0.30]{planar_triangle_method.jpg}
 \centering
 \label{fig:planar_triangle_method}
-\caption{Planar Triangle Method, Image \cite{cole2006fast}}
+\caption{Planar Triangle Method, Image \citet{cole2006fast}}
 \end{figure}
 
-\cite{cole2006fast}\par
+\citet{cole2006fast}\par
 
 \begin{subequations}
 \begin{equation}
@@ -709,20 +722,20 @@ Polar Moment
 \includegraphics[scale=0.57]{pyramid_method.jpg}
 \centering
 \label{fig:pyramid_method}
-\caption{Pyramid Method Flowchart, Image \cite{mortari2004pyramid}}
+\caption{Pyramid Method Flowchart, Image \citet{mortari2004pyramid}}
 \end{figure}
 
-\cite{mortari2004pyramid}\par
+\citet{mortari2004pyramid}\par
 
 
 \subsubsection{Rate Matching}
-\cite{samaan2005recursive}
+\citet{samaan2005recursive}
 to be removed?
 \subsubsection{Voting}
-\cite{kolomenkin2008geometric} \par
+\citet{kolomenkin2008geometric} \par
 \subsubsection{Grid}
 %http://dsp.ucsd.edu/~kreutz/Publications/Padgett1997.pdf
-\cite{padgett1997grid}
+\citet{padgett1997grid}
 \subsection{Star-catalogue and searching for matching stars}
 
 \subsubsection{Star Catalogue Generation}
@@ -749,20 +762,12 @@ to be removed?
 to be removed?
 \subsubsection{k-vector}
 The k-vector database is built a priori for some given working
-magnitude threshold and for the star tracker maximum angular aperture. Essentially, the
-k-vector table is a structural database of all cataloged star pairs that could possibly fit in the
-camera FOV over the whole sky. The star pairs are ordered with increasing interstar angle.
-The data stored are the k index, the cosine of the interstar angle, and the master catalog
-indices I[k] and J[k] of the kth star pair. The k-vector access logic is invoked in real time
-for a minimal set of star pairs in elementary measured star polygons (three for a triangle,
-six for a four-star pyramid, etc.); the fact that the vertices between adjacent measured star
-pairs share a common cataloged star is the key observation leading to logic for efficiently
-identifying the stars by simply comparing the k-vector accessed catalog indices from the
-several sets of candidate star pairs (which must contain the common measured pivot star, if
+magnitude threshold and for the star tracker maximum angular aperture. Essentially, the k-vector table is a structural database of all cataloged star pairs that could possibly fit in the camera FOV over the whole sky. The star pairs are ordered with increasing interstar angle.
+The data stored are the k index, the cosine of the interstar angle, and the master catalog indices I[k] and J[k] of the kth star pair. The k-vector access logic is invoked in real time for a minimal set of star pairs in elementary measured star polygons (three for a triangle, six for a four-star pyramid, etc.); the fact that the vertices between adjacent measured star pairs share a common cataloged star is the key observation leading to logic for efficiently identifying the stars by simply comparing the k-vector accessed catalog indices from the several sets of candidate star pairs (which must contain the common measured pivot star, if
 it is in the catalog).
-\cite{mortari2013k}\par
-\cite{mortari1996fast}\par
-\cite{mortari2000k}\par
+\citet{mortari2013k}\par
+\citet{mortari1996fast}\par
+\citet{mortari2000k}\par
 Trzeba dodać pogrubienia vectorów
 \begin{equation}
 z(x) = mx + q
@@ -793,9 +798,9 @@ j_b = \Big\lfloor\frac{y_a - q}{m}\Big\rfloor \hspace{0.5cm} and \hspace{0.5cm} 
 k_{start} = k(j_b) + 1 \hspace{0.5cm} and \hspace{0.5cm} k_{end} = k(j_t)
 \end{equation}
 \subsection{Attitude Determination}
-\cite{jenssen2011comparison}\par
-AIM (Attitude estimation using Image Matching)\cite{delabie2012highly}\par
-all \cite{hall2003spacecraft} \cite{markley1999estimate}
+\citet{jenssen2011comparison}\par
+AIM (Attitude estimation using Image Matching)\citet{delabie2012highly}\par
+all \citet{hall2003spacecraft} \citet{markley1999estimate}
 \subsubsection{q-method}
 
 \begin{equation}
@@ -870,7 +875,7 @@ g(\bm{\bar{q}}) = \bm{\bar{q}}^T\bm{K}\bm{\bar{q}} = \bm{\bar{q}}^T\lambda\bm{\b
 \subsubsection{Wahba's problem}
 
 The developed extended QUEST method described in this report builds upon the principles
-of Wahba’s problem. The problem was first stated by Grace Wahba in 1965 \cite{wahba1965least}. Given
+of Wahba’s problem. The problem was first stated by Grace Wahba in 1965 \citet{wahba1965least}. Given
 two sets of vector observations, a rotation matrix $\bm{M}$ can be found which minimizes the
 orientation error. This is an optimization problem, where the cost function is:
 
@@ -881,8 +886,8 @@ orientation error. This is an optimization problem, where the cost function is:
 For satellite attitude determination, the vectors $\bm{r}_j$ for $j \in \left\{1, n\right\}$ are the reference sensor data given in the NED frame. The vectors $\bm{b}_j$ for $j \in \left\{1, n\right\}$  are the measured sensor data in the BODY frame. $\bm{M}$ is the least squares estimate of the rotation matrix which carries the known frame of reference into the satellite fixed frame of reference.
 The QUEST method uses this problem in order to minimize the attitude estimation error.
 \subsubsection{QUEST}
-improvement to quest implementation \cite{RIS_1} \par
-kallman filtering \cite{shuster1990kalman}
+improvement to quest implementation \citet{RIS_1} \par
+kallman filtering \citet{shuster1990kalman}
 \begin{equation}
 \begin{split}
 J(\bm{q}) = \frac{1}{2}\sum_{j=1}^n\frac{1}{\sigma_j^2}(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j)^T(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j) = \\
@@ -897,10 +902,10 @@ a must
 \subsubsection{The Fast Optimal Attitude Matrix}
 to be removed?
 \subsubsection{DCM (Direction Cosine Matrix)}
-\cite{juang2003efficient}
+\citet{juang2003efficient}
  and
 
-\cite{6187242}
+\citet{6187242}
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
 \end{equation}
@@ -929,23 +934,24 @@ to be removed?
 For now the following parts are finished in Python:
 \begin{enumerate}
 \item Centroiding
-\item Planar Triangle Recognition with variations (nearly)
+\item Planar Triangle Recognition with variations (nearly - without equation 44)
 \item Pyramid alg ?
 \item k-vector
 \item QUEST (not started yet)
 \end{enumerate}
 Testing\par
-\cite{kruijff2003star}
+\citet{kruijff2003star}
 \newpage
 \section{Complete program}
 
 \newpage
 \section{Testing of star-tracker}
-\cite{RIS_0}
+\citet{RIS_0}
 
 \newpage
-\bibliographystyle{ieeetr}
-\bibliography{bibfile}
+\bibliographystyle{IEEEtranN}
+\bibliography{IEEEabrv,bibfile}
+%\bibliography{bibfile}
 
 
 

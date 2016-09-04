@@ -1,61 +1,70 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: praca_magisterska.aux
-The style file: ieeetr.bst
-Database file #1: bibfile.bib
+The style file: IEEEtranN.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: IEEEabrv.bib
+Database file #2: bibfile.bib
+-- IEEEtranN.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Natbib version - not for normal IEEE work.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--empty journal in jalabert2011optimization
 Warning--empty journal in heidt2000cubesat
 Warning--empty journal in lima2000comparison
 Warning--empty journal in hamilton1844lxxviii
 Warning--empty journal in cayley1845xiii
-Warning--can't use both volume and number fields in shoemake1985animating
 Warning--empty journal in lindbladstar
-Warning--empty year in lindbladstar
-Warning--empty author in samaan2005recursive
-Warning--empty journal in samaan2005recursive
-Warning--empty year in samaan2005recursive
 Warning--empty journal in markley1999estimate
 Warning--empty journal in juang2003efficient
-Warning--empty chapter and pages in RIS_0
-You've used 48 entries,
-            1876 wiz_defined-function locations,
-            747 strings with 11224 characters,
-and the built_in function-call counts, 12023 in all, are:
-= -- 1211
-> -- 392
-< -- 0
-+ -- 153
-- -- 105
-* -- 824
-:= -- 1672
-add.period$ -- 49
-call.type$ -- 48
-change.case$ -- 47
-chr.to.int$ -- 0
-cite$ -- 62
-duplicate$ -- 651
-empty$ -- 1200
-format.name$ -- 105
-if$ -- 2931
-int.to.chr$ -- 0
+
+Done.
+You've used 47 entries,
+            4855 wiz_defined-function locations,
+            1736 strings with 26257 characters,
+and the built_in function-call counts, 39125 in all, are:
+= -- 3605
+> -- 1003
+< -- 306
++ -- 520
+- -- 218
+* -- 2124
+:= -- 6065
+add.period$ -- 96
+call.type$ -- 47
+change.case$ -- 95
+chr.to.int$ -- 656
+cite$ -- 55
+duplicate$ -- 2635
+empty$ -- 2766
+format.name$ -- 316
+if$ -- 8794
+int.to.chr$ -- 1
 int.to.str$ -- 48
-missing$ -- 45
-newline$ -- 151
-num.names$ -- 47
-pop$ -- 172
+missing$ -- 395
+newline$ -- 169
+num.names$ -- 141
+pop$ -- 968
 preamble$ -- 1
-purify$ -- 0
-quote$ -- 0
-skip$ -- 419
+purify$ -- 47
+quote$ -- 2
+skip$ -- 2958
 stack$ -- 0
-substring$ -- 807
-swap$ -- 241
-text.length$ -- 0
+substring$ -- 1584
+swap$ -- 1920
+text.length$ -- 71
 text.prefix$ -- 0
-top$ -- 0
-type$ -- 0
-warning$ -- 14
-while$ -- 126
-width$ -- 50
-write$ -- 452
-(There were 14 warnings)
+top$ -- 6
+type$ -- 742
+warning$ -- 8
+while$ -- 199
+width$ -- 0
+write$ -- 564
+(There were 8 warnings)

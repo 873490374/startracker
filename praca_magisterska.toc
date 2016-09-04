@@ -2,54 +2,57 @@
 \select@language {english}
 \select@language {polish}
 \select@language {english}
-\contentsline {section}{\numberline {1}Introduction}{7}
-\contentsline {subsection}{\numberline {1.1}Motivation}{7}
-\contentsline {subsection}{\numberline {1.2}Outline of thesis}{7}
-\contentsline {subsection}{\numberline {1.3}Cubesat}{8}
-\contentsline {subsection}{\numberline {1.4}Means of attitude determination}{9}
-\contentsline {subsubsection}{\numberline {1.4.1}Megnetometers}{9}
-\contentsline {subsubsection}{\numberline {1.4.2}Sun sensors}{9}
-\contentsline {subsubsection}{\numberline {1.4.3}Earth sensors}{9}
-\contentsline {subsubsection}{\numberline {1.4.4}GPS}{9}
-\contentsline {subsubsection}{\numberline {1.4.5}Star trackers}{9}
-\contentsline {subsubsection}{\numberline {1.4.6}Conclusons}{9}
-\contentsline {subsection}{\numberline {1.5}On-board computer}{10}
-\contentsline {section}{\numberline {2}Preliminaries}{11}
-\contentsline {subsection}{\numberline {2.1}Coordinate frames}{11}
-\contentsline {subsubsection}{\numberline {2.1.1}ECI frame}{11}
-\contentsline {subsubsection}{\numberline {2.1.2}ECEF frame}{11}
-\contentsline {subsubsection}{\numberline {2.1.3}NED frame}{12}
-\contentsline {subsubsection}{\numberline {2.1.4}BODY frame}{12}
-\contentsline {subsection}{\numberline {2.2}Space environment}{13}
-\contentsline {subsection}{\numberline {2.3}Attitude representations}{13}
-\contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{13}
-\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{14}
-\contentsline {subsubsection}{\numberline {2.3.3}Advantages of quaternions}{15}
-\contentsline {section}{\numberline {3}Star-tracker program}{16}
-\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{17}
-\contentsline {subsection}{\numberline {3.2}Star identification}{19}
-\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{20}
-\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{21}
-\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{21}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{24}
-\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{24}
-\contentsline {subsubsection}{\numberline {3.2.6}Voting}{24}
-\contentsline {subsubsection}{\numberline {3.2.7}Grid}{24}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{25}
-\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{25}
-\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{25}
-\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{25}
-\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{25}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{26}
-\contentsline {subsubsection}{\numberline {3.4.1}q-method}{27}
-\contentsline {subsubsection}{\numberline {3.4.2}Wahba's problem}{28}
-\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{29}
-\contentsline {subsubsection}{\numberline {3.4.4}TRIAD}{29}
-\contentsline {subsubsection}{\numberline {3.4.5}The Fast Optimal Attitude Matrix}{29}
-\contentsline {subsubsection}{\numberline {3.4.6}DCM (Direction Cosine Matrix)}{29}
-\contentsline {section}{\numberline {4}Prototype}{31}
-\contentsline {section}{\numberline {5}Complete program}{32}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{33}
-\contentsline {section}{References}{34}
-\contentsline {section}{List of Tables}{38}
-\contentsline {section}{List of Figures}{39}
+\contentsline {section}{Acronyms}{6}
+\contentsline {section}{List of Symbols}{7}
+\contentsline {section}{\numberline {1}Introduction}{8}
+\contentsline {subsection}{\numberline {1.1}Motivation}{8}
+\contentsline {subsection}{\numberline {1.2}Outline of thesis}{9}
+\contentsline {subsection}{\numberline {1.3}Cubesat}{9}
+\contentsline {subsection}{\numberline {1.4}Means of attitude determination}{10}
+\contentsline {subsubsection}{\numberline {1.4.1}Inertial Meaurement Unit}{11}
+\contentsline {subsubsection}{\numberline {1.4.2}Sun Sensors}{11}
+\contentsline {subsubsection}{\numberline {1.4.3}Star Sensors}{11}
+\contentsline {subsubsection}{\numberline {1.4.4}Horizon Sensors}{11}
+\contentsline {subsubsection}{\numberline {1.4.5}Magnetometer}{11}
+\contentsline {subsubsection}{\numberline {1.4.6}GPS - maybe}{11}
+\contentsline {subsubsection}{\numberline {1.4.7}Conclusons}{11}
+\contentsline {subsection}{\numberline {1.5}On-board computer}{11}
+\contentsline {section}{\numberline {2}Preliminaries}{13}
+\contentsline {subsection}{\numberline {2.1}Coordinate frames}{13}
+\contentsline {subsubsection}{\numberline {2.1.1}ECI frame}{13}
+\contentsline {subsubsection}{\numberline {2.1.2}ECEF frame}{13}
+\contentsline {subsubsection}{\numberline {2.1.3}NED frame}{14}
+\contentsline {subsubsection}{\numberline {2.1.4}BODY frame}{14}
+\contentsline {subsection}{\numberline {2.2}Space environment}{15}
+\contentsline {subsection}{\numberline {2.3}Attitude representations}{15}
+\contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{15}
+\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{16}
+\contentsline {subsubsection}{\numberline {2.3.3}Advantages of quaternions}{17}
+\contentsline {section}{\numberline {3}Star-tracker program}{19}
+\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{20}
+\contentsline {subsection}{\numberline {3.2}Star identification}{22}
+\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{23}
+\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{24}
+\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{25}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{27}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{27}
+\contentsline {subsubsection}{\numberline {3.2.6}Voting}{27}
+\contentsline {subsubsection}{\numberline {3.2.7}Grid}{27}
+\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{28}
+\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{28}
+\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{28}
+\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{28}
+\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{28}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{29}
+\contentsline {subsubsection}{\numberline {3.4.1}q-method}{30}
+\contentsline {subsubsection}{\numberline {3.4.2}Wahba's problem}{31}
+\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{32}
+\contentsline {subsubsection}{\numberline {3.4.4}TRIAD}{32}
+\contentsline {subsubsection}{\numberline {3.4.5}The Fast Optimal Attitude Matrix}{32}
+\contentsline {subsubsection}{\numberline {3.4.6}DCM (Direction Cosine Matrix)}{32}
+\contentsline {section}{\numberline {4}Prototype}{34}
+\contentsline {section}{\numberline {5}Complete program}{35}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{36}
+\contentsline {section}{References}{37}
+\contentsline {section}{List of Tables}{41}
+\contentsline {section}{List of Figures}{42}
