@@ -32,7 +32,7 @@ class KVector:
         self.calculate_k_vector()
 
     """
-    >>> sorted(student_objects, key=lambda student: student.age)   # sort by age
+    >>> sorted(student_objects, key=lambda student: student.age)  # sort by age
     [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
     """
 
@@ -58,8 +58,6 @@ class KVector:
 
         k_start = self.k_vector[j_b] + 1
         k_end = self.k_vector[j_t]
-        print(k_start)
-        print(k_end)
         answer = []
         i = k_start
         while i <= k_end:
@@ -74,11 +72,3 @@ class KVector:
     def calculate_j_t(self, y_b):
         j_t = math.ceil((y_b - self.q) / self.m)
         return j_t
-
-y_vector = [0.7, 0.9, 0.51, 0.123, 0.62, 0.562, 0.746, 0.32, 0.86, 0.561]
-
-kvector = KVector()
-kvector.make_kvector(y_vector)
-print(kvector.k_vector)
-print(kvector.s_vector)
-print(kvector.find_in_kvector(0.32, 0.51))
