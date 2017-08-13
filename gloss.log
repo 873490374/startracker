@@ -1,14 +1,14 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.28)  4 SEP 2016 19:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.7)  12 AUG 2017 14:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **gloss.tex
 (./gloss.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 6 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 15 language(s) loaded.
 ! Undefined control sequence.
 l.6 \newacronym
-               {egr}{EGR}{Exhaust Gas Recirculation}
+               {leo}{LEO}{Low Earth Orbit}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -22,172 +22,224 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.6 \newacronym{e
-                 gr}{EGR}{Exhaust Gas Recirculation}
+l.6 \newacronym{l
+                 eo}{LEO}{Low Earth Orbit}
 You're in trouble here.  Try typing  <return>  to proceed.
 If that doesn't work, type  X <return>  to quit.
 
-Missing character: There is no e in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no G in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no E in font nullfont!
-Missing character: There is no x in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no G in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no u in font nullfont!
 Missing character: There is no l in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
+Missing character: There is no e in font nullfont!
 Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no O in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no w in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no O in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
 ! Undefined control sequence.
 l.7 \newacronym
-               {doc}{DOC}{Diesel Oxidation Catalyst}
+               {adcs}{ADCS}{Attitude Control and Determination System}
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
+Missing character: There is no a in font nullfont!
 Missing character: There is no d in font nullfont!
-Missing character: There is no o in font nullfont!
 Missing character: There is no c in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no A in font nullfont!
 Missing character: There is no D in font nullfont!
-Missing character: There is no O in font nullfont!
 Missing character: There is no C in font nullfont!
-Missing character: There is no D in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no O in font nullfont!
-Missing character: There is no x in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no a in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no A in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no C in font nullfont!
-Missing character: There is no a in font nullfont!
 Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
-
-Overfull \hbox (20.0pt too wide) in paragraph at lines 6--9
-[]
- []
-
-! Undefined control sequence.
-l.10 \newglossaryentry
-                      {phi}{type=symbols, name=$\phi$, sort=sigma,descriptio...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-! LaTeX Error: Missing \begin{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.10 \newglossaryentry{p
-                        hi}{type=symbols, name=$\phi$, sort=sigma,descriptio...
-
-You're in trouble here.  Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-Missing character: There is no p in font nullfont!
-Missing character: There is no h in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no b in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no = in font nullfont!
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 10.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 10.
-Missing character: There is no , in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no E in font nullfont!
 Missing character: There is no u in font nullfont!
-Missing character: There is no l in font nullfont!
+Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no a in font nullfont!
+Missing character: There is no C in font nullfont!
+Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no , in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no D in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
+! Undefined control sequence.
+l.8 \newacronym
+               {lis}{LIS}{Lost-In-Space}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 Missing character: There is no l in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no L in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+! Undefined control sequence.
+l.9 \newacronym
+               {gps}{GPS}{Global Positioning System}
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no g in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no G in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no G in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no P in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no S in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no m in font nullfont!
 ! Undefined control sequence.
 l.11 \newglossaryentry
-                      {theta}{type=symbols, name=$\theta$, sort=sigma,descri...
+                      {phi}{type=symbols, name=$\phi$, sort=phi, description...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no p in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no y in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no m in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no = in font nullfont!
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 11.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 11.
+Missing character: There is no , in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no i in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no E in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+! Undefined control sequence.
+l.12 \newglossaryentry
+                      {theta}{type=symbols, name=$\theta$, sort=theta, descr...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -223,10 +275,10 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no h in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no d in font nullfont!
@@ -258,8 +310,8 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no c in font nullfont!
 Missing character: There is no h in font nullfont!
 ! Undefined control sequence.
-l.12 \newglossaryentry
-                      {psi}{type=symbols, name=$\psi$, sort=sigma,descriptio...
+l.13 \newglossaryentry
+                      {psi}{type=symbols, name=$\psi$, sort=psi, description...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -293,11 +345,9 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no = in font nullfont!
+Missing character: There is no p in font nullfont!
 Missing character: There is no s in font nullfont!
 Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
 Missing character: There is no , in font nullfont!
 Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
@@ -326,7 +376,7 @@ Missing character: There is no y in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no w in font nullfont!
 ! Undefined control sequence.
-l.13 \newglossaryentry
+l.14 \newglossaryentry
                       {euler_rotation_matrix}{type=symbols, name=$\bm{R}(\cd...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -342,13 +392,13 @@ Missing character: There is no r in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.13 \newglossaryentry{euler_
+l.14 \newglossaryentry{euler_
                              rotation_matrix}{type=symbols, name=$\bm{R}(\cd...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.13 \newglossaryentry{euler_rotation_matrix}
+l.14 \newglossaryentry{euler_rotation_matrix}
                                              {type=symbols, name=$\bm{R}(\cd...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -359,8 +409,8 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.13 ...uler_rotation_matrix}{type=symbols, name=$
-                                                  \bm{R}(\cdot)$, sort=sigma...
+l.14 ...uler_rotation_matrix}{type=symbols, name=$
+                                                  \bm{R}(\cdot)$, sort=euler...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -368,8 +418,8 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.13 ...r_rotation_matrix}{type=symbols, name=$\bm
-                                                  {R}(\cdot)$, sort=sigma,de...
+l.14 ...r_rotation_matrix}{type=symbols, name=$\bm
+                                                  {R}(\cdot)$, sort=euler_ro...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -381,8 +431,8 @@ Missing character: There is no ( in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.13 ...n_matrix}{type=symbols, name=$\bm{R}(\cdot
-                                                  )$, sort=sigma,description...
+l.14 ...n_matrix}{type=symbols, name=$\bm{R}(\cdot
+                                                  )$, sort=euler_rotation_ma...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -392,107 +442,21 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no x in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no E in font nullfont!
 Missing character: There is no u in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no r in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-! Undefined control sequence.
-l.14 \newglossaryentry
-                      {unit_quaterion}{type=symbols, name=$\bm{q}$, sort=sig...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.14 \newglossaryentry{unit_
-                            quaterion}{type=symbols, name=$\bm{q}$, sort=sig...
+l.14 ...symbols, name=$\bm{R}(\cdot)$, sort=euler_
+                                                  rotation_matrix, descripti...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.14 \newglossaryentry{unit_quaterion}
-                                      {type=symbols, name=$\bm{q}$, sort=sig...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.14 ...entry{unit_quaterion}{type=symbols, name=$
-                                                  \bm{q}$, sort=sigma,descri...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Undefined control sequence.
-l.14 ...ry{unit_quaterion}{type=symbols, name=$\bm
-                                                  {q}$, sort=sigma,descripti...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no q in font nullfont!
-! Extra }, or forgotten $.
-l.14 ... sort=sigma,description={Unit quaternion}}
+l.14 ...tion={Rotation matrix using Euler angles}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -502,6 +466,45 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.15 \newglossaryentry
+                      {unit_quaterion}{type=symbols, name=$\bm{q}$, sort=uni...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.15 ...entry{unit_quaterion}{type=symbols, name=$
+                                                  \bm{q}$, sort=unit_quateri...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Undefined control sequence.
+l.15 ...ry{unit_quaterion}{type=symbols, name=$\bm
+                                                  {q}$, sort=unit_quaterion,...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no q in font nullfont!
+! Extra }, or forgotten $.
+l.15 ..._quaterion, description={Unit quaternion}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Undefined control sequence.
+l.16 \newglossaryentry
                       {scalar_quaternion_part}{type=symbols, name=$q_0$, sor...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -512,8 +515,8 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.15 ...alar_quaternion_part}{type=symbols, name=$
-                                                  q_0$, sort=sigma,descripti...
+l.16 ...alar_quaternion_part}{type=symbols, name=$
+                                                  q_0$, sort=sigma, descript...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -524,8 +527,8 @@ Missing character: There is no q in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.15 ...ar_quaternion_part}{type=symbols, name=$q_
-                                                  0$, sort=sigma,description...
+l.16 ...ar_quaternion_part}{type=symbols, name=$q_
+                                                  0$, sort=sigma, descriptio...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -558,117 +561,6 @@ Missing character: There is no c in font nullfont!
 Missing character: There is no a in font nullfont!
 Missing character: There is no l in font nullfont!
 Missing character: There is no a in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no q in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-! Undefined control sequence.
-l.16 \newglossaryentry
-                      {vector_quaternion_part}{type=symbols, name=$\bm{q}_{v...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no v in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no r in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.16 \newglossaryentry{vector_
-                              quaternion_part}{type=symbols, name=$\bm{q}_{v...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-l.16 \newglossaryentry{vector_quaternion_part}
-                                              {type=symbols, name=$\bm{q}_{v...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.16 ...ctor_quaternion_part}{type=symbols, name=$
-                                                  \bm{q}_{vec}$, sort=sigma,...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Undefined control sequence.
-l.16 ...r_quaternion_part}{type=symbols, name=$\bm
-                                                  {q}_{vec}$, sort=sigma,des...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no q in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.16 ...aternion_part}{type=symbols, name=$\bm{q}_
-                                                  {vec}$, sort=sigma,descrip...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-Missing character: There is no , in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no V in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no p in font nullfont!
 Missing character: There is no a in font nullfont!
@@ -692,34 +584,30 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
 ! Undefined control sequence.
 l.17 \newglossaryentry
-                      {quaternion_matrix}{type=symbols, name=$\bm{Q}$, sort=...
+                      {vector_quaternion_part}{type=symbols, name=$\bm{q}_{v...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no q in font nullfont!
-Missing character: There is no u in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
+Missing character: There is no v in font nullfont!
 Missing character: There is no e in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no i in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no t in font nullfont!
 Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
+Missing character: There is no r in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.17 \newglossaryentry{quaternion_
-                                  matrix}{type=symbols, name=$\bm{Q}$, sort=...
+l.17 \newglossaryentry{vector_
+                              quaternion_part}{type=symbols, name=$\bm{q}_{v...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.17 \newglossaryentry{quaternion_matrix}
-                                         {type=symbols, name=$\bm{Q}$, sort=...
+l.17 \newglossaryentry{vector_quaternion_part}
+                                              {type=symbols, name=$\bm{q}_{v...
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
 you forgot something else, as in `\hbox{$x}'. In such cases
@@ -729,8 +617,8 @@ deleted material, e.g., by typing `I$}'.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.17 ...ry{quaternion_matrix}{type=symbols, name=$
-                                                  \bm{Q}$, sort=sigma,descri...
+l.17 ...ctor_quaternion_part}{type=symbols, name=$
+                                                  \bm{q}_{vec}$, sort=scalar...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -738,17 +626,45 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.17 ...quaternion_matrix}{type=symbols, name=$\bm
-                                                  {Q}$, sort=sigma,descripti...
+l.17 ...r_quaternion_part}{type=symbols, name=$\bm
+                                                  {q}_{vec}$, sort=scalar_qu...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no Q in font nullfont!
+Missing character: There is no q in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.17 ...aternion_part}{type=symbols, name=$\bm{q}_
+                                                  {vec}$, sort=scalar_quater...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+Missing character: There is no , in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no t in font nullfont!
+Missing character: There is no = in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no r in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.17 ...symbols, name=$\bm{q}_{vec}$, sort=scalar_
+                                                  quaternion_part, descripti...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
 ! Extra }, or forgotten $.
-l.17 ...ort=sigma,description={Quaternion matrix}}
+l.17 ...cription={Vector part of unit quaternion}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -758,7 +674,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.18 \newglossaryentry
-                      {general_euler_angle}{type=symbols, name=$v$, sort=sig...
+                      {quaternion_matrix}{type=symbols, name=$\bm{Q}$, sort=...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -768,17 +684,26 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.18 ...{general_euler_angle}{type=symbols, name=$
-                                                  v$, sort=sigma,description...
+l.18 ...ry{quaternion_matrix}{type=symbols, name=$
+                                                  \bm{Q}$, sort=quaternion_m...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-Missing character: There is no v in font nullfont!
+! Undefined control sequence.
+l.18 ...quaternion_matrix}{type=symbols, name=$\bm
+                                                  {Q}$, sort=quaternion_matr...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no Q in font nullfont!
 ! Extra }, or forgotten $.
-l.18 ...t=sigma,description={General Euler angle}}
+l.18 ...n_matrix, description={Quaternion matrix}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -788,7 +713,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.19 \newglossaryentry
-                      {unit_vector}{type=symbols, name=$\bm{n}$, sort=sigma,...
+                      {general_euler_angle}{type=symbols, name=$v$, sort=gen...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -798,26 +723,17 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.19 ...aryentry{unit_vector}{type=symbols, name=$
-                                                  \bm{n}$, sort=sigma,descri...
+l.19 ...{general_euler_angle}{type=symbols, name=$
+                                                  v$, sort=general_euler_ang...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-! Undefined control sequence.
-l.19 ...entry{unit_vector}{type=symbols, name=$\bm
-                                                  {n}$, sort=sigma,descripti...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no n in font nullfont!
+Missing character: There is no v in font nullfont!
 ! Extra }, or forgotten $.
-l.19 ...n}$, sort=sigma,description={Unit vector}}
+l.19 ..._angle, description={General Euler angle}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -827,7 +743,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.20 \newglossaryentry
-                      {identity_matrix}{type=symbols, name=$\bm{I}$, sort=si...
+                      {unit_vector}{type=symbols, name=$\bm{n}$, sort=unit_v...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -837,8 +753,8 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.20 ...ntry{identity_matrix}{type=symbols, name=$
-                                                  \bm{I}$, sort=sigma,descri...
+l.20 ...aryentry{unit_vector}{type=symbols, name=$
+                                                  \bm{n}$, sort=unit_vector,...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -846,17 +762,17 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.20 ...y{identity_matrix}{type=symbols, name=$\bm
-                                                  {I}$, sort=sigma,descripti...
+l.20 ...entry{unit_vector}{type=symbols, name=$\bm
+                                                  {n}$, sort=unit_vector, de...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no I in font nullfont!
+Missing character: There is no n in font nullfont!
 ! Extra }, or forgotten $.
-l.20 ... sort=sigma,description={Identity matrix}}
+l.20 ...rt=unit_vector, description={Unit vector}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -866,6 +782,45 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.21 \newglossaryentry
+                      {identity_matrix}{type=symbols, name=$\bm{I}$, sort=id...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.21 ...ntry{identity_matrix}{type=symbols, name=$
+                                                  \bm{I}$, sort=identity_mat...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Undefined control sequence.
+l.21 ...y{identity_matrix}{type=symbols, name=$\bm
+                                                  {I}$, sort=identity_matrix...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no I in font nullfont!
+! Extra }, or forgotten $.
+l.21 ...ity_matrix, description={Identity matrix}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Undefined control sequence.
+l.22 \newglossaryentry
                       {skew_symmetrix_matrix}{type=symbols, name=$\bm{S}(\cd...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -876,8 +831,8 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.21 ...kew_symmetrix_matrix}{type=symbols, name=$
-                                                  \bm{S}(\cdot)$, sort=sigma...
+l.22 ...kew_symmetrix_matrix}{type=symbols, name=$
+                                                  \bm{S}(\cdot)$, sort=skew_...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -885,8 +840,8 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.21 ..._symmetrix_matrix}{type=symbols, name=$\bm
-                                                  {S}(\cdot)$, sort=sigma,de...
+l.22 ..._symmetrix_matrix}{type=symbols, name=$\bm
+                                                  {S}(\cdot)$, sort=skew_sym...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -898,8 +853,8 @@ Missing character: There is no ( in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.21 ...x_matrix}{type=symbols, name=$\bm{S}(\cdot
-                                                  )$, sort=sigma,description...
+l.22 ...x_matrix}{type=symbols, name=$\bm{S}(\cdot
+                                                  )$, sort=skew_symmetrix_ma...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -910,44 +865,28 @@ Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no = in font nullfont!
 Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no S in font nullfont!
 Missing character: There is no k in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no w in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no y in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no x in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.22 ...=symbols, name=$\bm{S}(\cdot)$, sort=skew_
+                                                  symmetrix_matrix, descript...
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+l.22 ...trix, description={Skew symmetric matrix}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
 ! Undefined control sequence.
-l.22 \newglossaryentry
+l.23 \newglossaryentry
                       {rotation_matrix}{type=symbols, name=$\bm{R}_n^b$, sor...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -955,36 +894,11 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no r in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-! Missing $ inserted.
-<inserted text> 
-                $
-l.22 \newglossaryentry{rotation_
-                                matrix}{type=symbols, name=$\bm{R}_n^b$, sor...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Extra }, or forgotten $.
-l.22 \newglossaryentry{rotation_matrix}
-                                       {type=symbols, name=$\bm{R}_n^b$, sor...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
 ! Missing } inserted.
 <inserted text> 
                 }
-l.22 ...ntry{rotation_matrix}{type=symbols, name=$
-                                                  \bm{R}_n^b$, sort=sigma,de...
+l.23 ...ntry{rotation_matrix}{type=symbols, name=$
+                                                  \bm{R}_n^b$, sort=rotation...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -992,8 +906,8 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.22 ...y{rotation_matrix}{type=symbols, name=$\bm
-                                                  {R}_n^b$, sort=sigma,descr...
+l.23 ...y{rotation_matrix}{type=symbols, name=$\bm
+                                                  {R}_n^b$, sort=rotation_ma...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1004,8 +918,8 @@ Missing character: There is no R in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.22 ...tation_matrix}{type=symbols, name=$\bm{R}_
-                                                  n^b$, sort=sigma,descripti...
+l.23 ...tation_matrix}{type=symbols, name=$\bm{R}_
+                                                  n^b$, sort=rotation_matrix...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
@@ -1015,51 +929,6 @@ Missing character: There is no o in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no t in font nullfont!
 Missing character: There is no = in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no , in font nullfont!
-Missing character: There is no d in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no c in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no = in font nullfont!
-Missing character: There is no R in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no x in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no p in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no i in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no g in font nullfont!
-Missing character: There is no a in font nullfont!
 Missing character: There is no r in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no t in font nullfont!
@@ -1068,68 +937,16 @@ Missing character: There is no t in font nullfont!
 Missing character: There is no i in font nullfont!
 Missing character: There is no o in font nullfont!
 Missing character: There is no n in font nullfont!
-Missing character: There is no f in font nullfont!
-Missing character: There is no r in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no m in font nullfont!
-Missing character: There is no n in font nullfont!
-Missing character: There is no t in font nullfont!
-Missing character: There is no o in font nullfont!
-Missing character: There is no b in font nullfont!
-! Undefined control sequence.
-l.23 \newglossaryentry
-                      {least_squares_estimate_rotation_matrix}{type=symbols,...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no l in font nullfont!
-Missing character: There is no e in font nullfont!
-Missing character: There is no a in font nullfont!
-Missing character: There is no s in font nullfont!
-Missing character: There is no t in font nullfont!
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.23 \newglossaryentry{least_
-                             squares_estimate_rotation_matrix}{type=symbols,...
+l.23 ...symbols, name=$\bm{R}_n^b$, sort=rotation_
+                                                  matrix, description={Rotat...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 ! Extra }, or forgotten $.
-l.23 ...ry{least_squares_estimate_rotation_matrix}
-                                                  {type=symbols, name=$\bm{M...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.23 ...mate_rotation_matrix}{type=symbols, name=$
-                                                  \bm{M}$, sort=sigma,descri...
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Undefined control sequence.
-l.23 ...e_rotation_matrix}{type=symbols, name=$\bm
-                                                  {M}$, sort=sigma,descripti...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-Missing character: There is no M in font nullfont!
-! Extra }, or forgotten $.
-l.23 ...east squares estimate of rotation matrix}}
+l.23 ...trix representing a rotation from n to b}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1139,7 +956,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.24 \newglossaryentry
-                      {unit_vector_ned}{type=symbols, name=$\bm{r}$}, sort=s...
+                      {least_squares_estimate_rotation_matrix}{type=symbols,...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1149,8 +966,8 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.24 ...ntry{unit_vector_ned}{type=symbols, name=$
-                                                  \bm{r}$}, sort=sigma,descr...
+l.24 ...mate_rotation_matrix}{type=symbols, name=$
+                                                  \bm{M}$, sort=least_square...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1158,37 +975,17 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.24 ...y{unit_vector_ned}{type=symbols, name=$\bm
-                                                  {r}$}, sort=sigma,descript...
+l.24 ...e_rotation_matrix}{type=symbols, name=$\bm
+                                                  {M}$, sort=least_squares_e...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-Missing character: There is no r in font nullfont!
+Missing character: There is no M in font nullfont!
 ! Extra }, or forgotten $.
-<recently read> }
-                 
-l.24 ...t_vector_ned}{type=symbols, name=$\bm{r}$}
-                                                  , sort=sigma,description=K...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-l.24 ... directional unit vector in the NED frame}
-                                                  }
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-l.24 ...directional unit vector in the NED frame}}
+l.24 ...east squares estimate of rotation matrix}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1198,7 +995,7 @@ deleted material, e.g., by typing `I$}'.
 
 ! Undefined control sequence.
 l.25 \newglossaryentry
-                      {unit_vector_body}{type=symbols, name=$\bm{b}$}, sort=...
+                      {unit_vector_ned}{type=symbols, name=$\bm{r}$, sort=un...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1208,8 +1005,8 @@ and I'll forget about whatever was undefined.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.25 ...try{unit_vector_body}{type=symbols, name=$
-                                                  \bm{b}$}, sort=sigma,descr...
+l.25 ...ntry{unit_vector_ned}{type=symbols, name=$
+                                                  \bm{r}$, sort=unit_vector_...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
 With luck, this will get me unwedged. But if you
@@ -1217,8 +1014,47 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 ! Undefined control sequence.
-l.25 ...{unit_vector_body}{type=symbols, name=$\bm
-                                                  {b}$}, sort=sigma,descript...
+l.25 ...y{unit_vector_ned}{type=symbols, name=$\bm
+                                                  {r}$, sort=unit_vector_ned...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+Missing character: There is no r in font nullfont!
+! Extra }, or forgotten $.
+l.25 ...directional unit vector in the NED frame}}
+                                                  
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Undefined control sequence.
+l.26 \newglossaryentry
+                      {unit_vector_body}{type=symbols, name=$\bm{b}$, sort=u...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.26 ...try{unit_vector_body}{type=symbols, name=$
+                                                  \bm{b}$, sort=unit_vector_...
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Undefined control sequence.
+l.26 ...{unit_vector_body}{type=symbols, name=$\bm
+                                                  {b}$, sort=unit_vector_bod...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
 misspelled it (e.g., `\hobx'), type `I' and the correct
@@ -1227,27 +1063,7 @@ and I'll forget about whatever was undefined.
 
 Missing character: There is no b in font nullfont!
 ! Extra }, or forgotten $.
-<recently read> }
-                 
-l.25 ..._vector_body}{type=symbols, name=$\bm{b}$}
-                                                  , sort=sigma,description=K...
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-l.25 ...directional unit vector in the BODY frame}
-                                                  }
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-! Extra }, or forgotten $.
-l.25 ...irectional unit vector in the BODY frame}}
+l.26 ...irectional unit vector in the BODY frame}}
                                                   
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1258,140 +1074,160 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.26 
+l.27 
      
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 
-Overfull \hbox (20.0pt too wide) in paragraph at lines 10--26
+Overfull \hbox (20.0pt too wide) in paragraph at lines 6--27
 []
  []
 
 
-Overfull \hbox (5.95834pt too wide) in paragraph at lines 10--26
+Overfull \hbox (5.95834pt too wide) in paragraph at lines 6--27
 \OML/cmm/m/it/10 ^^^$
  []
 
 
-Overfull \hbox (4.97223pt too wide) in paragraph at lines 10--26
+Overfull \hbox (4.97223pt too wide) in paragraph at lines 6--27
 \OML/cmm/m/it/10 ^^R$
  []
 
 
-Overfull \hbox (6.8727pt too wide) in paragraph at lines 10--26
+Overfull \hbox (6.8727pt too wide) in paragraph at lines 6--27
 \OML/cmm/m/it/10  $
  []
 
 
-Overfull \hbox (180.54208pt too wide) in paragraph at lines 10--26
+Overfull \hbox (180.54208pt too wide) in paragraph at lines 6--27
 []\OML/cmm/m/it/10 otation[]atrix[]$$\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (183.0676pt too wide) in paragraph at lines 10--26
-[]\OML/cmm/m/it/10 uaterion[]$$; sort \OT1/cmr/m/n/10 =
+Overfull \hbox (131.56888pt too wide) in paragraph at lines 6--27
+[]\OML/cmm/m/it/10 otation[]atrix; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (353.03604pt too wide) in paragraph at lines 6--27
+[][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (276.37245pt too wide) in paragraph at lines 10--26
+Overfull \hbox (126.60912pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 unit[]uaterion; description \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (276.37245pt too wide) in paragraph at lines 6--27
 [][][]$$[]$
  []
 
 
-Overfull \hbox (186.56258pt too wide) in paragraph at lines 10--26
+Overfull \hbox (186.56258pt too wide) in paragraph at lines 6--27
 []\OML/cmm/m/it/10 uaternion[]art[]$$[]$
  []
 
 
-Overfull \hbox (170.73222pt too wide) in paragraph at lines 10--26
-[]\OML/cmm/m/it/10 atrix[]$$; sort \OT1/cmr/m/n/10 =
+Overfull \hbox (132.13701pt too wide) in paragraph at lines 6--27
+[]\OML/cmm/m/it/10 uaternion[]art; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (303.86087pt too wide) in paragraph at lines 10--26
+Overfull \hbox (347.71396pt too wide) in paragraph at lines 6--27
 [][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (144.67775pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 quaternion[]atrix; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (273.05107pt too wide) in paragraph at lines 10--26
+Overfull \hbox (303.86087pt too wide) in paragraph at lines 6--27
 [][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (144.72249pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 general[]uler[]ngle; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (254.02518pt too wide) in paragraph at lines 10--26
+Overfull \hbox (273.05107pt too wide) in paragraph at lines 6--27
 [][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (110.25803pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 unit[]ector; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (284.40077pt too wide) in paragraph at lines 10--26
+Overfull \hbox (254.02518pt too wide) in paragraph at lines 6--27
+[][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (130.36935pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 identity[]atrix; description \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (284.40077pt too wide) in paragraph at lines 6--27
 [][][]$$\OMS/cmsy/m/n/10 ^^A\OT1/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (143.24042pt too wide) in paragraph at lines 10--26
-[]\OML/cmm/m/it/10 atrix[]$$[]$
+Overfull \hbox (144.80391pt too wide) in paragraph at lines 6--27
+[]\OML/cmm/m/it/10 ymmetrix[]atrix; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (279.42262pt too wide) in paragraph at lines 10--26
-[]\OML/cmm/m/it/10 quares[]stimate[]otation[]atrix[]$$; sort \OT1/cmr/m/n/10 =
+Overfull \hbox (283.95923pt too wide) in paragraph at lines 6--27
+[][][]$$[]$
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (95.49057pt too wide) in paragraph at lines 6--27
+[]\OML/cmm/m/it/10 atrix; description \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (378.40149pt too wide) in paragraph at lines 10--26
+Overfull \hbox (514.11342pt too wide) in paragraph at lines 6--27
 [][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
- []
-
-
-Overfull \hbox (412.21309pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 KnowndirectionalunitvectorintheNEDframe[][]$$; sort \OT1/cmr/m
+Overfull \hbox (225.60231pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 least[]quares[]stimate[]otation[]atrix; description \OT1/cmr/m
 /n/10 =
  []
 
 
-Overfull \hbox (92.3748pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 sigma; description \OT1/cmr/m/n/10 =
+Overfull \hbox (378.40149pt too wide) in paragraph at lines 6--27
+[][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
  []
 
 
-Overfull \hbox (214.04214pt too wide) in paragraph at lines 10--26
-\OML/cmm/m/it/10 KnowndirectionalunitvectorintheBODYframe$ 
+Overfull \hbox (125.84026pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 unit[]ector[]ed; description \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (412.21309pt too wide) in paragraph at lines 6--27
+[][][]$$\OML/cmm/m/it/10 ; sort \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (129.86615pt too wide) in paragraph at lines 6--27
+\OML/cmm/m/it/10 unit[]ector[]ody; description \OT1/cmr/m/n/10 =
+ []
+
+
+Overfull \hbox (214.04214pt too wide) in paragraph at lines 6--27
+[]$ 
  []
 
 )
@@ -1402,11 +1238,11 @@ Overfull \hbox (214.04214pt too wide) in paragraph at lines 10--26
 
  
 Here is how much of TeX's memory you used:
- 7 strings out of 494877
- 154 string characters out of 6179086
- 47758 words of memory out of 5000000
- 3402 multiletter control sequences out of 15000+600000
+ 7 strings out of 494426
+ 154 string characters out of 6170719
+ 50010 words of memory out of 5000000
+ 3532 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
- 56 hyphenation exceptions out of 8191
- 18i,2n,12p,166b,58s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 306 hyphenation exceptions out of 8191
+ 18i,2n,12p,200b,58s stack positions out of 5000i,500n,10000p,200000b,80000s
 !  ==> Fatal error occurred, no output PDF file produced!

@@ -16,6 +16,7 @@
 \usepackage{amsfonts}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
+\usepackage{subfig}
 \graphicspath{ {images/} }
 \usepackage{amssymb}
 
@@ -111,19 +112,19 @@
 	prof. dr hab. inż. Ryszard Romaniuk\par
 	\end{flushright}
 	\vspace{6cm}
-	{\large Warszawa 2016\par}
+	{\large Warszawa 2017\par}
 \end{titlepage}
 
 \pagenumbering{arabic}
 \setcounter{page}{2}
 \newpage
 \begin{abstract}
-Last years directed space industry towards small satellites. Many countries which did not have possibility to enter this branch of industry before now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish sulition of determination of satellite attitude towards Earth. Work contains also description of individual parts and variants of solutions connected with star-tracker.
+Last years directed space industry towards small satellites. Many countries which did not have possibility to enter this branch of industry before now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude towards Earth. Work contains also description of individual parts and variants of solutions connected with star-tracker.
 \end{abstract}
 \newpage
 \begin{otherlanguage}{polish}
 \begin{abstract}
-Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tą gałąź przemysłu, teraz tworzą własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity względem ziemi. Praca zawiera też opis poszczególnych części i wariantów rozwiazania problemów związanych ze star-trackerem.
+Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzą własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity względem ziemi. Praca zawiera też opis poszczególnych części i wariantów rozwiazania problemów związanych ze star-trackerem.
 \end{abstract}
 \end{otherlanguage}
 \newpage
@@ -157,11 +158,11 @@ Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajó
 
 
 \section{Introduction}
-Stars were used for navigation already ages ago. Together with technological development, spread of sailing and seafaring people started to use more advanced tools helping to more precisely estimate position of ships on sea. In XVIII century new tool was created, names sextant. This device helped to quite precisely calculate angle between the line ship-horizon and ship-star, what let to estimate position.
+Stars were used for navigation already ages ago. Together with technological development, spread of sailing and seafaring people started to use more advanced tools helping to more precisely estimate position of ships on sea. In XVIII century new tool was created, named sextant. This device helped to quite precisely calculate angle between the line ship-horizon and ship-star, what let to estimate position.
 
-Nowadays, hundreds of years later, thanks to other technologies like for example Global Positioning System (GPS) stars are not necessary anymore for traveling. As it is commonly known, GPS technology is based on satellites, and today those satellites need stars for determinating their attitude towards Earth.
+Nowadays, hundreds of years later, thanks to other technologies like for example Global Positioning System (GPS) stars are not necessary any more for travelling. As it is commonly known, GPS technology is based on satellites, and today those satellites need stars for determining their attitude towards Earth.
 
-With the miniaturization of electronics and battery new type of satellites was invented: CubeSats microsatellite. They have now greater sensoric and processing power possibilities, previously found only in larger satellites. However CubSats are still behind in terms of attitude determination.
+With the miniaturization of electronics and batteries new type of satellites was invented: CubeSat micro-satellite. They have now greater sensory and processing power possibilities, previously found only in larger satellites. However CubSats are still behind in terms of attitude determination.
 
 \subsection{Motivation}
 The goal of this work is to make fully operational star-tracker software, that could be used on Cubesat satellites. Such program could be used on space missions and could start Polish state-of-the-art technology in growing space technology sector.
@@ -171,45 +172,67 @@ There is already existing prototype of on-board computer for such CubeSat satell
 
 This thesis consists of several chapters. Here they are shortly summarized:\par
 \setlength{\parindent}{0cm}
-\textbf{Chapter 1} serves as introduction to this thesis and describest the motivation and goal of this work. It also describes the background of the topic.\par
+\textbf{Chapter 1} serves as introduction to this thesis and describes the motivation and goal of this work. It also describes the background of the topic.\par
 \textbf{Chapter 2} describes all the important foundations for the fully understanding given work.\par
 \textbf{Chapter 3} is the main part of this thesis. It describes how the star-tracker program works and goes through detailed comparison of different approaches.\par
 \textbf{Chapter 4} describes the created prototype of star-tracker in Python language.\par
 \textbf{Chapter 5} talks about the implementation of star-tracker on the existing prototype of on-board computer.\par
 \textbf{Chapter 6} describes how the finished program is performing.\par
-\textbf{Chapter 7} contains conclusons about this work and created star-tracker program.\par
+\textbf{Chapter 7} contains conclusions about this work and created star-tracker program.\par
 
 \setlength{\parindent}{1cm}
 
 \subsection{Cubesat}
 
-%https://en.wikipedia.org/wiki/CubeSat#cite_note-SpaceNews-2015-06-08-1
 
-In recent years there has been the development of microsatellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University\citet{heidt2000cubesat}, which is used for low-cost microsatellites. CubeSats are measured in units. Most are 1-U, 2-U and 3-U. CubeSat 1-U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2-U is 20x10x10 cm and can weigh up to 2.666 kg.
+In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University \cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg.
 
-The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites in orbit, and only CubeSats make up about half of the small satellites that are fired every year.
+The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites in orbit, and only CubeSats make up about half of the small satellites that are fired every year. Till now there were around 800 CubeSats launched. http://www.nanosats.eu/
+CYTAT DODAĆ
 
-TODO
-Zdjecie Cubesata
-CubeSat missions, goals, examples, what can they be used for?
+\begin{figure}[!htbp]
+  \centering
+  \subfloat[PW-SAT \citet{larson1992space}]{\includegraphics[width=0.4\textwidth]{pw-sat.jpg}\label{fig:pw-sat}}
+  \hfill
+  \subfloat[PW-SAT 2 \citet{larson1992space}]{\includegraphics[width=0.5\textwidth]{PW-Sat2_2016_16_MSwietlik.png}\label{fig:pw-sat2}}
+  \hfill
+  \subfloat[BRITE-PL (Lem, Heweliusz) \citet{larson1992space}]{\includegraphics[width=0.5\textwidth]{brite.jpg}\label{fig:brite}}
+  \caption{Example of Polish CubeSats.}
+\end{figure}
+
+
+There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc.
+https://pw-sat.pl/eksperyment/
+Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars.
+http://www.brite-pl.pl/pliki/nauka.html
+
+
+%pw-sat http://www.polskieradio.pl/7/129/Artykul/536883,Pierwszy-polski-satelita-polecial-w-kosmos
+%pw-sat2 https://pw-sat.pl/en/pw-sat2_2016_16_mswietlik/
+%brite-pl http://space.skyrocket.de/doc_sdat/brite-pl.htm
+%budowa cubesata http://futureplanets.blogspot.com/2013/10/
+
+Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and round 70,000 EUR for designing and building the satellite itself.
+https://www.pw.edu.pl/Studenci/Aktualnosci/Satelita-studencki-PW-Sat2-otrzyma-dofinansowanie
+
 
 \subsection{Means of attitude determination}
 
 Attitude of spaceships must be usually stabilised and controlled for various reasons.
-It is necessary for satellite antenna to be pointing towards Earth for the proper communication, to intelligently control the heat by using the effects of cooling and heating of the shadows and sunlight, as well as to navigate: maneuvers must be performed in the right directions.
+It is necessary for satellite antenna to be pointing towards Earth for the proper communication, to intelligently control the heat by using the effects of cooling and heating of the shadows and sunlight, as well as to navigate: manoeuvres must be performed in the right direction.
 
 Attitude is determined between two coordinate systems (where one is reference system) and defines by what angles the coordinate system connected with the researched object has to be shifted in order to cover the reference system.
-Devices such as planes and satellites have so called Attitude Determination and Control System (ADCS), which controls attitude of object relative to an intertial reference frame or another entity (the celestial shere, certain areas, the nearby objects, etc.).
+Devices such as planes and satellites have so called Attitude Determination and Control System (ADCS), which controls attitude of object relative to an inertial reference frame or another entity (the celestial sphere, certain areas, the nearby objects, etc.).
 
-Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionably winner here is the startracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
+Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionably winner here is the star-tracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
 
-\subsubsection{Inertial Meaurement Unit}
+\subsubsection{Inertial Measurement Unit}
 \subsubsection{Sun Sensors}
 \subsubsection{Star Sensors}
 \subsubsection{Horizon Sensors}
 \subsubsection{Magnetometer}
 \subsubsection{GPS - maybe}
-\subsubsection{Conclusons}
+\subsubsection{Conclusions}
 Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements of the proper calibration. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
 Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is by using star-trackers.
 
@@ -226,9 +249,9 @@ Inertial \newline Measurement Unit \newline (Gyros and Accelerometers) & Gyro dr
 \hline 
 Sun Sensors & Accuracy = 0.005 deg to 3 deg \\ 
 \hline 
-Star Sensors\newline (Scanners and Mappers) & Attitude accuraty = 1 arc sec to 1 arc min \newline 0.0003 deg to 0.01 deg \\ 
+Star Sensors\newline (Scanners and Mappers) & Attitude accuracy = 1 arc sec to 1 arc min \newline 0.0003 deg to 0.01 deg \\ 
 \hline 
-Horizon Sensors\newline -Scanner/Pipper\newline -Fixed Head (Static) & Attitude accuracuracy: \newline 0.1 deg to 1 deg (LEO) \newline $<0.1$ deg to 0.25 deg \\ 
+Horizon Sensors\newline -Scanner/Pipper\newline -Fixed Head (Static) & Attitude accuracy: \newline 0.1 deg to 1 deg (LEO) \newline $<0.1$ deg to 0.25 deg \\ 
 \hline 
 Magnetometer & Attitude accuracy = 0.5 deg to 3 deg \\ 
 \hline 
@@ -246,7 +269,7 @@ Earth sensors & 0.05\degree (GEO) \newline 0.1\degree (LEO) & Horizon uncertaint
 Sun sensors & 0.01\degree & Typical field of view +-30\degree \\ 
 Star sensors & 2 arc-sec & Typical field of view +-6\degree \\ 
 Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference. \\ 
-Directional \newline antennas & 0.01\degree to 0.5\degree & Typically 1 of the antenna \newline beamwidth \\
+Directional \newline antennas & 0.01\degree to 0.5\degree & Typically 1 of the antenna \newline beam width \\
 \hline
 \end{tabular} 
 \caption{Sensor Accuracy Ranges. Adapted from \citet{hall2003spacecraft}}
@@ -394,29 +417,29 @@ Due to the possible spin in the CubeSat, combined with the singularity problem f
 \newpage
 \section{Star-tracker program}
 
-Startracker program is designed to determine the attitude of the satellite with the image of the stars made by the satellite camera. Before the start of the mission star catalog is generated, based on the star catalogues obtained from the observatories on Earth and uploaded to the computer onboard the satellite. 
+Star-tracker program is designed to determine the attitude of the satellite with the image of the stars made by the satellite camera. Before the start of the mission star catalogue is generated, based on the star catalogues obtained from the observatories on Earth and uploaded to the computer on-board the satellite. 
 
-After the start, the satellite is released from rocket's tank in space and has no idea where it is. Then the startracker on the satellite enters into Lost-In-Space mode (LIS) and analyzes the current image of the stars of the camera, and then searches the corresponding result of stars in the on-board star catalogue database. If it finds an entry in the database, the satellite goes into tracking mode. This means each next calculation of the orientation of the satellite attitude is going to be based on a comparison of the current pictures of stars with the preceding ones. If it cannot find the result in the database, this action is repeated from time to time, until a match is found in the database and the program will go into tracking mode.
+After the start, the satellite is released from rocket's tank in space and has no idea where it is. Then the star-tracker on the satellite enters into Lost-In-Space mode (LIS) and analyses the current image of the stars of the camera, and then searches the corresponding result of stars in the on-board star catalogue database. If it finds an entry in the database, the satellite goes into tracking mode. This means each next calculation of the orientation of the satellite attitude is going to be based on a comparison of the current pictures of stars with the preceding ones. If it cannot find the result in the database, this action is repeated from time to time, until a match is found in the database and the program will go into tracking mode.
 
-Of course LIS does not happen only at the beginning of the satellite's flight, but can also result from many causes, eg. a satellite which is for a long time in the darkness may discharge its battery, and during the next entry into sunlit zone will turn on and look again its attitude. Another case is when satellite becomes lost, although once found the orientation and follow her. This happens, because the successive results are based on preceding ones and even the smallest mistake will grow until the satellite will not be able to correctly calculate their attitude. It may also happen that the satellite will rotate around its axis so fast that the program would not keep up with the processing the image and calculations. In this case, the corresponding other satellite's systems should take an action reducing his spin, but this is not part of this work. It is showed in simple conceptual diagram - Figure \ref{fig:startracker_conceptual_alg}.
+Of course LIS does not happen only at the beginning of the satellite's flight, but can also result from many causes, e.g. a satellite which is for a long time in the darkness may discharge its battery, and during the next entry into sunlit zone will turn on and look again its attitude. Another case is when satellite becomes lost, although once found the orientation and follow her. This happens, because the successive results are based on preceding ones and even the smallest mistake will grow until the satellite will not be able to correctly calculate their attitude. It may also happen that the satellite will rotate around its axis so fast that the program would not keep up with the processing the image and calculations. In this case, the corresponding other satellite's systems should take an action reducing his spin, but this is not part of this work. It is showed in simple conceptual diagram - Figure \ref{fig:startracker_conceptual_alg}.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.59]{startracker_eng.jpg}
 \centering
-\label{fig:startracker_conceptual_alg}
 \caption{Startracker conceptual algorithm diagram}
+\label{fig:startracker_conceptual_alg}
 \end{figure}
 
-Each part - LIS and tracking - consists of smaller algorithms. Lost-In-Space at the beginning of reading an image from the camera, thresholds the image. Thresholding is basicaly throwing away parts of the image which do not exceed the threshold brightness, making just bright enough stars taken into account. Next it calculates centroid (center of mass) of selected stars, identifies these stars using one of the possible methods (here Planar Triangle, described later) and searches the directory on-board technology (k-vector).
-If the database does not contain corresponding stars, the algorithm returns to the input state and starts analyzing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previuos image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyzes the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
+Each part - LIS and tracking - consists of smaller algorithms. Lost-In-Space at the beginning of reading an image from the camera, thresholds the image. Thresholding is basically throwing away parts of the image which do not exceed the threshold brightness, making just bright enough stars taken into account. Next it calculates centroid (center of mass) of selected stars, identifies these stars using one of the possible methods (here Planar Triangle, described later) and searches the directory on-board technology (k-vector).
+If the database does not contain corresponding stars, the algorithm returns to the input state and starts analysing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previous image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyses the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
 %converts the results of the Cartesian coordinates to the ecliptic (the stars in the directory board are created using images of the Earth, which results in other coordinates) 
 %does not transform coordinates, and
 
 not available\citet{ju2003overview}\par
 Generally star-tracker is divided into three main parts\citet{6187242}:
 \begin{itemize}
-\item recogiting stars on the image and converting the data into list of star vectors by calculating star centroids;
-\item identyfing which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
+\item recognising stars on the image and converting the data into list of star vectors by calculating star centroids;
+\item identifying which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
 \item estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 
@@ -426,14 +449,14 @@ Generally star-tracker is divided into three main parts\citet{6187242}:
 \citet{liebe2002accuracy}
 
 
-The whole algorithm star-tracker is based on a very precise calculations. For this reason, the calculation based on the position of the pixels themselves can give incorrect results. It is necessary to calculate the position of the stars with an accuracy exceeding pixels. This is why the calculation of the star centroids is necessary.
+The whole star-tracker program is based on very precise calculations. For this reason, the calculation based on the position of the pixels only can give incorrect results. It is necessary to calculate the position of stars with an accuracy exceeding pixels. This is why the calculation of the star centroids is necessary.
 
 The first step is the determination of stars' position in the plane of the image. If focused star pictures are recorded, the image of each star will fall only on one or two pixels, and most likely the saturate these pixels, resulting in a pixel level accuracy.
-Many startrackers are doing deliberately blurred images, in order to spread the photons on a larger number of pixels, which allows the algorithm for calculating the centroid in subpixel accuracy.
+Many star-trackers are doing deliberately blurred images, in order to spread the photons on a larger number of pixels, which allows the algorithm for calculating the centroid in sub-pixel accuracy.
 
-After the registration of such image, the centroid of the star is found similarly to the centroid weightpoints array, with a few differences. Firstly, instead of weight light intensity is used. Secondly, the intensity of light is usually normalized by the pixels around the star in order to filter out glare or noise. The resulting outcome is a series of two-dimensional coordinates on the photo plane with the starting point at the center of the image. This allows the system to the coordinates of the stars can be easily converted into unit vectors in the next step.
+After the registration of such image, the centroid of the star is found similarly to the centroid weight-points array, with a few differences. Firstly, instead of weight light intensity is used. Secondly, the intensity of light is usually normalized by the pixels around the star in order to filter out glare or noise. The resulting outcome is a series of two-dimensional coordinates on the photo plane with the starting point at the center of the image. This allows the system to the coordinates of the stars can be easily converted into unit vectors in the next step.
 
-The algorithm requires specification of the light intensity threshold (to select the brightest stars) $I_{thresh}$ and the size of the Region of Interest (ROI) $a_{ROI}$ in pixels. These values are adjusted to manipulate the performance of the algorithm. For example, the higher the value of $I_{thresh}$ is more resistant to noise, but can miss some real stars in the picture. Similarly, a large value $a_{ROI}$ means a more exact value of centroid, but the algorith can see one star there, wherea are actually two within a short distance of each other. The centroiding part is about trade-off between noise resistance and star recognition, and also between recognizing few close stars as one and recognizing one big star as a few.
+The algorithm requires specification of the light intensity threshold (to select the brightest stars) $I_{thresh}$ and the size of the Region of Interest (ROI) $a_{ROI}$ in pixels. These values are adjusted to manipulate the performance of the algorithm. For example, the higher the value of $I_{thresh}$ is more resistant to noise, but can miss some real stars in the picture. Similarly, a large value $a_{ROI}$ means a more exact value of centroid, but the algorithm can see one star there, where are actually two within a short distance of each other. The centroid-finding part is about trade-off between noise resistance and star recognition, and also between recognizing few close stars as one and recognizing one big star as a few.
 Please note that $a_{ROI}$ must be a positive odd number for the proper functioning of the algorithm.
 
 
@@ -762,8 +785,8 @@ to be removed?
 to be removed?
 \subsubsection{k-vector}
 The k-vector database is built a priori for some given working
-magnitude threshold and for the star tracker maximum angular aperture. Essentially, the k-vector table is a structural database of all cataloged star pairs that could possibly fit in the camera FOV over the whole sky. The star pairs are ordered with increasing interstar angle.
-The data stored are the k index, the cosine of the interstar angle, and the master catalog indices I[k] and J[k] of the kth star pair. The k-vector access logic is invoked in real time for a minimal set of star pairs in elementary measured star polygons (three for a triangle, six for a four-star pyramid, etc.); the fact that the vertices between adjacent measured star pairs share a common cataloged star is the key observation leading to logic for efficiently identifying the stars by simply comparing the k-vector accessed catalog indices from the several sets of candidate star pairs (which must contain the common measured pivot star, if
+magnitude threshold and for the star tracker maximum angular aperture. Essentially, the k-vector table is a structural database of all catalogued star pairs that could possibly fit in the camera FOV over the whole sky. The star pairs are ordered with increasing inter-star angle.
+The data stored are the k index, the cosine of the interstar angle, and the master catalogue indices I[k] and J[k] of the kth star pair. The k-vector access logic is invoked in real time for a minimal set of star pairs in elementary measured star polygons (three for a triangle, six for a four-star pyramid, etc.); the fact that the vertices between adjacent measured star pairs share a common catalogued star is the key observation leading to logic for efficiently identifying the stars by simply comparing the k-vector accessed catalogue indices from the several sets of candidate star pairs (which must contain the common measured pivot star, if
 it is in the catalog).
 \citet{mortari2013k}\par
 \citet{mortari1996fast}\par

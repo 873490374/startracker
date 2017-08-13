@@ -2,10 +2,14 @@
 \select@language {english}
 \select@language {polish}
 \select@language {english}
-\contentsline {figure}{\numberline {1}{\ignorespaces ECI frame, Image \citet {larson1992space}}}{13}
-\contentsline {figure}{\numberline {2}{\ignorespaces BODY frame, Image \citet {larson1992space}}}{14}
-\contentsline {figure}{\numberline {3}{\ignorespaces Startracker conceptual algorithm diagram}}{19}
-\contentsline {figure}{\numberline {4}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}}}{23}
-\contentsline {figure}{\numberline {5}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}}}{24}
-\contentsline {figure}{\numberline {6}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}}}{25}
-\contentsline {figure}{\numberline {7}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}}}{43}
+\contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats.\relax }}{10}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT \citet {larson1992space}}}}{10}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \citet {larson1992space}}}}{10}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz) \citet {larson1992space}}}}{10}
+\contentsline {figure}{\numberline {2}{\ignorespaces ECI frame, Image \citet {larson1992space}\relax }}{14}
+\contentsline {figure}{\numberline {3}{\ignorespaces BODY frame, Image \citet {larson1992space}\relax }}{15}
+\contentsline {figure}{\numberline {4}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{20}
+\contentsline {figure}{\numberline {5}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}\relax }}{24}
+\contentsline {figure}{\numberline {6}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}\relax }}{25}
+\contentsline {figure}{\numberline {7}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{26}
+\contentsline {figure}{\numberline {8}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{44}
