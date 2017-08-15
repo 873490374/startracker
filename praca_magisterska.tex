@@ -49,7 +49,7 @@
 \begin{filecontents}{gloss.tex}
 %================ACRONYMS=================%
 \newacronym{leo}{LEO}{Low Earth Orbit}
-\newacronym{adcs}{ADCS}{Attitude Control and Determination System}
+\newacronym{adcs}{ADCS}{Attitude Determination and Control System}
 \newacronym{lis}{LIS}{Lost-In-Space}
 \newacronym{gps}{GPS}{Global Positioning System}
 %================SYMBOLS=================%
@@ -182,38 +182,42 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 
 \setlength{\parindent}{1cm}
 
+\subsection{Similar work}
+
+There exists a number of works connected to topic of star-tracker. Many works are cited later in this thesis as they describe important parts of algorithms. There are just a few works dealing with whole start-tracker program, not just parts of it, and nearly no works about whole program together with implementation on the real equipment.
+
 \subsection{Cubesat}
 
 
 In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University \cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg.
 
-The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites in orbit, and only CubeSats make up about half of the small satellites that are fired every year. Till now there were around 800 CubeSats launched. http://www.nanosats.eu/
-CYTAT DODAĆ
+The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years \cite{swartwout2011brief}. Till now there were around 800 CubeSats launched \cite{nanosats}.
+
+There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc. \cite{pw-sat2}.
+Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars \cite{brite-pl}.
+
+Typical CubeSat consist of many different components. Quite often it has antennas and radios for communication with mission centre on Earth, Electric Power System (EPS - subsystem responsible for managing electric power in the satellite), Attitude Determination and Control (ADCS - subsystem responsible for analysing data from sensors and taking decision about trajectory, etc.), magnetometer, star-tracker, sun sensors, payload processor with mission instructions, etc. CubeSats are quite small, hence they usually do not have any propulsion system. Figure \ref{fig:cubesat-build} shows the components of CubeSat on example of NASA's Interplanetary NanoSpacecraft Pathfinder In a Relevant Environment (INSPIRE).
 
 \begin{figure}[!htbp]
   \centering
-  \subfloat[PW-SAT \citet{larson1992space}]{\includegraphics[width=0.4\textwidth]{pw-sat.jpg}\label{fig:pw-sat}}
+  \subfloat[PW-SAT \cite{pw-sat-image}]{\includegraphics[width=0.4\textwidth]{pw-sat.jpg}\label{fig:pw-sat}}
   \hfill
-  \subfloat[PW-SAT 2 \citet{larson1992space}]{\includegraphics[width=0.5\textwidth]{PW-Sat2_2016_16_MSwietlik.png}\label{fig:pw-sat2}}
+  \subfloat[PW-SAT 2 \cite{pw-sat2}]{\includegraphics[width=0.5\textwidth]{PW-Sat2_2016_16_MSwietlik.png}\label{fig:pw-sat2}}
   \hfill
-  \subfloat[BRITE-PL (Lem, Heweliusz) \citet{larson1992space}]{\includegraphics[width=0.5\textwidth]{brite.jpg}\label{fig:brite}}
+  \subfloat[BRITE-PL (Lem, Heweliusz) \cite{brite-pl-gunter}]{\includegraphics[width=0.5\textwidth]{brite.jpg}\label{fig:brite}}
   \caption{Example of Polish CubeSats.}
+  \label{fig:satellites-examples}
 \end{figure}
 
 
-There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc.
-https://pw-sat.pl/eksperyment/
-Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars.
-http://www.brite-pl.pl/pliki/nauka.html
+\begin{figure}[ht]
+\includegraphics[scale=0.45]{INSPIRE_JPL.jpg}
+\centering
+\caption{CubeSat build - INSPIRE, Image \cite{cubesat-build}}
+\label{fig:cubesat-build}
+\end{figure}
 
-
-%pw-sat http://www.polskieradio.pl/7/129/Artykul/536883,Pierwszy-polski-satelita-polecial-w-kosmos
-%pw-sat2 https://pw-sat.pl/en/pw-sat2_2016_16_mswietlik/
-%brite-pl http://space.skyrocket.de/doc_sdat/brite-pl.htm
-%budowa cubesata http://futureplanets.blogspot.com/2013/10/
-
-Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and round 70,000 EUR for designing and building the satellite itself.
-https://www.pw.edu.pl/Studenci/Aktualnosci/Satelita-studencki-PW-Sat2-otrzyma-dofinansowanie
+Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and round 70,000 EUR for designing and building the satellite itself \cite{pw-pw-sat2}.
 
 
 \subsection{Means of attitude determination}
@@ -288,8 +292,8 @@ of the Earth.
 \begin{figure}[ht]
 \includegraphics[scale=0.4]{eci_frame.jpg}
 \centering
-\label{fig:eci_frame}
 \caption{ECI frame, Image \citet{larson1992space}}
+\label{fig:eci_frame}
 \end{figure}
 \subsubsection{ECEF frame}
 This frame also has its origin at the center of the Earth, but the Earth Centered Earth Fixed frame has its x-axis pointing towards the point where the intersection between the longitude and latitude have zero value. It can also be described as the intersection between the Greenwich meridian and the Equator. The frame’s z-axis is pointing along the Earth’s rotation axis. The y-axis completes the right handed orthogonal system. The ECEF frame is not an inertial frame, it rotates relative to the ECI frame along the Earth rotation.
@@ -301,8 +305,8 @@ z-axis is pointing downwards through the camera side of the satellite.
 \begin{figure}[h]
 \includegraphics[scale=0.5]{body_frame.jpg}
 \centering
-\label{fig:body_frame}
 \caption{BODY frame, Image \citet{larson1992space}}
+\label{fig:body_frame}
 \end{figure}
 \subsection{Space environment}
 \subsection{Attitude representations}
@@ -433,9 +437,8 @@ Of course LIS does not happen only at the beginning of the satellite's flight, b
 Each part - LIS and tracking - consists of smaller algorithms. Lost-In-Space at the beginning of reading an image from the camera, thresholds the image. Thresholding is basically throwing away parts of the image which do not exceed the threshold brightness, making just bright enough stars taken into account. Next it calculates centroid (center of mass) of selected stars, identifies these stars using one of the possible methods (here Planar Triangle, described later) and searches the directory on-board technology (k-vector).
 If the database does not contain corresponding stars, the algorithm returns to the input state and starts analysing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previous image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyses the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
 %converts the results of the Cartesian coordinates to the ecliptic (the stars in the directory board are created using images of the Earth, which results in other coordinates) 
-%does not transform coordinates, and
+%does not transform coordinates, and not available\citet{ju2003overview}\par
 
-not available\citet{ju2003overview}\par
 Generally star-tracker is divided into three main parts\citet{6187242}:
 \begin{itemize}
 \item recognising stars on the image and converting the data into list of star vectors by calculating star centroids;
@@ -454,9 +457,9 @@ The whole star-tracker program is based on very precise calculations. For this r
 The first step is the determination of stars' position in the plane of the image. If focused star pictures are recorded, the image of each star will fall only on one or two pixels, and most likely the saturate these pixels, resulting in a pixel level accuracy.
 Many star-trackers are doing deliberately blurred images, in order to spread the photons on a larger number of pixels, which allows the algorithm for calculating the centroid in sub-pixel accuracy.
 
-After the registration of such image, the centroid of the star is found similarly to the centroid weight-points array, with a few differences. Firstly, instead of weight light intensity is used. Secondly, the intensity of light is usually normalized by the pixels around the star in order to filter out glare or noise. The resulting outcome is a series of two-dimensional coordinates on the photo plane with the starting point at the center of the image. This allows the system to the coordinates of the stars can be easily converted into unit vectors in the next step.
+After the registration of such image, the centroid of the star is found similarly to the centroid weight points array, with a few differences. Firstly, instead of weight light intensity is used. Secondly, the intensity of light is usually normalized by the pixels around the star in order to filter out glare or noise. The resulting outcome is a series of two-dimensional coordinates on the photo plane with the starting point at the center of the image. This allows the system to the coordinates of the stars can be easily converted into unit vectors in the next step.
 
-The algorithm requires specification of the light intensity threshold (to select the brightest stars) $I_{thresh}$ and the size of the Region of Interest (ROI) $a_{ROI}$ in pixels. These values are adjusted to manipulate the performance of the algorithm. For example, the higher the value of $I_{thresh}$ is more resistant to noise, but can miss some real stars in the picture. Similarly, a large value $a_{ROI}$ means a more exact value of centroid, but the algorithm can see one star there, where are actually two within a short distance of each other. The centroid-finding part is about trade-off between noise resistance and star recognition, and also between recognizing few close stars as one and recognizing one big star as a few.
+The algorithm requires specification of the light intensity threshold (to select the brightest stars) $I_{thresh}$ and the size of the Region of Interest (ROI) $a_{ROI}$ in pixels. These values are adjusted to manipulate the performance of the algorithm. For example, the higher the value of $I_{thresh}$ is more resistant to noise, but can miss some real stars in the picture. Similarly, a large value $a_{ROI}$ means a more exact value of centroid, but the algorithm can see one star there, where are actually two within a short distance of each other. The centroiding part is about trade-off between noise resistance and star recognition, and also between recognizing few close stars as one and recognizing one big star as a few.
 Please note that $a_{ROI}$ must be a positive odd number for the proper functioning of the algorithm.
 
 
@@ -532,8 +535,8 @@ Star pattern recognition using neural networks \citet{li2003star} \par
 \begin{figure}[ht]
 \includegraphics[scale=0.7]{vector_angle_method.jpg}
 \centering
-\label{fig:angle_matching}
 \caption{Vector angle method, Image \citet{gottlieb1978star}}
+\label{fig:angle_matching}
 \end{figure}
 
 \citet{gottlieb1978star}
@@ -584,8 +587,8 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \begin{figure}[ht]
 \includegraphics[scale=0.29]{spherical_triangle_method.jpg}
 \centering
-\label{fig:spherical_triangle_method}
 \caption{Spherical Triangle Method, Image \citet{cole2004fast}}
+\label{fig:spherical_triangle_method}
 \end{figure}
 
 \citet{cole2004fast}
@@ -609,8 +612,8 @@ I_p = \sum\theta^2dA
 \begin{figure}[ht]
 \includegraphics[scale=0.30]{planar_triangle_method.jpg}
 \centering
-\label{fig:planar_triangle_method}
 \caption{Planar Triangle Method, Image \citet{cole2006fast}}
+\label{fig:planar_triangle_method}
 \end{figure}
 
 \citet{cole2006fast}\par
@@ -744,8 +747,8 @@ Polar Moment
 \begin{figure}[ht]
 \includegraphics[scale=0.57]{pyramid_method.jpg}
 \centering
-\label{fig:pyramid_method}
 \caption{Pyramid Method Flowchart, Image \citet{mortari2004pyramid}}
+\label{fig:pyramid_method}
 \end{figure}
 
 \citet{mortari2004pyramid}\par
@@ -762,6 +765,7 @@ to be removed?
 \subsection{Star-catalogue and searching for matching stars}
 
 \subsubsection{Star Catalogue Generation}
+\citet{6187242}
 \begin{equation}
 \bm{u} = \begin{bmatrix}
 \cos \alpha \cos \delta \\

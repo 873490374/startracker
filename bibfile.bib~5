@@ -144,23 +144,6 @@
 	year = "2003"
 }
 
-@article{markley1999estimate,
-	author = "Markley, F Landis and Mortari, Daniele",
-	title = "{How to estimate attitude from vector observations}",
-	year = "1999"
-}
-
-@article{liebe2002accuracy,
-	author = "Liebe, Carl Christian",
-	journal = "IEEE Transactions on Aerospace and Electronic Systems",
-	number = "2",
-	pages = "587--599",
-	publisher = "IEEE",
-	title = "{Accuracy performance of star trackers-a tutorial}",
-	volume = "38",
-	year = "2002"
-}
-
 @article{liebe2002accuracy,
 	author = "Liebe, Carl Christian",
 	journal = "IEEE Transactions on Aerospace and Electronic Systems",
@@ -293,5 +276,101 @@
 	author = "Heidt, Hank and Puig-Suari, Jordi and Moore, Augustus and Nakasuka, Shinichi and Twiggs, Robert",
 	title = "{CubeSat: A new generation of picosatellite for education and industry low-cost space experimentation}",
 	year = "2000"
+}
+
+@techreport{larson1992space,
+	author = "Larson, Wiley J and Wertz, James Richard",
+	institution = "Microcosm, Inc., Torrance, CA (US)",
+	title = "{Space mission analysis and design}",
+	year = "1992"
+}
+
+@article{wahba1965least,
+	author = "Wahba, Grace",
+	journal = "SIAM review",
+	number = "3",
+	pages = "409--409",
+	publisher = "SIAM",
+	title = "{A least squares estimate of satellite attitude}",
+	volume = "7",
+	year = "1965"
+}
+
+@article{ju2003overview,
+	author = "Ju, Gwanghyeok and Junkins, John L",
+	journal = "Advances in the Astronautical Sciences",
+	pages = "461--477",
+	title = "{Overview of star tracker technology and its trends in research and development}",
+	volume = "115",
+	year = "2003"
+}
+
+@article{samaan2002predictive,
+	author = "Samaan, Malak A and Mortari, Daniele and Pollock, Thomas and Junkins, John L",
+	journal = "Advances in the Astronautical Sciences",
+	pages = "59--71",
+	title = "{Predictive centroiding for single and multiple FOVs star trackers}",
+	volume = "112",
+	year = "2002"
+}
+
+@article{gottlieb1978star,
+	author = "Gottlieb, DM",
+	journal = "Spacecraft Attitude Determination and Control, The Netherlands",
+	pages = "257--266",
+	title = "{Star pattern recognition techniques}",
+	year = "1978"
+}
+
+@inproceedings{cole2004fast,
+	author = "Cole, Craig L and Crassidus, JL",
+	booktitle = "{AIAA/AAS Astrodynamics Specialist Conference and Exhibit. Providence, Rhode Island: AIAA}",
+	title = "{Fast star pattern recognition using spherical triangles}",
+	year = "2004"
+}
+
+@article{rao2005fast,
+	author = "Rao, G Nagendra and Bhat, M Seetharama and Alex, TK",
+	journal = "Journal of guidance, control, and dynamics",
+	number = "5",
+	pages = "1032--1037",
+	title = "{Fast access method for onboard star catalog}",
+	volume = "28",
+	year = "2005"
+}
+
+@article{padgett1997grid,
+	author = "Padgett, Curtis and Kreutz-Delgado, Kenneth",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "1",
+	pages = "202--213",
+	publisher = "IEEE",
+	title = "{A grid algorithm for autonomous star identification}",
+	volume = "33",
+	year = "1997"
+}
+
+@article{park2006attitude,
+	author = "Park, Keun Joo and Crassidis, John L",
+	journal = "Navigation",
+	number = "2",
+	pages = "121--133",
+	publisher = "Wiley Online Library",
+	title = "{Attitude determination methods using pseudolite signal phase measurements}",
+	volume = "53",
+	year = "2006"
+}
+
+@article{juang2003efficient,
+	author = "Juang, Jer-Nan and Kim, Hye-Young and Junkins, John L",
+	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}",
+	year = "2003"
+}
+
+@inproceedings{kruijff2003star,
+	author = "Kruijff, M and Heide, EJVD and {De Boom}, CW and Heiden, NVD",
+	booktitle = "{54th International Astronautical Congress of the International Astronautical Federation(IAF)}",
+	title = "{Star sensor algorithm application and spin-off}",
+	year = "2003"
 }
 
