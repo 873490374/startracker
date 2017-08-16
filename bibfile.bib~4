@@ -112,7 +112,8 @@
 
 @article{lindbladstar,
 	author = "Lindblad, Thomas and Lindsey, Clark S and Eide, {\AA}ge and Solberg, {\"O}ystein and Bolseth, Andrew",
-	title = "{Star Identification using Neural Networks}"
+	title = "{Star Identification using Neural Networks}",
+	year = 1997
 }
 
 @article{li2003star,
@@ -329,16 +330,6 @@
 	year = "2004"
 }
 
-@article{rao2005fast,
-	author = "Rao, G Nagendra and Bhat, M Seetharama and Alex, TK",
-	journal = "Journal of guidance, control, and dynamics",
-	number = "5",
-	pages = "1032--1037",
-	title = "{Fast access method for onboard star catalog}",
-	volume = "28",
-	year = "2005"
-}
-
 @article{padgett1997grid,
 	author = "Padgett, Curtis and Kreutz-Delgado, Kenneth",
 	journal = "IEEE Transactions on Aerospace and Electronic Systems",
@@ -415,7 +406,8 @@
 	author = "Barile, M.",
 	title = "{Conjugate elements}",
 	type = "MathWorld-A Wolfram Web Resource",
-	url = "http://mathworld.wolfram.com/ConjugateElements.html"
+	url = "http://mathworld.wolfram.com/ConjugateElements.html",
+	year = "1997"
 }
 
 @inproceedings{shoemake1985animating,
@@ -438,5 +430,16 @@
 	title = "{Closed-form solution of absolute orientation using unit quaternions}",
 	volume = "4",
 	year = "1987"
+}
+
+@article{samaan2005recursive,
+	author = "Samaan, Malak A and Mortari, Daniele and Junkins, John L",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "4",
+	pages = "1246--1254",
+	publisher = "IEEE",
+	title = "{Recursive mode star identification algorithms}",
+	volume = "41",
+	year = "2005"
 }
 

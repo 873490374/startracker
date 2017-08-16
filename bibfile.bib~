@@ -485,3 +485,23 @@
 	title = "{Future Planetary Expeditions: CubeSats to the Planets}"
 }
 
+@inproceedings{swartwout2011brief,
+	author = "Swartwout, Michael A",
+	booktitle = "{Aerospace Conference, 2011 IEEE}",
+	organization = "IEEE",
+	pages = "1--15",
+	title = "{A brief history of rideshares (and attack of the CubeSats)}",
+	year = "2011"
+}
+
+@article{azizabadi2014vlsi,
+	author = "Azizabadi, Mohsen and Behrad, Alireza and Ghaznavi-Ghoushchi, MB",
+	journal = "Journal of real-time image processing",
+	number = "1",
+	pages = "127--140",
+	publisher = "Springer",
+	title = "{VLSI implementation of star detection and centroid calculation algorithms for star tracking applications}",
+	volume = "9",
+	year = "2014"
+}
+

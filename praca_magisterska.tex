@@ -186,6 +186,18 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 
 There exists a number of works connected to topic of star-tracker. Many works are cited later in this thesis as they describe important parts of algorithms. There are just a few works dealing with whole start-tracker program, not just parts of it, and nearly no works about whole program together with implementation on the real equipment.
 
+- generally about CubeSats: \citep{swartwout2011brief}, \citep{heidt2000cubesat}
+
+- Star centroids: \citep{liebe2002accuracy}, \citep{samaan2002predictive}, \citep{knutson2012fast}, \citep{azizabadi2014vlsi}
+
+- Star identification: Geometric Voting \citep{kolomenkin2008geometric}, Brightness Independent \citep{dong2006brightness}, Planar Triangle \citep{cole2006fast}, Pyramid \citep{mortari2004pyramid}, Spherical Triangles \citep{cole2004fast}, SP-Search \cite{mortari1999sp}, Neural Networks \citep{miri2012star}, \cite{lindbladstar} and \citep{li2003star} with separately discussed k-vector algorithm \citep{mortari1996fast}, \citep{mortari2000k}, \citep{mortari2013k}
+
+- Attitude Determination: AIM (Attitude estimation using Image Matching) \citep{delabie2012highly}, QUEST \citep{shuster1990kalman}, QUEST improvement \citep{RIS_1}, Extended Quest \citep{psiaki1999extended}, EQUEST \citep{rinnan2012development}, summarized description of attitude estimation algorithms: \citep{markley1999estimate}, \citep{hall2003spacecraft}, 
+
+- hardware \citep{azizabadi2014vlsi}, Gąska
+
+- full
+
 \subsection{Cubesat}
 
 
@@ -231,11 +243,29 @@ Devices such as planes and satellites have so called Attitude Determination and 
 Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionably winner here is the star-tracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
 
 \subsubsection{Inertial Measurement Unit}
+An Inertial Measurement Unit (IMU) detects linear acceleration using one or more accelerometers and rotational rate using gyroscopes, sometimes they also include magnetometers. They are commonly used in planes, spacecrafts and many consumer devices like smart-phones. The biggest disadvantage of IMU is accumulated error. Even small error that is accumulated with time brings device to think it is in different location than it actually is. Usually the errors are corrected via use of Kalman filter, which corrects IMU errors using other sources (i.e. GPS).
 \subsubsection{Sun Sensors}
-\subsubsection{Star Sensors}
+Sun sensors typically consist of few sensors oriented perpendicularly, which can tell the angle of the sun. They can give the information how the satellite is oriented towards the sun.
+\subsubsection{Star-Tracker}
 \subsubsection{Horizon Sensors}
+WIKIPEDIA
+Static[edit]
+Static Earth horizon sensors contain a number of sensors and sense infra-red radiation from the Earth’s surface with a field of view slightly larger than the Earth. The accuracy of determining the geocenter is 0.1 degrees in near-Earth orbit to 0.01 degrees at GEO. Their use is generally restricted to spacecraft with a circular orbit.[3]
+
+Scanning[edit]
+Scanning Earth horizon sensors use a spinning mirror or prism and focus a narrow beam of light onto a sensing element usually called a bolometer. The spinning causes the device to sweep out the area of a cone and electronics inside the sensor detect when the infrared signal from Earth is first received and then lost. The time between is used to determine Earth’s width. From this the roll angle can be determined. A factor that plays into the accuracy of such sensors is the fact the Earth is not perfectly circular. Another is that the sensor does not detect land or ocean, but infra-red in the atmosphere which can reach certain intensities due to the season and latitude.
+
+
 \subsubsection{Magnetometer}
+WIKIPEDIA
+This device measures the strength of the Earth's magnetic field in one direction. For measurements on all three axes, the device would consist of three orthogonal magnetometers. Given the spacecraft's position, the magnetic field measurements can be compared to a known magnetic field which is given by the International Geomagnetic Reference Field model. Measurements made by magnetometers are affected by noise consisting of alignment error, scale factor errors, and spacecraft electrical activity. For near Earth orbits, the error in the modelled field direction may vary from 0.5 degrees near the Equator to 3 degrees near the magnetic poles, where erratic auroral currents play a large role.[1] The limitation of such a device is that in orbits far from Earth, the magnetic field is too weak and is actually dominated by the interplanetary field which is complicated and unpredictable.
 \subsubsection{GPS - maybe}
+%http://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1646&context=smallsat
+%http://www.sciencedirect.com/science/article/pii/S0273117715004378
+%http://acl.mit.edu/papers/Adams_PhD.pdf
+%https://space.stackexchange.com/questions/566/do-any-spacecraft-use-gnss-for-attitude-determination
+WIKIPEDIA
+This sensor is simple in that using one signal many characteristics can be determined. A signal carries satellite identification, position, the duration of the propagated signal and clock information.[4] Using a constellation of 36 GPS satellites, of which only four are needed, navigation, positioning, precise time, orbit, and attitude can be determined. One advantage of GPS is all orbits from Low Earth orbit to Geosynchronous orbit can use GPS for ACS.
 \subsubsection{Conclusions}
 Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements of the proper calibration. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
 Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is by using star-trackers.
@@ -300,8 +330,7 @@ This frame also has its origin at the center of the Earth, but the Earth Centere
 \subsubsection{NED frame}
 The North East Down frame has its z-axis pointing downwards, perpendicular to the tangent plane of the Earth’s reference ellipsoid. The ellipsoid is mathematically defined and fitted for approximation of the Earth. The x-axis points towards true north and the y-axis points East. The NED frame is an inertial frame.
 \subsubsection{BODY frame}
-This frame is attached to the satellite, and is moving and rotating with it. The origin coincides with the origin of the NED frame. The axes coincide with the principle axes of inertia; the x-axis is pointing forwards, the y-axis is pointing to the right side and the
-z-axis is pointing downwards through the camera side of the satellite.
+This frame is attached to the satellite, and is moving and rotating with it. The origin coincides with the origin of the NED frame. The axes coincide with the principle axes of inertia; the x-axis is pointing forwards, the y-axis is pointing to the right side and the z-axis is pointing downwards through the camera side of the satellite.
 \begin{figure}[h]
 \includegraphics[scale=0.5]{body_frame.jpg}
 \centering
@@ -358,7 +387,7 @@ orientation between two frames, one angle for the rotation around each of the ax
 \citet{shoemake1985animating}
 \citet{horn1987closed}
 
-Quaternions were first described by Sir William Rowan Hamilton in 1843 \citet{hamilton1844lxxviii}. His intension was to find an extension of vector algebra, and in 1845 Arthur Cayley published an article where he used multiplication of quaternions to describe rotations \citet{cayley1845xiii}. Three of the four elements of a quaternion give the coordinates for the axis of rotation, while the fourth is described by the angle of rotation \citet{courant1953methods}.
+Quaternions were first described by Sir William Rowan Hamilton in 1843 \citet{hamilton1844lxxviii}. His intention was to find an extension of vector algebra, and in 1845 Arthur Cayley published an article where he used multiplication of quaternions to describe rotations \citet{cayley1845xiii}. Three of the four elements of a quaternion give the coordinates for the axis of rotation, while the fourth is described by the angle of rotation \citet{courant1953methods}.
 A quaternion can be written as a four-dimensional vector:
 \begin{equation}
 \bm{q} \coloneqq \begin{bmatrix}

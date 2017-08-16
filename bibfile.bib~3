@@ -112,7 +112,8 @@
 
 @article{lindbladstar,
 	author = "Lindblad, Thomas and Lindsey, Clark S and Eide, {\AA}ge and Solberg, {\"O}ystein and Bolseth, Andrew",
-	title = "{Star Identification using Neural Networks}"
+	title = "{Star Identification using Neural Networks}",
+	year = 1997
 }
 
 @article{li2003star,
@@ -405,7 +406,8 @@
 	author = "Barile, M.",
 	title = "{Conjugate elements}",
 	type = "MathWorld-A Wolfram Web Resource",
-	url = "http://mathworld.wolfram.com/ConjugateElements.html"
+	url = "http://mathworld.wolfram.com/ConjugateElements.html",
+	year = "1997"
 }
 
 @inproceedings{shoemake1985animating,
@@ -431,6 +433,55 @@
 }
 
 @article{samaan2005recursive,
-	title = "{Recursive mode star identification algorithms}"
+	author = "Samaan, Malak A and Mortari, Daniele and Junkins, John L",
+	journal = "IEEE Transactions on Aerospace and Electronic Systems",
+	number = "4",
+	pages = "1246--1254",
+	publisher = "IEEE",
+	title = "{Recursive mode star identification algorithms}",
+	volume = "41",
+	year = "2005"
+}
+
+@misc{Nanosats,
+	howpublished = "\url{http://www.nanosats.eu/}",
+	note = "Accessed: 2017-08-15",
+	title = "{Nanosatsatellite and CubeSat Database}"
+}
+
+@misc{pw-sat-image,
+	howpublished = "\url{http://www.polskieradio.pl/7/129/Artykul/536883,Pierwszy-polski-satelita-polecial-w-kosmos}",
+	note = "Accessed: 2017-08-15",
+	title = "{Polskie Radio: Pierwszy polski satelita polecia{\l} w kosmos}"
+}
+
+@misc{pw-sat2,
+	howpublished = "\url{https://pw-sat.pl/}",
+	note = "Accessed: 2017-08-15",
+	title = "{PW-Sat2: oficjalna strona projektu PW-SAT 2 (oraz PW-SAT)}"
+}
+
+@misc{brite-pl-gunter,
+	howpublished = "\url{http://space.skyrocket.de/doc\_sdat/brite-pl.htm}",
+	note = "Accessed: 2017-08-15",
+	title = "{BRITE-PL, PL2 (CanX 3C, 3D / Lem, Heweliusz) - Gunter's Space Page}"
+}
+
+@misc{brite-pl,
+	howpublished = "\url{http://www.brite-pl.pl/pliki/nauka.html}",
+	note = "Accessed: 2017-08-15",
+	title = "{BRITE-PL Pierwszy polski satelita naukowy}"
+}
+
+@misc{pw-pw-sat2,
+	howpublished = "\url{https://www.pw.edu.pl/Studenci/Aktualnosci/Satelita-studencki-PW-Sat2-otrzyma-dofinansowanie}",
+	note = "Accessed: 2017-08-15",
+	title = "{Warsaw University of Technology - News - PW-SAT 2 gets funding}"
+}
+
+@misc{cubesat-build,
+	howpublished = "\url{http://futureplanets.blogspot.com/2013/10/}",
+	note = "Accessed: 2017-08-15",
+	title = "{Future Planetary Expeditions: CubeSats to the Planets}"
 }
 

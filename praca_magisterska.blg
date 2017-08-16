@@ -18,53 +18,53 @@ Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
 Warning--empty journal in jalabert2011optimization
 Warning--empty journal in heidt2000cubesat
+Warning--empty journal in lindbladstar
+Warning--empty journal in markley1999estimate
 Warning--empty journal in lima2000comparison
 Warning--empty journal in hamilton1844lxxviii
 Warning--empty journal in cayley1845xiii
-Warning--empty journal in lindbladstar
-Warning--empty journal in markley1999estimate
 Warning--empty journal in juang2003efficient
 
 Done.
-You've used 55 entries,
+You've used 57 entries,
             4855 wiz_defined-function locations,
-            1763 strings with 27270 characters,
-and the built_in function-call counts, 42886 in all, are:
-= -- 3965
-> -- 1015
-< -- 313
-+ -- 544
-- -- 220
-* -- 2290
-:= -- 6609
-add.period$ -- 113
-call.type$ -- 55
-change.case$ -- 118
-chr.to.int$ -- 676
-cite$ -- 70
-duplicate$ -- 2944
-empty$ -- 3136
-format.name$ -- 319
-if$ -- 9659
+            1774 strings with 27629 characters,
+and the built_in function-call counts, 44270 in all, are:
+= -- 4098
+> -- 1041
+< -- 321
++ -- 558
+- -- 226
+* -- 2355
+:= -- 6845
+add.period$ -- 118
+call.type$ -- 57
+change.case$ -- 122
+chr.to.int$ -- 693
+cite$ -- 72
+duplicate$ -- 3038
+empty$ -- 3247
+format.name$ -- 325
+if$ -- 9971
 int.to.chr$ -- 4
-int.to.str$ -- 56
-missing$ -- 452
-newline$ -- 193
-num.names$ -- 144
-pop$ -- 1171
+int.to.str$ -- 58
+missing$ -- 468
+newline$ -- 199
+num.names$ -- 150
+pop$ -- 1207
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 57
 quote$ -- 2
-skip$ -- 3232
+skip$ -- 3339
 stack$ -- 0
-substring$ -- 1663
-swap$ -- 2075
-text.length$ -- 72
+substring$ -- 1703
+swap$ -- 2138
+text.length$ -- 74
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 863
+type$ -- 895
 warning$ -- 8
-while$ -- 205
+while$ -- 213
 width$ -- 0
-write$ -- 638
+write$ -- 661
 (There were 8 warnings)
