@@ -26,45 +26,45 @@ Warning--empty journal in cayley1845xiii
 Warning--empty journal in juang2003efficient
 
 Done.
-You've used 57 entries,
+You've used 61 entries,
             4855 wiz_defined-function locations,
-            1774 strings with 27629 characters,
-and the built_in function-call counts, 44270 in all, are:
-= -- 4098
+            1787 strings with 28236 characters,
+and the built_in function-call counts, 45942 in all, are:
+= -- 4262
 > -- 1041
 < -- 321
-+ -- 558
++ -- 566
 - -- 226
-* -- 2355
-:= -- 6845
-add.period$ -- 118
-call.type$ -- 57
-change.case$ -- 122
-chr.to.int$ -- 693
-cite$ -- 72
-duplicate$ -- 3038
-empty$ -- 3247
+* -- 2423
+:= -- 7085
+add.period$ -- 126
+call.type$ -- 61
+change.case$ -- 134
+chr.to.int$ -- 697
+cite$ -- 80
+duplicate$ -- 3182
+empty$ -- 3415
 format.name$ -- 325
-if$ -- 9971
+if$ -- 10355
 int.to.chr$ -- 4
-int.to.str$ -- 58
-missing$ -- 468
-newline$ -- 199
+int.to.str$ -- 62
+missing$ -- 496
+newline$ -- 211
 num.names$ -- 150
-pop$ -- 1207
+pop$ -- 1311
 preamble$ -- 1
-purify$ -- 57
+purify$ -- 61
 quote$ -- 2
-skip$ -- 3339
+skip$ -- 3463
 stack$ -- 0
-substring$ -- 1703
-swap$ -- 2138
+substring$ -- 1727
+swap$ -- 2202
 text.length$ -- 74
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 895
+type$ -- 955
 warning$ -- 8
 while$ -- 213
 width$ -- 0
-write$ -- 661
+write$ -- 697
 (There were 8 warnings)

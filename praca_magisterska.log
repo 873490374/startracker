@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.29)  16 AUG 2017 12:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.29)  18 AUG 2017 16:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1164,57 +1164,75 @@ ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
 
 LaTeX Warning: Text page 16 contains only floats.
 
-[16] [17] <images/eci_frame.jpg, id=78, 496.85625pt x 562.1pt>
+[16]
+<images/Comparison_satellite_navigation_orbits.png, id=75, 513.92pt x 513.92pt>
+File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
+
+<use images/Comparison_satellite_navigation_orbits.png>
+Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png used
+ on input line 312.
+(pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
+ [17 <./images/Comparison_satellite_navigation_orbits.png>]
+Overfull \hbox (1.74905pt too wide) in paragraph at lines 325--326
+[]\OT1/lmr/m/n/12 High Earth or-bit: geo-cen-tric or-bits above the al-ti-tude 
+of geosyn-chronous
+ []
+
+<images/eci_frame.jpg, id=79, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 323.
+Package pdftex.def Info: images/eci_frame.jpg used on input line 334.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [18 <./images/eci_frame.jpg>]
-<images/body_frame.jpg, id=82, 416.55624pt x 415.5525pt>
+ [18]
+<images/body_frame.jpg, id=83, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 335.
+Package pdftex.def Info: images/body_frame.jpg used on input line 346.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
- [19 <./images/body_frame.jpg>] [20] [21] [22]
-[23] <images/startracker_eng.jpg, id=100, 646.415pt x 119.44624pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[19 <./images/eci_frame.jpg>] [20 <./images/body_frame.jpg>] [21] [22] [23]
+<images/startracker_eng.jpg, id=101, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
 
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg used on input line 460.
+Package pdftex.def Info: images/startracker_eng.jpg used on input line 471.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
  [24 <./images/startracker_eng.jpg>] [25]
-[26] [27] <images/vector_angle_method.jpg, id=115, 332.24126pt x 233.87375pt>
+[26] [27] <images/vector_angle_method.jpg, id=116, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 565.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 576.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
  [28 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=119, 831.105pt x 633.36626pt>
+<images/spherical_triangle_method.jpg, id=120, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 617.
+e 628.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
 
-<images/planar_triangle_method.jpg, id=120, 831.105pt x 633.36626pt>
+<images/planar_triangle_method.jpg, id=121, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 6
-42.
+53.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
  [29 <./images/spherical_triangle_method.jpg>] [30 <./images/planar_triangle_me
 thod.jpg>] [31]
-<images/pyramid_method.jpg, id=131, 566.115pt x 982.67125pt>
+<images/pyramid_method.jpg, id=132, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 777.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 788.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
  [32] [33] [34] [35] [36] [37] [38] [39]
 [40] [41] (./praca_magisterska.bbl [42] [43]
@@ -1252,25 +1270,59 @@ Underfull \hbox (badness 10000) in paragraph at lines 209--211
 s,''
  []
 
-[45]) [46] (./praca_magisterska.lot)
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
+[]\OT1/lmr/m/n/12 ``GPS: The Global Po-si-tion-ing Sys-tem,''
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--225
+[]\OT1/lmr/m/n/12 ``NASA's Uti-liza-tion of Global Po-si-tion-ing Sys-tem (GPS)
+,''
+ []
+
+
+Overfull \hbox (109.60002pt too wide) in paragraph at lines 222--225
+\OT1/lmr/m/n/12 https://www.nasa.gov/directorates/heo/scan/communications/polic
+y/GPS[]Utilization.html,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
+[]\OT1/lmr/m/n/12 ``Space Sta-tion Us-ing GPS in At-ti-tude Con-trol,''
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 227--230
+\OT1/lmr/m/n/12 https://www.nasa.gov/centers/johnson/news/releases/2002/j02-
+ []
+
+
+Overfull \hbox (401.40543pt too wide) in paragraph at lines 240--243
+[]\OT1/lmr/m/n/12 ``Earth's nav-i-ga-tion or-bits im-age,'' https://upload.wiki
+media.org/wikipedia/commons/thumb/b/b4/Comparison[]satellite[]navigation[]orbit
+s.svg/512px-
+ []
+
+[45] [46]) [47] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [47] (./praca_magisterska.lof)
+ [48] (./praca_magisterska.lof)
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
- [48]
-[49 <./images/pyramid_method.jpg>] (./praca_magisterska.aux)
+
+[49] [50 <./images/pyramid_method.jpg>] (./praca_magisterska.aux)
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 11241 strings out of 494877
- 171684 string characters out of 6179086
- 283334 words of memory out of 5000000
- 14234 multiletter control sequences out of 15000+600000
+ 11259 strings out of 494877
+ 172190 string characters out of 6179086
+ 283420 words of memory out of 5000000
+ 14251 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
  56 hyphenation exceptions out of 8191
  61i,15n,96p,1930b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1287,10 +1339,10 @@ ts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb
 ic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on praca_magisterska.pdf (49 pages, 4910965 bytes).
+Output written on praca_magisterska.pdf (50 pages, 5035102 bytes).
 PDF statistics:
- 248 PDF objects out of 1000 (max. 8388607)
- 164 compressed objects within 2 object streams
+ 252 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

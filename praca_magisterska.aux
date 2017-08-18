@@ -113,6 +113,9 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE, Image \cite  {cubesat-build}\relax }}{13}}
 \newlabel{fig:cubesat-build}{{2}{13}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.1}Inertial Measurement Unit}{13}}
+\citation{gps-gov}
+\citation{nasa-gps-navigation}
+\citation{iss-gps}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.2}Sun Sensors}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.3}Star-Tracker}{14}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.4}Horizon Sensors}{14}}
@@ -123,27 +126,35 @@
 \citation{larson1992space}
 \citation{hall2003spacecraft}
 \citation{hall2003spacecraft}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.6}GPS - maybe}{15}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.6}Global Positioning System }{15}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.5.7}Conclusions}{15}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}On-board computer}{15}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges. Adapted from \citet  {larson1992space}\relax }}{16}}
 \@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Sensor Accuracy Ranges. Adapted from \citet  {hall2003spacecraft}\relax }}{16}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.6}On-board computer}{17}}
+\citation{orbits-image}
+\citation{orbits-image}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{17}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Earth's orbits}{17}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Earth's satellite navigation orbits \cite  {orbits-image}\relax }}{17}}
+\newlabel{fig:orbits-image}{{3}{17}}
 \citation{larson1992space}
 \citation{larson1992space}
 \citation{larson1992space}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{18}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Coordinate frames}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.1}ECI frame}{18}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces ECI frame, Image \citet  {larson1992space}\relax }}{18}}
-\newlabel{fig:eci_frame}{{3}{18}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.2}ECEF frame}{18}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Coordinate frames}{18}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.1}ECI frame}{18}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.2}ECEF frame}{18}}
 \citation{larson1992space}
 \citation{larson1992space}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.3}NED frame}{19}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.1.4}BODY frame}{19}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces BODY frame, Image \citet  {larson1992space}\relax }}{19}}
-\newlabel{fig:body_frame}{{4}{19}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces ECI frame, Image \citet  {larson1992space}\relax }}{19}}
+\newlabel{fig:eci_frame}{{4}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.3}NED frame}{19}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.2.4}BODY frame}{19}}
 \citation{euler1775formulae}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces BODY frame, Image \citet  {larson1992space}\relax }}{20}}
+\newlabel{fig:body_frame}{{5}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Space environment}{20}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Attitude representations}{20}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.1}Euler angles}{20}}
 \citation{hamilton1844lxxviii}
 \citation{cayley1845xiii}
 \citation{courant1953methods}
@@ -151,22 +162,19 @@
 \citation{mathworldconjugate}
 \citation{shoemake1985animating}
 \citation{horn1987closed}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Space environment}{20}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Attitude representations}{20}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{20}}
 \citation{hamilton1844lxxviii}
 \citation{cayley1845xiii}
 \citation{courant1953methods}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.2}Quaternions}{21}}
 \citation{mebius2005matrix}
 \citation{mathworldconjugate}
 \citation{shoemake1985animating}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{21}}
 \citation{horn1987closed}
 \citation{shoemake1985animating}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.3}Advantages of quaternions}{22}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.4.3}Advantages of quaternions}{23}}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Star-tracker program}{24}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{24}}
-\newlabel{fig:startracker_conceptual_alg}{{5}{24}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{24}}
+\newlabel{fig:startracker_conceptual_alg}{{6}{24}}
 \citation{6187242}
 \citation{samaan2002predictive}
 \citation{liebe2002accuracy}
@@ -183,20 +191,20 @@
 \citation{gottlieb1978star}
 \citation{gottlieb1978star}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Vector angle method, Image \citet  {gottlieb1978star}\relax }}{28}}
-\newlabel{fig:angle_matching}{{6}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Vector angle method, Image \citet  {gottlieb1978star}\relax }}{28}}
+\newlabel{fig:angle_matching}{{7}{28}}
 \citation{cole2004fast}
 \citation{cole2004fast}
 \citation{cole2004fast}
 \citation{cole2006fast}
 \citation{cole2006fast}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Spherical Triangle Method, Image \citet  {cole2004fast}\relax }}{29}}
-\newlabel{fig:spherical_triangle_method}{{7}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Spherical Triangle Method, Image \citet  {cole2004fast}\relax }}{29}}
+\newlabel{fig:spherical_triangle_method}{{8}{29}}
 \citation{cole2006fast}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{30}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Planar Triangle Method, Image \citet  {cole2006fast}\relax }}{30}}
-\newlabel{fig:planar_triangle_method}{{8}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Planar Triangle Method, Image \citet  {cole2006fast}\relax }}{30}}
+\newlabel{fig:planar_triangle_method}{{9}{30}}
 \citation{mortari2004pyramid}
 \citation{mortari2004pyramid}
 \citation{mortari2004pyramid}
@@ -278,35 +286,40 @@
 \bibcite{brite-pl-gunter}{{36}{}{{bri}}{{}}}
 \bibcite{cubesat-build}{{37}{}{{cub}}{{}}}
 \bibcite{pw-pw-sat2}{{38}{}{{pw-}}{{}}}
-\bibcite{larson1992space}{{39}{1992}{{Larson and Wertz}}{{}}}
-\bibcite{lima2000comparison}{{40}{2000}{{Lima}}{{}}}
-\bibcite{euler1775formulae}{{41}{1775}{{Euler}}{{}}}
-\bibcite{hamilton1844lxxviii}{{42}{1844}{{Hamilton}}{{}}}
-\bibcite{cayley1845xiii}{{43}{1845}{{Cayley}}{{}}}
-\bibcite{courant1953methods}{{44}{1953}{{Courant and Hilbert}}{{}}}
-\bibcite{mebius2005matrix}{{45}{2005}{{Mebius}}{{}}}
-\bibcite{mathworldconjugate}{{46}{1997}{{Barile}}{{}}}
-\bibcite{shoemake1985animating}{{47}{1985}{{Shoemake}}{{}}}
-\bibcite{horn1987closed}{{48}{1987}{{Horn}}{{}}}
-\bibcite{6187242}{{49}{2012}{{McBryde and Lightsey}}{{}}}
-\bibcite{spratling2009survey}{{50}{2009}{{Spratling and Mortari}}{{}}}
-\bibcite{gottlieb1978star}{{51}{1978}{{Gottlieb}}{{}}}
-\bibcite{samaan2005recursive}{{52}{2005}{{Samaan et~al.}}{{Samaan, Mortari, and Junkins}}}
-\bibcite{padgett1997grid}{{53}{1997}{{Padgett and Kreutz-Delgado}}{{}}}
-\bibcite{wahba1965least}{{54}{1965}{{Wahba}}{{}}}
-\bibcite{juang2003efficient}{{55}{2003}{{Juang et~al.}}{{Juang, Kim, and Junkins}}}
-\bibcite{kruijff2003star}{{56}{2003}{{Kruijff et~al.}}{{Kruijff, Heide, {De Boom}, and Heiden}}}
-\bibcite{RIS_0}{{57}{2011}{{Kim et~al.}}{{Kim, Tappe, Jordan, and Agrawal}}}
+\bibcite{gps-gov}{{39}{}{{gps}}{{}}}
+\bibcite{nasa-gps-navigation}{{40}{}{{nas}}{{}}}
+\bibcite{iss-gps}{{41}{}{{iss}}{{}}}
+\bibcite{larson1992space}{{42}{1992}{{Larson and Wertz}}{{}}}
+\bibcite{lima2000comparison}{{43}{2000}{{Lima}}{{}}}
+\bibcite{orbits-image}{{44}{}{{orb}}{{}}}
+\bibcite{euler1775formulae}{{45}{1775}{{Euler}}{{}}}
+\bibcite{hamilton1844lxxviii}{{46}{1844}{{Hamilton}}{{}}}
+\bibcite{cayley1845xiii}{{47}{1845}{{Cayley}}{{}}}
+\bibcite{courant1953methods}{{48}{1953}{{Courant and Hilbert}}{{}}}
+\bibcite{mebius2005matrix}{{49}{2005}{{Mebius}}{{}}}
+\bibcite{mathworldconjugate}{{50}{1997}{{Barile}}{{}}}
+\bibcite{shoemake1985animating}{{51}{1985}{{Shoemake}}{{}}}
+\bibcite{horn1987closed}{{52}{1987}{{Horn}}{{}}}
+\bibcite{6187242}{{53}{2012}{{McBryde and Lightsey}}{{}}}
+\bibcite{spratling2009survey}{{54}{2009}{{Spratling and Mortari}}{{}}}
+\bibcite{gottlieb1978star}{{55}{1978}{{Gottlieb}}{{}}}
+\bibcite{samaan2005recursive}{{56}{2005}{{Samaan et~al.}}{{Samaan, Mortari, and Junkins}}}
+\bibcite{padgett1997grid}{{57}{1997}{{Padgett and Kreutz-Delgado}}{{}}}
+\bibcite{wahba1965least}{{58}{1965}{{Wahba}}{{}}}
+\bibcite{juang2003efficient}{{59}{2003}{{Juang et~al.}}{{Juang, Kim, and Junkins}}}
+\bibcite{kruijff2003star}{{60}{2003}{{Kruijff et~al.}}{{Kruijff, Heide, {De Boom}, and Heiden}}}
+\bibcite{RIS_0}{{61}{2011}{{Kim et~al.}}{{Kim, Tappe, Jordan, and Agrawal}}}
 \citation{larson1992space}
 \citation{hall2003spacecraft}
-\@writefile{toc}{\contentsline {section}{List of Tables}{47}}
+\@writefile{toc}{\contentsline {section}{List of Tables}{48}}
 \citation{cubesat-build}
+\citation{orbits-image}
 \citation{larson1992space}
 \citation{larson1992space}
 \citation{gottlieb1978star}
 \citation{cole2004fast}
 \citation{cole2006fast}
 \citation{mortari2004pyramid}
-\@writefile{toc}{\contentsline {section}{List of Figures}{48}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Pyramid Method Flowchart, Image \citet  {mortari2004pyramid}\relax }}{49}}
-\newlabel{fig:pyramid_method}{{9}{49}}
+\@writefile{toc}{\contentsline {section}{List of Figures}{49}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Pyramid Method Flowchart, Image \citet  {mortari2004pyramid}\relax }}{50}}
+\newlabel{fig:pyramid_method}{{10}{50}}

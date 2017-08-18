@@ -170,7 +170,7 @@
 	year = "2011"
 }
 
-@phdthesis{knutson2012fast,
+@mastersthesis{knutson2012fast,
 	author = "Knutson, Matthew Walter",
 	school = "Massachusetts Institute of Technology",
 	title = "{Fast star tracker centroid algorithm for high performance CubeSat with air bearing validation}",
@@ -441,5 +441,107 @@
 	title = "{Recursive mode star identification algorithms}",
 	volume = "41",
 	year = "2005"
+}
+
+@misc{Nanosats,
+	howpublished = "\url{http://www.nanosats.eu/}",
+	note = "Accessed: 2017-08-15",
+	title = "{Nanosatsatellite and CubeSat Database}"
+}
+
+@misc{pw-sat-image,
+	howpublished = "\url{http://www.polskieradio.pl/7/129/Artykul/536883,Pierwszy-polski-satelita-polecial-w-kosmos}",
+	note = "Accessed: 2017-08-15",
+	title = "{Polskie Radio: Pierwszy polski satelita polecia{\l} w kosmos}"
+}
+
+@misc{pw-sat2,
+	howpublished = "\url{https://pw-sat.pl/}",
+	note = "Accessed: 2017-08-15",
+	title = "{PW-Sat2: oficjalna strona projektu PW-SAT 2 (oraz PW-SAT)}"
+}
+
+@misc{brite-pl-gunter,
+	howpublished = "\url{http://space.skyrocket.de/doc\_sdat/brite-pl.htm}",
+	note = "Accessed: 2017-08-15",
+	title = "{BRITE-PL, PL2 (CanX 3C, 3D / Lem, Heweliusz) - Gunter's Space Page}"
+}
+
+@misc{brite-pl,
+	howpublished = "\url{http://www.brite-pl.pl/pliki/nauka.html}",
+	note = "Accessed: 2017-08-15",
+	title = "{BRITE-PL Pierwszy polski satelita naukowy}"
+}
+
+@misc{pw-pw-sat2,
+	howpublished = "\url{https://www.pw.edu.pl/Studenci/Aktualnosci/Satelita-studencki-PW-Sat2-otrzyma-dofinansowanie}",
+	note = "Accessed: 2017-08-15",
+	title = "{Warsaw University of Technology - News - PW-SAT 2 gets funding}"
+}
+
+@misc{cubesat-build,
+	howpublished = "\url{http://futureplanets.blogspot.com/2013/10/}",
+	note = "Accessed: 2017-08-15",
+	title = "{Future Planetary Expeditions: CubeSats to the Planets}"
+}
+
+@inproceedings{swartwout2011brief,
+	author = "Swartwout, Michael A",
+	booktitle = "{Aerospace Conference, 2011 IEEE}",
+	organization = "IEEE",
+	pages = "1--15",
+	title = "{A brief history of rideshares (and attack of the CubeSats)}",
+	year = "2011"
+}
+
+@article{azizabadi2014vlsi,
+	author = "Azizabadi, Mohsen and Behrad, Alireza and Ghaznavi-Ghoushchi, MB",
+	journal = "Journal of real-time image processing",
+	number = "1",
+	pages = "127--140",
+	publisher = "Springer",
+	title = "{VLSI implementation of star detection and centroid calculation algorithms for star tracking applications}",
+	volume = "9",
+	year = "2014"
+}
+
+@inproceedings{psiaki1999extended,
+	author = "Psiaki, M",
+	booktitle = "{NASA CONFERENCE PUBLICATION}",
+	organization = "NASA",
+	pages = "1--16",
+	title = "{Extended quest attitude determination filtering}",
+	year = "1999"
+}
+
+@mastersthesis{rinnan2012development,
+	author = "Rinnan, Toril Bye",
+	school = "Institutt for teknisk kybernetikk",
+	title = "{Development and comparison of estimation methods for attitude determination}",
+	year = "2012"
+}
+
+@misc{gps-gov,
+	howpublished = "\url{http://www.gps.gov/systems/gps/space/}",
+	note = "Accessed: 2017-08-18",
+	title = "{GPS: The Global Positioning System}"
+}
+
+@misc{orbits-image,
+	howpublished = "\url{https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Comparison\_satellite\_navigation\_orbits.svg/512px-Comparison\_satellite\_navigation\_orbits.svg.png}",
+	note = "Accessed: 2017-08-18",
+	title = "{Earth's navigation orbits image}"
+}
+
+@misc{nasa-gps-navigation,
+	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/policy/GPSUtilization.html}",
+	note = "Accessed: 2017-08-18, uderscore problem in url with LaTeX",
+	title = "{NASA's Utilization of Global Positioning System (GPS)}"
+}
+
+@misc{iss-gps,
+	howpublished = "\url{https://www.nasa.gov/centers/johnson/news/releases/2002/j02-61.html}",
+	note = "Accessed: 2017-08-18",
+	title = "{Space Station Using GPS in Attitude Control }"
 }
 

@@ -240,7 +240,7 @@ It is necessary for satellite antenna to be pointing towards Earth for the prope
 Attitude is determined between two coordinate systems (where one is reference system) and defines by what angles the coordinate system connected with the researched object has to be shifted in order to cover the reference system.
 Devices such as planes and satellites have so called Attitude Determination and Control System (ADCS), which controls attitude of object relative to an inertial reference frame or another entity (the celestial sphere, certain areas, the nearby objects, etc.).
 
-Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionably winner here is the star-tracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
+Currently, attitude determination of CubeSats is limited mainly to the sun sensors, magnetometers and measurements of inertia. The following table describes the accuracy of different sensors. Unquestionable winner here is the star-tracker, which, due to its quality and uniqueness of the constellations is ideal for navigation. 
 
 \subsubsection{Inertial Measurement Unit}
 An Inertial Measurement Unit (IMU) detects linear acceleration using one or more accelerometers and rotational rate using gyroscopes, sometimes they also include magnetometers. They are commonly used in planes, spacecrafts and many consumer devices like smart-phones. The biggest disadvantage of IMU is accumulated error. Even small error that is accumulated with time brings device to think it is in different location than it actually is. Usually the errors are corrected via use of Kalman filter, which corrects IMU errors using other sources (i.e. GPS).
@@ -251,20 +251,16 @@ Star-tracker is quite sophisticated device, which consists of camera, processor 
 \subsubsection{Horizon Sensors}
 Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
 \subsubsection{Magnetometer}
-Magnetometer is actually three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
-\subsubsection{GPS - maybe}
+The device actually consists of three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
+\subsubsection{Global Positioning System }
 %http://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1646&context=smallsat
 %http://www.sciencedirect.com/science/article/pii/S0273117715004378
 %http://acl.mit.edu/papers/Adams_PhD.pdf
-%https://space.stackexchange.com/questions/566/do-any-spacecraft-use-gnss-for-attitude-determination
-%https://www.nasa.gov/directorates/heo/scan/communications/policy/GPS_Utilization.html
-WIKIPEDIA
-This sensor is simple in that using one signal many characteristics can be determined. A signal carries satellite identification, position, the duration of the propagated signal and clock information.[4] Using a constellation of 36 GPS satellites, of which only four are needed, navigation, positioning, precise time, orbit, and attitude can be determined. One advantage of GPS is all orbits from Low Earth orbit to Geosynchronous orbit can use GPS for ACS.
+Nowadays nearly everyone has personal device with Global Positioning System (GPS) navigation. It is also possible to use GPS satellites to determine spacecraft's attitude. This is possible when at least four GPS satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. GPS satellites are located on Medium Earth Orbit (MEO), around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between Low Earth orbit (LEO -  160 to 2,000 km) and Geosynchronous Orbit (GEO - 35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit GPS navigation is however not useful. Example of GPS usage for navigation in space is International Space Station (ISS) \cite{iss-gps}.
 
-ISS uses GPS.
 \subsubsection{Conclusions}
-Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements of the proper calibration. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
-Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is by using star-trackers.
+Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements if properly calibrated. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
+Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. GPS navigation is accurate, however only on Earth's orbit. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is via using star-trackers.
 
 \citet{larson1992space}
 \citet{lima2000comparison}
@@ -310,10 +306,29 @@ This section will describe the on-board computer which was done as part of other
 
 \newpage
 \section{Preliminaries}
+\subsection{Earth's orbits}
+
+\begin{figure}[ht]
+\includegraphics[scale=0.7]{Comparison_satellite_navigation_orbits.png}
+\centering
+\caption{Earth's satellite navigation orbits \cite{orbits-image}}
+\label{fig:orbits-image}
+\end{figure}
+By altitude:
+
+Low Earth orbit (LEO): geocentric orbits with altitudes from 160 to 2,000 km (100–1,240 miles).[2]
+
+Medium Earth orbit (MEO): geocentric orbits ranging in altitude from 2,000 km (1,240 miles) to just below geosynchronous orbit at 35,786 kilometers (22,236 mi). Also known as an intermediate circular orbit. These are "most commonly at 20,200 kilometers (12,600 mi), or 20,650 kilometers (12,830 mi), with an orbital period of 12 hours."[3]
+
+Both geosynchronous orbit (GSO) and geostationary orbit (GEO) are orbits around Earth matching Earth's sidereal rotation period. All geosynchronous and geostationary orbits have a semi-major axis of 42,164 km (26,199 mi).[4] This works out to an altitude of 35,786 km (22,236 mi). All geostationary orbits are also geosynchronous, but not all geosynchronous orbits are geostationary. A geostationary orbit stays exactly above the equator, whereas a geosynchronous orbit may swing north and south to cover more of the Earth's surface. Both complete one full orbit of Earth per sidereal day (relative to the stars, not the Sun).
+
+High Earth orbit: geocentric orbits above the altitude of geosynchronous orbit 35,786 km (22,240 miles).[3]
+
+By 
+
 \subsection{Coordinate frames}
 \subsubsection{ECI frame}
-The Earth Centered Inertial frame has its x-axis pointing towards the vernal equinox, and its z-axis pointing along the rotation axis of the Earth at some initial time. The y-axis completes a right handed orthogonal coordinate system. The frame’s origin is at the center
-of the Earth.
+The Earth Centered Inertial frame has its x-axis pointing towards the vernal equinox, and its z-axis pointing along the rotation axis of the Earth at some initial time. The y-axis completes a right handed orthogonal coordinate system. The frame’s origin is at the center of the Earth.
 \citet{larson1992space}
 \begin{figure}[ht]
 \includegraphics[scale=0.4]{eci_frame.jpg}
