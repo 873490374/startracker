@@ -163,10 +163,10 @@ M.~Psiaki, ``{Extended quest attitude determination filtering},'' in
 T.~B. Rinnan, ``{Development and comparison of estimation methods for attitude
   determination},'' Master's thesis, Institutt for teknisk kybernetikk, 2012.
 
-\bibitem[Juang et~al.(2003)Juang, Kim, and Junkins]{juang2003efficient}
+\bibitem[Juang et~al.()Juang, Kim, and Junkins]{juang2003efficient}
 J.-N. Juang, H.-Y. Kim, and J.~L. Junkins, ``{An efficient and robust singular
   value method for star pattern recognition and attitude determination},''
-  2003.
+  \emph{NASA, Tech. Rep. TM-2003-212142}.
 
 \bibitem[Markley and Mortari(1999)]{markley1999estimate}
 F.~L. Markley and D.~Mortari, ``{How to estimate attitude from vector
@@ -192,7 +192,7 @@ D.~Felikson, J.~Hahmall, M.~F. Vess, and M.~Ekinci, ``{On-Orbit Solar Dynamics
 
 \bibitem[Kandiyil(2010)]{kandiyil2010attitude}
 R.~Kandiyil, ``{Attitude determination software for a star sensor},'' Master's
-  thesis, 2010.
+  thesis, Lule{\aa} University of Technology, 2010.
 
 \bibitem[Huffman et~al.(2006)]{huffman2006designing}
 K.~M. Huffman \emph{et~al.}, ``{Designing star trackers to meet micro-satellite
@@ -297,11 +297,12 @@ L.~Euler, ``{Formulae generales pro translatione quacunque corporum
 \bibitem[Hamilton(1844)]{hamilton1844lxxviii}
 W.~R. Hamilton, ``{LXXVIII. On quaternions; or on a new system of imaginaries
   in Algebra: To the editors of the Philosophical Magazine and Journal},''
-  1844.
+  \emph{Philosophical Magazine Series 3}, vol.~25, no. 169, pp. 489--495, 1844.
 
 \bibitem[Cayley(1845)]{cayley1845xiii}
 A.~Cayley, ``{XIII. On certain results relating to quaternions: To the editors
-  of the Philosophical Magazine and Journal},'' 1845.
+  of the Philosophical Magazine and Journal},'' \emph{Philosophical Magazine
+  Series 3}, vol.~26, no. 171, pp. 141--145, 1845.
 
 \bibitem[Courant and Hilbert(1953)]{courant1953methods}
 R.~Courant and D.~Hilbert, ``{Methods of mathematical physics, Volume I},''

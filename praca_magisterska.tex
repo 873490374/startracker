@@ -249,7 +249,7 @@ Sun sensors typically consist of few sensors oriented perpendicularly, which can
 \subsubsection{Star-Tracker}
 Star-tracker is quite sophisticated device, which consists of camera, processor and memory for database. In the database is catalogue of stars, built basing on data from Earth's observatories. Simply put star-tracker, when in orbit, takes picture of space - stars. Then processes the image to recognize stars in it and compares with data in catalogue or with previous image. When stars are identified star-tracker estimates the attitude of satellite towards Earth. The main advantage over other means: great accuracy and star-tracker can find its location again after satellite was restarted or lost in space.
 \subsubsection{Horizon Sensors}
-Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
+Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. In other words device detects the contrast between the cold of deep space and the heat of Earth's atmosphere. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
 \subsubsection{Magnetometer}
 The device actually consists of three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
 \subsubsection{Global Positioning System}
@@ -258,42 +258,28 @@ Nowadays nearly everyone has personal device with Global Positioning System (GPS
 \subsubsection{Conclusions}
 The above means of attitude determination are usually used together with the use of Kalman filter, to compensate errors of one sensor with the other. However none of the means is more accurate than star-trackers.
 Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements if properly calibrated. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
-Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. GPS navigation is accurate, however only on Earth's orbit. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is via using star-trackers.
+Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. GPS navigation is accurate, however only on Earth's orbit. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is via using star-trackers. The typical accuracies of different sensors are available in Table \ref{tab:sensors}.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[ht]
-\begin{tabular}{|p{4.5cm}|p{8cm}|}
+\centering
+\begin{tabular}{|p{5cm}|p{5cm}|}
 \hline 
-Sensor & Typical Performance Range \\ 
+\textbf{Sensor} & \textbf{Accuracy} (less is better) \\ 
 \hline 
-Inertial \newline Measurement Unit \newline (Gyros and Accelerometers) & Gyro drift rate = 0.003 deg/hr to 1 deg/hr,\newline accel. \newline Linearity = 1 to 5 x $10^{-6} g/g^2$ over range\newline of 20 to 60 g \\ 
+Inertial Measurement Unit & 0.001\degree /hr to 1\degree /hr \\ 
 \hline 
-Sun Sensors & Accuracy = 0.005 deg to 3 deg \\ 
+Sun Sensors & 0.005\degree{} to 3\degree \\ 
 \hline 
-Star Sensors\newline (Scanners and Mappers) & Attitude accuracy = 1 arc sec to 1 arc min \newline 0.0003 deg to 0.01 deg \\ 
+Star Sensors & 0.0003\degree{} to 0.01\degree \newline (1 arc sec to 1 arc min) \\ 
 \hline 
-Horizon Sensors\newline -Scanner/Pipper\newline -Fixed Head (Static) & Attitude accuracy: \newline 0.1 deg to 1 deg (LEO) \newline $<0.1$ deg to 0.25 deg \\ 
+Horizon Sensors & 0.05\degree{} (GEO) \newline 0.1\degree{} (LEO) \\ 
 \hline 
-Magnetometer & Attitude accuracy = 0.5 deg to 3 deg \\ 
+Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\ 
 \hline 
 \end{tabular}
-\caption{Sensor Accuracy Ranges. Adapted from \citet{larson1992space}}
-\end{table}
-
-\begin{table}[h!bt]
-\begin{tabular}{|p{3cm}|p{3.3cm}|p{6cm}|}
-\hline
-\textbf{Sensor} & \textbf{Accuracy} & \textbf{Characteristics \newline and Applicability} \\ 
-\hline
-Magnetometers & 1.0\degree (5000km alt) \newline 5.0\degree (200 km alt) & Attitude measured relative to \newline Earth’s local magnetic field. \newline Magnetic field uncertainties and \newline variability dominate accuracy. \newline Usable only below $\approx$6,000 km. \\ 
-Earth sensors & 0.05\degree (GEO) \newline 0.1\degree (LEO) & Horizon uncertainties dominate \newline accuracy. Highly accurate units \newline use scanning. \\ 
-Sun sensors & 0.01\degree & Typical field of view +-30\degree \\ 
-Star sensors & 2 arc-sec & Typical field of view +-6\degree \\ 
-Gyroscopes & 0.001 deg/hr & Normal use involves periodically resetting reference. \\ 
-Directional \newline antennas & 0.01\degree to 0.5\degree & Typically 1 of the antenna \newline beam width \\
-\hline
-\end{tabular} 
-\caption{Sensor Accuracy Ranges. Adapted from \citet{hall2003spacecraft}}
+\caption{Sensor Accuracy Ranges. Adapted from \citet{hall2003spacecraft} and \citet{larson1992space}}
+\label{tab:sensors}
 \end{table}
 
 \subsection{On-board computer}

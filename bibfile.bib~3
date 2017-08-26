@@ -1,29 +1,20 @@
 @comment{x-kbibtex-personnameformatting=<%l><, %f>}
 
-@inproceedings{6187242,
-	author = "McBryde, C. R. and Lightsey, E. G.",
+@inproceedings{mcbryde2012star,
+	author = "McBryde, Christopher Ryan and Lightsey, E Glenn",
 	booktitle = "{Aerospace Conference, 2012 IEEE}",
-	doi = "10.1109/AERO.2012.6187242",
-	issn = "1095-323X",
-	keywords = "CCD image sensors; attitude measurement; computer vision; singular value decomposition; star trackers; 3-unit CubeSat missions; Austin; CCD sensor; Markley singular value decomposition; University of Texas; accurate star tracker; arc-minute star tracker; attitude determination; centroiding; grey-scale charge coupled device; low-cost star tracker; low-power star tracker; machine vision systems; pyramid star identification; star identification code; star tracking; Accuracy; Cameras; Catalogs; Position measurement; Satellite broadcasting; Satellites; Vectors",
-	month = "March",
+	organization = "IEEE",
 	pages = "1--14",
 	title = "{A star tracker design for CubeSats}",
 	year = "2012"
 }
 
-@inbook{RIS_0,
-	author = "Kim, Jae-Jun and Tappe, Jack and Jordan, Albert and Agrawal, Brij",
-	doi = "10.2514/6.2011-6270",
-	month = "aug",
-	note = "doi:10.2514/6.2011-6270",
-	publisher = "American Institute of Aeronautics and Astronautics",
-	risfield_0_m1 = "0",
-	risfield_1_do = "doi:10.2514/6.2011-6270",
-	risfield_2_m3 = "doi:10.2514/6.2011-6270",
-	risfield_3_t2 = "AIAA Modeling and Simulation Technologies Conference",
-	series = "{Guidance, Navigation, and Control and Co-located Conferences}",
-	title = "{Star Tracker Attitude Estimation for an Indoor Ground-Based Spacecraft Simulator}",
+@inproceedings{tappe2011star,
+	author = "Tappe, Jack and Kim, Jae Jun and Jordan, Albert and Agrawal, Brij",
+	booktitle = "{AIAA Guidance, Navigation, and Control Conference}",
+	pages = "1116--1122",
+	title = "{Star tracker attitude estimation for an indoor ground-based spacecraft simulator}",
+	volume = "1",
 	year = "2011"
 }
 
@@ -583,5 +574,88 @@
 	pages = "2006--07",
 	title = "{Autonomous star-imaging attitude sensor (ASIAS)}",
 	year = "2007"
+}
+
+@mastersthesis{tappe2009development,
+	author = "Tappe, Jack A",
+	school = "Monterey, California. Naval Postgraduate School",
+	title = "{Development of star tracker system for accurate estimation of spacecraft attitude}",
+	year = "2009"
+}
+
+@mastersthesis{kandiyil2010attitude,
+	author = "Kandiyil, Raveesh",
+	title = "{Attitude determination software for a star sensor}",
+	year = "2010"
+}
+
+@mastersthesis{marques2000small,
+	author = "Marques, Sonia Maria Martinho",
+	title = "{Small satellites attitude determination methods}",
+	year = "2000"
+}
+
+@article{zhang2014brightness,
+	author = "Zhang, Peng and Zhao, Qile and Liu, Jingnan and Liu, Ning",
+	journal = "Sensors",
+	number = "10",
+	pages = "18498--18514",
+	publisher = "Multidisciplinary Digital Publishing Institute",
+	title = "{A brightness-referenced star identification algorithm for aps star trackers}",
+	volume = "14",
+	year = "2014"
+}
+
+@article{swartwout2013first,
+	author = "Swartwout, Michael",
+	journal = "Journal of Small Satellites",
+	number = "2",
+	pages = "213--233",
+	title = "{The first one hundred cubesats: A statistical look}",
+	volume = "2",
+	year = "2013"
+}
+
+@article{kruijff2003automated,
+	author = "Kruijff, M and vd Heiden, N",
+	journal = "Moon",
+	number = "1",
+	pages = "500--2",
+	title = "{Automated star sensor performance assessment using real-sky data of MEFIST II}",
+	volume = "100",
+	year = "2003"
+}
+
+@article{dzamba2014ground,
+	author = "Dzamba, Tom and Enright, John",
+	journal = "Sensors",
+	number = "3",
+	pages = "3939--3964",
+	publisher = "Multidisciplinary Digital Publishing Institute",
+	title = "{Ground testing strategies for verifying the slew rate tolerance of star trackers}",
+	volume = "14",
+	year = "2014"
+}
+
+@mastersthesis{huffman2006designing,
+	author = "Huffman, Kara Marie and others",
+	school = "Massachusetts Institute of Technology, Department of Aeronautics and Astronautics",
+	title = "{Designing star trackers to meet micro-satellite requirements}",
+	year = "2006"
+}
+
+@mastersthesis{diaz2006performance,
+	author = "Diaz, Kenneth Daniel",
+	school = "California Polytechnic State University",
+	title = "{Performance Analysis Of A Fixed Point Star Tracker Algorithm}",
+	year = "2006"
+}
+
+@incollection{feruglio2016neural,
+	author = "Feruglio, Lorenzo and Corpino, Sabrina and Calvi, Daniele",
+	booktitle = "{AIAA SPACE 2016}",
+	pages = "5615",
+	title = "{Neural networks for event detection: an interplanetary cubesat asteroid mission case study}",
+	year = "2016"
 }
 

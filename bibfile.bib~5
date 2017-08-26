@@ -563,3 +563,25 @@
 	year = "2016"
 }
 
+@mastersthesis{lindh2014development,
+	author = "Lindh, Marcus",
+	title = "{Development and implementation of star tracker electronics}",
+	year = "2014"
+}
+
+@inproceedings{capuano2014gnss,
+	author = "Capuano, Vincenzo and Botteron, Cyril and Wang, Yanguang and Tian, Jia and Lecl{\`e}re, J{\'e}r{\^o}me and Farine, Pierre-Andr{\'e}",
+	booktitle = "{ION GNSS+ 2014}",
+	number = "EPFL-CONF-202129",
+	title = "{GNSS/INS/Star tracker integrated navigation system for Earth-Moon transfer orbit}",
+	year = "2014"
+}
+
+@article{cannata2007autonomous,
+	author = "Cannata, MN and Greene, MR and Mulligan, SJ and Popovici, V",
+	journal = "Faculty of Science and Engineering. York University",
+	pages = "2006--07",
+	title = "{Autonomous star-imaging attitude sensor (ASIAS)}",
+	year = "2007"
+}
+
