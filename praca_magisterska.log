@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2016.8.29)  18 AUG 2017 16:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  26 AUG 2017 20:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **praca_magisterska.tex
 (./praca_magisterska.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 6 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -1119,19 +1119,13 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \tf@toc=\write3
 \openout3 = `praca_magisterska.toc'.
 
- [5] [6] [7] [8] [9]
-Overfull \hbox (6.5547pt too wide) in paragraph at lines 195--196
+ [5] [6] [7] [8]
+Overfull \hbox (6.5547pt too wide) in paragraph at lines 189--190
 []\OT1/lmr/m/n/12 - At-ti-tude De-ter-mi-na-tion: AIM (At-ti-tude es-ti-ma-tion
  us-ing Im-age Match-
  []
 
-
-Overfull \hbox (14.01273pt too wide) in paragraph at lines 195--196
-\OT1/lmr/m/n/12 ing) [[]], QUEST [[]], QUEST im-prove-ment [[]], Ex-tended Ques
-t [[]], EQUEST
- []
-
-[10] <images/pw-sat.jpg, id=49, 314.17375pt x 330.23375pt>
+[9] [10] <images/pw-sat.jpg, id=49, 314.17375pt x 330.23375pt>
 File: images/pw-sat.jpg Graphic file (type jpg)
 
 <use images/pw-sat.jpg>
@@ -1164,185 +1158,182 @@ ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
 
 LaTeX Warning: Text page 16 contains only floats.
 
-[16]
-<images/Comparison_satellite_navigation_orbits.png, id=75, 513.92pt x 513.92pt>
+[16] [17]
+<images/Comparison_satellite_navigation_orbits.png, id=78, 513.92pt x 513.92pt>
 File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
 
 <use images/Comparison_satellite_navigation_orbits.png>
 Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png used
- on input line 312.
+ on input line 307.
 (pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
- [17 <./images/Comparison_satellite_navigation_orbits.png>]
-Overfull \hbox (1.74905pt too wide) in paragraph at lines 325--326
+ [18 <./images/Comparison_satellite_navigation_orbits.png>]
+Overfull \hbox (1.74905pt too wide) in paragraph at lines 320--321
 []\OT1/lmr/m/n/12 High Earth or-bit: geo-cen-tric or-bits above the al-ti-tude 
 of geosyn-chronous
  []
 
-<images/eci_frame.jpg, id=79, 496.85625pt x 562.1pt>
+<images/eci_frame.jpg, id=82, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 334.
+Package pdftex.def Info: images/eci_frame.jpg used on input line 329.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [18]
-<images/body_frame.jpg, id=83, 416.55624pt x 415.5525pt>
+ [19]
+<images/body_frame.jpg, id=87, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 346.
+Package pdftex.def Info: images/body_frame.jpg used on input line 341.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19 <./images/eci_frame.jpg>] [20 <./images/body_frame.jpg>] [21] [22] [23]
-<images/startracker_eng.jpg, id=101, 646.415pt x 119.44624pt>
+[20 <./images/eci_frame.jpg>] [21 <./images/body_frame.jpg>] [22] [23] [24]
+<images/startracker_eng.jpg, id=104, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
 
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg used on input line 471.
+Package pdftex.def Info: images/startracker_eng.jpg used on input line 466.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
- [24 <./images/startracker_eng.jpg>] [25]
-[26] [27] <images/vector_angle_method.jpg, id=116, 332.24126pt x 233.87375pt>
+ [25 <./images/startracker_eng.jpg>] [26]
+[27] [28] <images/vector_angle_method.jpg, id=119, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 576.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 571.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
- [28 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=120, 831.105pt x 633.36626pt>
+ [29 <./images/vector_angle_method.jpg>]
+<images/spherical_triangle_method.jpg, id=123, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 628.
+e 623.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
 
-<images/planar_triangle_method.jpg, id=121, 831.105pt x 633.36626pt>
+<images/planar_triangle_method.jpg, id=124, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 6
-53.
+48.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [29 <./images/spherical_triangle_method.jpg>] [30 <./images/planar_triangle_me
-thod.jpg>] [31]
-<images/pyramid_method.jpg, id=132, 566.115pt x 982.67125pt>
+ [30 <./images/spherical_triangle_method.jpg>] [31 <./images/planar_triangle_me
+thod.jpg>] [32]
+<images/pyramid_method.jpg, id=135, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 788.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 783.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
- [32] [33] [34] [35] [36] [37] [38] [39]
-[40] [41] (./praca_magisterska.bbl [42] [43]
-Underfull \hbox (badness 1163) in paragraph at lines 196--198
+ [33] [34] [35] [36] [37] [38] [39] [40]
+[41] [42] (./praca_magisterska.bbl [43] [44] [45]
+Underfull \hbox (badness 1163) in paragraph at lines 243--245
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
  []
 
 
-Underfull \hbox (badness 4441) in paragraph at lines 200--203
+Underfull \hbox (badness 4441) in paragraph at lines 247--250
 []\OT1/lmr/m/n/12 ``Polskie Ra-dio: Pier-wszy pol-ski satelita pole-ciaª w kos-
 mos,''
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 200--203
+Underfull \hbox (badness 10000) in paragraph at lines 247--250
 \OT1/lmr/m/n/12 http://www.polskieradio.pl/7/129/Artykul/536883,Pierwszy-polski
 -
  []
 
-[44]
-Underfull \hbox (badness 1281) in paragraph at lines 205--207
+
+Underfull \hbox (badness 1281) in paragraph at lines 252--254
 []\OT1/lmr/m/n/12 ``BRITE-PL, PL2 (CanX 3C, 3D / Lem, Heweliusz) - Gunter's
  []
 
 
-Underfull \hbox (badness 4713) in paragraph at lines 205--207
+Underfull \hbox (badness 4713) in paragraph at lines 252--254
 \OT1/lmr/m/n/12 Space Page,'' http://space.skyrocket.de/doc[]sdat/brite-pl.htm,
  ac-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--211
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
 []\OT1/lmr/m/n/12 ``Future Plan-e-tary Ex-pe-di-tions: Cube-Sats to the Plan-et
 s,''
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 265--267
 []\OT1/lmr/m/n/12 ``GPS: The Global Po-si-tion-ing Sys-tem,''
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--225
+Underfull \hbox (badness 10000) in paragraph at lines 269--272
 []\OT1/lmr/m/n/12 ``NASA's Uti-liza-tion of Global Po-si-tion-ing Sys-tem (GPS)
 ,''
  []
 
 
-Overfull \hbox (109.60002pt too wide) in paragraph at lines 222--225
+Overfull \hbox (109.60002pt too wide) in paragraph at lines 269--272
 \OT1/lmr/m/n/12 https://www.nasa.gov/directorates/heo/scan/communications/polic
 y/GPS[]Utilization.html,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--230
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 []\OT1/lmr/m/n/12 ``Space Sta-tion Us-ing GPS in At-ti-tude Con-trol,''
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--230
+Underfull \hbox (badness 10000) in paragraph at lines 274--277
 \OT1/lmr/m/n/12 https://www.nasa.gov/centers/johnson/news/releases/2002/j02-
  []
 
 
-Overfull \hbox (401.40543pt too wide) in paragraph at lines 240--243
+Overfull \hbox (401.40543pt too wide) in paragraph at lines 289--292
 []\OT1/lmr/m/n/12 ``Earth's nav-i-ga-tion or-bits im-age,'' https://upload.wiki
 media.org/wikipedia/commons/thumb/b/b4/Comparison[]satellite[]navigation[]orbit
 s.svg/512px-
  []
 
-[45] [46]) [47] (./praca_magisterska.lot)
+[47]) [48] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [48] (./praca_magisterska.lof)
+ [49] (./praca_magisterska.lof)
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
-
-[49] [50 <./images/pyramid_method.jpg>] (./praca_magisterska.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [50]
+[51 <./images/pyramid_method.jpg>] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 11259 strings out of 494877
- 172190 string characters out of 6179086
- 283420 words of memory out of 5000000
- 14251 multiletter control sequences out of 15000+600000
+ 11295 strings out of 493029
+ 173210 string characters out of 6136234
+ 288544 words of memory out of 5000000
+ 14528 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
- 56 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  61i,15n,96p,1930b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/s
-hare/texmf/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/l
-m-mathsy.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/tex
-mf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
-x8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fon
-ts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb
-></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publ
-ic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
-xmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on praca_magisterska.pdf (50 pages, 5035102 bytes).
+{/usr/share/texmf
+/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.en
+c}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/en
+c/dvips/lm/lm-ts1.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}</usr/
+share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/
+fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmmib10
+.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/
+type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pfb></u
+sr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/shar
+e/texmf/fonts/type1/public/lm/lmsy8.pfb>
+Output written on praca_magisterska.pdf (51 pages, 5038436 bytes).
 PDF statistics:
- 252 PDF objects out of 1000 (max. 8388607)
- 166 compressed objects within 2 object streams
+ 255 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

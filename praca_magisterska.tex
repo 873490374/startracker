@@ -147,14 +147,6 @@ Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajó
 \printnoidxglossary[type=symbols,sort=use]
 
 \newpage
-\citet{jenssen2011comparison}
-\citet{valenti2015keeping}
-\citet{delabie2012highly}
-\citet{jalabert2011optimization}
-\citet{felikson2011orbit}
-\citet{knutson2012fast}
-\citet{rose2003star}
-\citet{mortari2002starnav}
 
 
 \section{Introduction}
@@ -182,28 +174,36 @@ This thesis consists of several chapters. Here they are shortly summarized:\par
 
 \setlength{\parindent}{1cm}
 
-\subsection{Similar work}
+\subsection{Related work}
 
 There exists a number of works connected to topic of star-tracker. Many works are cited later in this thesis as they describe important parts of algorithms. There are just a few works dealing with whole start-tracker program, not just parts of it, and nearly no works about whole program together with implementation on the real equipment.
 
 - generally about CubeSats: \citep{swartwout2011brief}, \citep{heidt2000cubesat}
 
-- Star centroids: \citep{liebe2002accuracy}, \citep{samaan2002predictive}, \citep{knutson2012fast}, \citep{azizabadi2014vlsi}
+- Star centroids: \citep{liebe2002accuracy}, \citep{samaan2002predictive}, \citep{knutson2012fast}, \citep{azizabadi2014vlsi}, \citet{lindh2014development}, \citet{zhang2014brightness}, 
 
-- Star identification: Geometric Voting \citep{kolomenkin2008geometric}, Brightness Independent \citep{dong2006brightness}, Planar Triangle \citep{cole2006fast}, Pyramid \citep{mortari2004pyramid}, Spherical Triangles \citep{cole2004fast}, SP-Search \cite{mortari1999sp}, Neural Networks \citep{miri2012star}, \cite{lindbladstar} and \citep{li2003star} with separately discussed k-vector algorithm \citep{mortari1996fast}, \citep{mortari2000k}, \citep{mortari2013k}
+- Star identification: Geometric Voting \citep{kolomenkin2008geometric}, Grid Algorithm \citet{padgett1997grid}, Brightness Independent \citep{dong2006brightness}, Planar Triangle \citep{cole2006fast}, Pyramid \citep{mortari2004pyramid}, Spherical Triangles \citep{cole2004fast}, SP-Search \cite{mortari1999sp}, Neural Networks \citep{miri2012star}, \cite{lindbladstar} and \citep{li2003star} with separately discussed k-vector algorithm \citep{mortari1996fast}, \citep{mortari2000k}, \citep{mortari2013k}, \citep{tappe2009development}, 
 
-- Attitude Determination: AIM (Attitude estimation using Image Matching) \citep{delabie2012highly}, QUEST \citep{shuster1990kalman}, QUEST improvement \citep{RIS_1}, Extended Quest \citep{psiaki1999extended}, EQUEST \citep{rinnan2012development}, summarized description of attitude estimation algorithms: \citep{markley1999estimate}, \citep{hall2003spacecraft}, 
+Neural \citet{feruglio2016neural}
 
-- hardware \citep{azizabadi2014vlsi}, Gąska
+- Attitude Determination: AIM (Attitude estimation using Image Matching) \citep{delabie2012highly}, QUEST \citep{shuster1990kalman}, QUEST improvement \citep{cheng2014improvement}, Extended Quest \citep{psiaki1999extended}, EQUEST \citep{rinnan2012development}, Singular Value Decomposition \citet{juang2003efficient}, summarized description of attitude estimation algorithms: \citep{markley1999estimate}, \citep{hall2003spacecraft}, 
 
-- full
+\citet{delabie2012highly}
+
+
+- hardware \citep{azizabadi2014vlsi}, \citet{gaska2016obc}, \citet{felikson2011orbit}?
+
+- full star tracker but software only/simulations \citet{kandiyil2010attitude}, \citet{huffman2006designing}, \citet{diaz2006performance}
+
+- full star-tracker with device/on real device \citet{jalabert2011optimization}, \citet{lizy2010str}, \citet{rose2003star}, \citet{mortari2002starnav} \citet{cannata2007autonomous}
+
 
 \subsection{Cubesat}
 
 
 In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University \cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg.
 
-The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years \cite{swartwout2011brief}. Till now there were around 800 CubeSats launched \cite{nanosats}.
+The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years \cite{swartwout2011brief}\cite{swartwout2013first}. Till now there were around 800 CubeSats launched \cite{nanosats}.
 
 There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc. \cite{pw-sat2}.
 Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars \cite{brite-pl}.
@@ -252,18 +252,13 @@ Star-tracker is quite sophisticated device, which consists of camera, processor 
 Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
 \subsubsection{Magnetometer}
 The device actually consists of three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
-\subsubsection{Global Positioning System }
-%http://digitalcommons.usu.edu/cgi/viewcontent.cgi?article=1646&context=smallsat
-%http://www.sciencedirect.com/science/article/pii/S0273117715004378
-%http://acl.mit.edu/papers/Adams_PhD.pdf
-Nowadays nearly everyone has personal device with Global Positioning System (GPS) navigation. It is also possible to use GPS satellites to determine spacecraft's attitude. This is possible when at least four GPS satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. GPS satellites are located on Medium Earth Orbit (MEO), around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between Low Earth orbit (LEO -  160 to 2,000 km) and Geosynchronous Orbit (GEO - 35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit GPS navigation is however not useful. Example of GPS usage for navigation in space is International Space Station (ISS) \cite{iss-gps}.
+\subsubsection{Global Positioning System}
+Nowadays nearly everyone has personal device with Global Positioning System (GPS) navigation. It is also possible to use GPS satellites to determine spacecraft's attitude. This is possible when at least four GPS satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. GPS satellites are located on Medium Earth Orbit (MEO), around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between Low Earth orbit (LEO -  160 to 2,000 km) and Geosynchronous Orbit (GEO - 35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit GPS navigation is however not useful. Example of GPS usage for navigation in space is International Space Station (ISS) \cite{iss-gps}. There are however works that claim it could make using GPS systems possible for attitude determination up to Moon attitude in the future \cite{capuano2014gnss}.
 
 \subsubsection{Conclusions}
+The above means of attitude determination are usually used together with the use of Kalman filter, to compensate errors of one sensor with the other. However none of the means is more accurate than star-trackers.
 Sun sensors can provide very accurate measurements, but can only operate in sunlight. For low-Earth orbit (LEO), even 30\% of the orbit can be done in the darkness. Magnetometers are small and can give accurate measurements if properly calibrated. Their drawback is the limited knowledge of the magnetic field and electromagnetic interference due to highly integrated construction of CubeSats.
 Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. GPS navigation is accurate, however only on Earth's orbit. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is via using star-trackers.
-
-\citet{larson1992space}
-\citet{lima2000comparison}
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[ht]
@@ -479,7 +474,7 @@ If the database does not contain corresponding stars, the algorithm returns to t
 %converts the results of the Cartesian coordinates to the ecliptic (the stars in the directory board are created using images of the Earth, which results in other coordinates) 
 %does not transform coordinates, and not available\citet{ju2003overview}\par
 
-Generally star-tracker is divided into three main parts\citet{6187242}:
+Generally star-tracker is divided into three main parts\citet{mcbryde2012star}:
 \begin{itemize}
 \item recognising stars on the image and converting the data into list of star vectors by calculating star centroids;
 \item identifying which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
@@ -503,7 +498,7 @@ The algorithm requires specification of the light intensity threshold (to select
 Please note that $a_{ROI}$ must be a positive odd number for the proper functioning of the algorithm.
 
 
-The idea of how to calculate such centroids is adapted from\citet{6187242} and described below:
+The idea of how to calculate such centroids is adapted from\citet{mcbryde2012star} and described below:
 
 \begin{equation}
 x_{start} = x - \frac{a_{ROI} - 1}{2}
@@ -805,7 +800,7 @@ to be removed?
 \subsection{Star-catalogue and searching for matching stars}
 
 \subsubsection{Star Catalogue Generation}
-\citet{6187242}
+\citet{mcbryde2012star}
 \begin{equation}
 \bm{u} = \begin{bmatrix}
 \cos \alpha \cos \delta \\
@@ -953,7 +948,7 @@ orientation error. This is an optimization problem, where the cost function is:
 For satellite attitude determination, the vectors $\bm{r}_j$ for $j \in \left\{1, n\right\}$ are the reference sensor data given in the NED frame. The vectors $\bm{b}_j$ for $j \in \left\{1, n\right\}$  are the measured sensor data in the BODY frame. $\bm{M}$ is the least squares estimate of the rotation matrix which carries the known frame of reference into the satellite fixed frame of reference.
 The QUEST method uses this problem in order to minimize the attitude estimation error.
 \subsubsection{QUEST}
-improvement to quest implementation \citet{RIS_1} \par
+improvement to quest implementation \citet{cheng2014improvement} \par
 kallman filtering \citet{shuster1990kalman}
 \begin{equation}
 \begin{split}
@@ -968,11 +963,11 @@ J(\bm{q}) = \sum_{j=1}^n\frac{1}{\sigma_j^2}(1 - \bm{b}_j^T\bm{R}_b^i(\bm{q})\bm
 a must
 \subsubsection{The Fast Optimal Attitude Matrix}
 to be removed?
-\subsubsection{DCM (Direction Cosine Matrix)}
+\subsubsection{DCM (Direction Cosine Matrix) - Singular Value Decomposition?}
 \citet{juang2003efficient}
  and
 
-\citet{6187242}
+\citet{mcbryde2012star}
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
 \end{equation}
@@ -1007,13 +1002,13 @@ For now the following parts are finished in Python:
 \item QUEST (not started yet)
 \end{enumerate}
 Testing\par
-\citet{kruijff2003star}
+\citet{kruijff2003star}, \citet{kruijff2003automated}, \citet{dzamba2014ground}, 
 \newpage
 \section{Complete program}
 
 \newpage
 \section{Testing of star-tracker}
-\citet{RIS_0}
+\citet{tappe2011star}
 
 \newpage
 \bibliographystyle{IEEEtranN}

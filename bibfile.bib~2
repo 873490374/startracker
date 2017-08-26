@@ -12,18 +12,12 @@
 	year = "2012"
 }
 
-@inbook{RIS_0,
-	author = "Kim, Jae-Jun and Tappe, Jack and Jordan, Albert and Agrawal, Brij",
-	doi = "10.2514/6.2011-6270",
-	month = "aug",
-	note = "doi:10.2514/6.2011-6270",
-	publisher = "American Institute of Aeronautics and Astronautics",
-	risfield_0_m1 = "0",
-	risfield_1_do = "doi:10.2514/6.2011-6270",
-	risfield_2_m3 = "doi:10.2514/6.2011-6270",
-	risfield_3_t2 = "AIAA Modeling and Simulation Technologies Conference",
-	series = "{Guidance, Navigation, and Control and Co-located Conferences}",
-	title = "{Star Tracker Attitude Estimation for an Indoor Ground-Based Spacecraft Simulator}",
+@inproceedings{tappe2011star,
+	author = "Tappe, Jack and Kim, Jae Jun and Jordan, Albert and Agrawal, Brij",
+	booktitle = "{AIAA Guidance, Navigation, and Control Conference}",
+	pages = "1116--1122",
+	title = "{Star tracker attitude estimation for an indoor ground-based spacecraft simulator}",
+	volume = "1",
 	year = "2011"
 }
 
@@ -228,22 +222,12 @@
 	year = "2004"
 }
 
-@article{RIS_1,
-	author = "{Cheng Yang} and {Shuster Malcolm D.}",
-	doi = "10.2514/1.62549",
-	issn = "0731-5090",
+@article{cheng2014improvement,
+	author = "Cheng, Yang and Shuster, Malcolm D",
 	journal = "Journal of Guidance, Control, and Dynamics",
-	note = "doi: 10.2514/1.62549",
-	number = "1",
-	pages = "301--305",
 	publisher = "American Institute of Aeronautics and Astronautics",
-	risfield_0_da = "2014/01/01",
-	risfield_1_do = "10.2514/1.62549",
-	risfield_2_t2 = "Journal of Guidance, Control, and Dynamics",
-	risfield_3_m3 = "doi: 10.2514/1.62549",
 	title = "{Improvement to the Implementation of the QUEST Algorithm}",
-	volume = "37",
-	year = "2013"
+	year = "2014"
 }
 
 @inproceedings{jenssen2011comparison,
@@ -534,8 +518,8 @@
 }
 
 @misc{nasa-gps-navigation,
-	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/policy/GPSUtilization.html}",
-	note = "Accessed: 2017-08-18, uderscore problem in url with LaTeX",
+	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/policy/GPS\_Utilization.html}",
+	note = "Accessed: 2017-08-18",
 	title = "{NASA's Utilization of Global Positioning System (GPS)}"
 }
 
@@ -543,5 +527,68 @@
 	howpublished = "\url{https://www.nasa.gov/centers/johnson/news/releases/2002/j02-61.html}",
 	note = "Accessed: 2017-08-18",
 	title = "{Space Station Using GPS in Attitude Control}"
+}
+
+@book{adams2000robust,
+	author = "Adams, John Carl",
+	title = "{Robust GPS attitude determination for spacecraft}",
+	year = "2000"
+}
+
+@inproceedings{ccelik2013comparison,
+	author = "\c{C}elik, Onur and Hajiyev, Chingiz",
+	booktitle = "{Recent Advances in Space Technologies (RAST), 2013 6th International Conference on}",
+	organization = "IEEE",
+	pages = "261--264",
+	title = "{A comparison of attitude determination methods for small satellites}",
+	year = "2013"
+}
+
+@article{lizy2010str,
+	author = "Lizy-Destrez, St{\'e}phanie and Mimoun, David",
+	title = "{Str: a student developed star tracker for the esa-led esmo moon mission}",
+	year = "2010"
+}
+
+@mastersthesis{gaska2016obc,
+	author = "Gąska, Micha{\l}",
+	school = "Warsaw University of Technology",
+	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcją Star Tracker}",
+	year = "2016"
+}
+
+@mastersthesis{lindh2014development,
+	author = "Lindh, Marcus",
+	title = "{Development and implementation of star tracker electronics}",
+	year = "2014"
+}
+
+@inproceedings{capuano2014gnss,
+	author = "Capuano, Vincenzo and Botteron, Cyril and Wang, Yanguang and Tian, Jia and Lecl{\`e}re, J{\'e}r{\^o}me and Farine, Pierre-Andr{\'e}",
+	booktitle = "{ION GNSS+ 2014}",
+	number = "EPFL-CONF-202129",
+	title = "{GNSS/INS/Star tracker integrated navigation system for Earth-Moon transfer orbit}",
+	year = "2014"
+}
+
+@article{cannata2007autonomous,
+	author = "Cannata, MN and Greene, MR and Mulligan, SJ and Popovici, V",
+	journal = "Faculty of Science and Engineering. York University",
+	pages = "2006--07",
+	title = "{Autonomous star-imaging attitude sensor (ASIAS)}",
+	year = "2007"
+}
+
+@mastersthesis{tappe2009development,
+	author = "Tappe, Jack A",
+	school = "Monterey, California. Naval Postgraduate School",
+	title = "{Development of star tracker system for accurate estimation of spacecraft attitude}",
+	year = "2009"
+}
+
+@mastersthesis{kandiyil2010attitude,
+	author = "Kandiyil, Raveesh",
+	title = "{Attitude determination software for a star sensor}",
+	year = "2010"
 }
 

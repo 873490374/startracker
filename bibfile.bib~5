@@ -228,22 +228,12 @@
 	year = "2004"
 }
 
-@article{RIS_1,
-	author = "{Cheng Yang} and {Shuster Malcolm D.}",
-	doi = "10.2514/1.62549",
-	issn = "0731-5090",
+@article{cheng2014improvement,
+	author = "Cheng, Yang and Shuster, Malcolm D",
 	journal = "Journal of Guidance, Control, and Dynamics",
-	note = "doi: 10.2514/1.62549",
-	number = "1",
-	pages = "301--305",
 	publisher = "American Institute of Aeronautics and Astronautics",
-	risfield_0_da = "2014/01/01",
-	risfield_1_do = "10.2514/1.62549",
-	risfield_2_t2 = "Journal of Guidance, Control, and Dynamics",
-	risfield_3_m3 = "doi: 10.2514/1.62549",
 	title = "{Improvement to the Implementation of the QUEST Algorithm}",
-	volume = "37",
-	year = "2013"
+	year = "2014"
 }
 
 @inproceedings{jenssen2011comparison,
@@ -535,13 +525,41 @@
 
 @misc{nasa-gps-navigation,
 	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/policy/GPS\_Utilization.html}",
-	note = "Accessed: 2017-08-18, uderscore problem in url with LaTeX",
+	note = "Accessed: 2017-08-18",
 	title = "{NASA's Utilization of Global Positioning System (GPS)}"
 }
 
 @misc{iss-gps,
 	howpublished = "\url{https://www.nasa.gov/centers/johnson/news/releases/2002/j02-61.html}",
 	note = "Accessed: 2017-08-18",
-	title = "{Space Station Using GPS in Attitude Control }"
+	title = "{Space Station Using GPS in Attitude Control}"
+}
+
+@book{adams2000robust,
+	author = "Adams, John Carl",
+	title = "{Robust GPS attitude determination for spacecraft}",
+	year = "2000"
+}
+
+@inproceedings{ccelik2013comparison,
+	author = "\c{C}elik, Onur and Hajiyev, Chingiz",
+	booktitle = "{Recent Advances in Space Technologies (RAST), 2013 6th International Conference on}",
+	organization = "IEEE",
+	pages = "261--264",
+	title = "{A comparison of attitude determination methods for small satellites}",
+	year = "2013"
+}
+
+@article{lizy2010str,
+	author = "Lizy-Destrez, St{\'e}phanie and Mimoun, David",
+	title = "{Str: a student developed star tracker for the esa-led esmo moon mission}",
+	year = "2010"
+}
+
+@mastersthesis{gaska2016obc,
+	author = "Gąska, Micha{\l}",
+	school = "Warsaw University of Technology",
+	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcją Star Tracker}",
+	year = "2016"
 }
 
