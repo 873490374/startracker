@@ -10,12 +10,12 @@
 \contentsline {subsection}{\numberline {1.3}Related work}{9}
 \contentsline {subsection}{\numberline {1.4}Cubesat}{10}
 \contentsline {subsection}{\numberline {1.5}Means of attitude determination}{11}
-\contentsline {subsubsection}{\numberline {1.5.1}Inertial Measurement Unit}{13}
+\contentsline {subsubsection}{\numberline {1.5.1}Inertial Measurement Unit}{14}
 \contentsline {subsubsection}{\numberline {1.5.2}Sun Sensors}{14}
 \contentsline {subsubsection}{\numberline {1.5.3}Star-Tracker}{14}
 \contentsline {subsubsection}{\numberline {1.5.4}Horizon Sensors}{14}
-\contentsline {subsubsection}{\numberline {1.5.5}Magnetometer}{14}
-\contentsline {subsubsection}{\numberline {1.5.6}Global Positioning System}{15}
+\contentsline {subsubsection}{\numberline {1.5.5}Magnetometer}{15}
+\contentsline {subsubsection}{\numberline {1.5.6}Global Navigation Satellite System}{15}
 \contentsline {subsubsection}{\numberline {1.5.7}Conclusions}{15}
 \contentsline {subsection}{\numberline {1.6}On-board computer}{16}
 \contentsline {section}{\numberline {2}Preliminaries}{17}
@@ -23,38 +23,38 @@
 \contentsline {subsection}{\numberline {2.2}Coordinate frames}{18}
 \contentsline {subsubsection}{\numberline {2.2.1}ECI frame}{18}
 \contentsline {subsubsection}{\numberline {2.2.2}ECEF frame}{18}
-\contentsline {subsubsection}{\numberline {2.2.3}NED frame}{19}
-\contentsline {subsubsection}{\numberline {2.2.4}BODY frame}{19}
-\contentsline {subsection}{\numberline {2.3}Space environment}{20}
-\contentsline {subsection}{\numberline {2.4}Attitude representations}{20}
-\contentsline {subsubsection}{\numberline {2.4.1}Euler angles}{20}
-\contentsline {subsubsection}{\numberline {2.4.2}Quaternions}{21}
-\contentsline {subsubsection}{\numberline {2.4.3}Advantages of quaternions}{23}
-\contentsline {section}{\numberline {3}Star-tracker program}{24}
-\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{25}
-\contentsline {subsection}{\numberline {3.2}Star identification}{27}
-\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{28}
-\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{29}
-\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{30}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{32}
-\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{32}
-\contentsline {subsubsection}{\numberline {3.2.6}Voting}{32}
-\contentsline {subsubsection}{\numberline {3.2.7}Grid}{32}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{33}
-\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{33}
-\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{33}
-\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{33}
-\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{33}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{34}
-\contentsline {subsubsection}{\numberline {3.4.1}q-method}{35}
-\contentsline {subsubsection}{\numberline {3.4.2}Wahba's problem}{36}
-\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{37}
-\contentsline {subsubsection}{\numberline {3.4.4}TRIAD}{37}
-\contentsline {subsubsection}{\numberline {3.4.5}The Fast Optimal Attitude Matrix}{37}
-\contentsline {subsubsection}{\numberline {3.4.6}DCM (Direction Cosine Matrix) - Singular Value Decomposition?}{37}
-\contentsline {section}{\numberline {4}Prototype}{39}
-\contentsline {section}{\numberline {5}Complete program}{40}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{41}
-\contentsline {section}{References}{42}
-\contentsline {section}{List of Tables}{49}
-\contentsline {section}{List of Figures}{50}
+\contentsline {subsubsection}{\numberline {2.2.3}NED frame}{20}
+\contentsline {subsubsection}{\numberline {2.2.4}BODY frame}{20}
+\contentsline {subsection}{\numberline {2.3}Space environment}{21}
+\contentsline {subsection}{\numberline {2.4}Attitude representations}{21}
+\contentsline {subsubsection}{\numberline {2.4.1}Euler angles}{21}
+\contentsline {subsubsection}{\numberline {2.4.2}Quaternions}{22}
+\contentsline {subsubsection}{\numberline {2.4.3}Advantages of quaternions}{24}
+\contentsline {section}{\numberline {3}Star-tracker program}{25}
+\contentsline {subsection}{\numberline {3.1}Centroid - start recognition}{26}
+\contentsline {subsection}{\numberline {3.2}Star identification}{28}
+\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{29}
+\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{30}
+\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{31}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{33}
+\contentsline {subsubsection}{\numberline {3.2.5}Rate Matching}{33}
+\contentsline {subsubsection}{\numberline {3.2.6}Voting}{33}
+\contentsline {subsubsection}{\numberline {3.2.7}Grid}{33}
+\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{34}
+\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{34}
+\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{34}
+\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{34}
+\contentsline {subsubsection}{\numberline {3.3.4}k-vector}{34}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{35}
+\contentsline {subsubsection}{\numberline {3.4.1}q-method}{36}
+\contentsline {subsubsection}{\numberline {3.4.2}Wahba's problem}{37}
+\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{38}
+\contentsline {subsubsection}{\numberline {3.4.4}TRIAD}{38}
+\contentsline {subsubsection}{\numberline {3.4.5}The Fast Optimal Attitude Matrix}{38}
+\contentsline {subsubsection}{\numberline {3.4.6}DCM (Direction Cosine Matrix) - Singular Value Decomposition?}{38}
+\contentsline {section}{\numberline {4}Prototype}{40}
+\contentsline {section}{\numberline {5}Complete program}{41}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{42}
+\contentsline {section}{References}{43}
+\contentsline {section}{List of Tables}{50}
+\contentsline {section}{List of Figures}{51}

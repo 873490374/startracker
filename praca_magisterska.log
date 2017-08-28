@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  26 AUG 2017 21:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  28 AUG 2017 15:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **praca_magisterska.tex
 (./praca_magisterska.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 6 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -1154,78 +1154,73 @@ Package pdftex.def Info: images/INSPIRE_JPL.jpg used on input line 226.
 (pdftex.def)             Requested size: 258.36285pt x 374.89716pt.
  [11] [12 <./images/pw-sat.jpg> <./images/PW-Sat2_2016_16_MSwietlik.png> <./ima
 ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
-[14] [15] [16]
-<images/Comparison_satellite_navigation_orbits.png, id=74, 513.92pt x 513.92pt>
+[14] [15] [16] [17]
+<images/Comparison_satellite_navigation_orbits.png, id=77, 513.92pt x 513.92pt>
 File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
 
 <use images/Comparison_satellite_navigation_orbits.png>
 Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png used
- on input line 293.
+ on input line 326.
 (pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
- [17 <./images/Comparison_satellite_navigation_orbits.png>]
-Overfull \hbox (1.74905pt too wide) in paragraph at lines 306--307
-[]\OT1/lmr/m/n/12 High Earth or-bit: geo-cen-tric or-bits above the al-ti-tude 
-of geosyn-chronous
- []
 
 <images/eci_frame.jpg, id=78, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 315.
+Package pdftex.def Info: images/eci_frame.jpg used on input line 338.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [18]
-<images/body_frame.jpg, id=82, 416.55624pt x 415.5525pt>
+ [18] [19 <./images/Comparison_satellite_navigation_orbits.png>] <images/body_f
+rame.jpg, id=86, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 327.
+Package pdftex.def Info: images/body_frame.jpg used on input line 350.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[19 <./images/eci_frame.jpg>] [20 <./images/body_frame.jpg>] [21] [22] [23]
-<images/startracker_eng.jpg, id=101, 646.415pt x 119.44624pt>
+[20 <./images/eci_frame.jpg>] [21 <./images/body_frame.jpg>] [22] [23] [24]
+<images/startracker_eng.jpg, id=104, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
 
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg used on input line 452.
+Package pdftex.def Info: images/startracker_eng.jpg used on input line 475.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
- [24 <./images/startracker_eng.jpg>] [25]
-[26] [27] <images/vector_angle_method.jpg, id=116, 332.24126pt x 233.87375pt>
+ [25 <./images/startracker_eng.jpg>] [26]
+[27] [28] <images/vector_angle_method.jpg, id=119, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 557.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 580.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
- [28 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=120, 831.105pt x 633.36626pt>
+ [29 <./images/vector_angle_method.jpg>]
+<images/spherical_triangle_method.jpg, id=123, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 609.
+e 632.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
 
-<images/planar_triangle_method.jpg, id=121, 831.105pt x 633.36626pt>
+<images/planar_triangle_method.jpg, id=124, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 6
-34.
+57.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [29 <./images/spherical_triangle_method.jpg>] [30 <./images/planar_triangle_me
-thod.jpg>] [31]
-<images/pyramid_method.jpg, id=132, 566.115pt x 982.67125pt>
+ [30 <./images/spherical_triangle_method.jpg>] [31 <./images/planar_triangle_me
+thod.jpg>] [32]
+<images/pyramid_method.jpg, id=135, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 769.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 792.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
- [32] [33] [34] [35] [36] [37] [38] [39]
-[40] [41] (./praca_magisterska.bbl [42] [43] [44]
+ [33] [34] [35] [36] [37] [38] [39] [40]
+[41] [42] (./praca_magisterska.bbl [43] [44] [45]
 Underfull \hbox (badness 1163) in paragraph at lines 243--245
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1260,7 +1255,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 256--258
 s,''
  []
 
-[45]
+[46]
 Underfull \hbox (badness 10000) in paragraph at lines 265--267
 []\OT1/lmr/m/n/12 ``GPS: The Global Po-si-tion-ing Sys-tem,''
  []
@@ -1294,23 +1289,23 @@ media.org/wikipedia/commons/thumb/b/b4/Comparison[]satellite[]navigation[]orbit
 s.svg/512px-
  []
 
-[46] [47]) [48] (./praca_magisterska.lot)
+[47] [48]) [49] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [49] (./praca_magisterska.lof)
+ [50] (./praca_magisterska.lof)
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
 
-[50] [51 <./images/pyramid_method.jpg>] (./praca_magisterska.aux) ) 
+[51] [52 <./images/pyramid_method.jpg>] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 11297 strings out of 493029
- 173231 string characters out of 6136234
- 285549 words of memory out of 5000000
- 14530 multiletter control sequences out of 15000+600000
+ 11298 strings out of 494877
+ 173246 string characters out of 6179086
+ 280916 words of memory out of 5000000
+ 14290 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 56 hyphenation exceptions out of 8191
  61i,15n,96p,1930b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/
 texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-math
@@ -1326,10 +1321,10 @@ onts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pf
 b></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type
 1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on praca_magisterska.pdf (51 pages, 5037819 bytes).
+Output written on praca_magisterska.pdf (52 pages, 5039441 bytes).
 PDF statistics:
- 255 PDF objects out of 1000 (max. 8388607)
- 168 compressed objects within 2 object streams
+ 258 PDF objects out of 1000 (max. 8388607)
+ 170 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  76 words of extra memory for PDF output out of 10000 (max. 10000000)
 

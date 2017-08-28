@@ -222,7 +222,7 @@ Typical CubeSat consist of many different components. Quite often it has antenna
 \end{figure}
 
 
-\begin{figure}[ht]
+\begin{figure}[!htbp]
 \includegraphics[scale=0.45]{INSPIRE_JPL.jpg}
 \centering
 \caption{CubeSat build - INSPIRE, Image \cite{cubesat-build}}
@@ -252,8 +252,8 @@ Star-tracker is quite sophisticated device, which consists of camera, processor 
 Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. In other words device detects the contrast between the cold of deep space and the heat of Earth's atmosphere. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
 \subsubsection{Magnetometer}
 The device actually consists of three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
-\subsubsection{Global Positioning System}
-Nowadays nearly everyone has personal device with Global Positioning System (GPS) navigation. It is also possible to use GPS satellites to determine spacecraft's attitude. This is possible when at least four GPS satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. GPS satellites are located on Medium Earth Orbit (MEO), around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between Low Earth orbit (LEO -  160 to 2,000 km) and Geosynchronous Orbit (GEO - 35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit GPS navigation is however not useful. Example of GPS usage for navigation in space is International Space Station (ISS) \cite{iss-gps}. There are however works that claim it could make using GPS systems possible for attitude determination up to Moon attitude in the future \cite{capuano2014gnss}.
+\subsubsection{Global Navigation Satellite System}
+Nowadays nearly everyone has personal device with Global Navigation Satellite System (GNSS). They are more commonly known by their implementation by various countries: Global Positioning System (GPS) by USA, GLONASS by Russia, Galileo by European Union, and in close future BeiDou by China. It is possible to use GNSS to determine spacecraft's attitude. This is possible when at least four GNSS satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. GPS satellites are located on Medium Earth Orbit (MEO), around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between Low Earth orbit (LEO -  160 to 2,000 km) and Geosynchronous Orbit (GEO - 35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit GNSS navigation is however not useful. Example of GNSS usage for navigation in space is International Space Station (ISS), which uses GPS. \cite{iss-gps}. There are however works that claim it could make using GPS systems possible for attitude determination up to Moon attitude in the future \cite{capuano2014gnss}.
 
 \subsubsection{Conclusions}
 The above means of attitude determination are usually used together with the use of Kalman filter, to compensate errors of one sensor with the other. However none of the means is more accurate than star-trackers.
@@ -261,7 +261,7 @@ Sun sensors can provide very accurate measurements, but can only operate in sunl
 Microelectromechanical gyroscopes are small enough to fit into a CubeSats. However, they suffer from sudden movements, and could not maintain the correct measurement of the 15-minute period of the eclipse orbit LEO. GPS navigation is accurate, however only on Earth's orbit. To be truly competitive and reliable platform, CubeSats must provide the correct determination of attitude. The best way to meet this goal is via using star-trackers. The typical accuracies of different sensors are available in Table \ref{tab:sensors}.
 
 \renewcommand{\arraystretch}{1.5}
-\begin{table}[ht]
+\begin{table}[!htbp]
 \centering
 \begin{tabular}{|p{5cm}|p{5cm}|}
 \hline 
@@ -289,23 +289,46 @@ This section will describe the on-board computer which was done as part of other
 \section{Preliminaries}
 \subsection{Earth's orbits}
 
-\begin{figure}[ht]
+Most of spacecrafts' missions take place on Earth's orbits. There exist a variety of different classifications of orbits. Here will be presented only a few necessary to understand the topic.
+
+Centric classification:
+
+geocentric - orbit around Earth
+
+heliocentric - orbit around the Sun
+
+Lunar orbit - orbit around the Earth's moon
+
+Orbital period classification:
+
+geosynchronous - period of rotation is equal to one sidereal day (23 hours, 56 minutes, and 4 seconds) in the same direction as Earth. This results that satellite stays in the same meridian, but can move in the North-South axis. The altitude of such orbits is 35,786 km above sea level.
+
+geostationary - Special case of geosynchronous orbit. A geostationary orbit stays exactly above the equator. For the observer on the surface the satellite stays always at the same point in the sky. Most commercial communication, broadcast and Satellite-Based Augmentation System (SBAS - system complementing GNSS) satellites use geostationary orbits.
+
+semi-synchronous - orbit has an orbital period of ½ sidereal day. The example here are orbits of GPS satellites.
+
+
+Altitude classification:
+
+Low Earth orbit (LEO): altitudes from 160 to 2,000 km. Used among others for ISS, Earth observation and spy satellites, some communication satellites like Iridium phones network, Hubble Space Telescope. Every object on altitude below 160 km will quickly loose it's altitude and it's orbit will decay.
+
+Medium Earth orbit (MEO): altitudes from 2,000 km to 35,786 km. Used for navigation, communication, space environment science. Most commonly used is the altitude approximately 20,00 km, because it has orbital period of ½ sidereal day. It is used for example by GPS. Other GNSS satellites' orbits are 19,000 km for GLONASS and 23,222 km for Galileo.
+
+Geosynchronous (GSO) and Geostationary (GEO) orbits - altitude approximately 35,786 km.
+
+High Earth orbit: altitude above 35,786 km. Orbital periods are longer than 1 sidereal day.
+
+
+The mentioned orbits are visible to some extend in the Figure \ref{fig:orbits-image}. Of course this is just a small variety of possible orbits, however describing more is not necessary for the purpose of this work.
+
+
+\begin{figure}[!htbp]
 \includegraphics[scale=0.7]{Comparison_satellite_navigation_orbits.png}
 \centering
-\caption{Earth's satellite navigation orbits \cite{orbits-image}}
+\caption{Earth's satellites navigation orbits \cite{orbits-image}}
 \label{fig:orbits-image}
 \end{figure}
-By altitude:
 
-Low Earth orbit (LEO): geocentric orbits with altitudes from 160 to 2,000 km (100–1,240 miles).[2]
-
-Medium Earth orbit (MEO): geocentric orbits ranging in altitude from 2,000 km (1,240 miles) to just below geosynchronous orbit at 35,786 kilometers (22,236 mi). Also known as an intermediate circular orbit. These are "most commonly at 20,200 kilometers (12,600 mi), or 20,650 kilometers (12,830 mi), with an orbital period of 12 hours."[3]
-
-Both geosynchronous orbit (GSO) and geostationary orbit (GEO) are orbits around Earth matching Earth's sidereal rotation period. All geosynchronous and geostationary orbits have a semi-major axis of 42,164 km (26,199 mi).[4] This works out to an altitude of 35,786 km (22,236 mi). All geostationary orbits are also geosynchronous, but not all geosynchronous orbits are geostationary. A geostationary orbit stays exactly above the equator, whereas a geosynchronous orbit may swing north and south to cover more of the Earth's surface. Both complete one full orbit of Earth per sidereal day (relative to the stars, not the Sun).
-
-High Earth orbit: geocentric orbits above the altitude of geosynchronous orbit 35,786 km (22,240 miles).[3]
-
-By 
 
 \subsection{Coordinate frames}
 \subsubsection{ECI frame}
