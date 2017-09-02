@@ -1,1 +1,4 @@
-{}
+{
+  "test_centroid.py::TestCentroid::()::test_centroid_jpg_2": true,
+  "test_k_vector.py::TestCentroid::()::test_k_vector": true
+}

@@ -12,18 +12,12 @@
 	year = "2012"
 }
 
-@inbook{RIS_0,
-	author = "Kim, Jae-Jun and Tappe, Jack and Jordan, Albert and Agrawal, Brij",
-	doi = "10.2514/6.2011-6270",
-	month = "aug",
-	note = "doi:10.2514/6.2011-6270",
-	publisher = "American Institute of Aeronautics and Astronautics",
-	risfield_0_m1 = "0",
-	risfield_1_do = "doi:10.2514/6.2011-6270",
-	risfield_2_m3 = "doi:10.2514/6.2011-6270",
-	risfield_3_t2 = "AIAA Modeling and Simulation Technologies Conference",
-	series = "{Guidance, Navigation, and Control and Co-located Conferences}",
-	title = "{Star Tracker Attitude Estimation for an Indoor Ground-Based Spacecraft Simulator}",
+@inproceedings{tappe2011star,
+	author = "Tappe, Jack and Kim, Jae Jun and Jordan, Albert and Agrawal, Brij",
+	booktitle = "{AIAA Guidance, Navigation, and Control Conference}",
+	pages = "1116--1122",
+	title = "{Star tracker attitude estimation for an indoor ground-based spacecraft simulator}",
+	volume = "1",
 	year = "2011"
 }
 
@@ -583,5 +577,18 @@
 	pages = "2006--07",
 	title = "{Autonomous star-imaging attitude sensor (ASIAS)}",
 	year = "2007"
+}
+
+@mastersthesis{tappe2009development,
+	author = "Tappe, Jack A",
+	school = "Monterey, California. Naval Postgraduate School",
+	title = "{Development of star tracker system for accurate estimation of spacecraft attitude}",
+	year = "2009"
+}
+
+@mastersthesis{kandiyil2010attitude,
+	author = "Kandiyil, Raveesh",
+	title = "{Attitude determination software for a star sensor}",
+	year = "2010"
 }
 

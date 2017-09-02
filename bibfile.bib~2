@@ -357,15 +357,23 @@
 
 @article{hamilton1844lxxviii,
 	author = "Hamilton, William Rowan",
+	journal = "Philosophical Magazine Series 3",
+	number = "169",
+	pages = "489--495",
 	publisher = "Taylor \& Francis",
 	title = "{LXXVIII. On quaternions; or on a new system of imaginaries in Algebra: To the editors of the Philosophical Magazine and Journal}",
+	volume = "25",
 	year = "1844"
 }
 
 @article{cayley1845xiii,
 	author = "Cayley, Arthur",
+	journal = "Philosophical Magazine Series 3",
+	number = "171",
+	pages = "141--145",
 	publisher = "Taylor \& Francis",
 	title = "{XIII. On certain results relating to quaternions: To the editors of the Philosophical Magazine and Journal}",
+	volume = "26",
 	year = "1845"
 }
 
@@ -585,6 +593,7 @@
 
 @mastersthesis{kandiyil2010attitude,
 	author = "Kandiyil, Raveesh",
+	school = "Lule{\aa} University of Technology",
 	title = "{Attitude determination software for a star sensor}",
 	year = "2010"
 }

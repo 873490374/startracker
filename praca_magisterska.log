@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.22)  28 AUG 2017 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  3 SEP 2017 22:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **praca_magisterska.tex
 (./praca_magisterska.tex
 LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 6 language(s) loaded.
+Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -913,7 +913,36 @@ Package caption Info: supertabular package is loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+Package: enumitem 2011/09/28 v3.5.2 Customized lists
+\enitkv@toks@=\toks32
+\labelindent=\skip77
+\enit@outerparindent=\dimen148
+\enit@toks=\toks33
+\enit@inbox=\box33
+\enitdp@description=\count141
+)
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrextend.sty
+Package: scrextend 2015/10/03 v3.19a KOMA-Script package (extend other classes 
+with features of KOMA-Script classes)
+
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
+Package: scrkbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-dependent 
+basics and keyval usage)
+
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
+Package: scrbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-independent
+ basics and keyval usage)
+
+(/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2015/10/03 v3.19a KOMA-Script package (loading files)
+
+Package scrlfile, 2015/10/03 v3.19a KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+)))
+LaTeX Info: Redefining \textsubscript on input line 1277.
+) (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has section divisions on input line 50.
 
@@ -934,10 +963,10 @@ eX document
 )
 (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip77
-\bibsep=\skip78
+\bibhang=\skip78
+\bibsep=\skip79
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count141
+\c@NAT@ctr=\count142
 )
 
 LaTeX Warning: Overwriting file `./gloss.tex'.
@@ -948,57 +977,57 @@ LaTeX Warning: Overwriting file `./gloss.tex'.
 (./gloss.tex) (./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 88.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 88.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 88.
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Try loading font information for OT4+lmr on input line 81.
+LaTeX Font Info:    ... okay on input line 88.
+LaTeX Font Info:    Try loading font information for OT4+lmr on input line 88.
 
 (/usr/share/texmf/tex/latex/lm/ot4lmr.fd
 File: ot4lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \symgns@font=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/lmr/m/n --> TS1/lmr/bx/n on input line 81.
-Package gensymb Info: Math companion symbols declared on input line 81.
-LaTeX Info: Redefining \degree on input line 81.
-LaTeX Info: Redefining \celsius on input line 81.
+(Font)                  TS1/lmr/m/n --> TS1/lmr/bx/n on input line 88.
+Package gensymb Info: Math companion symbols declared on input line 88.
+LaTeX Info: Redefining \degree on input line 88.
+LaTeX Info: Redefining \celsius on input line 88.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 81.
-LaTeX Info: Redefining \ohm on input line 81.
-Package gensymb Info: Using \textohm for \ohm on input line 81.
-Package gensymb Info: Using \textmu for \micro on input line 81.
+erthousand on input line 88.
+LaTeX Info: Redefining \ohm on input line 88.
+Package gensymb Info: Using \textohm for \ohm on input line 88.
+Package gensymb Info: Using \textmu for \micro on input line 88.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count142
-\scratchdimen=\dimen148
-\scratchbox=\box33
-\nofMPsegments=\count143
-\nofMParguments=\count144
-\everyMPshowfont=\toks32
-\MPscratchCnt=\count145
-\MPscratchDim=\dimen149
-\MPnumerator=\count146
-\makeMPintoPDFobject=\count147
-\everyMPtoPDFconversion=\toks33
+\scratchcounter=\count143
+\scratchdimen=\dimen149
+\scratchbox=\box34
+\nofMPsegments=\count144
+\nofMParguments=\count145
+\everyMPshowfont=\toks34
+\MPscratchCnt=\count146
+\MPscratchDim=\dimen150
+\MPnumerator=\count147
+\makeMPintoPDFobject=\count148
+\everyMPtoPDFconversion=\toks35
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -1055,20 +1084,20 @@ Package caption Info: End \AtBeginDocument code.
 File: images/logo_WEiTI.jpg Graphic file (type jpg)
 
 <use images/logo_WEiTI.jpg>
-Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 94.
+Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 101.
 (pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
 
 <images/Logo-PW-duze.jpg, id=2, 513.8397pt x 513.8397pt>
 File: images/Logo-PW-duze.jpg Graphic file (type jpg)
 
 <use images/Logo-PW-duze.jpg>
-Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 96.
+Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 103.
 (pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
 
 <images/ia_600_600.png, id=3, 72.27pt x 59.5023pt>
 File: images/ia_600_600.png Graphic file (type png)
  <use images/ia_600_600.png>
-Package pdftex.def Info: images/ia_600_600.png used on input line 98.
+Package pdftex.def Info: images/ia_600_600.png used on input line 105.
 (pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
 
 [1
@@ -1119,108 +1148,153 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \tf@toc=\write3
 \openout3 = `praca_magisterska.toc'.
 
- [5] [6] [7] [8]
-Overfull \hbox (6.5547pt too wide) in paragraph at lines 189--190
-[]\OT1/lmr/m/n/12 - At-ti-tude De-ter-mi-na-tion: AIM (At-ti-tude es-ti-ma-tion
- us-ing Im-age Match-
+ [5] [6] [7] [8] [9]
+Overfull \hbox (35.86855pt too wide) in paragraph at lines 235--236
+[]\OT1/lmr/m/n/12 Works on full star tracker but with-out im-ple-ment-ing on re
+al de-vice/simulations
  []
 
-[9] [10] <images/pw-sat.jpg, id=49, 314.17375pt x 330.23375pt>
+[10] <images/pw-sat.jpg, id=50, 314.17375pt x 330.23375pt>
 File: images/pw-sat.jpg Graphic file (type jpg)
 
 <use images/pw-sat.jpg>
-Package pdftex.def Info: images/pw-sat.jpg used on input line 215.
+Package pdftex.def Info: images/pw-sat.jpg used on input line 258.
 (pdftex.def)             Requested size: 155.99762pt x 163.96758pt.
 
-<images/PW-Sat2_2016_16_MSwietlik.png, id=50, 2007.5pt x 2007.5pt>
+<images/PW-Sat2_2016_16_MSwietlik.png, id=51, 2007.5pt x 2007.5pt>
 File: images/PW-Sat2_2016_16_MSwietlik.png Graphic file (type png)
 
 <use images/PW-Sat2_2016_16_MSwietlik.png>
 Package pdftex.def Info: images/PW-Sat2_2016_16_MSwietlik.png used on input lin
-e 217.
+e 260.
 (pdftex.def)             Requested size: 195.0pt x 194.97232pt.
 
-<images/brite.jpg, id=51, 270.00874pt x 301.125pt>
+<images/brite.jpg, id=52, 270.00874pt x 301.125pt>
 File: images/brite.jpg Graphic file (type jpg)
  <use images/brite.jpg>
-Package pdftex.def Info: images/brite.jpg used on input line 219.
+Package pdftex.def Info: images/brite.jpg used on input line 262.
 (pdftex.def)             Requested size: 195.0pt x 217.47606pt.
 
-<images/INSPIRE_JPL.jpg, id=52, 574.145pt x 833.1125pt>
+<images/INSPIRE_JPL.jpg, id=53, 574.145pt x 833.1125pt>
 File: images/INSPIRE_JPL.jpg Graphic file (type jpg)
 
 <use images/INSPIRE_JPL.jpg>
-Package pdftex.def Info: images/INSPIRE_JPL.jpg used on input line 226.
+Package pdftex.def Info: images/INSPIRE_JPL.jpg used on input line 269.
 (pdftex.def)             Requested size: 258.36285pt x 374.89716pt.
  [11] [12 <./images/pw-sat.jpg> <./images/PW-Sat2_2016_16_MSwietlik.png> <./ima
 ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
-[14] [15] [16] [17]
-<images/Comparison_satellite_navigation_orbits.png, id=77, 513.92pt x 513.92pt>
+[14] [15] [16] [17] [18]
+<images/Comparison_satellite_navigation_orbits.png, id=80, 513.92pt x 513.92pt>
 File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
 
 <use images/Comparison_satellite_navigation_orbits.png>
 Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png used
- on input line 326.
+ on input line 368.
 (pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
 
-<images/eci_frame.jpg, id=78, 496.85625pt x 562.1pt>
+<images/eci_frame.jpg, id=81, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 338.
+Package pdftex.def Info: images/eci_frame.jpg used on input line 384.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [18] [19 <./images/Comparison_satellite_navigation_orbits.png>] <images/body_f
-rame.jpg, id=86, 416.55624pt x 415.5525pt>
+ [19] [20 <./images/Comparison_satellite_navigation_orbits.png>] <images/ned_fr
+ame.jpg, id=89, 301.125pt x 276.03125pt>
+File: images/ned_frame.jpg Graphic file (type jpg)
+
+<use images/ned_frame.jpg>
+Package pdftex.def Info: images/ned_frame.jpg used on input line 398.
+(pdftex.def)             Requested size: 180.67638pt x 165.62001pt.
+ [21 <./images/eci_frame.jpg>]
+<images/body_frame.jpg, id=93, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 350.
+Package pdftex.def Info: images/body_frame.jpg used on input line 408.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[20 <./images/eci_frame.jpg>] [21 <./images/body_frame.jpg>] [22] [23] [24]
-<images/startracker_eng.jpg, id=104, 646.415pt x 119.44624pt>
+ [22 <./images/ned_frame.jpg> <./images/body_frame.jpg>] [23] [24] [25]
+<images/startracker_eng.jpg, id=109, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
 
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg used on input line 475.
+Package pdftex.def Info: images/startracker_eng.jpg used on input line 496.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
- [25 <./images/startracker_eng.jpg>] [26]
-[27] [28] <images/vector_angle_method.jpg, id=119, 332.24126pt x 233.87375pt>
+ [26 <./images/startracker_eng.jpg>] [27]
+[28] [29] <images/centroids_1.jpg, id=123, 234.8775pt x 208.78pt>
+File: images/centroids_1.jpg Graphic file (type jpg)
+
+<use images/centroids_1.jpg>
+Package pdftex.def Info: images/centroids_1.jpg used on input line 606.
+(pdftex.def)             Requested size: 195.0pt x 173.33192pt.
+
+<images/centroids_2.png, id=124, 234.8775pt x 208.78pt>
+File: images/centroids_2.png Graphic file (type png)
+
+<use images/centroids_2.png>
+Package pdftex.def Info: images/centroids_2.png used on input line 608.
+(pdftex.def)             Requested size: 195.0pt x 173.33192pt.
+
+<images/centroids_3.png, id=125, 234.8775pt x 208.78pt>
+File: images/centroids_3.png Graphic file (type png)
+
+<use images/centroids_3.png>
+Package pdftex.def Info: images/centroids_3.png used on input line 610.
+(pdftex.def)             Requested size: 195.0pt x 173.33192pt.
+
+<images/centroids_4.png, id=126, 234.8775pt x 208.78pt>
+File: images/centroids_4.png Graphic file (type png)
+
+<use images/centroids_4.png>
+Package pdftex.def Info: images/centroids_4.png used on input line 613.
+(pdftex.def)             Requested size: 195.0pt x 173.33192pt.
+ [30] [31 <./images/centroids_1.jpg> <./images/centroids_2.png> <./images/centr
+oids_3.png> <./images/centroids_4.png>]
+<images/vector_angle_method.jpg, id=137, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 580.
+Package pdftex.def Info: images/vector_angle_method.jpg used on input line 629.
 
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
- [29 <./images/vector_angle_method.jpg>]
-<images/spherical_triangle_method.jpg, id=123, 831.105pt x 633.36626pt>
+
+<images/spherical_triangle_method.jpg, id=138, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 632.
+e 682.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
-
-<images/planar_triangle_method.jpg, id=124, 831.105pt x 633.36626pt>
+ [32 <./images/vector_angle_method.jpg>] <images/planar_triangle_method.jpg, id
+=142, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 
 <use images/planar_triangle_method.jpg>
-Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 6
-57.
+Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 7
+07.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [30 <./images/spherical_triangle_method.jpg>] [31 <./images/planar_triangle_me
-thod.jpg>] [32]
-<images/pyramid_method.jpg, id=135, 566.115pt x 982.67125pt>
+ [33 <./images/spherical_triangle_method.jpg>] [34 <./images/planar_triangle_me
+thod.jpg>] [35]
+<images/pyramid_method.jpg, id=152, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 792.
+Package pdftex.def Info: images/pyramid_method.jpg used on input line 842.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
- [33] [34] [35] [36] [37] [38] [39] [40]
-[41] [42] (./praca_magisterska.bbl [43] [44] [45]
+ [36] [37 <./images/pyramid_method.jpg>]
+[38] <images/k-vector-example.png, id=163, 577.15625pt x 457.71pt>
+File: images/k-vector-example.png Graphic file (type png)
+
+<use images/k-vector-example.png>
+Package pdftex.def Info: images/k-vector-example.png used on input line 895.
+(pdftex.def)             Requested size: 328.98247pt x 260.89742pt.
+
+Overfull \hbox (18.23848pt too wide) in paragraph at lines 905--907
+[]\OT1/lmr/m/n/12 The fol-low-ing equa-tions de-scribe math-e-mat-i-cally how t
+he k-vector database
+ []
+
+[39 <./images/k-vector-example.png>] [40] [41] [42] [43] [44] [45] [46]
+[47] (./praca_magisterska.bbl [48] [49] [50]
 Underfull \hbox (badness 1163) in paragraph at lines 243--245
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1255,7 +1329,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 256--258
 s,''
  []
 
-[46]
+[51]
 Underfull \hbox (badness 10000) in paragraph at lines 265--267
 []\OT1/lmr/m/n/12 ``GPS: The Global Po-si-tion-ing Sys-tem,''
  []
@@ -1289,42 +1363,47 @@ media.org/wikipedia/commons/thumb/b/b4/Comparison[]satellite[]navigation[]orbit
 s.svg/512px-
  []
 
-[47] [48]) [49] (./praca_magisterska.lot)
+
+Underfull \hbox (badness 10000) in paragraph at lines 294--297
+[]\OT1/lmr/m/n/12 ``NED frame im-age,'' http://www.basicairdata.eu/knowledge-
+ []
+
+[52] [53]) [54] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [50] (./praca_magisterska.lof)
+ [55] (./praca_magisterska.lof)
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
 
-[51] [52 <./images/pyramid_method.jpg>] (./praca_magisterska.aux) ) 
+[56] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 11298 strings out of 494877
- 173246 string characters out of 6179086
- 280916 words of memory out of 5000000
- 14290 multiletter control sequences out of 15000+600000
+ 12293 strings out of 493029
+ 190964 string characters out of 6136234
+ 320484 words of memory out of 5000000
+ 15503 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
- 56 hyphenation exceptions out of 8191
+ 1141 hyphenation exceptions out of 8191
  61i,15n,96p,1930b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/
-texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-math
-it.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fon
-ts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}<
-/usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1
-/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx8.pfb></usr/s
-hare/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/publi
-c/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/t
-exmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
-mib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/lm/lmr17.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on praca_magisterska.pdf (52 pages, 5039441 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/
+dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr
+/share/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public
+/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+ex10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/f
+onts/type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pf
+b></usr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/t
+ype1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></us
+r/share/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/pub
+lic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/
+texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/
+lmsy8.pfb>
+Output written on praca_magisterska.pdf (56 pages, 5088637 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 170 compressed objects within 2 object streams
+ 281 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 76 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

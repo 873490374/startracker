@@ -335,8 +335,8 @@
 
 @article{juang2003efficient,
 	author = "Juang, Jer-Nan and Kim, Hye-Young and Junkins, John L",
-	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}",
-	year = "2003"
+	journal = "NASA, Tech. Rep. TM-2003-212142",
+	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}"
 }
 
 @inproceedings{kruijff2003star,

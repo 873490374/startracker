@@ -25,45 +25,45 @@ Warning--empty journal in jalabert2011optimization
 Warning--empty journal in lizy2010str
 
 Done.
-You've used 73 entries,
+You've used 74 entries,
             4855 wiz_defined-function locations,
-            1844 strings with 30189 characters,
-and the built_in function-call counts, 55882 in all, are:
-= -- 5228
+            1848 strings with 30327 characters,
+and the built_in function-call counts, 56300 in all, are:
+= -- 5269
 > -- 1293
 < -- 397
-+ -- 697
++ -- 699
 - -- 280
-* -- 2938
-:= -- 8661
-add.period$ -- 151
-call.type$ -- 73
-change.case$ -- 157
-chr.to.int$ -- 859
-cite$ -- 91
-duplicate$ -- 3830
-empty$ -- 4090
+* -- 2955
+:= -- 8721
+add.period$ -- 153
+call.type$ -- 74
+change.case$ -- 160
+chr.to.int$ -- 860
+cite$ -- 93
+duplicate$ -- 3866
+empty$ -- 4132
 format.name$ -- 405
-if$ -- 12604
+if$ -- 12700
 int.to.chr$ -- 4
-int.to.str$ -- 74
-missing$ -- 594
-newline$ -- 247
+int.to.str$ -- 75
+missing$ -- 601
+newline$ -- 250
 num.names$ -- 186
-pop$ -- 1525
+pop$ -- 1551
 preamble$ -- 1
-purify$ -- 73
+purify$ -- 74
 quote$ -- 2
-skip$ -- 4243
+skip$ -- 4274
 stack$ -- 0
-substring$ -- 2122
-swap$ -- 2697
+substring$ -- 2128
+swap$ -- 2713
 text.length$ -- 91
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1155
+type$ -- 1170
 warning$ -- 7
 while$ -- 262
 width$ -- 0
-write$ -- 839
+write$ -- 848
 (There were 7 warnings)

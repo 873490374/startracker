@@ -103,7 +103,7 @@ class CentroidCalculator:
         if clustering:
             # 6. Clustering
             control = 1
-            pixel_diff = 5
+            pixel_diff = 15
             while control > 0:
                 star_list2 = star_list
                 control = 0
