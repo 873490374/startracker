@@ -326,7 +326,134 @@ Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\
 \end{table}
 
 \subsection{On-board computer}
-This section will describe the on-board computer which was done as part of other thesis.
+This section describes the on-board computer (OBC) which was done as part of other thesis and is the basis for this work. Due to no existing of-the-shelf CubeSat's on-board computer with navigation module, it was designed by \citet{gaska2016obc}. The OBC can work in two modes: managing CubeSat's systems with navigation module (star-tracker) or as navigation module only. Figure \ref{fig:obc-photo} shows the mentioned OBC.
+
+The possible tasks that can be realized by OBC are: operating on-board satellite's modules, navigation in space, auto-diagnosis, carrying out the mission.
+
+Orientation estimation requires much more hardware resources and more power demand than other tasks executed by OBC. The OBC was designed to be able to calculate estimated attitude 2 to 5 times per second. Algorithm uses data from optic sensor and star catalogue that is placed in internal Flash memory of OBC.
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.45]{obc_photo.png}
+\centering
+\caption{On-board computer designed by \citet{gaska2016obc}.}
+\label{fig:obc-photo}
+\end{figure}
+
+\subsubsection{The design of OBC}
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.45]{obc_all.png}
+\centering
+\caption{OBC schema\cite{gaska2016obc}.}
+\label{fig:obc-all}
+\end{figure}
+
+The OBC is built with:
+\begin{itemize}
+\item two redundant main micro-controllers (TMS570) which:
+\begin{itemize}
+\item provide communication with other satellite's modules via I2C, UART and CAN interfaces,
+\item read from external Flash memory the scheduled tasks and execute them,
+\item obtain current time from the external RTC,
+\item communicate with supervisor via UART interface,
+\item store current mission status and tasks in FRAM external memory,
+\item communicate with FPGA via SPI interface; they read the results of the work of built-in algorithms and can download the compressed image from the camera,
+\item have the ability to change the internal configuration of the FPGA,
+\end{itemize}
+
+\item programmable FPGA:
+\begin{itemize}
+\item performs data acquisition from two cameras,
+\item places the received image in the external SDRAM,
+\item executes star-tracker algorithm to
+\item supports SpaceWire\footnote{Interface used in space devices, designed for fast data transfer between satellite's modules. The maximum transmission rate is 400 Mbps.} interface
+\end{itemize}
+
+\item SDRAM - memory of DDR SDRAM type for temporal storage of received image frames from both star-tracker and secondary cameras
+
+\item Supervisor - a micro-controller that acts as supervisor. Its tasks are:
+\begin{itemize}
+\item detecting the suspension of the active main micro-controller and thus disconnecting it from the on-board computer subsystem, activating the redundant main micro-controller,
+\item resetting micro-controllers,
+\item transferring information about the power budget to the active micro-controller,
+\item voltage measurement on power lines,
+\item receiving data from current consumption measurement systems,
+\item switching off the corresponding inverter in case of detecting overvoltage or power consumption excess.
+\item turning on or off camera modules,
+\item temperature measurement in key PCB places,
+\item taking control of the I2C bus connected to the communication module to retrieve the current embedded software for the main micro-controllers; updating main micro-controllers (TMS570) firmware,
+\item communication with FPGA via UART interface,
+\item reporting on the status of the on-board computer,
+\end{itemize}
+
+\item Power Supply - subsystem responsible for providing a number of stable voltages powering OBC electronics, equipped in special integrated circuits responsible for measuring current on the individual power lines,
+
+\item Camera 1 - star-tracker image sensor module with the lens; the data from this camera is used by star-tracker program,
+
+\item Camera 2 - additional image sensor module for taking pictures and recording short films.
+
+\item FRAM - non-volatile ferroelectric memory that stores sensitive data of micro-controller software,
+
+\item RTC - real time clock providing the current date and time.
+
+\end{itemize}
+
+Tablica 8.1: Parametry techniczne komputera pokładowego
+
+\subsubsection{Main processing module} 
+
+The main processing system is build with Texas Instrument's TMS570LS3137 with two Cortex-R4F cores in lockstep mode - both cores execute the same instructions and the results are compared; if they are different, the instructions are repeated. Both cores are operating in FreeRTOS, but can be easily moved into SafeRTOS. Table ... describes hardware resources of this micro-controller and the Figure \ref{fig:obc-main-processor} show schema of this module.
+
+Tablica 5.2
+
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.45]{obc_main_processor.png}
+\centering
+\caption{OBC main processing system schema\cite{gaska2016obc}.}
+\label{fig:obc-main-processor}
+\end{figure}
+
+
+\subsubsection{Supervisor module} 
+
+The supervisor unit is build with ATmega128 micro-controller, what is visible in Figure \ref{fig:obc-supervisor}.
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.45]{obc_supervisor.png}
+\centering
+\caption{OBC supervisor system schema \cite{gaska2016obc}.}
+\label{fig:obc-supervisor}
+\end{figure}
+
+\subsubsection{Star-tracker module}
+
+The FPGA used in star-tracker module is Altera's EP3C25Q240. In this FPGA 32-bit soft-processor  NIOS II was implemented in Fast version. It can work with 175MHz frequency and achieve 195 DMIPS. The elements generated together with processor are:
+\begin{itemize}
+\item memory protection unit (MPU),
+\item external interrupt controller,
+\item 2kb cache memory,
+\item 4kb instruction set memory,
+\item address space up to 4 GB,
+\item 6-step pipeline,
+\item JTAG interface.
+\end{itemize}
+
+Tablica 5.8:
+
+Another element of star-tracker module is SDRAM memory. By using two Micron's two parallel 64MB DDR SDRAM MT46V64M8 in total 128MB was achieved, where temporary image frames from cameras are stored.
+
+The last part are cameras. Here only the star-tracker camera module is described, because the other camera is not important for this work. The star-tracker camera is based on CMOS MT9D111 sensor. It contains built-in JPEG compressor and consumes little energy. It is equipped in parallel interface with 8-bit bus for data transfer and I2C interface for configuring basic image parameters and many other sensor options, i.e. JPEG compression, coding type, etc. The Table ... describes most important sensor parameters.
+
+Tablica 5.10: Najważniejsze parametry sensora MT9D111
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.45]{obc_startracker.png}
+\centering
+\caption{OBC star-tracker system schema \cite{gaska2016obc}.}
+\label{fig:obc-startracker}
+\end{figure}
+
 
 \newpage
 \section{Preliminaries}

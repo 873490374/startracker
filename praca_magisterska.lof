@@ -7,18 +7,23 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \cite {pw-sat2}}}}{12}
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz) \cite {brite-pl-gunter}}}}{12}
 \contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE, Image \cite {cubesat-build}\relax }}{13}
-\contentsline {figure}{\numberline {3}{\ignorespaces Earth's satellites navigation orbits \cite {orbits-image}\relax }}{20}
-\contentsline {figure}{\numberline {4}{\ignorespaces ECEF frame, Image from \citet {larson1992space}\relax }}{21}
-\contentsline {figure}{\numberline {5}{\ignorespaces NED frame \cite {ned-frame-image}\relax }}{22}
-\contentsline {figure}{\numberline {6}{\ignorespaces BODY frame, Image from \citet {larson1992space}\relax }}{22}
-\contentsline {figure}{\numberline {7}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{26}
-\contentsline {figure}{\numberline {8}{\ignorespaces Example of centroids' clustering trade-off (in negative colours).\relax }}{31}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{31}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{31}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{31}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{31}
-\contentsline {figure}{\numberline {9}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}\relax }}{32}
-\contentsline {figure}{\numberline {10}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}\relax }}{33}
-\contentsline {figure}{\numberline {11}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{34}
-\contentsline {figure}{\numberline {12}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{37}
-\contentsline {figure}{\numberline {13}{\ignorespaces K-vector technique example, Image from \citep {mortari2000k}\relax }}{39}
+\contentsline {figure}{\numberline {3}{\ignorespaces On-board computer designed by \citet {gaska2016obc}.\relax }}{18}
+\contentsline {figure}{\numberline {4}{\ignorespaces OBC schema\cite {gaska2016obc}.\relax }}{18}
+\contentsline {figure}{\numberline {5}{\ignorespaces OBC main processing system schema\cite {gaska2016obc}.\relax }}{21}
+\contentsline {figure}{\numberline {6}{\ignorespaces OBC supervisor system schema \cite {gaska2016obc}.\relax }}{22}
+\contentsline {figure}{\numberline {7}{\ignorespaces OBC star-tracker system schema \cite {gaska2016obc}.\relax }}{23}
+\contentsline {figure}{\numberline {8}{\ignorespaces Earth's satellites navigation orbits \cite {orbits-image}\relax }}{25}
+\contentsline {figure}{\numberline {9}{\ignorespaces ECEF frame, Image from \citet {larson1992space}\relax }}{26}
+\contentsline {figure}{\numberline {10}{\ignorespaces NED frame \cite {ned-frame-image}\relax }}{27}
+\contentsline {figure}{\numberline {11}{\ignorespaces BODY frame, Image from \citet {larson1992space}\relax }}{28}
+\contentsline {figure}{\numberline {12}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{31}
+\contentsline {figure}{\numberline {13}{\ignorespaces Example of centroids' clustering trade-off (in negative colours).\relax }}{36}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{36}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{36}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{36}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{36}
+\contentsline {figure}{\numberline {14}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}\relax }}{37}
+\contentsline {figure}{\numberline {15}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}\relax }}{38}
+\contentsline {figure}{\numberline {16}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{39}
+\contentsline {figure}{\numberline {17}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{42}
+\contentsline {figure}{\numberline {18}{\ignorespaces K-vector technique example, Image from \citep {mortari2000k}\relax }}{44}
