@@ -232,9 +232,9 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 
 \item Works on hardware for star-tracker \citet{azizabadi2014vlsi}, \citet{gaska2016obc}, \citet{felikson2011orbit}.
 
-\item Works on full star tracker but without implementing on real device/simulations only: \citet{kandiyil2010attitude}, \citet{huffman2006designing} and \citet{diaz2006performance}.
+\item Works on full star tracker but without implementing on real device/ simulations only: \citet{kandiyil2010attitude}, \citet{huffman2006designing} and \citet{diaz2006performance}.
 
-\item Full star-tracker with device/on real device \citet{jalabert2011optimization}, \citet{lizy2010str}, \citet{rose2003star}, \citet{mortari2002starnav} 
+\item Full star-tracker with device/on real device \citet{jalabert2011optimization}, \citet{lizy2010str}, \citet{rose2003star}, \citet{mortari2002starnav} and
 \citet{cannata2007autonomous}.
 
 \end{itemize}
@@ -249,7 +249,7 @@ In recent years there has been the development of micro-satellites called CubeSa
 The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years \cite{swartwout2011brief}\cite{swartwout2013first}. Till now there were around 800 CubeSats launched \cite{nanosats}.
 
 There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc. \cite{pw-sat2}.
-Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars \cite{brite-pl}.
+Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars\cite{brite-pl}.
 
 Typical CubeSat consist of many different components. Quite often it has antennas and radios for communication with mission centre on Earth, Electric Power System (EPS - subsystem responsible for managing electric power in the satellite), Attitude Determination and Control (ADCS - subsystem responsible for analysing data from sensors and taking decision about trajectory, etc.), magnetometer, star-tracker, sun sensors, payload processor with mission instructions, etc. CubeSats are quite small, hence they usually do not have any propulsion system. Figure \ref{fig:cubesat-build} shows the components of CubeSat on example of NASA's Interplanetary NanoSpacecraft Pathfinder In a Relevant Environment (INSPIRE).
 
@@ -326,7 +326,7 @@ Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\
 \end{table}
 
 \subsection{On-board computer}
-This section describes the on-board computer (OBC) which was done as part of other thesis and is the basis for this work. Due to no existing of-the-shelf CubeSat's on-board computer with navigation module, it was designed by \citet{gaska2016obc}. The OBC can work in two modes: managing CubeSat's systems with navigation module (star-tracker) or as navigation module only. Figure \ref{fig:obc-photo} shows the mentioned OBC.
+This section describes the on-board computer (OBC) which was done as part of other thesis and is the basis for this work. Due to no existing of-the-shelf CubeSat's on-board computer with navigation module, it was designed by \citet{gaska2016obc}. The OBC can work in two modes: managing CubeSat's systems with navigation module (star-tracker) or as navigation module only. Figure \ref{fig:obc-photo} shows the mentioned OBC, while Table \ref{tab:obc-all} describes the OBC's technical parameters.
 
 The possible tasks that can be realized by OBC are: operating on-board satellite's modules, navigation in space, auto-diagnosis, carrying out the mission.
 
@@ -342,7 +342,7 @@ Orientation estimation requires much more hardware resources and more power dema
 \subsubsection{The design of OBC}
 
 \begin{figure}[!htbp]
-\includegraphics[scale=0.45]{obc_all.png}
+\includegraphics[scale=0.41]{obc_all.png}
 \centering
 \caption{OBC schema\cite{gaska2016obc}.}
 \label{fig:obc-all}
@@ -365,8 +365,8 @@ The OBC is built with:
 \begin{itemize}
 \item performs data acquisition from two cameras,
 \item places the received image in the external SDRAM,
-\item executes star-tracker algorithm to
-\item supports SpaceWire\footnote{Interface used in space devices, designed for fast data transfer between satellite's modules. The maximum transmission rate is 400 Mbps.} interface
+\item executes star-tracker algorithm,
+\item supports SpaceWire\footnote{Interface used in space devices, designed for fast data transfer between satellite's modules. The maximum transmission rate is 400 Mbps.} interface,
 \end{itemize}
 
 \item SDRAM - memory of DDR SDRAM type for temporal storage of received image frames from both star-tracker and secondary cameras
@@ -381,7 +381,7 @@ The OBC is built with:
 \item switching off the corresponding inverter in case of detecting overvoltage or power consumption excess.
 \item turning on or off camera modules,
 \item temperature measurement in key PCB places,
-\item taking control of the I2C bus connected to the communication module to retrieve the current embedded software for the main micro-controllers; updating main micro-controllers (TMS570) firmware,
+\item taking control of the I2C bus connected to the communication module to retrieve the current embedded software for the main micro-controllers; updating firmware in the main micro-controllers (TMS570),
 \item communication with FPGA via UART interface,
 \item reporting on the status of the on-board computer,
 \end{itemize}
@@ -390,7 +390,7 @@ The OBC is built with:
 
 \item Camera 1 - star-tracker image sensor module with the lens; the data from this camera is used by star-tracker program,
 
-\item Camera 2 - additional image sensor module for taking pictures and recording short films.
+\item Camera 2 - additional image sensor module for taking pictures and recording short films,
 
 \item FRAM - non-volatile ferroelectric memory that stores sensitive data of micro-controller software,
 
@@ -398,17 +398,78 @@ The OBC is built with:
 
 \end{itemize}
 
-Tablica 8.1: Parametry techniczne komputera pokładowego
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|p{5cm}|p{6cm}|}\hline 
+ & \textbf{Designed OBC module} \\ 
+\hline 
+\textbf{Architecture} & Two independent \newline micro-controllers with \newline Cortex-R4F core \\ 
+\hline 
+\textbf{Frequency} & 180MHz \\ 
+\hline 
+\textbf{FPGA} & Cyclone III EP3C25Q240 \\ 
+\hline 
+\textbf{RAM} & 128MB \\ 
+\hline 
+\textbf{Flash memory} & 16MB + 2MB \\ 
+\hline 
+\textbf{FRAM} & 256KB \\ 
+\hline 
+\textbf{RTC} & Yes \\ 
+\hline 
+\textbf{CAN interface} & 1x \\ 
+\hline 
+\textbf{I2C interface} & 2x \\ 
+\hline 
+\textbf{SpaceWire interface} & possibile to implement \\ 
+\hline 
+\textbf{Image sensor interface} & 2x (star-tracker camera and additional camera) \\ 
+\hline 
+\textbf{Solutions increasing resistance to radiation} & Yes \\ 
+\hline 
+\end{tabular} 
+\caption{OBC's technical parameters. Adapted from \citet{gaska2016obc}.}
+\label{tab:obc-all}
+\end{table}
+
 
 \subsubsection{Main processing module} 
 
-The main processing system is build with Texas Instrument's TMS570LS3137 with two Cortex-R4F cores in lockstep mode - both cores execute the same instructions and the results are compared; if they are different, the instructions are repeated. Both cores are operating in FreeRTOS, but can be easily moved into SafeRTOS. Table ... describes hardware resources of this micro-controller and the Figure \ref{fig:obc-main-processor} show schema of this module.
+The main processing system is build with Texas Instrument's TMS570LS3137 with two Cortex-R4F cores in lockstep mode - both cores execute the same instructions and the results are compared; if they are different, the instructions are repeated. Both cores are operating in FreeRTOS, but can be easily moved into SafeRTOS. Table \ref{tab:obc-main-processor} describes hardware resources of this micro-controller and Figure \ref{fig:obc-main-processor} show schema of this module.
 
-Tablica 5.2
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|p{4cm}|p{3cm}|}\hline 
+\textbf{Resource} & \textbf{Amount} \\ 
+\hline 
+Flash memory & 3 MB \\ 
+\hline 
+RAM & 256kB \\ 
+\hline 
+Frequency & 160Mhz \\ 
+\hline 
+FlexRay & 1 \\ 
+\hline 
+CAN bus & 3 \\ 
+\hline 
+SPI & 3 \\ 
+\hline 
+I2C & 1 \\ 
+\hline 
+UART & 2 \\ 
+\hline 
+ADC canals & 24 \\ 
+\hline 
+\end{tabular} 
+\caption{Resources of Texas Instrument's TMS570LS3137. Adapted from \citet{gaska2016obc}.}
+\label{tab:obc-main-processor}
+\end{table}
 
 
 \begin{figure}[!htbp]
-\includegraphics[scale=0.45]{obc_main_processor.png}
+\includegraphics[scale=0.49]{obc_main_processor.png}
 \centering
 \caption{OBC main processing system schema\cite{gaska2016obc}.}
 \label{fig:obc-main-processor}
@@ -420,7 +481,7 @@ Tablica 5.2
 The supervisor unit is build with ATmega128 micro-controller, what is visible in Figure \ref{fig:obc-supervisor}.
 
 \begin{figure}[!htbp]
-\includegraphics[scale=0.45]{obc_supervisor.png}
+\includegraphics[scale=0.48]{obc_supervisor.png}
 \centering
 \caption{OBC supervisor system schema \cite{gaska2016obc}.}
 \label{fig:obc-supervisor}
@@ -428,7 +489,7 @@ The supervisor unit is build with ATmega128 micro-controller, what is visible in
 
 \subsubsection{Star-tracker module}
 
-The FPGA used in star-tracker module is Altera's EP3C25Q240. In this FPGA 32-bit soft-processor  NIOS II was implemented in Fast version. It can work with 175MHz frequency and achieve 195 DMIPS. The elements generated together with processor are:
+The FPGA used in star-tracker module is Altera's EP3C25Q240. Table \ref{tab:obc-fpga} describes the resources of the mentioned FPGA module. In this FPGA 32-bit soft-processor NIOS II was implemented in Fast version. It can work with 175MHz frequency and achieve 195 DMIPS. The elements generated together with processor are:
 \begin{itemize}
 \item memory protection unit (MPU),
 \item external interrupt controller,
@@ -439,16 +500,63 @@ The FPGA used in star-tracker module is Altera's EP3C25Q240. In this FPGA 32-bit
 \item JTAG interface.
 \end{itemize}
 
-Tablica 5.8:
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|p{6cm}|p{3cm}|}
+\hline 
+\textbf{Resource} & \textbf{Amount} \\ 
+\hline 
+Logical elements & 24624 \\ 
+\hline 
+M9K blocks & 66 \\ 
+\hline 
+RAM & 0.06Mbit \\ 
+\hline 
+Hardware multiplying blocks & 66 \\ 
+\hline 
+PPL & 4 \\ 
+\hline 
+I/O lines & 148 \\ 
+\hline 
+Differential pairs & 43 \\ 
+\hline 
+\end{tabular} 
+\caption{Resources of Altera's EP3C25Q240. Adapted from \citet{gaska2016obc}.}
+\label{tab:obc-fpga}
+\end{table}
+
 
 Another element of star-tracker module is SDRAM memory. By using two Micron's two parallel 64MB DDR SDRAM MT46V64M8 in total 128MB was achieved, where temporary image frames from cameras are stored.
 
-The last part are cameras. Here only the star-tracker camera module is described, because the other camera is not important for this work. The star-tracker camera is based on CMOS MT9D111 sensor. It contains built-in JPEG compressor and consumes little energy. It is equipped in parallel interface with 8-bit bus for data transfer and I2C interface for configuring basic image parameters and many other sensor options, i.e. JPEG compression, coding type, etc. The Table ... describes most important sensor parameters.
+The last part are cameras. Here only the star-tracker camera module is described, because the other camera is not important for this work. The star-tracker camera is based on CMOS MT9D111 sensor. It contains built-in JPEG compressor and consumes little energy. It is equipped in parallel interface with 8-bit bus for data transfer and I2C interface for configuring basic image parameters and many other sensor options, i.e. JPEG compression, coding type, etc. The Table \ref{tab:obc-camera} describes the most important sensor parameters.
 
-Tablica 5.10: Najważniejsze parametry sensora MT9D111
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|p{5cm}|p{5cm}|}
+\hline 
+\textbf{Parameter} & \textbf{Value} \\ 
+\hline 
+\textbf{Format} & 1/3.2" \\ 
+\hline 
+\textbf{Resolution} & 1600x1200 pixels \\ 
+\hline 
+\textbf{Max frame rate} & 15 fps \\ 
+\hline 
+\textbf{ADC resolution} & 10 bits \\ 
+\hline 
+\textbf{Output data format} & YCbCr, 565RGB, 555RGB,\newline 444RGB, JPEG 4:2:2,\newline JPEG 4:2:0 \\ 
+\hline 
+\textbf{Additional pros} & Built-in JPEG compressor \\ 
+\hline 
+\end{tabular} 
+\caption{Most important parameters of MT9D111 sensor. Adapted from \citet{gaska2016obc}.}
+\label{tab:obc-camera}
+\end{table}
 
 \begin{figure}[!htbp]
-\includegraphics[scale=0.45]{obc_startracker.png}
+\includegraphics[scale=0.5]{obc_startracker.png}
 \centering
 \caption{OBC star-tracker system schema \cite{gaska2016obc}.}
 \label{fig:obc-startracker}
@@ -539,6 +647,8 @@ In this frame the origin is the centre of the spacecraft. The moves and rotates 
 \end{figure}
 
 \subsection{Space environment?}
+
+\subsection{CCD vs CMOS?}
 
 \subsection{Attitude representations}
 Attitude is not only were one object is located relative to other, but also how it is rotated. It is possible to represent attitude in few ways. Here are described two most commonly used for such case: Euler angels and quaternions. Quaternions are used in all presented estimation methods.
@@ -631,16 +741,12 @@ If the database does not contain corresponding stars, the algorithm returns to t
 
 Generally star-tracker is divided into three main parts\citet{mcbryde2012star}:
 \begin{itemize}
-\item recognising stars on the image and converting the data into list of star vectors by calculating star centroids;
+\item recognizing stars on the image and converting the data into list of star vectors by calculating star centroids;
 \item identifying which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
 \item estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 
-\subsection{Centroid - start recognition}
-\citet{samaan2002predictive}
-
-\citet{liebe2002accuracy}
-
+\subsection{Centroid - star recognition}
 
 The whole star-tracker program is based on very precise calculations. For this reason, the calculation based on the position of the pixels only can give incorrect results. It is necessary to calculate the position of stars with an accuracy exceeding pixels. This is why the calculation of the star centroids is necessary.
 
@@ -743,14 +849,12 @@ The clustering can be accomplished by checking each new centroid against a list 
 \end{figure}
 
 \subsection{Star identification}
-all \citet{spratling2009survey}\par
-Brightness Independent 4-Star Matching Algorithm for Lost-in-Space 3-Axis Attitude Acquisition\citet{dong2006brightness} \par
-SP-Search: A New Algorithm for Star Pattern Recognition \citet{mortari1999sp} \par
-Star Identification using Neural networks \citet{miri2012star} \citet{lindbladstar} \par
-Star pattern recognition using neural networks \citet{li2003star} \par
+
+Star identification is the part of star-tracker program, which actually finds out which recognized stars are which. Prior this part it is only known that some stars were read from the image, and now it is the time to identify them by comparing to on-board star catalogue. There is a number of techniques to do that\cite{spratling2009survey}. In this chapter most of them will be described.
 
 
 \subsubsection{Angle Matching}
+The Angle Matching is probably the oldest way for identifying stars. It needs at least two stars as an input\cite{gottlieb1978star}. The Figure \ref{fig:angle_matching} visualizes the way the method works.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.7]{vector_angle_method.jpg}
@@ -759,16 +863,24 @@ Star pattern recognition using neural networks \citet{li2003star} \par
 \label{fig:angle_matching}
 \end{figure}
 
-\citet{gottlieb1978star}
+The angle between two vectors pointing to the stars is given by:
+
 \begin{equation}
 \theta = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
 \end{equation}
+where $\bm{r}_1$ and $\bm{r}_2$ are unit vectors pointing to each star. The vectors are given in inertial space. The angle $\theta$ is the same when inertial vectors or body vectors are used. The problem is that the angle measured between stars in the image contain significant measurement error, that cannot be ignored.
+What is needed by this technique, is the standard deviation of the angle between two stars when each star measurement possesses the error described. It can be used to provide a bound on the expected errors.
+Firstly standard coordinate transformation is necessary:
 \begin{equation}
 \bm{b}_i = A\bm{r}_i
 \end{equation}
+where $\bm{r}_i$ is direction the direction of star in the ECI coordinate system, $A$ is the direction cosine matrix, $\bm{b}_i$ is direction of star in the star-tracker body coordinate system.
+
+Nearly all the probability of errors is focused on a very small area about the direction of $A\bm{r}_i$, that the sphere containing that point can be approximated by a tangent plane, characterized by:
 \begin{equation}
 \tilde{\bm{b}}_i = A\bm{r}_i + \bm{v}_i, \hspace{0.5cm} \bm{v}_i^TA\bm{r}_i = 0
 \end{equation}
+where $\tilde{\bm{b}}_i$ is the it{i}th measurement and sensor $\bm{v}_i$ is approximately Gaussian, which satisfies
 \begin{subequations}
 \begin{equation}
 E\left\{\bm{v}_i\right\} = 0
@@ -777,33 +889,48 @@ E\left\{\bm{v}_i\right\} = 0
 E\left\{\bm{v}_i\bm{v}_i^T\right\} = \sigma_i^2 [\bm{I} - (A\bm{r}_i)(A\bm{r}_i)^T]
 \end{equation}
 \end{subequations}
+where $\sigma_i^2$ is the variance and $E$ is expectation.
+The dot product of two body observations gives
 \begin{equation}
-\bm{b}_i^T\bm{b}_j = \bm{r}_i^TA^TA\bm{r}_j = \bm{r}_i^T\bm{r}_j
+\bm{b}_1^T\bm{b}_2 = \bm{r}_1^TA^TA\bm{r}_2 = \bm{r}_1^T\bm{r}_2
 \end{equation}
+what show that the dot product is attitude-invariant measurement.
+In case of two measurements $\bm{b}_1$ and $\bm{b}_2$ with noise, where $\bm{v}_1$ and $\bm{v}_2$ are uncorrelated:
 \begin{subequations}
 \begin{align*}
-\tilde{\bm{b}}_i = A\bm{r}_i + \bm{v}_i\\
-\tilde{\bm{b}}_j = A\bm{r}_j + \bm{v}_j
+\tilde{\bm{b}}_1 = A\bm{r}_1 + \bm{v}_1\\
+\tilde{\bm{b}}_2 = A\bm{r}_2 + \bm{v}_2
 \end{align*}
 \end{subequations}
+define the effective measurement:
 \begin{equation}
-z \equiv \tilde{\bm{b}}_i^T\tilde{\bm{b}}_j = \bm{r}_i^T\bm{r}_j + \bm{r}_i^TA^T\bm{v}_J + \bm{r}_j^TA^T\bm{v}_i + \bm{v}_i^T\bm{v}_j
+z \equiv \tilde{\bm{b}}_1^T\tilde{\bm{b}}_2 = \bm{r}_1^T\bm{r}_2 + \bm{r}_1^TA^T\bm{v}_J + \bm{r}_2^TA^T\bm{v}_1 + \bm{v}_1^T\bm{v}_2
 \end{equation}
+As $\bm{v}_1$ and $\bm{v}_2$ are uncorrelated, then:
 \begin{equation}
-E\left\{z\right\} = \bm{r}_i^T\bm{r}_j
+E\left\{z\right\} = \bm{r}_1^T\bm{r}_2
 \end{equation}
+Define the following variable:
 \begin{equation}
-p \equiv z - E\left\{z\right\} = \bm{r}_i^TA^T\bm{v}_J + \bm{r}_j^TA^T\bm{v}_i + \bm{v}_i^T\bm{v}_j
+p \equiv z - E\left\{z\right\} = \bm{r}_1^TA^T\bm{v}_J + \bm{r}_2^TA^T\bm{v}_1 + \bm{v}_1^T\bm{v}_1
 \end{equation}
+Taking $E\left\{p^2\right\}$ gives the variance for the dot product measurement error:
 \begin{equation}
 \begin{split}
-\sigma_p^2 \equiv E\left\{p\right\} = \\
+\sigma_p^2 \equiv E\left\{p^2\right\} = \\
 \bm{r}_1^TA^TR_2A\bm{r}_1 + \bm{r}_2^TA^TR_aA\bm{r}_2 + Trace(R_1R_2) = \\
 Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \end{split}
 \end{equation}
+where $E\left\{\bm{v}_1\bm{v}_1^T\right\}\equiv R_1$ and $E\left\{\bm{v}_2\bm{v}_2^T\right\}\equiv R_2$.
+
+The effective measurement noise in the dot product consist of both Gaussian and chi-squared distribution, but since the noise is small in comparison to the unit vector observation, the effective noise can be treated as purely Gaussian. As the attitude is not known, the $A\bm{r}_1$ and $A\bm{r}_2$ are replaced by $\tilde{\bm{b}}_1$ and $\tilde{\bm{b}}_2$. Errors introduced in this substitution are second-order in nature, hence the variance is completely independent of the attribute matrix $A$.
+
+In case there exist more than one possible solution, so called pivoting is made. This means that if for first angle more than one solution was found, the second angle is selected, that shares one common star with the first angle. When all solutions for second angle are obtained, the solutions not common for those two angles are discarded. If there is still more than one solution, then another pivot is made. Now it compares the second angle with third angle, with a common star. The rest goes analogically. This happens till finally there is only one solution for some two angles, or there are no more angles left in the input, and system enters into LIS mode.
 
 \subsubsection{Spherical Triangle Matching}
+
+Instead of measuring the inter-star angle, this method creates spherical triangles out of three stars. Due to that more information can be obtained from such triangle than an angle, what enables to identify stars faster and using fewer stars overall than in previous method. In this technique the area and polar moment are used instead of angles. The main disadvantage comparing to angle matching method is that this one requires not two but three stars in order to work properly, however under typical conditions in angle matching it is necessary to use more stars due to measurement error. Also the spherical triangle catalogue is about 10 times larger than angle catalogue\cite{cole2004fast}.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.29]{spherical_triangle_method.jpg}
@@ -811,12 +938,11 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \caption{Spherical Triangle Method, Image \citet{cole2004fast}}
 \label{fig:spherical_triangle_method}
 \end{figure}
-
-\citet{cole2004fast}
-
+Given three unit vectors pointing toward three stars, the area of a spherical triangle is as follows:
 \begin{equation}
 A = 4\tan^{-1}\sqrt{\tan\frac{s}{2}\tan\frac{s-a}{2}\tan\frac{s-b}{2}\tan\frac{s-c}{2}}
 \end{equation}
+where
 \begin{subequations}
 \begin{align*}
 s = \frac{1}{2}(a + b + c) \\
@@ -825,10 +951,24 @@ b = \cos^{-1} \bigg(\frac{\bm{b}_2 \cdot \bm{b}_3}{|\bm{b}_2||\bm{b}_3|}\bigg) \
 c = \cos^{-1} \bigg(\frac{\bm{b}_3 \cdot \bm{b}_1}{|\bm{b}_3||\bm{b}_1|}\bigg) 
 \end{align*}
 \end{subequations}
+The equation is given for the body frame, but can be used in the ECI frame too. To get a bound for the measurement error, the standard deviation must be calculated.
+
+The polar moment is good supplement to area, because it is possible for two spherical triangles to have the same area but different polar moment, and all way around. This helps to quickly reduce the number of possible solutions.
+
+The polar moment can be obtained as follows
 \begin{equation}
 I_p = \sum\theta^2dA
 \end{equation}
+
+The polar moment of each spherical triangle is calculated by recursive algorithm, which divides the triangle into smaller triangles till the recursion's depth is met.
+
+The standard deviations for area and polar moment are given in \citet{cole2004fast}.
+
+In this technique pivoting works analogically to the angle matching method. Note that while calculation of the standard deviation of area is quite straightforward, the standard deviation of the second moment calculation is difficult to compute analytically.
+
 \subsubsection{Planar Triangle}
+
+The third technique, quite similar to previous one is Planar Triangle. Instead of spheres it uses planes, what makes it much less computationally demanding. It also uses the same two properties: triangle area and polar moment. In this case also three stars are necessary\cite{cole2006fast}.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.30]{planar_triangle_method.jpg}
@@ -837,8 +977,11 @@ I_p = \sum\theta^2dA
 \label{fig:planar_triangle_method}
 \end{figure}
 
-\citet{cole2006fast}\par
-
+Given thee unit vectors pointing toward three stars $\bm{u_p}$, $\bm{u_q}$, $\bm{u_r}$, the area for planar triangle is as follows:
+\begin{equation}
+A = \sqrt{s(s-a)(s-b)(s-c)}
+\end{equation}
+where
 \begin{subequations}
 \begin{equation}
 s = \frac{1}{2}(a + b + c)
@@ -853,12 +996,15 @@ b = ||\bm{u_q} - \bm{u_r}||
 c = ||\bm{u_p} - \bm{u_r}||
 \end{equation}
 \end{subequations}
-\begin{equation}
-A = \sqrt{s(s-a)(s-b)(s-c)}
-\end{equation}
+
+The equation is given for the body frame, similarly as for the spherical triangle. It can be also used for ECI frame. Also here the standard deviation has to be calculated in order to obtain a bound of the measurement error.
+
+Similarly as in the previous method, here also polar moment is calculated:
 \begin{equation}
 J = A\frac{(a^2 + b^2 + c^2)}{36}
 \end{equation}
+
+Since the planar area is a nonlinear function, a linearization must be used to determine its variance. To compute this, the following matrix must be evaluated:
 
 Derivatives
 \begin{equation}
@@ -866,7 +1012,7 @@ H = \begin{bmatrix}
 \bm{h}_1^T & \bm{h}_2^T & \bm{h}_3^T
 \end{bmatrix}
 \end{equation}
-
+where
 \begin{subequations}
 \begin{equation}
 \bm{h}_1^T \equiv \frac{\delta A}{\delta a}\frac{\delta a}{\delta\bm{b}_1} + \frac{\delta A}{\delta c}\frac{\delta c}{\delta\bm{b}_1}
@@ -878,7 +1024,7 @@ H = \begin{bmatrix}
 \bm{h}_3^T \equiv \frac{\delta A}{\delta b}\frac{\delta b}{\delta\bm{b}_3} + \frac{\delta A}{\delta c}\frac{\delta c}{\delta\bm{b}_3} 
 \end{equation}
 \end{subequations}
-
+To calculate the partials with respect to $a$, $b$ and $c$ serve the following equations:
 \begin{subequations}
 \begin{equation}
 \frac{\delta A}{\delta a} = \frac{u_1 - u_2 + u_3 + u_4}{4A}
@@ -890,7 +1036,7 @@ H = \begin{bmatrix}
 \frac{\delta A}{\delta c} = \frac{u_1 + u_2 + u_3 - u_4}{4A}
 \end{equation}
 \end{subequations}
-
+where
 \begin{subequations}
 \begin{equation}
 u_1 = (s - a)(s - b)(s - c)
@@ -905,7 +1051,7 @@ u_3 = s(s - a)(s - c)
 u_4 = s(s - a)(s - b)
 \end{equation}
 \end{subequations}
-
+The partials with respect to $\bm{b}_1$, $\bm{b}_2$ and $\bm{b}_3$ are calculated formulas
 \begin{subequations}
 \begin{equation}
 \frac{\delta a}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_2)^T /a, \hspace{0.5cm} \frac{\delta a}{\delta \bm{b}_2} = -\frac{\delta a}{\delta \bm{b}_1}
@@ -917,11 +1063,11 @@ u_4 = s(s - a)(s - b)
 \frac{\delta c}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_3)^T /c, \hspace{0.5cm} \frac{\delta c}{\delta \bm{b}_3} = -\frac{\delta c}{\delta \bm{b}_1}
 \end{equation}
 \end{subequations}
-
+The variance of the area is as follows
 \begin{equation}
 \sigma_A^2 = HRH^T
 \end{equation}
-
+where
 \begin{equation}
 R \equiv \begin{bmatrix}
 R_1 & 0_{3x3} & 0_{3x3} \\
@@ -930,14 +1076,14 @@ R_1 & 0_{3x3} & 0_{3x3} \\
 \end{bmatrix}
 \end{equation}
 
-Polar Moment
+As with the area, it is necessary to obtain the variance of the polar moment. The following partial matrix has to be evaluated first:
 
 \begin{equation}
 \bar{H} = \begin{bmatrix}
 \bar{\bm{h}}_1^T & \bar{\bm{h}}_2^T & \bar{\bm{h}}_3^T
 \end{bmatrix}
 \end{equation}
-
+where
 \begin{subequations}
 \begin{equation}
 \bar{\bm{h}}_1^T \equiv \frac{\delta J}{\delta a}\frac{\delta a}{\delta\bm{b}_1} + \frac{\delta J}{\delta c}\frac{\delta c}{\delta\bm{b}_1} + \frac{\delta J}{\delta A}\bm{h}_1^T
@@ -949,7 +1095,7 @@ Polar Moment
 \bar{\bm{h}}_3^T \equiv \frac{\delta J}{\delta b}\frac{\delta b}{\delta\bm{b}_3} + \frac{\delta J}{\delta c}\frac{\delta c}{\delta\bm{b}_3} + \frac{\delta J}{\delta A}\bm{h}_3^T
 \end{equation}
 \end{subequations}
-
+with
 \begin{subequations}
 \begin{equation}
 \frac{\delta J}{\delta a} = A a/18, \hspace{0.5cm} \frac{\delta J}{\delta a} = A b/18, \hspace{0.5cm} \frac{\delta J}{\delta a} = A c/18
@@ -958,12 +1104,21 @@ Polar Moment
 \frac{\delta J}{\delta A} = (a^2 + b^2 + c^2)/36
 \end{equation}
 \end{subequations}
-
+Other quantities are given from the area variance calculations. The variance of the polar moment is calculated with the following formula:
 \begin{equation}
 \sigma_J^2 = \bar{H}R\bar{H}^T
 \end{equation}
 
+Pivoting works analogically as in the previous methods.
+
+This method gives similar results as spherical triangle method, but planar triangle method does not have to perform recursive calculations of polar moment like the previous method, hence it has lower computational demand for star-identification\cite{alidoost2013review}.	
+
+
 \subsubsection{Pyramid}
+
+Pyramid method is described by \citet{mortari2004pyramid}. This algorithm is designed to be used efficiently with 4-star input, however can also function for 3-star input if no more are available. It uses set of star pairs in elementary measured star polygons (3 for a triangle, six for a 4-star pyramid). The vertices between adjacent measured star pairs share a common catalogued star.
+
+The Figure \ref{fig:pyramid_method} shows how the algorithm works. If there are less than 3 stars on input, the algorithm returns error, what actually brings back to start of the algorithm with new input data. In case there are three stars only, algorithm gets rid of redundant solutions, and if the solution is unique, the stars are identified and solution is outputted. In case of not finding unique solution, algorithm returns an error, and starts again with new data. If there are more than three stars, algorithm gets three stars for a triangle, and then one reference star. Later it checks pairs of reference star and triangle's vertices. If unique solution is found, it identifies the remaining stars and outputs all the identified stars. If no unique solution has been found, algorithm tries to get new triangle and repeat the steps. There are two possible exits of this loop: the already mentioned finding unique solution, or running out of new triangles. In the last case algorithm removes redundant solutions, then check again if it is unique solution. Finally either unique solution is found and algorithm identifies all other stars from the input and outputs them, or returns an error and stars again with the new input data.
 
 \begin{figure}[!htbp]
 \includegraphics[scale=0.57]{pyramid_method.jpg}
@@ -972,17 +1127,60 @@ Polar Moment
 \label{fig:pyramid_method}
 \end{figure}
 
-\citet{mortari2004pyramid}\par
+According to authors the algorithm can solve LIS problem and is highly robust. The key to algorithm's efficiency lies in the usage of k-vector method and the usage of expected random frequencies connected to matching interstar angles from measured star polyhedron. The algorithm has been tested on Draper’s “Inertial Stellar Compass” star tracker\cite{brady2002inertial} and on MIT’s satellites HETE and HETE-2\cite{crew2002hete} successfully. This algorithm is currently under exclusive contract to StarVision Technologies\cite{jacox2006method}\cite{pyramid-starvision}.
 
 
-\subsubsection{Rate Matching}
-\citet{samaan2005recursive}
-to be removed?
 \subsubsection{Voting}
-\citet{kolomenkin2008geometric} \par
+Algorithm was presented by \citet{kolomenkin2008geometric}. Pair of stars in the catalogue votes for a pair of stars in the image if angular distance between the stars of both pairs is similar. Since angular distance is a symmetric relationship, each catalogue star in the pair vote for each in the image pair. Then the image star is identified as the catalogue star which gave the most votes.
+
+Authors' testing has shown that the algorithm is as accurate, as fast and more robust than other methods. The authors tested the algorithm in simulation only, and it does not appear to be tested in space yet. Furthermore, all simulations and testing were done on assumption of slow rotation, hence it is not known how it would function in the real environment. The more details about this algorithm can be found in \citet{kolomenkin2008geometric}.
+
+
 \subsubsection{Grid}
-%http://dsp.ucsd.edu/~kreutz/Publications/Padgett1997.pdf
-\citet{padgett1997grid}
+The Grid Algorithm was designed by \citet{padgett1997grid}. The main ideas of the algorithm are to generate a specified pattern database and to construct a grid pattern from the measured star field in the CCD plane. The specified pattern is designed by using grids. Then the measured grid pattern is identified by best matching pattern in the database.According to authors the algorithm is robust and comparable with other methods in terms of accuracy and performance. 
+
+This algorithm will not be described in more detail, since it is designed for CCD camera, and this thesis focuses on star-tracker for OBC mentioned before, which uses CMOS camera. More information can be found in \citet{padgett1997grid}.
+
+
+\subsubsection{Other techniques}
+
+Other techniques involve: 
+
+\begin{itemize}
+\item Spherical-Polygon (SP) Search by \citet{mortari1999sp}:
+
+The idea of this method is that any star direction can be expressed as a linear combination of two non-parallel star directions (star pair basis) together with their vector cross-product. The star identification problem is transformed into the simpler problem of finding which stars, within a large star catalogue, are admissible with a given direction. This is solved by approximating a cone with a spherical polygon and search for all of the three components of the given direction. 
+
+\item Star Neighbourhood Approach by \citet{samaan2005recursive}:
+
+This method does not solve LIS problem, but can be used only in star-tracker's tracking mode. The algorithm makes use of the knowledge of the previous frame data to initiate the current frame star.
+
+
+\item Brightness Independent 4-Star Matching Algorithm by \citet{dong2006brightness}:
+
+This technique needs at least 4 stars as an input, than calculates angular separations between each pair, and tries to find corresponding star pairs with similar angular separations in the database.
+Identified stars are not used again, and the remaining stars are used with additional stars to make a new 4-star group. Then this step is repeated. In case no star was identified, at least one star will be removed to build a new 4-star group. If there would be no more than 4 stars left, then already identified stars have to be used.
+No information about real-life usage has been found.
+
+\item Use of neural networks and machine learning algorithms:
+
+\begin{itemize}
+\item 'Star Identification using Neural Networks' by \citet{lindbladstar} describes approach to star identification in two different ways: Radial Basis Funcion (RBF) Neural Network and k Nearest Neighbours,
+
+\item Parallel Backpropagation (BP) multi-subnets are designed by \citet{li2003star},
+
+\item Method based on Delunay Triangulation algorithm and neural networks is designed by \citet{miri2012star}.
+
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{Conclusions}
+
+From the described techniques the Planar Triangle method was chosen. Comparing to Angle Method it gives better results and comparing to Spherical Triangle it less computationally demanding\cite{tappe2009development}\cite{alidoost2013review}. It requires more memory for the database, but it is still in range of the designed OBC. Pyramid technique cannot be used as it is patented.
+Algorithms based on neural networks need significantly more computational power and memory. What is more, no information about the usage of such algorithms on real spacecraft was found.
+As for other algorithms, Star Neighbourhood does not support LIS mode, for Brightness Independent, SP-Search, Voting and Grid methods no information about real-life use was found. Moreover Planar Triangle was tested in at least two other works (but only against Angle and Spherical Triangle Methods), and was chosen as giving the best overall results.
+
 \subsection{Star-catalogue and searching for matching stars}
 
 \subsubsection{Star Catalogue Generation}
@@ -1029,8 +1227,7 @@ The k-vector technique works in the following way: $\bm{y}$ is the data vector o
 In the Figure \ref{fig:k-vector-example} it is shown how such k-vector construction looks like. In this example the database has 10 elements. X-axis describes k-vector elements $\bm{k}(i)$ and y-axis describes the sorted values $\bm{s}(i)$ (inter-star angle in this case). The value of $\bm{k}(i)$ represents the number of elements of the database vector $\bm{y}$ below the value $z(i)$.
 The resulting k-vector is $\bm{k} = \{0, 2, 2, 3, 3, 5, 6, 8, 9, 10\}^T$.
 
-The following equations describe mathematically how the k-vector database is created.
-The line connecting two extreme points, $[1, y_{min}]$ and $[n, y_{max}]$, has to be a little stepper and connect points $[1, y_{min}-\delta\epsilon]$ and $[n, y_{max}+\delta\epsilon]$. This assures $\bm{k}(1) = 0$ and $\bm{k}(n	) = n$ and simplifies the code by avoiding many index checks.
+The following equations describe how the k-vector database is created. The line connecting two extreme points, $[1, y_{min}]$ and $[n, y_{max}]$, has to be a little stepper and connect points $[1, y_{min}-\delta\epsilon]$ and $[n, y_{max}+\delta\epsilon]$. This assures $\bm{k}(1) = 0$ and $\bm{k}(n	) = n$ and simplifies the code by avoiding many index checks.
 \begin{equation}
 z(x) = mx + q \begin{cases}m = \frac{y_{max} - y_{min} + \delta\epsilon}{n - 1} \\
 q = y_{min} - m - \delta\epsilon \end{cases}
@@ -1219,7 +1416,6 @@ Testing\par
 \newpage
 \bibliographystyle{IEEEtranN}
 \bibliography{IEEEabrv,bibfile}
-%\bibliography{bibfile}
 
 
 

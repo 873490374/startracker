@@ -335,8 +335,8 @@
 
 @article{juang2003efficient,
 	author = "Juang, Jer-Nan and Kim, Hye-Young and Junkins, John L",
-	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}",
-	year = "2003"
+	journal = "NASA, Tech. Rep. TM-2003-212142",
+	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}"
 }
 
 @inproceedings{kruijff2003star,
@@ -357,15 +357,23 @@
 
 @article{hamilton1844lxxviii,
 	author = "Hamilton, William Rowan",
+	journal = "Philosophical Magazine Series 3",
+	number = "169",
+	pages = "489--495",
 	publisher = "Taylor \& Francis",
 	title = "{LXXVIII. On quaternions; or on a new system of imaginaries in Algebra: To the editors of the Philosophical Magazine and Journal}",
+	volume = "25",
 	year = "1844"
 }
 
 @article{cayley1845xiii,
 	author = "Cayley, Arthur",
+	journal = "Philosophical Magazine Series 3",
+	number = "171",
+	pages = "141--145",
 	publisher = "Taylor \& Francis",
 	title = "{XIII. On certain results relating to quaternions: To the editors of the Philosophical Magazine and Journal}",
+	volume = "26",
 	year = "1845"
 }
 
@@ -509,13 +517,13 @@
 }
 
 @misc{orbits-image,
-	howpublished = "\url{https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Comparison\_satellite\_navigation\_orbits.svg/512px-Comparison\_satellite\_navigation\_orbits.svg.png}",
+	howpublished = "\url{https://upload.wikimedia.org/ wikipedia/commons/thumb/b/b4/Comparison\_satellite \_navigation\_orbits.svg/ 512px-Comparison \_satellite\_navigation\_orbits.svg.png}",
 	note = "Accessed: 2017-08-18",
 	title = "{Earth's navigation orbits image}"
 }
 
 @misc{nasa-gps-navigation,
-	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/policy/GPS\_Utilization.html}",
+	howpublished = "\url{https://www.nasa.gov/directorates/heo/scan/communications/ policy/GPS\_Utilization.html}",
 	note = "Accessed: 2017-08-18",
 	title = "{NASA's Utilization of Global Positioning System (GPS)}"
 }
@@ -585,6 +593,7 @@
 
 @mastersthesis{kandiyil2010attitude,
 	author = "Kandiyil, Raveesh",
+	school = "Lule{\aa} University of Technology",
 	title = "{Attitude determination software for a star sensor}",
 	year = "2010"
 }
@@ -657,5 +666,45 @@
 	pages = "5615",
 	title = "{Neural networks for event detection: an interplanetary cubesat asteroid mission case study}",
 	year = "2016"
+}
+
+@misc{ned-frame-image,
+	howpublished = "\url{http://www.basicairdata.eu/knowledge-center/background-topics/coordinate-system/}",
+	note = "Accessed: 2017-09-02",
+	title = "{NED frame image}"
+}
+
+@article{alidoost2013review,
+	abstract = "The main problem in the star trackers is when it is in the lost-in-space mode that no attitude information is known a priori. In this mode, using algorithms should be robust against false stars in acquired images and be able to estimate the accurate attitude of the platform in proper time. Processing algorithms consist of three main parts: star centroid estimation, pattern recognition and star identification, and attitude determination. In this study, the different stellar patterns are described that are used in matching and star identification process. For this, the position of stars within sensor{\rq}s field of view is calculated in the image coordinate system and the stellar patterns are generated using these positions. Then, the guide stars are selected from the well-known astronomical catalogue which are used to facilitate pattern generation and recognition based on using algorithms. If the image stellar pattern matches a unique one built up by guide stars, the identification is accomplished. In this study, three common pattern recognition methods such as the triangle, planar triangle and spherical triangle methods were reviewed and were compared based on the required time, efficiency, the success rate, etc. As a result, the performance and the success rate of the planar triangle method is higher than two other methods without a high computational burden and complexity.",
+	author = "{F. Alidoost} and {F. Dadras Javan} and AWT\_TAG",
+	eprint = "http://gej.issge.ir/article-1-126-en.pdf",
+	journal = "Geospatial Engineering Journal",
+	title = "{A Review of Pattern Matching Methods in Star Trackers}",
+	url = "http://gej.issge.ir/article-1-126-en.html",
+	volume = "4",
+	year = "2013"
+}
+
+@article{brady2002inertial,
+	author = "Brady, Tye and Tillier, C and Brown, R and Jimenez, A and Kourepenis, A",
+	title = "{The inertial stellar compass: A new direction in spacecraft attitude determination}",
+	year = "2002"
+}
+
+@article{crew2002hete,
+	author = "Crew, GB and Vanderspek, R and Doty, J",
+	journal = "MIT Center for Space Research, Cambridge, MA",
+	title = "{Hete experience with the pyramid algorithm}",
+	volume = "2139",
+	year = "2002"
+}
+
+@misc{jacox2006method,
+	author = "Jacox, Michael and Ochoa, James and Zbranek, John and Wood, Brian and Katake, Anup and Bruccoleri, Christian",
+	month = apr # "~13",
+	note = "US Patent App. 11/279,668",
+	publisher = "Google Patents",
+	title = "{Method and Apparatus for Automatic Identification of Celestial Bodies}",
+	year = "2006"
 }
 

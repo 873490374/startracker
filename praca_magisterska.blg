@@ -23,47 +23,48 @@ Warning--empty year in juang2003efficient
 Warning--empty journal in markley1999estimate
 Warning--empty journal in jalabert2011optimization
 Warning--empty journal in lizy2010str
+Warning--empty journal in brady2002inertial
 
 Done.
-You've used 74 entries,
+You've used 76 entries,
             4855 wiz_defined-function locations,
-            1848 strings with 30327 characters,
-and the built_in function-call counts, 56300 in all, are:
-= -- 5269
-> -- 1293
-< -- 397
-+ -- 699
-- -- 280
-* -- 2955
-:= -- 8721
-add.period$ -- 153
-call.type$ -- 74
-change.case$ -- 160
-chr.to.int$ -- 860
-cite$ -- 93
-duplicate$ -- 3866
-empty$ -- 4132
-format.name$ -- 405
-if$ -- 12700
+            1856 strings with 30841 characters,
+and the built_in function-call counts, 57291 in all, are:
+= -- 5335
+> -- 1384
+< -- 386
++ -- 735
+- -- 306
+* -- 3054
+:= -- 8890
+add.period$ -- 157
+call.type$ -- 76
+change.case$ -- 166
+chr.to.int$ -- 838
+cite$ -- 97
+duplicate$ -- 3937
+empty$ -- 4190
+format.name$ -- 438
+if$ -- 12890
 int.to.chr$ -- 4
-int.to.str$ -- 75
-missing$ -- 601
-newline$ -- 250
-num.names$ -- 186
-pop$ -- 1551
+int.to.str$ -- 77
+missing$ -- 624
+newline$ -- 256
+num.names$ -- 189
+pop$ -- 1624
 preamble$ -- 1
-purify$ -- 74
+purify$ -- 76
 quote$ -- 2
-skip$ -- 4274
+skip$ -- 4315
 stack$ -- 0
-substring$ -- 2128
-swap$ -- 2713
-text.length$ -- 91
+substring$ -- 2075
+swap$ -- 2739
+text.length$ -- 90
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1170
-warning$ -- 7
-while$ -- 262
+type$ -- 1201
+warning$ -- 8
+while$ -- 259
 width$ -- 0
-write$ -- 848
-(There were 7 warnings)
+write$ -- 866
+(There were 8 warnings)
