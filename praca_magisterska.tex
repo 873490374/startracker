@@ -719,6 +719,19 @@ The most important advantage of quaternions over Euler angles is being safe from
 
 Quaternions show many advantages, and due to possible spins of CubeSat, quaternions are the only logical choice to be used for attitude estimation methods.
 
+\subsubsection{Wahba's problem}
+
+
+In 1965 Grace Wahba posed the problem of finding the proper orthogonal matrix $A$ that minimizes the non-negative loss function\cite{wahba1965least}
+
+\begin{equation}
+L(A) = \frac{1}{2} \sum_i^n|\bm{b}_i - \bm{Ar}_i|^2
+\end{equation}
+
+where $\bm{b}_i$ are unit vectors in body frame, $\bm{r}_i$ are the corresponding unit vectors in a reference (NED) frame and $n$ is the number of observations.
+
+If the vectors are error-free and the true attitude matrix $A_{true}$ is assumed to be the same for all the measurements, then $\bm{b}_i = A_{true}\bm{r}_i$ for each $i$ and the loss function $L(A) = 0$ for $A = A_{true}$.
+
 
 \newpage
 \section{Star-tracker program}
@@ -1179,12 +1192,16 @@ No information about real-life usage has been found.
 
 From the described techniques the Planar Triangle method was chosen. Comparing to Angle Method it gives better results and comparing to Spherical Triangle it less computationally demanding\cite{tappe2009development}\cite{alidoost2013review}. It requires more memory for the database, but it is still in range of the designed OBC. Pyramid technique cannot be used as it is patented.
 Algorithms based on neural networks need significantly more computational power and memory. What is more, no information about the usage of such algorithms on real spacecraft was found.
-As for other algorithms, Star Neighbourhood does not support LIS mode, for Brightness Independent, SP-Search, Voting and Grid methods no information about real-life use was found. Moreover Planar Triangle was tested in at least two other works (but only against Angle and Spherical Triangle Methods), and was chosen as giving the best overall results.
+As for other algorithms, Star Neighbourhood does not support LIS mode, for Brightness Independent, SP-Search, Voting and Grid methods no information about real-life use was found. Moreover Planar Triangle was tested in at least two other works (but only against Angle and Spherical Triangle Methods), and was chosen as giving the best overall results, and in one work it was chosen for implementation along one other algorithm\cite{huffman2006designing} due to its speed.
 
-\subsection{Star-catalogue and searching for matching stars}
+\subsection{Star-catalogue and database search method}
 
 \subsubsection{Star Catalogue Generation}
-\citet{mcbryde2012star}
+
+For each of previously mentioned algorithms it is necessary to match patters, angles, areas, polar moments, etc. with already known data. Such data saved in the database prior to launching the spacecraft. The database is usually made out of star database collected by Earth's observatories.
+ 
+For nearly every start pattern matching it is necessary to convert firstly the star positions to unit vectors. Most star catalogues use right ascension-declination coordinates while for star identification unit vectors must be used\citet{mcbryde2012star}. The following formula transforms the coordinates to unit vectors:
+
 \begin{equation}
 \bm{u} = \begin{bmatrix}
 \cos \alpha \cos \delta \\
@@ -1192,26 +1209,45 @@ As for other algorithms, Star Neighbourhood does not support LIS mode, for Brigh
 \sin \delta
 \end{bmatrix}
 \end{equation}
+
+where $\bm{u}$ is unit vector, $\alpha$ is right ascension and $\delta$ is declination.
+
+Since Planar Triangle method was chosen, the rest of catalogue generation will be described for this method. For each three catalogue stars that are above certain light intensity threshold
+\begin{subequations}
 \begin{equation}
-m_i \leq m_{max}
+i_a \geq i_{max}
 \end{equation}
 \begin{equation}
-m_j \leq m_{max}
+i_b \geq i_{max}
 \end{equation}
+\begin{equation}
+i_c \geq i_{max}
+\end{equation}
+\end{subequations}
+and in camera's FOV
+\begin{subequations}
 \begin{equation}
 \bm{u_a^T u_b} \geq \cos \theta_{FOV}
 \end{equation}
+\begin{equation}
+\bm{u_b^T u_c} \geq \cos \theta_{FOV}
+\end{equation}
+\begin{equation}
+\bm{u_c^T u_a} \geq \cos \theta_{FOV}
+\end{equation}
+\label{eq:in_fov}
+\end{subequations}
 
-\subsubsection{Candidate Matching}
-to be removed?
-\subsubsection{Result Verification}
-to be removed?
+area $A$ and polar moment $J$ should be calculated, exactly the same as in Planar Triangle method, however without variances. If all above conditions are met, star identification numbers, area and polar moment are saved in the database for later.
+
+$\bm{u_x^T u_y}$ is equal to cosine of angle between the two unit vectors, therefore checking if condition in Equation \ref{eq:in_fov} is satisfied is the same as stating the angular distance is less than FOV angle, what ensures that all three stars can be seen by camera at the same time.
+
 \subsubsection{Search Less Algorithm and k-vector}
 
-Search Less Algorithm (SLA) citet{mortari2000k} is special algorithm used to speed up looking up the corresponding stars in the on-board computer. Its heart is k-vector technique. Comparing to binary search technique, k-vector demonstrates high speed gain rate, from 10 to more than 50 times \cite{mortari2000k}.
+Search Less Algorithm (SLA) by \citet{mortari1996fast} is special algorithm used to speed up looking up the corresponding stars in the on-board computer. Its heart is k-vector technique. Comparing to binary search technique, k-vector demonstrates high speed gain rate, from 10 to more than 50 times \cite{mortari2000k}.
 
 The k-vector database is built before spacecraft's start. The k-vector table is a structural database of all catalogued star pairs that could possibly fit into the camera FOV over the whole sky. 
-The star pairs are ordered with increasing inter-star angle \cite{mortari1996fast}.
+The star pairs are ordered with increasing inter-star angle.
 
 The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{I}(i))$, where $\bm{I}$ is the integer vector of the sorting with length $n$ \cite{mortari2013k}.
 
@@ -1263,120 +1299,134 @@ Finally, having found $k_{start}$ and $k_{end}$ it is immediately known, that se
 Note that in example the searched elements should be $k_{start} = 4$ and $k_{end} = 8$ while the presented technique returns $k_{start} = 4$ and $k_{end} = 9$. This happens due to fact that $k_{start}$ and $k_{end}$ have $50\%$ possibility to not belong to the $[y_a, z(j_a +1)]$ and $[z(j_b), y_b)]$ ranges respectively.
 
 \subsection{Attitude Determination}
-\citet{jenssen2011comparison}\par
-AIM (Attitude estimation using Image Matching)\citet{delabie2012highly}\par
-all \citet{hall2003spacecraft} \citet{markley1999estimate}
+
+The last main part of the star-tracker program is attitude determination. After star pattern is found, there are come two lists of unit vectors. One list is in the body frame while the other is in the inertial frame. In order to find rotation between them and later CubeSat's attitude, an attitude determination method must be applied. A number of techniques were designed to solve this problem. Typically the output can come in the form of a quaternion, Euler angles or a rotation matrix (DCM).
+
+The attitude determination methods should be fast and robust. This section describes few most common algorithms designed to solve this problem.
+
+
+\subsubsection{TRIAD}
+
+Three Axis Attitude Determination (TRIAD) is based on constructing two triads of orthonormal unit vectors using the vector information from input. Both triads are components of the same reference frame $F_t$ expressed in the body and inertial frames\cite{hall2003spacecraft}.
+
+$\bm{w}_1$ and $\bm{w}_2$ are two vectors in body frame and $\bm{v}_1$ and $\bm{v}_2$ are in reference frame. First step of the algorithm is following:
+
+\begin{subequations}
+\begin{equation}
+\bm{r}_1 = \bm{w}_1/|\bm{w}_1|
+\end{equation}
+\begin{equation}
+\bm{r}_2 = (\bm{r}_1 x \bm{w}_2) /|\bm{r}_1 x \bm{w}_2|
+\end{equation}
+\begin{equation}
+\bm{r}_3 = \bm{r}_1 x \bm{r}_2
+\end{equation}
+\end{subequations}
+
+and the following matrices in reference frame:
+
+\begin{subequations}
+\begin{equation}
+\bm{s}_1 = \bm{v}_1/|\bm{v}_1|
+\end{equation}
+\begin{equation}
+\bm{s}_2 = (\bm{s}_1 x \bm{v}_2) /|\bm{s}_1 x \bm{v}_2|
+\end{equation}
+\begin{equation}
+\bm{s}_3 = \bm{s}_1 x \bm{s}_2
+\end{equation}
+\end{subequations}
+
+where $\bm{r}_i, i\in\{1, 2, 3\}$ are matrices in body frame and $\bm{s}_i, i\in\{1, 2, 3\}$ are matrices in reference frame.
+
+
+Finally the attitude matrix $\bm{A}$ is computed:
+
+\begin{equation}
+\bm{A} = \bm{r}_1 \cdot \bm{s}_1^T + \bm{r}_2 \cdot \bm{s}_2^T + \bm{r}_3 \cdot \bm{s}_3^T 
+\end{equation}
+
+
+The disadvantage of this algorithm is discarding some of the information, therefore losing the accuracy. The main advantage is that TRIAD is quite fast.
+
+
 \subsubsection{q-method}
 
-\begin{equation}
-\bm{s}_b = \bm{R}^{bi}\bm{s}_i \hspace{0.5cm} \bm{m}_b = \bm{R}^{bi}\bm{m}_i
-\end{equation}
+In 1968 Paul Davenport applied Wahba’s problem to spacecraft attitude determination, via method called q-method\cite{keat1977analysis}. 
+
+Let loss function be represented in quaternion form:
 
 \begin{equation}
-\begin{split}
-J &= \frac{1}{2} \sum w_k (\bm{v}_{kb} - \bm{R}^{bi} \bm{v}_{ki})^T (\bm{v}_{kb} - \bm{R}^{bi} \bm{v}_{ki}) \\ 
-&= \frac{1}{2} \sum w_k (\bm{v}_{kb}^T\bm{v}_{kb} + \bm{v}_{ki}^T\bm{v}_{ki} + 2\bm{v}_{kb}^T \bm{R}^{bi} \bm{v}_{ki})
-\end{split}
+L(A) = \frac{1}{2} \sum |\bm{b}_i - D(\bm{q})\bm{r}_i|^2
 \end{equation}
 
+where quaternion $q$ is searched, that minimizes cost function $L$. Here, $q$ is the eigenvector corresponding to the largest eigenvalue of $K$ matrix, which is generated as follows:
 
+\begin{subequations}
 \begin{equation}
-J = \sum w_k (1 - \bm{v}_{kb}^T \bm{R}^{bi} \bm{v}_{ki})
+\sigma = \sum \bm{b}_i^T\bm{r}_i
 \end{equation}
-
 \begin{equation}
-g(\bm{R}) = \sum w_k \bm{v}_{kb}^T \bm{R}^{bi} \bm{v}_{ki}
+B = \sum \bm{b}_i\bm{r}_i^T
 \end{equation}
-
 \begin{equation}
-\bm{R} = (q_4^2 - \bm{q}^T\bm{q})1 + 2\bm{qq}^T - 2q_4\bm{q}^{\bm{x}}
+S = B + B^T
 \end{equation}
-
 \begin{equation}
-\bm{\bar{q}}^T\bm{\bar{q}} = 1
+\bm{Z} = \sum \bm{b}_i x \bm{r}_i
 \end{equation}
-
-\begin{equation}
-g(\bm{\bar{q}}) = \bm{\bar{q}}^T\bm{K}\bm{\bar{q}}
-\end{equation}
+\end{subequations}
 
 \begin{equation}
 \bm{K} = \begin{bmatrix}
-\bm{S} - \sigma\bm{I} & \bm{Z} \\
+\bm{S} - \sigma\bm{I}_3 & \bm{Z} \\
 \bm{Z}^T & \sigma
 \end{bmatrix}
 \end{equation}
 
-\begin{equation}
-\bm{B} = \sum_{k=1}^Nw_k(\bm{v}_{kb}\bm{v}_{ki}^T)
-\end{equation}
+$\bm{I}_3$ is 3x3 identity matrix.
 
-\begin{equation}
-\bm{S} = \bm{B} + \bm{B}^T
-\end{equation}
+According to \cite{ccelik2013comparison} the computational time and accuracy in q-method and TRIAD are comparable.
 
-\begin{equation}
-\bm{Z} = \begin{bmatrix}
-B_{23} - B_{32} & B_{32} - B_{13} & B_{12} - B_{21}
-\end{bmatrix} ^T
-\end{equation}
-
-\begin{equation}
-\sigma = tr[\bm{B}]
-\end{equation}
-
-\begin{equation}
-g'(\bm{\bar{q}}) = \bm{\bar{q}}^T\bm{K}\bm{\bar{q}} - \lambda\bm{\bar{q}}^T\bm{\bar{q}}
-\end{equation}
-
-\begin{equation}
-\bm{K}\bm{\bar{q}} = \lambda\bm{\bar{q}}
-\end{equation}
-
-\begin{equation}
-g(\bm{\bar{q}}) = \bm{\bar{q}}^T\bm{K}\bm{\bar{q}} = \bm{\bar{q}}^T\lambda\bm{\bar{q}} = \lambda\bm{\bar{q}}^T\bm{\bar{q}} = \lambda
-\end{equation}
-
-\subsubsection{Wahba's problem}
-
-The developed extended QUEST method described in this report builds upon the principles
-of Wahba’s problem. The problem was first stated by Grace Wahba in 1965 \citet{wahba1965least}. Given
-two sets of vector observations, a rotation matrix $\bm{M}$ can be found which minimizes the
-orientation error. This is an optimization problem, where the cost function is:
-
-\begin{equation}
-\sum_j^n ||\bm{r}_j - \bm{Mb}_j||
-\end{equation}
-
-For satellite attitude determination, the vectors $\bm{r}_j$ for $j \in \left\{1, n\right\}$ are the reference sensor data given in the NED frame. The vectors $\bm{b}_j$ for $j \in \left\{1, n\right\}$  are the measured sensor data in the BODY frame. $\bm{M}$ is the least squares estimate of the rotation matrix which carries the known frame of reference into the satellite fixed frame of reference.
-The QUEST method uses this problem in order to minimize the attitude estimation error.
 \subsubsection{QUEST}
-improvement to quest implementation \citet{cheng2014improvement} \par
-kallman filtering \citet{shuster1990kalman}
+
+The quaternion estimation (QUEST) method  was proposed by \citet{shuster1978approximate}. The method builds on the q-method. The main goal for this method was to develop the quaternion estimator was to obtain finding the optimal eigenvalue for the loss function. The eigenvalue problem is reformulated to problem of solving a characteristic equation. The minimization of loss function is following:
+
 \begin{equation}
 \begin{split}
 J(\bm{q}) = \frac{1}{2}\sum_{j=1}^n\frac{1}{\sigma_j^2}(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j)^T(\bm{b}_j - \bm{R}_b^i(\bm{q})\bm{r}_j) = \\
 \frac{1}{2}\sum_{j=1}^n\frac{1}{\sigma_j^2}(\bm{b}_j^T\bm{b}_j - 2\bm{b}_j^T\bm{R}_b^i(\bm{q})\bm{r}_j + \bm{r}_j^T\bm{r}_j)
 \end{split}
 \end{equation}
+
+where $\bm{r}_j$ is unit vector given in the NED frame, while $\bm{b}_j$ is unit vector given in the fixed BODY frame. The parameter $\sigma_j$ is the standard deviation of the measurement error. Due to fact that both unit vectors have to be of equal length, the cost function can be reduced to:
+
 \begin{equation}
 J(\bm{q}) = \sum_{j=1}^n\frac{1}{\sigma_j^2}(1 - \bm{b}_j^T\bm{R}_b^i(\bm{q})\bm{r}_j)
 \end{equation}
-\subsubsection{TRIAD}
-a must
-\subsubsection{The Fast Optimal Attitude Matrix}
-to be removed?
-\subsubsection{DCM (Direction Cosine Matrix) - Singular Value Decomposition?}
-\citet{juang2003efficient}
- and
 
-\citet{mcbryde2012star}
+
+The main advantage is that QUEST method can find exact solution after one step. The method is designed to preserve quaternion normalization. The problem is that it is mostly estimation, hence some accuracy is not perfect.
+
+
+\subsubsection{Singular Value Decomposition (SVD)}
+
+This method was proposed by \citet{markley1988attitude}. It is not usually used while it output type is Direction Cosine Matrix (DCM), not quaternions. It is used however for simulations, like for example by \citet{mcbryde2012star}.
+Since the needed output from attitude determination must be quaternion, not DCM, this method will not be used.
+ 
+The algorithm works as follows:
+
+Firstly 	the matrix $\bm{B}$ is calculated with $n$ observed stars, where $b_i$ is image star and $r_i$ catalogue star for real star $i$:
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
 \end{equation}
+Secondly singular value decomposition (SVD) of matrix $\bm{B}$ has to be found
 \begin{equation}
 \bm{B = USV^T}
 \end{equation}
+where matrices $\bm{U}$ and $\bm{V}$ are orthogonal and diagonal matrix of singular values $\bm{S}$.
+
+Now the proper orthogonal matrices $\bm{U}_+$ and $\bm{V}_+$ using:
 \begin{equation}
 \bm{U}_+ = \bm{U}\begin{bmatrix}
 1 & 0 & 0 \\
@@ -1391,18 +1441,39 @@ to be removed?
 0 & 0 & det\bm{V}
 \end{bmatrix}
 \end{equation}
+The DCM $\bm{A}$ can be found by:
 \begin{equation}
 \bm{A = U_+V_+^T}
 \end{equation}
+
+\subsubsection{Other techniques}
+There exist also other methods:
+\begin{itemize}
+\item The Fast Optimal Attitude Matrix \cite{markley1993attitude},
+\item Predictive Attitude Determination \citet{crassidis1997predictive}.
+\end{itemize}
+
+However they are not very popular and not often used.
+
+\subsubsection{Conclusions}
+
+
+From all the presented methods, QUEST was selected due to low computational requirements and good accuracy in attitude estimation.
+
+QUEST outperformes q-method in terms of speed \cite{markley1999estimate}, and while it is less accurate it still qualifies for the CubeSat. Comparing to TRIAD, QUEST is more robust to noise. TRIAD is designed only for two vectors, hence in case of inaccurate measurements, it will yield erroneous result, even if there are more vector that could be used for estimation.
+
+QUEST was also chosen by \citet{huffman2006designing} and \citet{tappe2009development} to be used on CubeSats' star-trackers.
+
 \newpage
 \section{Prototype}
 For now the following parts are finished in Python:
 \begin{enumerate}
 \item Centroiding
 \item Planar Triangle Recognition with variations (nearly - without equation 44)
-\item Pyramid alg ?
 \item k-vector
 \item QUEST (not started yet)
+\item generating star catalogue (not started yet)
+\item connecting all the elements into one program (will be started after all the other elements are finished)
 \end{enumerate}
 Testing\par
 \citet{kruijff2003star}, \citet{kruijff2003automated}, \citet{dzamba2014ground}, 

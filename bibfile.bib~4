@@ -699,3 +699,30 @@
 	year = "2002"
 }
 
+@misc{jacox2006method,
+	author = "Jacox, Michael and Ochoa, James and Zbranek, John and Wood, Brian and Katake, Anup and Bruccoleri, Christian",
+	month = apr # "~13",
+	note = "US Patent App. 11/279,668",
+	publisher = "Google Patents",
+	title = "{Method and Apparatus for Automatic Identification of Celestial Bodies}",
+	year = "2006"
+}
+
+@article{New1
+}
+
+@misc{pyramid-starvision,
+	howpublished = "\url{http://www.prweb.com/releases/2005/05/prweb245145.htm}",
+	note = "Accessed: 2017-09-06",
+	title = "{StarVision Technologies Secures Exclusive License to Star Identification Software}"
+}
+
+@article{zhou2015lost,
+	author = "Zhou, Fuqiang and Ye, Tao",
+	journal = "Mathematical Problems in Engineering",
+	publisher = "Hindawi Publishing Corporation",
+	title = "{Lost-in-space star identification using planar triangle principal component analysis algorithm}",
+	volume = "2015",
+	year = "2015"
+}
+

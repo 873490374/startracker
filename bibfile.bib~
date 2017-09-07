@@ -708,12 +708,50 @@
 	year = "2006"
 }
 
-@article{New1
-}
-
 @misc{pyramid-starvision,
 	howpublished = "\url{http://www.prweb.com/releases/2005/05/prweb245145.htm}",
 	note = "Accessed: 2017-09-06",
 	title = "{StarVision Technologies Secures Exclusive License to Star Identification Software}"
+}
+
+@article{zhou2015lost,
+	author = "Zhou, Fuqiang and Ye, Tao",
+	journal = "Mathematical Problems in Engineering",
+	publisher = "Hindawi Publishing Corporation",
+	title = "{Lost-in-space star identification using planar triangle principal component analysis algorithm}",
+	volume = "2015",
+	year = "2015"
+}
+
+@inproceedings{crassidis1997predictive,
+	author = "Crassidis, J and Markley, L",
+	booktitle = "{NASA Conference Publication}",
+	organization = "NASA",
+	pages = "249--264",
+	title = "{A Predictive Attitude Determination Algorithm}",
+	year = "1997"
+}
+
+@article{markley1993attitude,
+	author = "Markley, F Landis",
+	title = "{Attitude determination using vector observations: A fast optimal matrix algorithm}",
+	year = "1993"
+}
+
+@article{markley1988attitude,
+	author = "Markley, F Landis",
+	journal = "Journal of the Astronautical Sciences",
+	number = "3",
+	pages = "245--258",
+	title = "{Attitude determination using vector observations and the singular value decomposition}",
+	volume = "36",
+	year = "1988"
+}
+
+@techreport{keat1977analysis,
+	author = "Keat, J",
+	institution = "Technical Report CSC/TM-77/6034, Comp. Sc. Corp",
+	title = "{Analysis of least-squares attitude determination routine DOAOP}",
+	year = "1977"
 }
 

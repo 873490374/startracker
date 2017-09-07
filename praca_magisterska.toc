@@ -35,6 +35,7 @@
 \contentsline {subsubsection}{\numberline {2.5.1}Euler angles}{31}
 \contentsline {subsubsection}{\numberline {2.5.2}Quaternions}{32}
 \contentsline {subsubsection}{\numberline {2.5.3}Advantages of quaternions}{32}
+\contentsline {subsubsection}{\numberline {2.5.4}Wahba's problem}{33}
 \contentsline {section}{\numberline {3}Star-tracker program}{34}
 \contentsline {subsection}{\numberline {3.1}Centroid - star recognition}{35}
 \contentsline {subsection}{\numberline {3.2}Star identification}{38}
@@ -46,21 +47,19 @@
 \contentsline {subsubsection}{\numberline {3.2.6}Grid}{49}
 \contentsline {subsubsection}{\numberline {3.2.7}Other techniques}{49}
 \contentsline {subsubsection}{\numberline {3.2.8}Conclusions}{50}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and searching for matching stars}{51}
+\contentsline {subsection}{\numberline {3.3}Star-catalogue and database search method}{51}
 \contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{51}
-\contentsline {subsubsection}{\numberline {3.3.2}Candidate Matching}{51}
-\contentsline {subsubsection}{\numberline {3.3.3}Result Verification}{51}
-\contentsline {subsubsection}{\numberline {3.3.4}Search Less Algorithm and k-vector}{51}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{53}
-\contentsline {subsubsection}{\numberline {3.4.1}q-method}{54}
-\contentsline {subsubsection}{\numberline {3.4.2}Wahba's problem}{55}
+\contentsline {subsubsection}{\numberline {3.3.2}Search Less Algorithm and k-vector}{52}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{54}
+\contentsline {subsubsection}{\numberline {3.4.1}TRIAD}{55}
+\contentsline {subsubsection}{\numberline {3.4.2}q-method}{56}
 \contentsline {subsubsection}{\numberline {3.4.3}QUEST}{56}
-\contentsline {subsubsection}{\numberline {3.4.4}TRIAD}{56}
-\contentsline {subsubsection}{\numberline {3.4.5}The Fast Optimal Attitude Matrix}{56}
-\contentsline {subsubsection}{\numberline {3.4.6}DCM (Direction Cosine Matrix) - Singular Value Decomposition?}{56}
-\contentsline {section}{\numberline {4}Prototype}{58}
-\contentsline {section}{\numberline {5}Complete program}{59}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{60}
-\contentsline {section}{References}{61}
-\contentsline {section}{List of Tables}{68}
-\contentsline {section}{List of Figures}{69}
+\contentsline {subsubsection}{\numberline {3.4.4}Singular Value Decomposition (SVD)}{57}
+\contentsline {subsubsection}{\numberline {3.4.5}Other techniques}{58}
+\contentsline {subsubsection}{\numberline {3.4.6}Conclusions}{58}
+\contentsline {section}{\numberline {4}Prototype}{60}
+\contentsline {section}{\numberline {5}Complete program}{61}
+\contentsline {section}{\numberline {6}Testing of star-tracker}{62}
+\contentsline {section}{References}{63}
+\contentsline {section}{List of Tables}{70}
+\contentsline {section}{List of Figures}{71}
