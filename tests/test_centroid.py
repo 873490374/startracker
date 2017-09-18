@@ -30,11 +30,11 @@ class TestCentroid:
     pixel_size = 5
     focal_length = 7
     a_roi = 5
-    i_threshold = 150
+    i_threshold = 250
     path = 'images/stars/'
 
     def test_centroid_jpg_2(self):
-        img_name = 'example.jpg'
+        img_name = '2.jpg'
         image = Image.open(self.path + img_name)
         centroid_calculator = CentroidCalculator(
             self.pixel_size,
@@ -44,3 +44,5 @@ class TestCentroid:
         )
         list_of_stars = centroid_calculator.calculate_centroids(image)
         assert len(list_of_stars) == 92
+        assert len(list_of_stars[0]) == 3
+        print(list_of_stars[0])

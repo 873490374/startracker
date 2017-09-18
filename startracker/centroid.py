@@ -103,7 +103,7 @@ class CentroidCalculator:
         if clustering:
             # 6. Clustering
             control = 1
-            pixel_diff = 15
+            pixel_diff = 5
             while control > 0:
                 star_list2 = star_list
                 control = 0
@@ -135,4 +135,4 @@ class CentroidCalculator:
             img[int(star[0]), int(star[1])] = 255
         Image.fromarray(img, mode='L').convert('1').save('test.png')
 
-        return star_list
+        return vectors_list

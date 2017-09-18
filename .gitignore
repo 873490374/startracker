@@ -1,2 +1,5 @@
 .git
 .idea
+tests/.benchmarks/
+tests/test.png
+/tests/.cache/
