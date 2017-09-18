@@ -2,11 +2,7 @@ import math
 import numpy as np
 
 
-zero_3x3 = np.matrix([
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-])
+zero_3x3 = np.matrix(np.zeros((3, 3)))
 
 
 class PlanarTriangle:
@@ -73,27 +69,31 @@ class PlanarTriangle:
         }
 
     def calculate_area_derivatives(self, p):
-        h1T = p['dA_da'] * p['da_db1'] + p['dA_dc'] * p['dc_db1']
-        h2T = p['dA_da'] * p['da_db2'] + p['dA_db'] * p['db_db2']
-        h3T = p['dA_db'] * p['db_db3'] + p['dA_dc'] * p['dc_db3']
-
-        return np.array([h1T, h2T, h3T])
+        h1T = np.array(p['dA_da'] * p['da_db1'] + p['dA_dc'] * p['dc_db1']).T
+        h2T = np.array(p['dA_da'] * p['da_db2'] + p['dA_db'] * p['db_db2']).T
+        h3T = np.array(p['dA_db'] * p['db_db3'] + p['dA_dc'] * p['dc_db3']).T
+        H = np.append(h1T, [h2T, h3T])  # H [1x9]
+        return H
 
     def calculate_r_matrix(self, p, q, r):
-        R1 = np.var(np.identity(3) - p*p.T)
-        R2 = np.var(np.identity(3) - q*q.T)
-        R3 = np.var(np.identity(3) - r*r.T)
+        # TODO variance
+        R1 = (np.identity(3) - p*p.T)
+        R2 = (np.identity(3) - q*q.T)
+        R3 = (np.identity(3) - r*r.T)
 
-        return np.matrix([
-            [R1, zero_3x3, zero_3x3],
-            [zero_3x3, R2, zero_3x3],
-            [zero_3x3, zero_3x3, R3]
-        ])
+        return self.build_r_matrix(R1, R2, R3)
+
+    def build_r_matrix(self, R1, R2, R3):
+        row_1 = np.concatenate((R1, zero_3x3, zero_3x3), axis=1)
+        row_2 = np.concatenate((zero_3x3, R2, zero_3x3), axis=1)
+        row_3 = np.concatenate((zero_3x3, zero_3x3, R3), axis=1)
+
+        return np.concatenate((row_1, row_2, row_3), axis=0)  # R [9x9]
 
     def calculate_area_variance(self, H, R):
         # Variance - Area
-
-        return H * R * H.T
+        htr = np.array(H)[np.newaxis].T
+        return (H * R * htr).item()  # scalar
 
     def calculate_polar_moment_variance(self, a, b, c, part, der, R):
         # Variance - Polar Moment
@@ -103,10 +103,10 @@ class PlanarTriangle:
         dJ_dc = self.A * c / 18
         dJ_dA = (a**2 + b**2 + c**2) / 36
 
-        h1T = dJ_da * part['da_db1'] + dJ_dc * part['dc_db1'] + dJ_dA * der[0]
-        h2T = dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[1]
-        h3T = dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[2]
+        h1T = np.array(dJ_da * part['da_db1'] + dJ_dc * part['dc_db1'] + dJ_dA * der[0])
+        h2T = np.array(dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[1])
+        h3T = np.array(dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[2])
 
-        H = np.array([h1T, h2T, h3T])
-
-        return H * R * H.T
+        H = np.append(h1T, [h2T, h3T])
+        htr = np.array(H)[np.newaxis].T
+        return (H * R * htr).item()
