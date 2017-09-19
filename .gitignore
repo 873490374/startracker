@@ -2,4 +2,6 @@
 .idea
 tests/.benchmarks/
 tests/test.png
-/tests/.cache/
+.cache/
+tests/.cache/
+tests/.cache/v/cache/lastfailed
