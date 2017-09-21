@@ -1,6 +1,6 @@
 import math
 import numpy as np
-
+import scipy
 
 zero_3x3 = np.matrix(np.zeros((3, 3)))
 
@@ -13,7 +13,7 @@ class PlanarTriangle:
         self.A_var = None
         self.J_var = None
 
-    def calculate_triangle(self, p, q, r):
+    def calculate_triangle(self, p, q, r, sensor_variance):
         a = np.linalg.norm(p - q)
         b = np.linalg.norm(q - r)
         c = np.linalg.norm(p - r)
@@ -24,7 +24,7 @@ class PlanarTriangle:
 
         partials = self.calculate_partial_derivatives(s, a, b, c, p, q, r)
         H = self.calculate_area_derivatives(partials)
-        R = self.calculate_r_matrix(p, q, r)
+        R = self.calculate_r_matrix(p, q, r, sensor_variance)
 
         self.A_var = self.calculate_area_variance(H, R)
         self.J_var = self.calculate_polar_moment_variance(a, b, c, partials, H, R)
@@ -75,11 +75,10 @@ class PlanarTriangle:
         H = np.append(h1T, [h2T, h3T])  # H [1x9]
         return H
 
-    def calculate_r_matrix(self, p, q, r):
-        # TODO variance
-        R1 = (np.identity(3) - p*p.T)
-        R2 = (np.identity(3) - q*q.T)
-        R3 = (np.identity(3) - r*r.T)
+    def calculate_r_matrix(self, p, q, r, sensor_variance):
+        R1 = sensor_variance*(np.identity(3) - np.outer(p, p))
+        R2 = sensor_variance*(np.identity(3) - np.outer(q, q))
+        R3 = sensor_variance*(np.identity(3) - np.outer(r, r))
 
         return self.build_r_matrix(R1, R2, R3)
 

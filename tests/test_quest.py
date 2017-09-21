@@ -44,7 +44,8 @@ class TestQuest:
         w_list = [w1, w2]
 
         quest_calc = QuestCalculator()
-        quest_calc.calculate_quest(weight_list, v_list, w_list)
+        attitude = quest_calc.calculate_quest(weight_list, v_list, w_list)
+        print(attitude)
         #
         # p = np.matrix([1.5, 2.4, 1.3])
         # q = np.matrix([14.5, 1.6, 55.1])

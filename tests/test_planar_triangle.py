@@ -9,9 +9,10 @@ class TestPlanarTriangle:
         p = np.matrix([1.5, 2.4, 1.3])
         q = np.matrix([14.5, 1.6, 55.1])
         r = np.matrix([16.5, 112.4, 63.5])
+        sensor_variance = 1
 
         planar_triangle = PlanarTriangle()
-        planar_triangle.calculate_triangle(p, q, r)
+        planar_triangle.calculate_triangle(p, q, r, sensor_variance)
 
         print(planar_triangle.A)
         print(planar_triangle.A_var)
