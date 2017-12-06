@@ -1,6 +1,5 @@
 import math
 import numpy as np
-import scipy
 
 zero_3x3 = np.matrix(np.zeros((3, 3)))
 

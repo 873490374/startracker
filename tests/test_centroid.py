@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 
 from startracker.centroid import CentroidCalculator
@@ -31,7 +32,8 @@ class TestCentroid:
     focal_length = 7
     a_roi = 5
     i_threshold = 250
-    path = 'images/stars/'
+    p = os.path.dirname(os.path.realpath(__file__))
+    path = os.path.join(p, 'images/stars/')
 
     def test_centroid_jpg_2(self):
         img_name = '2.jpg'

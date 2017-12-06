@@ -5,3 +5,5 @@ tests/test.png
 .cache/
 tests/.cache/
 tests/.cache/v/cache/lastfailed
+startracker/__pycache__/
+tests/__pycache__/
