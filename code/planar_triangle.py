@@ -28,6 +28,8 @@ class PlanarTriangle:
         self.A_var = self.calculate_area_variance(H, R)
         self.J_var = self.calculate_polar_moment_variance(a, b, c, partials, H, R)
 
+        return self.A, self.J, self.A_var, self.J_var
+
     def calculate_perimeter_half(self, a, b, c):
         return 0.5 * (a + b + c)
 
