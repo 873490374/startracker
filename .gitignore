@@ -7,3 +7,4 @@ tests/.cache/
 tests/.cache/v/cache/lastfailed
 startracker/__pycache__/
 tests/__pycache__/
+*.pyc

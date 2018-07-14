@@ -34,7 +34,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from mpl_toolkits.mplot3d import Axes3D
+
 
 # Geometric Transformations
 # -------------------------
@@ -353,14 +353,28 @@ class StarCatalog:
             self.preprocess()
 
     def preprocess(self):
+        # dupa = np.full(
+        #     (1, len(self.catalog['Vmag'])),
+        #     MAX_MAGNITUDE
+        # )
+        # print(type(dupa))
+        # print(type(self.catalog['Vmag']))
+        # print(self.catalog['Vmag'])
         filter_index = np.logical_not(
             np.logical_or(
                 np.isnan(self.catalog['RAdeg']),
-                np.isnan(self.catalog['Vmag'])
+                np.isnan(self.catalog['Vmag']),
+                # np.greater_equal(
+                #     self.catalog['Vmag'],
+                #     dupa
+                # )
             )
         )
 
         self.catalog = self.catalog[filter_index]
+        self.catalog = self.catalog[self.catalog['Vmag'] <= 3]
+
+        print(len(self.catalog))
 
         self.star_vectors = angles_to_vector(
             np.deg2rad(self.catalog['RAdeg']),

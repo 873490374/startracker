@@ -4,3 +4,4 @@ Pillow
 matplotlib
 seaborn
 jupyter
+progress
