@@ -1,3 +1,3 @@
-MAX_MAGNITUDE = 6
-CAMERA_FOV = 9
+MAX_MAGNITUDE = 2
+CAMERA_FOV = 30
 sensor_variance = 1

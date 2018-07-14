@@ -1,3 +1,6 @@
+import csv
+import datetime
+
 import numpy as np
 from progress.bar import Bar
 
@@ -50,6 +53,13 @@ class CatalogueTriangle:
             self.area, self.polar_moment,
         )
 
+    def __iter__(self):
+        yield 'star1_id', self.star1_id
+        yield 'star2_id', self.star2_id,
+        yield 'star3_id', self.star3_id,
+        yield 'area', self.area
+        yield 'polar_moment', self.polar_moment
+
 
 class CatalogueGenerator:
 
@@ -62,14 +72,12 @@ class CatalogueGenerator:
             star = self.convert(s)
             converted_start.append(star)
         print(len(converted_start))
-        classify_bar = Bar('Classify', max=len(converted_start))
+        classify_bar = Bar(
+            'Building planar triangle catalogue', max=len(converted_start))
         for s1 in converted_start:
-            i = 1
-            # print(s1.id)
+            classify_bar.next()
             for s2 in converted_start:
-                # print(s2.id)
                 for s3 in converted_start:
-                    # print(s3.id)
                     if self.is_valid(s1, s2, s3):
                         triangle = PlanarTriangle()
                         triangle.calculate_triangle(
@@ -81,12 +89,11 @@ class CatalogueGenerator:
                         triangle_catalogue.add(
                             CatalogueTriangle(
                                 s1.id, s2.id, s3.id, triangle.A, triangle.J))
-                        print(CatalogueTriangle(
-                                s1.id, s2.id, s3.id, triangle.A, triangle.J))
-            i += 1
-            classify_bar.next()
+            # i += 1
         classify_bar.finish()
-
+        print('Number of planar triangles in catalogue: {}'.format(
+            len(triangle_catalogue)))
+        self.save_to_file(triangle_catalogue)
         return triangle_catalogue
 
     def read_catalogue_stars(self) -> [StarPosition]:
@@ -129,6 +136,20 @@ class CatalogueGenerator:
             not any(s1.unit_vector.T * s3.unit_vector >= np.cos(CAMERA_FOV)),
             not any(s2.unit_vector.T * s3.unit_vector >= np.cos(CAMERA_FOV)),
         ])
+
+    def save_to_file(self, catalog: [CatalogueTriangle]):
+        now = datetime.datetime.now()
+        with open(
+                './program/catalog/generated/triangle_catalog_'
+                '{}_{}_{}_{}_{}.csv'.format(
+                    now.year, now.month, now.day, now.hour, now.minute),
+                'w', newline='') as csvfile:
+            csvwriter = csv.DictWriter(csvfile, fieldnames=[
+                'star1_id', 'star2_id', 'star3_id', 'area', 'polar_moment'])
+            for t in catalog:
+                # print(t)
+                # print(dict(t))
+                csvwriter.writerow(dict(t))
 
 
 generator = CatalogueGenerator()

@@ -38,6 +38,7 @@ import seaborn as sns
 
 # Geometric Transformations
 # -------------------------
+from program.const import MAX_MAGNITUDE
 
 
 def angles_to_vector(azimuth, altitude):
@@ -353,28 +354,17 @@ class StarCatalog:
             self.preprocess()
 
     def preprocess(self):
-        # dupa = np.full(
-        #     (1, len(self.catalog['Vmag'])),
-        #     MAX_MAGNITUDE
-        # )
-        # print(type(dupa))
-        # print(type(self.catalog['Vmag']))
-        # print(self.catalog['Vmag'])
         filter_index = np.logical_not(
             np.logical_or(
                 np.isnan(self.catalog['RAdeg']),
                 np.isnan(self.catalog['Vmag']),
-                # np.greater_equal(
-                #     self.catalog['Vmag'],
-                #     dupa
-                # )
             )
         )
 
         self.catalog = self.catalog[filter_index]
-        self.catalog = self.catalog[self.catalog['Vmag'] <= 3]
+        self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
 
-        print(len(self.catalog))
+        print('Number of stars in catalog: {}'. format(len(self.catalog)))
 
         self.star_vectors = angles_to_vector(
             np.deg2rad(self.catalog['RAdeg']),
