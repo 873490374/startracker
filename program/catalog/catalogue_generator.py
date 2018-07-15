@@ -69,8 +69,9 @@ class CatalogueGenerator:
 
         stars = self.read_catalogue_stars()
         for s in stars:
-            star = self.convert(s)
-            converted_start.append(star)
+            if s.magnitude <= MAX_MAGNITUDE:
+                star = self.convert(s)
+                converted_start.append(star)
         print(len(converted_start))
         classify_bar = Bar(
             'Building planar triangle catalogue', max=len(converted_start))

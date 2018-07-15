@@ -357,12 +357,12 @@ class StarCatalog:
         filter_index = np.logical_not(
             np.logical_or(
                 np.isnan(self.catalog['RAdeg']),
-                np.isnan(self.catalog['Vmag']),
+                np.isnan(self.catalog['Vmag'])
             )
         )
 
         self.catalog = self.catalog[filter_index]
-        self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
+        # self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
 
         print('Number of stars in catalog: {}'. format(len(self.catalog)))
 
@@ -509,7 +509,7 @@ class StarDetector:
             photons = photons + np.random.normal(
                 self.A_pixel, self.sigma_pixel, len(photons))
             # print(photons)
-            photons += np.random.normal(0, np.sqrt(photons), len(photons))
+            # photons += np.random.normal(0, np.sqrt(photons), len(photons))
 
         return photons
 

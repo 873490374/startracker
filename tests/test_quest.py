@@ -1,6 +1,6 @@
 import numpy as np
 
-from startracker.quest import QuestCalculator
+from program.tracker.quest import QuestCalculator
 
 
 class TestQuest:

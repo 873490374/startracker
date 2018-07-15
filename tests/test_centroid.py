@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-from startracker.centroid import CentroidCalculator
+from program.tracker.centroid import CentroidCalculator
 
 #
 # def centroid_jpg2_wrapper():

@@ -1,4 +1,4 @@
-from startracker.kvector import KVector
+from program.tracker.kvector import KVector
 
 
 def k_vector_wrapper():
@@ -9,7 +9,7 @@ def k_vector_wrapper():
     return kvector
 
 
-class TestCentroid:
+class TestKVector:
     #
     # def test_k_vector(self, benchmark):
     #

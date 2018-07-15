@@ -1,6 +1,6 @@
 import numpy as np
 
-from startracker.planar_triangle import PlanarTriangle
+from program.tracker.planar_triangle import PlanarTriangle
 
 
 class TestPlanarTriangle:
