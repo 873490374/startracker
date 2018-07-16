@@ -4,61 +4,11 @@ import datetime
 import numpy as np
 from progress.bar import Bar
 
+from program.classes import CatalogueTriangle, StarPosition, StarUV
 from program.const import sensor_variance, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.planar_triangle import PlanarTriangle
+from program.tracker.star_identifier import is_valid
 from program.validation.scripts.simulator import StarCatalog
-
-
-class StarPosition:
-    def __init__(
-            self, star_id: int, magnitude: float, right_ascension: float,
-            declination: float):
-        self.id = star_id
-        self.magnitude = magnitude
-        self.right_ascension = right_ascension
-        self.declination = declination
-
-    def __str__(self):
-        return "{}, {}, {}, {}".format(
-            self.id, self.magnitude, self.right_ascension, self.declination
-        )
-
-
-class StarUV:
-    def __init__(
-            self, star_id: int, magnitude: float, unit_vector: np.ndarray):
-        self.id = star_id
-        self.magnitude = magnitude
-        self.unit_vector = unit_vector
-
-    def __str__(self):
-        return "{}, {}, {}".format(
-            self.id, self.magnitude, self.unit_vector,
-        )
-
-
-class CatalogueTriangle:
-    def __init__(
-            self, star1_id: int, star2_id: int, star3_id: int, area: np.double,
-            polar_moment: np.double):
-        self.star1_id = star1_id
-        self.star2_id = star2_id
-        self.star3_id = star3_id
-        self.area = area
-        self.polar_moment = polar_moment
-
-    def __str__(self):
-        return "{}, {}, {}, {}, {}".format(
-            self.star1_id, self.star2_id, self.star3_id,
-            self.area, self.polar_moment,
-        )
-
-    def __iter__(self):
-        yield 'star1_id', self.star1_id
-        yield 'star2_id', self.star2_id,
-        yield 'star3_id', self.star3_id,
-        yield 'area', self.area
-        yield 'polar_moment', self.polar_moment
 
 
 class CatalogueGenerator:
@@ -79,7 +29,7 @@ class CatalogueGenerator:
             classify_bar.next()
             for s2 in converted_start:
                 for s3 in converted_start:
-                    if self.is_valid(s1, s2, s3):
+                    if is_valid(s1, s2, s3, MAX_MAGNITUDE, CAMERA_FOV):
                         triangle = PlanarTriangle()
                         triangle.calculate_triangle(
                             s1.unit_vector,
@@ -126,17 +76,6 @@ class CatalogueGenerator:
                 np.sin(delta)
             ]).T
         )
-
-    def is_valid(self, s1: StarUV, s2: StarUV, s3: StarUV) -> bool:
-        return all([
-            s1.magnitude <= MAX_MAGNITUDE,
-            s2.magnitude <= MAX_MAGNITUDE,
-            s3.magnitude <= MAX_MAGNITUDE,
-            s1.id is not s2.id, s2.id is not s3.id, s1.id is not s3,
-            not any(s1.unit_vector.T * s2.unit_vector >= np.cos(CAMERA_FOV)),
-            not any(s1.unit_vector.T * s3.unit_vector >= np.cos(CAMERA_FOV)),
-            not any(s2.unit_vector.T * s3.unit_vector >= np.cos(CAMERA_FOV)),
-        ])
 
     def save_to_file(self, catalog: [CatalogueTriangle]):
         now = datetime.datetime.now()

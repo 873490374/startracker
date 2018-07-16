@@ -1,17 +1,8 @@
-
-
 import numpy as np
 
-from program.validation.scripts.simulator import (
-    EquidistantCamera,
-    EquisolidAngleCamera,
-    OrthographicCamera,
-    RectilinearCamera,
-    Scene,
-    StarCatalog,
-    StarDetector,
-    StereographicCamera,
-)
+from program.tracker.star_identifier import StarIdentifier
+
+SENSOR_VARIANCE = 1
 
 
 def read_scene():
@@ -47,6 +38,11 @@ def read_scene():
 
 
 def find_stars(input_data):
+    targets = []
+    for row in input_data:
+        print((row[0]))
+        target = []
+        StarIdentifier.identify_stars(row)
     return targets
 
 
