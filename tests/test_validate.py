@@ -1,8 +1,8 @@
 import numpy as np
 
+from program.classes import StarUV
+from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.star_identifier import StarIdentifier
-
-SENSOR_VARIANCE = 1
 
 
 def read_scene():
@@ -18,16 +18,26 @@ def read_scene():
         with open(filename, 'r') as f:
             lines = f.readlines()
 
-        raw_data_list = [np.array([x for x in line.strip().split(',')]) for line in
+        raw_data_list = [np.array([
+            np.float64(x) for x in line.strip().split(',')]) for line in
             lines if len(line) > 1]
         data_lists = []
         for j in range(len(raw_data_list)):
             data_list = []
-            for i in range(int(len(raw_data_list[j])/3)):
+            for i in range(int(len(raw_data_list[j])/3))[::3]:
                 # print(raw_data_list[j][i], raw_data_list[j][i+1], raw_data_list[j][i+2])
-                data_list.append(
-                    (raw_data_list[j][i], raw_data_list[j][i+1], raw_data_list[j][i+2]))
-                i += 3
+                alpha = raw_data_list[j][i]
+                delta = raw_data_list[j][i+1]
+                magnitude = raw_data_list[j][i + 2]
+                data_list.append(StarUV(
+                    star_id=-1,  # None
+                    magnitude=magnitude,
+                    unit_vector=np.array([
+                        np.cos(alpha) * np.cos(delta),
+                        np.sin(alpha) * np.cos(delta),
+                        np.sin(delta)
+                    ], dtype='float64').T
+                ))
             data_lists.append(data_list)
         return data_lists
 
@@ -40,9 +50,22 @@ def read_scene():
 def find_stars(input_data):
     targets = []
     for row in input_data:
-        print((row[0]))
-        target = []
-        StarIdentifier.identify_stars(row)
+        # print((row[0]))
+        # print((type(row[0])))
+        # with open('./program/catalog/generated/triangle_catalog.csv', 'r') as filename:
+        filename = './program/catalog/generated/triangle_catalog.csv'
+            # csvwriter = csv.DictWriter(csvfile, fieldnames=[
+            #     'star1_id', 'star2_id', 'star3_id', 'area', 'polar_moment'])
+        catalog = np.genfromtxt(filename, delimiter=',')
+            #     filename, sep='|', skipinitialspace=True,
+            #     names=[
+            #         'star1_id', 'star2_id', 'star3_id', 'area', 'polar_moment']
+            # )
+        # print(catalog)
+        star_identifier = StarIdentifier(
+            SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV, catalog)
+        x = star_identifier.identify_stars(row)
+        targets.append(x)
     return targets
 
 

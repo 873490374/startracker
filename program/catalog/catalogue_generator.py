@@ -5,7 +5,7 @@ import numpy as np
 from progress.bar import Bar
 
 from program.classes import CatalogueTriangle, StarPosition, StarUV
-from program.const import sensor_variance, MAX_MAGNITUDE, CAMERA_FOV
+from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.planar_triangle import PlanarTriangle
 from program.tracker.star_identifier import is_valid
 from program.validation.scripts.simulator import StarCatalog
@@ -15,7 +15,7 @@ class CatalogueGenerator:
 
     def generate_triangles(self) -> [CatalogueTriangle]:
         converted_start = []
-        triangle_catalogue = set()
+        triangle_catalogue = []
 
         stars = self.read_catalogue_stars()
         for s in stars:
@@ -25,19 +25,23 @@ class CatalogueGenerator:
         print(len(converted_start))
         classify_bar = Bar(
             'Building planar triangle catalogue', max=len(converted_start))
+        i = 0
         for s1 in converted_start:
+            i += 1
+            j = 0
             classify_bar.next()
-            for s2 in converted_start:
-                for s3 in converted_start:
+            for s2 in converted_start[i:]:
+                j += 1
+                for s3 in converted_start[i+j:]:
                     if is_valid(s1, s2, s3, MAX_MAGNITUDE, CAMERA_FOV):
                         triangle = PlanarTriangle()
                         triangle.calculate_triangle(
                             s1.unit_vector,
                             s2.unit_vector,
                             s3.unit_vector,
-                            sensor_variance
+                            SENSOR_VARIANCE
                         )
-                        triangle_catalogue.add(
+                        triangle_catalogue.append(
                             CatalogueTriangle(
                                 s1.id, s2.id, s3.id, triangle.A, triangle.J))
             # i += 1
@@ -74,7 +78,21 @@ class CatalogueGenerator:
                 np.cos(alpha) * np.cos(delta),
                 np.sin(alpha) * np.cos(delta),
                 np.sin(delta)
-            ]).T
+            ], dtype='float64').T
+        )
+
+    def convert(self, star: StarPosition) -> StarUV:
+        """ Convert star positions to unit vector."""
+        alpha = star.right_ascension
+        delta = star.declination
+        return StarUV(
+            star_id=star.id,
+            magnitude=star.magnitude,
+            unit_vector=np.array([
+                np.cos(alpha) * np.cos(delta),
+                np.sin(alpha) * np.cos(delta),
+                np.sin(delta)
+            ], dtype='float64').T
         )
 
     def save_to_file(self, catalog: [CatalogueTriangle]):
