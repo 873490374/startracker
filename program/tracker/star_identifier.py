@@ -9,7 +9,9 @@ from program.tracker.planar_triangle import PlanarTriangle
 
 
 class Triangle:
-    def __init__(self, A: float, A_var: float, J: float, J_var: float, s1: StarUV, s2: StarUV, s3: StarUV):
+    def __init__(
+            self, A: float, A_var: float, J: float, J_var: float,
+            s1: StarUV, s2: StarUV, s3: StarUV):
         self.A = A
         self.A_var = A_var
         self.J = J
@@ -30,11 +32,13 @@ class StarIdentifier:
 
     def identify_stars(self, stars_list: [StarUV]):
         triangles = self.get_triangles(stars_list)
-        star_ids = self.find_in_catalog(triangles)
-        return star_ids
+        # star_ids = self.find_in_catalog(triangles)
+        print(triangles)
+        return triangles
 
     def get_triangles(self, stars_list: [StarUV]) -> [Triangle]:
         triangles = []
+        iterator = iter(stars_list)
         for s1 in stars_list:
             for s2 in stars_list:
                 for s3 in stars_list:
@@ -48,34 +52,66 @@ class StarIdentifier:
                             s3.unit_vector,
                             self.sensor_variance
                         )
-                        # print(triangle.A, triangle.A_var,
-                        #       triangle.J, triangle.J_var)
-                        triangles.append(Triangle(
+                        t = Triangle(
                             triangle.A, triangle.A_var,
                             triangle.J, triangle.J_var,
-                            s1, s2, s3))
+                            s1, s2, s3)
+                        found_triangles = self.find_in_catalog(t)
+                        if len(found_triangles) == 1:
+                            return found_triangles[0]
+                        else:
+                            try:
+                                s4 = next(iterator)
+                            except StopIteration:
+                                break
+                            if is_valid(
+                                    s1, s2, s4,
+                                    self.max_magnitude, self.camera_fov):
+                                triangle2 = PlanarTriangle()
+                                triangle2.calculate_triangle(
+                                    s1.unit_vector,
+                                    s2.unit_vector,
+                                    s4.unit_vector,
+                                    self.sensor_variance
+                                )
+                                t2 = Triangle(
+                                    triangle2.A, triangle2.A_var,
+                                    triangle2.J, triangle2.J_var,
+                                    s1, s2, s4)
+                                found_triangles2 = self.find_in_catalog(t2)
+                                ft = [value for value in
+                                      found_triangles if value in
+                                      found_triangles2]
+                                print(len(ft))
+                                if len(ft) == 1:
+                                    return ft[0]
+                                else:
+                                    continue
+
+                        # print(triangle.A, triangle.A_var,
+                        #       triangle.J, triangle.J_var)
+                        # triangles.append()
         return triangles
 
-    def find_in_catalog(self, triangles: [Triangle]):
-        catalog_copy = [t for t in self.catalog]
-        print('before', len(catalog_copy))
-        for t in triangles:
-            A_dev = np.math.sqrt(t.A_var)
-            J_dev = np.math.sqrt(t.J_var)
-            area_min = t.A - A_dev
-            area_max = t.A + A_dev
-            moment_min = t.J - J_dev
-            moment_max = t.J + J_dev
+    def find_in_catalog(self, triangle: Triangle) -> [Triangle]:
+        # catalog_copy = [t for t in self.catalog]
+        # print('before', len(catalog_copy))
+        # for t in triangles:
+        A_dev = np.math.sqrt(triangle.A_var)
+        J_dev = np.math.sqrt(triangle.J_var)
+        area_min = triangle.A - A_dev
+        area_max = triangle.A + A_dev
+        moment_min = triangle.J - J_dev
+        moment_max = triangle.J + J_dev
 
-            valid_triangles = []
-            for tt in catalog_copy:
-                if (area_min <= tt[3] <= area_max and
-                        moment_min <= tt[4] <= moment_max):
-                    # print(tt[0], tt[1], tt[2])
-                    valid_triangles.append(tt)
-            if len(valid_triangles == 1):
-                return valid_triangles[0]
-            elif
+        valid_triangles = []
+        for tt in self.catalog:
+            if (area_min <= tt[3] <= area_max and
+                    moment_min <= tt[4] <= moment_max):
+                # print(tt[0], tt[1], tt[2])
+                # valid_triangles.append(tt)
+                valid_triangles.append((tt[0], tt[1], tt[2], tt[3], tt[4]))
+        return valid_triangles
 
 def is_valid(
         s1: StarUV, s2: StarUV, s3: StarUV,
