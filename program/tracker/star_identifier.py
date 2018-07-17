@@ -38,10 +38,18 @@ class StarIdentifier:
 
     def get_triangles(self, stars_list: [StarUV]) -> [Triangle]:
         triangles = []
-        iterator = iter(stars_list)
+        # iterator = iter(stars_list)
+        i = 0
         for s1 in stars_list:
-            for s2 in stars_list:
-                for s3 in stars_list:
+            i += 1
+            j = 0
+            for s2 in stars_list[i:]:
+                j += 1
+                k = j
+                # for s3 in stars_list[j:]:
+                for l in range(k):
+                    s3 = stars_list[k]
+                    print(s3)
                     if is_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
                         # print(s1.magnitude, s2.magnitude, s3.magnitude)
@@ -61,8 +69,10 @@ class StarIdentifier:
                             return found_triangles[0]
                         else:
                             try:
-                                s4 = next(iterator)
-                            except StopIteration:
+                                s4 = stars_list[k+1]
+                                # print(s1, s2, s3, s4)
+                            except IndexError:
+                                # iterator = iter(stars_list)
                                 break
                             if is_valid(
                                     s1, s2, s4,
@@ -87,7 +97,6 @@ class StarIdentifier:
                                     return ft[0]
                                 else:
                                     continue
-
                         # print(triangle.A, triangle.A_var,
                         #       triangle.J, triangle.J_var)
                         # triangles.append()
