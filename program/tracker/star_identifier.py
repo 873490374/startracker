@@ -57,28 +57,25 @@ class StarIdentifier:
         return triangles
 
     def find_in_catalog(self, triangles: [Triangle]):
-        catalog_copy = copy.deepcopy(self.catalog)
         catalog_copy = [t for t in self.catalog]
         print('before', len(catalog_copy))
         for t in triangles:
-            area_min = t.A - t.A_var
-            area_max = t.A + t.A_var
-            moment_min = t.J - t.J_var
-            moment_max = t.J + t.J_var
-            # print(area_min, area_max, moment_min, moment_max)
-            trian_to_delete = []
+            A_dev = np.math.sqrt(t.A_var)
+            J_dev = np.math.sqrt(t.J_var)
+            area_min = t.A - A_dev
+            area_max = t.A + A_dev
+            moment_min = t.J - J_dev
+            moment_max = t.J + J_dev
+
+            valid_triangles = []
             for tt in catalog_copy:
-                if not (area_min <= tt[3] <= area_max and
+                if (area_min <= tt[3] <= area_max and
                         moment_min <= tt[4] <= moment_max):
                     # print(tt[0], tt[1], tt[2])
-                    trian_to_delete.append(tt)
-                    # print('deleted')
-            for td in trian_to_delete:
-                catalog_copy.remove(td)
-            print('left: ', len(catalog_copy))
-        # print(catalog_copy)
-        print('after', len(catalog_copy))
-
+                    valid_triangles.append(tt)
+            if len(valid_triangles == 1):
+                return valid_triangles[0]
+            elif
 
 def is_valid(
         s1: StarUV, s2: StarUV, s3: StarUV,

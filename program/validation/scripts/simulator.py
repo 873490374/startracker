@@ -615,7 +615,7 @@ class Scene:
 
         scene.add_false_stars(false_stars)
 
-        # scene.scramble()
+        scene.scramble()
 
         scene.add_magnitude_noise(self.magnitude_gaussian)
 
