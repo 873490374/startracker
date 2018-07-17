@@ -27,17 +27,12 @@
 # sale, use or other dealings in this Software without prior written
 # authorization.
 
-# Imports
-# -------
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-# Geometric Transformations
-# -------------------------
 from program.const import MAX_MAGNITUDE
 
 
@@ -144,10 +139,6 @@ def add_vector_noise(base_vectors, stddev):
     return v_r / np.linalg.norm(v_r, axis=1).reshape((-1, 1))
 
 
-# Drawing Functions
-# -----------------
-
-
 def plot_vectors(vectors, limit_unit_sphere=False):
     """Scatter plots 3D vectors."""
     fig = plt.figure()
@@ -170,10 +161,6 @@ def circle(pos, radius, image):
     cy = image.shape[0] - cy
     y, x = np.ogrid[:image.shape[0], :image.shape[1]]
     image[(x - cx)*(x - cx) + (y - cy)*(y - cy) < radius*radius] = 1
-
-
-# Camera
-# ------
 
 
 class Camera:
@@ -362,7 +349,10 @@ class StarCatalog:
         )
 
         self.catalog = self.catalog[filter_index]
-        # self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
+        # print(self.catalog)
+        self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
+        # print(50*'*')
+        # print(self.catalog)
 
         print('Number of stars in catalog: {}'. format(len(self.catalog)))
 
@@ -479,10 +469,6 @@ class StarCatalog:
             filename, sep='|', names=columns, skipinitialspace=True)
 
 
-# Star Detector
-# -----
-
-
 class StarDetector:
     def __init__(self, A_pixel, sigma_pixel, sigma_psf,
                  t_exp, aperture, base_photons):
@@ -525,10 +511,6 @@ class StarDetector:
 
     def add_noise(self, magnitude):
         return self.compute_magnitude(self.compute_photons(magnitude))
-
-
-# Scene
-# -----
 
 
 class Scene:
@@ -633,7 +615,7 @@ class Scene:
 
         scene.add_false_stars(false_stars)
 
-        scene.scramble()
+        # scene.scramble()
 
         scene.add_magnitude_noise(self.magnitude_gaussian)
 
@@ -644,8 +626,10 @@ class Scene:
     def scramble(self):
         """Scrambles the order of stars in a scene."""
 
+        # print(self.ids)
         scramble_index = np.random.permutation(range(len(self.ids)))
-
+        # print(scramble_index)
+        # print(len(self.pos))
         self.pos = self.pos[scramble_index, ...]
         self.magnitudes = self.magnitudes[scramble_index]
         self.ids = self.ids[scramble_index]

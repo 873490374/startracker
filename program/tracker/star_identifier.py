@@ -1,3 +1,5 @@
+import copy
+
 import numpy as np
 
 from progress.bar import Bar
@@ -38,7 +40,7 @@ class StarIdentifier:
                 for s3 in stars_list:
                     if is_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
-                        print(s1.magnitude, s2.magnitude, s3.magnitude)
+                        # print(s1.magnitude, s2.magnitude, s3.magnitude)
                         triangle = PlanarTriangle()
                         triangle.calculate_triangle(
                             s1.unit_vector,
@@ -46,8 +48,8 @@ class StarIdentifier:
                             s3.unit_vector,
                             self.sensor_variance
                         )
-                        print(triangle.A, triangle.A_var,
-                              triangle.J, triangle.J_var)
+                        # print(triangle.A, triangle.A_var,
+                        #       triangle.J, triangle.J_var)
                         triangles.append(Triangle(
                             triangle.A, triangle.A_var,
                             triangle.J, triangle.J_var,
@@ -55,17 +57,27 @@ class StarIdentifier:
         return triangles
 
     def find_in_catalog(self, triangles: [Triangle]):
+        catalog_copy = copy.deepcopy(self.catalog)
+        catalog_copy = [t for t in self.catalog]
+        print('before', len(catalog_copy))
         for t in triangles:
             area_min = t.A - t.A_var
             area_max = t.A + t.A_var
             moment_min = t.J - t.J_var
             moment_max = t.J + t.J_var
-            print(area_min, area_max, moment_min, moment_max)
-            for tt in self.catalog:
-                if (area_min <= tt[3] <= area_max and
+            # print(area_min, area_max, moment_min, moment_max)
+            trian_to_delete = []
+            for tt in catalog_copy:
+                if not (area_min <= tt[3] <= area_max and
                         moment_min <= tt[4] <= moment_max):
-                    print(tt[0], tt[1], tt[2])
-                    continue
+                    # print(tt[0], tt[1], tt[2])
+                    trian_to_delete.append(tt)
+                    # print('deleted')
+            for td in trian_to_delete:
+                catalog_copy.remove(td)
+            print('left: ', len(catalog_copy))
+        # print(catalog_copy)
+        print('after', len(catalog_copy))
 
 
 def is_valid(
@@ -75,7 +87,7 @@ def is_valid(
             all(s1.unit_vector == s3.unit_vector),
             all(s2.unit_vector == s3.unit_vector)]):
         return False
-    print(s1.magnitude, s2.magnitude, s3.magnitude)
+    # print(s1.magnitude, s2.magnitude, s3.magnitude)
     # print(s1.unit_vector, s2.unit_vector, s3.unit_vector)
     # print(s1.unit_vector.T * s2.unit_vector)
     return all([
