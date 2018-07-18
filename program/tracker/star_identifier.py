@@ -2,49 +2,18 @@ import numpy as np
 
 from program.planar_triangle import PlanarTriangleImage, PlanarTriangleCatalog
 from program.star import StarUV
-from program.tracker.planar_triangle import PlanarTriangle
-
+from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
 chuj = [42913, 45941, 45556, 41037]
 
 
-def is_valid(
-        s1: StarUV, s2: StarUV, s3: StarUV,
-        max_magnitude: int, camera_fov: int) -> bool:
-    if any([all(s1.unit_vector == s2.unit_vector),
-            all(s1.unit_vector == s3.unit_vector),
-            all(s2.unit_vector == s3.unit_vector)]):
-        return False
-    # print(s1.magnitude, s2.magnitude, s3.magnitude)
-    # print(s1.unit_vector, s2.unit_vector, s3.unit_vector)
-    # print(s1.unit_vector.T * s2.unit_vector)
-    return all([
-        s1.magnitude <= max_magnitude,
-        s2.magnitude <= max_magnitude,
-        s3.magnitude <= max_magnitude,
-        not any(s1.unit_vector.T * s2.unit_vector >= np.cos(camera_fov)),
-        not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
-        not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
-    ])
-
-
-class Triangle:
-    def __init__(
-            self, A: float, A_var: float, J: float, J_var: float,
-            s1: StarUV, s2: StarUV, s3: StarUV):
-        self.A = A
-        self.A_var = A_var
-        self.J = J
-        self.J_var = J_var
-        self.s1 = s1
-        self.s2 = s2
-        self.s3 = s3
-
-
 class StarIdentifier:
 
-    def __init__(self, sensor_variance: int, max_magnitude: int,
+    def __init__(self,
+                 planar_triangle_calculator: PlanarTriangleCalculator,
+                 sensor_variance: int, max_magnitude: int,
                  camera_fov: int, catalog: np.ndarray):
+        self.planar_triangle_calc = planar_triangle_calculator
         self.sensor_variance = sensor_variance
         self.max_magnitude = max_magnitude
         self.camera_fov = camera_fov
@@ -52,17 +21,30 @@ class StarIdentifier:
 
     def identify_stars(
             self,
-            triangle_list: [PlanarTriangleImage],
+            image_stars: [StarUV],
             previous_frame_stars: [PlanarTriangleCatalog]=None):
         if previous_frame_stars:
-            stars = self.identify(triangle_list, previous_frame_stars)
+            stars = self.identify(image_stars, previous_frame_stars)
         else:
-            stars = self.identify(triangle_list, self.catalog)
+            stars = self.identify(image_stars, self.catalog)
         return stars
-        # triangles = self.get_triangles(stars_list)
-        # # star_ids = self.find_in_catalog(triangles)
-        # print(triangles)
-        # return triangles
+
+    def identify(self, star_list: [StarUV],
+                 previous_triangles: [PlanarTriangleCatalog]):
+        i = 0
+        for s1 in star_list[:-2]:
+            i += 1
+            j = 0
+            for s2 in star_list[i:-1]:
+                j += 1
+                k = j
+                previous_triangle = None
+                for s3 in star_list[k:]:
+                    t = self.planar_triangle_calc.calculate_triangle(
+                        s1, s2, s3)
+                    if
+
+        pass
 
     def get_triangles(self, stars_list: [StarUV]) -> [Triangle]:
         triangles = []
@@ -139,12 +121,12 @@ class StarIdentifier:
         # catalog_copy = [t for t in self.catalog]
         # print('before', len(catalog_copy))
         # for t in triangles:
-        A_dev = np.math.sqrt(triangle.A_var) * 0.03177
-        J_dev = np.math.sqrt(triangle.J_var) * 0.03177
-        area_min = triangle.A - A_dev
-        area_max = triangle.A + A_dev
-        moment_min = triangle.J - J_dev
-        moment_max = triangle.J + J_dev
+        A_dev = np.math.sqrt(triangle.area_var) * 0.03177
+        J_dev = np.math.sqrt(triangle.moment_var) * 0.03177
+        area_min = triangle.area - A_dev
+        area_max = triangle.area + A_dev
+        moment_min = triangle.moment - J_dev
+        moment_max = triangle.moment + J_dev
 
         valid_triangles = []
         for tt in self.catalog:

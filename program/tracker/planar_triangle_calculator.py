@@ -8,9 +8,11 @@ zero_3x3 = np.matrix(np.zeros((3, 3)))
 
 
 class PlanarTriangleCalculator:
+    def __init__(self, sensor_variance: float):
+        self.sensor_variance = sensor_variance
 
     def calculate_triangle(
-            self, s1: StarUV, s2: StarUV, s3: StarUV, sensor_variance: float):
+            self, s1: StarUV, s2: StarUV, s3: StarUV):
         p = s1.unit_vector
         q = s2.unit_vector
         r = s3.unit_vector
@@ -24,13 +26,13 @@ class PlanarTriangleCalculator:
 
         partials = self.calculate_partial_derivatives(s, a, b, c, p, q, r, A)
         H = self.calculate_area_derivatives(partials)
-        R = self.calculate_r_matrix(p, q, r, sensor_variance)
+        R = self.calculate_r_matrix(p, q, r, self.sensor_variance)
 
         A_var = self.calculate_area_variance(H, R)
         J_var = self.calculate_polar_moment_variance(
             a, b, c, partials, H, R, A)
 
-        return PlanarTriangleImage(A, J, A_var, J_var)
+        return PlanarTriangleImage(s1, s2, s3, A, J, A_var, J_var)
 
     def calculate_perimeter_half(self, a, b, c):
         return 0.5 * (a + b + c)

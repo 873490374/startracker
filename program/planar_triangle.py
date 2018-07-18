@@ -1,7 +1,10 @@
+from program.star import StarUV
+
 
 class PlanarTriangleCatalog:
     def __init__(
-            self, s1_id, s2_id, s3_id, area, moment, area_var, moment_var):
+            self, s1_id: int, s2_id: int, s3_id: int, area: float,
+            moment: float, area_var: float, moment_var: float):
         self.s1_id = s1_id
         self.s2_id = s2_id
         self.s3_id = s3_id
@@ -19,11 +22,12 @@ class PlanarTriangleCatalog:
 
 
 class PlanarTriangleImage:
-    def __init__(self, area, moment, area_var, moment_var):
-
+    def __init__(self, s1: StarUV, s2: StarUV, s3: StarUV, area: float,
+                 moment: float, area_var: float, moment_var: float):
+        self.s1 = s1
+        self.s2 = s2
+        self.s3 = s3
         self.area = area
         self.moment = moment
         self.area_var = area_var
         self.moment_var = moment_var
-
-    # def i
