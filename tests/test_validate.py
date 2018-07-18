@@ -1,6 +1,6 @@
 import numpy as np
 
-from program.classes import StarUV
+from program.star import StarUV
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.star_identifier import StarIdentifier
 

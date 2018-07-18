@@ -4,14 +4,15 @@ import datetime
 import numpy as np
 from progress.bar import Bar
 
-from program.classes import CatalogueTriangle, StarPosition, StarUV
+from program.classes import CatalogueTriangle
+from program.star import StarPosition, StarUV
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.planar_triangle import PlanarTriangle
 from program.tracker.star_identifier import is_valid
 from program.validation.scripts.simulator import StarCatalog
 
 
-class CatalogueGenerator:
+class CatalogGenerator:
 
     def generate_triangles(self) -> [CatalogueTriangle]:
         converted_start = []
@@ -81,20 +82,6 @@ class CatalogueGenerator:
             ], dtype='float64').T
         )
 
-    def convert(self, star: StarPosition) -> StarUV:
-        """ Convert star positions to unit vector."""
-        alpha = star.right_ascension
-        delta = star.declination
-        return StarUV(
-            star_id=star.id,
-            magnitude=star.magnitude,
-            unit_vector=np.array([
-                np.cos(alpha) * np.cos(delta),
-                np.sin(alpha) * np.cos(delta),
-                np.sin(delta)
-            ], dtype='float64').T
-        )
-
     def save_to_file(self, catalog: [CatalogueTriangle]):
         now = datetime.datetime.now()
         with open(
@@ -110,5 +97,5 @@ class CatalogueGenerator:
                 csvwriter.writerow(dict(t))
 
 
-generator = CatalogueGenerator()
+generator = CatalogGenerator()
 generator.generate_triangles()

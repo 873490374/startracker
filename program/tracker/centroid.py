@@ -2,6 +2,8 @@ import itertools
 import numpy as np
 from PIL import Image
 
+from program.star import StarUV
+
 
 class CentroidCalculator:
     def __init__(self, pixel_size, focal_length, a_roi, i_threshold):
@@ -53,8 +55,7 @@ class CentroidCalculator:
             x += 1
         return x_cm, y_cm
 
-    def calculate_centroids(self, image):
-        I = self.image_to_matrix(image)
+    def calculate_centroids(self, I):
 
         star_list = []
 
@@ -120,7 +121,7 @@ class CentroidCalculator:
                                           (star1[1] + star2[1]) / 2])
                         break
 
-        vectors_list = []
+        star_vectors = []
 
         # 7. unit vector u
         for star in star_list:
@@ -128,11 +129,12 @@ class CentroidCalculator:
                                self.pixel_size * star[1],
                                self.focal_length])
             u = vector.T / np.linalg.norm(vector)
-            vectors_list.append(u)
+            star_vectors.append(
+                StarUV(star_id=-1, magnitude=-1, unit_vector=u))
 
         img = np.zeros((len(I), len(I.T)), dtype='uint8')
         for star in star_list:
             img[int(star[0]), int(star[1])] = 255
         Image.fromarray(img, mode='L').convert('1').save('test.png')
 
-        return vectors_list
+        return star_vectors

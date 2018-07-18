@@ -1,32 +1,9 @@
 import numpy as np
 
-
-class StarPosition:
-    def __init__(
-            self, star_id: int, magnitude: float, right_ascension: float,
-            declination: float):
-        self.id = star_id
-        self.magnitude = magnitude
-        self.right_ascension = right_ascension
-        self.declination = declination
-
-    def __str__(self):
-        return "{}, {}, {}, {}".format(
-            self.id, self.magnitude, self.right_ascension, self.declination
-        )
-
-
-class StarUV:
-    def __init__(
-            self, star_id: int, magnitude: float, unit_vector: np.ndarray):
-        self.id = star_id
-        self.magnitude = magnitude
-        self.unit_vector = unit_vector
-
-    def __str__(self):
-        return "{}, {}, {}".format(
-            self.id, self.magnitude, self.unit_vector,
-        )
+#
+# class UnitVector:
+#     def __init__(self, ):
+#
 
 
 class CatalogueTriangle:

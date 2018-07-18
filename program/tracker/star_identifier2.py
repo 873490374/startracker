@@ -4,7 +4,7 @@ import numpy as np
 
 from progress.bar import Bar
 
-from program.classes import StarUV
+from program.star import StarUV
 from program.tracker.planar_triangle import PlanarTriangle
 
 

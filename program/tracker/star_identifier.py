@@ -1,11 +1,31 @@
-import copy
-
 import numpy as np
 
-from progress.bar import Bar
-
-from program.classes import StarUV
+from program.planar_triangle import PlanarTriangleImage, PlanarTriangleCatalog
+from program.star import StarUV
 from program.tracker.planar_triangle import PlanarTriangle
+
+
+chuj = [42913, 45941, 45556, 41037]
+
+
+def is_valid(
+        s1: StarUV, s2: StarUV, s3: StarUV,
+        max_magnitude: int, camera_fov: int) -> bool:
+    if any([all(s1.unit_vector == s2.unit_vector),
+            all(s1.unit_vector == s3.unit_vector),
+            all(s2.unit_vector == s3.unit_vector)]):
+        return False
+    # print(s1.magnitude, s2.magnitude, s3.magnitude)
+    # print(s1.unit_vector, s2.unit_vector, s3.unit_vector)
+    # print(s1.unit_vector.T * s2.unit_vector)
+    return all([
+        s1.magnitude <= max_magnitude,
+        s2.magnitude <= max_magnitude,
+        s3.magnitude <= max_magnitude,
+        not any(s1.unit_vector.T * s2.unit_vector >= np.cos(camera_fov)),
+        not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
+        not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
+    ])
 
 
 class Triangle:
@@ -30,11 +50,19 @@ class StarIdentifier:
         self.camera_fov = camera_fov
         self.catalog = catalog
 
-    def identify_stars(self, stars_list: [StarUV]):
-        triangles = self.get_triangles(stars_list)
-        # star_ids = self.find_in_catalog(triangles)
-        print(triangles)
-        return triangles
+    def identify_stars(
+            self,
+            triangle_list: [PlanarTriangleImage],
+            previous_frame_stars: [PlanarTriangleCatalog]=None):
+        if previous_frame_stars:
+            stars = self.identify(triangle_list, previous_frame_stars)
+        else:
+            stars = self.identify(triangle_list, self.catalog)
+        return stars
+        # triangles = self.get_triangles(stars_list)
+        # # star_ids = self.find_in_catalog(triangles)
+        # print(triangles)
+        # return triangles
 
     def get_triangles(self, stars_list: [StarUV]) -> [Triangle]:
         triangles = []
@@ -49,7 +77,7 @@ class StarIdentifier:
                 # for s3 in stars_list[j:]:
                 for l in range(k):
                     s3 = stars_list[k]
-                    print(s3)
+                    # print(s3)
                     if is_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
                         # print(s1.magnitude, s2.magnitude, s3.magnitude)
@@ -65,38 +93,43 @@ class StarIdentifier:
                             triangle.J, triangle.J_var,
                             s1, s2, s3)
                         found_triangles = self.find_in_catalog(t)
+                        # if [
+                        #     int(ggg[0]) in chuj and
+                        #     int(ggg[1]) in chuj and
+                        #     int(ggg[2]) in chuj for ggg in found_triangles]:
+                        #     print('found')
+                        #     # print(ggg[0], ggg[1], ggg[2])
                         if len(found_triangles) == 1:
                             return found_triangles[0]
                         else:
-                            try:
-                                s4 = stars_list[k+1]
-                                # print(s1, s2, s3, s4)
-                            except IndexError:
-                                # iterator = iter(stars_list)
-                                break
-                            if is_valid(
-                                    s1, s2, s4,
-                                    self.max_magnitude, self.camera_fov):
-                                triangle2 = PlanarTriangle()
-                                triangle2.calculate_triangle(
-                                    s1.unit_vector,
-                                    s2.unit_vector,
-                                    s4.unit_vector,
-                                    self.sensor_variance
-                                )
-                                t2 = Triangle(
-                                    triangle2.A, triangle2.A_var,
-                                    triangle2.J, triangle2.J_var,
-                                    s1, s2, s4)
-                                found_triangles2 = self.find_in_catalog(t2)
-                                ft = [value for value in
-                                      found_triangles if value in
-                                      found_triangles2]
-                                print(len(ft))
-                                if len(ft) == 1:
-                                    return ft[0]
-                                else:
-                                    continue
+                            for s4 in stars_list[k+1:]:
+
+                                if is_valid(
+                                        s1, s2, s4,
+                                        self.max_magnitude, self.camera_fov):
+                                    triangle2 = PlanarTriangle()
+                                    triangle2.calculate_triangle(
+                                        s1.unit_vector,
+                                        s2.unit_vector,
+                                        s4.unit_vector,
+                                        self.sensor_variance
+                                    )
+                                    t2 = Triangle(
+                                        triangle2.A, triangle2.A_var,
+                                        triangle2.J, triangle2.J_var,
+                                        s1, s2, s4)
+                                    found_triangles2 = self.find_in_catalog(t2)
+                                    print('ft1 ', len(found_triangles))
+                                    print('ft2 ', len(found_triangles2))
+                                    ft = [value for value in
+                                          found_triangles if value in
+                                          found_triangles2]
+                                    print('common ', len(ft))
+                                    print(ft)
+                                    if len(ft) == 1:
+                                        print('found one')
+                                        return ft[0]
+
                         # print(triangle.A, triangle.A_var,
                         #       triangle.J, triangle.J_var)
                         # triangles.append()
@@ -106,8 +139,8 @@ class StarIdentifier:
         # catalog_copy = [t for t in self.catalog]
         # print('before', len(catalog_copy))
         # for t in triangles:
-        A_dev = np.math.sqrt(triangle.A_var)
-        J_dev = np.math.sqrt(triangle.J_var)
+        A_dev = np.math.sqrt(triangle.A_var) * 0.03177
+        J_dev = np.math.sqrt(triangle.J_var) * 0.03177
         area_min = triangle.A - A_dev
         area_max = triangle.A + A_dev
         moment_min = triangle.J - J_dev
@@ -119,24 +152,94 @@ class StarIdentifier:
                     moment_min <= tt[4] <= moment_max):
                 # print(tt[0], tt[1], tt[2])
                 # valid_triangles.append(tt)
-                valid_triangles.append((tt[0], tt[1], tt[2], tt[3], tt[4]))
+                valid_triangles.append((int(tt[0]), int(tt[1]), int(tt[2]), tt[3], tt[4]))
         return valid_triangles
 
-def is_valid(
-        s1: StarUV, s2: StarUV, s3: StarUV,
-        max_magnitude: int, camera_fov: int) -> bool:
-    if any([all(s1.unit_vector == s2.unit_vector),
-            all(s1.unit_vector == s3.unit_vector),
-            all(s2.unit_vector == s3.unit_vector)]):
-        return False
-    # print(s1.magnitude, s2.magnitude, s3.magnitude)
-    # print(s1.unit_vector, s2.unit_vector, s3.unit_vector)
-    # print(s1.unit_vector.T * s2.unit_vector)
-    return all([
-        s1.magnitude <= max_magnitude,
-        s2.magnitude <= max_magnitude,
-        s3.magnitude <= max_magnitude,
-        not any(s1.unit_vector.T * s2.unit_vector >= np.cos(camera_fov)),
-        not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
-        not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
-    ])
+    def convert_star_vectors_to_star_triangles(
+            self, star_vectors: [StarUV]) -> [PlanarTriangleImage]:
+
+        stars_list = star_vectors
+        triangles = []
+        # iterator = iter(stars_list)
+        i = 0
+        for s1 in stars_list:
+            i += 1
+            j = 0
+            for s2 in stars_list[i:]:
+                j += 1
+                k = j
+                # for s3 in stars_list[j:]:
+                for l in range(k):
+                    s3 = stars_list[k]
+                    # print(s3)
+                    if self.are_stars_valid(
+                            s1, s2, s3, self.max_magnitude, self.camera_fov):
+                        # print(s1.magnitude, s2.magnitude, s3.magnitude)
+                        triangle = PlanarTriangle()
+                        self.triangle.calculate_triangle(
+                            s1.unit_vector,
+                            s2.unit_vector,
+                            s3.unit_vector,
+                            self.sensor_variance
+                        )
+                        t = Triangle(
+                            triangle.A, triangle.A_var,
+                            triangle.J, triangle.J_var,
+                            s1, s2, s3)
+                        found_triangles = self.find_in_catalog(t)
+                        # if [
+                        #     int(ggg[0]) in chuj and
+                        #     int(ggg[1]) in chuj and
+                        #     int(ggg[2]) in chuj for ggg in found_triangles]:
+                        #     print('found')
+                        #     # print(ggg[0], ggg[1], ggg[2])
+                        if len(found_triangles) == 1:
+                            return found_triangles[0]
+                        else:
+                            for s4 in stars_list[k + 1:]:
+
+                                if self.are_stars_valid(
+                                        s1, s2, s4,
+                                        self.max_magnitude, self.camera_fov):
+                                    triangle2 = PlanarTriangle()
+                                    triangle2.calculate_triangle(
+                                        s1.unit_vector,
+                                        s2.unit_vector,
+                                        s4.unit_vector,
+                                        self.sensor_variance
+                                    )
+                                    t2 = Triangle(
+                                        triangle2.A, triangle2.A_var,
+                                        triangle2.J, triangle2.J_var,
+                                        s1, s2, s4)
+                                    found_triangles2 = self.find_in_catalog(t2)
+                                    print('ft1 ', len(found_triangles))
+                                    print('ft2 ', len(found_triangles2))
+                                    ft = [value for value in
+                                          found_triangles if value in
+                                          found_triangles2]
+                                    print('common ', len(ft))
+                                    print(ft)
+                                    if len(ft) == 1:
+                                        print('found one')
+                                        return ft[0]
+
+                        # print(triangle.A, triangle.A_var,
+                        #       triangle.J, triangle.J_var)
+                        # triangles.append()
+        return triangles
+
+    def are_stars_valid(self, s1: StarUV, s2: StarUV, s3: StarUV,
+        max_magnitude: float, camera_fov: int) -> bool:
+        if any([all(s1.unit_vector == s2.unit_vector),
+                all(s1.unit_vector == s3.unit_vector),
+                all(s2.unit_vector == s3.unit_vector)]):
+            return False
+        return all([
+            s1.magnitude <= max_magnitude,
+            s2.magnitude <= max_magnitude,
+            s3.magnitude <= max_magnitude,
+            not any(s1.unit_vector.T * s2.unit_vector >= np.cos(camera_fov)),
+            not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
+            not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
+        ])
