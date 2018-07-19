@@ -2,7 +2,10 @@ import numpy as np
 
 from program.star import StarUV
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
+from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
+
+check = [42913, 45941, 45556, 41037]
 
 
 def read_scene():
@@ -49,21 +52,17 @@ def read_scene():
 
 def find_stars(input_data):
     targets = []
+    filename = './program/catalog/generated/triangle_catalog.csv'
+    catalog = [t for t in np.genfromtxt(filename, delimiter=',')]
     for row in input_data:
-        # print((row[0]))
-        # print((type(row[0])))
-        # with open('./program/catalog/generated/triangle_catalog.csv', 'r') as filename:
-        filename = './program/catalog/generated/triangle_catalog.csv'
-            # csvwriter = csv.DictWriter(csvfile, fieldnames=[
-            #     'star1_id', 'star2_id', 'star3_id', 'area', 'polar_moment'])
-        catalog = np.genfromtxt(filename, delimiter=',')
-            #     filename, sep='|', skipinitialspace=True,
-            #     names=[
-            #         'star1_id', 'star2_id', 'star3_id', 'area', 'polar_moment']
-            # )
-        # print(catalog)
         star_identifier = StarIdentifier(
-            SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV, catalog)
+            planar_triangle_calculator=PlanarTriangleCalculator(
+                sensor_variance=SENSOR_VARIANCE
+            ),
+            sensor_variance=SENSOR_VARIANCE,
+            max_magnitude=MAX_MAGNITUDE,
+            camera_fov=CAMERA_FOV,
+            catalog=catalog)
         x = star_identifier.identify_stars(row)
         targets.append(x)
     return targets
