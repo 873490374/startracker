@@ -1,5 +1,6 @@
 import numpy as np
 
+from program.planar_triangle import PlanarTriangleCatalog
 from program.star import StarUV
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -27,8 +28,7 @@ def read_scene():
         data_lists = []
         for j in range(len(raw_data_list)):
             data_list = []
-            for i in range(int(len(raw_data_list[j])/3))[::3]:
-                # print(raw_data_list[j][i], raw_data_list[j][i+1], raw_data_list[j][i+2])
+            for i in range(int(len(raw_data_list[j])))[::3]:
                 alpha = raw_data_list[j][i]
                 delta = raw_data_list[j][i+1]
                 magnitude = raw_data_list[j][i + 2]
@@ -53,7 +53,9 @@ def read_scene():
 def find_stars(input_data):
     targets = []
     filename = './program/catalog/generated/triangle_catalog.csv'
-    catalog = [t for t in np.genfromtxt(filename, delimiter=',')]
+    catalog = [
+        PlanarTriangleCatalog(t[0], t[1], t[2], t[3], t[4])
+        for t in np.genfromtxt(filename, delimiter=',')]
     for row in input_data:
         star_identifier = StarIdentifier(
             planar_triangle_calculator=PlanarTriangleCalculator(
@@ -88,5 +90,8 @@ class TestValidate:
 
     def test_(self):
         input_data, result = read_scene()
+        assert len(input_data[0]) == 14
         targets = find_stars(input_data)
+        assert len(targets) > 0
+        print(targets[0])
         print('Score: {}'.format(validate(result, targets)))

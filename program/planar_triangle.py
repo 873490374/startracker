@@ -4,14 +4,17 @@ from program.star import StarUV
 class PlanarTriangleCatalog:
     def __init__(
             self, s1_id: int, s2_id: int, s3_id: int, area: float,
-            moment: float, area_var: float, moment_var: float):
+            moment: float):
         self.s1_id = s1_id
         self.s2_id = s2_id
         self.s3_id = s3_id
         self.area = area
         self.moment = moment
-        self.area_var = area_var
-        self.moment_var = moment_var
+
+    def __str__(self):
+        return "{}, {}, {}".format(
+            self.s1_id, self.s2_id, self.s3_id
+        )
 
     def has_the_same_stars(self, other):
         this_stars = [self.s1_id, self.s2_id, self.s3_id]

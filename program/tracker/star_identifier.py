@@ -9,10 +9,10 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
 class StarIdentifier:
 
-    def __init__(self,
-                 planar_triangle_calculator: PlanarTriangleCalculator,
-                 sensor_variance: int, max_magnitude: int,
-                 camera_fov: int, catalog: [PlanarTriangleCatalog]):
+    def __init__(
+            self, planar_triangle_calculator: PlanarTriangleCalculator,
+            sensor_variance: int, max_magnitude: int,
+            camera_fov: int, catalog: [PlanarTriangleCatalog]):
         self.planar_triangle_calc = planar_triangle_calculator
         self.sensor_variance = sensor_variance
         self.max_magnitude = max_magnitude
@@ -20,8 +20,7 @@ class StarIdentifier:
         self.catalog = catalog
 
     def identify_stars(
-            self,
-            image_stars: [StarUV],
+            self, image_stars: [StarUV],
             previous_frame_stars: [PlanarTriangleCatalog]=None):
         if previous_frame_stars:
             stars = self.identify(image_stars, previous_frame_stars)
@@ -41,36 +40,39 @@ class StarIdentifier:
 
         valid_triangles = []
         for tt in self.catalog:
-            if (area_min <= tt[3] <= area_max and
-                    moment_min <= tt[4] <= moment_max):
-                # print(tt[0], tt[1], tt[2])
+            if (area_min <= tt.area <= area_max and
+                    moment_min <= tt.moment <= moment_max):
                 valid_triangles.append(tt)
-                # valid_triangles.append((int(tt[0]), int(tt[1]), int(tt[2]), tt[3], tt[4]))
+        # print('found in catalog', len(valid_triangles))
+        # if len(valid_triangles) == 1:
+        #     print(valid_triangles[0])
         return valid_triangles
 
     def get_two_common_stars_triangles(
             self, s1: StarUV, s2: StarUV, s3: StarUV,
-            ct: [PlanarTriangleCatalog], star_list: [PlanarTriangleImage]) -> \
-            [PlanarTriangleCatalog]:
+            ct: [PlanarTriangleCatalog], star_list: [PlanarTriangleImage]
+    ) -> [PlanarTriangleCatalog]:
+        triangles = ct
         for star_couple in [(s1, s2), (s1, s3), (s2, s3)]:
             sc1 = star_couple[0]
             sc2 = star_couple[1]
-            # new ct???
+
             for sc3 in star_list:
                 if self.are_stars_valid(
                         sc1, sc2, sc3, self.max_magnitude, self.camera_fov):
                     continue
                 t = self.planar_triangle_calc.calculate_triangle(sc1, sc2, sc3)
                 tc = self.find_in_catalog(t)
-                ct = self.find_common_triangles(ct, tc)
-                if len(ct) == 1:
-                    print('One triangle found', len(ct))
-                    return ct[0]
-                if len(ct) == 0:
-                    print('No triangles found', len(ct))
-                    return None
-        print('Number of stars after all two common stars triangles', len(ct))
-        return None
+                triangles = self.find_common_triangles(triangles, tc)
+                if len(triangles) == 1:
+                    print('One triangle found', len(triangles))
+                    return triangles
+                if len(triangles) == 0:
+                    # print('No triangles found', len(triangles))
+                    return triangles
+        print('Number of stars after all two common stars triangles',
+              len(triangles))
+        return triangles
 
     def find_common_triangles(
             self, previous_t: [PlanarTriangleCatalog],
@@ -80,6 +82,7 @@ class StarIdentifier:
             for t2 in new_t:
                 if t1.has_the_same_stars(t2):
                     common_triangles.append(t2)
+                    print('common_triangles')
         return common_triangles
 
     def identify(self, star_list: [StarUV],
@@ -101,7 +104,8 @@ class StarIdentifier:
                         s1, s2, s3)
                     ct = self.find_in_catalog(t)
                     if len(ct) == 1:
-                        return ct[0]
+                        # return ct[0]
+                        print('one star?', ct[0])
                     else:
                         res = self.get_two_common_stars_triangles(
                             s1, s2, s3, ct, star_list)
