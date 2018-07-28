@@ -65,13 +65,13 @@ class StarIdentifier:
                 tc = self.find_in_catalog(t)
                 triangles = self.find_common_triangles(triangles, tc)
                 if len(triangles) == 1:
-                    print('One triangle found', len(triangles))
+                    # print('One triangle found', len(triangles))
                     return triangles
                 if len(triangles) == 0:
                     # print('No triangles found', len(triangles))
                     return triangles
-        print('Number of stars after all two common stars triangles',
-              len(triangles))
+        # print('Number of stars after all two common stars triangles',
+        #       len(triangles))
         return triangles
 
     def find_common_triangles(
@@ -82,7 +82,7 @@ class StarIdentifier:
             for t2 in new_t:
                 if t1.has_the_same_stars(t2):
                     common_triangles.append(t2)
-                    print('common_triangles')
+                    # print('common_triangles')
         return common_triangles
 
     def identify(self, star_list: [StarUV],

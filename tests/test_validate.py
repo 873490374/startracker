@@ -92,6 +92,6 @@ class TestValidate:
         input_data, result = read_scene()
         assert len(input_data[0]) == 14
         targets = find_stars(input_data)
-        assert len(targets) > 0
+        assert len(targets[0]) > 0
         print(targets[0])
         print('Score: {}'.format(validate(result, targets)))

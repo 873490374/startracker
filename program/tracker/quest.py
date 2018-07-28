@@ -60,9 +60,13 @@ class QuestCalculator:
         z_s = np.dot(Z.T, S)
         return np.inner(z_s, Z.T).item()
 
-    def func(self, x):
+    def func(self, x, a, b, c, d, s):
         # return (x**2 - 2)*(x**2 - 2) - 2*x + (2*2 - 3)
-        return (x**2 - self.a)*(x**2 - self.b) - self.c*x + (self.c*self.s - self.d)
+        return (x**2 - a)*(x**2 - b) - c*x + (c*s - d)
 
     def calculate_newton_raphson(self, func):
-        return scipy.optimize.newton(func, 2, maxiter=500)
+        x0 = 2
+        return scipy.optimize.newton(
+            func, x0, args=(
+                self.a, self.b, self.c, self.d, self.s),
+            maxiter=500)

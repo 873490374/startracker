@@ -43,18 +43,14 @@ class TestQuest:
         v_list = [v1, v2]
         w_list = [w1, w2]
 
+
+        R_bi_quest = np.array([
+            [0.5571, 0.7895, 0.2575],
+            [-0.7950, 0.4175, 0.4400],
+            [0.2399, -0.4499, 0.8603]
+        ])
+        sigma = 1.773
+        J = 3.6810 * np.math.pow(10, -4)
         quest_calc = QuestCalculator()
         attitude = quest_calc.calculate_quest(weight_list, v_list, w_list)
         print(attitude)
-        #
-        # p = np.matrix([1.5, 2.4, 1.3])
-        # q = np.matrix([14.5, 1.6, 55.1])
-        # r = np.matrix([16.5, 112.4, 63.5])
-        #
-        # planar_triangle = PlanarTriangle()
-        # planar_triangle.calculate_triangle(p, q, r)
-        #
-        # print(planar_triangle.A)
-        # print(planar_triangle.A_var)
-        # print(planar_triangle.J)
-        # print(planar_triangle.J_var)
