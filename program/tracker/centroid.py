@@ -13,10 +13,6 @@ class CentroidCalculator:
         self.i_threshold = i_threshold
 
     @staticmethod
-    def image_to_matrix(img):
-        return np.asarray(img.convert('L'))
-
-    @staticmethod
     def sum_border(start, end, where, constant, matrix):
         m = matrix
         i = start

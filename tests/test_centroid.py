@@ -1,30 +1,12 @@
+import numpy as np
 import os
 from PIL import Image
 
+from program.star import StarUV
+from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
-
-#
-# def centroid_jpg2_wrapper():
-#     pixel_size = 5
-#     focal_length = 7
-#     a_roi = 5
-#     i_threshold = 250
-#     img_name = '2.jpg'
-#     path = 'images/stars/'
-#     image = Image.open(path + img_name)
-#
-#     centroid_calculator = CentroidCalculator(
-#         pixel_size, focal_length, a_roi, i_threshold
-#     )
-#     return centroid_calculator.calculate_centroids(image)
-#
-#
-# class TestCentroid:
-#
-#     def test_centroid_jpg_2_benchmark(self, benchmark):
-#
-#         list_of_stars = benchmark(centroid_jpg2_wrapper)
-#         assert len(list_of_stars) == 92
+from program.tracker.image_processor import ImageProcessor
+from program.utils import read_scene
 
 
 class TestCentroid:
@@ -33,19 +15,32 @@ class TestCentroid:
     a_roi = 5
     i_threshold = 250
     p = os.path.dirname(os.path.realpath(__file__))
-    path = os.path.join(p, 'images/stars/')
+    images_path = os.path.join(p, 'images/stars/')
+    scenes_path = os.path.join(p, 'scenes/')
 
     def test_centroid_jpg_2(self):
-        img_name = '2.jpg'
-        image = Image.open(self.path + img_name)
+        img_path = os.path.join(self.images_path, '2.jpg')
+        image = Image.open(img_path)
         centroid_calculator = CentroidCalculator(
             self.pixel_size,
             self.focal_length,
             self.a_roi,
             self.i_threshold,
         )
-        I = centroid_calculator.image_to_matrix(image)
+        I = ImageProcessor(CameraConnector(), centroid_calculator
+                           ).image_to_matrix(image)
         list_of_stars = centroid_calculator.calculate_centroids(I)
         assert len(list_of_stars) == 92
-        # assert len(list_of_stars[0]) == 3
-        print(list_of_stars[0])
+        assert list_of_stars[0] == StarUV(
+            -1, -1, np.array([0.06997471, 0.99754376, 0.00315964]))
+
+    def test_scene_centroids(self):
+        input_data, _ = read_scene(self.scenes_path, 'validate')
+        centroid_calculator = CentroidCalculator(
+            self.pixel_size,
+            self.focal_length,
+            self.a_roi,
+            self.i_threshold,
+        )
+        centroid_calculator.calculate_centroids(input_data[0])
+
