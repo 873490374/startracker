@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from program.planar_triangle import PlanarTriangleCatalog
+from program.planar_triangle import CatalogPlanarTriangle
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -14,7 +14,7 @@ def find_stars(input_data):
     targets = []
     filename = './tests/catalog/triangle_test_catalog.csv'
     catalog = [
-        PlanarTriangleCatalog(t[0], t[1], t[2], t[3], t[4])
+        CatalogPlanarTriangle(t[0], t[1], t[2], t[3], t[4])
         for t in np.genfromtxt(filename, delimiter=',')]
     for row in input_data:
         star_identifier = StarIdentifier(

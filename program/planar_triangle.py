@@ -1,7 +1,7 @@
 from program.star import StarUV
 
 
-class PlanarTriangleCatalog:
+class CatalogPlanarTriangle:
     def __init__(
             self, s1_id: int, s2_id: int, s3_id: int, area: float,
             moment: float):
@@ -24,7 +24,7 @@ class PlanarTriangleCatalog:
             other.s3_id in this_stars])
 
 
-class PlanarTriangleImage:
+class ImagePlanarTriangle:
     def __init__(self, s1: StarUV, s2: StarUV, s3: StarUV, area: float,
                  moment: float, area_var: float, moment_var: float):
         self.s1 = s1

@@ -2,7 +2,7 @@ from typing import Union
 
 import numpy as np
 
-from program.planar_triangle import PlanarTriangleImage, PlanarTriangleCatalog
+from program.planar_triangle import ImagePlanarTriangle, CatalogPlanarTriangle
 from program.star import StarUV
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
@@ -12,7 +12,7 @@ class StarIdentifier:
     def __init__(
             self, planar_triangle_calculator: PlanarTriangleCalculator,
             sensor_variance: int, max_magnitude: int,
-            camera_fov: int, catalog: [PlanarTriangleCatalog]):
+            camera_fov: int, catalog: [CatalogPlanarTriangle]):
         self.planar_triangle_calc = planar_triangle_calculator
         self.sensor_variance = sensor_variance
         self.max_magnitude = max_magnitude
@@ -21,7 +21,7 @@ class StarIdentifier:
 
     def identify_stars(
             self, image_stars: [StarUV],
-            previous_frame_stars: [PlanarTriangleCatalog]=None):
+            previous_frame_stars: [CatalogPlanarTriangle]=None):
         if previous_frame_stars:
             stars = self.identify(image_stars, previous_frame_stars)
         else:
@@ -29,7 +29,7 @@ class StarIdentifier:
         return stars
 
     def find_in_catalog(
-            self, triangle: PlanarTriangleImage) -> [PlanarTriangleCatalog]:
+            self, triangle: ImagePlanarTriangle) -> [CatalogPlanarTriangle]:
 
         A_dev = np.math.sqrt(triangle.area_var)  # * 0.03177
         J_dev = np.math.sqrt(triangle.moment_var)  # * 0.03177
@@ -50,8 +50,8 @@ class StarIdentifier:
 
     def get_two_common_stars_triangles(
             self, s1: StarUV, s2: StarUV, s3: StarUV,
-            ct: [PlanarTriangleCatalog], star_list: [PlanarTriangleImage]
-    ) -> [PlanarTriangleCatalog]:
+            ct: [CatalogPlanarTriangle], star_list: [ImagePlanarTriangle]
+    ) -> [CatalogPlanarTriangle]:
         triangles = ct
         for star_couple in [(s1, s2), (s1, s3), (s2, s3)]:
             sc1 = star_couple[0]
@@ -75,8 +75,8 @@ class StarIdentifier:
         return triangles
 
     def find_common_triangles(
-            self, previous_t: [PlanarTriangleCatalog],
-            new_t: [PlanarTriangleCatalog]) -> [PlanarTriangleCatalog]:
+            self, previous_t: [CatalogPlanarTriangle],
+            new_t: [CatalogPlanarTriangle]) -> [CatalogPlanarTriangle]:
         common_triangles = []
         for t1 in previous_t:
             for t2 in new_t:
@@ -86,8 +86,8 @@ class StarIdentifier:
         return common_triangles
 
     def identify(self, star_list: [StarUV],
-                 previous_triangles: [PlanarTriangleCatalog]
-                 ) -> Union[PlanarTriangleCatalog, None]:
+                 previous_triangles: [CatalogPlanarTriangle]
+                 ) -> Union[CatalogPlanarTriangle, None]:
         i = 0
         for s1 in star_list[:-2]:
             i += 1

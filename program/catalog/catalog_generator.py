@@ -4,17 +4,28 @@ import datetime
 import numpy as np
 from progress.bar import Bar
 
-from program.classes import CatalogueTriangle
+from program.planar_triangle import CatalogPlanarTriangle
 from program.star import StarPosition, StarUV
 from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
-from program.tracker.planar_triangle import PlanarTriangle
-from program.tracker.star_identifier import is_valid
+from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
+from program.tracker.star_identifier import StarIdentifier
 from program.validation.scripts.simulator import StarCatalog
 
 
 class CatalogGenerator:
+    def __init__(self):
+        self.star_identifier = StarIdentifier(
+            planar_triangle_calculator=PlanarTriangleCalculator(
+                sensor_variance=SENSOR_VARIANCE
+            ),
+            sensor_variance=SENSOR_VARIANCE,
+            max_magnitude=MAX_MAGNITUDE,
+            camera_fov=CAMERA_FOV,
+            catalog=None)
+        self.triangle_calc = PlanarTriangleCalculator(
+            sensor_variance=SENSOR_VARIANCE)
 
-    def generate_triangles(self) -> [CatalogueTriangle]:
+    def generate_triangles(self) -> [CatalogPlanarTriangle]:
         converted_start = []
         triangle_catalogue = []
 
@@ -34,21 +45,18 @@ class CatalogGenerator:
             for s2 in converted_start[i:]:
                 j += 1
                 for s3 in converted_start[i+j:]:
-                    if is_valid(s1, s2, s3, MAX_MAGNITUDE, CAMERA_FOV):
-                        triangle = PlanarTriangle()
-                        triangle.calculate_triangle(
+                    if self.star_identifier.are_stars_valid(
+                            s1, s2, s3, MAX_MAGNITUDE, CAMERA_FOV):
+                        triangle = self.triangle_calc.calculate_triangle(
                             s1.unit_vector,
                             s2.unit_vector,
                             s3.unit_vector,
-                            SENSOR_VARIANCE
                         )
-                        triangle_catalogue.append(
-                            CatalogueTriangle(
-                                s1.id, s2.id, s3.id, triangle.A, triangle.J))
-            # i += 1
+                        triangle_catalogue.append(triangle)
         classify_bar.finish()
         print('Number of planar triangles in catalogue: {}'.format(
             len(triangle_catalogue)))
+        # kvector
         self.save_to_file(triangle_catalogue)
         return triangle_catalogue
 
@@ -82,7 +90,7 @@ class CatalogGenerator:
             ], dtype='float64').T
         )
 
-    def save_to_file(self, catalog: [CatalogueTriangle]):
+    def save_to_file(self, catalog: [CatalogPlanarTriangle]):
         now = datetime.datetime.now()
         with open(
                 './program/catalog/generated/triangle_catalog_'

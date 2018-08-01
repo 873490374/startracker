@@ -1,4 +1,4 @@
-from program.planar_triangle import PlanarTriangleImage
+from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarUV
 from program.tracker.image_processor import ImageProcessor
 from program.tracker.orientation_finder import OrientationFinder
