@@ -11,11 +11,11 @@ class StarIdentifier:
 
     def __init__(
             self, planar_triangle_calculator: PlanarTriangleCalculator,
-            sensor_variance: int, max_magnitude: int,
+            sensor_variance: float, max_magnitude: int,
             camera_fov: int, catalog: [CatalogPlanarTriangle]):
         self.planar_triangle_calc = planar_triangle_calculator
-        self.sensor_variance = sensor_variance
         self.max_magnitude = max_magnitude
+        self.sensor_variance = sensor_variance
         self.camera_fov = camera_fov
         self.catalog = catalog
 

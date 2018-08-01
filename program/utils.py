@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 
 from program.star import StarUV
@@ -38,7 +40,7 @@ def read_scene(path, fname):
             data_lists.append(data_list)
         return data_lists
 
-    input_data = read_input('{}/{}_input.csv'.format(path, fname))
-    result = read_int_csv('{}/{}_result.csv'.format(path, fname))
+    input_data = read_input(os.path.join(path, '{}_input.csv'.format(fname)))
+    result = read_int_csv(os.path.join(path, '{}_result.csv'.format(fname)))
 
     return input_data, result

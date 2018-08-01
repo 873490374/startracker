@@ -1,5 +1,8 @@
+import os
+
 import numpy as np
 
+from program.const import MAIN_PATH
 from program.star import StarUV
 from program.utils import read_scene
 
@@ -7,7 +10,8 @@ from program.utils import read_scene
 class TestUtils:
 
     def test_read_scene(self):
-        input_data, result = read_scene('./tests/scenes', 'scene_read_test')
+        input_data, result = read_scene(
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'scene_read_test')
         assert len(input_data) == 1
         assert len(result) == 1
 

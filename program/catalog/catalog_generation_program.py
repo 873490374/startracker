@@ -1,4 +1,5 @@
 import datetime
+import os
 
 from program.catalog.catalog_generator import CatalogGenerator
 from program.const import MAX_MAGNITUDE, SENSOR_VARIANCE, CAMERA_FOV, MAIN_PATH

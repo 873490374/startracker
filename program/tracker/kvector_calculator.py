@@ -14,7 +14,7 @@ class DBVector:
 
 class KVectorCalculator:
 
-    def make_kvector(self, y_vector: [float]):
+    def make_kvector(self, y_vector: [float]) -> DBVector:
         n = len(y_vector)
         y_vector = y_vector
         s_vector = sorted(y_vector)
@@ -34,7 +34,7 @@ class KVectorCalculator:
         return DBVector(k_vector, s_vector, m, q)
 
     def calculate_k_vector(
-            self, s_vector: [float], m: float, q: float, n: int):
+            self, s_vector: [float], m: float, q: float, n: int) -> [float]:
         k_vector = [0]
         for i in range(1, len(s_vector) - 1):
             j = i
@@ -46,11 +46,12 @@ class KVectorCalculator:
         k_vector.append(n)
         return k_vector
 
-    def z(self, x:float, m:float, q:float):
+    def z(self, x: float, m: float, q: float) -> float:
         z = m * x + q
         return z
 
-    def find_in_kvector(self, y_a: float, y_b: float, db_vector: DBVector):
+    def find_in_kvector(
+            self, y_a: float, y_b: float, db_vector: DBVector) -> [float]:
         k_vector = db_vector.k_vector
         s_vector = db_vector.s_vector
         q = db_vector.q
@@ -68,10 +69,10 @@ class KVectorCalculator:
             i += 1
         return answer
 
-    def calculate_j_b(self, y_a: float, q:float, m:float):
+    def calculate_j_b(self, y_a: float, q: float, m: float) -> int:
         j_b = math.floor((y_a - q) / m)
         return j_b
 
-    def calculate_j_t(self, y_b: float, q: float, m: float):
+    def calculate_j_t(self, y_b: float, q: float, m: float) -> int:
         j_t = math.ceil((y_b - q) / m)
         return j_t

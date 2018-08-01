@@ -11,13 +11,14 @@ from program.validation.scripts.simulator import StarCatalog
 
 
 class CatalogGenerator:
-    def __init__(self, max_magnitude, sensor_variance, camera_fov):
+    def __init__(
+            self, max_magnitude: int, sensor_variance: float, camera_fov: int):
         self.star_identifier = StarIdentifier(
             planar_triangle_calculator=PlanarTriangleCalculator(
                 sensor_variance=sensor_variance
             ),
-            sensor_variance=sensor_variance,
             max_magnitude=max_magnitude,
+            sensor_variance=sensor_variance,
             camera_fov=camera_fov,
             catalog=None)
         self.triangle_calc = PlanarTriangleCalculator(

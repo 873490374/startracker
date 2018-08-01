@@ -6,14 +6,16 @@ from program.star import StarUV
 
 
 class CentroidCalculator:
-    def __init__(self, pixel_size, focal_length, a_roi, i_threshold):
+    def __init__(self, pixel_size: int, focal_length: int,
+                 a_roi: int, i_threshold: int):
         self.pixel_size = pixel_size
         self.focal_length = focal_length
         self.a_roi = a_roi
         self.i_threshold = i_threshold
 
     @staticmethod
-    def sum_border(start, end, where, constant, matrix):
+    def sum_border(start: int, end: int, where: str, constant: int,
+                   matrix: np.ndarray) -> int:
         m = matrix
         i = start
         border_sum = 0
@@ -26,7 +28,8 @@ class CentroidCalculator:
         return border_sum
 
     @staticmethod
-    def total_mass(x_start, x_end, y_start, y_end, I_norm):
+    def total_mass(x_start: int, x_end: int, y_start: int, y_end: int,
+                   I_norm: np.ndarray) -> int:
         mass_sum = 0
         x = x_start
         while x < x_end:
@@ -38,7 +41,9 @@ class CentroidCalculator:
         return mass_sum
 
     @staticmethod
-    def array_point_mass(x_start, x_end, y_start, y_end, I_norm, b):
+    def array_point_mass(
+            x_start: int, x_end: int, y_start: int, y_end: int,
+            I_norm: np.ndarray, b: int) -> (int, int):
         x_cm = 0
         y_cm = 0
         x = x_start
@@ -51,7 +56,7 @@ class CentroidCalculator:
             x += 1
         return x_cm, y_cm
 
-    def calculate_centroids(self, I):
+    def calculate_centroids(self, I: np.ndarray) -> [StarUV]:
 
         star_list = []
 

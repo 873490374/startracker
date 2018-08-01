@@ -1,8 +1,10 @@
+import os
+
 import numpy as np
 import pytest
 
 from program.planar_triangle import CatalogPlanarTriangle
-from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV
+from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV, MAIN_PATH
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.utils import read_scene
@@ -12,7 +14,8 @@ check = [42913, 45941, 45556, 41037]
 
 def find_stars(input_data):
     targets = []
-    filename = './tests/catalog/triangle_test_catalog.csv'
+    filename = os.path.join(
+        MAIN_PATH, 'tests/catalog/triangle_test_catalog.csv')
     catalog = [
         CatalogPlanarTriangle(t[0], t[1], t[2], t[3], t[4])
         for t in np.genfromtxt(filename, delimiter=',')]
@@ -50,7 +53,8 @@ class TestValidate:
 
     @pytest.mark.skip(reason="Too long")
     def test_(self):
-        input_data, result = read_scene('./tests/scenes', 'validate')
+        input_data, result = read_scene(
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'validate')
         assert len(input_data[0]) == 14
         targets = find_stars(input_data)
         assert len(targets[0]) > 0

@@ -2,6 +2,7 @@ import datetime
 
 import numpy as np
 
+from program.const import MAIN_PATH
 from program.validation.scripts.simulator import (
     EquidistantCamera,
     EquisolidAngleCamera,
@@ -94,12 +95,13 @@ def create_scene():
                 f.write(','.join(str(value) for value in line) + '\n')
 
     now = datetime.datetime.now()
-    write_csv(
-        './tests/scenes/input_sample_'
+    write_csv(os.path.join(
+        MAIN_PATH,
+        'tests/scenes/input_sample_'
         '{}_{}_{}_{}_{}.csv'.format(
-            now.year, now.month, now.day, now.hour, now.minute), inputs)
-    write_csv(
-        './tests/scenes/result_sample_'
+            now.year, now.month, now.day, now.hour, now.minute)), inputs)
+    write_csv(os.path.join(
+        MAIN_PATH,
+        'tests/scenes/result_sample_'
         '{}_{}_{}_{}_{}.csv'.format(
-            now.year, now.month, now.day, now.hour, now.minute), outputs)
-
+            now.year, now.month, now.day, now.hour, now.minute)), outputs)

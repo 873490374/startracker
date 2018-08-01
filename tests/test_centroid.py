@@ -2,11 +2,11 @@ import numpy as np
 import os
 from PIL import Image
 
+from program.const import MAIN_PATH
 from program.star import StarUV
 from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
-from program.utils import read_scene
 
 
 class TestCentroid:
@@ -14,9 +14,7 @@ class TestCentroid:
     focal_length = 7
     a_roi = 5
     i_threshold = 250
-    p = os.path.dirname(os.path.realpath(__file__))
-    images_path = os.path.join(p, 'images/stars/')
-    scenes_path = os.path.join(p, 'scenes/')
+    images_path = os.path.join(MAIN_PATH, 'tests/images/stars/')
 
     def test_centroid_jpg_2(self):
         img_path = os.path.join(self.images_path, '2.jpg')
@@ -27,8 +25,8 @@ class TestCentroid:
             self.a_roi,
             self.i_threshold,
         )
-        I = ImageProcessor(CameraConnector(), centroid_calculator
-                           ).image_to_matrix(image)
+        I = ImageProcessor(
+            CameraConnector(), centroid_calculator).image_to_matrix(image)
         list_of_stars = centroid_calculator.calculate_centroids(I)
         assert len(list_of_stars) == 92
         assert list_of_stars[0] == StarUV(
