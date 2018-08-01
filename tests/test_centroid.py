@@ -33,14 +33,3 @@ class TestCentroid:
         assert len(list_of_stars) == 92
         assert list_of_stars[0] == StarUV(
             -1, -1, np.array([0.06997471, 0.99754376, 0.00315964]))
-
-    def test_scene_centroids(self):
-        input_data, _ = read_scene(self.scenes_path, 'validate')
-        centroid_calculator = CentroidCalculator(
-            self.pixel_size,
-            self.focal_length,
-            self.a_roi,
-            self.i_threshold,
-        )
-        centroid_calculator.calculate_centroids(input_data[0])
-
