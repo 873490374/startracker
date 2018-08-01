@@ -34,3 +34,10 @@ class ImagePlanarTriangle:
         self.moment = moment
         self.area_var = area_var
         self.moment_var = moment_var
+
+    def __iter__(self):
+        yield 'star1_id', self.s1.id
+        yield 'star2_id', self.s2.id,
+        yield 'star3_id', self.s3.id,
+        yield 'area', self.area
+        yield 'moment', self.moment

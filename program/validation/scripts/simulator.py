@@ -33,8 +33,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from program.const import MAX_MAGNITUDE
-
 
 def angles_to_vector(azimuth, altitude):
     """Transforms azimuth altitude representation to unit-length vectors."""
@@ -335,7 +333,8 @@ class CubicCamera(Camera):
 
 
 class StarCatalog:
-    def __init__(self, filename='hip_main.dat'):
+    def __init__(self, max_magnitude, filename='hip_main.dat'):
+        self.max_magnitude = max_magnitude
         if filename is not None:
             self.read(filename)
             self.preprocess()
@@ -350,7 +349,7 @@ class StarCatalog:
 
         self.catalog = self.catalog[filter_index]
         # print(self.catalog)
-        self.catalog = self.catalog[self.catalog['Vmag'] <= MAX_MAGNITUDE]
+        self.catalog = self.catalog[self.catalog['Vmag'] <= self.max_magnitude]
         # print(50*'*')
         # print(self.catalog)
 
