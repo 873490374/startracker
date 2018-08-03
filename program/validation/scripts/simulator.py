@@ -625,10 +625,8 @@ class Scene:
     def scramble(self):
         """Scrambles the order of stars in a scene."""
 
-        # print(self.ids)
         scramble_index = np.random.permutation(range(len(self.ids)))
-        # print(scramble_index)
-        # print(len(self.pos))
+
         self.pos = self.pos[scramble_index, ...]
         self.magnitudes = self.magnitudes[scramble_index]
         self.ids = self.ids[scramble_index]
@@ -651,8 +649,8 @@ class Scene:
         self.magnitudes = self.magnitudes[filter_index]
         self.ids = self.ids[filter_index]
 
-    @staticmethod
-    def random(catalog, camera, detector, min_true, max_true, min_false,
+    @classmethod
+    def random(cls, catalog, camera, detector, min_true, max_true, min_false,
                max_false, min_stars, max_tries=1000, gaussian_noise_sigma=None,
                quantization_noise=None, magnitude_gaussian=None):
         scene = Scene(
@@ -666,20 +664,28 @@ class Scene:
         ok = False
 
         while not ok and tries < max_tries:
-            scene.compute()
 
-            scene.add_false_stars(np.random.randint(min_false, max_false + 1))
+            try:
 
-            scene.scramble()
+                scene.compute()
 
-            scene.add_magnitude_noise(magnitude_gaussian)
+                scene.add_false_stars(np.random.randint(min_false, max_false + 1))
 
-            scene.filter_magnitudes()
+                scene.scramble()
 
-            num_stars = np.sum(scene.ids >= 0)
+                scene.add_magnitude_noise(magnitude_gaussian)
+
+                scene.filter_magnitudes()
+
+                num_stars = np.sum(scene.ids >= 0)
+
+            except:
+                pass
 
             ok = (min_true <= num_stars <= max_true and
-                  len(scene.ids) > min_stars)
+                  len(scene.ids) > min_stars )
+            # and
+            #       cls.are_correct_stars(cls, scene.ids))
 
             tries += 1
 
@@ -687,6 +693,13 @@ class Scene:
             return None
 
         return scene
+
+    def are_correct_stars(self, ids):
+        for f in ids:
+            if f in [78401, 80112, 78820]:
+                return False
+        return True
+
 
     def render(self, as_image=True):
         """Renders the camera image of a scene.

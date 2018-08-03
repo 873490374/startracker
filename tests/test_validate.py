@@ -9,16 +9,15 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.utils import read_scene
 
-check = [42913, 45941, 45556, 41037]
 
-
-def find_stars(input_data):
+def find_stars(input_data, catalog_fname):
     targets = []
     filename = os.path.join(
-        MAIN_PATH, 'tests/catalog/triangle_test_catalog.csv')
+        MAIN_PATH, 'tests/catalog/{}.csv'.format(catalog_fname))
     catalog = [
         CatalogPlanarTriangle(t[0], t[1], t[2], t[3], t[4])
-        for t in np.genfromtxt(filename, delimiter=',')]
+        for t in np.genfromtxt(filename, skip_header=0, delimiter=',')]
+    del catalog[0]
     for row in input_data:
         star_identifier = StarIdentifier(
             planar_triangle_calculator=PlanarTriangleCalculator(
@@ -29,7 +28,7 @@ def find_stars(input_data):
             camera_fov=CAMERA_FOV,
             catalog=catalog)
         x = star_identifier.identify_stars(row)
-        targets.append(x)
+        targets.append([x])
     return targets
 
 
@@ -51,12 +50,15 @@ def validate(result, targets):
 
 class TestValidate:
 
-    @pytest.mark.skip(reason="Too long")
     def test_(self):
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'validate')
-        assert len(input_data[0]) == 14
-        targets = find_stars(input_data)
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'b0')
+        targets = find_stars(input_data, 'triangle_catalog_test_small_one')
         assert len(targets[0]) > 0
-        print(targets[0])
-        print('Score: {}'.format(validate(result, targets)))
+        triangle = targets[0][0]
+        print(targets[0][0])
+        assert all([triangle.s1_id in result[0],
+                    triangle.s2_id in result[0],
+                    triangle.s3_id in result[0]])
+        # print(targets[0])
+        # print('Score: {}'.format(validate(result, targets)))

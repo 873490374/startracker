@@ -21,7 +21,7 @@ class StarIdentifier:
 
     def identify_stars(
             self, image_stars: [StarUV],
-            previous_frame_stars: [CatalogPlanarTriangle]=None):
+            previous_frame_stars: [CatalogPlanarTriangle] = None):
         if previous_frame_stars:
             stars = self.identify(image_stars, previous_frame_stars)
         else:
@@ -65,13 +65,9 @@ class StarIdentifier:
                 tc = self.find_in_catalog(t)
                 triangles = self.find_common_triangles(triangles, tc)
                 if len(triangles) == 1:
-                    # print('One triangle found', len(triangles))
                     return triangles
                 if len(triangles) == 0:
-                    # print('No triangles found', len(triangles))
                     return triangles
-        # print('Number of stars after all two common stars triangles',
-        #       len(triangles))
         return triangles
 
     def find_common_triangles(
@@ -82,13 +78,13 @@ class StarIdentifier:
             for t2 in new_t:
                 if t1.has_the_same_stars(t2):
                     common_triangles.append(t2)
-                    # print('common_triangles')
         return common_triangles
 
     def identify(self, star_list: [StarUV],
                  previous_triangles: [CatalogPlanarTriangle]
                  ) -> Union[CatalogPlanarTriangle, None]:
         i = 0
+        unique_found_triangles = []
         for s1 in star_list[:-2]:
             i += 1
             j = 0
@@ -104,21 +100,34 @@ class StarIdentifier:
                         s1, s2, s3)
                     ct = self.find_in_catalog(t)
                     if len(ct) == 1:
-                        # return ct[0]
-                        print('one star?', ct[0])
+                        if ct[0] in unique_found_triangles:
+                            return ct[0]
+                        else:
+                            unique_found_triangles.append(ct[0])
                     else:
                         res = self.get_two_common_stars_triangles(
                             s1, s2, s3, ct, star_list)
                         if len(res) == 1:
-                            return res[0]
+                            if res[0] in unique_found_triangles:
+                                return res[0]
+                            else:
+                                unique_found_triangles.append(res[0])
+        [print(t) for t in unique_found_triangles]
         return None
 
     def are_stars_valid(self, s1: StarUV, s2: StarUV, s3: StarUV,
-        max_magnitude: float, camera_fov: int) -> bool:
+                        max_magnitude: float, camera_fov: int) -> bool:
         if any([all(s1.unit_vector == s2.unit_vector),
                 all(s1.unit_vector == s3.unit_vector),
                 all(s2.unit_vector == s3.unit_vector)]):
             return False
+        # if not any([s1.id in scene_ids and s2.id in scene_ids,
+        #             s1.id in scene_ids and s3.id in scene_ids,
+        #             s2.id in scene_ids and s3.id in scene_ids]):
+        #     return False
+
+        # if any([s1.id not in scene_ids, s2.id not in scene_ids, s3.id not in scene_ids]):
+        #     return False
         return all([
             s1.magnitude <= max_magnitude,
             s2.magnitude <= max_magnitude,
@@ -127,3 +136,9 @@ class StarIdentifier:
             not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
             not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
         ])
+
+
+scene_ids = [78401, 80112, 78820,
+             35904, 33579, 34444,
+             71681, 71683, 68702,
+             ]

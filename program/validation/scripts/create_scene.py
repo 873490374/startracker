@@ -1,8 +1,9 @@
 import datetime
+import os
 
 import numpy as np
 
-from program.const import MAIN_PATH
+from program.const import MAIN_PATH, MAX_MAGNITUDE
 from program.validation.scripts.simulator import (
     EquidistantCamera,
     EquisolidAngleCamera,
@@ -15,7 +16,7 @@ from program.validation.scripts.simulator import (
 )
 
 
-def create_scene():
+def create_scene(num_scenes: int=1000, max_magnitude: int=6):
     # resolution
     res_x = 1920  # pixels
     res_y = 1440  # pixels
@@ -56,10 +57,10 @@ def create_scene():
     max_false = 10
     min_stars = min_true
 
-    import os
-
-    catalog = StarCatalog('{}/program/validation/data/hip_main.dat'.format(
-        os.getcwd()))
+    catalog = StarCatalog(
+        max_magnitude=max_magnitude,
+        filename=os.path.join(
+            MAIN_PATH, 'program/validation/data/hip_main.dat'))
 
     cameras = [
         RectilinearCamera,
@@ -73,17 +74,21 @@ def create_scene():
 
     detector = StarDetector(A_pixel, sigma_pixel, sigma_psf, t_exp, aperture,
                             base_photons)
-    num_scenes = 1
 
     inputs = []
     outputs = []
 
     for i in range(num_scenes):
         scene = Scene.random(
-            catalog, camera, detector, min_true, max_true,
-            min_false, max_false, min_stars, max_tries=1000,
+            catalog=catalog, camera=camera, detector=detector,
+            min_true=min_true, max_true=max_true,
+            min_false=min_false, max_false=max_false,
+            min_stars=min_stars, max_tries=1000,
             gaussian_noise_sigma=gaussian_noise_sigma,
             magnitude_gaussian=magnitude_gaussian)
+
+        if not scene:
+            raise Exception('No scene generated')
 
         inputs.append(np.hstack(
             (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
@@ -105,3 +110,6 @@ def create_scene():
         'tests/scenes/result_sample_'
         '{}_{}_{}_{}_{}.csv'.format(
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
+
+
+create_scene(num_scenes=1, max_magnitude=3)
