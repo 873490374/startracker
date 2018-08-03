@@ -4,6 +4,7 @@ import numpy as np
 
 from program.planar_triangle import ImagePlanarTriangle, CatalogPlanarTriangle
 from program.star import StarUV
+from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
 
@@ -11,9 +12,11 @@ class StarIdentifier:
 
     def __init__(
             self, planar_triangle_calculator: PlanarTriangleCalculator,
+            kvector_calculator: KVectorCalculator,
             sensor_variance: float, max_magnitude: int,
             camera_fov: int, catalog: [CatalogPlanarTriangle]):
         self.planar_triangle_calc = planar_triangle_calculator
+        self.kvector_calc = kvector_calculator
         self.max_magnitude = max_magnitude
         self.sensor_variance = sensor_variance
         self.camera_fov = camera_fov
@@ -38,8 +41,12 @@ class StarIdentifier:
         moment_min = triangle.moment - J_dev
         moment_max = triangle.moment + J_dev
 
+        smaller_catalog = self.kvector_calc.find_in_kvector(
+            moment_min, moment_max, self.catalog)
+
         valid_triangles = []
-        for tt in self.catalog:
+        # for tt in self.catalog:
+        for tt in smaller_catalog:
             if (area_min <= tt.area <= area_max and
                     moment_min <= tt.moment <= moment_max):
                 valid_triangles.append(tt)

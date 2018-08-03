@@ -1,10 +1,12 @@
 import csv
+import operator
 
 import numpy as np
 from progress.bar import Bar
 
-from program.planar_triangle import CatalogPlanarTriangle
+from program.planar_triangle import CatalogPlanarTriangle, ImagePlanarTriangle
 from program.star import StarPosition, StarUV
+from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.validation.scripts.simulator import StarCatalog
@@ -17,10 +19,12 @@ class CatalogGenerator:
             planar_triangle_calculator=PlanarTriangleCalculator(
                 sensor_variance=sensor_variance
             ),
+            kvector_calculator=KVectorCalculator(),
             max_magnitude=max_magnitude,
             sensor_variance=sensor_variance,
             camera_fov=camera_fov,
             catalog=None)
+        self.kvector_calc = KVectorCalculator()
         self.triangle_calc = PlanarTriangleCalculator(
             sensor_variance=sensor_variance)
         self.max_magnitude = max_magnitude
@@ -28,7 +32,7 @@ class CatalogGenerator:
         self.camera_fov = camera_fov
 
     def generate_triangles(
-            self, star_catalog_path: str) -> [CatalogPlanarTriangle]:
+            self, star_catalog_path: str) -> [ImagePlanarTriangle]:
         converted_start = []
         triangle_catalogue = []
 
@@ -55,9 +59,16 @@ class CatalogGenerator:
         classify_bar.finish()
         print('Number of planar triangles in catalogue: {}'.format(
             len(triangle_catalogue)))
-        # kvector
-        # self.save_to_file(triangle_catalogue)
+        triangle_catalogue = self.sort_catalog(triangle_catalogue)
+        triangle_catalogue = self.add_k_vector(triangle_catalogue)
         return triangle_catalogue
+
+    def sort_catalog(self, catalog):
+        return sorted(catalog, key=operator.attrgetter('moment'))
+
+    def add_k_vector(self, catalog):
+        k_vector, _, _ = self.kvector_calc.make_kvector(catalog)
+        return k_vector
 
     def read_catalogue_stars(self, star_catalog_path: str) -> [StarPosition]:
         stars = []
@@ -88,11 +99,11 @@ class CatalogGenerator:
         )
 
     def save_to_file(
-            self, catalog: [CatalogPlanarTriangle], output_file_path: str):
+            self, catalog: [ImagePlanarTriangle], output_file_path: str):
 
         with open(output_file_path, 'w', newline='') as csvfile:
             csvwriter = csv.DictWriter(csvfile, fieldnames=[
-                'star1_id', 'star2_id', 'star3_id', 'area', 'moment'])
+                'star1_id', 'star2_id', 'star3_id', 'area', 'moment', 'k'])
             csvwriter.writeheader()
             for t in catalog:
                 csvwriter.writerow(dict(t))
