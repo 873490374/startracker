@@ -56,16 +56,20 @@ class KVectorCalculator:
     def find_in_kvector(
             self, y_a: float, y_b: float, k_vector: [ImagePlanarTriangle],
             m: float=None, q: float=None) -> [float]:
-        # k_vector = db_vector.k_vector
-        # s_vector = db_vector.s_vector
         m = m or self.m
         q = q or self.q
 
-        j_b = self.calculate_j_b(y_a, m, q)
-        j_t = self.calculate_j_t(y_b, m, q)
+        j_b = max(self.calculate_j_b(y_a, m, q), 0)
+        j_t = min(self.calculate_j_t(y_b, m, q), len(k_vector)-1)
 
-        k_start = k_vector[j_b].k + 1
-        k_end = k_vector[j_t].k
+        if j_b > 0:
+            print('j_b: ', j_b)
+        if j_t < len(k_vector)-1:
+            print('j_t: ', j_t)
+
+        k_start = int(k_vector[j_b].k + 1)
+        k_end = min(int(k_vector[j_t].k), len(k_vector)-1)
+        # return k_vector[k_start:k_end]
         answer = []
         i = k_start
         while i <= k_end:

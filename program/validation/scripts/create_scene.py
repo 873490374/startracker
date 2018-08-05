@@ -51,7 +51,7 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
 
     # star count
 
-    min_true = 3
+    min_true = 5
     max_true = 100
     min_false = 0
     max_false = 10
@@ -83,7 +83,7 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
             catalog=catalog, camera=camera, detector=detector,
             min_true=min_true, max_true=max_true,
             min_false=min_false, max_false=max_false,
-            min_stars=min_stars, max_tries=1000,
+            min_stars=min_stars, max_tries=10000,
             gaussian_noise_sigma=gaussian_noise_sigma,
             magnitude_gaussian=magnitude_gaussian)
 
@@ -112,4 +112,4 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1, max_magnitude=3)
+create_scene(num_scenes=1, max_magnitude=4)

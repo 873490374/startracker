@@ -1,3 +1,4 @@
+import math
 from typing import Union
 
 import numpy as np
@@ -40,6 +41,16 @@ class StarIdentifier:
         area_max = triangle.area + A_dev
         moment_min = triangle.moment - J_dev
         moment_max = triangle.moment + J_dev
+
+        if any([
+            triangle.area == 0,
+            triangle.moment == 0,
+            area_min is math.nan,
+            area_max is math.nan,
+            moment_min is math.nan,
+            moment_max is math.nan,
+        ]):
+            return self.catalog
 
         smaller_catalog = self.kvector_calc.find_in_kvector(
             moment_min, moment_max, self.catalog)
@@ -145,7 +156,10 @@ class StarIdentifier:
         ])
 
 
-scene_ids = [78401, 80112, 78820,
-             35904, 33579, 34444,
-             71681, 71683, 68702,
-             ]
+scene_ids = [
+    # 78401, 80112, 78820,
+    # 35904, 33579, 34444,
+    # 71681, 71683, 68702,
+    # 85927, 85696, 86228, 87073, 86670,
+    41037, 44382, 45101, 41312, 45080, 43783,
+]
