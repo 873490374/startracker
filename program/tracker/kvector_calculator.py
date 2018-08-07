@@ -62,10 +62,13 @@ class KVectorCalculator:
         j_b = max(self.calculate_j_b(y_a, m, q), 0)
         j_t = min(self.calculate_j_t(y_b, m, q), len(k_vector)-1)
 
-        if j_b > 0:
-            print('j_b: ', j_b)
-        if j_t < len(k_vector)-1:
-            print('j_t: ', j_t)
+        # if j_b > 0:
+        #     print('j_b: ', j_b)
+        # if j_t < len(k_vector)-1:
+        #     print('j_t: ', j_t)
+
+        if j_b > len(k_vector) + 1 or j_t < 0:
+            return []
 
         k_start = int(k_vector[j_b].k + 1)
         k_end = min(int(k_vector[j_t].k), len(k_vector)-1)

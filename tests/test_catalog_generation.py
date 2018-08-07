@@ -12,7 +12,7 @@ from program.star import StarUV
 class TestCatalogGeneration:
     def test_catalog_generation(self):
         generator = CatalogGenerator(
-            max_magnitude=1, sensor_variance=SENSOR_VARIANCE,
+            max_magnitude=2, sensor_variance=SENSOR_VARIANCE,
             camera_fov=CAMERA_FOV)
         catalog = generator.generate_triangles(
             os.path.join(MAIN_PATH, 'program/validation/data/hip_main.dat'))
@@ -28,7 +28,7 @@ class TestCatalogGeneration:
                     StarUV(int(row['star3_id']), None, None),
                     float(row['area']), float(row['moment']),
                     None, None))
-        assert len(catalog) == 364
+        assert len(catalog) == 5
         assert len(catalog) == len(cat)
         i = 0
         for i in range(len(catalog)):
