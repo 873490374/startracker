@@ -2,8 +2,9 @@ import datetime
 import os
 
 import numpy as np
+from progress.bar import Bar
 
-from program.const import MAIN_PATH, MAX_MAGNITUDE
+from program.const import MAIN_PATH, MAX_MAGNITUDE, CAMERA_FOV, FOCAL_LENGTH
 from program.validation.scripts.simulator import (
     EquidistantCamera,
     EquisolidAngleCamera,
@@ -16,13 +17,13 @@ from program.validation.scripts.simulator import (
 )
 
 
-def create_scene(num_scenes: int=1000, max_magnitude: int=6):
+def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
     # resolution
     res_x = 1920  # pixels
     res_y = 1440  # pixels
 
     # normalized focal length
-    f = 0.5 / np.tan(np.deg2rad(10) / 2)
+    f = FOCAL_LENGTH
 
     # pixel aspect ratio
     pixel_ar = 1
@@ -54,7 +55,7 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
     min_true = 5
     max_true = 100
     min_false = 0
-    max_false = 10
+    max_false = 0
     min_stars = min_true
 
     catalog = StarCatalog(
@@ -78,21 +79,29 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
     inputs = []
     outputs = []
 
+    classify_bar = Bar(
+        'Building scenes', max=num_scenes)
     for i in range(num_scenes):
         scene = Scene.random(
             catalog=catalog, camera=camera, detector=detector,
             min_true=min_true, max_true=max_true,
             min_false=min_false, max_false=max_false,
-            min_stars=min_stars, max_tries=10000,
+            min_stars=min_stars, max_tries=1000000,
             gaussian_noise_sigma=gaussian_noise_sigma,
             magnitude_gaussian=magnitude_gaussian)
 
         if not scene:
             raise Exception('No scene generated')
 
-        inputs.append(np.hstack(
-            (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
+        # inputs.append(np.hstack(
+        #     (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
+        inputs.append(np.hstack((
+            scene.uv[::, ::],
+            scene.magnitudes.reshape(-1, 1))).flatten())
         outputs.append(scene.ids)
+        classify_bar.next()
+
+    classify_bar.finish()
 
     def write_csv(filename, lines):
         with open(filename, 'w') as f:
@@ -112,4 +121,4 @@ def create_scene(num_scenes: int=1000, max_magnitude: int=6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1, max_magnitude=4)
+create_scene(num_scenes=1, max_magnitude=3)

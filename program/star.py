@@ -35,8 +35,8 @@ class StarUV:
 
     def __eq__(self, other):
         if isinstance(other, StarUV):
-            return (
-                np.isclose(self.unit_vector[0], other.unit_vector[0]) and
-                np.isclose(self.unit_vector[1], other.unit_vector[1]) and
-                np.isclose(self.unit_vector[2], other.unit_vector[2]))
+            return all([
+                np.isclose(self.unit_vector[0], other.unit_vector[0]),
+                np.isclose(self.unit_vector[1], other.unit_vector[1]),
+                np.isclose(self.unit_vector[2], other.unit_vector[2])])
         return False

@@ -1,10 +1,11 @@
+import datetime
 import os
 
 import numpy as np
 import pytest
 
 from program.planar_triangle import CatalogPlanarTriangle
-from program.const import SENSOR_VARIANCE, MAX_MAGNITUDE, CAMERA_FOV, MAIN_PATH
+from program.const import SENSOR_VARIANCE, CAMERA_FOV, MAIN_PATH
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -25,12 +26,17 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q, max_magnitude):
                 sensor_variance=SENSOR_VARIANCE
             ),
             kvector_calculator=KVectorCalculator(kv_m, kv_q),
-            sensor_variance=SENSOR_VARIANCE,
             max_magnitude=max_magnitude,
             camera_fov=CAMERA_FOV,
             catalog=catalog)
-        x = star_identifier.identify_stars(row)
-        targets.append([x])
+        start = datetime.datetime.now()
+        stars = star_identifier.identify_stars(row)
+        end = datetime.datetime.now()
+        time = end - start
+        print('')
+        print(time)
+        print(stars)
+        targets.append([stars])
     return targets
 
 
@@ -52,77 +58,60 @@ def validate(result, targets):
 
 class TestValidate:
 
-    @pytest.mark.skip('Does not work')
-    def test_1(self):
-        kv_m = 0.00020383375600620604
-        kv_q = 6.112353943522856e-05
-        max_magnitude = 3
+    def test_one_scene(self):
+        kv_m = 3.718451776463076e-07
+        kv_q = -3.7085940246021246e-07
+        max_magnitude = 4
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'a0')
-        targets = find_stars(
-            input_data, 'triangle_catalog_test_small_4',
-            kv_m, kv_q, max_magnitude)
-        assert len(targets[0]) > 0
-        triangle = targets[0][0]
-        print(targets[0][0])
-        assert all([triangle.s1_id in result[0],
-                    triangle.s2_id in result[0],
-                    triangle.s3_id in result[0]])
-        # print(targets[0])
-        # print('Score: {}'.format(validate(result, targets)))
-
-    @pytest.mark.skip('Too long')
-    def test_2(self):
-        kv_m = 4.428503935443109e-07
-        kv_q = -3.378325607016865e-07
-        max_magnitude = 3
-        input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'a0')
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'one_scene')
         targets = find_stars(
             input_data, 'triangle_catalog_test_full_3',
             kv_m, kv_q, max_magnitude)
         assert len(targets[0]) > 0
         triangle = targets[0][0]
-        print(targets[0][0])
         assert all([triangle.s1_id in result[0],
                     triangle.s2_id in result[0],
                     triangle.s3_id in result[0]])
         # print(targets[0])
         # print('Score: {}'.format(validate(result, targets)))
 
-    def test_3(self):
-        kv_m = 0.015470220088694078
-        kv_q = 0.003400300805871943
+    @pytest.mark.skip('Very, very long')
+    def test_100_scenes_1(self):
+        kv_m = 3.718451776463076e-07
+        kv_q = -3.7085940246021246e-07
         max_magnitude = 4
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'a1')
+            os.path.join(MAIN_PATH, 'tests/scenes'), '100_scenes_1')
         targets = find_stars(
-            input_data, 'triangle_catalog_test_small_one',
+            input_data, 'triangle_catalog_test_full_3',
             kv_m, kv_q, max_magnitude)
-        assert len(targets[0]) > 0
-        triangle = targets[0][0]
-        # print(targets[0][0])
-        assert all([triangle.s1_id in result[0],
-                    triangle.s2_id in result[0],
-                    triangle.s3_id in result[0]])
-        # print(targets[0])
+        for i in range(len(targets)):
+            assert len(targets[i]) > 0
+            triangle = targets[i][0]
+            # print(targets[0][0])
+            assert all([triangle.s1_id in result[i],
+                        triangle.s2_id in result[i],
+                        triangle.s3_id in result[i]])
+            # print(targets[0])
         # print('Score: {}'.format(validate(result, targets)))
 
-    @pytest.mark.skip('Too long')
-    def test_4(self):
-        kv_m = 4.301928959705992e-05
-        kv_q = 0.0002134423209781135
+    @pytest.mark.skip('Very, very long')
+    def test_100_scenes_2(self):
+        kv_m = 3.718451776463076e-07
+        kv_q = -3.7085940246021246e-07
         max_magnitude = 4
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'a1')
+            os.path.join(MAIN_PATH, 'tests/scenes'), '100_scenes_2')
         targets = find_stars(
-            input_data, 'triangle_catalog_test_small_two',
+            input_data, 'triangle_catalog_test_full_3',
             kv_m, kv_q, max_magnitude)
-        assert len(targets[0]) > 0
-        triangle = targets[0][0]
-        print(targets[0][0])
-        assert all([triangle.s1_id in result[0],
-                    triangle.s2_id in result[0],
-                    triangle.s3_id in result[0]])
-        # print(targets[0])
+        for i in range(len(targets)):
+            assert len(targets[i]) > 0
+            triangle = targets[i][0]
+            # print(targets[0][0])
+            assert all([triangle.s1_id in result[i],
+                        triangle.s2_id in result[i],
+                        triangle.s3_id in result[i]])
+            # print(targets[0])
         # print('Score: {}'.format(validate(result, targets)))
+

@@ -1,14 +1,14 @@
 import csv
 import operator
 
-import numpy as np
 from progress.bar import Bar
 
-from program.planar_triangle import CatalogPlanarTriangle, ImagePlanarTriangle
-from program.star import StarPosition, StarUV
+from program.planar_triangle import ImagePlanarTriangle
+from program.star import StarPosition
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
+from program.utils import convert_star_to_uv
 from program.validation.scripts.simulator import StarCatalog
 
 
@@ -21,7 +21,6 @@ class CatalogGenerator:
             ),
             kvector_calculator=KVectorCalculator(),
             max_magnitude=max_magnitude,
-            sensor_variance=sensor_variance,
             camera_fov=camera_fov,
             catalog=None)
         self.kvector_calc = KVectorCalculator()
@@ -39,7 +38,7 @@ class CatalogGenerator:
         stars = self.read_catalogue_stars(star_catalog_path)
         for s in stars:
             if s.magnitude <= self.max_magnitude:
-                star = self.convert(s)
+                star = convert_star_to_uv(s)
                 converted_start.append(star)
         classify_bar = Bar(
             'Building planar triangle catalogue', max=len(converted_start))
@@ -83,20 +82,6 @@ class CatalogGenerator:
             )
             stars.append(s)
         return stars
-
-    def convert(self, star: StarPosition) -> StarUV:
-        """ Convert star positions to unit vector."""
-        alpha = star.right_ascension
-        delta = star.declination
-        return StarUV(
-            star_id=star.id,
-            magnitude=star.magnitude,
-            unit_vector=np.array([
-                np.cos(alpha) * np.cos(delta),
-                np.sin(alpha) * np.cos(delta),
-                np.sin(delta)
-            ], dtype='float64').T
-        )
 
     def save_to_file(
             self, catalog: [ImagePlanarTriangle], output_file_path: str):

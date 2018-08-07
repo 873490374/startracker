@@ -88,6 +88,7 @@ class PlanarTriangleCalculator:
     def calculate_r_matrix(
             self, p: float, q: float, r: float,
             sensor_variance: float) -> np.ndarray:
+        # TODO np.cov()
         R1 = sensor_variance*(np.identity(3) - np.outer(p, p))
         R2 = sensor_variance*(np.identity(3) - np.outer(q, q))
         R3 = sensor_variance*(np.identity(3) - np.outer(r, r))
@@ -106,8 +107,8 @@ class PlanarTriangleCalculator:
     def calculate_area_variance(
             self, H: np.ndarray, R: np.ndarray) -> float:
         # Variance - Area
-        htr = np.array(H)[np.newaxis].T
-        return (H * R * htr).item()  # scalar
+        H_transpose = np.array(H)[np.newaxis].T
+        return (H * R * H_transpose).item()  # scalar
 
     def calculate_polar_moment_variance(
             self, a: float, b: float, c: float, part: {np.ndarray},

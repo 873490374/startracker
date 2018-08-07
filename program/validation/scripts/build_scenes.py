@@ -1,5 +1,6 @@
 import os
 
+from program.const import FOCAL_LENGTH
 from program.validation.scripts.simulator import *
 
 
@@ -13,7 +14,7 @@ res_x = 1920  # pixels
 res_y = 1440  # pixels
 
 # normalized focal length
-f = 0.5 / np.tan(np.deg2rad(10) / 2)
+f = FOCAL_LENGTH
 
 # pixel aspect ratio
 pixel_ar = 1

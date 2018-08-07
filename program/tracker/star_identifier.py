@@ -13,13 +13,11 @@ class StarIdentifier:
 
     def __init__(
             self, planar_triangle_calculator: PlanarTriangleCalculator,
-            kvector_calculator: KVectorCalculator,
-            sensor_variance: float, max_magnitude: int,
+            kvector_calculator: KVectorCalculator, max_magnitude: int,
             camera_fov: int, catalog: [CatalogPlanarTriangle]):
         self.planar_triangle_calc = planar_triangle_calculator
         self.kvector_calc = kvector_calculator
         self.max_magnitude = max_magnitude
-        self.sensor_variance = sensor_variance
         self.camera_fov = camera_fov
         self.catalog = catalog
 
@@ -35,8 +33,8 @@ class StarIdentifier:
     def find_in_catalog(
             self, triangle: ImagePlanarTriangle) -> [CatalogPlanarTriangle]:
 
-        A_dev = np.math.sqrt(triangle.area_var)  # * 0.03177
-        J_dev = np.math.sqrt(triangle.moment_var)  # * 0.03177
+        A_dev = np.math.sqrt(triangle.area_var)
+        J_dev = np.math.sqrt(triangle.moment_var)
         area_min = triangle.area - A_dev
         area_max = triangle.area + A_dev
         moment_min = triangle.moment - J_dev
@@ -64,6 +62,9 @@ class StarIdentifier:
         # print('found in catalog', len(valid_triangles))
         # if len(valid_triangles) == 1:
         #     print(valid_triangles[0])
+
+        if len(valid_triangles) == 0:
+            return self.catalog
         return valid_triangles
 
     def get_two_common_stars_triangles(
@@ -118,41 +119,50 @@ class StarIdentifier:
                         s1, s2, s3)
                     ct = self.find_in_catalog(t)
                     if len(ct) == 1:
-                        if ct[0] in unique_found_triangles:
+                        # if ct[0] in unique_found_triangles:
                             return ct[0]
-                        else:
-                            unique_found_triangles.append(ct[0])
+                        # else:
+                        #     unique_found_triangles.append(ct[0])
                     else:
                         res = self.get_two_common_stars_triangles(
                             s1, s2, s3, ct, star_list)
                         if len(res) == 1:
-                            if res[0] in unique_found_triangles:
+                            # if res[0] in unique_found_triangles:
                                 return res[0]
-                            else:
-                                unique_found_triangles.append(res[0])
-        [print(t) for t in unique_found_triangles]
+                            # else:
+                            #     unique_found_triangles.append(res[0])
+        # print("***")
+        # [print(t) for t in unique_found_triangles]
+        # print("***")
         return None
 
     def are_stars_valid(self, s1: StarUV, s2: StarUV, s3: StarUV,
                         max_magnitude: float, camera_fov: int) -> bool:
-        if any([all(s1.unit_vector == s2.unit_vector),
-                all(s1.unit_vector == s3.unit_vector),
-                all(s2.unit_vector == s3.unit_vector)]):
+        if any([s1 == s2, s1 == s3, s2 == s3]):
             return False
         # if not any([s1.id in scene_ids and s2.id in scene_ids,
         #             s1.id in scene_ids and s3.id in scene_ids,
         #             s2.id in scene_ids and s3.id in scene_ids]):
         #     return False
-
-        # if any([s1.id not in scene_ids, s2.id not in scene_ids, s3.id not in scene_ids]):
+        #
+        # if any([
+        #     s1.id not in scene_ids,
+        #     s2.id not in scene_ids,
+        #     s3.id not in scene_ids]):
         #     return False
-        return all([
+        if not all([
             s1.magnitude <= max_magnitude,
             s2.magnitude <= max_magnitude,
             s3.magnitude <= max_magnitude,
-            not any(s1.unit_vector.T * s2.unit_vector >= np.cos(camera_fov)),
-            not any(s1.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
-            not any(s2.unit_vector.T * s3.unit_vector >= np.cos(camera_fov)),
+        ]):
+            return False
+        return all([
+            np.inner(s1.unit_vector.T, s2.unit_vector
+                     ) >= np.cos(np.deg2rad(camera_fov)),
+            np.inner(s2.unit_vector.T, s3.unit_vector
+                     ) >= np.cos(np.deg2rad(camera_fov)),
+            np.inner(s1.unit_vector.T, s3.unit_vector
+                     ) >= np.cos(np.deg2rad(camera_fov)),
         ])
 
 
@@ -161,5 +171,7 @@ scene_ids = [
     # 35904, 33579, 34444,
     # 71681, 71683, 68702,
     # 85927, 85696, 86228, 87073, 86670,
-    41037, 44382, 45101, 41312, 45080, 43783,
+    # 41037, 44382, 45101, 41312, 45080, 43783,
+    # 85696, 86228, 87073, 86670, 85927,
+    # 78820, 80763, 78265, 78401, 81266, 80112
 ]

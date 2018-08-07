@@ -126,6 +126,7 @@ class CentroidCalculator:
 
         # 7. unit vector u
         for star in star_list:
+            # TODO Does it work correctly? What are focal_length & pixel size?
             vector = np.array([self.pixel_size * star[0],
                                self.pixel_size * star[1],
                                self.focal_length])

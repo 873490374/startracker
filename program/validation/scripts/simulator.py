@@ -526,7 +526,7 @@ class Scene:
         self.ids = None
         self.magnitude_threshold = detector.compute_magnitude_threshold()
 
-    def compute(self, orientation=None):
+    def  compute(self, orientation=None):
         """Generates a scene for the star tracker.
         If not orientation is given a random one is generated.
         Gaussian noise is applied to star positions if enabled."""
@@ -552,7 +552,7 @@ class Scene:
         if self.gaussian_noise_sigma:
             pos = add_vector_noise(pos, self.gaussian_noise_sigma)
 
-        az, alt = vector_to_angles(pos)# + noise
+        az, alt = vector_to_angles(pos)  # + noise
 
         scene = self.camera.from_angles(az, alt)
 
@@ -570,6 +570,7 @@ class Scene:
         self.pos = scene
         self.magnitudes = self.catalog.magnitudes[scene_ids]
         self.ids = self.catalog.lookup_indices(scene_ids)
+        self.uv = pos[selection]
 
     def add_false_stars(self, false_stars):
         """Adds randomly generated false stars to a scene."""
@@ -699,7 +700,6 @@ class Scene:
             if f in [78401, 80112, 78820]:
                 return False
         return True
-
 
     def render(self, as_image=True):
         """Renders the camera image of a scene.
