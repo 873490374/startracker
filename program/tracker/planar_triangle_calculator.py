@@ -88,7 +88,6 @@ class PlanarTriangleCalculator:
     def calculate_r_matrix(
             self, p: float, q: float, r: float,
             sensor_variance: float) -> np.ndarray:
-        # TODO np.cov()
         R1 = sensor_variance*(np.identity(3) - np.outer(p, p))
         R2 = sensor_variance*(np.identity(3) - np.outer(q, q))
         R3 = sensor_variance*(np.identity(3) - np.outer(r, r))

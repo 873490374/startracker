@@ -1,4 +1,5 @@
 import numpy as np
+from pyquaternion import Quaternion
 
 from program.tracker.quest import QuestCalculator
 
@@ -43,14 +44,50 @@ class TestQuest:
         v_list = [v1, v2]
         w_list = [w1, w2]
 
+        R_bi_exact = np.array([
+            [0.5335, 0.8080, 0.2500],
+            [-0.8080, 0.3995, 0.4330],
+            [0.2500, -0.4330, 0.8660]
+        ])
 
-        R_bi_quest = np.array([
+        R_bi_quest_expected = np.array([
             [0.5571, 0.7895, 0.2575],
             [-0.7950, 0.4175, 0.4400],
             [0.2399, -0.4499, 0.8603]
         ])
-        sigma = 1.773
-        J = 3.6810 * np.math.pow(10, -4)
+
+        eigenvalue_expected = 1.9996
+
+        eigenvector_expected = np.array([0.2643, -0.0051, 0.4706, 0.8418])
+
+        K_expected = np.array([
+            [-1.1929, 0.8744, 0.9641, 0.4688],
+            [0.8744, 0.5013, 0.3536, -0.4815],
+            [0.9641, 0.3536, -0.5340, 1.1159],
+            [0.4688, -0.4815, 1.1159, 1.2256],
+        ])
+
+        phi_expected = 1.773  # attitude error in degrees
+        J_expected = 3.6810e-4  # loss function value
+
         quest_calc = QuestCalculator()
-        attitude = quest_calc.calculate_quest(weight_list, v_list, w_list)
-        print(attitude)
+        q, K_calc = quest_calc.calculate_quest(weight_list, v_list, w_list)
+
+        assert np.isclose(q, np.array(
+            [0.89139439, 0.18244972, -0.17532932, 0.37601565])
+        ).all()
+        assert np.isclose(K_calc, K_expected, atol=0.001).all()
+
+        q8d = Quaternion(axis=[q[1], q[2], q[3]], angle=q[0])
+        R = q8d.rotation_matrix
+
+        assert np.isclose(w1, np.inner(R, v1.T), atol=0.09).all()
+
+        assert np.isclose(w2, np.inner(R, v2.T), atol=0.31).all()
+
+        R_diff = np.inner(R.T, R_bi_quest_expected)
+
+        assert np.isclose(np.identity(3), R_diff, atol=0.35).all()
+
+        assert np.isclose(
+            np.abs(R), np.abs(R_bi_quest_expected), atol=0.27).all()

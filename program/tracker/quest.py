@@ -7,16 +7,19 @@ class QuestCalculator:
 
     def calculate_quest(
             self, weight_list: [float], w_list: [float], v_list: [float]
-    ) -> np.ndarray:
+    ) -> (np.ndarray, np.ndarray):
         B = self.calculate_B(weight_list, w_list, v_list)
         S = self.calculate_S(B)
         self.s = self.calculate_s(B)
         Z = self.calculate_Z(B)
+        K = self.calculate_K(S, self.s, Z)
         self.a = self.calculate_a(self.s, Z)
         self.b = self.calculate_b(self.s, Z)
         self.c = self.calculate_c(S, Z)
         self.d = self.calculate_d(S, Z)
-        return self.calculate_newton_raphson(self.func)
+        lamb = self.calculate_lambda(self.func)
+        q = self.calculate_q(lamb, self.s, S, Z)
+        return q, K
 
     def calculate_B(
             self, weight_list: [float], w_list: [float], v_list: [float]
@@ -49,8 +52,14 @@ class QuestCalculator:
             B.item(0, 1) - B.item(1, 0)
         ])[np.newaxis].T
 
+    def calculate_K(self, S, s, Z):
+        upper = np.append(S-s * np.identity(3), Z, axis=1)
+        lower = np.array([np.append(Z.T, s)])
+        matrix = np.append(upper, lower, axis=0)
+        return matrix
+
     def calculate_a(self, s: float, S: np.ndarray) -> float:  # scalar
-        return (s**2 - np.matrix(S).H.trace()).item()
+        return s**2 - np.matrix(S).H.trace().item()
 
     def calculate_b(self, s: float, Z: np.ndarray) -> float:  # scalar
         return s**2 + np.inner(Z.T, Z.T).item()
@@ -68,9 +77,21 @@ class QuestCalculator:
         # return (x**2 - 2)*(x**2 - 2) - 2*x + (2*2 - 3)
         return (x**2 - a)*(x**2 - b) - c*x + (c*s - d)
 
-    def calculate_newton_raphson(self, func) -> float:
+    def calculate_lambda(self, func) -> float:
         x0 = 2
         return scipy.optimize.newton(
             func, x0, args=(
                 self.a, self.b, self.c, self.d, self.s),
             maxiter=500)
+
+    def calculate_q(self, lamb, s, S, Z):
+        # TODO make this more accurate
+        arf = lamb**2 - s**2 + np.matrix(S).H.trace().item()
+        bet = lamb - s
+        x = np.inner(arf * np.identity(3) + bet*S+S*S, Z.T).flatten()
+        miu = (lamb + s) * arf - np.linalg.det(S)
+        f = np.sqrt(miu**2 + x[0]**2 + x[1]**2 + x[2]**2)
+        q = np.append(np.array(miu), x)
+        q = q/f
+
+        return q

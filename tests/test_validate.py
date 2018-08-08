@@ -20,6 +20,7 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q, max_magnitude):
         CatalogPlanarTriangle(t[0], t[1], t[2], t[3], t[4], t[5])
         for t in np.genfromtxt(filename, skip_header=0, delimiter=',')]
     del catalog[0]
+    times = []
     for row in input_data:
         star_identifier = StarIdentifier(
             planar_triangle_calculator=PlanarTriangleCalculator(
@@ -33,27 +34,15 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q, max_magnitude):
         stars = star_identifier.identify_stars(row)
         end = datetime.datetime.now()
         time = end - start
-        print('')
-        print(time)
-        print(stars)
+        times.append(time)
         targets.append([stars])
+
+    sum = datetime.timedelta()
+    for i in times:
+        d = datetime.timedelta(seconds=int(i.seconds))
+        sum += d
+    print(sum/len(input_data))
     return targets
-
-
-def validate(result, targets):
-    score = 0
-
-    for y, t in zip(result, targets):
-        goods = np.sum((y == t) & (y != -1))
-        bads = np.sum((y != t) & (y != -1))
-
-        trues = np.max([np.sum(t != -1), 1])
-
-        scene_score = np.max([(goods - 2 * bads) / trues, -1])
-
-        score += scene_score
-
-    return score
 
 
 class TestValidate:
@@ -72,8 +61,6 @@ class TestValidate:
         assert all([triangle.s1_id in result[0],
                     triangle.s2_id in result[0],
                     triangle.s3_id in result[0]])
-        # print(targets[0])
-        # print('Score: {}'.format(validate(result, targets)))
 
     @pytest.mark.skip('Very, very long')
     def test_100_scenes_1(self):
@@ -85,15 +72,26 @@ class TestValidate:
         targets = find_stars(
             input_data, 'triangle_catalog_test_full_3',
             kv_m, kv_q, max_magnitude)
+        good = 0
+        bad = 0
         for i in range(len(targets)):
             assert len(targets[i]) > 0
             triangle = targets[i][0]
-            # print(targets[0][0])
-            assert all([triangle.s1_id in result[i],
+            try:
+                if all([triangle.s1_id in result[i],
                         triangle.s2_id in result[i],
-                        triangle.s3_id in result[i]])
-            # print(targets[0])
-        # print('Score: {}'.format(validate(result, targets)))
+                        triangle.s3_id in result[i]]):
+                    good += 1
+                else:
+                    bad += 1
+            except AttributeError:
+                bad += 1
+
+        print('good: ', good)
+        print('bad: ', bad)
+
+        assert good == 100
+        assert bad == 0
 
     @pytest.mark.skip('Very, very long')
     def test_100_scenes_2(self):
@@ -105,13 +103,23 @@ class TestValidate:
         targets = find_stars(
             input_data, 'triangle_catalog_test_full_3',
             kv_m, kv_q, max_magnitude)
+        good = 0
+        bad = 0
         for i in range(len(targets)):
             assert len(targets[i]) > 0
             triangle = targets[i][0]
-            # print(targets[0][0])
-            assert all([triangle.s1_id in result[i],
+            try:
+                if all([triangle.s1_id in result[i],
                         triangle.s2_id in result[i],
-                        triangle.s3_id in result[i]])
-            # print(targets[0])
-        # print('Score: {}'.format(validate(result, targets)))
+                        triangle.s3_id in result[i]]):
+                    good += 1
+                else:
+                    bad += 1
+            except AttributeError:
+                bad += 1
 
+        print('good: ', good)
+        print('bad: ', bad)
+
+        assert good == 100
+        assert bad == 0

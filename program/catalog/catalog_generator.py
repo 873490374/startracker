@@ -45,11 +45,11 @@ class CatalogGenerator:
         i = 0
         for s1 in converted_start:
             i += 1
-            j = 0
+            j = i
             classify_bar.next()
             for s2 in converted_start[i:]:
                 j += 1
-                for s3 in converted_start[i+j:]:
+                for s3 in converted_start[j:]:
                     if self.star_identifier.are_stars_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
                         triangle = self.triangle_calc.calculate_triangle(
