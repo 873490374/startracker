@@ -32,42 +32,41 @@ class CatalogGenerator:
 
     def generate_triangles(
             self, star_catalog_path: str) -> [ImagePlanarTriangle]:
-        converted_start = []
+        converted_stars = []
         triangle_catalogue = []
 
         stars = self.read_catalogue_stars(star_catalog_path)
         for s in stars:
             if s.magnitude <= self.max_magnitude:
                 star = convert_star_to_uv(s)
-                converted_start.append(star)
-        classify_bar = Bar(
-            'Building planar triangle catalogue', max=len(converted_start))
+                converted_stars.append(star)
+        print('Building planar triangle catalogue')
         i = 0
-        for s1 in converted_start:
+        bar1 = Bar('s1', max=len(converted_stars))
+        for s1 in converted_stars:
+            bar1.next()
             i += 1
             j = i
-            classify_bar.next()
-            for s2 in converted_start[i:]:
+            bar2 = Bar('s2', max=len(converted_stars[i:]))
+            for s2 in converted_stars[i:]:
+                bar2.next()
                 j += 1
-                for s3 in converted_start[j:]:
+                bar3 = Bar('s3', max=len(converted_stars[j:]))
+                for s3 in converted_stars[j:]:
+                    bar3.next()
                     if self.star_identifier.are_stars_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
                         triangle = self.triangle_calc.calculate_triangle(
                             s1, s2, s3)
                         triangle_catalogue.append(triangle)
-        classify_bar.finish()
+                bar3.finish()
+            bar2.finish()
+        bar1.finish()
         print('Number of planar triangles in catalogue: {}'.format(
             len(triangle_catalogue)))
         triangle_catalogue = self.sort_catalog(triangle_catalogue)
         triangle_catalogue = self.add_k_vector(triangle_catalogue)
         return triangle_catalogue
-
-    def sort_catalog(self, catalog):
-        return sorted(catalog, key=operator.attrgetter('moment'))
-
-    def add_k_vector(self, catalog):
-        k_vector, _, _ = self.kvector_calc.make_kvector(catalog)
-        return k_vector
 
     def read_catalogue_stars(self, star_catalog_path: str) -> [StarPosition]:
         stars = []
@@ -82,6 +81,13 @@ class CatalogGenerator:
             )
             stars.append(s)
         return stars
+
+    def sort_catalog(self, catalog):
+        return sorted(catalog, key=operator.attrgetter('moment'))
+
+    def add_k_vector(self, catalog):
+        k_vector, _, _ = self.kvector_calc.make_kvector(catalog)
+        return k_vector
 
     def save_to_file(
             self, catalog: [ImagePlanarTriangle], output_file_path: str):

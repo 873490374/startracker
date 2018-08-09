@@ -1,3 +1,5 @@
+import datetime
+
 import numpy as np
 import os
 from PIL import Image
@@ -7,6 +9,10 @@ from program.star import StarUV
 from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
+
+"""
+Time: ~1s
+"""
 
 
 class TestCentroid:
@@ -25,9 +31,11 @@ class TestCentroid:
             self.a_roi,
             self.i_threshold,
         )
+        start_time = datetime.datetime.now()
         I = ImageProcessor(
             CameraConnector(), centroid_calculator).image_to_matrix(image)
         list_of_stars = centroid_calculator.calculate_centroids(I)
+        print(datetime.datetime.now() - start_time)
         assert len(list_of_stars) == 92
         assert list_of_stars[0] == StarUV(
             -1, -1, np.array([0.06997471, 0.99754376, 0.00315964]))

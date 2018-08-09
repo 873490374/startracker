@@ -32,6 +32,8 @@ class PlanarTriangleCalculator:
         area_var = self.calculate_area_variance(H, R)
         moment_var = self.calculate_polar_moment_variance(
             a, b, c, partials, H, R, area)
+        # area_var = None
+        # moment_var = None
 
         return ImagePlanarTriangle(
             s1, s2, s3, area, moment, area_var, moment_var)

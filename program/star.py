@@ -40,3 +40,10 @@ class StarUV:
                 np.isclose(self.unit_vector[1], other.unit_vector[1]),
                 np.isclose(self.unit_vector[2], other.unit_vector[2])])
         return False
+
+    def __iter__(self):
+        yield 'id', self.id
+        yield 'magnitude', self.magnitude
+        yield 'uv_i', self.unit_vector[0]
+        yield 'uv_j', self.unit_vector[1]
+        yield 'uv_k', self.unit_vector[2]

@@ -55,6 +55,7 @@ class StarIdentifier:
 
         valid_triangles = []
         # for tt in self.catalog:
+        # TODO make it faster by using numpy arrays or GPU
         for tt in smaller_catalog:
             if (area_min <= tt.area <= area_max and
                     moment_min <= tt.moment <= moment_max):

@@ -74,7 +74,6 @@ class QuestCalculator:
         return np.inner(z_s, Z.T).item()
 
     def func(self, x: float, a: float, b: float, c: float, d: float, s: float):
-        # return (x**2 - 2)*(x**2 - 2) - 2*x + (2*2 - 3)
         return (x**2 - a)*(x**2 - b) - c*x + (c*s - d)
 
     def calculate_lambda(self, func) -> float:

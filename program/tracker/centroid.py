@@ -75,27 +75,33 @@ class CentroidCalculator:
                         y += 1
                         continue
             # 3.
-                    i_bottom = self.sum_border(x_start, x_end-1,
-                                               'row', y_start, I)
-                    i_top = self.sum_border(x_start+1, x_end,
-                                            'row', y_end, I)
-                    i_left = self.sum_border(y_start, y_end-1,
-                                             'column', x_start, I)
-                    i_right = self.sum_border(y_start+1, y_end,
-                                              'column', x_end, I)
-                    i_border = ((i_top + i_bottom + i_left + i_right) /
+                    i_bottom = self.sum_border(
+                        x_start, x_end-1, 'row', y_start, I)
+                    i_top = self.sum_border(
+                        x_start+1, x_end, 'row', y_end, I)
+                    i_left = self.sum_border(
+                        y_start, y_end-1, 'column', x_start, I)
+                    i_right = self.sum_border(
+                        y_start+1, y_end, 'column', x_end, I)
+                    i_border = ((
+                            i_top + i_bottom + i_left + i_right) /
                                 4 * (self.a_roi - 1))
 
             # 4. - normalization
                     I_norm_matrix = I - i_border
 
             # 5.
-                    b = self.total_mass(x_start+1, x_end-1,
-                                        y_start+1, y_end-1, I_norm_matrix)
+                    b = self.total_mass(
+                        x_start+1, x_end-1,
+                        y_start+1, y_end-1,
+                        I_norm_matrix,
+                    )
 
-                    x_cm, y_cm = self.array_point_mass(x_start+1, x_end-1,
-                                                       y_start+1, y_end-1,
-                                                       I_norm_matrix, b)
+                    x_cm, y_cm = self.array_point_mass(
+                        x_start+1, x_end-1,
+                        y_start+1, y_end-1,
+                        I_norm_matrix, b,
+                    )
 
                     star_list.append([x_cm, y_cm])
                 y += 1
@@ -110,10 +116,12 @@ class CentroidCalculator:
                 star_list2 = star_list
                 control = 0
                 for star1, star2 in itertools.combinations(star_list2, 2):
-                    if (star2[0] + pixel_diff >= star1[0] >=
+                    if (
+                            star2[0] + pixel_diff >= star1[0] >=
                             star2[0] - pixel_diff and
                             star2[1] + pixel_diff >= star1[1] >=
-                            star2[1] - pixel_diff):
+                            star2[1] - pixel_diff
+                    ):
                         control += 1
 
                         star_list.remove(star1)
