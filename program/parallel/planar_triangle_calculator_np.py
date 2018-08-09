@@ -12,10 +12,11 @@ class PlanarTriangleCalculator:
         self.sensor_variance = sensor_variance
 
     def calculate_triangle(
-            self, s1: StarUV, s2: StarUV, s3: StarUV) -> ImagePlanarTriangle:
-        p = s1.unit_vector
-        q = s2.unit_vector
-        r = s3.unit_vector
+            self, s1: np.ndarray, s2: np.ndarray, s3: np.ndarray
+    ) -> np.ndarray:
+        p = np.array([s1[2], s1[3], s1[4]])
+        q = np.array([s2[2], s2[3], s2[4]])
+        r = np.array([s3[2], s3[3], s3[4]])
         a = np.linalg.norm(p - q)
         b = np.linalg.norm(q - r)
         c = np.linalg.norm(p - r)
@@ -35,8 +36,7 @@ class PlanarTriangleCalculator:
         # area_var = None
         # moment_var = None
 
-        return ImagePlanarTriangle(
-            s1, s2, s3, area, moment, area_var, moment_var)
+        return np.array([s1, s2, s3, area, moment, area_var, moment_var])
 
     def calculate_perimeter_half(self, a: float, b: float, c: float) -> float:
         return 0.5 * (a + b + c)

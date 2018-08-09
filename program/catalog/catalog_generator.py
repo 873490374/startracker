@@ -2,6 +2,7 @@ import csv
 import operator
 
 from progress.bar import Bar
+from timeit import default_timer as timer
 
 from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarPosition
@@ -10,6 +11,12 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.utils import convert_star_to_uv
 from program.validation.scripts.simulator import StarCatalog
+
+
+"""
+magnitude: 3
+time: 234.87970195999992
+"""
 
 
 class CatalogGenerator:
@@ -43,27 +50,30 @@ class CatalogGenerator:
         print('Building planar triangle catalogue')
         i = 0
         bar1 = Bar('s1', max=len(converted_stars))
+        start = timer()
         for s1 in converted_stars:
             bar1.next()
             i += 1
             j = i
-            bar2 = Bar('s2', max=len(converted_stars[i:]))
+            # bar2 = Bar('s2', max=len(converted_stars[i:]))
             for s2 in converted_stars[i:]:
-                bar2.next()
+                # bar2.next()
                 j += 1
-                bar3 = Bar('s3', max=len(converted_stars[j:]))
+                # bar3 = Bar('s3', max=len(converted_stars[j:]))
                 for s3 in converted_stars[j:]:
-                    bar3.next()
+                    # bar3.next()
                     if self.star_identifier.are_stars_valid(
                             s1, s2, s3, self.max_magnitude, self.camera_fov):
                         triangle = self.triangle_calc.calculate_triangle(
                             s1, s2, s3)
                         triangle_catalogue.append(triangle)
-                bar3.finish()
-            bar2.finish()
+                # bar3.finish()
+            # bar2.finish()
+        dt = timer() - start
         bar1.finish()
         print('Number of planar triangles in catalogue: {}'.format(
             len(triangle_catalogue)))
+        print("time: {}".format(dt))
         triangle_catalogue = self.sort_catalog(triangle_catalogue)
         triangle_catalogue = self.add_k_vector(triangle_catalogue)
         return triangle_catalogue
