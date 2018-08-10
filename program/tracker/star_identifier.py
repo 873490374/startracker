@@ -3,6 +3,7 @@ from typing import Union
 
 import numpy as np
 
+from program.const import COS_CAMERA_FOV
 from program.planar_triangle import ImagePlanarTriangle, CatalogPlanarTriangle
 from program.star import StarUV
 from program.tracker.kvector_calculator import KVectorCalculator
@@ -158,12 +159,9 @@ class StarIdentifier:
         ]):
             return False
         return all([
-            np.inner(s1.unit_vector.T, s2.unit_vector
-                     ) >= np.cos(np.deg2rad(camera_fov)),
-            np.inner(s2.unit_vector.T, s3.unit_vector
-                     ) >= np.cos(np.deg2rad(camera_fov)),
-            np.inner(s1.unit_vector.T, s3.unit_vector
-                     ) >= np.cos(np.deg2rad(camera_fov)),
+            np.inner(s1.unit_vector.T, s2.unit_vector) >= COS_CAMERA_FOV,
+            np.inner(s2.unit_vector.T, s3.unit_vector) >= COS_CAMERA_FOV,
+            np.inner(s1.unit_vector.T, s3.unit_vector) >= COS_CAMERA_FOV,
         ])
 
 
