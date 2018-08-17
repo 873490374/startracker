@@ -4,7 +4,7 @@ import os
 from program.catalog.catalog_generator import CatalogGenerator
 from program.const import MAX_MAGNITUDE, SENSOR_VARIANCE, CAMERA_FOV, MAIN_PATH
 
-generator = CatalogGenerator(MAX_MAGNITUDE, SENSOR_VARIANCE, CAMERA_FOV)
+generator = CatalogGenerator(3, SENSOR_VARIANCE, CAMERA_FOV)
 catalog = generator.generate_triangles(
     os.path.join(MAIN_PATH, 'program/validation/data/hip_main.dat'))
 now = datetime.datetime.now()

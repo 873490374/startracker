@@ -3,7 +3,7 @@ from typing import Union
 
 import numpy as np
 
-from program.const import COS_CAMERA_FOV
+from program.const import COS_CAMERA_FOV, MAX_MAGNITUDE
 from program.planar_triangle import ImagePlanarTriangle, CatalogPlanarTriangle
 from program.star import StarUV
 from program.tracker.kvector_calculator import KVectorCalculator
@@ -140,29 +140,50 @@ class StarIdentifier:
 
     def are_stars_valid(self, s1: StarUV, s2: StarUV, s3: StarUV,
                         max_magnitude: float, camera_fov: int) -> bool:
-        if any([s1 == s2, s1 == s3, s2 == s3]):
-            return False
-        # if not any([s1.id in scene_ids and s2.id in scene_ids,
-        #             s1.id in scene_ids and s3.id in scene_ids,
-        #             s2.id in scene_ids and s3.id in scene_ids]):
+        # if any([s1 == s2, s1 == s3, s2 == s3]):
         #     return False
-        #
-        # if any([
-        #     s1.id not in scene_ids,
-        #     s2.id not in scene_ids,
-        #     s3.id not in scene_ids]):
+        # # if not any([s1.id in scene_ids and s2.id in scene_ids,
+        # #             s1.id in scene_ids and s3.id in scene_ids,
+        # #             s2.id in scene_ids and s3.id in scene_ids]):
+        # #     return False
+        # #
+        # # if any([
+        # #     s1.id not in scene_ids,
+        # #     s2.id not in scene_ids,
+        # #     s3.id not in scene_ids]):
+        # #     return False
+        # if not all([
+        #     s1.magnitude <= max_magnitude,
+        #     s2.magnitude <= max_magnitude,
+        #     s3.magnitude <= max_magnitude,
+        # ]):
         #     return False
-        if not all([
-            s1.magnitude <= max_magnitude,
-            s2.magnitude <= max_magnitude,
-            s3.magnitude <= max_magnitude,
-        ]):
+        # if (
+        #         np.inner(s1.unit_vector, s2.unit_vector) <= COS_CAMERA_FOV or
+        #         np.inner(s2.unit_vector, s3.unit_vector) <= COS_CAMERA_FOV or
+        #         np.inner(s1.unit_vector, s3.unit_vector) <= COS_CAMERA_FOV):
+        #     return False
+        l1 = s1.unit_vector[0] * s2.unit_vector[0] + s1.unit_vector[1] * s2.unit_vector[1] + s1.unit_vector[2] * s2.unit_vector[2]
+        l2 = s2.unit_vector[0] * s3.unit_vector[0] + s2.unit_vector[1] * s3.unit_vector[1] + s2.unit_vector[2] * s3.unit_vector[2]
+        l3 = s1.unit_vector[0] * s3.unit_vector[0] + s1.unit_vector[1] * s3.unit_vector[1] + s1.unit_vector[2] * s3.unit_vector[2]
+        if (
+                s1.id == s2.id or
+                s1.id == s3.id or
+                s2.id == s3.id or
+                s1.magnitude > MAX_MAGNITUDE or
+                s2.magnitude > MAX_MAGNITUDE or
+                s3.magnitude > MAX_MAGNITUDE or
+                l1 >= COS_CAMERA_FOV or
+                l2 >= COS_CAMERA_FOV or
+                l3 >= COS_CAMERA_FOV
+        ):
             return False
-        return all([
-            np.inner(s1.unit_vector.T, s2.unit_vector) >= COS_CAMERA_FOV,
-            np.inner(s2.unit_vector.T, s3.unit_vector) >= COS_CAMERA_FOV,
-            np.inner(s1.unit_vector.T, s3.unit_vector) >= COS_CAMERA_FOV,
-        ])
+        # return all([
+        #     np.inner(s1.unit_vector, s2.unit_vector) >= COS_CAMERA_FOV,
+        #     np.inner(s2.unit_vector, s3.unit_vector) >= COS_CAMERA_FOV,
+        #     np.inner(s1.unit_vector, s3.unit_vector) >= COS_CAMERA_FOV,
+        # ])
+        return True
 
 
 scene_ids = [

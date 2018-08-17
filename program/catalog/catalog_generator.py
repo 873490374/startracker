@@ -1,9 +1,11 @@
 import csv
 import operator
 
+import numpy as np
 from progress.bar import Bar
 from timeit import default_timer as timer
 
+from program.parallel.planar_triangle_calculator_np import calculate_triangle
 from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarPosition
 from program.tracker.kvector_calculator import KVectorCalculator
@@ -68,6 +70,8 @@ class CatalogGenerator:
                             s1, s2, s3)
                         triangle_catalogue.append(triangle)
                 # bar3.finish()
+            # dt = timer() - start
+            # print("time: {}".format(dt))
             # bar2.finish()
         dt = timer() - start
         bar1.finish()

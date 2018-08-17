@@ -1,48 +1,28 @@
-import csv
 import datetime
-import operator
 import os
+import warnings
 
 import numpy as np
-from numba import *
-from numba import cuda
+
+from numba import cuda, float64, int8
 from progress.bar import Bar
 from timeit import default_timer as timer
 
 from program.const import MAIN_PATH
 from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarPosition
-from program.tracker.kvector_calculator import KVectorCalculator
-from program.parallel.planar_triangle_calculator_np import \
-    calculate_triangle
-from program.utils import convert_star_to_uv
+from program.parallel.kvector_calculator_parallel import KVectorCalculator
+from program.parallel.planar_triangle_calculator_np import (
+    calculate_triangle,
+)
 from program.validation.scripts.simulator import StarCatalog
-
-
-"""
-magnitude: 3
-first jit
-time: 323.67861194199986
-
-second jit
-time: 48.604901504000736
-
-second no jit
-time: 17.909163428000284
-
-second no jit
-time: 6.240033824999955
-
-"""
 
 
 class TriangleCatalogGeneratorParallel:
     def __init__(
-            self, max_magnitude: int, sensor_variance: float, camera_fov: int):
+            self, max_magnitude: int):
         self.kvector_calc = KVectorCalculator()
         self.max_magnitude = max_magnitude
-        self.sensor_variance = sensor_variance
-        self.camera_fov = camera_fov
 
     def generate_triangles(
             self, star_catalog_path: str) -> [ImagePlanarTriangle]:
@@ -51,20 +31,16 @@ class TriangleCatalogGeneratorParallel:
         stars = self.read_catalogue_stars(star_catalog_path)
         for s in stars:
             if s.magnitude <= self.max_magnitude:
-                star = convert_star_to_uv(s)
-                # TODO
-                star = self.convert_star_to_np(star)
-                # converted_stars.append(star)
+                star = self.convert_star_to_np(s)
                 if len(converted_stars) == 0:
                     converted_stars = np.hstack((converted_stars, star))
                     continue
                 converted_stars = np.vstack((converted_stars, star))
         print('Building planar triangle catalogue')
-        i = 0
 
         timestamp = datetime.datetime.now()
         start = timer()
-        self.calculate_triangles(timestamp, converted_stars, i)
+        self.calculate_triangles(timestamp, converted_stars)
         dt = timer() - start
         print("time: {}".format(dt))
         triangle_catalog = self.put_triangles_parts_together(
@@ -73,11 +49,10 @@ class TriangleCatalogGeneratorParallel:
             len(triangle_catalog)))
 
         triangle_catalog = self.sort_catalog(triangle_catalog)
-        # TODO kvector to numpy
         triangle_catalog = self.add_k_vector(triangle_catalog)
         return triangle_catalog
 
-    def calculate_triangles(self, timestamp, converted_stars, i):
+    def calculate_triangles(self, timestamp, converted_stars):
         bar1 = Bar('s1', max=len(converted_stars))
         blockdim = (32, 8)
         griddim = (32, 16)
@@ -86,31 +61,39 @@ class TriangleCatalogGeneratorParallel:
         d_stars = cuda.to_device(converted_stars)
         for s1 in converted_stars:
             bar1.next()
-            max_one_time_triangles = 500
-            triangles = np.zeros((max_one_time_triangles, 5), dtype=np.float64)
+
+            triangles = np.zeros(
+                (len(converted_stars), len(converted_stars), 4),
+                dtype=np.float64)
             i += 1
+
             d_s1 = cuda.to_device(s1)
             d_catalog = cuda.to_device(triangles)
             triangle_kernel[griddim, blockdim](d_s1, i, d_stars, d_catalog)
             d_catalog.to_host()
-
-            self.get_save_triangles_part(
-                timestamp, i, max_one_time_triangles, triangles)
+            self.save_triangles_part(s1[0], timestamp, i, triangles)
         bar1.finish()
         return
 
-    def get_save_triangles_part(
-            self, dtime, part_nr, max_one_time_triangles, triangles):
-        catalog = np.array([], dtype=np.float64)
-        for j in range(max_one_time_triangles):
-            t = triangles[j]
-            if t[0] == 0:
-                continue
-            if len(catalog) == 0:
-                catalog = np.hstack((catalog, t))
-                continue
-            catalog = np.vstack((catalog, t))
-        self.save_partially_to_file(catalog, part_nr, dtime)
+    def save_triangles_part(
+            self, s1_id, dtime, part_nr, triangles):
+        # Reshape from rectangular 3D matrix to 2D matrix (array) of triangles
+        tr = triangles.reshape(-1, 4)
+
+        # Remove empty triangles
+        tr = tr[tr[:, 3] > 0.]
+        # tr = tr[tr[:, 0] != tr[:, 1]]
+        # tr = tr[tr[:, 0] != s1_id]
+        # tr = tr[tr[:, 1] != s1_id]
+
+        tr = self.remove_duplicates(tr, 2)
+
+        # Add star1 id in the new first column
+        t = np.zeros((len(tr), 5))
+        t[:, 1:] = tr
+        t[:, 0] = s1_id
+
+        self.save_partially_to_file(t, part_nr, dtime)
 
     def read_catalogue_stars(self, star_catalog_path: str) -> [StarPosition]:
         stars = []
@@ -137,9 +120,17 @@ class TriangleCatalogGeneratorParallel:
             self, catalog: np.ndarray, output_file_path: str):
         np.savetxt(output_file_path, catalog, delimiter=',')
 
-    def convert_star_to_np(self, star):
-        s = np.array([star.id, star.magnitude, star.unit_vector[0],
-                  star.unit_vector[1], star.unit_vector[2]])
+    def convert_star_to_np(self, star: StarPosition) -> np.ndarray:
+
+        alpha = np.deg2rad(star.right_ascension)
+        delta = np.deg2rad(star.declination)
+
+        s = np.array([
+            star.id, star.magnitude,
+            np.array([np.cos(alpha) * np.cos(delta)]),
+            np.array([np.sin(alpha) * np.cos(delta)]),
+            np.array([np.sin(delta)]),
+        ])
         return s
 
     def save_partially_to_file(
@@ -152,26 +143,58 @@ class TriangleCatalogGeneratorParallel:
         np.savetxt(output_file_path, catalog, delimiter=',')
 
     def put_triangles_parts_together(self, timestamp, parts_amount):
-        # parts_amount = 8
-        alist = []
+        catalog = np.empty([1, 5], dtype=np.float64)
+        c = []
 
-        output_file_path = os.path.join(
-            MAIN_PATH, './program/catalog/generated/'
-                       'triangle_catalog_full_{}_{}_{}.csv'.format(
-                timestamp.year, timestamp.month, timestamp.day))
+        bar = Bar('Reading triangles parts from files', max=parts_amount)
+        for i in range(1, parts_amount + 1):
+            bar.next()
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                input_file_path = os.path.join(
+                    MAIN_PATH, './program/catalog/generated/'
+                               'triangle_catalog_partial_{}_{}_{}.{}'.format(
+                        timestamp.year, timestamp.month, timestamp.day, i))
 
-        for i in range(1, parts_amount):
+                with open(input_file_path, 'rb') as f:
+                    triangles = np.genfromtxt(
+                        f, dtype=np.float64, delimiter=',')
+                    c.append(triangles)
+        bar.finish()
 
-            input_file_path = os.path.join(
-                MAIN_PATH, './program/catalog/generated/'
-                           'triangle_catalog_partial_{}_{}_{}.{}'.format(
-                    timestamp.year, timestamp.month, timestamp.day, i))
+        bar2 = Bar('Putting triangles together', max=parts_amount)
+        for triangles in c:
+            bar2.next()
+            catalog = self.append_to_table(catalog, triangles)
+        catalog = np.delete(catalog, 0, axis=0)
+        bar2.finish()
 
-            with open(input_file_path, 'rb') as f:
-                triangles = np.genfromtxt(f, dtype=np.float64, delimiter=',')
-                alist.append(triangles)
-        triangle_list = np.concatenate(alist)
-        return triangle_list
+        catalog = self.remove_duplicates(catalog, 3)
+        return catalog
+
+    def remove_duplicates(self, tr, dim):
+        trc1 = np.copy(tr[:, 0:dim])
+
+        trc1 = np.sort(trc1)
+
+        x = np.random.rand(trc1.shape[1])
+        y = trc1.dot(x)
+
+        _, index = np.unique(y, return_index=True)
+
+        return tr[index]
+
+    def append_to_table(self, table, rows):
+        if rows.size > 0 and rows.ndim > 1:
+            return np.append(table, rows, axis=0)
+        elif rows.size > 0 and rows.ndim == 1:
+            return self.add_to_table(table, rows)
+        return table
+
+    def add_to_table(self, table, row):
+        if len(table) == 0:
+            return np.hstack((table, row))
+        return np.vstack((table, row))
 
 
 triangle_gpu = cuda.jit(
@@ -180,29 +203,23 @@ triangle_gpu = cuda.jit(
     device=True)(calculate_triangle)
 
 
-@cuda.jit(argtypes=[float64[:], int8, float64[:, :], float64[:, :]])
+@cuda.jit(argtypes=[float64[:], int8, float64[:, :], float64[:, :, :]])
 def triangle_kernel(s1, i, stars, catalog):
     n = len(stars)
-    k = 0
-    startX, startY = cuda.grid(2)
-    gridX = cuda.gridDim.x * cuda.blockDim.x;
-    gridY = cuda.gridDim.y * cuda.blockDim.y;
     j = i
-    for x in range(i, n, gridX):
+    startX, startY = cuda.grid(2)
+    gridX = cuda.gridDim.x * cuda.blockDim.x
+    gridY = cuda.gridDim.y * cuda.blockDim.y
+    start_x = max(startX, i)
+    for x in range(start_x, n, gridX):
         s2 = stars[x]
         j += 1
-        for y in range(j, n, gridY):
+        start_y = max(startY, j)
+        for y in range(start_y, n, gridY):
             s3 = stars[y]
-            # print('hello')
             area, moment = triangle_gpu(s1, s2, s3)
-            if area is None:
-                continue
-            catalog[k][0] = s1[0]
-            catalog[k][1] = s2[0]
-            catalog[k][2] = s3[0]
 
-            catalog[k][3] = area
-            catalog[k][4] = moment
-            k += 1
-            if k > len(catalog)-1:
-                print('out of memory')
+            catalog[x][y][0] = s2[0]
+            catalog[x][y][1] = s3[0]
+            catalog[x][y][2] = area
+            catalog[x][y][3] = moment

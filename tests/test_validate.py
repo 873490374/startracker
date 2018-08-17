@@ -3,6 +3,7 @@ import os
 
 import numpy as np
 import pytest
+from timeit import default_timer as timer
 
 from program.planar_triangle import CatalogPlanarTriangle
 from program.const import SENSOR_VARIANCE, CAMERA_FOV, MAIN_PATH
@@ -21,27 +22,24 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q, max_magnitude):
         for t in np.genfromtxt(filename, skip_header=0, delimiter=',')]
     del catalog[0]
     times = []
+    star_identifier = StarIdentifier(
+        planar_triangle_calculator=PlanarTriangleCalculator(
+            sensor_variance=SENSOR_VARIANCE
+        ),
+        kvector_calculator=KVectorCalculator(kv_m, kv_q),
+        max_magnitude=max_magnitude,
+        camera_fov=CAMERA_FOV,
+        catalog=catalog)
     for row in input_data:
-        star_identifier = StarIdentifier(
-            planar_triangle_calculator=PlanarTriangleCalculator(
-                sensor_variance=SENSOR_VARIANCE
-            ),
-            kvector_calculator=KVectorCalculator(kv_m, kv_q),
-            max_magnitude=max_magnitude,
-            camera_fov=CAMERA_FOV,
-            catalog=catalog)
-        start = datetime.datetime.now()
-        stars = star_identifier.identify_stars(row)
-        end = datetime.datetime.now()
-        time = end - start
-        times.append(time)
-        targets.append([stars])
+        start = timer()
+        targets.append([star_identifier.identify_stars(row)])
+        times.append(timer() - start)
 
     sum = datetime.timedelta()
     for i in times:
         d = datetime.timedelta(seconds=int(i.seconds))
         sum += d
-    print(sum/len(input_data))
+    print('Average time: ', sum/len(input_data))
     return targets
 
 
