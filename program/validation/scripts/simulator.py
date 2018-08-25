@@ -104,8 +104,8 @@ def random_matrix():
     sa = np.sin(2 * np.pi * rands[0])
 
     R = ([[ca, sa, 0],
-        [-sa, ca, 0],
-        [0, 0, 1]])
+          [-sa, ca, 0],
+          [0, 0, 1]])
 
     cb = np.cos(2 * np.pi * rands[1])
     sb = np.sin(2 * np.pi * rands[1])
@@ -158,11 +158,11 @@ def circle(pos, radius, image):
     # flip it
     cy = image.shape[0] - cy
     y, x = np.ogrid[:image.shape[0], :image.shape[1]]
-    image[(x - cx)*(x - cx) + (y - cy)*(y - cy) < radius*radius] = 1
+    image[(x - cx) * (x - cx) + (y - cy) * (y - cy) < radius * radius] = 1
 
 
 class Camera:
-    def __init__(self, resolution, pixel_ar = 1, principal_point = (0.5, 0.5)):
+    def __init__(self, resolution, pixel_ar=1, principal_point=(0.5, 0.5)):
         self.resolution = resolution
         self.pixel_ar = pixel_ar
         self.principal_point = principal_point
@@ -306,7 +306,7 @@ class CubicCamera(Camera):
         d = -r
 
         if a == 0:
-            theta = r/c
+            theta = r / c
             return theta
 
         delta_0 = -3 * a * c
@@ -314,14 +314,14 @@ class CubicCamera(Camera):
 
         if a < 0:
             C = ((
-                    delta_1 + np.sqrt(np.complex64(
-                        delta_1 ** 2 - 4 * delta_0 ** 3))) / 2) ** (1 / 3)
+                         delta_1 + np.sqrt(np.complex64(
+                     delta_1 ** 2 - 4 * delta_0 ** 3))) / 2) ** (1 / 3)
 
             theta = np.real(-1 / (3 * a) * (C + delta_0 / (C)))
         else:
             C = ((
-                    delta_1 + np.sqrt(
-                        delta_1 ** 2 - 4 * delta_0 ** 3)) / 2) ** (1 / 3)
+                         delta_1 + np.sqrt(
+                     delta_1 ** 2 - 4 * delta_0 ** 3)) / 2) ** (1 / 3)
 
             theta = -1 / (3 * a) * (C + delta_0 / (C))
 
@@ -353,7 +353,7 @@ class StarCatalog:
         # print(50*'*')
         # print(self.catalog)
 
-        print('Number of stars in catalog: {}'. format(len(self.catalog)))
+        print('Number of stars in catalog: {}'.format(len(self.catalog)))
 
         self.star_vectors = angles_to_vector(
             np.deg2rad(self.catalog['RAdeg']),
@@ -363,17 +363,17 @@ class StarCatalog:
         self.magnitudes = self.catalog['Vmag'].values
 
         # alternative magnitude
-        #VT = self.catalog['VTmag']
-        #BT = self.catalog['BTmag']
+        # VT = self.catalog['VTmag']
+        # BT = self.catalog['BTmag']
         ## http://www.aerith.net/astro/color_conversion.html
         ## http://ads.nao.ac.jp/cgi-bin/nph-bib_query?bibcode=2002AJ....124.1670M&db_key=AST&high=3d1846678a19297
-        #self.magnitudes = VT + 0.00097 - 0.1334 * (BT - VT) + 0.05486 * (BT - VT) ** 2 - 0.01998 * (BT - VT) ** 3
+        # self.magnitudes = VT + 0.00097 - 0.1334 * (BT - VT) + 0.05486 * (BT - VT) ** 2 - 0.01998 * (BT - VT) ** 3
 
         # randomly fill out missing magnitudes
-        #magnitudes = self.catalog['Vmag'].values
-        #nans = np.isnan(magnitudes)
-        #magnitudes[nans] = np.random.choice(magnitudes[~nans], np.sum(nans))
-        #self.catalog['Vmag'] = magnitudes
+        # magnitudes = self.catalog['Vmag'].values
+        # nans = np.isnan(magnitudes)
+        # magnitudes[nans] = np.random.choice(magnitudes[~nans], np.sum(nans))
+        # self.catalog['Vmag'] = magnitudes
 
     def lookup_indices(self, indices):
         result = indices.copy()
@@ -526,7 +526,7 @@ class Scene:
         self.ids = None
         self.magnitude_threshold = detector.compute_magnitude_threshold()
 
-    def  compute(self, orientation=None):
+    def compute(self, orientation=None):
         """Generates a scene for the star tracker.
         If not orientation is given a random one is generated.
         Gaussian noise is applied to star positions if enabled."""
@@ -542,9 +542,9 @@ class Scene:
         pos = np.dot(self.catalog.star_vectors, orientation.transpose())
 
         # noise on alt, az
-        #if self.gaussian_noise_sigma:
+        # if self.gaussian_noise_sigma:
         #    noise = np.random.normal(0, self.gaussian_noise_sigma, (2, star_ids.size))
-        #else:
+        # else:
         #    noise = 0
 
         # instead vector noise
@@ -602,7 +602,8 @@ class Scene:
         if camera is None:
             camera = self.camera
         else:
-            false_stars = camera.from_angles(*self.camera.to_angles(false_stars))
+            false_stars = camera.from_angles(
+                *self.camera.to_angles(false_stars))
 
         if orientation is None:
             orientation = self.orientation
@@ -633,7 +634,7 @@ class Scene:
         self.ids = self.ids[scramble_index]
 
     def add_magnitude_noise(self, gaussian=None):
-        #if catalog:
+        # if catalog:
         #    self.magnitudes[self.scene_ids >= 0] += np.random.normal(
         #         0, self.catalog.catalog['e_VTmag'])
 
@@ -670,7 +671,8 @@ class Scene:
 
                 scene.compute()
 
-                scene.add_false_stars(np.random.randint(min_false, max_false + 1))
+                scene.add_false_stars(
+                    np.random.randint(min_false, max_false + 1))
 
                 scene.scramble()
 
@@ -684,7 +686,7 @@ class Scene:
                 pass
 
             ok = (min_true <= num_stars <= max_true and
-                  len(scene.ids) > min_stars )
+                  len(scene.ids) > min_stars)
             # and
             #       cls.are_correct_stars(cls, scene.ids))
 
