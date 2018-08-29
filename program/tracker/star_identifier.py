@@ -38,6 +38,8 @@ class StarIdentifier:
         unique_found_triangles = []
         for s1 in star_list[:-2]:
             # TODO s1 unique triangles
+            # make max iter for finding most common star repetitions
+            # and then voting for star?
             i += 1
             j = i
             for s2 in star_list[i:-1]:
@@ -86,7 +88,7 @@ class StarIdentifier:
 
         k_start, k_end = self.kvector_calc.find_in_kvector(
                 moment_min, moment_max, self.catalog)
-        # TODO make it faster by using numpy arrays or GPU
+        # TODO should I make it faster with GPU?
 
         valid_triangles = self.catalog[
             (self.catalog[:, 5] >= k_start) &
@@ -118,23 +120,14 @@ class StarIdentifier:
 
                 t = self.planar_triangle_calc.calculate_triangle(sc1, sc2, sc3)
                 tc = self.find_in_catalog(t)
-                # if tc.size == 0:
-                # This is slower
-                #     continue
-                triangles = self.find_common_triangles(triangles, tc)
+                if tc.size == 0:
+                    continue
+                triangles = array_row_intersection(triangles, tc)
                 if len(triangles) == 1:
                     return triangles
                 if len(triangles) == 0:
                     return triangles
         return triangles
-
-    def find_common_triangles(
-            self, previous_t: np.ndarray, new_t: np.ndarray) -> np.ndarray:
-        # TODO this is slow and called a lot!!!
-        # print(len(previous_t), len(new_t))
-        C = array_row_intersection(previous_t, new_t)
-        # print(len(C))
-        return C
 
 
 def array_row_intersection(a, b):

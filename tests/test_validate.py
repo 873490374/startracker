@@ -49,8 +49,8 @@ class TestValidate:
                     triangle[1] in result[0],
                     triangle[2] in result[0]])
 
-    # @pytest.mark.skip('Very, very long')
-    def test_100_scenes_1(self):
+    @pytest.mark.skip('Very, very long')
+    def test_100_scenes_mag5(self):
         kv_m = 6.926772802907601e-10
         kv_q = -7.018966515971442e-10
         input_data, result = read_scene(
@@ -63,7 +63,6 @@ class TestValidate:
         for i in range(len(targets)):
             assert len(targets[i]) > 0
             triangle = targets[i][0]
-            # print(triangle)
             try:
                 if all([triangle[0] in result[i],
                         triangle[1] in result[i],
@@ -76,18 +75,17 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-
         assert good == 100
         assert bad == 0
 
-    @pytest.mark.skip('Very, very long')
-    def test_100_scenes_2(self):
-        kv_m = 3.718451776463076e-07
-        kv_q = -3.7085940246021246e-07
+    # @pytest.mark.skip('Very, very long')
+    def test_1000_scenes_mag5(self):
+        kv_m = 6.926772802907601e-10
+        kv_q = -7.018966515971442e-10
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '100_scenes_2')
+            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag_5_fov_10')
         targets = find_stars(
-            input_data, 'triangle_catalog_test_full_3',
+            input_data, 'triangle_catalog_mag4_fov10_full',
             kv_m, kv_q)
         good = 0
         bad = 0
@@ -101,11 +99,39 @@ class TestValidate:
                     good += 1
                 else:
                     bad += 1
-            except AttributeError:
+            except (AttributeError, TypeError, IndexError):
                 bad += 1
 
         print('good: ', good)
         print('bad: ', bad)
+        assert good == 1000
+        assert bad == 0
 
-        assert good == 100
+    @pytest.mark.skip('Very, very long')
+    def test_1000_scenes_mag4(self):
+        kv_m = 1.6302444115811607e-08
+        kv_q = -1.625215694310689e-08
+        input_data, result = read_scene(
+            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag_4_fov_10')
+        targets = find_stars(
+            input_data, 'triangle_catalog_mag4_fov10_full',
+            kv_m, kv_q)
+        good = 0
+        bad = 0
+        for i in range(len(targets)):
+            assert len(targets[i]) > 0
+            triangle = targets[i][0]
+            try:
+                if all([triangle[0] in result[i],
+                        triangle[1] in result[i],
+                        triangle[2] in result[i]]):
+                    good += 1
+                else:
+                    bad += 1
+            except (AttributeError, TypeError, IndexError):
+                bad += 1
+
+        print('good: ', good)
+        print('bad: ', bad)
+        assert good == 1000
         assert bad == 0

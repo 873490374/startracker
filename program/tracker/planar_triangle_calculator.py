@@ -2,7 +2,6 @@ import math
 
 import numpy as np
 
-from program.star import StarUV
 
 zero_3x3 = np.matrix(np.zeros((3, 3)))
 
@@ -14,19 +13,10 @@ class PlanarTriangleCalculator:
     def calculate_triangle(
             self, s1: np.ndarray, s2: np.ndarray, s3: np.ndarray
     ) -> np.ndarray:
-        # s1: np.ndarray, s2: np.ndarray, s3: np.ndarray) -> np.ndarray:
-
-        # p = s1.unit_vector
-        # q = s2.unit_vector
-        # r = s3.unit_vector
 
         p = np.array([s1[2], s1[3], s1[4]])
         q = np.array([s2[2], s2[3], s2[4]])
         r = np.array([s3[2], s3[3], s3[4]])
-
-        # s1 = np.array([-1, -1, s1.unit_vector[0], s1.unit_vector[1], s1.unit_vector[2]])
-        # s2 = np.array([-1, -1, s2.unit_vector[0], s2.unit_vector[1], s2.unit_vector[2]])
-        # s3 = np.array([-1, -1, s3.unit_vector[0], s3.unit_vector[1], s3.unit_vector[2]])
 
         a1 = s1[2] - s2[2]
         a2 = s1[3] - s2[3]

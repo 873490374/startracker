@@ -62,15 +62,11 @@ class KVectorCalculator:
         j_b = max(math.floor((y_a - q) / m), 0)
         j_t = min(math.ceil((y_b - q) / m), len(k_vector)-1)
 
-        if j_b > len(k_vector) + 1 or j_t < 0:
-            return []
+        if j_b > len(k_vector) - 1 or j_t < 0:
+            return -1, -1
 
-        k_start = int(k_vector[j_b, 5,] + 1)
+        k_start = int(k_vector[j_b, 5] + 1)
         k_end = min(int(k_vector[j_t, 5]), len(k_vector)-1)
-        # k_vector = k_vector[
-        #     (k_vector[:, 5] >= k_start) &
-        #     (k_vector[:, 5] <= k_end)]
-        # return k_vector
         return k_start, k_end
 
     def calculate_j_b(self, y_a: float, m: float, q: float) -> int:

@@ -121,4 +121,4 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1, max_magnitude=5)
+create_scene(num_scenes=1000, max_magnitude=5)
