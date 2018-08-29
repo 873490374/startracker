@@ -96,8 +96,8 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
         # inputs.append(np.hstack(
         #     (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
         inputs.append(np.hstack((
-            scene.uv[::, ::],
-            scene.magnitudes.reshape(-1, 1))).flatten())
+            scene.magnitudes.reshape(-1, 1),
+            scene.uv[::, ::])).flatten())
         outputs.append(scene.ids)
         classify_bar.next()
 
@@ -121,4 +121,4 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1, max_magnitude=3)
+create_scene(num_scenes=1, max_magnitude=5)

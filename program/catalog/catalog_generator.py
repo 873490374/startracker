@@ -5,12 +5,11 @@ import numpy as np
 from progress.bar import Bar
 from timeit import default_timer as timer
 
-from program.parallel.planar_triangle_calculator_np import calculate_triangle
+from program.const import COS_CAMERA_FOV
 from program.planar_triangle import ImagePlanarTriangle
-from program.star import StarPosition
+from program.star import StarPosition, StarUV
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
-from program.tracker.star_identifier import StarIdentifier
 from program.utils import convert_star_to_uv
 from program.validation.scripts.simulator import StarCatalog
 
@@ -24,14 +23,6 @@ time: 234.87970195999992
 class CatalogGenerator:
     def __init__(
             self, max_magnitude: int, sensor_variance: float, camera_fov: int):
-        self.star_identifier = StarIdentifier(
-            planar_triangle_calculator=PlanarTriangleCalculator(
-                sensor_variance=sensor_variance
-            ),
-            kvector_calculator=KVectorCalculator(),
-            max_magnitude=max_magnitude,
-            camera_fov=camera_fov,
-            catalog=None)
         self.kvector_calc = KVectorCalculator()
         self.triangle_calc = PlanarTriangleCalculator(
             sensor_variance=sensor_variance)
@@ -64,8 +55,8 @@ class CatalogGenerator:
                 # bar3 = Bar('s3', max=len(converted_stars[j:]))
                 for s3 in converted_stars[j:]:
                     # bar3.next()
-                    if self.star_identifier.are_stars_valid(
-                            s1, s2, s3, self.max_magnitude, self.camera_fov):
+                    if self.are_stars_valid(
+                            s1, s2, s3):
                         triangle = self.triangle_calc.calculate_triangle(
                             s1, s2, s3)
                         triangle_catalogue.append(triangle)
@@ -112,3 +103,21 @@ class CatalogGenerator:
             csvwriter.writeheader()
             for t in catalog:
                 csvwriter.writerow(dict(t))
+
+    def are_stars_valid(self, s1: StarUV, s2: StarUV, s3: StarUV) -> bool:
+        l1 = s1.unit_vector[0] * s2.unit_vector[0] + \
+             s1.unit_vector[1] * s2.unit_vector[1] + \
+             s1.unit_vector[2] * s2.unit_vector[2]
+        l2 = s2.unit_vector[0] * s3.unit_vector[0] + \
+             s2.unit_vector[1] * s3.unit_vector[1] + \
+             s2.unit_vector[2] * s3.unit_vector[2]
+        l3 = s1.unit_vector[0] * s3.unit_vector[0] + \
+             s1.unit_vector[1] * s3.unit_vector[1] + \
+             s1.unit_vector[2] * s3.unit_vector[2]
+        if (
+                l1 >= COS_CAMERA_FOV and
+                l2 >= COS_CAMERA_FOV and
+                l3 >= COS_CAMERA_FOV
+        ):
+            return True
+        return False

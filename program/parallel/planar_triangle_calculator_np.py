@@ -5,10 +5,11 @@ import numpy as np
 
 from program.const import COS_CAMERA_FOV
 
+
 zero_3x3 = np.matrix(np.zeros((3, 3)))
 
 
-def calculate_triangle(
+def calculate_catalog_triangle(
         s1: np.ndarray, s2: np.ndarray, s3: np.ndarray) -> Tuple[float, float]:
 
     l1 = s1[2] * s2[2] + s1[3] * s2[3] + s1[4] * s2[4]

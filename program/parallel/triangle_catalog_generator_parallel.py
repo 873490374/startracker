@@ -13,7 +13,7 @@ from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarPosition
 from program.parallel.kvector_calculator_parallel import KVectorCalculator
 from program.parallel.planar_triangle_calculator_np import (
-    calculate_triangle,
+    calculate_catalog_triangle,
 )
 from program.validation.scripts.simulator import StarCatalog
 
@@ -49,8 +49,8 @@ class TriangleCatalogGeneratorParallel:
             len(triangle_catalog)))
 
         triangle_catalog = self.sort_catalog(triangle_catalog)
-        triangle_catalog = self.add_k_vector(triangle_catalog)
-        return triangle_catalog
+        triangle_catalog, m, q = self.add_k_vector(triangle_catalog)
+        return triangle_catalog, m, q
 
     def calculate_triangles(self, timestamp, converted_stars):
         bar1 = Bar('s1', max=len(converted_stars))
@@ -113,12 +113,16 @@ class TriangleCatalogGeneratorParallel:
         return catalog[catalog[:, 4].argsort()]
 
     def add_k_vector(self, catalog):
-        k_vector, _, _ = self.kvector_calc.make_kvector(catalog)
-        return k_vector
+        k_vector, m, q = self.kvector_calc.make_kvector(catalog)
+        return k_vector, m, q
 
     def save_to_file(
             self, catalog: np.ndarray, output_file_path: str):
         np.savetxt(output_file_path, catalog, delimiter=',')
+
+    def save_m_q_to_file(self, m, q, output_file_path):
+        with open(output_file_path, 'w') as f:
+            f.writelines([str(m)+'\n', str(q)])
 
     def convert_star_to_np(self, star: StarPosition) -> np.ndarray:
 
@@ -200,7 +204,7 @@ class TriangleCatalogGeneratorParallel:
 triangle_gpu = cuda.jit(
     restype=(float64, float64),
     argtypes=[float64[:], float64[:], float64[:]],
-    device=True)(calculate_triangle)
+    device=True)(calculate_catalog_triangle)
 
 
 @cuda.jit(argtypes=[float64[:], int8, float64[:, :], float64[:, :, :]])

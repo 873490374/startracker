@@ -1,6 +1,8 @@
 import math
 import operator
 
+import numpy as np
+
 from program.planar_triangle import ImagePlanarTriangle
 
 EPSILON = 2.22 * 10 ** (-16)
@@ -36,7 +38,6 @@ class KVectorCalculator:
     def calculate_k_vector(
             self, s_vector: [ImagePlanarTriangle],
             m: float, q: float, n: int) -> [float]:
-        # k_vector = [0]
         s_vector[0].k = 0
         s_vector[-1].k = n
         for i in range(1, n - 1):
@@ -46,7 +47,6 @@ class KVectorCalculator:
                 if j == 0:
                     break
             s_vector[i].k = j
-        # k_vector.append(n)
         return s_vector
 
     def z(self, x: float, m: float, q: float) -> float:
@@ -54,31 +54,24 @@ class KVectorCalculator:
         return z
 
     def find_in_kvector(
-            self, y_a: float, y_b: float, k_vector: [ImagePlanarTriangle],
+            self, y_a: float, y_b: float, k_vector: np.ndarray,
             m: float=None, q: float=None) -> [float]:
         m = m or self.m
         q = q or self.q
 
-        j_b = max(self.calculate_j_b(y_a, m, q), 0)
-        j_t = min(self.calculate_j_t(y_b, m, q), len(k_vector)-1)
-
-        # if j_b > 0:
-        #     print('j_b: ', j_b)
-        # if j_t < len(k_vector)-1:
-        #     print('j_t: ', j_t)
+        j_b = max(math.floor((y_a - q) / m), 0)
+        j_t = min(math.ceil((y_b - q) / m), len(k_vector)-1)
 
         if j_b > len(k_vector) + 1 or j_t < 0:
             return []
 
-        k_start = int(k_vector[j_b].k + 1)
-        k_end = min(int(k_vector[j_t].k), len(k_vector)-1)
-        # return k_vector[k_start:k_end]
-        answer = []
-        i = k_start
-        while i <= k_end:
-            answer.append(k_vector[i])
-            i += 1
-        return answer
+        k_start = int(k_vector[j_b, 5,] + 1)
+        k_end = min(int(k_vector[j_t, 5]), len(k_vector)-1)
+        # k_vector = k_vector[
+        #     (k_vector[:, 5] >= k_start) &
+        #     (k_vector[:, 5] <= k_end)]
+        # return k_vector
+        return k_start, k_end
 
     def calculate_j_b(self, y_a: float, m: float, q: float) -> int:
         j_b = math.floor((y_a - q) / m)

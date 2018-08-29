@@ -1,7 +1,7 @@
 import math
+
 import numpy as np
 
-from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarUV
 
 zero_3x3 = np.matrix(np.zeros((3, 3)))
@@ -12,41 +12,49 @@ class PlanarTriangleCalculator:
         self.sensor_variance = sensor_variance
 
     def calculate_triangle(
-            self, s1: StarUV, s2: StarUV, s3: StarUV) -> ImagePlanarTriangle:
+            self, s1: StarUV, s2: StarUV, s3: StarUV) -> np.ndarray:
+        # s1: np.ndarray, s2: np.ndarray, s3: np.ndarray) -> np.ndarray:
+
         p = s1.unit_vector
         q = s2.unit_vector
         r = s3.unit_vector
-        a = np.linalg.norm(p - q)
-        b = np.linalg.norm(q - r)
-        c = np.linalg.norm(p - r)
 
-        s = self.calculate_perimeter_half(a, b, c)
-        area = self.calulate_area(s, a, b, c)
-        moment = self.calculate_polar_moment(a, b, c, area)
+        # p = np.array([s1[2], s1[3], s1[4]])
+        # q = np.array([s2[2], s2[3], s2[4]])
+        # r = np.array([s3[2], s3[3], s3[4]])
 
-        # partials = self.calculate_partial_derivatives(
-        #     s, a, b, c, p, q, r, area)
-        # H = self.calculate_area_derivatives(partials)
-        # R = self.calculate_r_matrix(p, q, r, self.sensor_variance)
-        #
-        # area_var = self.calculate_area_variance(H, R)
-        # moment_var = self.calculate_polar_moment_variance(
-        #     a, b, c, partials, H, R, area)
-        area_var = None
-        moment_var = None
+        s1 = np.array([-1, -1, s1.unit_vector[0], s1.unit_vector[1], s1.unit_vector[2]])
+        s2 = np.array([-1, -1, s2.unit_vector[0], s2.unit_vector[1], s2.unit_vector[2]])
+        s3 = np.array([-1, -1, s3.unit_vector[0], s3.unit_vector[1], s3.unit_vector[2]])
 
-        return ImagePlanarTriangle(
-            s1, s2, s3, area, moment, area_var, moment_var)
+        a1 = s1[2] - s2[2]
+        a2 = s1[3] - s2[3]
+        a3 = s1[4] - s2[4]
+        b1 = s2[2] - s3[2]
+        b2 = s2[3] - s3[3]
+        b3 = s2[4] - s3[4]
+        c1 = s1[2] - s3[2]
+        c2 = s1[3] - s3[3]
+        c3 = s1[4] - s3[4]
 
-    def calculate_perimeter_half(self, a: float, b: float, c: float) -> float:
-        return 0.5 * (a + b + c)
+        a = math.sqrt(a1 ** 2 + a2 ** 2 + a3 ** 2)
+        b = math.sqrt(b1 ** 2 + b2 ** 2 + b3 ** 2)
+        c = math.sqrt(c1 ** 2 + c2 ** 2 + c3 ** 2)
 
-    def calulate_area(self, s: float, a: float, b: float, c: float) -> float:
-        return math.sqrt(s * (s - a) * (s - b) * (s - c))
+        s = 0.5 * (a + b + c)
+        area = math.sqrt(s * (s - a) * (s - b) * (s - c))
+        moment = area * (a ** 2 + b ** 2 + c ** 2) / 36
 
-    def calculate_polar_moment(
-            self, a: float, b: float, c: float, area: float) -> float:
-        return area * (a ** 2 + b ** 2 + c ** 2) / 36
+        partials = self.calculate_partial_derivatives(
+            s, a, b, c, p, q, r, area)
+        H = self.calculate_area_derivatives(partials)
+        R = self.calculate_r_matrix(p, q, r, self.sensor_variance)
+
+        area_var = self.calculate_area_variance(H, R)
+        moment_var = self.calculate_polar_moment_variance(
+            a, b, c, partials, H, R, area)
+
+        return np.array([-1, -1, -1, area, moment, area_var, moment_var])
 
     def calculate_partial_derivatives(
             self, s: float, a: float, b: float, c: float, p: np.ndarray,
