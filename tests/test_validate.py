@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from timeit import default_timer as timer
 
-from program.const import SENSOR_VARIANCE, CAMERA_FOV, MAIN_PATH
+from program.const import SENSOR_VARIANCE, MAIN_PATH
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier

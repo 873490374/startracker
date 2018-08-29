@@ -32,7 +32,7 @@ class StarIdentifier:
         return stars
 
     def identify(
-            self, star_list: [StarUV], previous_triangles: np.ndarray
+            self, star_list: np.ndarray, previous_triangles: np.ndarray
     ) -> Union[np.ndarray, None]:
         i = 0
         unique_found_triangles = []
@@ -47,8 +47,6 @@ class StarIdentifier:
                 # previous_triangle = None
                 for s3 in star_list[k:]:
                     # TODO s3 unique triangles
-                    # if not self.are_stars_valid(s1, s2, s3):
-                    #     continue
                     t = self.planar_triangle_calc.calculate_triangle(
                         s1, s2, s3)
                     ct = self.find_in_catalog(t)
@@ -104,7 +102,7 @@ class StarIdentifier:
         return valid_triangles
 
     def get_two_common_stars_triangles(
-            self, s1: StarUV, s2: StarUV, s3: StarUV,
+            self, s1: np.ndarray, s2: np.ndarray, s3: np.ndarray,
             ct: np.ndarray, star_list: np.ndarray
     ) -> [CatalogPlanarTriangle]:
         triangles = ct
@@ -115,8 +113,9 @@ class StarIdentifier:
             for sc3 in star_list:
                 # Pivot for each star couple
                 # TODO return somehow star id
-                if sc1 == sc2 or sc1 == sc3 or sc2 == sc3:
+                if are_the_same_stars(sc1, sc2, sc3):
                     continue
+
                 t = self.planar_triangle_calc.calculate_triangle(sc1, sc2, sc3)
                 tc = self.find_in_catalog(t)
                 # if tc.size == 0:
@@ -143,9 +142,7 @@ def array_row_intersection(a, b):
     return a[np.sum(np.cumsum(tmp, axis=0) * tmp == 1, axis=1).astype(bool)]
 
 
-def has_the_same_stars(this, other):
-    this_stars = [this[0], this[1], this[2]]
-    return all([
-        other[0] in this_stars,
-        other[1] in this_stars,
-        other[2] in this_stars])
+def are_the_same_stars(sc1, sc2, sc3):
+    return (sc1[0] == sc2[0] or
+            sc2[0] == sc3[0] or
+            sc3[0] == sc1[0])
