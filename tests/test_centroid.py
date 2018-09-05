@@ -32,11 +32,18 @@ class TestCentroid:
             self.a_roi,
             self.i_threshold,
         )
-        start_time = timer()
         I = ImageProcessor(
             CameraConnector(), centroid_calculator).image_to_matrix(image)
-        list_of_stars = centroid_calculator.calculate_centroids(I)
-        print(timer() - start_time)
-        assert len(list_of_stars) == 92
-        assert list_of_stars[0] == StarUV(
-            -1, -1, np.array([0.06997471, 0.99754376, 0.00315964]))
+        for i in range(10):
+            start_time = timer()
+            list_of_stars = centroid_calculator.calculate_centroids(I)
+            print(timer() - start_time)
+            assert 92 == len(list_of_stars)
+            uv = list_of_stars[0].unit_vector
+            assert np.isclose(0.06987140, uv[0], atol=0.001)
+            assert np.isclose(0.99755100, uv[1], atol=0.0001)
+            assert np.isclose(0.00315968, uv[2], atol=0.0001)
+            uv = list_of_stars[91].unit_vector
+            assert np.isclose(0.72986039, uv[0], atol=0.0001)
+            assert np.isclose(0.68359198, uv[1], atol=0.0001)
+            assert np.isclose(0.00240988, uv[2], atol=0.0001)
