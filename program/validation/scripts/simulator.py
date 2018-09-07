@@ -208,10 +208,23 @@ class Camera:
         az = np.pi - np.arctan2(y, x)
 
         r = np.sqrt(x ** 2 + y ** 2)
-        theta = self.unproject(r)
+        theta = self.unproject(r)  # np.arctan(r / self.f)
 
         alt = np.pi / 2 - theta
-
+        """
+        https://github.com/szymonmichalski/starsense_algorithms/blob/master/streak_simulation.m
+        """
+        """
+        caz = np.cos(azimuth)
+        saz = np.sin(azimuth)
+    
+        cal = np.cos(altitude)
+        sal = np.sin(altitude)
+    
+        x = caz * cal
+        y = saz * cal
+        z = sal
+        """
         return az, alt
 
 
