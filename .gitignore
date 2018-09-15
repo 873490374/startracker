@@ -62,3 +62,5 @@ target/
 
 # Profiler
 prof/
+.benchmarks/
+tests/.benchmarks/
