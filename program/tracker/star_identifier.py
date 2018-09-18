@@ -122,6 +122,7 @@ class StarIdentifier:
                 tc = self.find_in_catalog(t)
                 if tc.size == 0:
                     continue
+                # TODO correct finding common triangles (two stars, not whole triangle)
                 triangles = array_row_intersection(triangles, tc)
                 if len(triangles) == 1:
                     return triangles
