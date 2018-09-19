@@ -55,7 +55,7 @@ def read_scene(path, fname):
                 uv0 = raw_data_list[j][i + 1]
                 uv1 = raw_data_list[j][i + 2]
                 uv2 = raw_data_list[j][i + 3]
-                data_list.append(np.array([-1, magnitude, uv0, uv1, uv2]))
+                data_list.append(np.array([int(i/4), magnitude, uv0, uv1, uv2]))
             data_lists.append(data_list)
         return data_lists
 

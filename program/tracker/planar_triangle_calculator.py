@@ -45,7 +45,8 @@ class PlanarTriangleCalculator:
         moment_var = self.calculate_polar_moment_variance(
             a, b, c, partials, H, R, area)
 
-        return np.array([-1, -1, -1, area, moment, area_var, moment_var])
+        return np.array(
+            [s1[0], s2[0], s3[0], area, moment, area_var, moment_var])
 
     def calculate_partial_derivatives(
             self, s: float, a: float, b: float, c: float, p: np.ndarray,

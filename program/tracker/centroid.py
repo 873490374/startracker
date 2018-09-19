@@ -41,6 +41,7 @@ class CentroidCalculator:
     def convert_to_vectors(self, star_list):
         star_vectors = []
         # 7. unit vector u
+        i = 0
         for star in star_list:
             # TODO Does it work correctly? What are focal_length & pixel size?
             vector = np.array([self.pixel_size * star[0],
@@ -48,7 +49,8 @@ class CentroidCalculator:
                                self.focal_length])
             u = vector.T / np.linalg.norm(vector)
             star_vectors.append(
-                StarUV(star_id=-1, magnitude=-1, unit_vector=u))
+                StarUV(star_id=i, magnitude=-1, unit_vector=u))
+            i += 1
         return star_vectors
 
     def preprocess_image_matrix(self, I):

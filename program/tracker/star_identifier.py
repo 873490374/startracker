@@ -1,11 +1,9 @@
-import math
 from typing import Union
 
 import numpy as np
-from numba import jit
 
-from program.const import COS_CAMERA_FOV
-from program.planar_triangle import ImagePlanarTriangle, CatalogPlanarTriangle
+from program.const import SIG_X
+from program.planar_triangle import CatalogPlanarTriangle
 from program.star import StarUV
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -81,10 +79,10 @@ class StarIdentifier:
         # triangle = [id1, id2, id3, area, moment, area_var, moment_var]
         A_dev = np.math.sqrt(triangle[5])
         J_dev = np.math.sqrt(triangle[6])
-        area_min = triangle[3] - A_dev
-        area_max = triangle[3] + A_dev
-        moment_min = triangle[4] - J_dev
-        moment_max = triangle[4] + J_dev
+        area_min = triangle[3] - SIG_X * A_dev
+        area_max = triangle[3] + SIG_X * A_dev
+        moment_min = triangle[4] - SIG_X * J_dev
+        moment_max = triangle[4] + SIG_X * J_dev
 
         k_start, k_end = self.kvector_calc.find_in_kvector(
                 moment_min, moment_max, self.catalog)
@@ -100,6 +98,7 @@ class StarIdentifier:
 
         # if valid_triangles.size == 0:
         #     return self.catalog
+        # valid_triangles = np.delete(valid_triangles, [3, 4, 5], axis=1)
 
         return valid_triangles
 
@@ -140,3 +139,39 @@ def are_the_same_stars(sc1, sc2, sc3):
     return (sc1[0] == sc2[0] or
             sc2[0] == sc3[0] or
             sc3[0] == sc1[0])
+
+
+def common_triangles(tri, tc):
+    s1_id = tri[0]
+    s2_id = tri[1]
+    s3_id = tri[2]
+
+    return tc[
+        ((tc[:, 0] == s1_id) & (tc[:, 1] == s2_id)) |
+        ((tc[:, 0] == s1_id) & (tc[:, 2] == s2_id)) |
+
+        ((tc[:, 0] == s1_id) & (tc[:, 1] == s3_id)) |
+        ((tc[:, 0] == s1_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 1] == s1_id) & (tc[:, 0] == s2_id)) |
+        ((tc[:, 1] == s1_id) & (tc[:, 2] == s2_id)) |
+
+        ((tc[:, 1] == s1_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 1] == s1_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 2] == s1_id) & (tc[:, 0] == s2_id)) |
+        ((tc[:, 2] == s1_id) & (tc[:, 1] == s2_id)) |
+
+        ((tc[:, 2] == s1_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 2] == s1_id) & (tc[:, 1] == s3_id)) |
+
+        ((tc[:, 0] == s2_id) & (tc[:, 1] == s3_id)) |
+        ((tc[:, 0] == s2_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 1] == s2_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 1] == s2_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 2] == s2_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 2] == s2_id) & (tc[:, 1] == s3_id))
+    ]
+
