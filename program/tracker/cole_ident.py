@@ -3,12 +3,16 @@ import math
 import numpy as np
 from scipy import misc
 
+from program.parallel.kvector_calculator_parallel import KVectorCalculator
+from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
+
 
 def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
     
     # Point is also the vector from the origin to the point.
     
-    # Vector r from each pt to another pt. Length of each r is a side of a triangle
+    # Vector r from each pt to another pt.
+    # Length of each r is a side of a triangle
     
     r12 = p2 - p1
     r23 = p3 - p2
@@ -16,41 +20,43 @@ def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
     
     # Calc length of vector from pt to pt
     
-    a = math.sqrt( r12[1]**2 + r12[2]**2 + r12[3]**2 )
-    b = math.sqrt( r23[1]**2 + r23[2]**2 + r23[3]**2 )
-    c = math.sqrt( r31[1]**2 + r31[2]**2 + r31[3]**2 )
+    a = math.sqrt(r12[1]**2 + r12[2]**2 + r12[3]**2)
+    b = math.sqrt(r23[1]**2 + r23[2]**2 + r23[3]**2)
+    c = math.sqrt(r31[1]**2 + r31[2]**2 + r31[3]**2)
     
     # Determine interior angles of triangle
     
-    A = math.acos( (b**2 + c**2 - a**2)/(2*b*c) )
+    A = math.acos((b**2 + c**2 - a**2)/(2*b*c))
     # A*180/pi
-    B = math.acos( (a**2 + c**2 - b**2)/(2*a*c) )
+    B = math.acos((a**2 + c**2 - b**2)/(2*a*c))
     # B*180/pi
-    C = math.acos( (a**2 + b**2 - c**2)/(2*b*a) )
+    C = math.acos((a**2 + b**2 - c**2)/(2*b*a))
     # C*180/pi
     
-    # If all the angles within the triangle are less than 90 degrees, the field of
-    # view is deterimned by drawing a circle through the three pts
+    # If all the angles within the triangle are less than 90 degrees,
+    # the field of view is deterimned by drawing a circle through the three pts
     
     # If any angle is greater than 90 degrees, the field of view is determined
     # by the greatest distance from any pt to another.
     
     r = 0
     
-    if max( [ A, B, C ] ) < (math.pi/2):
+    if max([A, B, C]) < (math.pi/2):
         
-        # CalcFOV determines the field of view occupied by three pts on a sphere
-        # p1, p2 and p3 are arrays: [ x y z ]
+        # CalcFOV determines the field of view occupied by
+        # three pts on a sphere p1, p2 and p3 are arrays: [ x y z ]
         
         # Distance to center from pt 1 to pt 2 must be equal (eq 1)
         
         A1 = [- 2*p1[1] + 2*p2[1], - 2*p1[2] + 2*p2[2], - 2*p1[3] + 2*p2[3]]
-        B1 = - (p1[1]**2 + p1[2]**2 + p1[3]**2) + (p2[1]**2 + p2[2]**2 + p2[3]**2)
+        B1 = (- (p1[1]**2 + p1[2]**2 + p1[3]**2) +
+              (p2[1]**2 + p2[2]**2 + p2[3]**2))
         
         # Distance to center from pt 2 to pt 3 must be equal [eq 2]
         
         A2 = [- 2*p2[1] + 2*p3[1], - 2*p2[2] + 2*p3[2], - 2*p2[3] + 2*p3[3]]
-        B2 = - (p2[1]**2 + p2[2]**2 + p2[3]**2) + (p3[1]**2 + p3[2]**2 + p3[3]**2)
+        B2 = (- (p2[1]**2 + p2[2]**2 + p2[3]**2) +
+              (p3[1]**2 + p3[2]**2 + p3[3]**2))
         
         # All points must be on the same plane (eq 3)
         
@@ -61,288 +67,367 @@ def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
         )
         
         A3 = [
-            ( P[2,2] * P[3,3] ) - ( P[2,3] * P[3,2] ),
-            ( P[2,3] * P[3,1] ) - ( P[2,1] * P[3,3] ),
-            ( P[2,1] * P[3,2] ) - ( P[2,2] * P[3,1] ),
+            (P[2, 2] * P[3, 3]) - (P[2, 3] * P[3, 2]),
+            (P[2, 3] * P[3, 1]) - (P[2, 1] * P[3, 3]),
+            (P[2, 1] * P[3, 2]) - (P[2, 2] * P[3, 1]),
         ]
         B3 = - np.linalg.det(P)
         
         B = [B1, B2, B3]
         
-        A = [ [A1], [A2], [A3] ]
+        A = [[A1], [A2], [A3]]
         
         x = np.dot(np.invert(A), np.transpose(B))
         
-        r = math.sqrt( (p1[1]-x[1])**2 + (p1[2]-x[2])**2 + (p1[3]-x[3])**2 )
+        r = math.sqrt((p1[1]-x[1])**2 + (p1[2]-x[2])**2 + (p1[3]-x[3])**2)
 
     else:
         
-        r = max( [a, b, c] )/2 # Make negative to indicate "skinny"
+        r = max([a, b, c])/2  # Make negative to indicate "skinny"
         
     
     # FOV is twice the angle formed by triangle with opp=r and hyp=1
     
-    alpha = [ 2*math.asin(r/1) ]
+    alpha = [2*math.asin(r/1)]
     # alpha*180/pi
     return alpha[0]
 
 
-def identify_stars(StarsInFOV, FOVmax=10, plimit=9, sigx=3, climit=10000):
-    nStarsInFOV = len(StarsInFOV)
-    if nStarsInFOV < 3:
-        return []
+FOV_MAX = 10
+plimit = 9
+SIG_X = 3
+climit = 10000
 
-    nCombs = misc.comb(nStarsInFOV, 3)
 
-    # CREATE LIST OF TRIANGLES, INCL. AREA, AND MAX & MIN TRIANGLE INDICIES
+class ColeStarIdentifier:
+    def __init__(
+            self,
+            planar_triangle_calc: PlanarTriangleCalculator,
+            kvector_calculator: KVectorCalculator,
+            catalog: np.ndarray):
+        self.catalog = None
+        self.planar_triangle_calc = planar_triangle_calc
+        self.kvector_calc = kvector_calculator
+        self.catalog = catalog
 
-    k = 0
-    start = 1
-    maxProp = 0
-    T = []
+    def identify_stars(self, StarsInFOV):
+        nStarsInFOV = len(StarsInFOV)
+        if nStarsInFOV < 3:
+            return []
 
-    # Create array of Triangles in FOV, including range of possible
-    # solutions from Triangle Catalog using K-Vector
+        nCombs = misc.comb(nStarsInFOV, 3)
 
-    for s1 in range(1, nStarsInFOV-2):
-        sv1 = StarsInFOV(s1).mv
-        for s2 in range(s1+1, nStarsInFOV-1):
-            sv2 = StarsInFOV(s2).mv
-
-            mAng = math.acos(np.inner(sv1, sv2 ))
-
-            if mAng > math.pi/2:
-                mAng = math.pi - mAng
-
-            if mAng <= FOVmax:
-
-                for s3 in range(s2+1, nStarsInFOV):
-                    sv3 = StarsInFOV(s3).mv
-
-                    mFOV = CalcFOV(sv1, sv2, sv3)  # Determine if skinny
-                    if mFOV <= FOVmax:
-
-                        # Measure area of triangle, determine bounds on
-                        # error
-                        # TODO calculate triangle
-                        Prop = PlanarTriArea( sv1, sv2, sv3 )
-                        var  = StarPlanarAreaCov( sv1, sv2, sv3, sigm )
-
-                        # Calculate minimum and maximum areas
-
-                        PropMin = Prop - sigx * math.sqrt(var)
-                        PropMax = Prop + sigx * math.sqrt(var)
-
-                        # Determine ranges of possible solutions using K-Vector
-
-                        pmin = FindWithParabKvec(PropMin, Kvec)
-                        pmax = FindWithParabKvec(PropMax, Kvec)
-                        rangee = pmax - pmin
-
-                        if rangee <= climit:      # Only keep tri list within combo limit
-                            # TODO append to T
-                            k = k + 1
-                            T[k].Stars = [s1, s2, s3]
-                            T[k].Prop  = Prop
-                            T[k].Prop2 = -1    # Don't fill till needed
-                            T[k].pmin  = pmin
-                            T[k].pmax  = pmax
-                            T[k].llist = 0     # Used for linked list
-
-                            # Find Triangle with greatest area to start list
-
-                            if T[k].Prop > maxProp:
-                                start = k
-                                maxProp = T[k].Prop
-
-    nCombs = k
-
-    # CREATE LINKED LIST OF TRIANGLES IN FOV, SUCH THAT NO MORE THAN
-    # ONE STAR CHANGES AT A TIME GIVING PRIORITY TO TRIANGLES WITH
-    # LARGEST POSSIBLE AREAS
-
-    T[start].llist = 999       # makes ineligible (also EOL)
-    prev = start
-    next = start
-    nPivots = 0
-    for j in range(1, nCombs):
-        maxProp = 0
-        done = False
-
-        for k in range (1, nCombs):
-            if T[k].llist == 0:
-                x = 0
-                for m in range (1, 3):
-                    if T[k].Stars[m] == T[prev].Stars[1]:
-                            x = x + 1
-                    if T[k].Stars[m] == T[prev].Stars[2]:
-                            x = x + 1
-                    if T[k].Stars[m] == T[prev].Stars[3]:
-                            x = x + 1
-
-                if x == 2:       # At least two common pts
-                    if T[k].Prop > maxProp:
-                        next = k
-                        maxProp = T[k].Prop
-
-                    done = True
-
-        T[prev].llist = next
-        T[next].llist = 999    # EOL
-        prev = next
-
-        if done:
-            nPivots += + 1
-            if nPivots == plimit:
-                break
-        else:
-            break
-
-    # nPivots = nPivots
-
-    # Start with triangle with highest property value
-
-    Finalists = []
-    if nCombs > 0:
-        nFinalists = T[start].pmax - T[start].pmin
+        # CREATE LIST OF TRIANGLES, INCL. AREA, AND MAX & MIN TRIANGLE INDICIES
 
         k = 0
+        start = 1
+        max_area = 0
+        T = []
 
-        # Get Ic of first triangle, find range of allowable Ic
+        # Create array of Triangles in FOV, including range of possible
+        # solutions from Triangle Catalog using K-Vector
 
-        s1  = T[start].Stars[1]
-        s2  = T[start].Stars[2]
-        s3  = T[start].Stars[3]
-        sv1 = StarsInFOV[s1].mv
-        sv2 = StarsInFOV[s2].mv
-        sv3 = StarsInFOV[s3].mv
-        # T[start].Prop2 = PlanarTriPolarMoment( sv1, sv2, sv3 )
-        # var = StarPlanarMomentCov( sv1, sv2, sv3, sigm )
-        # Prop2min = T[start].Prop2 - sigx * math.sqrt( var )
-        # Prop2max = T[start].Prop2 + sigx * math.sqrt( var )
+        for s1 in range(0, nStarsInFOV-2):
+            sv1 = np.array(
+                [StarsInFOV[s1][2], StarsInFOV[s1][3], StarsInFOV[s1][4]])
+            for s2 in range(s1+1, nStarsInFOV-1):
+                sv2 = np.array(
+                    [StarsInFOV[s2][2], StarsInFOV[s2][3], StarsInFOV[s2][4]])
+                mAng = math.acos(np.inner(sv1, sv2))
 
-        for j in range(1, nFinalists):
-            tnum = TriPtr[T[start].pmin + j - 1]
+                if mAng > math.pi/2:
+                    mAng = math.pi - mAng
 
-            # Include only if Ip is within allowable range
-            # TODO read from catalog
-            if Tri[tnum].Ip >= Prop2min:
-                if Tri[tnum].Ip <= Prop2max:
-                    k = k + 1
-                    Finalists[k].Tri   = tnum
-                    Finalists[k].Stars = Tri[tnum].Stars
+                if mAng <= FOV_MAX:
 
-        nFinalists = k
-        Results.nFinalists = k
+                    for s3 in range(s2+1, nStarsInFOV):
+                        sv3 = np.array(
+                            [StarsInFOV[s3][2],
+                             StarsInFOV[s3][3],
+                             StarsInFOV[s3][4]])
 
-    else:
-        nFinalists = 0
-        Results.nFinalists = 0
+                        mFOV = CalcFOV(sv1, sv2, sv3)  # Determine if skinny
+                        if mFOV <= FOV_MAX:
 
-    # ==============================================
-    # PIVOT AS REQUIRED TO NARROW POSSIBLE SOLUTIONS
-    # ==============================================
+                            # Measure area of triangle, determine bounds on
+                            # error
+                            t = self.planar_triangle_calc.calculate_triangle(
+                                StarsInFOV[s1], StarsInFOV[s2], StarsInFOV[s3])
 
+                            area = t[3]
+                            moment = t[4]
+                            area_var = t[5]
+                            moment_var = t[6]
+                            llist = 0
 
-    fail = 0
-    k = T[start].llist
+                            # TODO K-vector min and max
 
-    for j in range(1, nPivots):
+                            A_dev = np.math.sqrt(area_var)
+                            area_min = area - SIG_X * A_dev
+                            area_max = area + SIG_X * A_dev
 
-        # If number of finalists reduces to 0, search has failed
-        # If number of finalists reduces to 1, search is complete
+                            k_start, k_end = self.kvector_calc.find_in_kvector(
+                                area_min, area_max, self.catalog)
+                            rangee = k_end - k_start
+                            # Only keep tri list within combo limit
+                            if rangee <= climit:
+                                T.append([
+                                    s1, s2, s3, area, moment,
+                                    area_var, moment_var, k_start, k_end, llist
+                                ])
+                                k = k + 1
+                                # T[k].Stars = [s1, s2, s3]
+                                # T[k].Prop  = Prop
+                                # T[k].Prop2 = -1    # Don't fill till needed
+                                # T[k].pmin  = pmin
+                                # T[k].pmax  = pmax
+                                # T[k].llist = 0     # Used for linked list
 
+                                # Find Triangle with greatest area to
+                                # start list
 
-        if nFinalists == 0:
-            nPivots = j - 1
-            break
-        if nFinalists == 1:
-            nPivots = j - 1
-            break
+                                # if T[k].Prop > maxProp:
+                                #     start = k
+                                #     maxProp = T[k].Prop
+                                if area > max_area:
+                                    start = k
+                                    max_area = area
 
-        # Plot in FOV as desired (bit 2 of gmode set)
+        nCombs = k
 
-        Results.nFinalists = [Results.nFinalists, (T[k].pmax - T[k].pmin)]
+        # CREATE LINKED LIST OF TRIANGLES IN FOV, SUCH THAT NO MORE THAN
+        # ONE STAR CHANGES AT A TIME GIVING PRIORITY TO TRIANGLES WITH
+        # LARGEST POSSIBLE AREAS
 
-        # Create three binary trees of possible triangles,
-        # sorted by first star, second start and third star
+        T[start][9] = 999       # makes ineligible (also EOL)
+        prev = start
+        next = start
+        nPivots = 0
+        for j in range(0, nCombs):
+            maxProp = 0
+            done = False
 
-        # saTree = []
-        # sbTree = []
-        # scTree = []
+            for k in range(0, nCombs):
+                if T[k][9] == 0:
+                    x = 0
+                    for m in range(0, 3):
+                        if T[k][m] == T[prev][1]:
+                                x = x + 1
+                        if T[k][m] == T[prev][2]:
+                                x = x + 1
+                        if T[k][m] == T[prev][3]:
+                                x = x + 1
 
-        s1 = T[k].Stars[1]
-        s2 = T[k].Stars[2]
-        s3 = T[k].Stars[3]
-        sv1 = StarsInFOV[s1].mv
-        sv2 = StarsInFOV[s2].mv
-        sv3 = StarsInFOV[s3].mv
+                    if x == 2:       # At least two common pts
+                        if T[k][3] > maxProp:
+                            next = k
+                            maxProp = T[k][3]
 
-        # TODO read from catalog
-        triangles = self.find_in_catalog()
+                        done = True
 
-        F1 = []    # Reset list of finalists
-        n1 = 0
+            T[prev][9] = next
+            T[next][9] = 999    # EOL
+            prev = next
 
-        for a in range(1, nFinalists):
-            s1 = Finalists[a].Stars[1, 1]
-            s2 = Finalists[a].Stars[1, 2]
-            s3 = Finalists[a].Stars[1, 3]
+            if done:
+                nPivots += + 1
+                if nPivots == plimit:
+                    break
+            else:
+                break
 
-            match = []
+        # nPivots = nPivots
 
-            """
-            Here is part for finding all two common stars triangles
-            """
-            # TODO two common stars triangles
-            self.common_triangles(s1, s2, s3, tc)
+        # Start with triangle with highest property value
 
-            for b in range(1, len(match)):
-                n1 = n1 + 1
-                F1[n1].Tri   = [ [match[b]], [Finalists[a].Tri] ]
-                F1[n1].Stars = [ [Tri( match[b] ).Stars], [Finalists[a].Stars]]
+        Finalists = []
+        if nCombs > 0:
+            nFinalists = T[start][8] - T[start][7]
 
-            if n1 > nFinalists:
+            k = 0
+
+            # Get Ic of first triangle, find range of allowable Ic
+
+            s1 = T[start][0]
+            s2 = T[start][1]
+            s3 = T[start][2]
+            sv1 = StarsInFOV[s1].mv
+            sv2 = StarsInFOV[s2].mv
+            sv3 = StarsInFOV[s3].mv
+            # T[start].Prop2 = PlanarTriPolarMoment( sv1, sv2, sv3 )
+            # var = StarPlanarMomentCov( sv1, sv2, sv3, sigm )
+            # Prop2min = T[start].Prop2 - sigx * math.sqrt( var )
+            # Prop2max = T[start].Prop2 + sigx * math.sqrt( var )
+
+            for j in range(0, nFinalists):
+                # tnum = TriPtr[T[start][7] + j - 1]
+
+                tf = self.find_in_catalog(np.array(T[start]))
+                # Include only if Ip is within allowable range
+                # if Tri[tnum].Ip >= Prop2min:
+                #     if Tri[tnum].Ip <= Prop2max:
+                # k = k + 1
+                Finalists.append(tf[:, 1:4])
+                # Finalists[k].Tri = tnum
+                # Finalists[k].Stars = Tri[tnum].Stars
+
+            nFinalists = len(Finalists)
+            RnFinalists = len(Finalists)
+
+        else:
+            nFinalists = 0
+            RnFinalists = 0
+
+        # ==============================================
+        # PIVOT AS REQUIRED TO NARROW POSSIBLE SOLUTIONS
+        # ==============================================
+
+        RnFinalists2 = [RnFinalists]
+        fail = 0
+        k = T[start][9]
+
+        for j in range(0, nPivots):
+
+            # If number of finalists reduces to 0, search has failed
+            # If number of finalists reduces to 1, search is complete
+
+            if nFinalists == 0:
+                nPivots = j - 1
+                break
+            if nFinalists == 1:
                 nPivots = j - 1
                 break
 
+            RnFinalists2.append(T[k][8] - T[k][7])
 
-        # If no of finalists increases from previous round, abandon matching
+            # s1 = T[k][0]
+            # s2 = T[k][1]
+            # s3 = T[k][2]
 
-        if n1 > nFinalists:
-            break
+            triangles = self.find_in_catalog(np.array(T[k]))
 
-        # Newly created list (F1) becomes current finalists
+            F1 = []    # Reset list of finalists
+            n1 = 0
 
-        Finalists = F1
-        nFinalists = n1
+            for a in range(0, nFinalists):
+                s1 = Finalists[a].Stars[1, 1]
+                s2 = Finalists[a].Stars[1, 2]
+                s3 = Finalists[a].Stars[1, 3]
 
-        # Advance to next combination in linked list
+                match = self.common_triangles(s1, s2, s3, triangles)
 
-        k = T[k].llist
-
-    # COMPILE RESULTS
-
-    Results.nPivots = nPivots
-
-    if nFinalists == 0:     # Search failed to match triangle
-        Results.Match = []
-        nResults = 0
-    elif nFinalists == 1:   # Search successful, create array of stars in FOV
-        Results.Match = Finalists[1].Stars[1]  # .Stars(1, 1:3) all three stars
-        n1 = 3
-        for j in range(2, nPivots+1):
-            for k in range(1, 3):
-                match = False
-                for m in range(1, n1):
-                    if Finalists[1].Stars[j,k] == Results.Match(m):
-                        match = True
-                        break
-                if not match:
-                    Results.Match = [ Results.Match, Finalists[1].Stars[j,k] ]
+                for b in range(0, len(match)):
                     n1 = n1 + 1
-        nResults = n1
-    else:                   # Unable to reduce possible solutions to one
-        Results.Match = []
-        nResults = 0
-    return Results.Match
+                    # F1[n1].Tri = [
+                    #     [match[b]],
+                    #     [Finalists[a].Tri]]
+                    F1.append([
+                        [Tri[match[b]].Stars], [Finalists[a][0:3]]])
+
+                if n1 > nFinalists:
+                    nPivots = j - 1
+                    break
+
+            # If number of finalists increases from previous round,
+            # abandon matching
+
+            if n1 > nFinalists:
+                break
+
+            # Newly created list (F1) becomes current finalists
+
+            Finalists = F1
+            nFinalists = n1
+
+            # Advance to next combination in linked list
+
+            k = T[k][9]
+
+        # COMPILE RESULTS
+
+        RnPivots = nPivots
+
+        return Finalists
+
+        # RnFinalists = RnFinalists2
+        # if nFinalists == 0:     # Search failed to match triangle
+        #     RMatch = []
+        #     nResults = 0
+        # elif nFinalists == 1:
+        #     # Search successful, create array of stars in FOV
+        #     RMatch = Finalists[1].Stars[1]  # .Stars(1, 1:3) all three stars
+        #     n1 = 3
+        #     for j in range(1, nPivots+1):
+        #         for k in range(0, 3):
+        #             match = False
+        #             for m in range(1, n1):
+        #                 if Finalists[1].Stars[j, k] == RMatch[m]:
+        #                     match = True
+        #                     break
+        #             if not match:
+        #                 RMatch = [RMatch, Finalists[1].Stars[j, k]]
+        #                 n1 = n1 + 1
+        #     nResults = n1
+        # else:                   # Unable to reduce possible solutions to one
+        #     RMatch = []
+        #     nResults = 0
+        # return RMatch
+
+    def find_in_catalog(
+            self, triangle: np.ndarray) -> np.ndarray:
+        # triangle = [id1, id2, id3, area, moment, area_var, moment_var]
+        A_dev = np.math.sqrt(triangle[5])
+        J_dev = np.math.sqrt(triangle[6])
+        area_min = triangle[3] - SIG_X * A_dev
+        area_max = triangle[3] + SIG_X * A_dev
+        moment_min = triangle[4] - SIG_X * J_dev
+        moment_max = triangle[4] + SIG_X * J_dev
+
+        k_start, k_end = self.kvector_calc.find_in_kvector(
+                moment_min, moment_max, self.catalog)
+        # TODO should I make it faster with GPU?
+
+        valid_triangles = self.catalog[
+            (self.catalog[:, 5] >= k_start) &
+            (self.catalog[:, 5] <= k_end) &
+            (self.catalog[:, 3] >= area_min) &
+            (self.catalog[:, 3] <= area_max) &
+            (self.catalog[:, 4] >= moment_min) &
+            (self.catalog[:, 4] <= moment_max)]
+
+        # if valid_triangles.size == 0:
+        #     return self.catalog
+        # valid_triangles = np.delete(valid_triangles, [3, 4, 5], axis=1)
+
+        return valid_triangles
+
+    def common_triangles(self, s1_id, s2_id, s3_id, tc):
+
+        return tc[
+            ((tc[:, 0] == s1_id) & (tc[:, 1] == s2_id)) |
+            ((tc[:, 0] == s1_id) & (tc[:, 2] == s2_id)) |
+
+            ((tc[:, 0] == s1_id) & (tc[:, 1] == s3_id)) |
+            ((tc[:, 0] == s1_id) & (tc[:, 2] == s3_id)) |
+
+            ((tc[:, 1] == s1_id) & (tc[:, 0] == s2_id)) |
+            ((tc[:, 1] == s1_id) & (tc[:, 2] == s2_id)) |
+
+            ((tc[:, 1] == s1_id) & (tc[:, 0] == s3_id)) |
+            ((tc[:, 1] == s1_id) & (tc[:, 2] == s3_id)) |
+
+            ((tc[:, 2] == s1_id) & (tc[:, 0] == s2_id)) |
+            ((tc[:, 2] == s1_id) & (tc[:, 1] == s2_id)) |
+
+            ((tc[:, 2] == s1_id) & (tc[:, 0] == s3_id)) |
+            ((tc[:, 2] == s1_id) & (tc[:, 1] == s3_id)) |
+
+            ((tc[:, 0] == s2_id) & (tc[:, 1] == s3_id)) |
+            ((tc[:, 0] == s2_id) & (tc[:, 2] == s3_id)) |
+
+            ((tc[:, 1] == s2_id) & (tc[:, 0] == s3_id)) |
+            ((tc[:, 1] == s2_id) & (tc[:, 2] == s3_id)) |
+
+            ((tc[:, 2] == s2_id) & (tc[:, 0] == s3_id)) |
+            ((tc[:, 2] == s2_id) & (tc[:, 1] == s3_id))
+            ]
