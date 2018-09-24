@@ -63,7 +63,7 @@ class KVectorCalculator:
         j_t = min(math.ceil((y_b - q) / m), len(k_vector)-1)
 
         if j_b > len(k_vector) - 1 or j_t < 0:
-            return -1, -1
+            return 0, len(k_vector)
 
         k_start = int(k_vector[j_b, 5] + 1)
         k_end = min(int(k_vector[j_t, 5]), len(k_vector)-1)

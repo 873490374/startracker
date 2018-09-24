@@ -5,6 +5,7 @@ import pytest
 from timeit import default_timer as timer
 
 from program.const import SENSOR_VARIANCE, MAIN_PATH
+from program.tracker.cole_ident import ColeStarIdentifier
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -18,15 +19,21 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q):
     with open(filename, 'rb') as f:
         catalog = np.genfromtxt(f, dtype=np.float64, delimiter=',')
     times = []
-    star_identifier = StarIdentifier(
-        planar_triangle_calculator=PlanarTriangleCalculator(
+    star_identifier = ColeStarIdentifier(
+        planar_triangle_calc=PlanarTriangleCalculator(
             sensor_variance=SENSOR_VARIANCE
         ),
         kvector_calculator=KVectorCalculator(kv_m, kv_q),
         catalog=catalog)
     for row in input_data:
         start = timer()
-        targets.append([star_identifier.identify_stars(row)])
+        ll = star_identifier.identify_stars(row)
+        # print(ll[1])
+        # print('*'*30)
+        # targets.append([ll[1]])
+        # print(ll)
+        print('*'*30)
+        targets.append([ll])
         times.append(timer() - start)
 
     print('Average time: ', np.sum(times)/len(times))

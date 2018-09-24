@@ -20,9 +20,9 @@ def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
     
     # Calc length of vector from pt to pt
     
-    a = math.sqrt(r12[1]**2 + r12[2]**2 + r12[3]**2)
-    b = math.sqrt(r23[1]**2 + r23[2]**2 + r23[3]**2)
-    c = math.sqrt(r31[1]**2 + r31[2]**2 + r31[3]**2)
+    a = math.sqrt(r12[0]**2 + r12[1]**2 + r12[2]**2)
+    b = math.sqrt(r23[0]**2 + r23[1]**2 + r23[2]**2)
+    c = math.sqrt(r31[0]**2 + r31[1]**2 + r31[2]**2)
     
     # Determine interior angles of triangle
     
@@ -48,38 +48,36 @@ def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
         
         # Distance to center from pt 1 to pt 2 must be equal (eq 1)
         
-        A1 = [- 2*p1[1] + 2*p2[1], - 2*p1[2] + 2*p2[2], - 2*p1[3] + 2*p2[3]]
-        B1 = (- (p1[1]**2 + p1[2]**2 + p1[3]**2) +
-              (p2[1]**2 + p2[2]**2 + p2[3]**2))
+        A1 = [- 2*p1[0] + 2*p2[0], - 2*p1[1] + 2*p2[1], - 2*p1[2] + 2*p2[2]]
+        B1 = (- (p1[0]**2 + p1[1]**2 + p1[2]**2) +
+              (p2[0]**2 + p2[1]**2 + p2[2]**2))
         
         # Distance to center from pt 2 to pt 3 must be equal [eq 2]
         
-        A2 = [- 2*p2[1] + 2*p3[1], - 2*p2[2] + 2*p3[2], - 2*p2[3] + 2*p3[3]]
-        B2 = (- (p2[1]**2 + p2[2]**2 + p2[3]**2) +
-              (p3[1]**2 + p3[2]**2 + p3[3]**2))
+        A2 = [- 2*p2[0] + 2*p3[0], - 2*p2[1] + 2*p3[1], - 2*p2[2] + 2*p3[2]]
+        B2 = (- (p2[0]**2 + p2[1]**2 + p2[2]**2) +
+              (p3[0]**2 + p3[1]**2 + p3[2]**2))
         
         # All points must be on the same plane (eq 3)
         
-        P = np.array(
-            [[np.transpose(-p1)],
-             [np.dot(np.transpose(p2), -p1)],
-             [np.dot(np.transpose(p3), -p1)]]
-        )
+        P = np.array([np.transpose(-p1),
+                      np.transpose(p2) - p1,
+                      np.transpose(p3) - p1])
         
         A3 = [
-            (P[2, 2] * P[3, 3]) - (P[2, 3] * P[3, 2]),
-            (P[2, 3] * P[3, 1]) - (P[2, 1] * P[3, 3]),
-            (P[2, 1] * P[3, 2]) - (P[2, 2] * P[3, 1]),
+            (P[1, 1] * P[2, 2]) - (P[1, 2] * P[2, 1]),
+            (P[1, 2] * P[2, 0]) - (P[1, 0] * P[2, 2]),
+            (P[1, 0] * P[2, 1]) - (P[1, 1] * P[2, 0]),
         ]
         B3 = - np.linalg.det(P)
         
-        B = [B1, B2, B3]
+        B = np.array([B1, B2, B3])
         
-        A = [[A1], [A2], [A3]]
+        A = np.array([A1, A2, A3])
         
-        x = np.dot(np.invert(A), np.transpose(B))
+        x = np.dot(np.linalg.inv(A), np.transpose(B))
         
-        r = math.sqrt((p1[1]-x[1])**2 + (p1[2]-x[2])**2 + (p1[3]-x[3])**2)
+        r = math.sqrt((p1[0]-x[0])**2 + (p1[1]-x[1])**2 + (p1[2]-x[2])**2)
 
     else:
         
@@ -96,7 +94,7 @@ def CalcFOV(p1: np.ndarray, p2: np.ndarray, p3: np.ndarray) -> float:
 FOV_MAX = 10
 plimit = 9
 SIG_X = 3
-climit = 10000
+climit = 100000
 
 
 class ColeStarIdentifier:
@@ -105,7 +103,6 @@ class ColeStarIdentifier:
             planar_triangle_calc: PlanarTriangleCalculator,
             kvector_calculator: KVectorCalculator,
             catalog: np.ndarray):
-        self.catalog = None
         self.planar_triangle_calc = planar_triangle_calc
         self.kvector_calc = kvector_calculator
         self.catalog = catalog
@@ -128,26 +125,18 @@ class ColeStarIdentifier:
         # solutions from Triangle Catalog using K-Vector
 
         for s1 in range(0, nStarsInFOV-2):
-            sv1 = np.array(
-                [StarsInFOV[s1][2], StarsInFOV[s1][3], StarsInFOV[s1][4]])
             for s2 in range(s1+1, nStarsInFOV-1):
-                sv2 = np.array(
-                    [StarsInFOV[s2][2], StarsInFOV[s2][3], StarsInFOV[s2][4]])
-                mAng = math.acos(np.inner(sv1, sv2))
+                # mAng = math.acos(np.inner(sv1, sv2))
 
-                if mAng > math.pi/2:
-                    mAng = math.pi - mAng
+                # if mAng > math.pi/2:
+                #     mAng = math.pi - mAng
 
-                if mAng <= FOV_MAX:
+                if 0.1 <= FOV_MAX:
 
                     for s3 in range(s2+1, nStarsInFOV):
-                        sv3 = np.array(
-                            [StarsInFOV[s3][2],
-                             StarsInFOV[s3][3],
-                             StarsInFOV[s3][4]])
 
-                        mFOV = CalcFOV(sv1, sv2, sv3)  # Determine if skinny
-                        if mFOV <= FOV_MAX:
+                        # mFOV = CalcFOV(sv1, sv2, sv3)  # Determine if skinny
+                        if 0.1 <= FOV_MAX:
 
                             # Measure area of triangle, determine bounds on
                             # error
@@ -175,23 +164,10 @@ class ColeStarIdentifier:
                                     s1, s2, s3, area, moment,
                                     area_var, moment_var, k_start, k_end, llist
                                 ])
-                                k = k + 1
-                                # T[k].Stars = [s1, s2, s3]
-                                # T[k].Prop  = Prop
-                                # T[k].Prop2 = -1    # Don't fill till needed
-                                # T[k].pmin  = pmin
-                                # T[k].pmax  = pmax
-                                # T[k].llist = 0     # Used for linked list
-
-                                # Find Triangle with greatest area to
-                                # start list
-
-                                # if T[k].Prop > maxProp:
-                                #     start = k
-                                #     maxProp = T[k].Prop
                                 if area > max_area:
                                     start = k
                                     max_area = area
+                                k = k + 1
 
         nCombs = k
 
@@ -211,11 +187,11 @@ class ColeStarIdentifier:
                 if T[k][9] == 0:
                     x = 0
                     for m in range(0, 3):
+                        if T[k][m] == T[prev][0]:
+                                x = x + 1
                         if T[k][m] == T[prev][1]:
                                 x = x + 1
                         if T[k][m] == T[prev][2]:
-                                x = x + 1
-                        if T[k][m] == T[prev][3]:
                                 x = x + 1
 
                     if x == 2:       # At least two common pts
@@ -244,16 +220,14 @@ class ColeStarIdentifier:
         if nCombs > 0:
             nFinalists = T[start][8] - T[start][7]
 
-            k = 0
+            # k = 0
 
             # Get Ic of first triangle, find range of allowable Ic
+            #
+            # s1 = T[start][0]
+            # s2 = T[start][1]
+            # s3 = T[start][2]
 
-            s1 = T[start][0]
-            s2 = T[start][1]
-            s3 = T[start][2]
-            sv1 = StarsInFOV[s1].mv
-            sv2 = StarsInFOV[s2].mv
-            sv3 = StarsInFOV[s3].mv
             # T[start].Prop2 = PlanarTriPolarMoment( sv1, sv2, sv3 )
             # var = StarPlanarMomentCov( sv1, sv2, sv3, sigm )
             # Prop2min = T[start].Prop2 - sigx * math.sqrt( var )
@@ -267,7 +241,7 @@ class ColeStarIdentifier:
                 # if Tri[tnum].Ip >= Prop2min:
                 #     if Tri[tnum].Ip <= Prop2max:
                 # k = k + 1
-                Finalists.append(tf[:, 1:4])
+                Finalists.append(tf[:, 0:3])
                 # Finalists[k].Tri = tnum
                 # Finalists[k].Stars = Tri[tnum].Stars
 
@@ -287,13 +261,13 @@ class ColeStarIdentifier:
         k = T[start][9]
 
         for j in range(0, nPivots):
-
+            print(nFinalists)
             # If number of finalists reduces to 0, search has failed
             # If number of finalists reduces to 1, search is complete
 
             if nFinalists == 0:
                 nPivots = j - 1
-                break
+                continue
             if nFinalists == 1:
                 nPivots = j - 1
                 break
@@ -310,19 +284,25 @@ class ColeStarIdentifier:
             n1 = 0
 
             for a in range(0, nFinalists):
-                s1 = Finalists[a].Stars[1, 1]
-                s2 = Finalists[a].Stars[1, 2]
-                s3 = Finalists[a].Stars[1, 3]
+                try:
+                    s1 = Finalists[a][0][0]
+                    s2 = Finalists[a][0][1]
+                    s3 = Finalists[a][0][2]
+                except IndexError:
+                    nPivots = j - 1
+                    break
 
                 match = self.common_triangles(s1, s2, s3, triangles)
 
-                for b in range(0, len(match)):
-                    n1 = n1 + 1
+                if len(match) != 0:
+                    print('a')
+                n1 = len(match)
+                # for b in range(0, len(match)):
+                #     n1 = n1 + 1
                     # F1[n1].Tri = [
                     #     [match[b]],
                     #     [Finalists[a].Tri]]
-                    F1.append([
-                        [Tri[match[b]].Stars], [Finalists[a][0:3]]])
+                F1.append([match[:, 0:3], [Finalists[a][0:3]]])
 
                 if n1 > nFinalists:
                     nPivots = j - 1
@@ -346,32 +326,32 @@ class ColeStarIdentifier:
         # COMPILE RESULTS
 
         RnPivots = nPivots
-
+        print(nFinalists)
         return Finalists
 
-        # RnFinalists = RnFinalists2
-        # if nFinalists == 0:     # Search failed to match triangle
-        #     RMatch = []
-        #     nResults = 0
-        # elif nFinalists == 1:
-        #     # Search successful, create array of stars in FOV
-        #     RMatch = Finalists[1].Stars[1]  # .Stars(1, 1:3) all three stars
-        #     n1 = 3
-        #     for j in range(1, nPivots+1):
-        #         for k in range(0, 3):
-        #             match = False
-        #             for m in range(1, n1):
-        #                 if Finalists[1].Stars[j, k] == RMatch[m]:
-        #                     match = True
-        #                     break
-        #             if not match:
-        #                 RMatch = [RMatch, Finalists[1].Stars[j, k]]
-        #                 n1 = n1 + 1
-        #     nResults = n1
-        # else:                   # Unable to reduce possible solutions to one
-        #     RMatch = []
-        #     nResults = 0
-        # return RMatch
+        RnFinalists = RnFinalists2
+        if nFinalists == 0:     # Search failed to match triangle
+            RMatch = []
+            nResults = 0
+        elif nFinalists == 1:
+            # Search successful, create array of stars in FOV
+            RMatch = Finalists[0]  # .Stars(1, 1:3) all three stars
+            n1 = 3
+            for j in range(0, nPivots+1):
+                for k in range(0, 3):
+                    match = False
+                    for m in range(0, n1):
+                        if Finalists[0][j, k] == RMatch[m]:
+                            match = True
+                            break
+                    if not match:
+                        RMatch = [RMatch, Finalists[1][j, k]]
+                        n1 = n1 + 1
+            nResults = n1
+        else:                   # Unable to reduce possible solutions to one
+            RMatch = []
+            nResults = 0
+        return RMatch
 
     def find_in_catalog(
             self, triangle: np.ndarray) -> np.ndarray:
@@ -388,8 +368,8 @@ class ColeStarIdentifier:
         # TODO should I make it faster with GPU?
 
         valid_triangles = self.catalog[
-            (self.catalog[:, 5] >= k_start) &
-            (self.catalog[:, 5] <= k_end) &
+            # (self.catalog[:, 5] >= k_start) &
+            # (self.catalog[:, 5] <= k_end) &
             (self.catalog[:, 3] >= area_min) &
             (self.catalog[:, 3] <= area_max) &
             (self.catalog[:, 4] >= moment_min) &
