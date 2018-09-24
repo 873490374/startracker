@@ -1,5 +1,4 @@
 import math
-import operator
 
 import numpy as np
 
@@ -17,7 +16,7 @@ class KVectorCalculator:
     def make_kvector(
             self, y_vector: np.ndarray) -> (np.ndarray, float, float):
         n = len(y_vector)
-        y_vector = y_vector[y_vector[:, 4].argsort()]
+        y_vector = y_vector[y_vector[:, 3].argsort()]
         s_vector = np.zeros((len(y_vector), 6))
         s_vector[:, :-1] = y_vector
 
@@ -26,8 +25,8 @@ class KVectorCalculator:
 
         delta_epsilon = (n - 1) * EPSILON
 
-        m = (y_max[4] + y_min[4] + 2 * delta_epsilon) / (n - 1)
-        q = y_min[4] - m - delta_epsilon
+        m = (y_max[3] + y_min[3] + 2 * delta_epsilon) / (n - 1)
+        q = y_min[3] - m - delta_epsilon
 
         # y0 = y_min - self.delta_epsilon
         # yn = y_max + self.delta_epsilon
@@ -43,7 +42,7 @@ class KVectorCalculator:
         s_vector[-1][5] = n
         for i in range(1, n - 1):
             j = i
-            while s_vector[j][4] > self.z(i, m, q):
+            while s_vector[j][3] > self.z(i, m, q):
                 j -= 1
                 if j == 0:
                     break
