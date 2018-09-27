@@ -14,19 +14,19 @@ class PlanarTriangleCalculator:
             self, s1: np.ndarray, s2: np.ndarray, s3: np.ndarray
     ) -> np.ndarray:
 
-        p = np.array([s1[2], s1[3], s1[4]])
-        q = np.array([s2[2], s2[3], s2[4]])
-        r = np.array([s3[2], s3[3], s3[4]])
+        p = np.array([s1[1], s1[2], s1[3]])
+        q = np.array([s2[1], s2[2], s2[3]])
+        r = np.array([s3[1], s3[2], s3[3]])
 
-        a1 = s1[2] - s2[2]
-        a2 = s1[3] - s2[3]
-        a3 = s1[4] - s2[4]
-        b1 = s2[2] - s3[2]
-        b2 = s2[3] - s3[3]
-        b3 = s2[4] - s3[4]
-        c1 = s1[2] - s3[2]
-        c2 = s1[3] - s3[3]
-        c3 = s1[4] - s3[4]
+        a1 = s1[1] - s2[1]
+        a2 = s1[2] - s2[2]
+        a3 = s1[3] - s2[3]
+        b1 = s2[1] - s3[1]
+        b2 = s2[2] - s3[2]
+        b3 = s2[3] - s3[3]
+        c1 = s1[1] - s3[1]
+        c2 = s1[2] - s3[2]
+        c3 = s1[3] - s3[3]
 
         a = math.sqrt(a1 ** 2 + a2 ** 2 + a3 ** 2)
         b = math.sqrt(b1 ** 2 + b2 ** 2 + b3 ** 2)
