@@ -55,31 +55,20 @@ class KVectorCalculator:
         return z
 
     def find_in_kvector(
-            self, y_a: float, y_b: float, k_vector: [ImagePlanarTriangle],
+            self, y_a: float, y_b: float, k_vector: np.ndarray,
             m: float=None, q: float=None) -> [float]:
         m = m or self.m
         q = q or self.q
 
-        j_b = max(self.calculate_j_b(y_a, m, q), 0)
-        j_t = min(self.calculate_j_t(y_b, m, q), len(k_vector)-1)
+        j_b = max(math.floor((y_a - q) / m), 0)
+        j_t = min(math.ceil((y_b - q) / m), len(k_vector)-1)
 
-        # if j_b > 0:
-        #     print('j_b: ', j_b)
-        # if j_t < len(k_vector)-1:
-        #     print('j_t: ', j_t)
+        if j_b > len(k_vector) - 1 or j_t < 0:
+            return 0, len(k_vector)
 
-        if j_b > len(k_vector) + 1 or j_t < 0:
-            return []
-
-        k_start = int(k_vector[j_b].k + 1)
-        k_end = min(int(k_vector[j_t].k), len(k_vector)-1)
-        # return k_vector[k_start:k_end]
-        answer = []
-        i = k_start
-        while i <= k_end:
-            answer.append(k_vector[i])
-            i += 1
-        return answer
+        k_start = int(k_vector[j_b, 5] + 1)
+        k_end = min(int(k_vector[j_t, 5]), len(k_vector)-1)
+        return k_start, k_end
 
     def calculate_j_b(self, y_a: float, m: float, q: float) -> int:
         j_b = math.floor((y_a - q) / m)
