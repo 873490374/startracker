@@ -86,13 +86,11 @@ class TriangleCatalogGeneratorParallel:
         # tr = tr[tr[:, 0] != s1_id]
         # tr = tr[tr[:, 1] != s1_id]
 
-        tr = self.remove_duplicates(tr, 2)
-
         # Add star1 id in the new first column
         t = np.zeros((len(tr), 5))
         t[:, 1:] = tr
         t[:, 0] = s1_id
-
+        t = self.remove_duplicates(t)
         self.save_partially_to_file(t, part_nr, dtime)
 
     def read_catalogue_stars(self, star_catalog_path: str) -> [StarPosition]:
@@ -173,20 +171,23 @@ class TriangleCatalogGeneratorParallel:
         catalog = np.delete(catalog, 0, axis=0)
         bar2.finish()
 
-        catalog = self.remove_duplicates(catalog, 3)
+        catalog = self.remove_duplicates(catalog)
         return catalog
 
-    def remove_duplicates(self, tr, dim):
-        trc1 = np.copy(tr[:, 0:dim])
-
+    def remove_duplicates(self, tr):
+        # TODO make simple catalog generation test, like 4-5 stars (4-9 triangles)
+        trc1 = np.copy(tr[:, 0:3])
         trc1 = np.sort(trc1)
-
         x = np.random.rand(trc1.shape[1])
         y = trc1.dot(x)
-
         _, index = np.unique(y, return_index=True)
 
-        return tr[index]
+        tr = tr[index]
+        trc1 = np.copy(tr[:, 0:3])
+        trc1 = np.sort(trc1)
+        tr[:, 0:3] = trc1[:, 0:3]
+
+        return tr
 
     def append_to_table(self, table, rows):
         if rows.size > 0 and rows.ndim > 1:
