@@ -3,7 +3,7 @@ import math
 import numpy as np
 
 
-zero_3x3 = np.matrix(np.zeros((3, 3)))
+zero_3x3 = np.zeros((3, 3))
 
 
 class PlanarTriangleCalculator:
@@ -90,26 +90,24 @@ class PlanarTriangleCalculator:
     def calculate_r_matrix(
             self, p: np.ndarray, q: np.ndarray, r: np.ndarray,
             sensor_variance: float) -> np.ndarray:
-        R1 = sensor_variance*(np.identity(3) - np.outer(p, p))
-        R2 = sensor_variance*(np.identity(3) - np.outer(q, q))
-        R3 = sensor_variance*(np.identity(3) - np.outer(r, r))
+        R1 = sensor_variance**2*(np.identity(3) - np.outer(p, p))
+        R2 = sensor_variance**2*(np.identity(3) - np.outer(q, q))
+        R3 = sensor_variance**2*(np.identity(3) - np.outer(r, r))
 
         return self.build_r_matrix(R1, R2, R3)
 
     def build_r_matrix(
             self, R1: np.ndarray, R2: np.ndarray,
             R3: np.ndarray) -> np.ndarray:
-        row_1 = np.concatenate((R1, zero_3x3, zero_3x3), axis=1)
-        row_2 = np.concatenate((zero_3x3, R2, zero_3x3), axis=1)
-        row_3 = np.concatenate((zero_3x3, zero_3x3, R3), axis=1)
-
+        row_1 = np.array(np.concatenate((R1, zero_3x3, zero_3x3), axis=1))
+        row_2 = np.array(np.concatenate((zero_3x3, R2, zero_3x3), axis=1))
+        row_3 = np.array(np.concatenate((zero_3x3, zero_3x3, R3), axis=1))
         return np.concatenate((row_1, row_2, row_3), axis=0)  # R [9x9]
 
     def calculate_area_variance(
             self, H: np.ndarray, R: np.ndarray) -> float:
         # Variance - Area
-        H_transpose = np.array(H)[np.newaxis].T
-        return (H * R * H_transpose).item()  # scalar
+        return np.dot(np.dot(H, R), H.T)  # scalar
 
     def calculate_polar_moment_variance(
             self, a: float, b: float, c: float, part: {np.ndarray},
@@ -129,5 +127,4 @@ class PlanarTriangleCalculator:
             dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[2])
 
         H = np.append(h1T, [h2T, h3T])
-        htr = np.array(H)[np.newaxis].T
-        return (H * R * htr).item()
+        return np.dot(np.dot(H, R), H.T)  # scalar
