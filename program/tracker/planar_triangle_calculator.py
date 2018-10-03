@@ -57,15 +57,15 @@ class PlanarTriangleCalculator:
         u3 = s * (s - a) * (s - c)
         u4 = s * (s - a) * (s - b)
 
-        dA_da = (u1 - u2 + u3 + u4) / 4 * area
-        dA_db = (u1 + u2 - u3 + u4) / 4 * area
-        dA_dc = (u1 + u2 + u3 - u4) / 4 * area
+        dA_da = (u1 - u2 + u3 + u4) / (4 * area)
+        dA_db = (u1 + u2 - u3 + u4) / (4 * area)
+        dA_dc = (u1 + u2 + u3 - u4) / (4 * area)
 
         da_db1 = (p - q).T / a
-        db_db2 = (q - r).T / b
-        dc_db1 = (p - r).T / c
         da_db2 = - da_db1
+        db_db2 = (q - r).T / b
         db_db3 = - db_db2
+        dc_db1 = (p - r).T / c
         dc_db3 = - dc_db1
 
         return {
@@ -73,10 +73,10 @@ class PlanarTriangleCalculator:
             'dA_db': dA_db,
             'dA_dc': dA_dc,
             'da_db1': da_db1,
-            'db_db2': db_db2,
-            'dc_db1': dc_db1,
             'da_db2': da_db2,
+            'db_db2': db_db2,
             'db_db3': db_db3,
+            'dc_db1': dc_db1,
             'dc_db3': dc_db3,
         }
 
@@ -113,18 +113,28 @@ class PlanarTriangleCalculator:
             self, a: float, b: float, c: float, part: {np.ndarray},
             der: np.ndarray, R, area: float) -> float:
         # Variance - Polar Moment
+        # TODO check equations in thesis text
 
-        dJ_da = area * a / 18
-        dJ_db = area * b / 18
-        dJ_dc = area * c / 18
-        dJ_dA = (a**2 + b**2 + c**2) / 36
+        # dJ_da = area * a / 18
+        # dJ_db = area * b / 18
+        # dJ_dc = area * c / 18
+        # dJ_dA = (a**2 + b**2 + c**2) / 36
 
-        h1T = np.array(
-            dJ_da * part['da_db1'] + dJ_dc * part['dc_db1'] + dJ_dA * der[0])
-        h2T = np.array(
-            dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[1])
-        h3T = np.array(
-            dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[2])
+        dJ_da = (-b**3 * area + 2 * a * b**2 * area) / (18 * b**2)
+        dJ_db = (4 * b**3 * area - 3 * a * b**2 * area + 2 * a**2 * b * area) / (18 * b**2) - \
+                (b**4 * area - a * b**3 * area + a**2 * b**2 * area + 4 * area**3) / (9 * b**3)
+        dJ_dA = (b**4 - a * b**3 + a**2 * b**2 + 12 * area**2) / (18 * b**2)
+
+        # h1T = np.array(
+        #     dJ_da * part['da_db1'] + dJ_dc * part['dc_db1'] + dJ_dA * der[:3])
+        # h2T = np.array(
+        #     dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[3:6])
+        # h3T = np.array(
+        #     dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[6:])
+
+        h1T = dJ_da * part['da_db1'] + dJ_dA * der[:3]
+        h2T = dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[3:6]
+        h3T = dJ_db * part['db_db3'] + dJ_dA * der[6:]
 
         H = np.append(h1T, [h2T, h3T])
         return np.dot(np.dot(H, R), H.T)  # scalar

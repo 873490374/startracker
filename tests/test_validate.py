@@ -57,12 +57,12 @@ class TestValidate:
                     triangle[2] in result[0]])
 
     def test_10_scenes_mag5(self):
-        kv_m = 6.926772802907601e-10
-        kv_q = -7.018966515971442e-10
+        kv_m = 1.12594254671e-08
+        kv_q = -2.39815865128e-09
         input_data, result = read_scene(
             os.path.join(MAIN_PATH, 'tests/scenes'), '10_scenes_mag_5_fov_10')
         targets = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full',
+            input_data, 'triangle_catalog_mag6_fov10_full_area',
             kv_m, kv_q)
         good = 0
         bad = 0

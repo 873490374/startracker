@@ -19,3 +19,8 @@ class CameraConnector:
         cam = cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)
         _, image = cam.read()
         return image
+
+#
+# c = CameraConnector()
+# img = c.get_image()
+# print(img)

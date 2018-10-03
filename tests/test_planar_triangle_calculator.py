@@ -1,3 +1,5 @@
+import math
+
 import numpy as np
 
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -37,10 +39,10 @@ class TestPlanarTriangle:
         assert np.isclose(expected_area_var, area_var, atol=1.e-20)
         assert np.isclose(expected_moment_var, moment_var, atol=1.e-33)
 
-        area_min = area - sig_x * area_var
-        area_max = area + sig_x * area_var
-        moment_min = moment - sig_x * moment_var
-        moment_max = moment + sig_x * moment_var
+        area_min = area - sig_x * math.sqrt(area_var)
+        area_max = area + sig_x * math.sqrt(area_var)
+        moment_min = moment - sig_x * math.sqrt(moment_var)
+        moment_max = moment + sig_x * math.sqrt(moment_var)
 
         assert np.isclose(expected_area_min, area_min, atol=1.e-10)
         assert np.isclose(expected_area_max, area_max, atol=1.e-10)

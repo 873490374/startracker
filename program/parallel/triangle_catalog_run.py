@@ -7,7 +7,7 @@ from program.parallel.triangle_catalog_generator_parallel import (
 from program.const import MAIN_PATH
 
 # magnitude = 5.8
-generator = TriangleCatalogGeneratorParallel(5)
+generator = TriangleCatalogGeneratorParallel(2)
 catalog, m, q = generator.generate_triangles(
     os.path.join(MAIN_PATH, 'program/validation/data/hip_main.dat'))
 now = datetime.datetime.now()
