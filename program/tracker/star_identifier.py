@@ -69,9 +69,9 @@ class StarIdentifier:
                                 return res[0]
                             else:
                                 unique_found_triangles.append(res[0])
-        # print("***")
-        # [print(t) for t in unique_found_triangles]
-        # print("***")
+        print("***")
+        [print(t) for t in unique_found_triangles]
+        print("***")
         return unique_found_triangles
 
     def find_in_catalog(
@@ -85,12 +85,13 @@ class StarIdentifier:
         moment_max = triangle[4] + SIG_X * J_dev
 
         k_start, k_end = self.kvector_calc.find_in_kvector(
-                moment_min, moment_max, self.catalog)
+            area_min, area_max, self.catalog)
         # TODO should I make it faster with GPU?
 
         valid_triangles = self.catalog[
-            (self.catalog[:, 5] >= k_start) &
-            (self.catalog[:, 5] <= k_end) &
+            # TODO why k-vector does not work?
+            # (self.catalog[:, 5] >= k_start) &
+            # (self.catalog[:, 5] <= k_end) &
             (self.catalog[:, 3] >= area_min) &
             (self.catalog[:, 3] <= area_max) &
             (self.catalog[:, 4] >= moment_min) &
@@ -99,7 +100,6 @@ class StarIdentifier:
         # if valid_triangles.size == 0:
         #     return self.catalog
         # valid_triangles = np.delete(valid_triangles, [3, 4, 5], axis=1)
-
         return valid_triangles
 
     def get_two_common_stars_triangles(
