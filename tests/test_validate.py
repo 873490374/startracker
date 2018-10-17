@@ -167,6 +167,34 @@ class TestValidate:
         assert good == 998
         assert bad == 2
 
+    def test_1000_scenes_mag556(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        input_data, result = read_scene(
+            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag556_fov_10')
+        targets = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q)
+        good = 0
+        bad = 0
+        for i in range(len(targets)):
+            assert len(targets[i]) > 0
+            triangle = targets[i][0]
+            try:
+                if all([triangle[0] in result[i],
+                        triangle[1] in result[i],
+                        triangle[2] in result[i]]):
+                    good += 1
+                else:
+                    bad += 1
+            except (AttributeError, TypeError, IndexError):
+                bad += 1
+
+        print('good: ', good)
+        print('bad: ', bad)
+        assert good == 262
+        assert bad == 738
+
     @pytest.mark.skip('This scenes are xy image coordinates')
     def test_esa(self):
         kv_m = 2.83056279997e-07
