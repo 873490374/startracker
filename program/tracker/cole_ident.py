@@ -100,10 +100,10 @@ climit = 100000
 class ColeStarIdentifier:
     def __init__(
             self,
-            planar_triangle_calc: PlanarTriangleCalculator,
+            planar_triangle_calculator: PlanarTriangleCalculator,
             kvector_calculator: KVectorCalculator,
             catalog: np.ndarray):
-        self.planar_triangle_calc = planar_triangle_calc
+        self.planar_triangle_calc = planar_triangle_calculator
         self.kvector_calc = kvector_calculator
         self.catalog = catalog
 
@@ -294,8 +294,6 @@ class ColeStarIdentifier:
 
                 match = self.common_triangles(s1, s2, s3, triangles)
 
-                if len(match) != 0:
-                    print('a')
                 n1 = len(match)
                 # for b in range(0, len(match)):
                 #     n1 = n1 + 1
