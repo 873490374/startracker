@@ -4,7 +4,7 @@ from PIL import Image
 from numba import cuda, float64, int32
 
 from program.star import StarUV
-
+from program.utils import convert_to_vector
 
 A_ROI = 5
 I_THRESHOLD = 250
@@ -43,11 +43,8 @@ class CentroidCalculator:
         # 7. unit vector u
         i = 0
         for star in star_list:
-            # TODO Does it work correctly? What are focal_length & pixel size?
-            vector = np.array([self.pixel_size * star[0],
-                               self.pixel_size * star[1],
-                               self.focal_length])
-            u = vector.T / np.linalg.norm(vector)
+            u = convert_to_vector(
+                star[0], star[1], self.pixel_size, self.focal_length)
             star_vectors.append(
                 StarUV(star_id=i, magnitude=-1, unit_vector=u))
             i += 1

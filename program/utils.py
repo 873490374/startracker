@@ -15,31 +15,6 @@ def read_scene(path, fname):
             np.array([int(x) for x in line.strip().split(',')]) for line in
             lines if len(line) > 1]
 
-    # def read_input_old(filename):
-    #     focal_length = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)
-    #     pixel_size = 525
-    #     with open(filename, 'r') as f:
-    #         lines = f.readlines()
-    #
-    #     raw_data_list = [np.array([
-    #         np.float64(x) for x in line.strip().split(',')]) for line in
-    #         lines if len(line) > 1]
-    #     data_lists = []
-    #     for j in range(len(raw_data_list)):
-    #         data_list = []
-    #         for i in range(int(len(raw_data_list[j])))[::3]:
-    #             y = raw_data_list[j][i]
-    #             x = raw_data_list[j][i + 1]
-    #             u = calc_vector(x, y, pixel_size, focal_length)
-    #             magnitude = raw_data_list[j][i + 2]
-    #             data_list.append(StarUV(
-    #                 star_id=-1,  # None
-    #                 magnitude=magnitude,
-    #                 unit_vector=u
-    #             ))
-    #         data_lists.append(data_list)
-    #     return data_lists
-
     def read_input(filename):
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -65,11 +40,47 @@ def read_scene(path, fname):
     return input_data, result
 
 
-def calc_vector(x, y, pixel_size, focal_length):
-    vector = np.array([
-        pixel_size * x,
-        pixel_size * y,
-        focal_length])
+def read_scene_old(path, fname):
+    def read_int_csv(filename):
+        with open(filename, 'r') as f:
+            lines = f.readlines()
+
+        return [
+            np.array([int(x) for x in line.strip().split(',')]) for line in
+            lines if len(line) > 1]
+
+    def read_input_old(filename):
+        focal_length = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)
+        pixel_size = 525
+        with open(filename, 'r') as f:
+            lines = f.readlines()
+
+        raw_data_list = [np.array([
+            np.float64(x) for x in line.strip().split(',')]) for line in
+            lines if len(line) > 1]
+        data_lists = []
+        for j in range(len(raw_data_list)):
+            data_list = []
+            for i in range(int(len(raw_data_list[j])))[::3]:
+                y = raw_data_list[j][i]
+                x = raw_data_list[j][i + 1]
+                u = convert_to_vector(x, y, pixel_size, focal_length)
+                magnitude = raw_data_list[j][i + 2]
+                data_list.append(np.array([int(i / 3), u[0], u[1], u[2]]))
+            data_lists.append(data_list)
+        return data_lists
+
+    input_data = read_input_old(os.path.join(path, '{}_input.csv'.format(fname)))
+    result = read_int_csv(os.path.join(path, '{}_result.csv'.format(fname)))
+
+    return input_data, result
+
+
+def convert_to_vector(x, y, pixel_size, focal_length):
+    # TODO Does it work correctly? What are focal_length & pixel size?
+    vector = np.array([pixel_size * x,
+                       pixel_size * y,
+                       focal_length])
     u = vector.T / np.linalg.norm(vector)
     return u
 

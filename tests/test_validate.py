@@ -9,7 +9,7 @@ from program.tracker.cole_ident import ColeStarIdentifier
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
-from program.utils import read_scene
+from program.utils import read_scene, read_scene_old
 
 
 def find_stars(input_data, catalog_fname, kv_m, kv_q):
@@ -28,11 +28,11 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q):
     for row in input_data:
         start = timer()
         ll = star_identifier.identify_stars(row)
-        print(ll)
+        # print(ll)
         # print('*'*30)
         targets.append([ll])
         # print(ll)
-        print('*'*30)
+        # print('*'*30)
         # targets.append([ll])
         times.append(timer() - start)
 
@@ -49,11 +49,16 @@ class TestValidate:
         targets = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
-        assert len(targets[0]) > 0
-        triangle = targets[0][0]
-        assert all([triangle[0] in result[0],
-                    triangle[1] in result[0],
-                    triangle[2] in result[0]])
+        # assert len(targets[0]) > 0
+        res = targets[0][0]
+        s1_id = int(res[0][0])
+        s2_id = int(res[1][0])
+        s3_id = int(res[2][0])
+        triangle = res[3]
+        sort_result = result[0]
+        assert all([triangle[0] == sort_result[s1_id],
+                    triangle[1] == sort_result[s2_id],
+                    triangle[2] == sort_result[s3_id]])
 
     def test_10_scenes_mag5(self):
         kv_m = 2.83056279997e-07
@@ -66,12 +71,16 @@ class TestValidate:
         good = 0
         bad = 0
         for i in range(len(targets)):
-            assert len(targets[i]) > 0
-            triangle = targets[i][0]
             try:
-                if all([triangle[0] in result[i],
-                        triangle[1] in result[i],
-                        triangle[2] in result[i]]):
+                res = targets[i][0]
+                s1_id = int(res[0][0])
+                s2_id = int(res[1][0])
+                s3_id = int(res[2][0])
+                triangle = res[3]
+                sort_result = result[i]
+                if all([triangle[0] == sort_result[s1_id],
+                        triangle[1] == sort_result[s2_id],
+                        triangle[2] == sort_result[s3_id]]):
                     good += 1
                 else:
                     bad += 1
@@ -80,8 +89,8 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 10
-        assert bad == 0
+        assert 10 == good
+        assert 0 == bad
 
     def test_100_scenes_mag5(self):
         kv_m = 2.83056279997e-07
@@ -94,12 +103,16 @@ class TestValidate:
         good = 0
         bad = 0
         for i in range(len(targets)):
-            assert len(targets[i]) > 0
-            triangle = targets[i][0]
             try:
-                if all([triangle[0] in result[i],
-                        triangle[1] in result[i],
-                        triangle[2] in result[i]]):
+                res = targets[i][0]
+                s1_id = int(res[0][0])
+                s2_id = int(res[1][0])
+                s3_id = int(res[2][0])
+                triangle = res[3]
+                sort_result = result[i]
+                if all([triangle[0] == sort_result[s1_id],
+                        triangle[1] == sort_result[s2_id],
+                        triangle[2] == sort_result[s3_id]]):
                     good += 1
                 else:
                     bad += 1
@@ -108,26 +121,31 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 99
-        assert bad == 1
+        assert 99 == good
+        assert 1 == bad
 
     def test_1000_scenes_mag5(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag_5_fov_10')
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10')
         targets = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
         good = 0
         bad = 0
         for i in range(len(targets)):
-            assert len(targets[i]) > 0
-            triangle = targets[i][0]
             try:
-                if all([triangle[0] in result[i],
-                        triangle[1] in result[i],
-                        triangle[2] in result[i]]):
+                res = targets[i][0]
+                s1_id = int(res[0][0])
+                s2_id = int(res[1][0])
+                s3_id = int(res[2][0])
+                triangle = res[3]
+                sort_result = result[i]
+                if all([triangle[0] == sort_result[s1_id],
+                        triangle[1] == sort_result[s2_id],
+                        triangle[2] == sort_result[s3_id]]):
                     good += 1
                 else:
                     bad += 1
@@ -136,26 +154,31 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 999
-        assert bad == 1
+        assert 999 == good
+        assert 1 == bad
 
     def test_1000_scenes_mag4(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag_4_fov_10')
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_4_fov_10')
         targets = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
         good = 0
         bad = 0
         for i in range(len(targets)):
-            assert len(targets[i]) > 0
-            triangle = targets[i][0]
             try:
-                if all([triangle[0] in result[i],
-                        triangle[1] in result[i],
-                        triangle[2] in result[i]]):
+                res = targets[i][0]
+                s1_id = int(res[0][0])
+                s2_id = int(res[1][0])
+                s3_id = int(res[2][0])
+                triangle = res[3]
+                sort_result = result[i]
+                if all([triangle[0] == sort_result[s1_id],
+                        triangle[1] == sort_result[s2_id],
+                        triangle[2] == sort_result[s3_id]]):
                     good += 1
                 else:
                     bad += 1
@@ -164,26 +187,31 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 998
-        assert bad == 2
+        assert 998 == good
+        assert 2 == bad
 
     def test_1000_scenes_mag556(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '1000_scenes_mag556_fov_10')
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag556_fov_10')
         targets = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
         good = 0
         bad = 0
         for i in range(len(targets)):
-            assert len(targets[i]) > 0
-            triangle = targets[i][0]
             try:
-                if all([triangle[0] in result[i],
-                        triangle[1] in result[i],
-                        triangle[2] in result[i]]):
+                res = targets[i][0]
+                s1_id = int(res[0][0])
+                s2_id = int(res[1][0])
+                s3_id = int(res[2][0])
+                triangle = res[3]
+                sort_result = result[i]
+                if all([triangle[0] == sort_result[s1_id],
+                        triangle[1] == sort_result[s2_id],
+                        triangle[2] == sort_result[s3_id]]):
                     good += 1
                 else:
                     bad += 1
@@ -192,8 +220,8 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 262
-        assert bad == 738
+        assert 262 == good
+        assert 738 == bad
 
     @pytest.mark.skip('This scenes are xy image coordinates')
     def test_esa(self):
@@ -210,6 +238,35 @@ class TestValidate:
             assert len(targets[i]) > 0
             triangle = targets[i][0]
             try:
+                if all([triangle[0] in result[i],
+                        triangle[1] in result[i],
+                        triangle[2] in result[i]]):
+                    good += 1
+                else:
+                    bad += 1
+            except (AttributeError, TypeError, IndexError):
+                bad += 1
+
+        print('good: ', good)
+        print('bad: ', bad)
+        assert 998 == good
+        assert 2 == bad
+
+    def test_1000_scenes_mag4_xy(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        input_data, result = read_scene_old(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_4_fov_10_xy')
+        targets = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q)
+        good = 0
+        bad = 0
+        for i in range(len(targets)):
+            assert len(targets[i]) > 0
+            try:
+                triangle = targets[i][0][3]
                 if all([triangle[0] in result[i],
                         triangle[1] in result[i],
                         triangle[2] in result[i]]):

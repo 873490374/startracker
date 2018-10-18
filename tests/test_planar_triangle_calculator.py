@@ -22,8 +22,6 @@ class TestPlanarTriangle:
         expected_area_var = 2.5368e-15
         expected_moment_var = 3.1147e-28
 
-        # TODO ensure those expected min and max values are correct
-        # why negative values?!
         expected_area_min = -1.6980e-08
         expected_area_max = 2.8522e-07
         expected_moment_min = -1.0889e-15

@@ -24,13 +24,13 @@ class StarIdentifier:
             self, image_stars: [StarUV],
             previous_frame_stars: np.ndarray = None):
         if previous_frame_stars:
-            stars = self.identify(image_stars, previous_frame_stars)
+            stars = self.identify(image_stars)
         else:
-            stars = self.identify(image_stars, self.catalog)
+            stars = self.identify(image_stars)
         return stars
 
     def identify(
-            self, star_list: np.ndarray, previous_triangles: np.ndarray
+            self, star_list: np.ndarray
     ) -> Union[np.ndarray, None]:
         i = 0
         unique_found_triangles = []
@@ -44,6 +44,8 @@ class StarIdentifier:
                 # TODO s2 unique triangles
                 j += 1
                 k = j
+                # TODO here calculate for each star couple (another function - inside loop- GPU maybe?)
+                # TODO some calculation limit inside maybe?
                 # previous_triangle = None
                 for s3 in star_list[k:]:
                     # TODO s3 unique triangles
@@ -55,7 +57,7 @@ class StarIdentifier:
                     if len(ct) == 1:
                         if (len(unique_found_triangles) > 0 and
                                 (unique_found_triangles == ct[0]).any()):
-                            return ct[0]
+                            return (s1, s2, s3, ct[0])
                         else:
                             unique_found_triangles.append(ct[0])
                     else:
@@ -66,13 +68,13 @@ class StarIdentifier:
                         if len(res) == 1:
                             if (len(unique_found_triangles) > 0 and
                                     (unique_found_triangles == res[0]).any()):
-                                return res[0]
+                                return (s1, s2, s3, res[0])
                             else:
                                 unique_found_triangles.append(res[0])
-        print("***")
-        [print(t) for t in unique_found_triangles]
-        print("***")
-        return unique_found_triangles
+        # print("***")
+        # [print(t) for t in unique_found_triangles]
+        # print("***")
+        return None  # unique_found_triangles
 
     def find_in_catalog(
             self, triangle: np.ndarray) -> np.ndarray:
@@ -174,4 +176,3 @@ def common_triangles(tri, tc):
         ((tc[:, 2] == s2_id) & (tc[:, 0] == s3_id)) |
         ((tc[:, 2] == s2_id) & (tc[:, 1] == s3_id))
     ]
-

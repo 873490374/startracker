@@ -6,7 +6,11 @@ import pytest
 from program.const import MAIN_PATH, CAMERA_FOV, FOCAL_LENGTH
 from program.star import StarUV, StarPosition
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
-from program.utils import read_scene, calc_vector, convert_star_to_uv
+from program.utils import (
+    read_scene,
+    convert_star_to_uv,
+    convert_to_vector,
+)
 from program.validation.scripts.simulator import (
     angles_to_vector,
     vector_to_angles,
@@ -125,7 +129,7 @@ class TestUtils:
 
         focal_length = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)
         for i in range(len(scene_ids)):
-            s = calc_vector(
+            s = convert_to_vector(
                 scene_pos[i][1],
                 scene_pos[i][0],
                 pixel_size=0.000525,
@@ -157,7 +161,7 @@ class TestUtils:
         d = np.array([np.deg2rad(RAdeg)])
         e = np.array([np.deg2rad(DEdeg)])
         yx = camera.from_angles(d, e)
-        s = calc_vector(
+        s = convert_to_vector(
             yx[0][0],
             yx[0][1],
             pixel_size=1,
@@ -234,9 +238,12 @@ class TestUtils:
 
         trian_calc = PlanarTriangleCalculator(1)
         t1 = trian_calc.calculate_triangle(
-            StarUV(-1, -1, ca_uv_orient[0]),
-            StarUV(-1, -1, ca_uv_orient[1]),
-            StarUV(-1, -1, ca_uv_orient[2]))
+            np.array([0, ca_uv_orient[0][0], ca_uv_orient[0][1],
+                      ca_uv_orient[0][2]]),
+            np.array([1, ca_uv_orient[1][0], ca_uv_orient[2][1],
+                      ca_uv_orient[1][2]]),
+            np.array([2, ca_uv_orient[2][0], ca_uv_orient[2][1],
+                      ca_uv_orient[2][2]]))
 
         t2 = trian_calc.calculate_triangle(
             calc_uv[0],
