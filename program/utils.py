@@ -2,8 +2,7 @@ import os
 
 import numpy as np
 
-from program.const import CAMERA_FOV
-from program.star import StarUV, StarPosition
+from program.const import CAMERA_FOV, FOCAL_LENGTH
 
 
 def read_scene(path, fname):
@@ -50,8 +49,7 @@ def read_scene_old(path, fname):
             lines if len(line) > 1]
 
     def read_input_old(filename):
-        focal_length = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)
-        pixel_size = 525
+        pixel_size = 1
         with open(filename, 'r') as f:
             lines = f.readlines()
 
@@ -64,7 +62,10 @@ def read_scene_old(path, fname):
             for i in range(int(len(raw_data_list[j])))[::3]:
                 y = raw_data_list[j][i]
                 x = raw_data_list[j][i + 1]
-                u = convert_to_vector(x, y, pixel_size, focal_length)
+                res_x = 1920  # pixels
+                res_y = 1440  # pixels
+                pp = (res_x, res_y)
+                u = convert_to_vector(x, y, pixel_size, FOCAL_LENGTH*res_x, pp)
                 magnitude = raw_data_list[j][i + 2]
                 data_list.append(np.array([int(i / 3), u[0], u[1], u[2]]))
             data_lists.append(data_list)
@@ -76,25 +77,22 @@ def read_scene_old(path, fname):
     return input_data, result
 
 
-def convert_to_vector(x, y, pixel_size, focal_length):
-    # TODO Does it work correctly? What are focal_length & pixel size?
-    vector = np.array([pixel_size * x,
-                       pixel_size * y,
-                       focal_length])
+def convert_to_vector(x, y, pixel_size, focal_length, pp):
+    vector = np.array([
+        pixel_size * (x - (0.5 * pp[0])),
+        pixel_size * (y - (0.5 * pp[1])),
+        focal_length
+    ])
     u = vector.T / np.linalg.norm(vector)
     return u
 
 
-def convert_star_to_uv(star: StarPosition) -> StarUV:
+def convert_star_to_uv(star_positon: (float, float)) -> np.ndarray:
     """ Convert star positions to unit vector."""
-    alpha = np.deg2rad(star.right_ascension)
-    delta = np.deg2rad(star.declination)
-    return StarUV(
-        star_id=star.id,
-        magnitude=star.magnitude,
-        unit_vector=np.array([
-            np.cos(alpha) * np.cos(delta),
-            np.sin(alpha) * np.cos(delta),
-            np.sin(delta)
-        ], dtype='float64').T
-    )
+    alpha = np.deg2rad(star_positon[0])  # right ascension, altitude
+    delta = np.deg2rad(star_positon[1])  # declination, azimuth
+    return np.array([
+        np.cos(alpha) * np.cos(delta),
+        np.sin(alpha) * np.cos(delta),
+        np.sin(delta)
+        ], dtype='float64')

@@ -580,10 +580,13 @@ class Scene:
         scene = scene[selection]
         scene_ids = star_ids[selection]
 
+        # FIXME x y
         self.pos = scene
         self.magnitudes = self.catalog.magnitudes[scene_ids]
         self.ids = self.catalog.lookup_indices(scene_ids)
+        # FIXME unit vectors
         self.uv = pos[selection]
+        print('scene created')
 
     def add_false_stars(self, false_stars):
         """Adds randomly generated false stars to a scene."""
@@ -684,14 +687,14 @@ class Scene:
 
                 scene.compute()
 
-                scene.add_false_stars(
-                    np.random.randint(min_false, max_false + 1))
+                # scene.add_false_stars(
+                #     np.random.randint(min_false, max_false + 1))
 
-                scene.scramble()
+                # scene.scramble()
 
-                scene.add_magnitude_noise(magnitude_gaussian)
+                # scene.add_magnitude_noise(magnitude_gaussian)
 
-                scene.filter_magnitudes()
+                # scene.filter_magnitudes()
 
                 num_stars = np.sum(scene.ids >= 0)
 

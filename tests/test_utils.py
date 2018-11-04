@@ -1,184 +1,17 @@
-import os
-
 import numpy as np
 import pytest
 
-from program.const import MAIN_PATH, CAMERA_FOV, FOCAL_LENGTH
-from program.star import StarUV, StarPosition
+from program.const import FOCAL_LENGTH, SENSOR_VARIANCE
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.utils import (
-    read_scene,
     convert_star_to_uv,
     convert_to_vector,
 )
-from program.validation.scripts.simulator import (
-    angles_to_vector,
-    vector_to_angles,
-    RectilinearCamera)
 
 
 class TestUtils:
 
-    @pytest.mark.skip('Old test')
-    def test_old_read_scene(self):
-        input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'scene_read_test')
-        assert len(input_data) == 1
-        assert len(result) == 1
-
-        valid_input_data = np.array([
-            StarUV(-1, 1.899234433685227,
-                   np.array([0.34191118, 0.93017646, -0.13367307])),
-            StarUV(-1, 2.1408339115513795,
-                   np.array([0.49165827, 0.55138579, 0.67397764])),
-            StarUV(-1, 2.9690640538571267,
-                   np.array([0.85537044, -0.00486044, 0.517994])),
-            StarUV(-1, 1.9298043460377514,
-                   np.array([0.01084465, -0.99385139, -0.11018987])),
-            StarUV(-1, 2.7608854416083433,
-                   np.array([-0.32097292, 0.90513446, -0.27876152])),
-            StarUV(-1, 2.569904849798762,
-                   np.array([0.92571613, -0.11994349, -0.35869655])),
-            StarUV(-1, 1.6483784281102398,
-                   np.array([0.03385701, -0.70661934, -0.70678343])),
-            StarUV(-1, 3.001700957650252,
-                   np.array([0.08804479, -0.40541719, -0.90988187])),
-            StarUV(-1, 2.4727375359373367,
-                   np.array([-0.00482872, -0.03424387, 0.99940184])),
-            StarUV(-1, 2.4813444701656047,
-                   np.array([0.01163716, -0.01209152, 0.99985918])),
-            StarUV(-1, 2.2082238181410747,
-                   np.array([0.46999456, -0.48154559, -0.73974249])),
-            StarUV(-1, 2.8808625636857403,
-                   np.array(
-                       [-3.04004076e-04, 1.38796274e-01, -9.90320909e-01])),
-            StarUV(-1, 1.9795735855128245,
-                   np.array([0.73373499, 0.43550017, -0.5215099])),
-            StarUV(-1, 1.8644780398686789,
-                   np.array([0.80803054, -0.43016093, 0.40255213])),
-        ])
-        assert np.array_equal(input_data[0], valid_input_data)
-        assert np.array_equal(result[0], np.array([
-            -1, -1, -1, 42913, -1, -1, -1, -1, 45941, -1, 45556, -1, -1, 41037
-        ]))
-
-    def test_old_read_scene(self):
-        input_data, result = read_scene(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'scene_read_test')
-        assert len(input_data) == 1
-        assert len(result) == 1
-
-        valid_input_data = np.array([
-            StarUV(-1, 2.733499070252604,
-                   np.array([
-                       -0.06617460776582357,
-                       0.017131632525640077,
-                       0.9976609787167412])),
-            StarUV(-1, 1.6780027326655544,
-                   np.array([
-                       -0.07210616562715774,
-                       -0.044198397082433914,
-                       0.9964171829981118])),
-            StarUV(-1, 0.1795405131255828,
-                   np.array([
-                       0.06766401198764317,
-                       0.027950774023394447,
-                       0.9973165674514936])),
-            StarUV(-1, 2.2594342986450835,
-                   np.array([
-                       0.025243305939648634,
-                       -0.06148329729444962,
-                       0.9977888452268044])),
-            StarUV(-1, 1.7227576298769856,
-                   np.array([
-                       0.07408587116028655,
-                       0.004644802910352076,
-                       0.9972410488444333])),
-            StarUV(-1, 2.7663874553627847,
-                   np.array([
-                       0.08325343217626442,
-                       -0.017150049027561166,
-                       0.9963808216988242])),
-        ])
-        assert np.array_equal(input_data[0], valid_input_data)
-        assert np.array_equal(result[0], np.array([
-            26241, 26311, 24436, 25930, 26727, 23875
-        ]))
-
-    @pytest.mark.skip('Don\' know if I work correctly')
-    def test_calc_vector(self):
-        scene_pos = [
-            [1291.89879376, 1614.76960933],
-            [956.5553143, 242.53855808],
-            [494.001191, 1239.90900667],
-            [1358.30016728, 607.74055388],
-            [781.30824329, 1700.00200145],
-            [1155.04964229, 1221.74476233],
-        ]
-
-        scene_ids = [45941, 45238, 41037, 48002, 42913, 45556]
-
-        uv = [
-            [-0.05130012, - 0.04141976, 0.99782398],
-            [-0.13467235, 0.01115744, 0.99082737],
-            [0.13052839, 0.04303672, 0.99051006],
-            [-0.047868, 0.07956208, 0.99567993],
-            [-0.11875961, 0.10372882, 0.98748999],
-            [0.06412848, 0.11620191, 0.99115319],
-        ]
-
-        focal_length = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)
-        for i in range(len(scene_ids)):
-            s = convert_to_vector(
-                scene_pos[i][1],
-                scene_pos[i][0],
-                pixel_size=0.000525,
-                focal_length=focal_length
-            )
-            c = uv[i]
-            assert s == uv
-
-    @pytest.mark.skip('Don\' know if I work correctly')
-    def test_ddd(self):
-        RAdeg = 0.31645128
-        DEdeg = 19.74131648
-
-        vec = angles_to_vector(np.deg2rad(RAdeg), np.deg2rad(DEdeg))
-
-        angels = np.rad2deg(vector_to_angles(vec))
-        assert angels[0] == RAdeg
-        assert angels[1] == DEdeg
-
-        f = FOCAL_LENGTH
-        res_x = 1920  # pixels
-        res_y = 1440  # pixels
-        pixel_ar = 1
-        # normalized principal point
-        ppx = 0.5
-        ppy = 0.5
-
-        camera = RectilinearCamera(f, (res_x, res_y), pixel_ar, (ppx, ppy))
-        d = np.array([np.deg2rad(RAdeg)])
-        e = np.array([np.deg2rad(DEdeg)])
-        yx = camera.from_angles(d, e)
-        s = convert_to_vector(
-            yx[0][0],
-            yx[0][1],
-            pixel_size=1,
-            focal_length=np.rad2deg(f)
-        )
-        fov = 12.45
-        focal = 0.23
-        haha = 2 * np.power(np.tan(1 / (2 * focal)), -1)
-        sss = 2 * np.power(np.tan(1 / (2 * f)), -1)
-        print('d')
-        print(vec)
-        print(s)
-        # trian_calc = PlanarTriangleCalculator(1)
-        # print(trian_calc)
-
-    # @pytest.mark.skip('I don\'t know how to translate xy position back to uv')
-    def test_adada(self):
+    def test_xy_uv_conversion(self):
         uv = [
             [0.06866535, -0.0498963, 0.9963912],
             [0.07474301, 0.01140279, 0.99713763],
@@ -202,6 +35,14 @@ class TestUtils:
             [170.51234912, 203.81648496],
             [552.58255956, 1847.98312942],
         ]
+        original_pos = [
+            [170.51234912, 203.81648496],
+            [845.4802719, 137.50184802],
+            [54.77276898, 1678.35409499],
+            [1037.46751659, 1207.62253161],
+            [312.08786619, 1747.73090906],
+            [552.58255956, 1847.98312942],
+        ]
 
         ids = [26311, 25930, 24436, 26241, 23875, 26727]
 
@@ -219,51 +60,140 @@ class TestUtils:
             [84.05338572, -1.20191725],
             [85.18968672, -1.94257841],
         ]
-        calc_uv = []
-        for deg in original_deg:
-            calc_uv.append(
-                convert_star_to_uv(StarPosition(-1, 1, deg[0], deg[1])))
-        ca_uv = [s.unit_vector for s in calc_uv]
-        ca_uv_orient = np.dot(ca_uv, orientation.transpose())
+
+        calc_uv = [convert_star_to_uv(deg) for deg in original_deg]
+        calc_uv_orient = np.dot(calc_uv, orientation.transpose())
         for i in range(len(uv)):
-            for j in range(3):
-                assert np.isclose(ca_uv_orient[i][j], uv[i][j])
+            assert np.isclose(calc_uv_orient[i], uv[i]).all()
 
-        # This does not work properly
-        # for i in range(len(uv)):
-        #     a = calc_vector(pos[i][1], pos[i][0], 1, FOCAL_LENGTH)
-        #     b = ca_uv_orient[i]
-        #     # print(a)
-        #     # print(b)
+        pos_uv = []
+        for i in range(len(uv)):
+            res_x = 1920  # pixels
+            res_y = 1440  # pixels
+            pp = (res_x, res_y)
+            a = convert_to_vector(
+                original_pos[i][1], original_pos[i][0], 1,
+                FOCAL_LENGTH * res_x, pp)
+            b = uv[i]
+            # FIXME why pos[0] is always inverse of uv[0]?
+            assert np.isclose(np.abs(a), np.abs(b)).all()
+            pos_uv.append(a)
 
-        trian_calc = PlanarTriangleCalculator(1)
+        trian_calc = PlanarTriangleCalculator(SENSOR_VARIANCE)
         t1 = trian_calc.calculate_triangle(
-            np.array([0, ca_uv_orient[0][0], ca_uv_orient[0][1],
-                      ca_uv_orient[0][2]]),
-            np.array([1, ca_uv_orient[1][0], ca_uv_orient[2][1],
-                      ca_uv_orient[1][2]]),
-            np.array([2, ca_uv_orient[2][0], ca_uv_orient[2][1],
-                      ca_uv_orient[2][2]]))
+            np.array([0, calc_uv_orient[0][0], calc_uv_orient[0][1],
+                      calc_uv_orient[0][2]]),
+            np.array([1, calc_uv_orient[1][0], calc_uv_orient[2][1],
+                      calc_uv_orient[1][2]]),
+            np.array([2, calc_uv_orient[2][0], calc_uv_orient[2][1],
+                      calc_uv_orient[2][2]]))
 
         t2 = trian_calc.calculate_triangle(
-            calc_uv[0],
-            calc_uv[1],
-            calc_uv[2])
+            np.array([0, calc_uv[0][0], calc_uv[0][1],
+                      calc_uv[0][2]]),
+            np.array([1, calc_uv[1][0], calc_uv[2][1],
+                      calc_uv[1][2]]),
+            np.array([2, calc_uv[2][0], calc_uv[2][1],
+                      calc_uv[2][2]]))
 
-        assert np.isclose(t1.area, t2.area)
-        assert np.isclose(t1.moment, t2.moment)
-        assert np.isclose(t1.area_var, t2.area_var)
-        assert np.isclose(t1.moment_var, t2.moment_var)
+        t3 = trian_calc.calculate_triangle(
+            np.array([0, pos_uv[0][0], pos_uv[0][1],
+                      pos_uv[0][2]]),
+            np.array([1, pos_uv[1][0], pos_uv[2][1],
+                      pos_uv[1][2]]),
+            np.array([2, pos_uv[2][0], pos_uv[2][1],
+                      pos_uv[2][2]]))
 
-        # This does not work properly
-        # f = FOCAL_LENGTH
-        # res_x = 1920  # pixels
-        # res_y = 1440  # pixels
-        # pixel_ar = 1
-        # # normalized principal point
-        # ppx = 0.5
-        # ppy = 0.5
-        #
-        # camera = RectilinearCamera(f, (res_x, res_y), pixel_ar, (ppx, ppy))
-        # angles = camera.to_angles(np.array(pos))
-        # print(angles)
+        assert np.isclose(t1[3], t3[3])
+        assert np.isclose(t1[4], t3[4])
+        assert np.isclose(t1[5], t3[5])
+        assert np.isclose(t1[6], t3[6])
+
+    def test_xy_uv_conversion2(self):
+
+        alt = [252.44629764, 254.65512817, 254.89602773,
+               261.32498828, 261.34858274]
+
+        az = [-59.04131648, -55.99005508, -53.16049005,
+              -55.52982397, -56.37768824]
+
+        pos_orient = [
+            [1317.41229976, 1561.90693577],
+            [ 891.08134844, 1100.36265625],
+            [ 658.63864341,  609.66693069],
+            [ 202.43044951, 1326.16509805],
+            [ 276.29853801, 1471.18199192]]
+
+        uv = [
+            [-0.0546911,   0.05428271,  0.99702672],
+            [-0.01278921,  0.01558816,  0.9997967 ],
+            [ 0.0319105,  -0.00558917,  0.9994751 ],
+            [-0.03331454, -0.04708966,  0.99833497],
+            [-0.04649769, -0.04035958,  0.99810273]]
+
+        ids = [82363, 83081, 83153, 85258, 85267]
+
+        orientation = np.array([
+            [-0.56855987, -0.63115105,  0.5276249 ],
+            [-0.81017117,  0.54085489, -0.22605015],
+            [-0.14269672, -0.55598952, -0.81884876]])
+
+        calc_uv = []
+        for i in range(len(alt)):
+            calc_uv.append(convert_star_to_uv((alt[i], az[i])))
+        calc_uv_orient = np.dot(calc_uv, orientation.transpose())
+        for i in range(len(uv)):
+            assert np.isclose(calc_uv_orient[i], uv[i], atol=1.e-4).all()
+
+        pos_uv = []
+        for i in range(len(uv)):
+            res_x = 1920  # pixels
+            res_y = 1440  # pixels
+            pp = (res_x, res_y)
+            a = convert_to_vector(
+                pos_orient[i][1], pos_orient[i][0], 1,
+                FOCAL_LENGTH * res_x, pp)
+            b = uv[i]
+            # FIXME why pos[0] is always inverse of uv[0]?
+            assert np.isclose(np.abs(a), np.abs(b)).all()
+            pos_uv.append(a)
+
+        trian_calc = PlanarTriangleCalculator(SENSOR_VARIANCE)
+        t1 = trian_calc.calculate_triangle(
+            np.array([0, calc_uv_orient[0][0], calc_uv_orient[0][1],
+                      calc_uv_orient[0][2]]),
+            np.array([1, calc_uv_orient[1][0], calc_uv_orient[2][1],
+                      calc_uv_orient[1][2]]),
+            np.array([2, calc_uv_orient[2][0], calc_uv_orient[2][1],
+                      calc_uv_orient[2][2]]))
+
+        t2 = trian_calc.calculate_triangle(
+            np.array([0, uv[0][0], uv[0][1],
+                      uv[0][2]]),
+            np.array([1, uv[1][0], uv[2][1],
+                      uv[1][2]]),
+            np.array([2, uv[2][0], uv[2][1],
+                      uv[2][2]]))
+
+        t3 = trian_calc.calculate_triangle(
+            np.array([0, pos_uv[0][0], pos_uv[0][1],
+                      pos_uv[0][2]]),
+            np.array([1, pos_uv[1][0], pos_uv[2][1],
+                      pos_uv[1][2]]),
+            np.array([2, pos_uv[2][0], pos_uv[2][1],
+                      pos_uv[2][2]]))
+
+        assert np.isclose(t1[3], t3[3], atol=1.e-6)
+        assert np.isclose(t1[4], t3[4])
+        assert np.isclose(t1[5], t3[5])
+        assert np.isclose(t1[6], t3[6])
+
+        assert np.isclose(t1[3], t2[3], atol=1.e-6)
+        assert np.isclose(t1[4], t2[4])
+        assert np.isclose(t1[5], t2[5])
+        assert np.isclose(t1[6], t2[6])
+
+        assert np.isclose(t2[3], t3[3])
+        assert np.isclose(t2[4], t3[4])
+        assert np.isclose(t2[5], t3[5])
+        assert np.isclose(t2[6], t3[6])

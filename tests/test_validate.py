@@ -278,5 +278,5 @@ class TestValidate:
 
         print('good: ', good)
         print('bad: ', bad)
-        assert good == 998
-        assert bad == 2
+        assert good == 858
+        assert bad == 142
