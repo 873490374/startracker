@@ -1,4 +1,6 @@
+import copy
 import itertools
+
 import numpy as np
 from PIL import Image
 from numba import cuda, float64, int32
@@ -24,9 +26,9 @@ class CentroidCalculator:
 
         star_list = self.clustering(star_list)
 
-        star_vectors = self.convert_to_vectors(star_list)
+        star_vectors = self.convert_to_vectors(star_list, I.shape)
 
-        self.create_image(I, star_list)
+        # self.create_image(I, star_list)
 
         return star_vectors
 
@@ -38,13 +40,13 @@ class CentroidCalculator:
             img[int(star[0]), int(star[1])] = 255
         Image.fromarray(img, mode='L').convert('1').save('test.png')
 
-    def convert_to_vectors(self, star_list):
+    def convert_to_vectors(self, star_list, pp):
         star_vectors = []
         # 7. unit vector u
         i = 0
         for star in star_list:
             u = convert_to_vector(
-                star[0], star[1], self.pixel_size, self.focal_length)
+                star[0], star[1], self.pixel_size, self.focal_length, pp)
             star_vectors.append(
                 StarUV(star_id=i, magnitude=-1, unit_vector=u))
             i += 1
@@ -56,14 +58,19 @@ class CentroidCalculator:
 
         calc_img = np.zeros((x_size, y_size, 2), dtype=np.float64)
 
-        blockdim = (32, 8)
-        griddim = (32, 16)
-        d_img = cuda.to_device(I.astype(np.float64))
-        d_calc = cuda.to_device(calc_img)
-        preprocess_kernel[griddim, blockdim](d_img, d_calc, x_size, y_size)
-        calc_img = d_calc.copy_to_host()
+        # prep = np.zeros((x_size, y_size, A_ROI, A_ROI), dtype=np.float64)
+        #
+        # blockdim = (32, 8)
+        # griddim = (32, 16)
+        # d_img = cuda.to_device(I.astype(np.float64))
+        # d_calc = cuda.to_device(calc_img)
+        # d_prep = cuda.to_device(prep)
+        # prepare_prep[griddim, blockdim](d_img, d_prep)
+        # prep = d_prep.copy_to_host()
+        # preprocess_kernel[griddim, blockdim](d_img, d_calc, x_size, y_size)
+        # calc_img = d_calc.copy_to_host()
 
-        # calc_img = preprocess_no_gpu(I, calc_img, x_size, y_size)
+        calc_img = preprocess_no_gpu(I, calc_img, x_size, y_size)
 
         star_list = self.calc_img_to_star_list(calc_img)
 
@@ -129,21 +136,23 @@ def pixel_preprocess(
 
         i_border = ((i_top + i_bottom + i_left + i_right) /
                     4 * (A_ROI - 1))
-        cuda.syncthreads()
+        # cuda.syncthreads()
         # 4. - normalization
         # TODO make normalization matrix not randomizing results
-        I_norm_matrix = I
-        for x_norm in range(x_start + 1, x_end):
-            for y_norm in range(y_start + 1, y_end):
+        I_norm_matrix = copy.deepcopy(I)
+        # I_norm_matrix = I
+        for x_norm in range(x_start+1, x_end-1):
+            for y_norm in range(y_start+1, y_end-1):
                 I_norm_matrix[x_norm, y_norm] = I[x_norm, y_norm] - i_border
-        cuda.syncthreads()
+        # I_norm_matrix = I - i_border
+        # cuda.syncthreads()
         # 5.
         # total mass
         b = 0
         for xb in range(x_start + 1, x_end - 1):
             for yb in range(y_start + 1, y_end - 1):
                 b += I_norm_matrix[xb, yb]
-        cuda.syncthreads()
+        # cuda.syncthreads()
         # array point mass
         x_cm = 0
         y_cm = 0
@@ -151,37 +160,89 @@ def pixel_preprocess(
             for ym in range(y_start + 1, y_end - 1):
                 x_cm += I_norm_matrix[xm, ym] * xm / b
                 y_cm += I_norm_matrix[xm, ym] * ym / b
-        cuda.syncthreads()
+        # cuda.syncthreads()
         return x_cm, y_cm
     return 0, 0
 
 
-pixel_preprocess_gpu = cuda.jit(
-    restype=(float64, float64),
-    argtypes=[float64[:, :], int32, int32, int32, int32],
-    device=True)(pixel_preprocess)
-
-
-@cuda.jit(argtypes=[float64[:, :], float64[:, :, :], int32, int32])
-def preprocess_kernel(image, calc_img, x_size, y_size):
-
-    startX, startY = cuda.grid(2)
-    gridX = cuda.gridDim.x * cuda.blockDim.x
-    gridY = cuda.gridDim.y * cuda.blockDim.y
-
-    for x in range(startX, x_size, gridX):
-        for y in range(startY, y_size, gridY):
-            x_calc, y_calc = pixel_preprocess_gpu(image, x, y, x_size, y_size)
-
-            calc_img[x][y][0] = x_calc
-            calc_img[x][y][1] = y_calc
-
+# pixel_preprocess_gpu = cuda.jit(
+#     restype=(float64, float64),
+#     argtypes=[float64[:, :], int32, int32, int32, int32],
+#     device=True)(pixel_preprocess)
 #
-# def preprocess_no_gpu(image, calc_img, x_size, y_size):
-#     for x in range(0, x_size):
-#         for y in range(0, y_size):
-#             x_calc, y_calc = pixel_preprocess(image, x, y, x_size, y_size)
+#
+# @cuda.jit(argtypes=[float64[:, :], float64[:, :, :], int32, int32])
+# def preprocess_kernel(image, calc_img, x_size, y_size):
+#
+#     startX, startY = cuda.grid(2)
+#     gridX = cuda.gridDim.x * cuda.blockDim.x
+#     gridY = cuda.gridDim.y * cuda.blockDim.y
+#
+#     for x in range(startX, x_size, gridX):
+#         for y in range(startY, y_size, gridY):
+#             x_calc, y_calc = pixel_preprocess_gpu(image, x, y, x_size, y_size)
 #
 #             calc_img[x][y][0] = x_calc
 #             calc_img[x][y][1] = y_calc
-#     return calc_img
+#
+
+# def pixel_preprocess(image: np.ndarray, prep: np.ndarray, x: int, y: int,
+#                      x_size: int, y_size: int):
+#     # ppp = [[0, 0, 0],
+#     #        [0, 0, 0],
+#     #        [0, 0, 0]]
+#     # ppp = np.array((A_ROI-2, A_ROI-2), dtype=np.float64)
+#     x_start = int(x - (A_ROI - 1) / 2)
+#     y_start = int(y - (A_ROI - 1) / 2)
+#     x_end = int(x_start + A_ROI)
+#     y_end = int(y_start + A_ROI)
+#     if (x_start < 0 or y_start < 0 or
+#             x_end > x_size - 1 or y_end > y_size - 1):
+#         return
+#     ix = 0
+#     for xx in range(x_start + 1, x_end - 1):
+#         iy = 0
+#         for yy in range(y_start + 1, y_end - 1):
+#             prep[x, y, ix, iy] = image[xx, yy]
+#             iy += 1
+#         ix += 1
+#
+#
+# pixel_prepare_gpu = cuda.jit(
+#     restype=float64,
+#     argtypes=[float64[:, :], float64[:, :, :, :], int32, int32, int32, int32],
+#     device=True)(pixel_preprocess)
+
+
+@cuda.jit(argtypes=[float64[:, :], float64[:, :, :, :]])
+def prepare_prep(image, prep):
+    x_size, y_size, = image.shape
+
+    for x in range(0, x_size):
+        for y in range(0, y_size):
+            # prep[x, y] = pixel_prepare_gpu(image, x, y, x_size, y_size)
+            # pixel_prepare_gpu(image, prep, x, y, x_size, y_size)
+            x_start = int(x - (A_ROI - 1) / 2)
+            y_start = int(y - (A_ROI - 1) / 2)
+            x_end = int(x_start + A_ROI)
+            y_end = int(y_start + A_ROI)
+            if (x_start < 0 or y_start < 0 or
+                    x_end > x_size - 1 or y_end > y_size - 1):
+                return
+            ix = 0
+            for xx in range(x_start + 1, x_end - 1):
+                iy = 0
+                for yy in range(y_start + 1, y_end - 1):
+                    prep[x, y, ix, iy] = image[xx, yy]
+                    iy += 1
+                ix += 1
+
+
+def preprocess_no_gpu(image, calc_img, x_size, y_size):
+    for x in range(0, x_size):
+        for y in range(0, y_size):
+            x_calc, y_calc = pixel_preprocess(image, x, y, x_size, y_size)
+
+            calc_img[x][y][0] = x_calc
+            calc_img[x][y][1] = y_calc
+    return calc_img
