@@ -2,10 +2,8 @@ import os
 
 import numpy as np
 
-from program.const import CAMERA_FOV, FOCAL_LENGTH
 
-
-def read_scene(path, fname):
+def read_scene_uv(path, fname):
     def read_int_csv(filename):
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -39,7 +37,7 @@ def read_scene(path, fname):
     return input_data, result
 
 
-def read_scene_old(path, fname):
+def read_scene_xy(path, fname, focal_length, resolution):
     def read_int_csv(filename):
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -48,7 +46,7 @@ def read_scene_old(path, fname):
             np.array([int(x) for x in line.strip().split(',')]) for line in
             lines if len(line) > 1]
 
-    def read_input_old(filename):
+    def read_input_old(filename, focal_length, resolution):
         pixel_size = 1
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -62,16 +60,19 @@ def read_scene_old(path, fname):
             for i in range(int(len(raw_data_list[j])))[::3]:
                 y = raw_data_list[j][i]
                 x = raw_data_list[j][i + 1]
-                res_x = 1920  # pixels
-                res_y = 1440  # pixels
-                pp = (res_x, res_y)
-                u = convert_to_vector(x, y, pixel_size, FOCAL_LENGTH*res_x, pp)
+                res_x = resolution[0]
+                res_y = resolution[1]
+                pp = (0.5 * (res_x), 0.5 * (res_y))
+                u = convert_to_vector(
+                    x, y, pixel_size, focal_length*(res_x), pp)
                 magnitude = raw_data_list[j][i + 2]
                 data_list.append(np.array([int(i / 3), u[0], u[1], u[2]]))
             data_lists.append(data_list)
         return data_lists
 
-    input_data = read_input_old(os.path.join(path, '{}_input.csv'.format(fname)))
+    input_data = read_input_old(
+        os.path.join(path, '{}_input.csv'.format(fname)),
+        focal_length, resolution)
     result = read_int_csv(os.path.join(path, '{}_result.csv'.format(fname)))
 
     return input_data, result
@@ -79,8 +80,8 @@ def read_scene_old(path, fname):
 
 def convert_to_vector(x, y, pixel_size, focal_length, pp):
     vector = np.array([
-        pixel_size * (x - (0.5 * pp[0])),
-        pixel_size * (y - (0.5 * pp[1])),
+        pixel_size * (x - pp[0]),
+        pixel_size * (y - pp[1]),
         focal_length
     ])
     u = vector.T / np.linalg.norm(vector)

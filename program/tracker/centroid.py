@@ -14,11 +14,13 @@ I_THRESHOLD = 250
 
 class CentroidCalculator:
     def __init__(self, pixel_size: int, focal_length: int,
-                 a_roi: int, i_threshold: int):
+                 a_roi: int, i_threshold: int, principal_point: (int, int)):
         self.pixel_size = pixel_size
         self.focal_length = focal_length
         self.a_roi = a_roi
         self.i_threshold = i_threshold
+        self.principal_point = principal_point
+
 
     def calculate_centroids(self, I: np.ndarray) -> [StarUV]:
 
@@ -46,7 +48,8 @@ class CentroidCalculator:
         i = 0
         for star in star_list:
             u = convert_to_vector(
-                star[0], star[1], self.pixel_size, self.focal_length, pp)
+                star[0], star[1], self.pixel_size,
+                self.focal_length, self.principal_point)
             star_vectors.append(
                 StarUV(star_id=i, magnitude=-1, unit_vector=u))
             i += 1

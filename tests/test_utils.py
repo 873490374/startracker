@@ -70,7 +70,7 @@ class TestUtils:
         for i in range(len(uv)):
             res_x = 1920  # pixels
             res_y = 1440  # pixels
-            pp = (res_x, res_y)
+            pp = (0.5 * res_x, 0.5 * res_y)
             a = convert_to_vector(
                 original_pos[i][1], original_pos[i][0], 1,
                 FOCAL_LENGTH * res_x, pp)
@@ -149,7 +149,7 @@ class TestUtils:
         for i in range(len(uv)):
             res_x = 1920  # pixels
             res_y = 1440  # pixels
-            pp = (res_x, res_y)
+            pp = (0.5 * res_x, 0.5 * res_y)
             a = convert_to_vector(
                 pos_orient[i][1], pos_orient[i][0], 1,
                 FOCAL_LENGTH * res_x, pp)
