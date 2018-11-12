@@ -261,7 +261,7 @@ class ColeStarIdentifier:
         k = T[start][9]
 
         for j in range(0, nPivots):
-            print(nFinalists)
+            # print(nFinalists)
             # If number of finalists reduces to 0, search has failed
             # If number of finalists reduces to 1, search is complete
 
@@ -324,8 +324,12 @@ class ColeStarIdentifier:
         # COMPILE RESULTS
 
         RnPivots = nPivots
-        print(nFinalists)
-        return Finalists
+        # print(nFinalists)
+        try:
+            ll = [1, 2, 3, match[0, 0:3]]
+        except:
+            ll = None
+        return ll
 
         RnFinalists = RnFinalists2
         if nFinalists == 0:     # Search failed to match triangle

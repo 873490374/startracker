@@ -93,11 +93,11 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
         if not scene:
             raise Exception('No scene generated')
 
-        # inputs.append(np.hstack(
-        #     (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
-        inputs.append(np.hstack((
-            scene.magnitudes.reshape(-1, 1),
-            scene.uv[::, ::])).flatten())
+        inputs.append(np.hstack(
+            (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
+        # inputs.append(np.hstack((
+        #     scene.magnitudes.reshape(-1, 1),
+        #     scene.uv[::, ::])).flatten())
         outputs.append(scene.ids)
         classify_bar.next()
 
@@ -121,4 +121,4 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1000, max_magnitude=5.56)
+create_scene(num_scenes=1000, max_magnitude=5)

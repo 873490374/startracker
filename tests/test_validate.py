@@ -12,7 +12,7 @@ from program.utils import read_scene_uv, read_scene_xy
 
 
 def find_stars(input_data, catalog_fname, kv_m, kv_q):
-    targets = []
+    results = []
     filename = os.path.join(
         MAIN_PATH, 'tests/catalog/{}.csv'.format(catalog_fname))
     with open(filename, 'rb') as f:
@@ -26,36 +26,31 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q):
         catalog=catalog)
     for row in input_data:
         start = timer()
-        ll = star_identifier.identify_stars(row)
-        # print(ll)
-        # print('*'*30)
-        targets.append([ll])
-        # print(ll)
-        # print('*'*30)
-        # targets.append([ll])
+        result = star_identifier.identify_stars(row)
+        results.append([result])
         times.append(timer() - start)
 
     print('Average time: ', np.sum(times)/len(times))
-    return targets
+    return results
 
 
 class TestValidate:
     def test_one_scene(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'), 'one_scene')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 1 == in_scene_good
         assert 0 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 0 == exact_good
@@ -64,19 +59,19 @@ class TestValidate:
     def test_10_scenes_mag5(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'), '10_scenes_mag_5_fov_10')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 10 == in_scene_good
         assert 0 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 1 == exact_good
@@ -85,19 +80,19 @@ class TestValidate:
     def test_100_scenes_mag5(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'), '100_scenes_mag_5_fov_10')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 99 == in_scene_good
         assert 1 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 0 == exact_good
@@ -106,20 +101,20 @@ class TestValidate:
     def test_1000_scenes_mag5(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag_5_fov_10')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 999 == in_scene_good
         assert 1 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 5 == exact_good
@@ -128,20 +123,20 @@ class TestValidate:
     def test_1000_scenes_mag4(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag_4_fov_10')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 998 == in_scene_good
         assert 2 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 7 == exact_good
@@ -150,20 +145,20 @@ class TestValidate:
     def test_1000_scenes_mag556(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
-        input_data, result = read_scene_uv(
+        input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag556_fov_10')
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 262 == in_scene_good
         assert 738 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 1 == exact_good
@@ -176,20 +171,20 @@ class TestValidate:
         focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
         res_x = 1920  # pixels
         res_y = 1440  # pixels
-        input_data, result = read_scene_xy(
+        input_data, expected = read_scene_xy(
             os.path.join(MAIN_PATH, 'tests/scenes'), 'esa',
             focal_length, (res_x, res_y))
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 5 == in_scene_good
         assert 95 == in_scene_bad
 
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 1 == exact_good
@@ -202,24 +197,78 @@ class TestValidate:
         focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
         res_x = 1920  # pixels
         res_y = 1440  # pixels
-        input_data, result = read_scene_xy(
+        input_data, expected = read_scene_xy(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag_4_fov_10_xy', focal_length, (res_x, res_y))
-        targets = find_stars(
+        result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
-        in_scene_good, in_scene_bad = stars_in_scene(targets, result)
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
         assert 858 == in_scene_good
         assert 142 == in_scene_bad
-        exact_good, exact_bad = exact_stars(targets, result)
+        exact_good, exact_bad = exact_stars(result, expected)
 
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 128 == exact_good
         assert 872 == exact_bad
+
+    def test_1000_scenes_mag5_xy_no_scramble(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10_xy_no_scramble',
+            focal_length, (res_x, res_y))
+        result = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q)
+
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        print('in scene good: ', in_scene_good)
+        print('in scene bad: ', in_scene_bad)
+        assert 852 == in_scene_good
+        assert 148 == in_scene_bad
+        exact_good, exact_bad = exact_stars(result, expected)
+
+        print('exact good: ', exact_good)
+        print('exact bad: ', exact_bad)
+        assert 725 == exact_good
+        assert 275 == exact_bad
+
+    def test_1000_scenes_mag5_xy(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10_xy',
+            focal_length, (res_x, res_y))
+        result = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q)
+
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        print('in scene good: ', in_scene_good)
+        print('in scene bad: ', in_scene_bad)
+        assert 868 == in_scene_good
+        assert 132 == in_scene_bad
+        exact_good, exact_bad = exact_stars(result, expected)
+
+        print('exact good: ', exact_good)
+        print('exact bad: ', exact_bad)
+        assert 136 == exact_good
+        assert 864 == exact_bad
 
 
 def stars_in_scene(result, expected):

@@ -208,23 +208,10 @@ class Camera:
         az = np.pi - np.arctan2(y, x)
 
         r = np.sqrt(x ** 2 + y ** 2)
-        theta = self.unproject(r)  # np.arctan(r / self.f)
+        theta = self.unproject(r)
 
         alt = np.pi / 2 - theta
-        """
-        https://github.com/szymonmichalski/starsense_algorithms/blob/master/streak_simulation.m
-        """
-        """
-        caz = np.cos(azimuth)
-        saz = np.sin(azimuth)
-    
-        cal = np.cos(altitude)
-        sal = np.sin(altitude)
-    
-        x = caz * cal
-        y = saz * cal
-        z = sal
-        """
+
         return az, alt
 
 
@@ -580,13 +567,11 @@ class Scene:
         scene = scene[selection]
         scene_ids = star_ids[selection]
 
-        # FIXME x y
-        self.pos = scene
+        self.pos = scene  # x, y
         self.magnitudes = self.catalog.magnitudes[scene_ids]
         self.ids = self.catalog.lookup_indices(scene_ids)
         # FIXME unit vectors
-        self.uv = pos[selection]
-        print('scene created')
+        self.uv = pos[selection]  # unit vectors
 
     def add_false_stars(self, false_stars):
         """Adds randomly generated false stars to a scene."""
@@ -687,14 +672,14 @@ class Scene:
 
                 scene.compute()
 
-                # scene.add_false_stars(
-                #     np.random.randint(min_false, max_false + 1))
+                scene.add_false_stars(
+                    np.random.randint(min_false, max_false + 1))
 
-                # scene.scramble()
+                scene.scramble()
 
-                # scene.add_magnitude_noise(magnitude_gaussian)
+                scene.add_magnitude_noise(magnitude_gaussian)
 
-                # scene.filter_magnitudes()
+                scene.filter_magnitudes()
 
                 num_stars = np.sum(scene.ids >= 0)
 
