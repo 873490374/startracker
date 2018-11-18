@@ -50,6 +50,12 @@ class TestValidate:
         assert 1 == in_scene_good
         assert 0 == in_scene_bad
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 0 == in_triangle_good
+        assert 1 == in_triangle_bad
+
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
@@ -71,6 +77,12 @@ class TestValidate:
         assert 10 == in_scene_good
         assert 0 == in_scene_bad
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 1 == in_triangle_good
+        assert 9 == in_triangle_bad
+
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
@@ -91,6 +103,12 @@ class TestValidate:
         print('in scene bad: ', in_scene_bad)
         assert 99 == in_scene_good
         assert 1 == in_scene_bad
+
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 1 == in_triangle_good
+        assert 99 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
@@ -114,6 +132,12 @@ class TestValidate:
         assert 999 == in_scene_good
         assert 1 == in_scene_bad
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 27 == in_triangle_good
+        assert 973 == in_triangle_bad
+
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
@@ -136,6 +160,12 @@ class TestValidate:
         assert 998 == in_scene_good
         assert 2 == in_scene_bad
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 46 == in_triangle_good
+        assert 954 == in_triangle_bad
+
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
@@ -157,6 +187,12 @@ class TestValidate:
         print('in scene bad: ', in_scene_bad)
         assert 262 == in_scene_good
         assert 738 == in_scene_bad
+
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 5 == in_triangle_good
+        assert 995 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
@@ -184,6 +220,12 @@ class TestValidate:
         assert 5 == in_scene_good
         assert 95 == in_scene_bad
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 2 == in_triangle_good
+        assert 98 == in_triangle_bad
+
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
@@ -209,8 +251,14 @@ class TestValidate:
         print('in scene bad: ', in_scene_bad)
         assert 858 == in_scene_good
         assert 142 == in_scene_bad
-        exact_good, exact_bad = exact_stars(result, expected)
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 748 == in_triangle_good
+        assert 252 == in_triangle_bad
+
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 128 == exact_good
@@ -236,8 +284,14 @@ class TestValidate:
         print('in scene bad: ', in_scene_bad)
         assert 852 == in_scene_good
         assert 148 == in_scene_bad
-        exact_good, exact_bad = exact_stars(result, expected)
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 725 == in_triangle_good
+        assert 275 == in_triangle_bad
+
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 725 == exact_good
@@ -263,8 +317,14 @@ class TestValidate:
         print('in scene bad: ', in_scene_bad)
         assert 868 == in_scene_good
         assert 132 == in_scene_bad
-        exact_good, exact_bad = exact_stars(result, expected)
 
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        print('in triangle good: ', in_scene_good)
+        print('in triangle bad: ', in_scene_bad)
+        assert 764 == in_triangle_good
+        assert 236 == in_triangle_bad
+
+        exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
         assert 136 == exact_good
@@ -281,6 +341,32 @@ def stars_in_scene(result, expected):
             if all([triangle[0] in expected[i],
                     triangle[1] in expected[i],
                     triangle[2] in expected[i]]):
+                good += 1
+            else:
+                bad += 1
+        except (AttributeError, TypeError, IndexError):
+            bad += 1
+    return good, bad
+
+
+def stars_in_triangle(result, expected):
+    good = 0
+    bad = 0
+    for i in range(len(result)):
+        try:
+            res = result[i][0]
+            s1_id = int(res[0][0])
+            s2_id = int(res[1][0])
+            s3_id = int(res[2][0])
+            triangle = res[3]
+            expected_triangle = [
+                expected[i][s1_id],
+                expected[i][s2_id],
+                expected[i][s3_id],
+            ]
+            if all([triangle[0] in expected_triangle,
+                    triangle[1] in expected_triangle,
+                    triangle[2] in expected_triangle]):
                 good += 1
             else:
                 bad += 1
