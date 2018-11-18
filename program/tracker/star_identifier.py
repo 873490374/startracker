@@ -1,10 +1,9 @@
-from typing import Union
+from collections import Counter
 
 import numpy as np
 
 from program.const import SIG_X
 from program.planar_triangle import CatalogPlanarTriangle
-from program.star import StarUV
 from program.tracker.kvector_calculator import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
@@ -20,61 +19,58 @@ class StarIdentifier:
         self.kvector_calc = kvector_calculator
         self.catalog = catalog
 
-    def identify_stars(
-            self, image_stars: [StarUV],
-            previous_frame_stars: np.ndarray = None):
-        if previous_frame_stars:
-            stars = self.identify(image_stars)
-        else:
-            stars = self.identify(image_stars)
-        return stars
-
-    def identify(
-            self, star_list: np.ndarray
-    ) -> Union[np.ndarray, None]:
-        i = 0
+    def identify_stars(self, image_stars: np.ndarray) -> ():
+        s1_id = 0
         unique_found_triangles = []
-        for s1 in star_list[:-2]:
-            # TODO s1 unique triangles
-            # make max iter for finding most common star repetitions
-            # and then voting for star?
-            i += 1
-            j = i
-            for s2 in star_list[i:-1]:
-                # TODO s2 unique triangles
-                j += 1
-                k = j
-                # TODO here calculate for each star couple (another function - inside loop- GPU maybe?)
+        found_stars = dict()
+        for s1 in image_stars[:-2]:
+            s2_id = s1_id + 1
+            for s2 in image_stars[s2_id:-1]:
+                s3_id = s2_id + 1
+                # TODO here calculate for each star couple
+                # (another function - inside loop- GPU maybe?)
                 # TODO some calculation limit inside maybe?
-                # previous_triangle = None
-                for s3 in star_list[k:]:
-                    # TODO s3 unique triangles
-                    t = self.planar_triangle_calc.calculate_triangle(
-                        s1, s2, s3)
-                    ct = self.find_in_catalog(t)
-                    if ct.size == 0:
-                        ct = self.catalog
-                    if len(ct) == 1:
-                        if (len(unique_found_triangles) > 0 and
-                                (unique_found_triangles == ct[0]).any()):
-                            return (s1, s2, s3, ct[0])
-                        else:
-                            unique_found_triangles.append(ct[0])
-                    else:
-                        res = self.get_two_common_stars_triangles(
-                            s1, s2, s3, ct, star_list)
-                        if res.size == 0:
-                            continue
-                        if len(res) == 1:
-                            if (len(unique_found_triangles) > 0 and
-                                    (unique_found_triangles == res[0]).any()):
-                                return (s1, s2, s3, res[0])
-                            else:
-                                unique_found_triangles.append(res[0])
-        # print("***")
-        # [print(t) for t in unique_found_triangles]
-        # print("***")
-        return None  # unique_found_triangles
+                try:
+                    res1, res2 = self.find_triangles(s1, s2, image_stars)
+                    try:
+                        found_stars[s1[0]].extend([res1, res2])
+                    except KeyError:
+                        found_stars[s1[0]] = [res1, res2]
+                    try:
+                        found_stars[s2[0]].extend([res1, res2])
+                    except KeyError:
+                        found_stars[s2[0]] = [res1, res2]
+                except IndexError:
+                    continue
+                s2_id += 1
+            s1_id += 1
+        try:
+            ids = found_stars.keys()
+            ids = [int(k) for k in ids]
+            id1 = ids[0]
+            id2 = ids[1]
+            id3 = ids[2]
+            i1 = Counter(found_stars[id1]).most_common(1)[0][0]
+            i2 = Counter(found_stars[id2]).most_common(1)[0][0]
+            i3 = Counter(found_stars[id3]).most_common(1)[0][0]
+            return (
+                image_stars[id1], image_stars[id2], image_stars[id3],
+                np.array([i1, i2, i3]))
+        except KeyError:
+            return None
+
+    def find_triangles(self, s1, s2, image_stars):
+        result_triangles = []
+        s3_id = int(s2[0] + 1)
+        for s3 in image_stars[s3_id:]:
+            image_triangle = self.planar_triangle_calc.calculate_triangle(
+                s1, s2, s3)
+            catalog_triangles = self.find_in_catalog(image_triangle)
+            result_triangles.extend(catalog_triangles[:, 0])
+            result_triangles.extend(catalog_triangles[:, 1])
+            result_triangles.extend(catalog_triangles[:, 2])
+        res = Counter(result_triangles).most_common(2)
+        return res[0][0], res[1][0]
 
     def find_in_catalog(
             self, triangle: np.ndarray) -> np.ndarray:
@@ -86,8 +82,8 @@ class StarIdentifier:
         moment_min = triangle[4] - SIG_X * J_dev
         moment_max = triangle[4] + SIG_X * J_dev
 
-        k_start, k_end = self.kvector_calc.find_in_kvector(
-            area_min, area_max, self.catalog)
+        # k_start, k_end = self.kvector_calc.find_in_kvector(
+        #     area_min, area_max, self.catalog)
         # TODO should I make it faster with GPU?
 
         valid_triangles = self.catalog[
@@ -123,7 +119,8 @@ class StarIdentifier:
                 tc = self.find_in_catalog(t)
                 if tc.size == 0:
                     continue
-                # TODO correct finding common triangles (two stars, not whole triangle)
+                # TODO correct finding common triangles
+                # (two stars, not whole triangle)
                 triangles = array_row_intersection(triangles, tc)
                 if len(triangles) == 1:
                     return triangles
@@ -143,7 +140,7 @@ def are_the_same_stars(sc1, sc2, sc3):
             sc3[0] == sc1[0])
 
 
-def common_triangles(tri, tc):
+def two_common_stars_triangles(tri, tc):
     s1_id = tri[0]
     s2_id = tri[1]
     s3_id = tri[2]

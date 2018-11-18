@@ -570,7 +570,6 @@ class Scene:
         self.pos = scene  # x, y
         self.magnitudes = self.catalog.magnitudes[scene_ids]
         self.ids = self.catalog.lookup_indices(scene_ids)
-        # FIXME unit vectors
         self.uv = pos[selection]  # unit vectors
 
     def add_false_stars(self, false_stars):

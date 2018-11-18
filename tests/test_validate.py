@@ -80,14 +80,14 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 1 == in_triangle_good
-        assert 9 == in_triangle_bad
+        assert 0 == in_triangle_good
+        assert 10 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 1 == exact_good
-        assert 9 == exact_bad
+        assert 0 == exact_good
+        assert 10 == exact_bad
 
     def test_100_scenes_mag5(self):
         kv_m = 2.83056279997e-07
@@ -101,14 +101,14 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 99 == in_scene_good
-        assert 1 == in_scene_bad
+        assert 100 == in_scene_good
+        assert 0 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 1 == in_triangle_good
-        assert 99 == in_triangle_bad
+        assert 2 == in_triangle_good
+        assert 98 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
@@ -129,20 +129,20 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 999 == in_scene_good
-        assert 1 == in_scene_bad
+        assert 995 == in_scene_good
+        assert 5 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 27 == in_triangle_good
-        assert 973 == in_triangle_bad
+        assert 28 == in_triangle_good
+        assert 972 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 5 == exact_good
-        assert 995 == exact_bad
+        assert 2 == exact_good
+        assert 998 == exact_bad
 
     def test_1000_scenes_mag4(self):
         kv_m = 2.83056279997e-07
@@ -157,14 +157,14 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 998 == in_scene_good
-        assert 2 == in_scene_bad
+        assert 996 == in_scene_good
+        assert 4 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 46 == in_triangle_good
-        assert 954 == in_triangle_bad
+        assert 47 == in_triangle_good
+        assert 953 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
@@ -185,20 +185,20 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 262 == in_scene_good
-        assert 738 == in_scene_bad
+        assert 149 == in_scene_good
+        assert 851 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 5 == in_triangle_good
-        assert 995 == in_triangle_bad
+        assert 8 == in_triangle_good
+        assert 992 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 1 == exact_good
-        assert 999 == exact_bad
+        assert 0 == exact_good
+        assert 1000 == exact_bad
 
     def test_esa(self):
         kv_m = 2.83056279997e-07
@@ -217,14 +217,14 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 5 == in_scene_good
-        assert 95 == in_scene_bad
+        assert 1 == in_scene_good
+        assert 99 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 2 == in_triangle_good
-        assert 98 == in_triangle_bad
+        assert 1 == in_triangle_good
+        assert 99 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
@@ -249,20 +249,20 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 858 == in_scene_good
-        assert 142 == in_scene_bad
+        assert 853 == in_scene_good
+        assert 147 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 748 == in_triangle_good
-        assert 252 == in_triangle_bad
+        assert 797 == in_triangle_good
+        assert 203 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 128 == exact_good
-        assert 872 == exact_bad
+        assert 737 == exact_good
+        assert 263 == exact_bad
 
     def test_1000_scenes_mag5_xy_no_scramble(self):
         kv_m = 2.83056279997e-07
@@ -282,20 +282,20 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 852 == in_scene_good
-        assert 148 == in_scene_bad
+        assert 881 == in_scene_good
+        assert 119 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 725 == in_triangle_good
-        assert 275 == in_triangle_bad
+        assert 880 == in_triangle_good
+        assert 120 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 725 == exact_good
-        assert 275 == exact_bad
+        assert 854 == exact_good
+        assert 146 == exact_bad
 
     def test_1000_scenes_mag5_xy(self):
         kv_m = 2.83056279997e-07
@@ -315,20 +315,20 @@ class TestValidate:
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 868 == in_scene_good
-        assert 132 == in_scene_bad
+        assert 887 == in_scene_good
+        assert 113 == in_scene_bad
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 764 == in_triangle_good
-        assert 236 == in_triangle_bad
+        assert 864 == in_triangle_good
+        assert 136 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 136 == exact_good
-        assert 864 == exact_bad
+        assert 828 == exact_good
+        assert 172 == exact_bad
 
 
 def stars_in_scene(result, expected):
