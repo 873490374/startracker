@@ -35,11 +35,11 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q):
 
 
 class TestValidate:
-    def test_one_scene(self):
+    def test_one_scene_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'one_scene')
+            os.path.join(MAIN_PATH, 'tests/scenes'), '1_scene_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -53,20 +53,21 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 0 == in_triangle_good
-        assert 1 == in_triangle_bad
+        assert 1 == in_triangle_good
+        assert 0 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 0 == exact_good
-        assert 1 == exact_bad
+        assert 1 == exact_good
+        assert 0 == exact_bad
 
-    def test_10_scenes_mag5(self):
+    def test_10_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '10_scenes_mag_5_fov_10')
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '10_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -80,20 +81,21 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 0 == in_triangle_good
-        assert 10 == in_triangle_bad
+        assert 10 == in_triangle_good
+        assert 0 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 0 == exact_good
-        assert 10 == exact_bad
+        assert 10 == exact_good
+        assert 0 == exact_bad
 
-    def test_100_scenes_mag5(self):
+    def test_100_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
-            os.path.join(MAIN_PATH, 'tests/scenes'), '100_scenes_mag_5_fov_10')
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '100_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -107,21 +109,21 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 2 == in_triangle_good
-        assert 98 == in_triangle_bad
+        assert 100 == in_triangle_good
+        assert 0 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 0 == exact_good
-        assert 100 == exact_bad
+        assert 100 == exact_good
+        assert 0 == exact_bad
 
-    def test_1000_scenes_mag5(self):
+    def test_1000_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_5_fov_10')
+            '1000_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -135,21 +137,21 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 28 == in_triangle_good
-        assert 972 == in_triangle_bad
+        assert 994 == in_triangle_good
+        assert 6 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 2 == exact_good
-        assert 998 == exact_bad
+        assert 991 == exact_good
+        assert 9 == exact_bad
 
-    def test_1000_scenes_mag4(self):
+    def test_1000_scenes_mag4_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_4_fov_10')
+            '1000_scenes_mag_4_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -163,21 +165,21 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 47 == in_triangle_good
-        assert 953 == in_triangle_bad
+        assert 996 == in_triangle_good
+        assert 4 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 7 == exact_good
-        assert 993 == exact_bad
+        assert 994 == exact_good
+        assert 6 == exact_bad
 
-    def test_1000_scenes_mag556(self):
+    def test_1000_scenes_mag556_uv(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag556_fov_10')
+            '1000_scenes_mag556_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -191,16 +193,16 @@ class TestValidate:
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
         print('in triangle good: ', in_scene_good)
         print('in triangle bad: ', in_scene_bad)
-        assert 8 == in_triangle_good
-        assert 992 == in_triangle_bad
+        assert 147 == in_triangle_good
+        assert 853 == in_triangle_bad
 
         exact_good, exact_bad = exact_stars(result, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 0 == exact_good
-        assert 1000 == exact_bad
+        assert 133 == exact_good
+        assert 867 == exact_bad
 
-    def test_esa(self):
+    def test_esa_xy(self):
         kv_m = 2.83056279997e-07
         kv_q = -2.03606250703e-07
         camera_fov = 10  # degrees
@@ -208,7 +210,7 @@ class TestValidate:
         res_x = 1920  # pixels
         res_y = 1440  # pixels
         input_data, expected = read_scene_xy(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'esa',
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'esa_xy',
             focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
@@ -241,7 +243,7 @@ class TestValidate:
         res_y = 1440  # pixels
         input_data, expected = read_scene_xy(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_4_fov_10_xy', focal_length, (res_x, res_y))
+            '1000_scenes_mag_4_fov_10_xy_scramble', focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
@@ -306,7 +308,7 @@ class TestValidate:
         res_y = 1440  # pixels
         input_data, expected = read_scene_xy(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_5_fov_10_xy',
+            '1000_scenes_mag_5_fov_10_xy_scramble',
             focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
