@@ -20,42 +20,33 @@ class StarIdentifier:
         self.catalog = catalog
 
     def identify_stars(self, image_stars: np.ndarray) -> ():
+        # [[id_img, uv0, uv1, uv2], ...]
+        if len(image_stars) < 3:
+            return None
         s1_id = 0
-        unique_found_triangles = []
-        found_stars = dict()
+        found_stars = {key: [] for key in range(len(image_stars))}
         for s1 in image_stars[:-2]:
             s2_id = s1_id + 1
             for s2 in image_stars[s2_id:-1]:
-                s3_id = s2_id + 1
-                # TODO here calculate for each star couple
-                # (another function - inside loop- GPU maybe?)
-                # TODO some calculation limit inside maybe?
                 try:
                     res1, res2 = self.find_triangles(s1, s2, image_stars)
-                    try:
-                        found_stars[s1[0]].extend([res1, res2])
-                    except KeyError:
-                        found_stars[s1[0]] = [res1, res2]
-                    try:
-                        found_stars[s2[0]].extend([res1, res2])
-                    except KeyError:
-                        found_stars[s2[0]] = [res1, res2]
+                    found_stars[s1[0]].extend([res1, res2])
+                    found_stars[s2[0]].extend([res1, res2])
                 except IndexError:
                     continue
                 s2_id += 1
             s1_id += 1
         try:
+            result = []
             ids = found_stars.keys()
-            ids = [int(k) for k in ids]
-            id1 = ids[0]
-            id2 = ids[1]
-            id3 = ids[2]
-            i1 = Counter(found_stars[id1]).most_common(1)[0][0]
-            i2 = Counter(found_stars[id2]).most_common(1)[0][0]
-            i3 = Counter(found_stars[id3]).most_common(1)[0][0]
-            return (
-                image_stars[id1], image_stars[id2], image_stars[id3],
-                np.array([i1, i2, i3]))
+            for id in ids:
+                try:
+                    i = Counter(found_stars[id]).most_common(1)[0][0]
+                    s = image_stars[id]
+                    result.append(np.array([s[0], i, s[1], s[2], s[3]]))
+                except (KeyError, IndexError):
+                    continue
+            return result
         except KeyError:
             return None
 
@@ -65,6 +56,7 @@ class StarIdentifier:
         for s3 in image_stars[s3_id:]:
             image_triangle = self.planar_triangle_calc.calculate_triangle(
                 s1, s2, s3)
+            # TODO change to CUDA
             catalog_triangles = self.find_in_catalog(image_triangle)
             result_triangles.extend(catalog_triangles[:, 0])
             result_triangles.extend(catalog_triangles[:, 1])
@@ -88,16 +80,13 @@ class StarIdentifier:
 
         valid_triangles = self.catalog[
             # TODO why k-vector does not work?
-            # (self.catalog[:, 5] >= k_start) &
-            # (self.catalog[:, 5] <= k_end) &
+            # (self.catalog[:, 5] >= k_start+440) &
+            # (self.catalog[:, 5] <= k_end+480) &
             (self.catalog[:, 3] >= area_min) &
             (self.catalog[:, 3] <= area_max) &
             (self.catalog[:, 4] >= moment_min) &
             (self.catalog[:, 4] <= moment_max)]
 
-        # if valid_triangles.size == 0:
-        #     return self.catalog
-        # valid_triangles = np.delete(valid_triangles, [3, 4, 5], axis=1)
         return valid_triangles
 
     def get_two_common_stars_triangles(
