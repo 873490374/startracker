@@ -38,7 +38,7 @@ class CentroidCalculator:
 
         I_norm = np.zeros((x_size, y_size, A_ROI-2, A_ROI-2), dtype=np.float64)
 
-        blockdim = (32, 8)
+        blockdim = (16, 8)
         griddim = (32, 16)
         d_img = cuda.to_device(I.astype(np.float64))
         d_calc = cuda.to_device(calc_img)

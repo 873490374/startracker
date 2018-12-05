@@ -213,7 +213,7 @@ class TestValidate:
             os.path.join(MAIN_PATH, 'tests/scenes'), 'esa_xy',
             focal_length, (res_x, res_y))
         result = find_stars(
-            input_data, 'triangle_catalog_mag6_fov10_full_area',
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
