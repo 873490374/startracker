@@ -2,14 +2,13 @@ import math
 
 import numpy as np
 
-from program.planar_triangle import ImagePlanarTriangle
 
 EPSILON = 2.22 * 10 ** (-16)
 
 
 class KVectorCalculator:
 
-    def __init__(self, m: float=None, q: float=None):
+    def __init__(self, m: float = None, q: float = None):
         self.m = m
         self.q = q
 
@@ -56,7 +55,7 @@ class KVectorCalculator:
 
     def find_in_kvector(
             self, y_a: float, y_b: float, k_vector: np.ndarray,
-            m: float=None, q: float=None) -> [float]:
+            m: float = None, q: float = None) -> [float]:
         m = m or self.m
         q = q or self.q
 

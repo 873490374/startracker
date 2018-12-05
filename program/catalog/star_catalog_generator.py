@@ -3,8 +3,7 @@ import datetime
 import operator
 import os
 
-from program.const import MAIN_PATH, MAX_MAGNITUDE
-from program.planar_triangle import ImagePlanarTriangle
+from program.const import MAIN_PATH
 from program.star import StarPosition, StarUV
 from program.utils import convert_star_to_uv
 from program.validation.scripts.simulator import StarCatalog
@@ -12,11 +11,11 @@ from program.validation.scripts.simulator import StarCatalog
 
 class StarCatalogGenerator:
     def __init__(
-            self, max_magnitude: int):
+            self, max_magnitude: float):
         self.max_magnitude = max_magnitude
 
-    def generate_triangles(
-            self, star_catalog_path: str) -> [ImagePlanarTriangle]:
+    def generate_stars(
+            self, star_catalog_path: str) -> []:
         converted_stars = []
 
         stars = self.read_catalogue_stars(star_catalog_path)
@@ -56,7 +55,7 @@ class StarCatalogGenerator:
 
 
 generator = StarCatalogGenerator(6.2)
-catalog = generator.generate_triangles(
+catalog = generator.generate_stars(
     os.path.join(MAIN_PATH, 'program/validation/data/hip_main.dat'))
 now = datetime.datetime.now()
 generator.save_to_file(catalog, os.path.join(

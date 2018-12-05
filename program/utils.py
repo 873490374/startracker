@@ -97,3 +97,43 @@ def convert_star_to_uv(star_positon: (float, float)) -> np.ndarray:
         np.sin(alpha) * np.cos(delta),
         np.sin(delta)
         ], dtype='float64')
+
+
+def array_row_intersection(a, b):
+    tmp = np.prod(np.swapaxes(a[:, :, None], 1, 2) == b, axis=2)
+    return a[np.sum(np.cumsum(tmp, axis=0) * tmp == 1, axis=1).astype(bool)]
+
+
+def two_common_stars_triangles(tri, tc):
+    s1_id = tri[0]
+    s2_id = tri[1]
+    s3_id = tri[2]
+
+    return tc[
+        ((tc[:, 0] == s1_id) & (tc[:, 1] == s2_id)) |
+        ((tc[:, 0] == s1_id) & (tc[:, 2] == s2_id)) |
+
+        ((tc[:, 0] == s1_id) & (tc[:, 1] == s3_id)) |
+        ((tc[:, 0] == s1_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 1] == s1_id) & (tc[:, 0] == s2_id)) |
+        ((tc[:, 1] == s1_id) & (tc[:, 2] == s2_id)) |
+
+        ((tc[:, 1] == s1_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 1] == s1_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 2] == s1_id) & (tc[:, 0] == s2_id)) |
+        ((tc[:, 2] == s1_id) & (tc[:, 1] == s2_id)) |
+
+        ((tc[:, 2] == s1_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 2] == s1_id) & (tc[:, 1] == s3_id)) |
+
+        ((tc[:, 0] == s2_id) & (tc[:, 1] == s3_id)) |
+        ((tc[:, 0] == s2_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 1] == s2_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 1] == s2_id) & (tc[:, 2] == s3_id)) |
+
+        ((tc[:, 2] == s2_id) & (tc[:, 0] == s3_id)) |
+        ((tc[:, 2] == s2_id) & (tc[:, 1] == s3_id))
+    ]

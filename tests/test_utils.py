@@ -1,12 +1,11 @@
 import numpy as np
-import pytest
 
 from program.const import FOCAL_LENGTH, SENSOR_VARIANCE
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.utils import (
     convert_star_to_uv,
     convert_to_vector,
-)
+    two_common_stars_triangles)
 
 
 class TestUtils:
@@ -197,3 +196,24 @@ class TestUtils:
         assert np.isclose(t2[4], t3[4])
         assert np.isclose(t2[5], t3[5])
         assert np.isclose(t2[6], t3[6])
+
+
+class TestStarIdentifier:
+
+    def test_common_triangles(self):
+        tri = np.array([5, 6, 7, 231, 515])
+        tc = np.array([
+            [1, 2, 3, 222, 232],
+            [2, 4, 7, 222, 232],
+            [1, 4, 7, 222, 232],
+            [6, 7, 9, 222, 232],
+            [3, 5, 6, 222, 232],
+            [3, 6, 7, 222, 232],
+        ])
+        result = two_common_stars_triangles(tri, tc)
+        expected = np.array([
+            [6, 7, 9, 222, 232],
+            [3, 5, 6, 222, 232],
+            [3, 6, 7, 222, 232],
+        ])
+        assert (expected == result).all()

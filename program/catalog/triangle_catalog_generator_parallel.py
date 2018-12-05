@@ -9,10 +9,9 @@ from progress.bar import Bar
 from timeit import default_timer as timer
 
 from program.const import MAIN_PATH
-from program.planar_triangle import ImagePlanarTriangle
 from program.star import StarPosition
 from program.parallel.kvector_calculator_parallel import KVectorCalculator
-from program.parallel.planar_triangle_calculator_np import (
+from program.catalog.planar_triangle_calculator_np import (
     calculate_catalog_triangle,
 )
 from program.validation.scripts.simulator import StarCatalog
@@ -25,7 +24,7 @@ class TriangleCatalogGeneratorParallel:
         self.max_magnitude = max_magnitude
 
     def generate_triangles(
-            self, star_catalog_path: str) -> [ImagePlanarTriangle]:
+            self, star_catalog_path: str) -> (np.ndarray, float, float):
         converted_stars = np.array([], dtype=np.float64)
 
         stars = self.read_catalogue_stars(star_catalog_path)
@@ -175,7 +174,7 @@ class TriangleCatalogGeneratorParallel:
         return catalog
 
     def remove_duplicates(self, tr):
-        # TODO make simple catalog generation test, like 4-5 stars (4-9 triangles)
+        # TODO make simple catalog generation test, 4-5 stars (4-9 triangles)
         trc1 = np.copy(tr[:, 0:3])
         trc1 = np.sort(trc1)
         x = np.random.rand(trc1.shape[1])

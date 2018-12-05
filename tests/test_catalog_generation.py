@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 
-from program.parallel.triangle_catalog_generator_parallel import (
+from program.catalog.triangle_catalog_generator_parallel import (
     TriangleCatalogGeneratorParallel,
 )
 from program.const import MAIN_PATH
