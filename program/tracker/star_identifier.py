@@ -30,7 +30,7 @@ class StarIdentifier:
             s1 = image_stars[c[0]]
             s2 = image_stars[c[1]]
             s3 = image_stars[c[2]]
-            stars = self.find_triangles(s1, s2, s3)
+            stars = self.find_stars(s1, s2, s3)
             try:
                 found_stars[s1[0]].extend(stars)
                 found_stars[s2[0]].extend(stars)
@@ -42,16 +42,17 @@ class StarIdentifier:
             ids = found_stars.keys()
             for id in ids:
                 try:
-                    i = int(Counter(found_stars[id]).most_common(1)[0][0])
+                    id_cat = int(Counter(found_stars[id]).most_common(1)[0][0])
                     s = image_stars[id]
-                    result_stars.append(np.array([s[0], i, s[1], s[2], s[3]]))
+                    result_stars.append(
+                        np.array([s[0], id_cat, s[1], s[2], s[3]]))
                 except (KeyError, IndexError):
                     continue
             return result_stars
         except KeyError:
             return None
 
-    def find_triangles(self, s1, s2, s3):
+    def find_stars(self, s1, s2, s3):
         triangle_catalog_stars = []
         image_triangle = self.planar_triangle_calc.calculate_triangle(
             s1, s2, s3)
