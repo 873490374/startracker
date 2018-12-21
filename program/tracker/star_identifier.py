@@ -3,6 +3,7 @@ from itertools import combinations
 
 import numpy as np
 
+from program.const import COS_CAMERA_FOV
 from program.const import SIG_X
 from program.parallel.kvector_calculator_parallel import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -14,10 +15,12 @@ class StarIdentifier:
             self,
             planar_triangle_calculator: PlanarTriangleCalculator,
             kvector_calculator: KVectorCalculator,
-            catalog: np.ndarray):
+            triangle_catalog: np.ndarray,
+            star_catalog: np.ndarray):
         self.planar_triangle_calc = planar_triangle_calculator
         self.kvector_calc = kvector_calculator
-        self.catalog = catalog
+        self.triangle_catalog = triangle_catalog
+        self.star_catalog = star_catalog
 
     def identify_stars(self, image_stars: np.ndarray) -> ():
         # [[id_img, uv0, uv1, uv2], ...]
@@ -48,6 +51,7 @@ class StarIdentifier:
                         np.array([s[0], id_cat, s[1], s[2], s[3]]))
                 except (KeyError, IndexError):
                     continue
+            result_stars = self.verify_stars(result_stars)
             return result_stars
         except KeyError:
             return None
@@ -76,21 +80,39 @@ class StarIdentifier:
         #     area_min, area_max, self.catalog)
         # TODO should I make it faster with GPU?
 
-        valid_triangles = self.catalog[
+        valid_triangles = self.triangle_catalog[
             # TODO why k-vector does not work?
             # (self.catalog[:, 5] >= k_start+440) &
             # (self.catalog[:, 5] <= k_end+480) &
-            (self.catalog[:, 3] >= area_min) &
-            (self.catalog[:, 3] <= area_max) &
-            (self.catalog[:, 4] >= moment_min) &
-            (self.catalog[:, 4] <= moment_max)]
+            (self.triangle_catalog[:, 3] >= area_min) &
+            (self.triangle_catalog[:, 3] <= area_max) &
+            (self.triangle_catalog[:, 4] >= moment_min) &
+            (self.triangle_catalog[:, 4] <= moment_max)]
 
         return valid_triangles
 
     def verify_stars(self, result_stars: []):
-        # [id_img, found_id, uv0, uv1, uv2]
+        # [id_img, id_cat, uv0, uv1, uv2]
         # TODO CUDA?
         # TODO verify if wrong stars (useful in case there are false stars)
+        result_stars2 = np.array(result_stars)
+        result_stars2 = self.star_catalog[
+            np.isin(self.star_catalog[:, 0], np.array(result_stars2)[:, 1])]
+
+        wrong_stars = []
+
+        comb = combinations(result_stars2, 2)
+        for c in comb:
+            s1 = c[0]
+            s2 = c[1]
+            l1 = s1[1] * s2[1] + s1[2] * s2[2] + s1[3] * s2[3]
+
+            if l1 < COS_CAMERA_FOV:
+                wrong_stars.append(s1[0])
+                wrong_stars.append(s2[0])
+
+        count = Counter(wrong_stars).most_common(len(result_stars2))
+        print('hello')
         # get stars uv from star catalog (by newly found id)
         # combinations
         # check that each star combination with such id can exist on this scene

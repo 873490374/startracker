@@ -1,10 +1,8 @@
-import csv
 import datetime
-import operator
+import numpy as np
 import os
 
 from program.const import MAIN_PATH
-from program.star import StarPosition, StarUV
 from program.utils import convert_star_to_uv
 from program.validation.scripts.simulator import StarCatalog
 
@@ -14,44 +12,34 @@ class StarCatalogGenerator:
             self, max_magnitude: float):
         self.max_magnitude = max_magnitude
 
-    def generate_stars(
-            self, star_catalog_path: str) -> []:
+    def generate_stars(self, star_catalog_path: str) -> np.ndarray:
         converted_stars = []
 
         stars = self.read_catalogue_stars(star_catalog_path)
         for s in stars:
-            if s.magnitude <= self.max_magnitude:
+            if s[1] <= self.max_magnitude:
                 star = convert_star_to_uv(s)
-                converted_stars.append(star)
-        converted_stars = self.sort_catalog(converted_stars)
+                converted_stars.append(
+                    np.array([s[0], star[0], star[1], star[2]]))
+        converted_stars = np.array(converted_stars)
         return converted_stars
 
-    def read_catalogue_stars(self, star_catalog_path: str) -> [StarPosition]:
+    def read_catalogue_stars(self, star_catalog_path: str) -> [float]:
         stars = []
 
         catalog = StarCatalog(self.max_magnitude, star_catalog_path).catalog
         for row in catalog.itertuples():
-            s = StarPosition(
+            s = np.array([
                 row[2],
                 row[6],
                 row[9],
                 row[10],
-            )
+            ])
             stars.append(s)
         return stars
 
-    def sort_catalog(self, catalog):
-        return sorted(catalog, key=operator.attrgetter('id'))
-
-    def save_to_file(
-            self, catalog: [StarUV], output_file_path: str):
-
-        with open(output_file_path, 'w', newline='') as csvfile:
-            csvwriter = csv.DictWriter(csvfile, fieldnames=[
-                'id', 'magnitude', 'uv_i', 'uv_j', 'uv_k'])
-            csvwriter.writeheader()
-            for t in catalog:
-                csvwriter.writerow(dict(t))
+    def save_to_file(self, catalog: np.ndarray, output_file_path: str):
+        np.savetxt(output_file_path, catalog, delimiter=',')
 
 
 generator = StarCatalogGenerator(6.2)
