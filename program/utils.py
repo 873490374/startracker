@@ -88,15 +88,19 @@ def convert_to_vector(x, y, pixel_size, focal_length, pp):
     return u
 
 
-def convert_star_to_uv(star_position: (float, float)) -> np.ndarray:
+def convert_star_to_uv(azimuth: float, altitude: float) -> np.ndarray:
     """ Convert star positions to unit vector."""
-    alpha = np.deg2rad(star_position[0])  # right ascension, altitude
-    delta = np.deg2rad(star_position[1])  # declination, azimuth
-    return np.array([
-        np.cos(alpha) * np.cos(delta),
-        np.sin(alpha) * np.cos(delta),
-        np.sin(delta)
-        ], dtype='float64')
+    caz = np.cos(azimuth)
+    saz = np.sin(azimuth)
+
+    cal = np.cos(altitude)
+    sal = np.sin(altitude)
+
+    x = caz * cal
+    y = saz * cal
+    z = sal
+
+    return np.array([x, y, z]).transpose()
 
 
 def array_row_intersection(a, b):

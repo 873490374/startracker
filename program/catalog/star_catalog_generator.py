@@ -18,7 +18,10 @@ class StarCatalogGenerator:
         stars = self.read_catalogue_stars(star_catalog_path)
         for s in stars:
             if s[1] <= self.max_magnitude:
-                star = convert_star_to_uv(s)
+                star = convert_star_to_uv(
+                    azimuth=np.deg2rad(s[2]),  # declination, azimuth
+                    altitude=np.deg2rad(s[3]),  # right ascension, altitude
+                )
                 converted_stars.append(
                     np.array([s[0], star[0], star[1], star[2]]))
         converted_stars = np.array(converted_stars)

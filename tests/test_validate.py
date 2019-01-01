@@ -10,19 +10,26 @@ from program.tracker.star_identifier import StarIdentifier
 from program.utils import read_scene_uv, read_scene_xy
 
 
-def find_stars(input_data, catalog_fname, kv_m, kv_q):
+def find_stars(input_data, catalog_fname, kv_m, kv_q, verify_stars_flag):
     results = []
-    filename = os.path.join(
+    filename_triangle = os.path.join(
         MAIN_PATH, 'tests/catalog/{}.csv'.format(catalog_fname))
-    with open(filename, 'rb') as f:
-        catalog = np.genfromtxt(f, dtype=np.float64, delimiter=',')
+    filename_star = os.path.join(
+        MAIN_PATH, 'tests/catalog/star_catalog_mag6.2.csv'.format(catalog_fname))
+    with open(filename_triangle, 'rb') as f:
+        triangle_catalog = np.genfromtxt(f, dtype=np.float64, delimiter=',')
+    with open(filename_star, 'rb') as f:
+        star_catalog = np.genfromtxt(f, dtype=np.float64, delimiter=',')
     times = []
     star_identifier = StarIdentifier(
         planar_triangle_calculator=PlanarTriangleCalculator(
             sensor_variance=SENSOR_VARIANCE
         ),
         kvector_calculator=KVectorCalculator(kv_m, kv_q),
-        catalog=catalog)
+        triangle_catalog=triangle_catalog,
+        star_catalog=star_catalog,
+        verify_stars_flag=verify_stars_flag
+    )
     for row in input_data:
         start = timer()
         result = star_identifier.identify_stars(row)
@@ -41,25 +48,53 @@ class TestValidate:
             os.path.join(MAIN_PATH, 'tests/scenes'), '1_scene_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 1 == in_scene_good
-        assert 0 == in_scene_bad
+        assert in_scene_good == 1
+        assert in_scene_bad == 0
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 1
+        assert in_scene_bad_verify == 0
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 1 == in_triangle_good
-        assert 0 == in_triangle_bad
+        assert in_triangle_good == 1
+        assert in_triangle_bad == 0
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 1
+        assert in_triangle_bad_verify == 0
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 1 == exact_good
-        assert 0 == exact_bad
+        assert exact_good == 1
+        assert exact_bad == 0
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 1
+        assert exact_bad_verify == 0
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 1.0
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 1.0
 
     def test_10_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
@@ -69,25 +104,53 @@ class TestValidate:
             '10_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 10 == in_scene_good
-        assert 0 == in_scene_bad
+        assert in_scene_good == 10
+        assert in_scene_bad == 0
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 10
+        assert in_scene_bad_verify == 0
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 10 == in_triangle_good
-        assert 0 == in_triangle_bad
+        assert in_triangle_good == 10
+        assert in_triangle_bad == 0
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 10
+        assert in_triangle_bad_verify == 0
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 10 == exact_good
-        assert 0 == exact_bad
+        assert exact_good == 10
+        assert exact_bad == 0
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 10
+        assert exact_bad_verify == 0
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 1.0
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 1.0
 
     def test_100_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
@@ -97,25 +160,53 @@ class TestValidate:
             '100_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 96 == in_scene_good
-        assert 4 == in_scene_bad
+        assert in_scene_good == 96
+        assert in_scene_bad == 4
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 100
+        assert in_scene_bad_verify == 0
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 95 == in_triangle_good
-        assert 5 == in_triangle_bad
+        assert in_triangle_good == 95
+        assert in_triangle_bad == 5
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 99
+        assert in_triangle_bad_verify == 1
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 95 == exact_good
-        assert 5 == exact_bad
+        assert exact_good == 95
+        assert exact_bad == 5
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 99
+        assert exact_bad_verify == 1
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9769166666666667
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9752500000000001
 
     def test_1000_scenes_mag5_uv(self):
         kv_m = 2.83056279997e-07
@@ -125,25 +216,53 @@ class TestValidate:
             '1000_scenes_mag_5_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 987 == in_scene_good
-        assert 13 == in_scene_bad
+        assert in_scene_good == 987
+        assert in_scene_bad == 13
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 998
+        assert in_scene_bad_verify == 2
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 976 == in_triangle_good
-        assert 24 == in_triangle_bad
+        assert in_triangle_good == 976
+        assert in_triangle_bad == 24
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 987
+        assert in_triangle_bad_verify == 13
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 976 == exact_good
-        assert 24 == exact_bad
+        assert exact_good == 976
+        assert exact_bad == 24
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 987
+        assert exact_bad_verify == 13
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9895348484848484
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9888681818181818
 
     def test_1000_scenes_mag4_uv(self):
         kv_m = 2.83056279997e-07
@@ -153,25 +272,53 @@ class TestValidate:
             '1000_scenes_mag_4_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 982 == in_scene_good
-        assert 18 == in_scene_bad
+        assert in_scene_good == 982
+        assert in_scene_bad == 18
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 983
+        assert in_scene_bad_verify == 17
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 981 == in_triangle_good
-        assert 19 == in_triangle_bad
+        assert in_triangle_good == 981
+        assert in_triangle_bad == 19
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 982
+        assert in_triangle_bad_verify == 18
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 981 == exact_good
-        assert 19 == exact_bad
+        assert exact_good == 981
+        assert exact_bad == 19
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 982
+        assert exact_bad_verify == 18
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9969047619047622
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9969047619047622
 
     def test_1000_scenes_mag556_uv(self):
         kv_m = 2.83056279997e-07
@@ -181,28 +328,50 @@ class TestValidate:
             '1000_scenes_mag556_fov_10_uv')
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 9 == in_scene_good
-        assert 991 == in_scene_bad
+        assert in_scene_good == 9
+        assert in_scene_bad == 991
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 917
+        assert in_scene_bad_verify == 83
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 4 == in_triangle_good
-        assert 996 == in_triangle_bad
+        assert in_triangle_good == 4
+        assert in_triangle_bad == 996
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 894
+        assert in_triangle_bad_verify == 106
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 4 == exact_good
-        assert 996 == exact_bad
+        assert exact_good == 4
+        assert exact_bad == 996
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 894
+        assert exact_bad_verify == 106
 
         """
         With mag6 catalog: (total: 46 min; average: 2.7516 s)
+        no verify
         in scene good:  907
         in scene bad:  93
         in triangle good:  903
@@ -210,6 +379,13 @@ class TestValidate:
         exact good:  903
         exact bad:  97
         """
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.3920965239579192
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.33892573034664575
 
     def test_esa_xy(self):
         kv_m = 2.83056279997e-07
@@ -223,28 +399,50 @@ class TestValidate:
             focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 1 == in_scene_good
-        assert 99 == in_scene_bad
+        assert in_scene_good == 1
+        assert in_scene_bad == 99
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 89
+        assert in_scene_bad_verify == 11
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 1 == in_triangle_good
-        assert 99 == in_triangle_bad
+        assert in_triangle_good == 1
+        assert in_triangle_bad == 99
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 88
+        assert in_triangle_bad_verify == 12
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 1 == exact_good
-        assert 99 == exact_bad
+        assert exact_good == 1
+        assert exact_bad == 99
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 88
+        assert exact_bad_verify == 12
 
         """
         With mag6 catalog: (total: 10 min; average: 6.043 s)
+        no verify
         in scene good:  9
         in scene bad:  91
         in triangle good:  8
@@ -252,6 +450,13 @@ class TestValidate:
         exact good:  8
         exact bad:  92
         """
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.08881358420561206
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.4466271059092267
 
     def test_1000_scenes_mag4_xy(self):
         kv_m = 2.83056279997e-07
@@ -265,25 +470,53 @@ class TestValidate:
             '1000_scenes_mag_4_fov_10_xy_scramble', focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 843 == in_scene_good
-        assert 157 == in_scene_bad
+        assert in_scene_good == 843
+        assert in_scene_bad == 157
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 977
+        assert in_scene_bad_verify == 23
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 793 == in_triangle_good
-        assert 207 == in_triangle_bad
+        assert in_triangle_good == 793
+        assert in_triangle_bad == 207
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 907
+        assert in_triangle_bad_verify == 93
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 787 == exact_good
-        assert 213 == exact_bad
+        assert exact_good == 787
+        assert exact_bad == 213
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 896
+        assert exact_bad_verify == 104
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9537619047619064
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9526369047619064
 
     def test_1000_scenes_mag5_xy_no_scramble(self):
         kv_m = 2.83056279997e-07
@@ -298,25 +531,53 @@ class TestValidate:
             focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 864 == in_scene_good
-        assert 136 == in_scene_bad
+        assert in_scene_good == 864
+        assert in_scene_bad == 136
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 992
+        assert in_scene_bad_verify == 8
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 822 == in_triangle_good
-        assert 178 == in_triangle_bad
+        assert in_triangle_good == 822
+        assert in_triangle_bad == 178
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 938
+        assert in_triangle_bad_verify == 62
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 811 == exact_good
-        assert 189 == exact_bad
+        assert exact_good == 811
+        assert exact_bad == 189
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 921
+        assert exact_bad_verify == 79
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9482375152625161
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9460946581196591
 
     def test_1000_scenes_mag5_xy(self):
         kv_m = 2.83056279997e-07
@@ -331,25 +592,53 @@ class TestValidate:
             focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
-            kv_m, kv_q)
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area',
+            kv_m, kv_q, True)
 
         in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
         print('in scene good: ', in_scene_good)
         print('in scene bad: ', in_scene_bad)
-        assert 904 == in_scene_good
-        assert 96 == in_scene_bad
+        assert in_scene_good == 904
+        assert in_scene_bad == 96
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 994
+        assert in_scene_bad_verify == 6
 
         in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
         print('in triangle good: ', in_triangle_good)
         print('in triangle bad: ', in_triangle_bad)
-        assert 866 == in_triangle_good
-        assert 134 == in_triangle_bad
+        assert in_triangle_good == 866
+        assert in_triangle_bad == 134
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 946
+        assert in_triangle_bad_verify == 54
 
         exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
         print('exact good: ', exact_good)
         print('exact bad: ', exact_bad)
-        assert 860 == exact_good
-        assert 140 == exact_bad
+        assert exact_good == 860
+        assert exact_bad == 140
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 938
+        assert exact_bad_verify == 62
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9606980658230673
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9598885420135435
 
 
 def stars_in_scene(result, expected):
@@ -361,7 +650,7 @@ def stars_in_scene(result, expected):
             scene_result = result[i][0]
             b = 0
             for s in scene_result:
-                if s[1] not in expected[i]:
+                if s[1] not in expected[i] and s[1] != -1:
                     b += 1
             if b == 0:
                 good += 1
@@ -387,6 +676,7 @@ def stars_in_triangle(result, expected):
                     expected[i][s],
                     expected[i][s+1],
                     expected[i][s+2],
+                    -1,
                 ]
                 if not all([
                     s1 in expected_triangle,
@@ -412,7 +702,8 @@ def exact_stars(result, expected):
             scene_result = result[i][0]
             b = 0
             for s in range(len(scene_result)):
-                if scene_result[s][1] != expected[i][s]:
+                if (scene_result[s][1] != expected[i][s] and
+                        scene_result[s][1] != -1):
                     b += 1
             if b == 0:
                 good += 1
@@ -421,3 +712,21 @@ def exact_stars(result, expected):
         except (AttributeError, TypeError, IndexError):
             bad += 1
     return good, bad
+
+
+def percent_stars_found(result, expected):
+    percent = 0
+    for i in range(len(result)):
+        assert len(result[i]) > 0
+        p = 0
+        try:
+            scene_result = result[i][0]
+            for s in range(len(scene_result)):
+                if scene_result[s][1] == expected[i][s]:
+                    p += 1
+            p = p/len(scene_result)
+        except (AttributeError, TypeError, IndexError):
+            percent += 0
+        percent += p
+    percent = percent/len(result)
+    return percent

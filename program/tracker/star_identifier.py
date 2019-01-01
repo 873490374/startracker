@@ -3,7 +3,7 @@ from itertools import combinations
 
 import numpy as np
 
-from program.const import COS_CAMERA_FOV
+from program.const import CAMERA_FOV
 from program.const import SIG_X
 from program.parallel.kvector_calculator_parallel import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -16,11 +16,14 @@ class StarIdentifier:
             planar_triangle_calculator: PlanarTriangleCalculator,
             kvector_calculator: KVectorCalculator,
             triangle_catalog: np.ndarray,
-            star_catalog: np.ndarray):
+            star_catalog: np.ndarray,
+            verify_stars_flag: bool):
         self.planar_triangle_calc = planar_triangle_calculator
         self.kvector_calc = kvector_calculator
         self.triangle_catalog = triangle_catalog
         self.star_catalog = star_catalog
+        self.verify_stars_flag = verify_stars_flag
+        self.fov = np.cos(np.deg2rad(CAMERA_FOV+2))
 
     def identify_stars(self, image_stars: np.ndarray) -> ():
         # [[id_img, uv0, uv1, uv2], ...]
@@ -51,7 +54,8 @@ class StarIdentifier:
                         np.array([s[0], id_cat, s[1], s[2], s[3]]))
                 except (KeyError, IndexError):
                     continue
-            result_stars = self.verify_stars(result_stars)
+            if self.verify_stars_flag:
+                result_stars = self.verify_stars(result_stars)
             return result_stars
         except KeyError:
             return None
@@ -107,16 +111,20 @@ class StarIdentifier:
             s2 = c[1]
             l1 = s1[1] * s2[1] + s1[2] * s2[2] + s1[3] * s2[3]
 
-            if l1 < COS_CAMERA_FOV:
+            if l1 < self.fov:
                 wrong_stars.append(s1[0])
                 wrong_stars.append(s2[0])
 
-        count = Counter(wrong_stars).most_common(len(result_stars2))
-        print('hello')
-        # get stars uv from star catalog (by newly found id)
-        # combinations
-        # check that each star combination with such id can exist on this scene
-        # by checking if their angle is inside the FOV
-        # in case of some error, say this scene was not identified
-        # OR maybe remove wrongly identified stars (the ones giving error)
+        wrong_stars = Counter(wrong_stars).most_common(len(result_stars2))
+        result_stars = remove_wrong_stars(result_stars, wrong_stars)
+
         return result_stars
+
+
+def remove_wrong_stars(found_stars, wrong_stars):
+    for s in wrong_stars:
+        if s[1] >= 0.5 * len(wrong_stars):
+            for star in found_stars:
+                if star[1] == s[0]:
+                    star[1] = -1
+    return found_stars
