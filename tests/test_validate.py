@@ -3,6 +3,8 @@ import os
 import numpy as np
 from timeit import default_timer as timer
 
+import pytest
+
 from program.const import SENSOR_VARIANCE, MAIN_PATH
 from program.parallel.kvector_calculator_parallel import KVectorCalculator
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -369,17 +371,6 @@ class TestValidate:
         assert exact_good_verify == 894
         assert exact_bad_verify == 106
 
-        """
-        With mag6 catalog: (total: 46 min; average: 2.7516 s)
-        no verify
-        in scene good:  907
-        in scene bad:  93
-        in triangle good:  903
-        in triangle bad:  97
-        exact good:  903
-        exact bad:  97
-        """
-
         percent = percent_stars_found(result, expected)
         percent_verify = percent_stars_found(result_verify, expected)
         print('percent_identified: ', percent)
@@ -440,23 +431,142 @@ class TestValidate:
         assert exact_good_verify == 88
         assert exact_bad_verify == 12
 
-        """
-        With mag6 catalog: (total: 10 min; average: 6.043 s)
-        no verify
-        in scene good:  9
-        in scene bad:  91
-        in triangle good:  8
-        in triangle bad:  92
-        exact good:  8
-        exact bad:  92
-        """
-
         percent = percent_stars_found(result, expected)
         percent_verify = percent_stars_found(result_verify, expected)
         print('percent_identified: ', percent)
         assert percent == 0.08881358420561206
         print('percent_identified_verify: ', percent_verify)
         assert percent_verify == 0.4466271059092267
+
+    @pytest.mark.skip('Too long test')
+    def test_1000_scenes_mag556_uv_cat_mag6(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        input_data, expected = read_scene_uv(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag556_fov_10_uv')
+        result = find_stars(
+            input_data, 'triangle_catalog_mag6_fov10_full_area',
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag6_fov10_full_area',
+            kv_m, kv_q, True)
+
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good: ', in_scene_good)
+        print('in scene bad: ', in_scene_bad)
+        assert in_scene_good == 907
+        assert in_scene_bad == 93
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 985
+        assert in_scene_bad_verify == 15
+
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good: ', in_triangle_good)
+        print('in triangle bad: ', in_triangle_bad)
+        assert in_triangle_good == 903
+        assert in_triangle_bad == 97
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 985
+        assert in_triangle_bad_verify == 15
+
+        exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good: ', exact_good)
+        print('exact bad: ', exact_bad)
+        assert exact_good == 903
+        assert exact_bad == 97
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 985
+        assert exact_bad_verify == 15
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.9579092482680718
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.9535647316735554
+
+        """
+        Total time: 1h 14m 34s
+        Average time: 2.2561510484499596
+        Average time: 2.2021919318470684
+        """
+
+    @pytest.mark.skip('Too long test')
+    def test_esa_xy_cat_mag6(self):
+        kv_m = 2.83056279997e-07
+        kv_q = -2.03606250703e-07
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'esa_xy',
+            focal_length, (res_x, res_y))
+        result = find_stars(
+            input_data, 'triangle_catalog_mag6_fov10_full_area',
+            kv_m, kv_q, False)
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag6_fov10_full_area',
+            kv_m, kv_q, True)
+
+        in_scene_good, in_scene_bad = stars_in_scene(result, expected)
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good: ', in_scene_good)
+        print('in scene bad: ', in_scene_bad)
+        assert in_scene_good == 9
+        assert in_scene_bad == 91
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 63
+        assert in_scene_bad_verify == 37
+
+        in_triangle_good, in_triangle_bad = stars_in_triangle(result, expected)
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good: ', in_triangle_good)
+        print('in triangle bad: ', in_triangle_bad)
+        assert in_triangle_good == 8
+        assert in_triangle_bad == 92
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 62
+        assert in_triangle_bad_verify == 38
+
+        exact_good, exact_bad = exact_stars(result, expected)
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good: ', exact_good)
+        print('exact bad: ', exact_bad)
+        assert exact_good == 8
+        assert exact_bad == 92
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 62
+        assert exact_bad_verify == 38
+
+        percent = percent_stars_found(result, expected)
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified: ', percent)
+        assert percent == 0.2943908145947621
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 0.5633633926273245
+
+        """
+        Total time: 16m 57s
+        Average time: 5.081271586679832
+        Average time: 4.9285306808902165
+        """
 
     def test_1000_scenes_mag4_xy(self):
         kv_m = 2.83056279997e-07
