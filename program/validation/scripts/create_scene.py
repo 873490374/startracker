@@ -82,16 +82,23 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
     classify_bar = Bar(
         'Building scenes', max=num_scenes)
     for i in range(num_scenes):
-        scene = Scene.random(
-            catalog=catalog, camera=camera, detector=detector,
-            min_true=min_true, max_true=max_true,
-            min_false=min_false, max_false=max_false,
-            min_stars=min_stars, max_tries=1000000,
-            gaussian_noise_sigma=gaussian_noise_sigma,
-            magnitude_gaussian=magnitude_gaussian)
+        while True:
+            try:
+                scene = Scene.random(
+                    catalog=catalog, camera=camera, detector=detector,
+                    min_true=min_true, max_true=max_true,
+                    min_false=min_false, max_false=max_false,
+                    min_stars=min_stars, max_tries=1000000,
+                    gaussian_noise_sigma=gaussian_noise_sigma,
+                    magnitude_gaussian=magnitude_gaussian)
 
-        if not scene:
-            raise Exception('No scene generated')
+                if not scene:
+                    raise Exception('No scene generated')
+
+                if np.isin([39138, 39794, 39794], scene.ids).all():
+                    break
+            finally:
+                pass
 
         inputs.append(np.hstack(
             (scene.pos[::, ::-1], scene.magnitudes.reshape(-1, 1))).flatten())
@@ -121,4 +128,4 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
             now.year, now.month, now.day, now.hour, now.minute)), outputs)
 
 
-create_scene(num_scenes=1000, max_magnitude=5)
+create_scene(num_scenes=1, max_magnitude=5)
