@@ -97,8 +97,6 @@ class StarIdentifier:
 
     def verify_stars(self, result_stars: []):
         # [id_img, id_cat, uv0, uv1, uv2]
-        # TODO CUDA?
-        # TODO verify if wrong stars (useful in case there are false stars)
         result_stars2 = np.array(result_stars)
         result_stars2 = self.star_catalog[
             np.isin(self.star_catalog[:, 0], np.array(result_stars2)[:, 1])]

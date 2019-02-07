@@ -17,7 +17,7 @@ def find_stars(input_data, catalog_fname, kv_m, kv_q, verify_stars_flag):
     filename_triangle = os.path.join(
         MAIN_PATH, 'tests/catalog/{}.csv'.format(catalog_fname))
     filename_star = os.path.join(
-        MAIN_PATH, 'tests/catalog/star_catalog_mag6.2.csv'.format(catalog_fname))
+        MAIN_PATH, 'tests/catalog/star_catalog_mag6.2.csv')
     with open(filename_triangle, 'rb') as f:
         triangle_catalog = np.genfromtxt(f, dtype=np.float64, delimiter=',')
     with open(filename_star, 'rb') as f:
@@ -577,7 +577,8 @@ class TestValidate:
         res_y = 1440  # pixels
         input_data, expected = read_scene_xy(
             os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_4_fov_10_xy_scramble', focal_length, (res_x, res_y))
+            '1000_scenes_mag_4_fov_10_xy_scramble',
+            focal_length, (res_x, res_y))
         result = find_stars(
             input_data, 'triangle_catalog_mag5_fov10_full_area',
             kv_m, kv_q, False)

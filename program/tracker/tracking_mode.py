@@ -32,11 +32,13 @@ class TrackingMode:
             self,
             new_image_stars: np.ndarray,  # [id_img, uv1, uv2, uv3]
             previous_found_stars: np.ndarray):  # [id_img, id_cat, uv1, uv2, uv3]
-        previous_found_stars2 = previous_found_stars[:, [1, 2, 3, 4]]  # remove id_img column
+        # previous_found_stars2 = previous_found_stars[:, [1, 2, 3, 4]]  # remove id_img column
+        previous_found_stars2 = [s[1:] for s in previous_found_stars]
         previous_triangles = self.make_triangles_list(previous_found_stars2)
         found_stars = self.identify_stars(new_image_stars, previous_triangles)
 
         found_stars = self.choose_best_stars(found_stars, new_image_stars)
+        # TODO add finding the rest of stars :/
         return found_stars
 
     def choose_best_stars(self, found_stars, new_image_stars):
@@ -108,7 +110,7 @@ class TrackingMode:
         moment_max = triangle[4] + SIG_X * J_dev
 
         # TODO should I make it faster with GPU?
-
+        previous_triangles = np.array(previous_triangles)
         valid_triangles = previous_triangles[
             (previous_triangles[:, 3] >= area_min) &
             (previous_triangles[:, 3] <= area_max) &
