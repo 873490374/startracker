@@ -7,18 +7,18 @@ from program.tracker.quest import QuestCalculator
 class TestQuest:
 
     def test_quest(self):
-        w1 = np.array([
+        vi1 = np.array([  # inertial frame / catalog
             0.2673,
             0.5345,
             0.8018
         ])[np.newaxis].T
-        w2 = np.array([
+        vi2 = np.array([
             -0.3124,
             0.9370,
             0.1562
         ])[np.newaxis].T
 
-        v1_exact = np.array([
+        v1_exact = np.array([  # body frame / real measured vectors
             0.7749,
             0.3448,
             0.5297
@@ -29,20 +29,20 @@ class TestQuest:
             -0.3486
         ])[np.newaxis].T
 
-        v1 = np.array([
+        vb1 = np.array([  # body frame / measured vectors
             0.7814,
             0.3751,
             0.4987
         ])[np.newaxis].T
-        v2 = np.array([
+        vb2 = np.array([
             0.6164,
             0.7075,
             -0.3459
         ])[np.newaxis].T
 
         weight_list = [1, 1]
-        v_list = [v1, v2]
-        w_list = [w1, w2]
+        vb_list = [vb1, vb2]
+        vi_list = [vi1, vi2]
 
         R_bi_exact = np.array([
             [0.5335, 0.8080, 0.2500],
@@ -71,7 +71,7 @@ class TestQuest:
         J_expected = 3.6810e-4  # loss function value
 
         quest_calc = QuestCalculator()
-        q, K_calc = quest_calc.calculate_quest(weight_list, v_list, w_list)
+        q, K_calc = quest_calc.calculate_quest(weight_list, vb_list, vi_list)
 
         assert np.isclose(q, np.array(
             [0.89139439, 0.18244972, -0.17532932, 0.37601565])
@@ -81,9 +81,9 @@ class TestQuest:
         q8d = Quaternion(axis=[q[1], q[2], q[3]], angle=q[0])
         R = q8d.rotation_matrix
 
-        assert np.isclose(w1, np.inner(R, v1.T), atol=0.09).all()
+        assert np.isclose(vi1, np.inner(R, vb1.T), atol=0.09).all()
 
-        assert np.isclose(w2, np.inner(R, v2.T), atol=0.31).all()
+        assert np.isclose(vi2, np.inner(R, vb2.T), atol=0.31).all()
 
         R_diff = np.inner(R.T, R_bi_quest_expected)
 

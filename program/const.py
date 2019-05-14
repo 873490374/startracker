@@ -8,3 +8,4 @@ FOCAL_LENGTH = 0.5 / np.tan(np.deg2rad(CAMERA_FOV) / 2)  # normalized,in pixels
 SENSOR_VARIANCE = 270e-6 / 10
 SIG_X = 3
 MAIN_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..')
+TRACKING_MODE_ENABLED = False

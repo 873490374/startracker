@@ -40,7 +40,7 @@ class TestKVector:
         y_b = 0.51
         kvector_calc.m = m
         kvector_calc.q = q
-        rangee = kvector_calc.find_in_kvector(y_a, y_b, kvector)
+        range_ = kvector_calc.find_in_kvector(y_a, y_b, kvector)
 
         expected_found = np.array([
             [0, 0, 0, 0.32, 0, 0],
@@ -48,6 +48,6 @@ class TestKVector:
             [0, 0, 0, 0.561, 0, 1],
             [0, 0, 0, 0.562, 0, 1],
         ])
-        assert rangee == (1, 4)
+        assert range_ == (1, 4)
 
         assert (kvector[1:5, :] == expected_found).all()

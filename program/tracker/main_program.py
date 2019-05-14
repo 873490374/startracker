@@ -2,6 +2,7 @@ from program.star import StarUV
 from program.tracker.image_processor import ImageProcessor
 from program.tracker.orientation_finder import OrientationFinder
 from program.tracker.star_identifier import StarIdentifier
+from program.tracker.tracker import Tracker
 
 
 class StarTracker:
@@ -10,38 +11,50 @@ class StarTracker:
             self,
             image_processor: ImageProcessor,
             star_identifier: StarIdentifier,
-            orientation_finder: OrientationFinder):
+            orientation_finder: OrientationFinder,
+            tracker: Tracker,
+            tracking_mode_enabled: bool):
         self.image_processor = image_processor
         self.star_identifier = star_identifier
         self.orientation_finder = orientation_finder
+        self.tracker = tracker
+        self.tracking_mode_enabled = tracking_mode_enabled
 
-    def calculate_orientation(self, previous_orientation=None):
-        image_stars = self.get_image_stars()
-        if previous_orientation:
-            # tracking mode
-            frame = self.compare_frames(image_stars, previous_orientation)
-            self.finalize(frame)
+    def run(self):
+        if self.tracking_mode_enabled:
+            while True:
+                # tracking mode
+                self.tracking_mode()
+                pass
         else:
-            # LIS mode
-            frame = self.find_orientation(image_stars)
-            self.finalize(frame)
-
-    def finalize(self, frame):
-        if frame:
-            print(frame.orientation)
-            self.calculate_orientation(frame)
-        else:
-            print('Orientation lost')
-            self.calculate_orientation()
+            while True:
+                # LIS mode
+                image_stars = self.get_image_stars()
+                identified_stars = self.identify_stars(image_stars)
+                orientation = self.find_orientation(identified_stars)
+                yield identified_stars, orientation
 
     def get_image_stars(self) -> [StarUV]:
         return self.image_processor.get_image_star_vectors()
 
-    def compare_frames(self, image_stars, previous_orientation):
-        pass
+    def identify_stars(self, image_stars: [StarUV]):
+        return self.star_identifier.identify_stars(image_stars)
 
-    def find_orientation(self, image_stars: [StarUV]):
-        identified_stars = self.star_identifier.identify_stars(image_stars)
+    def find_orientation(self, identified_stars: [StarUV]):
+
         orientation = self.orientation_finder.find_orientation(
             identified_stars)
         return orientation
+
+    def tracking_mode(self):
+        identified_stars = []
+        while True:
+            image_stars = self.get_image_stars()
+            if not identified_stars or len((set([
+                    int(star[1]) for star in identified_stars]))) < 3:
+                identified_stars = self.identify_stars(image_stars)
+            else:
+                identified_stars = self.tracker.track(
+                    image_stars, identified_stars)
+            orientation = self.find_orientation(identified_stars)
+            yield identified_stars, orientation

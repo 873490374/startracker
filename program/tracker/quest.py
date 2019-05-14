@@ -6,9 +6,11 @@ import scipy.optimize
 class QuestCalculator:
 
     def calculate_quest(
-            self, weight_list: [float], w_list: [float], v_list: [float]
+            self, weight_list: [float],
+            v_b_list: [float],  # body frame vector / new measured
+            v_i_list: [float],  # inertial frame vector / catalog
     ) -> (np.ndarray, np.ndarray):
-        B = self.calculate_B(weight_list, w_list, v_list)
+        B = self.calculate_B(weight_list, v_b_list, v_i_list)
         S = self.calculate_S(B)
         self.s = self.calculate_s(B)
         Z = self.calculate_Z(B)
@@ -22,12 +24,12 @@ class QuestCalculator:
         return q, K
 
     def calculate_B(
-            self, weight_list: [float], w_list: [float], v_list: [float]
+            self, weight_list: [float], v_b_list: [float], v_i_list: [float]
     ) -> np.ndarray:
         B_list = []
         B = np.zeros((3, 3))
-        for i in range(len(w_list)):
-            B_list.append(weight_list[i]*w_list[i]*v_list[i].T)
+        for i in range(len(v_i_list)):
+            B_list.append(weight_list[i] * v_b_list[i] * v_i_list[i].T)
         for y in range(3):
             for x in range(3):
                 B[x][y] = self.sum_element(x, y, B_list)
@@ -84,7 +86,7 @@ class QuestCalculator:
             maxiter=500)
 
     def calculate_q(self, lamb, s, S, Z):
-        # TODO make this more accurate
+        # TODO calculate more accurately
         arf = lamb**2 - s**2 + np.matrix(S).H.trace().item()
         bet = lamb - s
         x = np.inner(arf * np.identity(3) + bet*S+S*S, Z.T).flatten()

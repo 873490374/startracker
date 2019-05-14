@@ -6,24 +6,8 @@ import numpy as np
 from program.const import SIG_X
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 
-# TODO create tracking mode
 
-"""
-Input:
-previous_found_stars
-new_image_stars
-
-alg:
-make list of all possible triangles for prev and new
-compare triangles
-if any triangle matched:
-    try to match all other stars (look for only stars with angle in FOV)
-
-make tests for both positive and negative tracking
-"""
-
-
-class TrackingMode:
+class Tracker:
 
     def __init__(self, planar_triangle_calculator: PlanarTriangleCalculator):
         self.planar_triangle_calc = planar_triangle_calculator
@@ -31,33 +15,16 @@ class TrackingMode:
     def track(
             self,
             new_image_stars: np.ndarray,  # [id_img, uv1, uv2, uv3]
-            previous_found_stars: np.ndarray):  # [id_img, id_cat, uv1, uv2, uv3]
-        # previous_found_stars2 = previous_found_stars[:, [1, 2, 3, 4]]  # remove id_img column
+            previous_found_stars: np.ndarray,
+            # [id_img, id_cat, uv1, uv2, uv3]
+    ):
         previous_found_stars2 = [s[1:] for s in previous_found_stars]
         previous_triangles = self.make_triangles_list(previous_found_stars2)
         found_stars = self.identify_stars(new_image_stars, previous_triangles)
-
         found_stars = self.choose_best_stars(found_stars, new_image_stars)
-        # TODO add finding the rest of stars :/
         return found_stars
 
-    def choose_best_stars(self, found_stars, new_image_stars):
-        try:
-            result_stars = []
-            ids = found_stars.keys()
-            for id in ids:
-                try:
-                    id_cat = int(Counter(found_stars[id]).most_common(1)[0][0])
-                    s = new_image_stars[id]
-                    result_stars.append(
-                        np.array([s[0], id_cat, s[1], s[2], s[3]]))
-                except (KeyError, IndexError):
-                    continue
-            return result_stars
-        except KeyError:
-            return None
-
-    def make_triangles_list(self, image_stars: np.ndarray) -> [np.ndarray]:
+    def make_triangles_list(self, image_stars: [np.ndarray]) -> [np.ndarray]:
         found_stars = {key: [] for key in range(len(image_stars))}
         comb = combinations(found_stars, 3)
         triangles = []
@@ -98,6 +65,28 @@ class TrackingMode:
         triangle_catalog_stars.extend(catalog_triangles[:, 1])
         triangle_catalog_stars.extend(catalog_triangles[:, 2])
         return triangle_catalog_stars
+
+    def choose_best_stars(self, found_stars, new_image_stars):
+        try:
+            result_stars = []
+            ids = found_stars.keys()
+            result_ids = []
+            for id in ids:
+                try:
+                    most_common = Counter(found_stars[id]).most_common(3)
+                    for l in range(3):
+                        id_cat = int(most_common[l][0])
+                        if id_cat not in result_ids:
+                            result_ids.append(id_cat)
+                            s = new_image_stars[id]
+                            result_stars.append(
+                                np.array([s[0], id_cat, s[1], s[2], s[3]]))
+                            break
+                except (KeyError, IndexError):
+                    continue
+            return result_stars
+        except KeyError:
+            return None
 
     def find_common_triangles(
             self, triangle: np.ndarray, previous_triangles: [np.ndarray]):

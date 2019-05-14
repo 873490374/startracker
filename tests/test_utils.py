@@ -60,7 +60,7 @@ class TestUtils:
             [85.18968672, -1.94257841],
         ]
 
-        calc_uv = [convert_star_to_uv(deg) for deg in original_deg]
+        calc_uv = [convert_star_to_uv(deg[0], deg[1]) for deg in original_deg]
         calc_uv_orient = np.dot(calc_uv, orientation.transpose())
         for i in range(len(uv)):
             assert np.isclose(calc_uv_orient[i], uv[i]).all()
@@ -139,7 +139,7 @@ class TestUtils:
 
         calc_uv = []
         for i in range(len(alt)):
-            calc_uv.append(convert_star_to_uv((alt[i], az[i])))
+            calc_uv.append(convert_star_to_uv(alt[i], az[i]))
         calc_uv_orient = np.dot(calc_uv, orientation.transpose())
         for i in range(len(uv)):
             assert np.isclose(calc_uv_orient[i], uv[i], atol=1.e-4).all()
