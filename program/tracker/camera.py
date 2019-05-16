@@ -5,7 +5,8 @@ from PIL import Image
 
 class CameraConnector:
 
-    def get_image(self) -> Image.Image:
+    @staticmethod
+    def get_image() -> Image.Image:
         width = 1920  # pixels
         height = 1440  # pixels
         gst_str = ('nvcamerasrc ! '

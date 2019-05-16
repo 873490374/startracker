@@ -3,7 +3,6 @@ from numpy import uint8
 from numpy.random import rand
 import cv2
 
-
 xy = (512, 512)
 Nf = 500
 
@@ -14,11 +13,12 @@ def fpsopencv(dat):
         cv2.imshow('test', i)
         cv2.waitKey(1)  # integer milliseconds, 0 makes wait forever
     cv2.destroyAllWindows()
-    return Nf / (time()-tic)
+    return Nf / (time() - tic)
+
 
 print(cv2.__version__)
 
-imgs = (rand(Nf, xy[0], xy[1])*255).astype(uint8)
+imgs = (rand(Nf, xy[0], xy[1]) * 255).astype(uint8)
 fps = fpsopencv(imgs)
 
 print(fps, 'fps')

@@ -22,7 +22,8 @@ class ImageProcessor:
     def get_image(self) -> Image.Image:
         return self.camera_conn.get_image()
 
-    def image_to_matrix(self, image: Image.Image) -> np.ndarray:
+    @staticmethod
+    def image_to_matrix(image: Image.Image) -> np.ndarray:
         return np.asarray(image.convert('L'))
 
     def get_image_star_vectors(self) -> [StarUV]:

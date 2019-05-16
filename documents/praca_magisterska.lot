@@ -1,7 +1,7 @@
-\select@language {polish}
-\select@language {english}
-\select@language {polish}
-\select@language {english}
+\babel@toc {polish}{}
+\babel@toc {english}{}
+\babel@toc {polish}{}
+\babel@toc {english}{}
 \contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges. Adapted from \citet {hall2003spacecraft} and \citet {larson1992space}\relax }}{17}
 \contentsline {table}{\numberline {2}{\ignorespaces OBC's technical parameters. Adapted from \citet {gaska2016obc}.\relax }}{21}
 \contentsline {table}{\numberline {3}{\ignorespaces Resources of Texas Instrument's TMS570LS3137. Adapted from \citet {gaska2016obc}.\relax }}{22}

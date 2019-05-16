@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.26)  8 SEP 2017 18:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  15 MAY 2019 23:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **praca_magisterska.tex
 (./praca_magisterska.tex
-LaTeX2e <2016/02/01>
-Babel <3.9q> and hyphenation patterns for 81 language(s) loaded.
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
@@ -29,14 +29,14 @@ Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@posthook=\toks15
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
-File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
 Now handling font encoding OML ...
 ... no UTF-8 mapping file for font encoding OML
 Now handling font encoding T1 ...
 ... processing UTF-8 mapping file for font encoding T1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
-File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -248,11 +248,17 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+0219 (decimal 537)
    defining Unicode char U+021A (decimal 538)
    defining Unicode char U+021B (decimal 539)
-   defining Unicode char U+01E02 (decimal 7682)
-   defining Unicode char U+01E03 (decimal 7683)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
    defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
    defining Unicode char U+2013 (decimal 8211)
    defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
    defining Unicode char U+2018 (decimal 8216)
    defining Unicode char U+2019 (decimal 8217)
    defining Unicode char U+201A (decimal 8218)
@@ -264,12 +270,14 @@ File: t1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
    defining Unicode char U+2039 (decimal 8249)
    defining Unicode char U+203A (decimal 8250)
    defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
 )
 Now handling font encoding OT1 ...
 ... processing UTF-8 mapping file for font encoding OT1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
-File: ot1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A0 (decimal 160)
    defining Unicode char U+00A1 (decimal 161)
    defining Unicode char U+00A3 (decimal 163)
@@ -310,7 +318,7 @@ Now handling font encoding OMS ...
 ... processing UTF-8 mapping file for font encoding OMS
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
-File: omsenc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A7 (decimal 167)
    defining Unicode char U+00B6 (decimal 182)
    defining Unicode char U+00B7 (decimal 183)
@@ -334,7 +342,7 @@ Now handling font encoding U ...
    defining Unicode char U+2423 (decimal 9251)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
-Package: glossaries 2016/01/24 v4.21 (NLCT)
+Package: glossaries 2017/11/14 v4.35 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
@@ -352,10 +360,10 @@ Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/mfirstuc/mfirstuc.sty
-Package: mfirstuc 2015/12/17 v2.02 (NLCT)
+Package: mfirstuc 2017/11/14 v2.06 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count88
 )
 \@glsmfirst=\toks18
@@ -368,10 +376,10 @@ Package: textcase 2004/10/07 v0.07 Text only upper/lower case changing (DPC)
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-base.sty
-Package: datatool-base 2016/01/18 v2.25 (NLCT)
+Package: datatool-base 2017/11/12 v2.29 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/03 v2.15a AMS math features
+Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
@@ -388,23 +396,23 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen104
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
+Package: amsopn 2016/03/08 v2.02 operator names
 )
 \inf@bad=\count89
-LaTeX Info: Redefining \frac on input line 199.
+LaTeX Info: Redefining \frac on input line 213.
 \uproot@=\count90
 \leftroot@=\count91
-LaTeX Info: Redefining \overline on input line 297.
+LaTeX Info: Redefining \overline on input line 375.
 \classnum@=\count92
 \DOTSCASE@=\count93
-LaTeX Info: Redefining \ldots on input line 394.
-LaTeX Info: Redefining \dots on input line 397.
-LaTeX Info: Redefining \cdots on input line 518.
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
 \Mathstrutbox@=\box26
 \strutbox@=\box27
 \big@size=\dimen105
-LaTeX Font Info:    Redeclaring font encoding OML on input line 630.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \macc@depth=\count94
 \c@MaxMatrixCols=\count95
 \dotsspace@=\muskip10
@@ -425,15 +433,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 631.
 \multlinegap=\skip44
 \multlinetaggap=\skip45
 \mathdisplay@stack=\toks24
-LaTeX Info: Redefining \[ on input line 2735.
-LaTeX Info: Redefining \] on input line 2736.
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/substr/substr.sty
 Package: substr 2009/10/20 v1.2 Handle substrings
 \c@su@anzahl=\count101
 )
 (/usr/share/texlive/texmf-dist/tex/latex/datatool/datatool-fp.sty
-Package: datatool-fp 2016/01/18 v2.25 (NLCT)
+Package: datatool-fp 2017/11/12 v2.29 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/fp/fp.sty
 Package: fp 1995/04/02
@@ -495,7 +503,7 @@ Package: fp-eval 1995/04/03
 )
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries-compatible-
 307.sty
-Package: glossaries-compatible-307 2016/01/24 v4.21 (NLCT)
+Package: glossaries-compatible-307 2017/11/14 v4.35 (NLCT)
 )
 \gls@level=\count120
 \@gls@tmpb=\toks26
@@ -507,12 +515,12 @@ Package: glossaries-compatible-307 2016/01/24 v4.21 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.st
 y
-Package: glossary-hypernav 2016/01/24 v4.21 (NLCT)
+Package: glossary-hypernav 2017/11/14 v4.35 (NLCT)
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
-Package: glossary-list 2016/01/24 v4.21 (NLCT)
+Package: glossary-list 2017/11/14 v4.35 (NLCT)
 \glslistdottedwidth=\skip48
 ) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
-Package: glossary-long 2016/01/24 v4.21 (NLCT)
+Package: glossary-long 2017/11/14 v4.35 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
@@ -536,7 +544,7 @@ Package: longtable 2014/10/28 v4.11 Multi-page Table package (DPC)
 \glspagelistwidth=\skip54
 )
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
-Package: glossary-super 2016/01/24 v4.21 (NLCT)
+Package: glossary-super 2017/11/14 v4.35 (NLCT)
 
 (/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
@@ -558,19 +566,25 @@ Package: supertabular 2004/02/20 v4.1e the supertabular environment
 \ST@pbox=\box32
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
-Package: glossary-tree 2016/01/24 v4.21 (NLCT)
+Package: glossary-tree 2017/11/14 v4.35 (NLCT)
 \glstreeindent=\skip58
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2016/02/24 3.9q The Babel package
+Package: babel 2018/02/14 3.18 The Babel package
 
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2018/02/14 3.18 Babel switching mechanism
+)
 (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
-Language: english 2012/08/20 v3.3p English support from the babel system
+Language: english 2017/06/06 v3.3r English support from the babel system
 
 (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2016/02/24 3.9q Babel common definitions
+File: babel.def 2018/02/14 3.18 Babel common definitions
 \babel@savecnt=\count127
 \U@D=\dimen124
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@dirlevel=\count128
 )
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
@@ -585,10 +599,10 @@ Package babel Info: Making " an active character on input line 83.
 \pl@temp=\dimen128
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ot4enc.def
-File: ot4enc.def 2005/09/27 v1.99g Standard LaTeX file
+File: ot4enc.def 2017/04/05 v2.0i Standard LaTeX file
 Now handling font encoding OT4 ...
 ... no UTF-8 mapping file for font encoding OT4
 )
@@ -634,7 +648,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
 (textcomp)               5 = only ISO-Adobe without \textcurrency
 (textcomp)               4 = 5 + \texteuro
@@ -654,7 +668,7 @@ Now handling font encoding TS1 ...
 ... processing UTF-8 mapping file for font encoding TS1
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
-File: ts1enc.dfu 2015/12/03 v1.1r UTF-8 support for inputenc
+File: ts1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
    defining Unicode char U+00A2 (decimal 162)
    defining Unicode char U+00A3 (decimal 163)
    defining Unicode char U+00A4 (decimal 164)
@@ -793,29 +807,29 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
 Package: gensymb 2003/07/02 v1.0 (WaS)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mathtools.sty
-Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
+Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
 
 (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count128
-\calc@Bcount=\count129
+\calc@Acount=\count129
+\calc@Bcount=\count130
 \calc@Adimen=\dimen129
 \calc@Bdimen=\dimen130
 \calc@Askip=\skip59
 \calc@Bskip=\skip60
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count130
+\calc@Ccount=\count131
 \calc@Cskip=\skip61
 )
 (/usr/share/texlive/texmf-dist/tex/latex/mathtools/mhsetup.sty
-Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
 )
 LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
 LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
-\g_MT_multlinerow_int=\count131
+\g_MT_multlinerow_int=\count132
 \l_MT_multwidth_dim=\dimen131
 \origjot=\skip62
 \l_MT_shortvdotswithinadjustabove_dim=\dimen132
@@ -833,40 +847,34 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip63
-\f@ncyO@elh=\skip64
-\f@ncyO@erh=\skip65
-\f@ncyO@olh=\skip66
-\f@ncyO@orh=\skip67
-\f@ncyO@elf=\skip68
-\f@ncyO@erf=\skip69
-\f@ncyO@olf=\skip70
-\f@ncyO@orf=\skip71
+Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
+s
+\f@nch@headwidth=\skip63
+\f@nch@O@elh=\skip64
+\f@nch@O@erh=\skip65
+\f@nch@O@olh=\skip66
+\f@nch@O@orh=\skip67
+\f@nch@O@elf=\skip68
+\f@nch@O@erf=\skip69
+\f@nch@O@olf=\skip70
+\f@nch@O@orf=\skip71
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 95.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count132
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen138
 \Gin@req@width=\dimen139
@@ -878,7 +886,7 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen140
 \captionmargin@=\dimen141
@@ -923,26 +931,23 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enitdp@description=\count141
 )
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrextend.sty
-Package: scrextend 2015/10/03 v3.19a KOMA-Script package (extend other classes 
-with features of KOMA-Script classes)
+Package: scrextend 2017/09/07 v3.24 KOMA-Script package (extend other classes w
+ith features of KOMA-Script classes)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
-Package: scrkbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-dependent 
-basics and keyval usage)
+Package: scrkbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-dependent b
+asics and keyval usage)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty
-Package: scrbase 2015/10/03 v3.19a KOMA-Script package (KOMA-Script-independent
- basics and keyval usage)
+Package: scrbase 2017/09/07 v3.24 KOMA-Script package (KOMA-Script-independent 
+basics and keyval usage)
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty
-Package: scrlfile 2015/10/03 v3.19a KOMA-Script package (loading files)
-
-Package scrlfile, 2015/10/03 v3.19a KOMA-Script package (loading files)
-                  Copyright (C) Markus Kohm
-
+Package: scrlfile 2017/09/07 v3.24 KOMA-Script package (loading files)
 )))
-LaTeX Info: Redefining \textsubscript on input line 1277.
-) (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+LaTeX Info: Redefining \textsubscript on input line 1318.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has section divisions on input line 50.
 
@@ -950,7 +955,7 @@ Package tocbibind Info: The document has section divisions on input line 50.
 Package tocbibind Note: Using section or other style headings.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
-Package: bm 2014/10/28 v1.1c Bold Symbol Support (DPC/FMi)
+Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 \symboldoperators=\mathgroup6
 \symboldletters=\mathgroup7
 \symboldsymbols=\mathgroup8
@@ -1015,7 +1020,7 @@ LaTeX Info: Redefining \ohm on input line 88.
 Package gensymb Info: Using \textohm for \ohm on input line 88.
 Package gensymb Info: Using \textmu for \micro on input line 88.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count143
 \scratchdimen=\dimen149
@@ -1028,49 +1033,57 @@ Package gensymb Info: Using \textmu for \micro on input line 88.
 \MPnumerator=\count147
 \makeMPintoPDFobject=\count148
 \everyMPtoPDFconversion=\toks35
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
+
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
+(grfext)             \AppendGraphicsExtensions on input line 456.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
@@ -1079,25 +1092,20 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-
 <images/logo_WEiTI.jpg, id=1, 226.9278pt x 284.9847pt>
 File: images/logo_WEiTI.jpg Graphic file (type jpg)
-
 <use images/logo_WEiTI.jpg>
-Package pdftex.def Info: images/logo_WEiTI.jpg used on input line 101.
+Package pdftex.def Info: images/logo_WEiTI.jpg  used on input line 101.
 (pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
-
 <images/Logo-PW-duze.jpg, id=2, 513.8397pt x 513.8397pt>
 File: images/Logo-PW-duze.jpg Graphic file (type jpg)
-
 <use images/Logo-PW-duze.jpg>
-Package pdftex.def Info: images/Logo-PW-duze.jpg used on input line 103.
+Package pdftex.def Info: images/Logo-PW-duze.jpg  used on input line 103.
 (pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
-
 <images/ia_600_600.png, id=3, 72.27pt x 59.5023pt>
 File: images/ia_600_600.png Graphic file (type png)
- <use images/ia_600_600.png>
-Package pdftex.def Info: images/ia_600_600.png used on input line 105.
+<use images/ia_600_600.png>
+Package pdftex.def Info: images/ia_600_600.png  used on input line 105.
 (pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
 
 [1
@@ -1148,49 +1156,44 @@ File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \tf@toc=\write3
 \openout3 = `praca_magisterska.toc'.
 
- [5] [6] [7] [8] [9] [10]
+ [5]
+Using TeX to sort glossary entries---this may take a while
+[6] [7] [8] [9] [10]
 <images/pw-sat.jpg, id=50, 314.17375pt x 330.23375pt>
 File: images/pw-sat.jpg Graphic file (type jpg)
- <use images/pw-sat.jpg>
-Package pdftex.def Info: images/pw-sat.jpg used on input line 258.
+<use images/pw-sat.jpg>
+Package pdftex.def Info: images/pw-sat.jpg  used on input line 258.
 (pdftex.def)             Requested size: 155.99762pt x 163.96758pt.
-
 <images/PW-Sat2_2016_16_MSwietlik.png, id=51, 2007.5pt x 2007.5pt>
 File: images/PW-Sat2_2016_16_MSwietlik.png Graphic file (type png)
-
 <use images/PW-Sat2_2016_16_MSwietlik.png>
-Package pdftex.def Info: images/PW-Sat2_2016_16_MSwietlik.png used on input lin
-e 260.
+Package pdftex.def Info: images/PW-Sat2_2016_16_MSwietlik.png  used on input li
+ne 260.
 (pdftex.def)             Requested size: 195.0pt x 194.97232pt.
-
 <images/brite.jpg, id=52, 270.00874pt x 301.125pt>
 File: images/brite.jpg Graphic file (type jpg)
- <use images/brite.jpg>
-Package pdftex.def Info: images/brite.jpg used on input line 262.
+<use images/brite.jpg>
+Package pdftex.def Info: images/brite.jpg  used on input line 262.
 (pdftex.def)             Requested size: 195.0pt x 217.47606pt.
-
 <images/INSPIRE_JPL.jpg, id=53, 574.145pt x 833.1125pt>
 File: images/INSPIRE_JPL.jpg Graphic file (type jpg)
-
 <use images/INSPIRE_JPL.jpg>
-Package pdftex.def Info: images/INSPIRE_JPL.jpg used on input line 269.
+Package pdftex.def Info: images/INSPIRE_JPL.jpg  used on input line 269.
 (pdftex.def)             Requested size: 258.36285pt x 374.89716pt.
  [11] [12 <./images/pw-sat.jpg> <./images/PW-Sat2_2016_16_MSwietlik.png> <./ima
-ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
-[14] [15] [16] <images/obc_photo.png, id=74, 492.84125pt x 595.22375pt>
+ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>] [14]
+[15] [16]
+<images/obc_photo.png, id=74, 492.84125pt x 595.22375pt>
 File: images/obc_photo.png Graphic file (type png)
-
 <use images/obc_photo.png>
-Package pdftex.def Info: images/obc_photo.png used on input line 336.
+Package pdftex.def Info: images/obc_photo.png  used on input line 336.
 (pdftex.def)             Requested size: 221.7765pt x 267.84822pt.
-
 <images/obc_all.png, id=75, 942.52126pt x 582.175pt>
 File: images/obc_all.png Graphic file (type png)
- <use images/obc_all.png>
-Package pdftex.def Info: images/obc_all.png used on input line 345.
+<use images/obc_all.png>
+Package pdftex.def Info: images/obc_all.png  used on input line 345.
 (pdftex.def)             Requested size: 386.43622pt x 238.6933pt.
-
-[17] [18 <./images/obc_photo.png> <./images/obc_all.png>]
+ [17] [18 <./images/obc_photo.png> <./images/obc_all.png>]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 369.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -1200,134 +1203,113 @@ LaTeX Font Info:    External font `lmex10' loaded for size
  [19]
 <images/obc_main_processor.png, id=89, 792.9625pt x 536.0025pt>
 File: images/obc_main_processor.png Graphic file (type png)
-
 <use images/obc_main_processor.png>
-Package pdftex.def Info: images/obc_main_processor.png used on input line 472.
-(pdftex.def)             Requested size: 388.55502pt x 262.64352pt.
+Package pdftex.def Info: images/obc_main_processor.png  used on input line 472.
 
+(pdftex.def)             Requested size: 388.55502pt x 262.64352pt.
 <images/obc_supervisor.png, id=90, 813.0375pt x 488.82625pt>
 File: images/obc_supervisor.png Graphic file (type png)
-
 <use images/obc_supervisor.png>
-Package pdftex.def Info: images/obc_supervisor.png used on input line 484.
+Package pdftex.def Info: images/obc_supervisor.png  used on input line 484.
 (pdftex.def)             Requested size: 390.25357pt x 234.63393pt.
- [20] [21] [22 <./images/obc_main_processor.png>] [23 <./images/obc_supervisor.
-png>]
+
+[20] [21] [22 <./images/obc_main_processor.png>] [23 <./images/obc_supervisor.p
+ng>]
 <images/obc_startracker.png, id=105, 722.7pt x 516.93124pt>
 File: images/obc_startracker.png Graphic file (type png)
-
 <use images/obc_startracker.png>
-Package pdftex.def Info: images/obc_startracker.png used on input line 559.
+Package pdftex.def Info: images/obc_startracker.png  used on input line 559.
 (pdftex.def)             Requested size: 361.3491pt x 258.46498pt.
- [24] [25 <./images/obc_startracker.png>]
-[26]
+ [24] [25 <./images/obc_startracker.png>] [26]
 <images/Comparison_satellite_navigation_orbits.png, id=117, 513.92pt x 513.92pt
 >
 File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
 
- <use images/Comparison_satellite_navigation_orbits.png>
-Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png used
- on input line 603.
+<use images/Comparison_satellite_navigation_orbits.png>
+Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png  use
+d on input line 603.
 (pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
-
 <images/eci_frame.jpg, id=118, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
-
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg used on input line 619.
+Package pdftex.def Info: images/eci_frame.jpg  used on input line 619.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
- [27] [28 <./images/Comparison_satellite_navigation_orbits.png>] <images/ned_fr
-ame.jpg, id=125, 301.125pt x 276.03125pt>
+ [27] [28 <./images/Comparison_satellite_navigation_orbits.png>]
+<images/ned_frame.jpg, id=125, 301.125pt x 276.03125pt>
 File: images/ned_frame.jpg Graphic file (type jpg)
-
 <use images/ned_frame.jpg>
-Package pdftex.def Info: images/ned_frame.jpg used on input line 633.
+Package pdftex.def Info: images/ned_frame.jpg  used on input line 633.
 (pdftex.def)             Requested size: 180.67638pt x 165.62001pt.
  [29 <./images/eci_frame.jpg>]
 <images/body_frame.jpg, id=129, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
-
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg used on input line 643.
+Package pdftex.def Info: images/body_frame.jpg  used on input line 643.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
  [30 <./images/ned_frame.jpg> <./images/body_frame.jpg>] [31] [32] [33]
 <images/startracker_eng.jpg, id=145, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
-
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg used on input line 746.
+Package pdftex.def Info: images/startracker_eng.jpg  used on input line 746.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
- [34 <./images/startracker_eng.jpg>] [35]
-[36] [37] <images/centroids_1.jpg, id=160, 234.8775pt x 208.78pt>
+ [34 <./images/startracker_eng.jpg>] [35] [36] [37]
+<images/centroids_1.jpg, id=160, 234.8775pt x 208.78pt>
 File: images/centroids_1.jpg Graphic file (type jpg)
-
 <use images/centroids_1.jpg>
-Package pdftex.def Info: images/centroids_1.jpg used on input line 852.
+Package pdftex.def Info: images/centroids_1.jpg  used on input line 852.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-
 <images/centroids_2.png, id=161, 234.8775pt x 208.78pt>
 File: images/centroids_2.png Graphic file (type png)
-
 <use images/centroids_2.png>
-Package pdftex.def Info: images/centroids_2.png used on input line 854.
+Package pdftex.def Info: images/centroids_2.png  used on input line 854.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-
 <images/centroids_3.png, id=162, 234.8775pt x 208.78pt>
 File: images/centroids_3.png Graphic file (type png)
-
 <use images/centroids_3.png>
-Package pdftex.def Info: images/centroids_3.png used on input line 856.
+Package pdftex.def Info: images/centroids_3.png  used on input line 856.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-
 <images/centroids_4.png, id=163, 234.8775pt x 208.78pt>
 File: images/centroids_4.png Graphic file (type png)
-
 <use images/centroids_4.png>
-Package pdftex.def Info: images/centroids_4.png used on input line 859.
+Package pdftex.def Info: images/centroids_4.png  used on input line 859.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-
 <images/vector_angle_method.jpg, id=164, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
-
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg used on input line 873.
-
+Package pdftex.def Info: images/vector_angle_method.jpg  used on input line 873
+.
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
  [38] [39 <./images/centroids_1.jpg> <./images/centroids_2.png> <./images/centr
-oids_3.png> <./images/centroids_4.png>]
-[40 <./images/vector_angle_method.jpg>] [41]
+oids_3.png> <./images/centroids_4.png>] [40 <./images/vector_angle_method.jpg>]
+ [41]
 <images/spherical_triangle_method.jpg, id=180, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
-
 <use images/spherical_triangle_method.jpg>
-Package pdftex.def Info: images/spherical_triangle_method.jpg used on input lin
-e 949.
+Package pdftex.def Info: images/spherical_triangle_method.jpg  used on input li
+ne 949.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
  [42 <./images/spherical_triangle_method.jpg>] [43]
 <images/planar_triangle_method.jpg, id=188, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
-
 <use images/planar_triangle_method.jpg>
-Package pdftex.def Info: images/planar_triangle_method.jpg used on input line 9
-87.
+Package pdftex.def Info: images/planar_triangle_method.jpg  used on input line 
+987.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
- [44 <./images/planar_triangle_method.jpg>] [45] [46] <images/pyramid_method.jp
-g, id=198, 566.115pt x 982.67125pt>
+ [44 <./images/planar_triangle_method.jpg>] [45] [46]
+<images/pyramid_method.jpg, id=198, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
-
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg used on input line 1137.
+Package pdftex.def Info: images/pyramid_method.jpg  used on input line 1137.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
- [47] [48 <./images/pyramid_method.jpg>]
-[49] [50] [51] <images/k-vector-example.png, id=216, 577.15625pt x 457.71pt>
+ [47] [48 <./images/pyramid_method.jpg>] [49] [50] [51]
+<images/k-vector-example.png, id=216, 577.15625pt x 457.71pt>
 File: images/k-vector-example.png Graphic file (type png)
-
 <use images/k-vector-example.png>
-Package pdftex.def Info: images/k-vector-example.png used on input line 1256.
+Package pdftex.def Info: images/k-vector-example.png  used on input line 1256.
 (pdftex.def)             Requested size: 328.98247pt x 260.89742pt.
  [52] [53 <./images/k-vector-example.png>]
-[54] [55] [56] [57] [58] [59] [60] [61] [62] (./praca_magisterska.bbl [63]
-[64] [65]
+[54] [55] [56] [57] [58] [59] [60] [61] [62] [63] (./praca_magisterska.bbl
+[64] [65] [66]
 Underfull \hbox (badness 1163) in paragraph at lines 238--240
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1367,7 +1349,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--262
 []\OT1/lmr/m/n/12 ``GPS: The Global Po-si-tion-ing Sys-tem,''
  []
 
-[66]
+[67]
 Underfull \hbox (badness 10000) in paragraph at lines 264--267
 []\OT1/lmr/m/n/12 ``NASA's Uti-liza-tion of Global Po-si-tion-ing Sys-tem (GPS)
 ,''
@@ -1410,7 +1392,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 290--293
 []\OT1/lmr/m/n/12 ``NED frame im-age,'' http://www.basicairdata.eu/knowledge-
  []
 
-[67]
+[68]
 Underfull \hbox (badness 10000) in paragraph at lines 360--363
 []\OT1/lmr/m/n/12 ``StarVision Tech-nolo-gies Se-cures Ex-clu-
  []
@@ -1420,24 +1402,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--363
 \OT1/lmr/m/n/12 sive Li-cense to Star Iden-ti-fi-ca-tion Soft-ware,''
  []
 
-[68]) [69] (./praca_magisterska.lot)
+[69]) [70] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [70] (./praca_magisterska.lof)
+ [71] (./praca_magisterska.lof)
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
- [71]
+ [72]
 (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 12393 strings out of 493029
- 192787 string characters out of 6136234
- 326891 words of memory out of 5000000
- 15582 multiletter control sequences out of 15000+600000
+ 12690 strings out of 492982
+ 198735 string characters out of 6134895
+ 335095 words of memory out of 5000000
+ 15903 multiletter control sequences out of 15000+600000
  78525 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,15n,96p,1930b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,15n,96p,1982b,492s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr
 /share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips
 /lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/shar
@@ -1452,10 +1434,10 @@ re/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/l
 m/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.
 pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb>
-Output written on praca_magisterska.pdf (71 pages, 6308622 bytes).
+Output written on praca_magisterska.pdf (72 pages, 6238413 bytes).
 PDF statistics:
- 343 PDF objects out of 1000 (max. 8388607)
- 214 compressed objects within 3 object streams
+ 346 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

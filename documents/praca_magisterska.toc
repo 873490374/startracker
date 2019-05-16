@@ -1,7 +1,7 @@
-\select@language {polish}
-\select@language {english}
-\select@language {polish}
-\select@language {english}
+\babel@toc {polish}{}
+\babel@toc {english}{}
+\babel@toc {polish}{}
+\babel@toc {english}{}
 \contentsline {section}{Acronyms}{6}
 \contentsline {section}{List of Symbols}{7}
 \contentsline {section}{\numberline {1}Introduction}{8}
@@ -59,7 +59,8 @@
 \contentsline {subsubsection}{\numberline {3.4.6}Conclusions}{58}
 \contentsline {section}{\numberline {4}Prototype}{60}
 \contentsline {section}{\numberline {5}Complete program}{61}
-\contentsline {section}{\numberline {6}Testing of star-tracker}{62}
-\contentsline {section}{References}{63}
-\contentsline {section}{List of Tables}{70}
-\contentsline {section}{List of Figures}{71}
+\contentsline {section}{\numberline {6}Future steps}{62}
+\contentsline {section}{\numberline {7}Testing of star-tracker}{63}
+\contentsline {section}{References}{64}
+\contentsline {section}{List of Tables}{71}
+\contentsline {section}{List of Figures}{72}

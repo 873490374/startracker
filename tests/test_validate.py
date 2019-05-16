@@ -3,6 +3,7 @@ import os
 import numpy as np
 from timeit import default_timer as timer
 
+# noinspection PyPackageRequirements
 import pytest
 
 from program.const import SENSOR_VARIANCE, MAIN_PATH

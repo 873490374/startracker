@@ -1,9 +1,10 @@
 import numpy as np
-from pyquaternion import Quaternion
+from Quaternion import Quat
 
 from program.tracker.quest import QuestCalculator
 
 
+# noinspection PyUnusedLocal
 class TestQuest:
 
     def test_quest(self):
@@ -11,12 +12,12 @@ class TestQuest:
             0.2673,
             0.5345,
             0.8018
-        ])[np.newaxis].T
+        ])
         vi2 = np.array([
             -0.3124,
             0.9370,
             0.1562
-        ])[np.newaxis].T
+        ])
 
         v1_exact = np.array([  # body frame / real measured vectors
             0.7749,
@@ -27,22 +28,22 @@ class TestQuest:
             0.6296,
             0.6944,
             -0.3486
-        ])[np.newaxis].T
+        ])
 
         vb1 = np.array([  # body frame / measured vectors
             0.7814,
             0.3751,
             0.4987
-        ])[np.newaxis].T
+        ])
         vb2 = np.array([
             0.6164,
             0.7075,
             -0.3459
-        ])[np.newaxis].T
+        ])
 
         weight_list = [1, 1]
-        vb_list = [vb1, vb2]
-        vi_list = [vi1, vi2]
+        vb_list = np.array([vb1, vb2])
+        vi_list = np.array([vi1, vi2])
 
         R_bi_exact = np.array([
             [0.5335, 0.8080, 0.2500],
@@ -78,16 +79,15 @@ class TestQuest:
         ).all()
         assert np.isclose(K_calc, K_expected, atol=0.001).all()
 
-        q8d = Quaternion(axis=[q[1], q[2], q[3]], angle=q[0])
-        R = q8d.rotation_matrix
+        quat = Quat([q[1], q[2], q[3], q[0]])
+        R = quat.transform
+        assert np.isclose(quat.ra, 42.76015, rtol=1.e-6, atol=1.e-8)
+        assert np.isclose(quat.dec, 26.72976, rtol=1.e-6, atol=1.e-8)
 
-        assert np.isclose(vi1, np.inner(R, vb1.T), atol=0.09).all()
-
-        assert np.isclose(vi2, np.inner(R, vb2.T), atol=0.31).all()
+        assert np.isclose(vi1, np.inner(R, vb1.T), atol=0.12).all()
+        assert np.isclose(vi2, np.inner(R, vb2.T), atol=0.26).all()
 
         R_diff = np.inner(R.T, R_bi_quest_expected)
-
-        assert np.isclose(np.identity(3), R_diff, atol=0.35).all()
-
+        assert np.isclose(np.identity(3), R_diff, atol=0.34).all()
         assert np.isclose(
-            np.abs(R), np.abs(R_bi_quest_expected), atol=0.27).all()
+            np.abs(R), np.abs(R_bi_quest_expected), atol=0.26).all()

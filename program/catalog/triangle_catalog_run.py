@@ -4,10 +4,9 @@ import os
 from program.catalog.triangle_catalog_generator_parallel import (
     TriangleCatalogGeneratorParallel,
 )
-from program.const import MAIN_PATH
+from program.const import MAIN_PATH, MAX_MAGNITUDE
 
-# magnitude = 5.8
-generator = TriangleCatalogGeneratorParallel(2)
+generator = TriangleCatalogGeneratorParallel(MAX_MAGNITUDE)
 catalog, m, q = generator.generate_triangles(
     os.path.join(MAIN_PATH, 'program/validation/data/hip_main.dat'))
 now = datetime.datetime.now()

@@ -12,6 +12,7 @@ def read_scene_uv(path, fname):
             np.array([int(x) for x in line.strip().split(',')]) for line in
             lines if len(line) > 1]
 
+    # noinspection PyUnusedLocal
     def read_input(filename):
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -46,7 +47,8 @@ def read_scene_xy(path, fname, focal_length, resolution):
             np.array([int(x) for x in line.strip().split(',')]) for line in
             lines if len(line) > 1]
 
-    def read_input_old(filename, focal_length, resolution):
+    # noinspection PyUnusedLocal
+    def read_input_old(filename, focal_length_, resolution_):
         pixel_size = 1
         with open(filename, 'r') as f:
             lines = f.readlines()
@@ -60,11 +62,11 @@ def read_scene_xy(path, fname, focal_length, resolution):
             for i in range(int(len(raw_data_list[j])))[::3]:
                 y = raw_data_list[j][i]
                 x = raw_data_list[j][i + 1]
-                res_x = resolution[0]
-                res_y = resolution[1]
-                pp = (0.5 * (res_x), 0.5 * (res_y))
+                res_x = resolution_[0]
+                res_y = resolution_[1]
+                pp = (0.5 * res_x, 0.5 * res_y)
                 u = convert_to_vector(
-                    x, y, pixel_size, focal_length*(res_x), pp)
+                    x, y, pixel_size, focal_length_ * res_x, pp)
                 magnitude = raw_data_list[j][i + 2]
                 data_list.append(np.array([int(i / 3), u[0], u[1], u[2]]))
             data_lists.append(data_list)

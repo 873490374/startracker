@@ -1017,6 +1017,13 @@ Similarly as in the previous method, here also polar moment is calculated:
 J = A\frac{(a^2 + b^2 + c^2)}{36}
 \end{equation}
 
+
+
+!!!!!!!!!!!CHANGE EQUATIONS
+
+
+
+
 Since the planar area is a nonlinear function, a linearization must be used to determine its variance. To compute this, the following matrix must be evaluated:
 
 Derivatives
@@ -1469,16 +1476,41 @@ QUEST was also chosen by \citet{huffman2006designing} and \citet{tappe2009develo
 For now the following parts are finished in Python:
 \begin{enumerate}
 \item Centroiding
-\item Planar Triangle Recognition with variations (nearly - without equation 44)
-\item k-vector
-\item QUEST (not started yet)
-\item generating star catalogue (not started yet)
-\item connecting all the elements into one program (will be started after all the other elements are finished)
+\item Planar Triangle Recognition with variations
+\item k-vector - results were inconsistent. Moreover for just 1500 stars it didn't give any speed advantage. It is possible it would be worth using in case with more stars.
+\item QUEST
+\item generating star catalogue
+\item connecting all the elements into one program
 \end{enumerate}
 Testing\par
 \citet{kruijff2003star}, \citet{kruijff2003automated}, \citet{dzamba2014ground}, 
+
+The catalog was created with the following parameters:
+- stars with max magnitude 5;
+- FOV 10\degree
+what gave 1625 stars which gave 44922 triangles.
+
+In other (source) works around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower than in case of smaller catalog, hence the smaller catalog was choosen to be used in this startracker program.
+
+The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
+
 \newpage
 \section{Complete program}
+
+\newpage
+\section{Future steps}
+
+Necessary things to do:
+- test with dedicated camera;
+- rewrite program to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite.
+
+Optional things to explore:
+- rewrite star identifier on GPU;
+- rewrite tracking mode to work more accurately;
+- get better values for sigm, sigx;
+- catalog with more stars;
+- use k-vector algorithm for more stars;
+
 
 \newpage
 \section{Testing of star-tracker}

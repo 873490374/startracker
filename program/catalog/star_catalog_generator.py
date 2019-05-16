@@ -30,8 +30,8 @@ class StarCatalogGenerator:
     def read_catalogue_stars(self, star_catalog_path: str) -> [float]:
         stars = []
 
-        catalog = StarCatalog(self.max_magnitude, star_catalog_path).catalog
-        for row in catalog.itertuples():
+        catalog_ = StarCatalog(self.max_magnitude, star_catalog_path).catalog
+        for row in catalog_.itertuples():
             s = np.array([
                 row[2],
                 row[6],
@@ -41,8 +41,9 @@ class StarCatalogGenerator:
             stars.append(s)
         return stars
 
-    def save_to_file(self, catalog: np.ndarray, output_file_path: str):
-        np.savetxt(output_file_path, catalog, delimiter=',')
+    @staticmethod
+    def save_to_file(catalog_: np.array, output_file_path: str):
+        np.savetxt(output_file_path, catalog_, delimiter=',')
 
 
 generator = StarCatalogGenerator(6.2)

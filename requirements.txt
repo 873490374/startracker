@@ -1,9 +1,10 @@
+pandas
+numba
+Quaternion
 scipy
 numpy
 Pillow
 matplotlib
 seaborn
-jupyter
 progress
-pyquaternion
 opencv

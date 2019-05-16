@@ -1,6 +1,6 @@
 import numpy as np
 
-from program.parallel.kvector_calculator_parallel import KVectorCalculator
+from program.tracker.kvector_calculator import KVectorCalculator
 
 
 class TestKVector:

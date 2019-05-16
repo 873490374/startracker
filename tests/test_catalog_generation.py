@@ -38,6 +38,8 @@ class TestCatalogGeneration:
         for i in range(1, 50):
             timestamp = datetime.datetime.now()
             test_fp = os.path.join(
-                MAIN_PATH, './program/catalog/generated/triangle_catalog_partial_{}_{}_{}.{}'.format(
+                MAIN_PATH,
+                './program/catalog/generated/triangle_catalog_partial_'
+                '{}_{}_{}.{}'.format(
                     timestamp.year, timestamp.month, timestamp.day, i))
             os.remove(test_fp)

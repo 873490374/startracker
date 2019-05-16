@@ -1,7 +1,7 @@
-\select@language {polish}
-\select@language {english}
-\select@language {polish}
-\select@language {english}
+\babel@toc {polish}{}
+\babel@toc {english}{}
+\babel@toc {polish}{}
+\babel@toc {english}{}
 \contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats.\relax }}{12}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT \cite {pw-sat-image}}}}{12}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \cite {pw-sat2}}}}{12}

@@ -10,7 +10,7 @@ from timeit import default_timer as timer
 
 from program.const import MAIN_PATH
 from program.star import StarPosition
-from program.parallel.kvector_calculator_parallel import KVectorCalculator
+from program.tracker.kvector_calculator import KVectorCalculator
 from program.catalog.planar_triangle_calculator_np import (
     calculate_catalog_triangle,
 )
@@ -69,7 +69,7 @@ class TriangleCatalogGeneratorParallel:
             d_s1 = cuda.to_device(s1)
             d_catalog = cuda.to_device(triangles)
             triangle_kernel[griddim, blockdim](d_s1, i, d_stars, d_catalog)
-            d_catalog.to_host()
+            triangles = d_catalog.copy_to_host()
             self.save_triangles_part(s1[0], timestamp, i, triangles)
         bar1.finish()
         return
@@ -106,22 +106,26 @@ class TriangleCatalogGeneratorParallel:
             stars.append(s)
         return stars
 
-    def sort_catalog(self, catalog):
+    @staticmethod
+    def sort_catalog(catalog):
         return catalog[catalog[:, 4].argsort()]
 
     def add_k_vector(self, catalog):
         k_vector, m, q = self.kvector_calc.make_kvector(catalog)
         return k_vector, m, q
 
+    @staticmethod
     def save_to_file(
-            self, catalog: np.ndarray, output_file_path: str):
+            catalog: np.array, output_file_path: str):
         np.savetxt(output_file_path, catalog, delimiter=',')
 
-    def save_m_q_to_file(self, m, q, output_file_path):
+    @staticmethod
+    def save_m_q_to_file(m, q, output_file_path):
         with open(output_file_path, 'w') as f:
             f.writelines([str(m)+'\n', str(q)])
 
-    def convert_star_to_np(self, star: StarPosition) -> np.ndarray:
+    @staticmethod
+    def convert_star_to_np(star: StarPosition) -> np.ndarray:
 
         alpha = np.deg2rad(star.right_ascension)
         delta = np.deg2rad(star.declination)
@@ -134,11 +138,13 @@ class TriangleCatalogGeneratorParallel:
         ])
         return s
 
+    @staticmethod
     def save_partially_to_file(
-            self, catalog: np.ndarray, part_nr: int, dtime: datetime.datetime):
+            catalog: np.array, part_nr: int, dtime: datetime.datetime):
         output_file_path = os.path.join(
-            MAIN_PATH, './program/catalog/generated/triangle_catalog_partial_'
-                       '{}_{}_{}.{}'.format(
+            MAIN_PATH,
+            './program/catalog/generated/triangle_catalog_partial_'
+            '{}_{}_{}.{}'.format(
                 dtime.year, dtime.month, dtime.day, part_nr))
 
         np.savetxt(output_file_path, catalog, delimiter=',')
@@ -153,8 +159,9 @@ class TriangleCatalogGeneratorParallel:
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 input_file_path = os.path.join(
-                    MAIN_PATH, './program/catalog/generated/'
-                               'triangle_catalog_partial_{}_{}_{}.{}'.format(
+                    MAIN_PATH,
+                    './program/catalog/generated/'
+                    'triangle_catalog_partial_{}_{}_{}.{}'.format(
                         timestamp.year, timestamp.month, timestamp.day, i))
 
                 with open(input_file_path, 'rb') as f:
@@ -173,8 +180,8 @@ class TriangleCatalogGeneratorParallel:
         catalog = self.remove_duplicates(catalog)
         return catalog
 
-    def remove_duplicates(self, tr):
-        # TODO make simple catalog generation test, 4-5 stars (4-9 triangles)
+    @staticmethod
+    def remove_duplicates(tr):
         trc1 = np.copy(tr[:, 0:3])
         trc1 = np.sort(trc1)
         x = np.random.rand(trc1.shape[1])
@@ -195,7 +202,8 @@ class TriangleCatalogGeneratorParallel:
             return self.add_to_table(table, rows)
         return table
 
-    def add_to_table(self, table, row):
+    @staticmethod
+    def add_to_table(table, row):
         if len(table) == 0:
             return np.hstack((table, row))
         return np.vstack((table, row))

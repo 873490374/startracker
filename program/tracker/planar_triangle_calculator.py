@@ -48,8 +48,9 @@ class PlanarTriangleCalculator:
         return np.array(
             [s1[0], s2[0], s3[0], area, moment, area_var, moment_var])
 
+    @staticmethod
     def calculate_partial_derivatives(
-            self, s: float, a: float, b: float, c: float, p: np.ndarray,
+            s: float, a: float, b: float, c: float, p: np.ndarray,
             q: np.ndarray, r: np.ndarray, area: float) -> {np.ndarray}:
 
         u1 = (s - a) * (s - b) * (s - c)
@@ -61,11 +62,11 @@ class PlanarTriangleCalculator:
         dA_db = (u1 + u2 - u3 + u4) / (4 * area)
         dA_dc = (u1 + u2 + u3 - u4) / (4 * area)
 
-        da_db1 = (p - q).T / a
+        da_db1 = np.array(p - q).T / a
         da_db2 = - da_db1
-        db_db2 = (q - r).T / b
+        db_db2 = np.array(q - r).T / b
         db_db3 = - db_db2
-        dc_db1 = (p - r).T / c
+        dc_db1 = np.array(p - r).T / c
         dc_db3 = - dc_db1
 
         return {
@@ -80,7 +81,8 @@ class PlanarTriangleCalculator:
             'dc_db3': dc_db3,
         }
 
-    def calculate_area_derivatives(self, p: {np.ndarray}) -> np.ndarray:
+    @staticmethod
+    def calculate_area_derivatives(p: {np.ndarray}) -> np.ndarray:
         h1T = np.array(p['dA_da'] * p['da_db1'] + p['dA_dc'] * p['dc_db1']).T
         h2T = np.array(p['dA_da'] * p['da_db2'] + p['dA_db'] * p['db_db2']).T
         h3T = np.array(p['dA_db'] * p['db_db3'] + p['dA_dc'] * p['dc_db3']).T
@@ -96,45 +98,38 @@ class PlanarTriangleCalculator:
 
         return self.build_r_matrix(R1, R2, R3)
 
+    @staticmethod
     def build_r_matrix(
-            self, R1: np.ndarray, R2: np.ndarray,
+            R1: np.ndarray, R2: np.ndarray,
             R3: np.ndarray) -> np.ndarray:
         row_1 = np.array(np.concatenate((R1, zero_3x3, zero_3x3), axis=1))
         row_2 = np.array(np.concatenate((zero_3x3, R2, zero_3x3), axis=1))
         row_3 = np.array(np.concatenate((zero_3x3, zero_3x3, R3), axis=1))
         return np.concatenate((row_1, row_2, row_3), axis=0)  # R [9x9]
 
-    def calculate_area_variance(
-            self, H: np.ndarray, R: np.ndarray) -> float:
+    @staticmethod
+    def calculate_area_variance(H: np.ndarray, R: np.ndarray) -> float:
         # Variance - Area
-        return np.dot(np.dot(H, R), H.T)  # scalar
+        return float(np.dot(np.dot(H, R), H.T))  # scalar
 
+    # noinspection PyUnusedLocal
+    @staticmethod
     def calculate_polar_moment_variance(
-            self, a: float, b: float, c: float, part: {np.ndarray},
+            a: float, b: float, c: float, part: {np.ndarray},
             der: np.ndarray, R, area: float) -> float:
         # Variance - Polar Moment
-        # TODO check equations in thesis text
-
-        # dJ_da = area * a / 18
-        # dJ_db = area * b / 18
-        # dJ_dc = area * c / 18
-        # dJ_dA = (a**2 + b**2 + c**2) / 36
 
         dJ_da = (-b**3 * area + 2 * a * b**2 * area) / (18 * b**2)
-        dJ_db = (4 * b**3 * area - 3 * a * b**2 * area + 2 * a**2 * b * area) / (18 * b**2) - \
-                (b**4 * area - a * b**3 * area + a**2 * b**2 * area + 4 * area**3) / (9 * b**3)
+        dJ_db = ((4 * b**3 * area - 3 * a * b**2 * area + 2 * a**2 * b * area)
+                 / (18 * b**2) -
+                 (b**4 * area - a * b**3 * area + a**2 * b**2 * area + 4 *
+                 area**3) / (9 * b**3))
         dJ_dA = (b**4 - a * b**3 + a**2 * b**2 + 12 * area**2) / (18 * b**2)
 
-        # h1T = np.array(
-        #     dJ_da * part['da_db1'] + dJ_dc * part['dc_db1'] + dJ_dA * der[:3])
-        # h2T = np.array(
-        #     dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[3:6])
-        # h3T = np.array(
-        #     dJ_db * part['db_db3'] + dJ_dc * part['dc_db3'] + dJ_dA * der[6:])
-
         h1T = dJ_da * part['da_db1'] + dJ_dA * der[:3]
-        h2T = dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[3:6]
+        h2T = (
+            dJ_da * part['da_db2'] + dJ_db * part['db_db2'] + dJ_dA * der[3:6])
         h3T = dJ_db * part['db_db3'] + dJ_dA * der[6:]
 
         H = np.append(h1T, [h2T, h3T])
-        return np.dot(np.dot(H, R), H.T)  # scalar
+        return float(np.dot(np.dot(H, R), H.T))  # scalar

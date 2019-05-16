@@ -66,19 +66,20 @@ class Tracker:
         triangle_catalog_stars.extend(catalog_triangles[:, 2])
         return triangle_catalog_stars
 
-    def choose_best_stars(self, found_stars, new_image_stars):
+    @staticmethod
+    def choose_best_stars(found_stars, new_image_stars):
         try:
             result_stars = []
             ids = found_stars.keys()
             result_ids = []
-            for id in ids:
+            for id_ in ids:
                 try:
-                    most_common = Counter(found_stars[id]).most_common(3)
+                    most_common = Counter(found_stars[id_]).most_common(3)
                     for l in range(3):
                         id_cat = int(most_common[l][0])
                         if id_cat not in result_ids:
                             result_ids.append(id_cat)
-                            s = new_image_stars[id]
+                            s = new_image_stars[id_]
                             result_stars.append(
                                 np.array([s[0], id_cat, s[1], s[2], s[3]]))
                             break
@@ -88,8 +89,9 @@ class Tracker:
         except KeyError:
             return None
 
+    @staticmethod
     def find_common_triangles(
-            self, triangle: np.ndarray, previous_triangles: [np.ndarray]):
+            triangle: np.ndarray, previous_triangles: [np.ndarray]):
         # triangle = [id1, id2, id3, area, moment, area_var, moment_var]
         A_dev = np.math.sqrt(triangle[5])
         J_dev = np.math.sqrt(triangle[6])
@@ -98,7 +100,7 @@ class Tracker:
         moment_min = triangle[4] - SIG_X * J_dev
         moment_max = triangle[4] + SIG_X * J_dev
 
-        # TODO should I make it faster with GPU?
+        # TODO change to CUDA
         previous_triangles = np.array(previous_triangles)
         valid_triangles = previous_triangles[
             (previous_triangles[:, 3] >= area_min) &

@@ -6,7 +6,7 @@ import numpy as np
 from program.const import COS_CAMERA_FOV
 
 
-zero_3x3 = np.matrix(np.zeros((3, 3)))
+zero_3x3 = np.zeros((3, 3))
 
 
 def calculate_catalog_triangle(

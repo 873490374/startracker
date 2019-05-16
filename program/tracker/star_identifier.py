@@ -52,15 +52,15 @@ class StarIdentifier:
                         result_stars.append(
                             np.array([s[0], -1, s[1], s[2], s[3]]))
                         continue
-                    for l in range(most_common_limit):
-                        id_cat = int(most_common[l][0])
+                    for i in range(most_common_limit):
+                        id_cat = int(most_common[i][0])
                         if id_cat not in result_ids:
                             result_ids.append(id_cat)
                             s = image_stars[id_]
                             result_stars.append(
                                 np.array([s[0], id_cat, s[1], s[2], s[3]]))
                             break
-                        if l == most_common_limit and id_cat in result_ids:
+                        if i == most_common_limit and id_cat in result_ids:
                             s = image_stars[id_]
                             result_stars.append(
                                 np.array([s[0], -1, s[1], s[2], s[3]]))
@@ -92,7 +92,7 @@ class StarIdentifier:
         moment_min = triangle[4] - SIG_X * J_dev
         moment_max = triangle[4] + SIG_X * J_dev
 
-        # TODO should I make it faster with GPU?
+        # TODO change to CUDA
 
         valid_triangles = self.triangle_catalog[
             (self.triangle_catalog[:, 3] >= area_min) &

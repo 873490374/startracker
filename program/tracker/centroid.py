@@ -66,17 +66,20 @@ class CentroidCalculator:
             i += 1
         return star_vectors
 
-    def create_image(self, I, star_list):
+    @staticmethod
+    def create_image(I, star_list):
         img = np.zeros((len(I), len(I.T)), dtype='uint8')
         for star in star_list:
             img[int(star[0]), int(star[1])] = 255
         Image.fromarray(img, mode='L').convert('1').save('test.png')
 
-    def calc_img_to_star_list(self, calc_img):
+    @staticmethod
+    def calc_img_to_star_list(calc_img):
         star_list = calc_img[~(calc_img == 0).all(2)]
         return star_list.tolist()
 
-    def clustering(self, star_list):
+    @staticmethod
+    def clustering(star_list):
         # 6. Clustering
         control = 1
         pixel_diff = 5
@@ -176,12 +179,12 @@ pixel_preprocess_gpu = cuda.jit(
     float64[:, :], float64[:, :, :], float64[:, :, :, :], int32, int32])
 def preprocess_kernel(image, calc_img, img_norm, x_size, y_size):
 
-    startX, startY = cuda.grid(2)
-    gridX = cuda.gridDim.x * cuda.blockDim.x
-    gridY = cuda.gridDim.y * cuda.blockDim.y
+    start_x, start_y = cuda.grid(2)
+    grid_x = cuda.gridDim.x * cuda.blockDim.x
+    grid_y = cuda.gridDim.y * cuda.blockDim.y
 
-    for x in range(startX, x_size, gridX):
-        for y in range(startY, y_size, gridY):
+    for x in range(start_x, x_size, grid_x):
+        for y in range(start_y, y_size, grid_y):
             x_calc, y_calc = pixel_preprocess_gpu(
                 image, img_norm, x, y, x_size, y_size)
 

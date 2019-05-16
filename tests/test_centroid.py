@@ -30,12 +30,13 @@ class TestCentroid:
             i_threshold,
             principal_point
         )
-        I = ImageProcessor(
+        image_matrix = ImageProcessor(
             CameraConnector(), centroid_calculator).image_to_matrix(image)
-        assert (res_x, res_y) == I.shape
+        assert (res_x, res_y) == image_matrix.shape
         for i in range(10):
             start_time = timer()
-            list_of_stars = centroid_calculator.calculate_centroids(I)
+            list_of_stars = centroid_calculator.calculate_centroids(
+                image_matrix)
             print(timer() - start_time)
             assert 92 == len(list_of_stars)
             uv = list_of_stars[0].unit_vector

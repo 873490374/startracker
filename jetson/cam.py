@@ -15,7 +15,6 @@ import sys
 import argparse
 import cv2
 
-
 WINDOW_NAME = 'CameraDemo'
 
 
@@ -98,7 +97,7 @@ def read_cam(cap):
             # Check to see if the user has closed the window
             # If yes, terminate the program
             break
-        _, img = cap.read() # grab the next image frame from camera
+        _, img = cap.read()  # grab the next image frame from camera
         if show_help:
             cv2.putText(img, help_text, (11, 20), font,
                         1.0, (32, 32, 32), 4, cv2.LINE_AA)
@@ -106,11 +105,11 @@ def read_cam(cap):
                         1.0, (240, 240, 240), 1, cv2.LINE_AA)
         cv2.imshow(WINDOW_NAME, img)
         key = cv2.waitKey(10)
-        if key == 27: # ESC key: quit program
+        if key == 27:  # ESC key: quit program
             break
-        elif key == ord('H') or key == ord('h'): # toggle help message
+        elif key == ord('H') or key == ord('h'):  # toggle help message
             show_help = not show_help
-        elif key == ord('F') or key == ord('f'): # toggle fullscreen
+        elif key == ord('F') or key == ord('f'):  # toggle fullscreen
             full_scrn = not full_scrn
             if full_scrn:
                 cv2.setWindowProperty(WINDOW_NAME, cv2.WND_PROP_FULLSCREEN,
@@ -135,7 +134,7 @@ def main():
         cap = open_cam_usb(args.video_dev,
                            args.image_width,
                            args.image_height)
-    else: # by default, use the Jetson onboard camera
+    else:  # by default, use the Jetson onboard camera
         cap = open_cam_onboard(args.image_width,
                                args.image_height)
 
