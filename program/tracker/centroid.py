@@ -7,16 +7,15 @@ from numba import cuda, float64, int32
 from program.star import StarUV
 from program.utils import convert_to_vector
 
-A_ROI = 5
-I_THRESHOLD = 250
-
 
 class CentroidCalculator:
     def __init__(self, pixel_size: int, focal_length: int,
-                 a_roi: int, i_threshold: int, principal_point: (int, int)):
+                 a_roi: int, clustering_roi: int,
+                 i_threshold: int, principal_point: (int, int)):
         self.pixel_size = pixel_size
         self.focal_length = focal_length
         self.a_roi = a_roi
+        self.c_roi = clustering_roi
         self.i_threshold = i_threshold
         self.principal_point = principal_point
 
@@ -26,7 +25,7 @@ class CentroidCalculator:
         star_list = self.clustering(star_list)
         star_vectors = self.convert_to_vectors(star_list)
 
-        # self.create_image(I, star_list)
+        self.create_image(I, star_list)
 
         return star_vectors
 
@@ -36,7 +35,8 @@ class CentroidCalculator:
 
         calc_img = np.zeros((x_size, y_size, 2), dtype=np.float64)
 
-        I_norm = np.zeros((x_size, y_size, A_ROI-2, A_ROI-2), dtype=np.float64)
+        I_norm = np.zeros(
+            (x_size, y_size, self.a_roi-2, self.a_roi-2), dtype=np.float64)
 
         blockdim = (16, 8)
         griddim = (32, 16)
@@ -44,10 +44,13 @@ class CentroidCalculator:
         d_calc = cuda.to_device(calc_img)
         d_norm = cuda.to_device(I_norm)
         preprocess_kernel[griddim, blockdim](
-            d_img, d_calc, d_norm, x_size, y_size)
+            d_img, d_calc, d_norm, x_size, y_size,
+            self.i_threshold, self.a_roi)
         calc_img = d_calc.copy_to_host()
 
-        # calc_img = preprocess_no_gpu(I, calc_img, I_norm, x_size, y_size)
+        # calc_img = preprocess_no_gpu(
+        #     I, calc_img, I_norm, x_size, y_size,
+        #     self.i_threshold, self.a_roi)
 
         star_list = self.calc_img_to_star_list(calc_img)
 
@@ -62,7 +65,8 @@ class CentroidCalculator:
                 star[0], star[1], self.pixel_size,
                 self.focal_length, self.principal_point)
             star_vectors.append(
-                StarUV(star_id=i, magnitude=-1, unit_vector=u))
+                # StarUV(star_id=i, magnitude=-1, unit_vector=u))
+                np.array([i, u[0], u[1], u[2]]))
             i += 1
         return star_vectors
 
@@ -70,7 +74,13 @@ class CentroidCalculator:
     def create_image(I, star_list):
         img = np.zeros((len(I), len(I.T)), dtype='uint8')
         for star in star_list:
-            img[int(star[0]), int(star[1])] = 255
+            x = int(star[0])
+            y = int(star[1])
+            img[x, y] = 255
+            img[x-1, y] = 255
+            img[x+1, y] = 255
+            img[x, y-1] = 255
+            img[x, y+1] = 255
         Image.fromarray(img, mode='L').convert('1').save('test.png')
 
     @staticmethod
@@ -78,11 +88,10 @@ class CentroidCalculator:
         star_list = calc_img[~(calc_img == 0).all(2)]
         return star_list.tolist()
 
-    @staticmethod
-    def clustering(star_list):
+    def clustering(self, star_list):
         # 6. Clustering
         control = 1
-        pixel_diff = 5
+        pixel_diff = self.c_roi
         while control > 0:
             star_list2 = star_list
             control = 0
@@ -106,12 +115,12 @@ class CentroidCalculator:
 
 def pixel_preprocess(
         I: np.ndarray, I_norm_matrix: np.ndarray,
-        x: int, y: int, x_size, y_size):
-    if I[x, y] > I_THRESHOLD:
-        x_start = int(x - (A_ROI - 1) / 2)
-        y_start = int(y - (A_ROI - 1) / 2)
-        x_end = int(x_start + A_ROI)
-        y_end = int(y_start + A_ROI)
+        x: int, y: int, x_size, y_size, i_threshold, a_roi):
+    if I[x, y] > i_threshold:
+        x_start = int(x - (a_roi - 1) / 2)
+        y_start = int(y - (a_roi - 1) / 2)
+        x_end = int(x_start + a_roi)
+        y_end = int(y_start + a_roi)
         # 2.
         if (x_start < 0 or y_start < 0 or
                 x_end > x_size - 1 or y_end > y_size - 1):
@@ -135,7 +144,7 @@ def pixel_preprocess(
             i_right += I[x_end, i]
 
         i_border = ((i_top + i_bottom + i_left + i_right) /
-                    4 * (A_ROI - 1))
+                    4 * (a_roi - 1))
         # 4. - normalization
         x_nn = 0
         for x_norm in range(x_start+1, x_end-1):
@@ -171,13 +180,17 @@ def pixel_preprocess(
 
 pixel_preprocess_gpu = cuda.jit(
     restype=(float64, float64),
-    argtypes=[float64[:, :], float64[:, :, :, :], int32, int32, int32, int32],
+    argtypes=[
+        float64[:, :], float64[:, :, :, :],
+        int32, int32, int32, int32, int32, int32],
     device=True)(pixel_preprocess)
 
 
 @cuda.jit(argtypes=[
-    float64[:, :], float64[:, :, :], float64[:, :, :, :], int32, int32])
-def preprocess_kernel(image, calc_img, img_norm, x_size, y_size):
+    float64[:, :], float64[:, :, :], float64[:, :, :, :],
+    int32, int32, int32, int32])
+def preprocess_kernel(
+        image, calc_img, img_norm, x_size, y_size, i_threshold, a_roi):
 
     start_x, start_y = cuda.grid(2)
     grid_x = cuda.gridDim.x * cuda.blockDim.x
@@ -186,17 +199,18 @@ def preprocess_kernel(image, calc_img, img_norm, x_size, y_size):
     for x in range(start_x, x_size, grid_x):
         for y in range(start_y, y_size, grid_y):
             x_calc, y_calc = pixel_preprocess_gpu(
-                image, img_norm, x, y, x_size, y_size)
+                image, img_norm, x, y, x_size, y_size, i_threshold, a_roi)
 
             calc_img[x][y][0] = x_calc
             calc_img[x][y][1] = y_calc
 
 
-def preprocess_no_gpu(image, calc_img, img_norm, x_size, y_size):
+def preprocess_no_gpu(
+        image, calc_img, img_norm, x_size, y_size, i_threshold, a_roi):
     for x in range(0, x_size):
         for y in range(0, y_size):
             x_calc, y_calc = pixel_preprocess(
-                image, img_norm, x, y, x_size, y_size)
+                image, img_norm, x, y, x_size, y_size, i_threshold, a_roi)
 
             calc_img[x][y][0] = x_calc
             calc_img[x][y][1] = y_calc

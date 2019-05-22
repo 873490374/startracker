@@ -22,10 +22,18 @@ class StarTracker:
 
     def run(self):
         if self.tracking_mode_enabled:
+            # tracking mode
+            identified_stars = []
             while True:
-                # tracking mode
-                self.tracking_mode()
-                pass
+                image_stars = self.get_image_stars()
+                if (not identified_stars or len((set(
+                        [int(star[1]) for star in identified_stars]))) < 3):
+                    identified_stars = self.identify_stars(image_stars)
+                else:
+                    identified_stars = self.tracker.track(
+                        image_stars, identified_stars)
+                orientation = self.find_orientation(identified_stars)
+                yield identified_stars, orientation
         else:
             while True:
                 # LIS mode
@@ -45,16 +53,3 @@ class StarTracker:
         orientation = self.orientation_finder.find_orientation(
             identified_stars)
         return orientation
-
-    def tracking_mode(self):
-        identified_stars = []
-        while True:
-            image_stars = self.get_image_stars()
-            if not identified_stars or len((set([
-                    int(star[1]) for star in identified_stars]))) < 3:
-                identified_stars = self.identify_stars(image_stars)
-            else:
-                identified_stars = self.tracker.track(
-                    image_stars, identified_stars)
-            orientation = self.find_orientation(identified_stars)
-            yield identified_stars, orientation

@@ -9,6 +9,9 @@ class OrientationFinder:
     def find_orientation(self, current_stars, previous_stars=None):
         if not current_stars:
             return None
+        current_stars = self.remove_false_stars(current_stars)
+        if not current_stars:
+            return None
         if not previous_stars:
             previous_stars = self.find_previous_stars(current_stars)
         previous_vectors, current_vectors = self.sort_vectors(
@@ -17,6 +20,14 @@ class OrientationFinder:
         q, K_calc = self.quest_calc.calculate_quest(
             weight_list, current_vectors, previous_vectors)
         return q
+
+    @staticmethod
+    def remove_false_stars(current_stars):
+        curr = []
+        for s in current_stars:
+            if s[1] != -1:
+                curr.append(s)
+        return curr
 
     def find_previous_stars(self, current_stars):
         return self.star_catalog[

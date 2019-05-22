@@ -132,9 +132,9 @@ class TriangleCatalogGeneratorParallel:
 
         s = np.array([
             star.id, star.magnitude,
-            np.array([np.cos(alpha) * np.cos(delta)]),
-            np.array([np.sin(alpha) * np.cos(delta)]),
-            np.array([np.sin(delta)]),
+            np.cos(alpha) * np.cos(delta),
+            np.sin(alpha) * np.cos(delta),
+            np.sin(delta),
         ])
         return s
 

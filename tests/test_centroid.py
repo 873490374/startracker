@@ -20,6 +20,7 @@ class TestCentroid:
         pixel_size = 1
         focal_length = FOCAL_LENGTH * res_x
         a_roi = 5
+        c_roi = 5
         i_threshold = 250
         principal_point = (0.5 * res_x, 0.5 * res_y)
 
@@ -27,6 +28,7 @@ class TestCentroid:
             pixel_size,
             focal_length,
             a_roi,
+            c_roi,
             i_threshold,
             principal_point
         )
@@ -39,11 +41,11 @@ class TestCentroid:
                 image_matrix)
             print(timer() - start_time)
             assert 92 == len(list_of_stars)
-            uv = list_of_stars[0].unit_vector
-            assert np.isclose(-0.07936259453726248, uv[0], atol=1.e-10)
-            assert np.isclose(0.02435176834680778, uv[1], atol=1.e-10)
-            assert np.isclose(0.9965483279634247, uv[2], atol=1.e-10)
-            uv = list_of_stars[91].unit_vector
-            assert np.isclose(0.019888234048011138, uv[0], atol=1.e-10)
-            assert np.isclose(0.013084809683807373, uv[1], atol=1.e-10)
-            assert np.isclose(0.9997165827883371, uv[2], atol=1.e-10)
+            uv = list_of_stars[0]
+            assert np.isclose(-0.07936259453726248, uv[1], atol=1.e-10)
+            assert np.isclose(0.02435176834680778, uv[2], atol=1.e-10)
+            assert np.isclose(0.9965483279634247, uv[3], atol=1.e-10)
+            uv = list_of_stars[91]
+            assert np.isclose(0.019888234048011138, uv[1], atol=1.e-10)
+            assert np.isclose(0.013084809683807373, uv[2], atol=1.e-10)
+            assert np.isclose(0.9997165827883371, uv[3], atol=1.e-10)
