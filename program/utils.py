@@ -28,7 +28,9 @@ def read_scene_uv(path, fname):
                 uv0 = raw_data_list[j][i + 1]
                 uv1 = raw_data_list[j][i + 2]
                 uv2 = raw_data_list[j][i + 3]
-                data_list.append(np.array([int(i/4), uv0, uv1, uv2]))
+                x = -1.
+                y = -1.
+                data_list.append(np.array([int(i/4), uv0, uv1, uv2, x, y]))
             data_lists.append(data_list)
         return data_lists
 
@@ -68,7 +70,8 @@ def read_scene_xy(path, fname, focal_length, resolution):
                 u = convert_to_vector(
                     x, y, pixel_size, focal_length_ * res_x, pp)
                 magnitude = raw_data_list[j][i + 2]
-                data_list.append(np.array([int(i / 3), u[0], u[1], u[2]]))
+                data_list.append(
+                    np.array([int(i / 3), u[0], u[1], u[2], x, y]))
             data_lists.append(data_list)
         return data_lists
 

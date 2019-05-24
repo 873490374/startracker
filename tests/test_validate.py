@@ -1,10 +1,12 @@
 import os
 
 import numpy as np
+import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 
 # noinspection PyPackageRequirements
 import pytest
+from PIL import Image
 
 from program.const import SENSOR_VARIANCE, MAIN_PATH
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
@@ -35,9 +37,48 @@ def find_stars(input_data, catalog_fname):
         result = star_identifier.identify_stars(row)
         times.append(timer() - start)
         results.append([result])
+        # plot_result(result)
+        # create_image(result)
 
     print('Average time: ', np.sum(times)/len(times))
     return results
+
+
+def plot_result(stars):
+    res_x = 1920  # pixels
+    res_y = 1440  # pixels
+    stars = np.array(stars)
+    txt = stars[:, 1]
+    txt = txt.astype(int)
+    x = stars[:, 5]
+    y = stars[:, 6]
+
+    fig, ax = plt.subplots()
+    ax.scatter(y, x)
+    ax.set_ylim(ymin=0, ymax=res_y)  # invert the axis
+    ax.set_xlim(xmin=0, xmax=res_x)  # invert the axis
+    ax.xaxis.tick_top()  # and move the X-Axis
+
+    for i, txt in enumerate(txt):
+        ax.annotate(txt, (y[i], x[i]))
+    plt.show()
+
+
+def create_image(stars):
+    res_x = 1920  # pixels
+    res_y = 1440  # pixels
+    img = np.zeros((res_y, res_x), dtype='uint8')
+    for star in stars:
+        x = int(star[5])
+        y = int(star[6])
+        img[x, y] = 255
+        img[x-1, y] = 255
+        img[x+1, y] = 255
+        img[x, y-1] = 255
+        img[x, y+1] = 255
+
+    Image.fromarray(img, mode='L').convert('1').transpose(
+        Image.FLIP_TOP_BOTTOM).save('test.png')
 
 
 class TestValidate:

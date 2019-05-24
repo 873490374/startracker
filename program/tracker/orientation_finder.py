@@ -15,7 +15,7 @@ class OrientationFinder:
         if not previous_stars:
             previous_stars = self.find_previous_stars(current_stars)
         previous_vectors, current_vectors = self.sort_vectors(
-            np.array(previous_stars), np.array(current_stars)[:, 1:])
+            np.array(previous_stars), np.array(current_stars)[:, 1:5])
         weight_list = [1 for _ in range(len(current_stars))]
         q, K_calc = self.quest_calc.calculate_quest(
             weight_list, current_vectors, previous_vectors)

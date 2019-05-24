@@ -1,4 +1,5 @@
-from program.star import StarUV
+import numpy as np
+
 from program.tracker.image_processor import ImageProcessor
 from program.tracker.orientation_finder import OrientationFinder
 from program.tracker.star_identifier import StarIdentifier
@@ -42,13 +43,13 @@ class StarTracker:
                 orientation = self.find_orientation(identified_stars)
                 yield identified_stars, orientation
 
-    def get_image_stars(self) -> [StarUV]:
+    def get_image_stars(self) -> np.ndarray:
         return self.image_processor.get_image_star_vectors()
 
-    def identify_stars(self, image_stars: [StarUV]):
+    def identify_stars(self, image_stars: np.ndarray):
         return self.star_identifier.identify_stars(image_stars)
 
-    def find_orientation(self, identified_stars: [StarUV]):
+    def find_orientation(self, identified_stars: np.ndarray):
 
         orientation = self.orientation_finder.find_orientation(
             identified_stars)
