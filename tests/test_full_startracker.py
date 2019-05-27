@@ -509,8 +509,8 @@ def validate(stars, q, expected):
             if es['id_cat'] != -1:
                 for s in stars:
                     if (
-                            np.isclose(s[6], es['x'], atol=0.00001) and
-                            np.isclose(s[5], es['y'], atol=0.00001)):
+                            np.isclose(s[5], es['x'], atol=0.00001) and
+                            np.isclose(s[6], es['y'], atol=0.00001)):
                         all_ += 1
                         if s[1] == es['id_cat']:
                             good += 1
@@ -519,7 +519,7 @@ def validate(stars, q, expected):
                         else:
                             bad += 1
 
-        # print('Quaternion =', q)
+        print('Quaternion =', q)
 
         # plot_result(stars, res_x, res_y)
     return all_, good, bad, not_recognized, attitude_not_found

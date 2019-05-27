@@ -27,11 +27,11 @@ class TestUtils:
             [ 276.29853801, 1471.18199192]]
 
         uv = [
-            [ 0.33131708,  0.03083089,  0.94301561],
-            [ 0.85249444,  0.47047207, -0.22783605],
-            [-0.88413344, -0.44271065, -0.14938322],
-            [ 0.87918149,  0.01082032, -0.47636419],
-            [ 0.90264688,  0.32272527,  0.28474025]]
+            [-0.0546911,   0.05428271,  0.99702672],
+            [-0.01278921,  0.01558816,  0.9997967 ],
+            [ 0.0319105,  -0.00558917,  0.9994751 ],
+            [-0.03331454, -0.04708966,  0.99833497],
+            [-0.04649769, -0.04035958,  0.99810273]]
 
         ids = [82363, 83081, 83153, 85258, 85267]
 
@@ -42,7 +42,8 @@ class TestUtils:
 
         calc_uv = []
         for i in range(len(alt)):
-            calc_uv.append(convert_star_to_uv(alt[i], az[i]))
+            calc_uv.append(
+                convert_star_to_uv(np.deg2rad(alt[i]), np.deg2rad(az[i])))
         calc_uv_orient = np.dot(calc_uv, orientation.transpose())
         for i in range(len(uv)):
             assert np.isclose(calc_uv_orient[i], uv[i], atol=1.e-4).all()

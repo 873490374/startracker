@@ -68,8 +68,9 @@ class CentroidCalculator:
             u = convert_to_vector(
                 star[0], star[1], self.pixel_size,
                 self.focal_length, self.principal_point)
+            # FIXME check if all x-y coordinates all correct till this point
             star_vectors.append(
-                np.array([i, u[0], u[1], u[2], star[0], star[1]]))
+                np.array([i, u[0], u[1], u[2], star[1], star[0]]))
             i += 1
         return star_vectors
 
