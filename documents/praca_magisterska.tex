@@ -1501,8 +1501,9 @@ The small catalog is good enough, because it covers most of the sky with at leas
 \section{Future steps}
 
 Necessary things to do:
-- test with dedicated camera;
+- test with the dedicated camera;
 - rewrite program to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite.
+- rerun catalog generation and test for the dedicated set of variables (FOV, etc.)
 
 Optional things to explore:
 - rewrite star identifier on GPU;
@@ -1510,6 +1511,7 @@ Optional things to explore:
 - get better values for sigm, sigx;
 - catalog with more stars;
 - use k-vector algorithm for more stars;
+- explore other algorithms, especially for star identification and attitude estimation, because it is possible new research improved existing algorithms or created new ones with significantly higher efficiency.
 
 
 \newpage

@@ -6,7 +6,7 @@ import scipy.optimize
 # noinspection PyPep8Naming
 class QuestCalculator:
     def __init__(self):
-        self.s = 0.
+        self.sigma = 0.
         self.a = 0.
         self.b = 0.
         self.c = 0.
@@ -19,15 +19,18 @@ class QuestCalculator:
     ) -> (np.ndarray, np.ndarray):
         B = self.calculate_B(weight_list, v_b_list, v_i_list)
         S = self.calculate_S(B)
-        self.s = self.calculate_s(B)
+        self.sigma = self.calculate_s(B)
         Z = self.calculate_Z(B)
-        K = self.calculate_K(S, self.s, Z)
-        self.a = self.calculate_a(self.s, Z)
-        self.b = self.calculate_b(self.s, Z)
+        K = self.calculate_K(S, self.sigma, Z)
+        delta = np.linalg.det(S)
+        adjS = np.linalg.det(S) * np.linalg.inv(S)
+        kappa = np.trace(adjS)
+        self.a = self.calculate_a(self.sigma, kappa)
+        self.b = self.calculate_b(self.sigma, Z)
         self.c = self.calculate_c(S, Z)
         self.d = self.calculate_d(S, Z)
-        lamb = self.calculate_lambda(self.func)
-        q = self.calculate_q(lamb, self.s, S, Z)
+        lamb = self.calculate_lambda(len(v_b_list), self.func)
+        q = self.calculate_q(lamb, self.sigma, S, Z, kappa, delta)
         return q, K
 
     @staticmethod
@@ -60,15 +63,16 @@ class QuestCalculator:
         ])[np.newaxis].T
 
     @staticmethod
-    def calculate_K(S, s, Z):
+    def calculate_K(
+            S: np.ndarray, s: float, Z: np.ndarray) -> np.ndarray:  #3x3
         upper = np.append(S-s * np.identity(3), Z, axis=1)
         lower = np.array([np.append(Z.T, s)])
         matrix = np.append(upper, lower, axis=0)
         return matrix
 
     @staticmethod
-    def calculate_a(s: float, S: np.ndarray) -> float:  # scalar
-        return s**2 - np.transpose(np.array(S)).trace().item()
+    def calculate_a(s: float, kappa: float) -> float:  # scalar
+        return s**2 - kappa
 
     @staticmethod
     def calculate_b(s: float, Z: np.ndarray) -> float:  # scalar
@@ -89,22 +93,20 @@ class QuestCalculator:
     def func(x: float, a: float, b: float, c: float, d: float, s: float):
         return (x**2 - a)*(x**2 - b) - c*x + (c*s - d)
 
-    def calculate_lambda(self, func) -> float:
-        x0 = 2
+    def calculate_lambda(self, x0, func) -> float:
         return scipy.optimize.newton(
             func, x0, args=(
-                self.a, self.b, self.c, self.d, self.s),
-            maxiter=500)
+                self.a, self.b, self.c, self.d, self.sigma),
+            maxiter=100000)
 
     @staticmethod
-    def calculate_q(lamb, s, S, Z):
-        # TODO calculate more accurately
-        arf = lamb**2 - s**2 + np.transpose(np.array(S)).trace().item()
-        bet = lamb - s
-        x = np.inner(arf * np.identity(3) + bet*S+S*S, Z.T).flatten()
-        miu = (lamb + s) * arf - np.linalg.det(S)
-        f = np.sqrt(miu**2 + x[0]**2 + x[1]**2 + x[2]**2)
-        q = np.append(np.array(miu), x)
-        q = q/f
-
-        return q
+    def calculate_q(
+            lamb: float, sigma: float, S: np.ndarray, Z: np.ndarray,
+            kappa: float, delta: float):
+        alpha = lamb ** 2 - sigma ** 2 + kappa
+        beta = lamb - sigma
+        gamma = (lamb + sigma) * alpha - delta
+        x = np.dot(alpha * np.identity(3) + beta * S + np.dot(S, S), Z)
+        f = np.sqrt(gamma**2 + x[0]**2 + x[1]**2 + x[2]**2)
+        q = np.append(x, gamma)
+        return q/f
