@@ -6,7 +6,7 @@ from timeit import default_timer as timer
 import matplotlib.pyplot as plt
 
 
-from program.const import MAIN_PATH, FOCAL_LENGTH
+from program.const import MAIN_PATH, FOCAL_LENGTH_NORM
 from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
@@ -20,7 +20,7 @@ class TestCentroid:
         res_x = 900
         res_y = 900
         pixel_size = 1
-        focal_length = FOCAL_LENGTH * res_x
+        focal_length = FOCAL_LENGTH_NORM * res_x
         a_roi = 5
         c_roi = 10
         i_threshold = 150

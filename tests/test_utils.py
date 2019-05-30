@@ -1,6 +1,6 @@
 import numpy as np
 
-from program.const import FOCAL_LENGTH, SENSOR_VARIANCE
+from program.const import FOCAL_LENGTH_NORM, SENSOR_VARIANCE
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.utils import (
     convert_star_to_uv,
@@ -55,7 +55,7 @@ class TestUtils:
             pp = (0.5 * res_x, 0.5 * res_y)
             a = convert_to_vector(
                 pos_orient[i][1], pos_orient[i][0], 1,
-                FOCAL_LENGTH * res_x, pp)
+                FOCAL_LENGTH_NORM * res_x, pp)
             b = uv[i]
             # FIXME why pos[0] is always inverse of uv[0]?
             assert np.isclose(np.abs(a), np.abs(b)).all()

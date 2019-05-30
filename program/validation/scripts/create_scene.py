@@ -4,7 +4,7 @@ import os
 import numpy as np
 from progress.bar import Bar
 
-from program.const import MAIN_PATH, MAX_MAGNITUDE, CAMERA_FOV, FOCAL_LENGTH
+from program.const import MAIN_PATH, MAX_MAGNITUDE, CAMERA_FOV, FOCAL_LENGTH_NORM
 from program.validation.scripts.simulator import (
     EquidistantCamera,
     EquisolidAngleCamera,
@@ -23,7 +23,7 @@ def create_scene(num_scenes: int = 1000, max_magnitude: int = 6):
     res_y = 1440  # pixels
 
     # normalized focal length
-    f = FOCAL_LENGTH
+    f = FOCAL_LENGTH_NORM
 
     # pixel aspect ratio
     pixel_ar = 1

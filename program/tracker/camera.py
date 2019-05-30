@@ -7,8 +7,8 @@ class CameraConnector:
 
     @staticmethod
     def get_image() -> Image.Image:
-        width = 1920  # pixels
-        height = 1440  # pixels
+        width = 900  # pixels
+        height = 900  # pixels
         gst_str = ('nvcamerasrc ! '
                    'video/x-raw(memory:NVMM), '
                    'width=(int)2592, height=(int)1458, '
