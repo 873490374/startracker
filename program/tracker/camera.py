@@ -19,6 +19,7 @@ class CameraConnector:
                    'videoconvert ! appsink').format(width, height)
         cam = cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)
         _, image = cam.read()
+        image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         return image
 
 #
