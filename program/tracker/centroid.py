@@ -21,7 +21,7 @@ class CentroidCalculator:
         self.star_mag_pix = star_mag_pix
         self.principal_point = principal_point
 
-    def calculate_centroids(self, I: np.ndarray) -> np.ndarray:
+    def calculate_centroids(self, I: np.ndarray) -> [np.ndarray]:
 
         star_list = self.preprocess_image_matrix(I)
         star_list = self.clustering(star_list)

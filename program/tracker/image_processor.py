@@ -1,5 +1,4 @@
 import numpy as np
-from PIL import Image
 
 from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
@@ -18,12 +17,12 @@ class ImageProcessor:
         image = self.get_image()
         return self.image_to_matrix(image)
 
-    def get_image(self) -> Image.Image:
+    def get_image(self) -> np.ndarray:
         return self.camera_conn.get_image()
 
     @staticmethod
-    def image_to_matrix(image: Image.Image) -> np.ndarray:
-        return np.asarray(image.convert('L'))
+    def image_to_matrix(image: np.ndarray) -> np.ndarray:
+        return np.asarray(image)
 
     def get_image_star_vectors(self) -> np.ndarray:
         img_matrix = self.get_image_matrix()

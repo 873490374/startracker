@@ -42,6 +42,7 @@ class TestCentroid:
             img_path = os.path.join(
                 self.images_path, 'test_centroid_{}.png'.format(i))
             image = Image.open(img_path)
+            image = image.convert('L')
             image_matrix = ImageProcessor(
                 CameraConnector(), centroid_calculator).image_to_matrix(image)
             assert (res_x, res_y) == image_matrix.shape
@@ -49,7 +50,7 @@ class TestCentroid:
             stars = centroid_calculator.calculate_centroids(
                 image_matrix)
             print(timer() - start_time)
-            # plot_result(stars, res_x, res_y)
+            plot_result(stars, res_x, res_y)
             assert len(stars) == expected_len[i]
             for s in range(len(stars[i])):
                 for j in range(5):
@@ -72,30 +73,6 @@ expected_len = [13, 16, 16, 16, 17]
 
 # [scene_star_id, uv0, uv1, uv2, scene_pos_y, scene_pos_x]
 # noinspection LongLine
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 expected_stars = [
     [
         np.array([ 0,  -4.25257080e-02, -3.47121546e-02,  9.98492178e-01,  2.71187599e+02,  2.30937713e+02]),

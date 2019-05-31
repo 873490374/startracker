@@ -1,14 +1,14 @@
-import cv2
+import numpy as np
 
-from PIL import Image
+import cv2
 
 
 class CameraConnector:
 
     @staticmethod
-    def get_image() -> Image.Image:
-        width = 900  # pixels
-        height = 900  # pixels
+    def get_image() -> np.ndarray:
+        width = 2592  # pixels
+        height = 1458  # pixels
         gst_str = ('nvcamerasrc ! '
                    'video/x-raw(memory:NVMM), '
                    'width=(int)2592, height=(int)1458, '
@@ -20,9 +20,13 @@ class CameraConnector:
         cam = cv2.VideoCapture(gst_str, cv2.CAP_GSTREAMER)
         _, image = cam.read()
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+        image = cv2.flip(image, 0)
         return image
 
 #
 # c = CameraConnector()
-# img = c.get_image()
-# print(img)
+# while True:
+#     img = c.get_image()
+#     cv2.imshow('img', img)
+#     if cv2.waitKey(1) == 27:
+#         break
