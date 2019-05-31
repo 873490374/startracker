@@ -3,7 +3,6 @@ import fcntl
 import os
 import time
 
-# noinspection LongLine
 VDD_SYS_GPU = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/rail_name_0',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/in_voltage0_input',
@@ -16,7 +15,6 @@ VDD_SYS_GPU = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/crit_power_limit_0',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/ui_input_0',
 }
-# noinspection LongLine
 VDD_SYS_SOC = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/rail_name_1',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/in_voltage1_input',
@@ -29,7 +27,6 @@ VDD_SYS_SOC = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/crit_power_limit_1',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/ui_input_1',
 }
-# noinspection LongLine
 VDD_4V0_WIFI = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/rail_name_2',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/in_voltage2_input',
@@ -42,7 +39,6 @@ VDD_4V0_WIFI = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/crit_power_limit_2',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0040/iio_device/ui_input_2',
 }
-# noinspection LongLine
 VDD_IN = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/rail_name_0',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/in_voltage0_input',
@@ -55,7 +51,6 @@ VDD_IN = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/crit_power_limit_0',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/ui_input_0',
 }
-# noinspection LongLine
 VDD_SYS_CPU = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/rail_name_1',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/in_voltage1_input',
@@ -68,7 +63,6 @@ VDD_SYS_CPU = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/crit_power_limit_1',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/ui_input_1',
 }
-# noinspection LongLine
 VDD_SYS_DDR = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/rail_name_2',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/in_voltage2_input',
@@ -81,7 +75,6 @@ VDD_SYS_DDR = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/crit_power_limit_2',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0041/iio_device/ui_input_2',
 }
-# noinspection LongLine
 VDD_MUX = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/rail_name_0',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/in_voltage0_input',
@@ -94,7 +87,6 @@ VDD_MUX = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/crit_power_limit_0',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/ui_input_0',
 }
-# noinspection LongLine
 VDD_5V0_IO_SYS = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/rail_name_1',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/in_voltage1_input',
@@ -107,7 +99,6 @@ VDD_5V0_IO_SYS = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/crit_power_limit_1',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/ui_input_1',
 }
-# noinspection LongLine
 VDD_3V3_SYS = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/rail_name_2',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/in_voltage2_input',
@@ -120,7 +111,6 @@ VDD_3V3_SYS = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/crit_power_limit_2',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0042/iio_device/ui_input_2',
 }
-# noinspection LongLine
 VDD_3V3_IO_SLP = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/rail_name_0',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/in_voltage0_input',
@@ -133,7 +123,6 @@ VDD_3V3_IO_SLP = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/crit_power_limit_0',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/ui_input_0',
 }
-# noinspection LongLine
 VDD_1V8_IO = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/rail_name_1',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/in_voltage1_input',
@@ -146,7 +135,6 @@ VDD_1V8_IO = {
     'crit_power_limit': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/crit_power_limit_1',
     'ui_input': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/ui_input_1',
 }
-# noinspection LongLine
 VDD_3V3_SYS_M2 = {
     'rail_name': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/rail_name_2',
     'in_voltage_input': '/sys/devices/3160000.i2c/i2c-0/0-0043/iio_device/in_voltage2_input',
@@ -174,31 +162,6 @@ devices = [
     # VDD_3V3_SYS_M2,
 ]
 
-# noinspection LongLine
-devices_ = [
-    {
-        'name': 'VDD_SYS_GPU',
-        'name_file': os.open(VDD_SYS_GPU['rail_name'], os.O_RDONLY | os.O_NONBLOCK),
-        'voltage_file': os.open(VDD_SYS_GPU['in_voltage_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'current_file': os.open(VDD_SYS_GPU['in_current_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'power_file': os.open(VDD_SYS_GPU['in_power_input'], os.O_RDONLY | os.O_NONBLOCK),
-    },
-    {
-        'name': 'VDD_SYS_SOC',
-        'name_file': os.open(VDD_SYS_SOC['rail_name'], os.O_RDONLY | os.O_NONBLOCK),
-        'voltage_file': os.open(VDD_SYS_SOC['in_voltage_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'current_file': os.open(VDD_SYS_SOC['in_current_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'power_file': os.open(VDD_SYS_SOC['in_power_input'], os.O_RDONLY | os.O_NONBLOCK),
-    },
-    {
-        'name': 'VDD_SYS_CPU',
-        'name_file': os.open(VDD_SYS_CPU['rail_name'], os.O_RDONLY | os.O_NONBLOCK),
-        'voltage_file': os.open(VDD_SYS_CPU['in_voltage_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'current_file': os.open(VDD_SYS_CPU['in_current_input'], os.O_RDONLY | os.O_NONBLOCK),
-        'power_file': os.open(VDD_SYS_CPU['in_power_input'], os.O_RDONLY | os.O_NONBLOCK),
-    },
-]
-
 if __name__ == '__main__':
     with open('measurements_power.csv', 'w') as csvfile_power, \
             open('measurements_voltage.csv', 'w') as csvfile_voltage, \
@@ -212,18 +175,29 @@ if __name__ == '__main__':
 
         start = time.time()
         while True:
-            for dev in devices_:
+            for dev in devices:
                 try:
-                    name = os.read(dev['name_file'], 100).decode("utf-8")[:-1]
+                    f1 = os.open(dev['rail_name'], os.O_RDONLY | os.O_NONBLOCK)
+                    name = os.read(f1, 100).decode("utf-8")[:-1]
+                    os.close(f1)
 
-                    voltage = int(str(os.read(dev['voltage_file'], 100).decode("utf-8")))
+                    f2 = os.open(
+                        dev['in_voltage_input'], os.O_RDONLY | os.O_NONBLOCK)
+                    voltage = int(str(os.read(f2, 100).decode("utf-8")))
                     writer_voltage.writerow([time.time() - start, name, voltage])
+                    os.close(f2)
 
-                    current = int(str(os.read(dev['current_file'], 100).decode("utf-8")))
+                    f3 = os.open(
+                        dev['in_current_input'], os.O_RDONLY | os.O_NONBLOCK)
+                    current = int(str(os.read(f3, 100).decode("utf-8")))
                     writer_current.writerow([time.time() - start, name, current])
+                    os.close(f3)
 
-                    power = int(str(os.read(dev['power_file'], 100).decode("utf-8")))
+                    f4 = os.open(
+                        dev['in_power_input'], os.O_RDONLY | os.O_NONBLOCK)
+                    power = int(str(os.read(f4, 100).decode("utf-8")))
                     writer_power.writerow([time.time() - start, name, power])
+                    os.close(f4)
 
                     print(name, voltage, current, voltage, time.time() - start)
                     time.sleep(0.1)
