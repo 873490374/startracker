@@ -1,5 +1,3 @@
-@comment{x-kbibtex-personnameformatting=<%l><, %f>}
-
 @inproceedings{mcbryde2012star,
 	author = "McBryde, Christopher Ryan and Lightsey, E Glenn",
 	booktitle = "{Aerospace Conference, 2012 IEEE}",
@@ -541,7 +539,7 @@
 }
 
 @inproceedings{ccelik2013comparison,
-	author = "\c{C}elik, Onur and Hajiyev, Chingiz",
+	author = "{\c C}elik, Onur and Hajiyev, Chingiz",
 	booktitle = "{Recent Advances in Space Technologies (RAST), 2013 6th International Conference on}",
 	organization = "IEEE",
 	pages = "261--264",
@@ -556,9 +554,9 @@
 }
 
 @mastersthesis{gaska2016obc,
-	author = "Gąska, Micha{\l}",
+	author = "G{\c a}ska, Micha{\l}",
 	school = "Warsaw University of Technology",
-	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcją Star Tracker}",
+	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcj{\c a} Star Tracker}",
 	year = "2016"
 }
 
@@ -753,5 +751,19 @@
 	institution = "Technical Report CSC/TM-77/6034, Comp. Sc. Corp",
 	title = "{Analysis of least-squares attitude determination routine DOAOP}",
 	year = "1977"
+}
+
+@inproceedings{shuster1978approximate,
+	author = "Shuster, Malcolm D",
+	booktitle = "{Guidance and Control Conference}",
+	pages = "88--95",
+	title = "{Approximate algorithms for fast optimal attitude computation}",
+	year = "1978"
+}
+
+@misc{esa-competition,
+	howpublished = "\urlhttps://kelvins.esa.int/star-trackers-first-contact/",
+	note = "Accessed: 2019-06-20",
+	title = "{{"}Star Trackers: First Contact{"} competition, European Space Agency}"
 }
 

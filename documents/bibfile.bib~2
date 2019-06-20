@@ -748,3 +748,18 @@
 	year = "1988"
 }
 
+@techreport{keat1977analysis,
+	author = "Keat, J",
+	institution = "Technical Report CSC/TM-77/6034, Comp. Sc. Corp",
+	title = "{Analysis of least-squares attitude determination routine DOAOP}",
+	year = "1977"
+}
+
+@inproceedings{shuster1978approximate,
+	author = "Shuster, Malcolm D",
+	booktitle = "{Guidance and Control Conference}",
+	pages = "88--95",
+	title = "{Approximate algorithms for fast optimal attitude computation}",
+	year = "1978"
+}
+

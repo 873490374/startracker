@@ -50,7 +50,7 @@ class TestCentroid:
             stars = centroid_calculator.calculate_centroids(
                 image_matrix)
             print(timer() - start_time)
-            plot_result(stars, res_x, res_y)
+            # plot_result(stars, res_x, res_y)
             assert len(stars) == expected_len[i]
             for s in range(len(stars[i])):
                 for j in range(5):

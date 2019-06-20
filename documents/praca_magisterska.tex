@@ -45,12 +45,12 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{MICHALSKI Sz.}
-\lhead{Star-tracker for Cubesat satellites}
-%\lhead{Star-tracker dla Cubesat'ów}
+\lhead{Star-tracker for small satellites}
+%\lhead{Star-tracker dla małych satelitów}
 \rfoot{\thepage}
 
 \author{Szymon MICHALSKI}
-\title{PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT}
+\title{PROGRAM STAR-TRACKER DLA MAŁYCH SATELITÓW}
 
 
 \begin{filecontents}{gloss.tex}
@@ -108,8 +108,8 @@
 	MASTER OF SCIENCE THESIS\par
 %	MAGISTERSKA PRACA DYPLOMOWA\par
 	\vspace{0.2cm}
-	{\huge STAR-TRACKER PROGRAM FOR CUBESAT SATELLITES\par}
-%	{\huge PROGRAM STAR-TRACKER DLA SATELITÓW TYPU CUBE-SAT\par}
+	{\huge STAR-TRACKER PROGRAM FOR SMALL SATELLITES\par}
+%	{\huge PROGRAM STAR-TRACKER DLA MAŁYCH SATELITÓW \par}
 	\vspace{0.2cm}
 	{\large Szymon MICHALSKI\par}
 	\vspace{3cm}
@@ -126,12 +126,12 @@
 \setcounter{page}{2}
 \newpage
 \begin{abstract}
-Last years directed space industry towards small satellites. Many countries which did not have possibility to enter this branch of industry before now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude towards Earth. Work contains also description of individual parts and variants of solutions connected with star-tracker.
+Last years directed space industry towards small satellites. Many countries which did not have possibility to enter this branch of industry before now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude. Work contains also description of individual parts and variants of solutions connected with star-tracker.
 \end{abstract}
 \newpage
 \begin{otherlanguage}{polish}
 \begin{abstract}
-Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzą własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity względem ziemi. Praca zawiera też opis poszczególnych części i wariantów rozwiazania problemów związanych ze star-trackerem.
+Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzą własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity. Praca zawiera też opis poszczególnych części i wariantów rozwiązania problemów związanych ze star-trackerem.
 \end{abstract}
 \end{otherlanguage}
 \newpage
@@ -164,8 +164,8 @@ Nowadays, hundreds of years later, thanks to other technologies like for example
 With the miniaturization of electronics and batteries new type of satellites was invented: CubeSat micro-satellite. They have now greater sensory and processing power possibilities, previously found only in larger satellites. However CubSats are still behind in terms of attitude determination.
 
 \subsection{Motivation}
-The goal of this work is to make fully operational star-tracker software, that could be used on Cubesat satellites. Such program could be used on space missions and could start Polish state-of-the-art technology in growing space technology sector.
-There is already existing prototype of on-board computer for such CubeSat satellite, which together with this work should create full star-tracker device: hardware + software.
+The goal of this work is to make fully operational star-tracker software, that could be used on small satellites. Such program could be used on space missions and could start Polish state-of-the-art technology in growing space technology sector.
+Another part of the thesis is to research possibility of using off-the-shelf small computer NVIDIA Jetson TX2, as it would greatly lower the price of the hardware design and production, and it could be used together with software created during this work as complete startracker.
 
 \subsection{Outline of thesis}
 
@@ -197,8 +197,9 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 \item Pyramid - \citet{mortari2004pyramid}, 
 \item Geometric Voting - \citet{kolomenkin2008geometric}, 
 \item Grid Algorithm - \citet{padgett1997grid}, 
-\item Brightness Independent -  \citet{dong2006brightness},
-\item SP-Search - \citet{mortari1999sp}, 
+\item Brightness Independent - \citet{dong2006brightness},
+\item SP-Search - \citet{mortari1999sp},
+\item Super k-ID and Multi Poles Algorithm created for ESA competition \cite{esa-competition},
 \item use of neural networks: 
 \begin{itemize}[noitemsep]
 \item \citet{miri2012star}, 
@@ -241,7 +242,7 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 
 Many of those works will be mentioned and cited later in this thesis as they are crucial for this work and describe the ways how star-tracker should be designed. All those main algorithm types, like finding star centroids or star identification, are also described here in full detail in next sections.
 
-\subsection{Cubesat}
+\subsection{Small satellites}
 
 
 In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University \cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg.
@@ -274,6 +275,9 @@ Typical CubeSat consist of many different components. Quite often it has antenna
 
 Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and round 70,000 EUR for designing and building the satellite itself \cite{pw-pw-sat2}.
 
+Another platform for slightly larger than CubeSat satellites was created by Polish company Creotech. This platform is called HyperSat and is based on experiences of CubeSat: it is also modular and universal. In the smallest configuration satellite can have dimensions of 30x30x10 cm and weight od 10 kg, while at largest it can have 30x30x60 cm and weight 60 kg. Because of the larger size and weight HyperSat can have more applications than CubeSat.
+
+TODO: HYPERSAT
 
 \subsection{Means of attitude determination}
 
@@ -325,243 +329,9 @@ Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\
 \label{tab:sensors}
 \end{table}
 
-\subsection{On-board computer}
-This section describes the on-board computer (OBC) which was done as part of other thesis and is the basis for this work. Due to no existing of-the-shelf CubeSat's on-board computer with navigation module, it was designed by \citet{gaska2016obc}. The OBC can work in two modes: managing CubeSat's systems with navigation module (star-tracker) or as navigation module only. Figure \ref{fig:obc-photo} shows the mentioned OBC, while Table \ref{tab:obc-all} describes the OBC's technical parameters.
-
-The possible tasks that can be realized by OBC are: operating on-board satellite's modules, navigation in space, auto-diagnosis, carrying out the mission.
-
-Orientation estimation requires much more hardware resources and more power demand than other tasks executed by OBC. The OBC was designed to be able to calculate estimated attitude 2 to 5 times per second. Algorithm uses data from optic sensor and star catalogue that is placed in internal Flash memory of OBC.
-
-\begin{figure}[!htbp]
-\includegraphics[scale=0.45]{obc_photo.png}
-\centering
-\caption{On-board computer designed by \citet{gaska2016obc}.}
-\label{fig:obc-photo}
-\end{figure}
-
-\subsubsection{The design of OBC}
-
-\begin{figure}[!htbp]
-\includegraphics[scale=0.41]{obc_all.png}
-\centering
-\caption{OBC schema\cite{gaska2016obc}.}
-\label{fig:obc-all}
-\end{figure}
-
-The OBC is built with:
-\begin{itemize}
-\item two redundant main micro-controllers (TMS570) which:
-\begin{itemize}
-\item provide communication with other satellite's modules via I2C, UART and CAN interfaces,
-\item read from external Flash memory the scheduled tasks and execute them,
-\item obtain current time from the external RTC,
-\item communicate with supervisor via UART interface,
-\item store current mission status and tasks in FRAM external memory,
-\item communicate with FPGA via SPI interface; they read the results of the work of built-in algorithms and can download the compressed image from the camera,
-\item have the ability to change the internal configuration of the FPGA,
-\end{itemize}
-
-\item programmable FPGA:
-\begin{itemize}
-\item performs data acquisition from two cameras,
-\item places the received image in the external SDRAM,
-\item executes star-tracker algorithm,
-\item supports SpaceWire\footnote{Interface used in space devices, designed for fast data transfer between satellite's modules. The maximum transmission rate is 400 Mbps.} interface,
-\end{itemize}
-
-\item SDRAM - memory of DDR SDRAM type for temporal storage of received image frames from both star-tracker and secondary cameras
-
-\item Supervisor - a micro-controller that acts as supervisor. Its tasks are:
-\begin{itemize}
-\item detecting the suspension of the active main micro-controller and thus disconnecting it from the on-board computer subsystem, activating the redundant main micro-controller,
-\item resetting micro-controllers,
-\item transferring information about the power budget to the active micro-controller,
-\item voltage measurement on power lines,
-\item receiving data from current consumption measurement systems,
-\item switching off the corresponding inverter in case of detecting overvoltage or power consumption excess.
-\item turning on or off camera modules,
-\item temperature measurement in key PCB places,
-\item taking control of the I2C bus connected to the communication module to retrieve the current embedded software for the main micro-controllers; updating firmware in the main micro-controllers (TMS570),
-\item communication with FPGA via UART interface,
-\item reporting on the status of the on-board computer,
-\end{itemize}
-
-\item Power Supply - subsystem responsible for providing a number of stable voltages powering OBC electronics, equipped in special integrated circuits responsible for measuring current on the individual power lines,
-
-\item Camera 1 - star-tracker image sensor module with the lens; the data from this camera is used by star-tracker program,
-
-\item Camera 2 - additional image sensor module for taking pictures and recording short films,
-
-\item FRAM - non-volatile ferroelectric memory that stores sensitive data of micro-controller software,
-
-\item RTC - real time clock providing the current date and time.
-
-\end{itemize}
-
-
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|p{5cm}|p{6cm}|}\hline 
- & \textbf{Designed OBC module} \\ 
-\hline 
-\textbf{Architecture} & Two independent \newline micro-controllers with \newline Cortex-R4F core \\ 
-\hline 
-\textbf{Frequency} & 180MHz \\ 
-\hline 
-\textbf{FPGA} & Cyclone III EP3C25Q240 \\ 
-\hline 
-\textbf{RAM} & 128MB \\ 
-\hline 
-\textbf{Flash memory} & 16MB + 2MB \\ 
-\hline 
-\textbf{FRAM} & 256KB \\ 
-\hline 
-\textbf{RTC} & Yes \\ 
-\hline 
-\textbf{CAN interface} & 1x \\ 
-\hline 
-\textbf{I2C interface} & 2x \\ 
-\hline 
-\textbf{SpaceWire interface} & possibile to implement \\ 
-\hline 
-\textbf{Image sensor interface} & 2x (star-tracker camera and additional camera) \\ 
-\hline 
-\textbf{Solutions increasing resistance to radiation} & Yes \\ 
-\hline 
-\end{tabular} 
-\caption{OBC's technical parameters. Adapted from \citet{gaska2016obc}.}
-\label{tab:obc-all}
-\end{table}
-
-
-\subsubsection{Main processing module} 
-
-The main processing system is build with Texas Instrument's TMS570LS3137 with two Cortex-R4F cores in lockstep mode - both cores execute the same instructions and the results are compared; if they are different, the instructions are repeated. Both cores are operating in FreeRTOS, but can be easily moved into SafeRTOS. Table \ref{tab:obc-main-processor} describes hardware resources of this micro-controller and Figure \ref{fig:obc-main-processor} show schema of this module.
-
-
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|p{4cm}|p{3cm}|}\hline 
-\textbf{Resource} & \textbf{Amount} \\ 
-\hline 
-Flash memory & 3 MB \\ 
-\hline 
-RAM & 256kB \\ 
-\hline 
-Frequency & 160Mhz \\ 
-\hline 
-FlexRay & 1 \\ 
-\hline 
-CAN bus & 3 \\ 
-\hline 
-SPI & 3 \\ 
-\hline 
-I2C & 1 \\ 
-\hline 
-UART & 2 \\ 
-\hline 
-ADC canals & 24 \\ 
-\hline 
-\end{tabular} 
-\caption{Resources of Texas Instrument's TMS570LS3137. Adapted from \citet{gaska2016obc}.}
-\label{tab:obc-main-processor}
-\end{table}
-
-
-\begin{figure}[!htbp]
-\includegraphics[scale=0.49]{obc_main_processor.png}
-\centering
-\caption{OBC main processing system schema\cite{gaska2016obc}.}
-\label{fig:obc-main-processor}
-\end{figure}
-
-
-\subsubsection{Supervisor module} 
-
-The supervisor unit is build with ATmega128 micro-controller, what is visible in Figure \ref{fig:obc-supervisor}.
-
-\begin{figure}[!htbp]
-\includegraphics[scale=0.48]{obc_supervisor.png}
-\centering
-\caption{OBC supervisor system schema \cite{gaska2016obc}.}
-\label{fig:obc-supervisor}
-\end{figure}
-
-\subsubsection{Star-tracker module}
-
-The FPGA used in star-tracker module is Altera's EP3C25Q240. Table \ref{tab:obc-fpga} describes the resources of the mentioned FPGA module. In this FPGA 32-bit soft-processor NIOS II was implemented in Fast version. It can work with 175MHz frequency and achieve 195 DMIPS. The elements generated together with processor are:
-\begin{itemize}
-\item memory protection unit (MPU),
-\item external interrupt controller,
-\item 2kb cache memory,
-\item 4kb instruction set memory,
-\item address space up to 4 GB,
-\item 6-step pipeline,
-\item JTAG interface.
-\end{itemize}
-
-
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|p{6cm}|p{3cm}|}
-\hline 
-\textbf{Resource} & \textbf{Amount} \\ 
-\hline 
-Logical elements & 24624 \\ 
-\hline 
-M9K blocks & 66 \\ 
-\hline 
-RAM & 0.06Mbit \\ 
-\hline 
-Hardware multiplying blocks & 66 \\ 
-\hline 
-PPL & 4 \\ 
-\hline 
-I/O lines & 148 \\ 
-\hline 
-Differential pairs & 43 \\ 
-\hline 
-\end{tabular} 
-\caption{Resources of Altera's EP3C25Q240. Adapted from \citet{gaska2016obc}.}
-\label{tab:obc-fpga}
-\end{table}
-
-
-Another element of star-tracker module is SDRAM memory. By using two Micron's two parallel 64MB DDR SDRAM MT46V64M8 in total 128MB was achieved, where temporary image frames from cameras are stored.
-
-The last part are cameras. Here only the star-tracker camera module is described, because the other camera is not important for this work. The star-tracker camera is based on CMOS MT9D111 sensor. It contains built-in JPEG compressor and consumes little energy. It is equipped in parallel interface with 8-bit bus for data transfer and I2C interface for configuring basic image parameters and many other sensor options, i.e. JPEG compression, coding type, etc. The Table \ref{tab:obc-camera} describes the most important sensor parameters.
-
-
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|p{5cm}|p{5cm}|}
-\hline 
-\textbf{Parameter} & \textbf{Value} \\ 
-\hline 
-\textbf{Format} & 1/3.2" \\ 
-\hline 
-\textbf{Resolution} & 1600x1200 pixels \\ 
-\hline 
-\textbf{Max frame rate} & 15 fps \\ 
-\hline 
-\textbf{ADC resolution} & 10 bits \\ 
-\hline 
-\textbf{Output data format} & YCbCr, 565RGB, 555RGB,\newline 444RGB, JPEG 4:2:2,\newline JPEG 4:2:0 \\ 
-\hline 
-\textbf{Additional pros} & Built-in JPEG compressor \\ 
-\hline 
-\end{tabular} 
-\caption{Most important parameters of MT9D111 sensor. Adapted from \citet{gaska2016obc}.}
-\label{tab:obc-camera}
-\end{table}
-
-\begin{figure}[!htbp]
-\includegraphics[scale=0.5]{obc_startracker.png}
-\centering
-\caption{OBC star-tracker system schema \cite{gaska2016obc}.}
-\label{fig:obc-startracker}
-\end{figure}
-
+\subsection{NVIDIA Jetson TX2}
+In order to research possibility of decreasing costs of designing and producing new hardware for startracker, part of the thesis is to run the startracker program on off-the-shelf device: NVIDIA Jetson TX2. 
+Price of this device is around 570 USD (around 2200 PLN).
 
 \newpage
 \section{Preliminaries}
@@ -645,10 +415,6 @@ In this frame the origin is the centre of the spacecraft. The moves and rotates 
 \caption{BODY frame, Image from \citet{larson1992space}}
 \label{fig:body_frame}
 \end{figure}
-
-\subsection{Space environment?}
-
-\subsection{CCD vs CMOS?}
 
 \subsection{Attitude representations}
 Attitude is not only were one object is located relative to other, but also how it is rotated. It is possible to represent attitude in few ways. Here are described two most commonly used for such case: Euler angels and quaternions. Quaternions are used in all presented estimation methods.
@@ -1492,17 +1258,60 @@ what gave 1625 stars which gave 44922 triangles.
 
 In other (source) works around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower than in case of smaller catalog, hence the smaller catalog was choosen to be used in this startracker program.
 
-The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
+The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky with few magnitude 5 stars program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
+
+
+
+\subsubsection{Centroid}
+Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock input into the startracker. Input images are with following parameters: FOV 10\degree and 900x900 pixels, and imitate parts of that should be visible by startracker on the actual orbit.
+
+\subsubsection{Star identifier}
+
+This means that algorithm rejects stars that can be false stars (other satellite, planet, etc.) or star with higher magnitude than in the catalog.
+
+
+
+Star Identifier algorithm was tested basing on ESA's startracker simulator created for competition needs \cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
+All tests were done with FOV 10\degree . On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%. Accuracy in this case means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
+Such particular accuracy definition comes from the fact that for given scene no star can be recognized incorrectly in order to get correct result in the next part of program, which is QUEST algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
+
+Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be also as accurate (\~95\%) for input data with stars with magnitude $\leqslant 5.56$, however the time of execution per scene rose significantly (from 50ms to 2.2s, 44 times). Test cases with input data with stars with magnitude $\leqslant 6$ has worsen the accuracy - less scenes without incorrectly identified stars comparing to the same test with catalog magnitude $\leqslant 5$, 
+
+(from 200ms to 4.9s, 24.5 times)
+
+
+\subsubsection{QUEST}
+The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
 
 \newpage
-\section{Complete program}
+\section{Testing}
+
+Testing was done in two ways:
+
+First way of testing was giving on input image of sky and then go through all parts of the program. The images were created using Stellarium program, which imitates part of sky with given FOV and coordinates. The parameters of images used during testing are:
+\begin{itemize}[noitemsep]
+\item FOV 10\degree,
+\item 900x900 pixels.
+\end{itemize}
+
+
+
+
+Second way of testing was showing image of sky on the separate screen and try to read it with camera on JETSON device. Although program clearly was able to find stars in the camera input, it needs precise configuration in order to find centroids accurately. Surely such testing will have to be done in case of using this startracker with dedicated camera.
+
+
+Test on JETSON with times per each algorithm!!!!
+
+
+Voltage, Current, Power!!!!
+
 
 \newpage
-\section{Future steps}
+\section{Summary and future steps}
 
 Necessary things to do:
 - test with the dedicated camera;
-- rewrite program to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite.
+- rewrite program (or at least GPU parts) to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite.
 - rerun catalog generation and test for the dedicated set of variables (FOV, etc.)
 
 Optional things to explore:

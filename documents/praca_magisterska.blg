@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: praca_magisterska.aux
 The style file: IEEEtranN.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -27,45 +27,45 @@ Warning--empty journal in brady2002inertial
 Warning--empty journal in markley1993attitude
 
 Done.
-You've used 80 entries,
+You've used 81 entries,
             4855 wiz_defined-function locations,
-            1874 strings with 31250 characters,
-and the built_in function-call counts, 60685 in all, are:
-= -- 5651
+            1878 strings with 31423 characters,
+and the built_in function-call counts, 61103 in all, are:
+= -- 5692
 > -- 1431
 < -- 421
-+ -- 768
++ -- 770
 - -- 312
-* -- 3200
-:= -- 9391
-add.period$ -- 167
-call.type$ -- 80
-change.case$ -- 174
-chr.to.int$ -- 920
-cite$ -- 102
-duplicate$ -- 4166
-empty$ -- 4457
+* -- 3217
+:= -- 9451
+add.period$ -- 169
+call.type$ -- 81
+change.case$ -- 177
+chr.to.int$ -- 921
+cite$ -- 104
+duplicate$ -- 4202
+empty$ -- 4499
 format.name$ -- 450
-if$ -- 13677
+if$ -- 13773
 int.to.chr$ -- 4
-int.to.str$ -- 81
-missing$ -- 655
-newline$ -- 268
+int.to.str$ -- 82
+missing$ -- 662
+newline$ -- 271
 num.names$ -- 201
-pop$ -- 1700
+pop$ -- 1726
 preamble$ -- 1
-purify$ -- 80
+purify$ -- 81
 quote$ -- 2
-skip$ -- 4584
+skip$ -- 4615
 stack$ -- 0
-substring$ -- 2269
-swap$ -- 2910
+substring$ -- 2275
+swap$ -- 2926
 text.length$ -- 94
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1265
+type$ -- 1280
 warning$ -- 9
 while$ -- 279
 width$ -- 0
-write$ -- 910
+write$ -- 919
 (There were 9 warnings)
