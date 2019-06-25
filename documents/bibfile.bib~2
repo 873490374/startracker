@@ -1,5 +1,3 @@
-@comment{x-kbibtex-personnameformatting=<%l><, %f>}
-
 @inproceedings{mcbryde2012star,
 	author = "McBryde, Christopher Ryan and Lightsey, E Glenn",
 	booktitle = "{Aerospace Conference, 2012 IEEE}",
@@ -103,6 +101,7 @@
 
 @article{lindbladstar,
 	author = "Lindblad, Thomas and Lindsey, Clark S and Eide, {\AA}ge and Solberg, {\"O}ystein and Bolseth, Andrew",
+	journal = "Proceedings of SPIE - The International Society for Optical Engineering",
 	title = "{Star Identification using Neural Networks}",
 	year = 1997
 }
@@ -149,6 +148,7 @@
 
 @article{jalabert2011optimization,
 	author = "Jalabert, Eva and Fabacher, Emilien and Guy, Nicolas and Lizy-Destrez, St{\'e}phanie and Rappin, William and Rivier, Guillaume",
+	journal = "8th International ESA Conference on Guidance, Navigation and Control Systems",
 	title = "{Optimization of star research algorithm for ESMO star tracker}",
 	year = "2011"
 }
@@ -159,6 +159,12 @@
 	title = "{On-Orbit Solar Dynamics Observatory (SDO) Star Tracker Warm Pixel Analysis}",
 	volume = "6728",
 	year = "2011"
+}
+
+@misc{hypersat,
+	howpublished = "\url{http://hyper-sat.com/en/index.html}",
+	note = "Accessed: 2019-06-21",
+	title = "{HyperSat - open micro satellite platform}"
 }
 
 @mastersthesis{knutson2012fast,
@@ -187,6 +193,7 @@
 
 @article{markley1999estimate,
 	author = "Markley, F Landis and Mortari, Daniele",
+	journal = "AAS/AIAA Astrodynamics Specialist Conference",
 	title = "{How to estimate attitude from vector observations}",
 	year = "1999"
 }
@@ -256,6 +263,7 @@
 
 @article{heidt2000cubesat,
 	author = "Heidt, Hank and Puig-Suari, Jordi and Moore, Augustus and Nakasuka, Shinichi and Twiggs, Robert",
+	journal = "14th Annual/USU Conference on Small Satellites",
 	title = "{CubeSat: A new generation of picosatellite for education and industry low-cost space experimentation}",
 	year = "2000"
 }
@@ -336,7 +344,8 @@
 @article{juang2003efficient,
 	author = "Juang, Jer-Nan and Kim, Hye-Young and Junkins, John L",
 	journal = "NASA, Tech. Rep. TM-2003-212142",
-	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}"
+	title = "{An efficient and robust singular value method for star pattern recognition and attitude determination}",
+	year = "2003"
 }
 
 @inproceedings{kruijff2003star,
@@ -434,7 +443,7 @@
 
 @misc{Nanosats,
 	howpublished = "\url{http://www.nanosats.eu/}",
-	note = "Accessed: 2017-08-15",
+	note = "Accessed: 2019-06-21",
 	title = "{Nanosatsatellite and CubeSat Database}"
 }
 
@@ -541,7 +550,7 @@
 }
 
 @inproceedings{ccelik2013comparison,
-	author = "\c{C}elik, Onur and Hajiyev, Chingiz",
+	author = "{\c C}elik, Onur and Hajiyev, Chingiz",
 	booktitle = "{Recent Advances in Space Technologies (RAST), 2013 6th International Conference on}",
 	organization = "IEEE",
 	pages = "261--264",
@@ -551,19 +560,21 @@
 
 @article{lizy2010str,
 	author = "Lizy-Destrez, St{\'e}phanie and Mimoun, David",
+	journal = "Global Lunar Conference",
 	title = "{Str: a student developed star tracker for the esa-led esmo moon mission}",
 	year = "2010"
 }
 
 @mastersthesis{gaska2016obc,
-	author = "Gąska, Micha{\l}",
+	author = "G{\c a}ska, Micha{\l}",
 	school = "Warsaw University of Technology",
-	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcją Star Tracker}",
+	title = "{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z funkcj{\c a} Star Tracker}",
 	year = "2016"
 }
 
 @mastersthesis{lindh2014development,
 	author = "Lindh, Marcus",
+	school = "KTH ROYAL INSTITUTE OF TECHNOLOGY",
 	title = "{Development and implementation of star tracker electronics}",
 	year = "2014"
 }
@@ -687,6 +698,7 @@
 
 @article{brady2002inertial,
 	author = "Brady, Tye and Tillier, C and Brown, R and Jimenez, A and Kourepenis, A",
+	journal = "16th Annual USU Conference on Small Satellites",
 	title = "{The inertial stellar compass: A new direction in spacecraft attitude determination}",
 	year = "2002"
 }
@@ -734,6 +746,9 @@
 
 @article{markley1993attitude,
 	author = "Markley, F Landis",
+	journal = "Journal of the Astronautical Sciences",
+	month = jul,
+	number = "41/2",
 	title = "{Attitude determination using vector observations: A fast optimal matrix algorithm}",
 	year = "1993"
 }
@@ -761,5 +776,53 @@
 	pages = "88--95",
 	title = "{Approximate algorithms for fast optimal attitude computation}",
 	year = "1978"
+}
+
+@misc{esa-competition,
+	howpublished = "\url{https://kelvins.esa.int/star-trackers-first-contact/}",
+	note = "Accessed: 2019-06-20",
+	title = "{{"}Star Trackers: First Contact{"} competition, European Space Agency}"
+}
+
+@misc{platforma-satelitarna-space24,
+	howpublished = "\url{https://www.space24.pl/platforma-satelitarna-szkielet-uklad-nerwowy-i-krwioobieg-satelity-analiza}",
+	note = "Accessed: 2019-06-21",
+	title = "{Platforma satelitarna, Space24}"
+}
+
+@misc{hypersat-space24,
+	howpublished = "\url{https://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piasecznahttps://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piaseczna}",
+	note = "Accessed: 2019-06-21",
+	title = "{HyperSat - platforma dla mikrosatelit{\'o}w z Piaseczna, Space24}"
+}
+
+@misc{gamma-satellite,
+	howpublished = "\url{https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/gamma.html}",
+	note = "Accessed: 2019-06-24",
+	title = "{The Gamma Satellite, NASA}"
+}
+
+@misc{optical-devices-cbk,
+	howpublished = "\url{http://www.cbk.waw.pl/teledetekcja/studia/wiosna2009/}",
+	note = "Accessed: 2019-06-24",
+	title = "{Optical devices, lecture materials, Space Research Centre of Polish Academy of Sciences}"
+}
+
+@misc{wut-space-research,
+	howpublished = "\url{http://panorama.varsovia.pl/varsovia/warstwy/cosmic/badania.php.htm}",
+	note = "Accessed: 2019-06-24",
+	title = "{Space research at Warsaw University of Technology}"
+}
+
+@misc{nvidia-jetsontx2,
+	howpublished = "\url{https://devblogs.nvidia.com/jetson-tx2-delivers-twice-intelligence-edge/}",
+	note = "Accessed: 2019-06-24",
+	title = "{NVIDIA Jetson TX2 Delivers Twice the Intelligence to the Edge, NVIDIA}"
+}
+
+@misc{jetsontx2-price,
+	howpublished = "\url{https://www.nvidia.com/en-us/autonomous-machines/jetson-store/#jetson-tx2}",
+	note = "Accessed: 2019-06-24",
+	title = "{Jetson TX2 price, NVIDIA}"
 }
 

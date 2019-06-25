@@ -16,56 +16,46 @@ Database file #2: bibfile.bib
 Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
 Reallocated global_strs (elt_size=20001) to 20 items from 10.
 Reallocated glb_str_end (elt_size=4) to 20 items from 10.
-Warning--empty journal in heidt2000cubesat
-Warning--missing school in lindh2014development
-Warning--empty journal in lindbladstar
-Warning--empty year in juang2003efficient
-Warning--empty journal in markley1999estimate
-Warning--empty journal in jalabert2011optimization
-Warning--empty journal in lizy2010str
-Warning--empty journal in brady2002inertial
-Warning--empty journal in markley1993attitude
 
 Done.
-You've used 81 entries,
+You've used 90 entries,
             4855 wiz_defined-function locations,
-            1878 strings with 31423 characters,
-and the built_in function-call counts, 61103 in all, are:
-= -- 5692
-> -- 1431
-< -- 421
-+ -- 770
-- -- 312
-* -- 3217
-:= -- 9451
-add.period$ -- 169
-call.type$ -- 81
-change.case$ -- 177
-chr.to.int$ -- 921
-cite$ -- 104
-duplicate$ -- 4202
-empty$ -- 4499
-format.name$ -- 450
-if$ -- 13773
-int.to.chr$ -- 4
-int.to.str$ -- 82
-missing$ -- 662
-newline$ -- 271
-num.names$ -- 201
-pop$ -- 1726
+            1919 strings with 33078 characters,
+and the built_in function-call counts, 65750 in all, are:
+= -- 6171
+> -- 1446
+< -- 433
++ -- 797
+- -- 314
+* -- 3410
+:= -- 10163
+add.period$ -- 187
+call.type$ -- 90
+change.case$ -- 203
+chr.to.int$ -- 953
+cite$ -- 112
+duplicate$ -- 4579
+empty$ -- 4931
+format.name$ -- 453
+if$ -- 14852
+int.to.chr$ -- 5
+int.to.str$ -- 91
+missing$ -- 726
+newline$ -- 298
+num.names$ -- 204
+pop$ -- 1928
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 90
 quote$ -- 2
-skip$ -- 4615
+skip$ -- 4974
 stack$ -- 0
-substring$ -- 2275
-swap$ -- 2926
-text.length$ -- 94
+substring$ -- 2382
+swap$ -- 3138
+text.length$ -- 97
 text.prefix$ -- 0
 top$ -- 6
-type$ -- 1280
-warning$ -- 9
-while$ -- 279
+type$ -- 1416
+warning$ -- 0
+while$ -- 285
 width$ -- 0
-write$ -- 919
-(There were 9 warnings)
+write$ -- 1013
