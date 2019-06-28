@@ -1302,37 +1302,67 @@ QUEST outperforms q-method in terms of speed \cite{markley1999estimate}, and whi
 QUEST was also chosen by \citet{huffman2006designing} and \citet{tappe2009development} to be used on satellites' star-trackers.
 
 \newpage
-\section{Prototype}
-For now the following parts are finished in Python:
-\begin{enumerate}
-\item Centroiding
-\item Planar Triangle Recognition with variations
-\item k-vector - results were inconsistent. Moreover for just 1500 stars it didn't give any speed advantage. It is possible it would be worth using in case with more stars.
-\item QUEST
-\item generating star catalogue
-\item connecting all the elements into one program
-\end{enumerate}
+\section{Startracker program}
+
+During startracker development it was necessary to firstly create testing environment in order to ensure that program will work correctly. Each part of algorithm was tested separately on wide range of examples, then they were together as fully functioning startracker program.
+
+During development k-vector algorithm was discarder because results of star identification with k-vector were inconsistent. Moreover for just 1500 stars it didn't give any speed advantage. It is possible it would be worth using in case of catalogs with more stars.
+
+The Tracking Mode does not function properly and will have to be rewritten in the future version of startracker. Altghough correctly working Tracking Mode would make startracker faster, it is possible for it to work all the time in LIS mode.
+
+TODO FULL STARTRACKER block diagram
 Testing\par
 \citet{kruijff2003star}, \citet{kruijff2003automated}, \citet{dzamba2014ground}, 
 
-The catalog was created with the following parameters:
+
+\subsection{Program parts}
+
+\subsubsection{Star Triangle Catalog}
+
+The star triangle catalog was created with the following parameters:
 - stars with max magnitude 5;
 - FOV 10\degree
 what gave 1625 stars which gave 44922 triangles.
 
-In other (source) works around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower than in case of smaller catalog, hence the smaller catalog was choosen to be used in this startracker program.
+In other (source) works around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower in testing than in case of smaller catalog, hence the smaller catalog was choosen to be used in this startracker program.
 
 The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky with few magnitude 5 stars program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
 
+The catalog has following columns:
+star_0_Hipparcos_ID, star_1_Hipparcos_ID, star_2_Hipparcos_ID, area, polar_moment, k_ID
 
+
+\subsubsection{Star Catalog}
+
+There was additional catalog created for stars only. It is used by Star Identifier for eliminating incorrect stars and by Orientation Finder as interial frame star vectors for LIS mode. The catalog was created with stars of max magnitude 6.2.
+
+The catalog has following columns:
+star_Hipparcos_ID, unit_vector_0, unit_vector_1, unit_vector_2
 
 \subsubsection{Centroid}
 Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock input into the startracker. Input images are with following parameters: FOV 10\degree and 900x900 pixels, and imitate parts of that should be visible by startracker on the actual orbit.
 
+This is the most computation-consuming part of the program, however the usage of GPU made it quite fast. 
+
+TODO On Jetson it lasts on average 
+
+Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, where:
+\begin{itemize}[noitemsep]
+\item $x$ is number of horizontal pixels,
+\item $y$ is number of vertical pixels,
+\item $mag_{pix}$ is amout of star magnitude pixels,
+\item $a_{roi}$ is amout of ROI.
+\end{itemize}
+
 \subsubsection{Star identifier}
+TODO block schema
+
+TODO algorithm description
 
 This means that algorithm rejects stars that can be false stars (other satellite, planet, etc.) or star with higher magnitude than in the catalog.
 
+
+Computational complexity is $O(n^3+n^2)$, where $n$ is number of star vectors.
 
 
 Star Identifier algorithm was tested basing on ESA's startracker simulator created for competition needs \cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
@@ -1347,21 +1377,18 @@ Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be
 \subsubsection{QUEST}
 The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
 
+Time complexity is $O(n)$, where $n$ is number of star vectors.
+
+No block diagram will be presented for this part of the program, because it is just calculating using equations in previous chapter.
+
 \newpage
-\section{Testing}
+\section{Testing on NVIDIA Jetson TX2}
 
-Testing was done in two ways:
+Testing of full startracker program was done in two ways:
 
-First way of testing was giving on input image of sky and then go through all parts of the program. The images were created using Stellarium program, which imitates part of sky with given FOV and coordinates. The parameters of images used during testing are:
-\begin{itemize}[noitemsep]
-\item FOV 10\degree,
-\item 900x900 pixels.
-\end{itemize}
+First way of testing was giving on input image of sky and then go through all parts of the program. The images were created using Stellarium program, which imitates part of sky with given FOV and coordinates. The parameters of images used during testing are FOV 10\degree , and resolution of 900x900 pixels.
 
-
-
-
-Second way of testing was showing image of sky on the separate screen and try to read it with camera on JETSON device. Although program clearly was able to find stars in the camera input, it needs precise configuration in order to find centroids accurately. Surely such testing will have to be done in case of using this startracker with dedicated camera.
+Second way of testing was showing image of the sky on the separate screen and try to read it with camera on JETSON device. Although program clearly was able to find stars in the camera input, it needs precise configuration in order to find centroids accurately. Example of precise testing was done by \citet{tappe2011star}. Surely such testing will have to be done to test using this startracker program with dedicated camera.
 
 
 Test on JETSON with times per each algorithm!!!!
@@ -1373,23 +1400,30 @@ Voltage, Current, Power!!!!
 \newpage
 \section{Summary and future steps}
 
-Necessary things to do:
-- test with the dedicated camera;
-- rewrite program (or at least GPU parts) to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite.
-- rerun catalog generation and test for the dedicated set of variables (FOV, etc.)
 
-Optional things to explore:
-- rewrite star identifier on GPU;
-- rewrite tracking mode to work more accurately;
-- get better values for sigm, sigx;
-- catalog with more stars;
-- use k-vector algorithm for more stars;
-- explore other algorithms, especially for star identification and attitude estimation, because it is possible new research improved existing algorithms or created new ones with significantly higher efficiency.
+The program was tested using two sources of truth: images from Stellarium program and tests built basing on ESA's startracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that main parts of startracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (QUEST) work with quite high accuracy. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency of at least $1Hz$ for LIS mode, and at least few times more with correctly working Tracking mode.
 
+In order to use created startracker program on satellite the following things are necessary to be done:
+\begin{itemize}
+\item test with the dedicated camera,
+\item rewrite program (or at least GPU parts) to C/C++ as the Python Anaconda distribution for ARM architecture is experimental and it could break on the satellite,
+\item rerun catalog generation and test for the dedicated set of variables (FOV, etc.).
+\end{itemize}
 
-\newpage
-\section{Testing of star-tracker}
-\citet{tappe2011star}
+There exist a number of optional things to explore for bettering existing startracker:
+\begin{itemize}
+\item rewrite star identifier on GPU,
+\item rewrite tracking mode to work more accurately,
+\item get better values for sigm, sigx,
+\item catalog with more stars,
+\item use k-vector algorithm for more stars,
+\item explore other algorithms, especially for star identification and attitude estimation, because this is area which is being improved mostly.
+\end{itemize}
+
+Although there are few parts which could be improved, the existing startracker program works and could be with only few changes used on the real satellite. 
+TODO JETSON
+Additionally all the work around the startracker program, like tests, can be used for future development of even more accurate programs.
+
 
 \newpage
 \bibliographystyle{IEEEtranN}
