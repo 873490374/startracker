@@ -96,7 +96,7 @@ def lookat(z):
 
 
 def random_matrix():
-    """Generates a random 3x3 orientation matrix.
+    """Generates a random 3x3 attitude matrix.
     Based on James Arvo's algorithm from Graphics Gems III, pages 117-120"""
     rands = np.random.rand(3)
 
@@ -521,25 +521,25 @@ class Scene:
         self.gaussian_noise_sigma = gaussian_noise_sigma
         self.quantization_noise = quantization_noise
         self.magnitude_gaussian = magnitude_gaussian
-        self.orientation = None
+        self.attitude = None
         self.pos = None
         self.ids = None
         self.magnitude_threshold = detector.compute_magnitude_threshold()
 
-    def compute(self, orientation=None):
+    def compute(self, attitude=None):
         """Generates a scene for the star tracker.
-        If not orientation is given a random one is generated.
+        If not attitude is given a random one is generated.
         Gaussian noise is applied to star positions if enabled."""
 
         res_x, res_y = self.camera.resolution
 
-        if orientation is None:
-            orientation = random_matrix()
+        if attitude is None:
+            attitude = random_matrix()
 
-        self.orientation = orientation
+        self.attitude = attitude
 
         star_ids = np.arange(len(self.catalog.star_vectors))
-        pos = np.dot(self.catalog.star_vectors, orientation.transpose())
+        pos = np.dot(self.catalog.star_vectors, attitude.transpose())
 
         # noise on alt, az
         # if self.gaussian_noise_sigma:
@@ -595,7 +595,7 @@ class Scene:
         )
         self.ids = np.concatenate([self.ids, -np.ones(false_stars, np.int32)])
 
-    def copy(self, camera=None, orientation=None, copy_false_stars=True):
+    def copy(self, camera=None, attitude=None, copy_false_stars=True):
 
         false_stars = self.pos[self.ids == -1] if copy_false_stars else []
 
@@ -605,14 +605,14 @@ class Scene:
             false_stars = camera.from_angles(
                 *self.camera.to_angles(false_stars))
 
-        if orientation is None:
-            orientation = self.orientation
+        if attitude is None:
+            attitude = self.attitude
 
         scene = Scene(
             self.catalog, camera, self.detector, self.gaussian_noise_sigma,
             self.quantization_noise, self.magnitude_gaussian
         )
-        scene.compute(orientation)
+        scene.compute(attitude)
 
         scene.add_false_stars(false_stars)
 

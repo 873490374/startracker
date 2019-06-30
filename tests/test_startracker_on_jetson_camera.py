@@ -9,7 +9,7 @@ from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
 from program.tracker.main_program import StarTracker
-from program.tracker.orientation_finder import OrientationFinder
+from program.tracker.attitude_finder import AttitudeFinder
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.quest import QuestCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -146,7 +146,7 @@ def star_tracker(
             triangle_catalog=triangle_catalog,
             star_catalog=star_catalog,
         ),
-        orientation_finder=OrientationFinder(
+        attitude_finder=AttitudeFinder(
             quest_calculator=QuestCalculator(),
             star_catalog=star_catalog,
         ),

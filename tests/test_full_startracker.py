@@ -13,7 +13,7 @@ from program.tracker.camera import CameraConnector
 from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
 from program.tracker.main_program import StarTracker
-from program.tracker.orientation_finder import OrientationFinder
+from program.tracker.attitude_finder import AttitudeFinder
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.quest import QuestCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -25,7 +25,7 @@ images_path = os.path.join(MAIN_PATH, 'tests/images/')
 expected_full = [
     # 0
     [{'id_cat': 30883, 'x': 567.1247112628691, 'y': 86.93461070322651},
-     {'id_cat': 29652, 'x': 846.1869785987435, 'y': 231.4688043035078},
+     {'id_cat': 29650, 'x': 846.1869785987435, 'y': 231.4688043035078},  # mag>5
      {'id_cat': -1, 'x': 394.28125773268596, 'y': 455.0937834813715},  # Mars
      {'id_cat': 32246, 'x': 37.00010760593619, 'y': 191.95356365565536},
      {'id_cat': 30343, 'x': 511.4222424791687, 'y': 322.0785843996516},
@@ -34,7 +34,7 @@ expected_full = [
      {'id_cat': 28734, 'x': 734.0314874862601, 'y': 649.4847448529001}],
     # 1
     [{'id_cat': 30883, 'x': 450.1890666096323, 'y': 33.498286003660006},
-     {'id_cat': 29650, 'x': 731.5313206453219, 'y': 172.46862278262836},
+     {'id_cat': 29650, 'x': 731.5313206453219, 'y': 172.46862278262836},  # mag>5
      {'id_cat': 28716, 'x': 831.8127906505101, 'y': 399.50007674736503},
      {'id_cat': -1, 'x': 283.5937149261077, 'y': 404.2500142135894},  # Mars
      {'id_cat': 30343, 'x': 398.45352341293994, 'y': 269.2504501331041},
@@ -42,7 +42,7 @@ expected_full = [
      {'id_cat': 29655, 'x': 518.6171989110517, 'y': 386.4146671990824},
      {'id_cat': 28734, 'x': 627.0157261044701, 'y': 592.3754575851508}],
     # 2
-    [{'id_cat': 29650, 'x': 535.3751040725068, 'y': 129.49992106301943},
+    [{'id_cat': 29650, 'x': 535.3751040725068, 'y': 129.49992106301943},  # mag>5
      {'id_cat': 28716, 'x': 642.5626047595929, 'y': 353.1566097160898},
      {'id_cat': -1, 'x': 94.96874522550722, 'y': 375.5000103530815},  # Mars
      {'id_cat': 27468, 'x': 582.5002603637881, 'y': 854.6257768178182},
@@ -51,7 +51,7 @@ expected_full = [
      {'id_cat': 29655, 'x': 329.40666488256215, 'y': 350.1571618716604},
      {'id_cat': 28734, 'x': 444.28910303286835, 'y': 552.2816071426246}],
     # 3
-    [{'id_cat': 29650, 'x': 239.50020062556234, 'y': 819.7501238225412},
+    [{'id_cat': 29650, 'x': 239.50020062556234, 'y': 819.7501238225412},  # mag>5
      {'id_cat': 27830, 'x': 228.18737413210405, 'y': 764.4369588074944},
      {'id_cat': 28716, 'x': 531.5625397012493, 'y': 125.78140709147112},
      {'id_cat': 26451, 'x': 865.7500222040394, 'y': 576.2501023546354},
@@ -358,7 +358,7 @@ def star_tracker(
             triangle_catalog=triangle_catalog,
             star_catalog=star_catalog,
         ),
-        orientation_finder=OrientationFinder(
+        attitude_finder=AttitudeFinder(
             quest_calculator=QuestCalculator(),
             star_catalog=star_catalog,
         ),
@@ -481,7 +481,7 @@ class TestFullStarTracker:
                 triangle_catalog=triangle_catalog,
                 star_catalog=star_catalog,
             ),
-            orientation_finder=OrientationFinder(
+            attitude_finder=AttitudeFinder(
                 quest_calculator=QuestCalculator(),
                 star_catalog=star_catalog,
             ),

@@ -814,3 +814,9 @@
 	title = "{Space research at Warsaw University of Technology}"
 }
 
+@misc{nvidia-jetsontx2,
+	howpublished = "\url{https://devblogs.nvidia.com/jetson-tx2-delivers-twice-intelligence-edge/}",
+	note = "Accessed: 2019-06-24",
+	title = "{NVIDIA Jetson TX2 Delivers Twice the Intelligence to the Edge, NVIDIA}"
+}
+

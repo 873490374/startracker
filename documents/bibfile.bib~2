@@ -821,7 +821,7 @@
 }
 
 @misc{jetsontx2-price,
-	howpublished = "\url{https://www.nvidia.com/en-us/autonomous-machines/jetson-store/#jetson-tx2}",
+	howpublished = "\url{https://www.nvidia.com/en-us/autonomous-machines/jetson-store/}",
 	note = "Accessed: 2019-06-24",
 	title = "{Jetson TX2 price, NVIDIA}"
 }

@@ -1310,9 +1310,14 @@ During development k-vector algorithm was discarder because results of star iden
 
 The Tracking Mode does not function properly and will have to be rewritten in the future version of startracker. Altghough correctly working Tracking Mode would make startracker faster, it is possible for it to work all the time in LIS mode.
 
-TODO FULL STARTRACKER block diagram
-Testing\par
-\citet{kruijff2003star}, \citet{kruijff2003automated}, \citet{dzamba2014ground}, 
+Figure \ref{fig:startracker_diagram} shows general schema of designed startracker program.
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.53]{startracker_full_diagram.jpg}
+\centering
+\caption{Designed startracker full program diagram}
+\label{fig:startracker_diagram}
+\end{figure}
 
 
 \subsection{Program parts}
@@ -1329,20 +1334,34 @@ In other (source) works around 6000 stars were used to create catalog, hence ano
 The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky with few magnitude 5 stars program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
 
 The catalog has following columns:
-star_0_Hipparcos_ID, star_1_Hipparcos_ID, star_2_Hipparcos_ID, area, polar_moment, k_ID
-
+\begin{enumerate}[noitemsep]
+\item star 0 Hipparcos ID, 
+\item star 1 Hipparcos ID,
+\item star 2 Hipparcos ID,
+\item area,
+\item polar moment,
+\item k-vector ID.
+\end{enumerate}
 
 \subsubsection{Star Catalog}
 
 There was additional catalog created for stars only. It is used by Star Identifier for eliminating incorrect stars and by Orientation Finder as interial frame star vectors for LIS mode. The catalog was created with stars of max magnitude 6.2.
 
 The catalog has following columns:
-star_Hipparcos_ID, unit_vector_0, unit_vector_1, unit_vector_2
+\begin{enumerate}[noitemsep]
+\item star Hipparcos ID,
+\item unit vector 1st element,
+\item unit vector 2nd element, 
+\item unit vector 3rd element.
+\end{enumerate}
 
-\subsubsection{Centroid}
-Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock input into the startracker. Input images are with following parameters: FOV 10\degree and 900x900 pixels, and imitate parts of that should be visible by startracker on the actual orbit.
+\subsubsection{Getting centroids of image stars}
 
-This is the most computation-consuming part of the program, however the usage of GPU made it quite fast. 
+First camera reads its input and gets image, which is later converted into matrix of light intensity values per pixel. After that program enters into centroiding algorithm. On GPU, each pixel is checked firstly for its light intensity value, average light intensity of neighbouring pixels and if the pixel is not on the border. If all those conditions are passed, then pixel centroid is calculated for this pixel, according to the instructions in the previous chapter. After that pixel centroids are being clustered in order to merge neighbouring centroids into one star centroid. Finally all found star centroids are converted to unit vectors.
+
+Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock output from startracker camera. Images are with following parameters: FOV 10\degree and 900x900 pixels, and imitate parts of that should be visible by startracker on the actual orbit.
+
+This is the most computation-consuming part of the program, however the usage of GPU made it quite fast.
 
 TODO On Jetson it lasts on average 
 
@@ -1354,32 +1373,118 @@ Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, wh
 \item $a_{roi}$ is amout of ROI.
 \end{itemize}
 
-\subsubsection{Star identifier}
-TODO block schema
+\begin{figure}[!htbp]
+\includegraphics[scale=0.51]{get_image_stars_diagram.jpg}
+\centering
+\caption{Getting centroids of image stars diagram}
+\label{fig:startracker_diagram}
+\end{figure}
 
-TODO algorithm description
 
-This means that algorithm rejects stars that can be false stars (other satellite, planet, etc.) or star with higher magnitude than in the catalog.
+\subsubsection{Star identification}
+After having list of image star centroids in form of unit vectors program enters Star Identification phase. Firstly 3-star combinations are created, and for each combination all eligible stars are being found. It is done by calculating Planar Triangle for each 3-star combination and looking up all triangles in Star Triangle Catalog that are withing area and polar moment ranges. Each image star has a list of eligible stars, which is being extended after each lookup, i.e. each image star in the 3-star combination has added the same eligible stars to their lists. After doing this for all 3-star combinations, each image star has list with all eligible stars and one of the most common star IDs in the list should be Hipparcos star ID. Next step is done for each image star: take 10 most common eligible star IDs. If there are none, then this image star is identified as false star. If there are any eligible stars, then for each eligible star ID it is checked, whether this ID was already assigned to any other image star in this image. If it was not, then this eligible star ID is assigned to this image star as its Hipparcos star ID. If it was, then move to next most common eligible star ID. If this is the last most common eligible star, then this image star is identified as false star. After above steps are done for all image stars, the last step of stars identification takes place: removal of incorrect stars. For each image star with found Hipparcos star ID, those stars are looked up in Star Catalog together with their unit vectors. Next each pair of stars is checked if they actually even could be in the same image scene. This is done the same way as during Triangle Catalog creation, by checking if the dot product of unit vectors is higher or equal to the cosine of FOV. The stars which have been marked as incorrect most times are marked as false, the rest stays the same. After this step is finished, the program already has finished star identification and as result it returns list of image stars with information what is its Hipparcos star ID or if it is false star.
 
-
-Computational complexity is $O(n^3+n^2)$, where $n$ is number of star vectors.
-
+Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
 Star Identifier algorithm was tested basing on ESA's startracker simulator created for competition needs \cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
 All tests were done with FOV 10\degree . On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%. Accuracy in this case means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
 Such particular accuracy definition comes from the fact that for given scene no star can be recognized incorrectly in order to get correct result in the next part of program, which is QUEST algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
 
-Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be also as accurate (\~95\%) for input data with stars with magnitude $\leqslant 5.56$, however the time of execution per scene rose significantly (from 50ms to 2.2s, 44 times). Test cases with input data with stars with magnitude $\leqslant 6$ has worsen the accuracy - less scenes without incorrectly identified stars comparing to the same test with catalog magnitude $\leqslant 5$, 
-
-(from 200ms to 4.9s, 24.5 times)
+Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be also as accurate (\~95\%) for input data with stars with magnitude $\leqslant 5.56$, however the time of execution per scene rose significantly (from 50ms to 2.2s, 44 times). Test cases with input data with stars with magnitude $\leqslant 6$ has worsen the accuracy - less scenes without incorrectly identified stars comparing to the same test with catalog magnitude $\leqslant 5$, while time rose significantly (from 200ms to 4.9s, 24.5 times). In order to make this algorithm more accurate on higher magnitude stars it is necessary to explore options of rewriting parts of this algorithm to GPU, using k-vector and finding better constant values for Planar Triangle algorithm.
 
 
-\subsubsection{QUEST}
-The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{star_identifier_diagram.jpg}
+\centering
+\caption{Star identification diagram}
+\label{fig:startracker_diagram}
+\end{figure}
 
-Time complexity is $O(n)$, where $n$ is number of star vectors.
 
-No block diagram will be presented for this part of the program, because it is just calculating using equations in previous chapter.
+\subsubsection{Finding attiude}
+After having list of image stars with Hipparcos star IDs it is possible to determin attitude. For that there are two ways: in Tracking mode current star vectors are compared with previous star vectors; in LIS mode the current star vectors are compared with corresponding star vectors from Star Catalog. Attitude is calculated using QUEST algorithm. The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
+
+Computational complexity is $O(n)$, where $n$ is number of star vectors.
+
+No block diagram will be presented for this part of the program, because it is just sequential calculating using equations in previous chapter.
+
+\subsection{Example of working startracker}
+
+This example is the first scene from "test full startracker" in the code. On the input Figure \ref{fig:example_0} is given - the image imitating what startracker should get from camera. Image was created using Stellarium program.
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.4]{example_0.png}
+\centering
+\caption{Example image input (colors were inverted for better visibility on paper)}
+\label{fig:example_0}
+\end{figure}
+
+After recognizing stars in image and calculating their centroids, the following data are obtained:
+[
+array([ 0, -7.03935481e-02,  2.27089231e-02,  9.97260775e-01, 5.67124711e+02,  8.69346107e+01]),
+array([ 1, -4.23232348e-02,  7.67300727e-02,  9.96153221e-01, 8.46186979e+02,  2.31468804e+02]), 
+array([ 2,  9.90270988e-04, -1.08321553e-02,  9.99940840e-01, 3.94281258e+02,  4.55093783e+02]), 
+array([ 3, -4.99458311e-02, -7.99376389e-02,  9.95547783e-01, 3.70001076e+01,  1.91953564e+02]), 
+array([ 4, -2.48609265e-02,  1.19371244e-02,  9.99619647e-01, 5.11422242e+02,  3.22078584e+02]), 
+array([ 5,  8.17443363e-02, -5.39578538e-02,  9.95191647e-01, 1.71125582e+02,  8.72485377e+02]),
+array([ 6, -1.65145115e-03,  3.48906912e-02,  9.99389770e-01, 6.29570671e+02,  4.41500536e+02]),
+array([ 7, 3.86956736e-02, 5.50958909e-02, 9.97730970e-01, 7.34031487e+02, 6.49484745e+02])
+]
+
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.6]{example_1.png}
+\centering
+\caption{Result of star recognition}
+\label{fig:example_1}
+\end{figure}
+
+combinations:
+<class 'dict'>: {0: [25737, 26594, 26727, 34059, 38500, 38957, 91919, 92791, 94713, 17304, 17351, 20535, 2912, 29655, 4436, 30883, 5447, 32246, 29696, 80569, 30343, 80815, 30883, 81266, 29655, 30343, 30883, 29655, 20354, 29696, 23416, 30883, 24608, 25302, 28734, 26176, 29696, 27989, 30883, 24436, 26199, 26220], 1: [25737, 26594, 26727, 86974, 47391, 87998, 51849, 88267, 52468, 52102, 55425, 57669, 23875, 52468, 24674, 56561, 26727, 57363, 57439, 57851, 58758, 56561, 57363, 60009], 2: [34059, 38500, 38957, 86974, 47391, 87998, 51849, 88267, 52468, 47854, 52370, 52468, 25281, 25473, 83574, 18724, 26235, 25737, 85696, 20877, 27366, 26241, 86670, 21029, 443, 33856, 1562, 35205, 118209, 36917, 89826, 91971, 92420], 3: [91919, 92791, 94713, 17304, 17351, 20535, 2912, 29655, 4436, 30883, 5447, 32246, 86974, 47391, 87998, 51849, 88267, 52468, 52102, 55425, 57669, 23875, 52468, 24674, 56561, 26727, 57363, 47854, 52370, 52468, 25281, 25473, 83574, 18724, 26235, 25737, 85696, 20877, 27366, 26241, 86670, 21029, 29696, 30343, 32246, 29655, 30343, 32246, 28734, 85355, 33856, 30343, 86742, 35210, 32246, 88290, 36795, 29655, 29696, 32246, 28734, 29696, 32246, 54463, 28734, 75379, 67234, 57363, 29655, 76219, 68245, 57851, 32246, 78207, 68523], 4: [91919, 92791, 94713, 29696, 80569, 30343, 80815, 30883, 81266, 29655, 30343, 30883, 57439, 57851, 58758, 56561, 57363, 60009, 443, 33856, 1562, 35205, 118209, 36917, 29696, 30343, 32246, 29655, 30343, 32246, 28734, 85355, 33856, 30343, 86742, 35210, 32246, 88290, 36795, 29655, 29696, 30343, 28734, 29696, 30343, 28734, 29655, 30343], 5: [34059, 38500, 38957, 17304, 17351, 20535, 29696, 80569, 30343, 80815, 30883, 81266, 29655, 20354, 29696, 23416, 30883, 24608, 25302, 28734, 26176, 29696, 27989, 30883, 52102, 55425, 57669, 47854, 52370, 52468, 443, 33856, 1562, 35205, 118209, 36917, 89826, 91971, 92420, 29696, 30343, 32246, 29655, 29696, 32246, 28734, 29696, 32246, 29655, 29696, 30343, 28734, 29696, 30343, 28734, 29655, 29696], 6: [2912, 29655, 4436, 30883, 5447, 32246, 29655, 30343, 30883, 29655, 20354, 29696, 23416, 30883, 24608, 24436, 26199, 26220, 23875, 52468, 24674, 56561, 26727, 57363, 57439, 57851, 58758, 29655, 30343, 32246, 29655, 29696, 32246, 54463, 28734, 75379, 67234, 57363, 29655, 76219, 68245, 57851, 32246, 78207, 68523, 29655, 29696, 30343, 28734, 29655, 30343, 28734, 29655, 29696], 7: [25737, 26594, 26727, 25302, 28734, 26176, 29696, 27989, 30883, 24436, 26199, 26220, 56561, 57363, 60009, 25281, 25473, 83574, 18724, 26235, 25737, 85696, 20877, 27366, 26241, 86670, 21029, 89826, 91971, 92420, 28734, 85355, 33856, 30343, 86742, 35210, 32246, 88290, 36795, 28734, 29696, 32246, 54463, 28734, 75379, 67234, 57363, 29655, 76219, 68245, 57851, 32246, 78207, 68523, 28734, 29696, 30343, 28734, 29655, 30343, 28734, 29655, 29696]}
+
+
+
+wrong stars:
+[26727, 28734, 26727, 29655, 26727, 29696, 26727, 30343, 26727, 30883, 26727, 32246, 26727, 52468, 28734, 52468, 29655, 52468, 29696, 52468, 30343, 52468, 30883, 52468, 32246, 52468]
+
+<class 'list'>: [(26727, 7), (52468, 7), (28734, 2), (29655, 2), (29696, 2), (30343, 2), (30883, 2), (32246, 2)]
+
+identified stars before removing incorrect stars:
+<class 'list'>: [array([ 0.00000000e+00,  3.08830000e+04, -7.03935481e-02,  2.27089231e-02,
+        9.97260775e-01,  5.67124711e+02,  8.69346107e+01]), array([ 1.00000000e+00,  2.67270000e+04, -4.23232348e-02,  7.67300727e-02,
+        9.96153221e-01,  8.46186979e+02,  2.31468804e+02]), array([ 2.00000000e+00,  5.24680000e+04,  9.90270988e-04, -1.08321553e-02,
+        9.99940840e-01,  3.94281258e+02,  4.55093783e+02]), array([ 3.00000000e+00,  3.22460000e+04, -4.99458311e-02, -7.99376389e-02,
+        9.95547783e-01,  3.70001076e+01,  1.91953564e+02]), array([ 4.00000000e+00,  3.03430000e+04, -2.48609265e-02,  1.19371244e-02,
+        9.99619647e-01,  5.11422242e+02,  3.22078584e+02]), array([ 5.00000000e+00,  2.96960000e+04,  8.17443363e-02, -5.39578538e-02,
+        9.95191647e-01,  1.71125582e+02,  8.72485377e+02]), array([ 6.00000000e+00,  2.96550000e+04, -1.65145115e-03,  3.48906912e-02,
+        9.99389770e-01,  6.29570671e+02,  4.41500536e+02]), array([7.00000000e+00, 2.87340000e+04, 3.86956736e-02, 5.50958909e-02,
+       9.97730970e-01, 7.34031487e+02, 6.49484745e+02])]
+
+
+After star identification and finding corresponding catalog stars:
+
+[
+array([ 0,  30883, -7.03935481e-02,  2.27089231e-02, 9.97260775e-01,  5.67124711e+02,  8.69346107e+01]),
+array([ 1, -1, -4.23232348e-02,  7.67300727e-02, 9.96153221e-01,  8.46186979e+02,  2.31468804e+02]), 
+array([ 2, -1,  9.90270988e-04, -1.08321553e-02, 9.99940840e-01,  3.94281258e+02,  4.55093783e+02]),
+array([ 3,  32246, -4.99458311e-02, -7.99376389e-02, 9.95547783e-01,  3.70001076e+01,  1.91953564e+02]), 
+array([ 4,  30343, -2.48609265e-02,  1.19371244e-02, 9.99619647e-01,  5.11422242e+02,  3.22078584e+02]), 
+array([ 5,  29696,  8.17443363e-02, -5.39578538e-02, 9.95191647e-01,  1.71125582e+02,  8.72485377e+02]), 
+array([ 6,  29655, -1.65145115e-03,  3.48906912e-02, 9.99389770e-01,  6.29570671e+02,  4.41500536e+02]), 
+array([ 7,  28734, 3.86956736e-02, 5.50958909e-02, 9.97730970e-01, 7.34031487e+02, 6.49484745e+02])
+]
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.6]{example_2.png}
+\centering
+\caption{Result of star identification}
+\label{fig:example_2}
+\end{figure}
+
+The star number 1 was not found, because it is star with Hipparcos ID 29650 and magnitude higher than limiting 5. Therefore program marked this star as false star. Similarly with star number 2 - it is Mars planet, not a star, hence program marked it also as false star.
+
+Quaternion = [-0.52101746 -0.15332225 -0.1630307   0.82368324]
+
 
 \newpage
 \section{Testing on NVIDIA Jetson TX2}
@@ -1414,7 +1519,7 @@ There exist a number of optional things to explore for bettering existing startr
 \begin{itemize}
 \item rewrite star identifier on GPU,
 \item rewrite tracking mode to work more accurately,
-\item get better values for sigm, sigx,
+\item get better constant values for sigm and sigx for Planar Triangle algorithm,
 \item catalog with more stars,
 \item use k-vector algorithm for more stars,
 \item explore other algorithms, especially for star identification and attitude estimation, because this is area which is being improved mostly.

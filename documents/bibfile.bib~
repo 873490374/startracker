@@ -826,3 +826,13 @@
 	title = "{Jetson TX2 price, NVIDIA}"
 }
 
+@article{lemmer2017propulsion,
+	author = "Lemmer, Kristina",
+	journal = "Acta Astronautica",
+	pages = "231--243",
+	publisher = "Elsevier",
+	title = "{Propulsion for cubesats}",
+	volume = "134",
+	year = "2017"
+}
+

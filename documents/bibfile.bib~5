@@ -803,7 +803,7 @@
 }
 
 @misc{optical-devices-cbk,
-	howpublished = "\url{http://www.cbk.waw.pl/teledetekcja/studia/wiosna2009/wyklad_wiosna2009_PO_optyka_PFS.pdf}",
+	howpublished = "\url{http://www.cbk.waw.pl/teledetekcja/studia/wiosna2009/}",
 	note = "Accessed: 2019-06-24",
 	title = "{Optical devices, lecture materials, Space Research Centre of Polish Academy of Sciences}"
 }

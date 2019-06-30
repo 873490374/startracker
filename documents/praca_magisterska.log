@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  28 JUN 2019 14:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  30 JUN 2019 23:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -991,7 +991,14 @@ LaTeX Warning: Overwriting file `./gloss.tex'.
 \openout15 = `gloss.tex'.
 
 
-(./gloss.tex) (./praca_magisterska.aux)
+(./gloss.tex) (./praca_magisterska.aux
+
+LaTeX Warning: Label `fig:startracker_diagram' multiply defined.
+
+
+LaTeX Warning: Label `fig:startracker_diagram' multiply defined.
+
+)
 \openout1 = `praca_magisterska.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
@@ -1010,8 +1017,7 @@ LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 99.
 LaTeX Font Info:    ... okay on input line 99.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 99.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 99.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 99.
@@ -1315,68 +1321,47 @@ File: images/k-vector-example.png Graphic file (type png)
 <use images/k-vector-example.png>
 Package pdftex.def Info: images/k-vector-example.png  used on input line 1093.
 (pdftex.def)             Requested size: 328.98247pt x 260.89742pt.
- [49 <./images/k-vector-example.png>] [50] [51] [52] [53] [54] [55] [56]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1332 star_
-            0_Hipparcos_ID, star_1_Hipparcos_ID, star_2_Hipparcos_ID, area, ...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Double subscript.
-l.1332 star_0_
-              Hipparcos_ID, star_1_Hipparcos_ID, star_2_Hipparcos_ID, area, ...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.1332 star_0_Hipparcos_ID, star_1_
-                                   Hipparcos_ID, star_2_Hipparcos_ID, area, ...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Double subscript.
-l.1332 ...pparcos_ID, star_1_Hipparcos_ID, star_2_
-                                                  Hipparcos_ID, area, polar_...
-I treat `x_1_2' essentially like `x_1{}_2'.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1333 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (233.09149pt too wide) in paragraph at lines 1331--1333
-[]\OT1/lmr/m/n/12 The cat-a-log has fol-low-ing columns: star$[][]\OML/lmm/m/it
-/12 ipparcos[]D; star[][]ipparcos[]D; star[][]ipparcos[]D; area; polar[]oment; 
-k[]D$ 
- []
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1340 star_
-            Hipparcos_ID, unit_vector_0, unit_vector_1, unit_vector_2
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.1341 
-       
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (92.31403pt too wide) in paragraph at lines 1339--1341
-[]\OT1/lmr/m/n/12 The cat-a-log has fol-low-ing columns: star$[]\OML/lmm/m/it/1
-2 ipparcos[]D; unit[]ector[]; unit[]ector[]; unit[]ector[]$ 
- []
-
-[57] [58] [59] [60] [61] [62] (./praca_magisterska.bbl [63] [64] [65]
+ [49 <./images/k-vector-example.png>] [50] [51] [52] [53] [54] [55]
+<images/startracker_full_diagram.jpg, id=229, 723.70375pt x 673.51625pt>
+File: images/startracker_full_diagram.jpg Graphic file (type jpg)
+<use images/startracker_full_diagram.jpg>
+Package pdftex.def Info: images/startracker_full_diagram.jpg  used on input lin
+e 1316.
+(pdftex.def)             Requested size: 383.56116pt x 356.96191pt.
+ [56] [57 <./images/startracker_full_diagram.jpg>] [58]
+<images/get_image_stars_diagram.jpg, id=239, 743.77875pt x 783.92876pt>
+File: images/get_image_stars_diagram.jpg Graphic file (type jpg)
+<use images/get_image_stars_diagram.jpg>
+Package pdftex.def Info: images/get_image_stars_diagram.jpg  used on input line
+ 1377.
+(pdftex.def)             Requested size: 379.32214pt x 399.79839pt.
+ [59] [60 <./images/get_image_stars_diagram.jpg>]
+<images/star_identifier_diagram.jpg, id=246, 703.62875pt x 683.55376pt>
+File: images/star_identifier_diagram.jpg Graphic file (type jpg)
+<use images/star_identifier_diagram.jpg>
+Package pdftex.def Info: images/star_identifier_diagram.jpg  used on input line
+ 1397.
+(pdftex.def)             Requested size: 386.99701pt x 375.95573pt.
+ [61]
+[62 <./images/star_identifier_diagram.jpg>]
+<images/example_0.png, id=255, 903.375pt x 903.375pt>
+File: images/example_0.png Graphic file (type png)
+<use images/example_0.png>
+Package pdftex.def Info: images/example_0.png  used on input line 1416.
+(pdftex.def)             Requested size: 361.3436pt x 361.3436pt.
+<images/example_1.png, id=256, 642.4pt x 481.8pt>
+File: images/example_1.png Graphic file (type png)
+<use images/example_1.png>
+Package pdftex.def Info: images/example_1.png  used on input line 1424.
+(pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
+<images/example_2.png, id=257, 642.4pt x 481.8pt>
+File: images/example_2.png Graphic file (type png)
+<use images/example_2.png>
+Package pdftex.def Info: images/example_2.png  used on input line 1432.
+(pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
+ [63] [64 <./images/example_0.png>]
+[65 <./images/example_1.png (PNG copy)>] [66 <./images/example_2.png>] [67]
+[68] [69] (./praca_magisterska.bbl [70] [71] [72]
 Overfull \hbox (141.27985pt too wide) in paragraph at lines 236--239
 []\OT1/lmr/m/n/12 ``The Gamma Satel-lite, NASA,'' https://heasarc.gsfc.nasa.gov
 /docs/heasarc/missions/gamma.html,
@@ -1409,7 +1394,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--249
 d:
  []
 
-[66]
+[73]
 Underfull \hbox (badness 1163) in paragraph at lines 263--265
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1489,7 +1474,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 307--310
 
  []
 
-[67]
+[74]
 Underfull \hbox (badness 10000) in paragraph at lines 312--315
 []\OT1/lmr/m/n/12 ``Space Sta-tion Us-ing GPS in At-ti-tude Con-trol,''
  []
@@ -1531,7 +1516,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--346
 []\OT1/lmr/m/n/12 ``NED frame im-age,'' http://www.basicairdata.eu/knowledge-
  []
 
-[68]
+[75]
 Underfull \hbox (badness 10000) in paragraph at lines 413--416
 []\OT1/lmr/m/n/12 ``StarVision Tech-nolo-gies Se-cures Ex-clu-
  []
@@ -1541,43 +1526,46 @@ Underfull \hbox (badness 10000) in paragraph at lines 413--416
 \OT1/lmr/m/n/12 sive Li-cense to Star Iden-ti-fi-ca-tion Soft-ware,''
  []
 
-[69]) [70] (./praca_magisterska.lot)
+[76]) [77] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [71] (./praca_magisterska.lof)
+ [78] (./praca_magisterska.lof [79])
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
- [72]
-(./praca_magisterska.aux) ) 
+
+[80] (./praca_magisterska.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 12951 strings out of 492982
- 203303 string characters out of 6134895
- 336640 words of memory out of 5000000
- 16173 multiletter control sequences out of 15000+600000
+ 12976 strings out of 492982
+ 204035 string characters out of 6134895
+ 336569 words of memory out of 5000000
+ 16192 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,15n,96p,1982b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr
-/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips
-/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/shar
-e/texmf/fonts/enc/dvips/lm/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/l
-mbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmbx8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.
-pfb></usr/share/texmf/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/
-type1/public/lm/lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></u
-sr/share/texmf/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/
-public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/sha
-re/texmf/fonts/type1/public/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/l
-m/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf
-/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.
-pfb>
-Output written on praca_magisterska.pdf (72 pages, 16351584 bytes).
+ 61i,15n,96p,2115b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
+ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
+hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/l
+m/lm-ts1.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/tex
+mf/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmb
+x8.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmmi12.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb
+></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type
+1/public/lm/lmmib10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.pfb></usr
+/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/publ
+ic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on praca_magisterska.pdf (80 pages, 16678943 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
+ 379 PDF objects out of 1000 (max. 8388607)
+ 235 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 161 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -35,7 +35,7 @@ class TestUtils:
 
         ids = [82363, 83081, 83153, 85258, 85267]
 
-        orientation = np.array([
+        attitude = np.array([
             [-0.56855987, -0.63115105,  0.52762490],
             [-0.81017117,  0.54085489, -0.22605015],
             [-0.14269672, -0.55598952, -0.81884876]])
@@ -44,7 +44,7 @@ class TestUtils:
         for i in range(len(alt)):
             calc_uv.append(
                 convert_star_to_uv(np.deg2rad(alt[i]), np.deg2rad(az[i])))
-        calc_uv_orient = np.dot(calc_uv, orientation.transpose())
+        calc_uv_orient = np.dot(calc_uv, attitude.transpose())
         for i in range(len(uv)):
             assert np.isclose(calc_uv_orient[i], uv[i], atol=1.e-4).all()
 

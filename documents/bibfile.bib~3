@@ -820,3 +820,9 @@
 	title = "{NVIDIA Jetson TX2 Delivers Twice the Intelligence to the Edge, NVIDIA}"
 }
 
+@misc{jetsontx2-price,
+	howpublished = "\url{https://www.nvidia.com/en-us/autonomous-machines/jetson-store/#jetson-tx2}",
+	note = "Accessed: 2019-06-24",
+	title = "{Jetson TX2 price, NVIDIA}"
+}
+

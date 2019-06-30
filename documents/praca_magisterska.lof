@@ -28,3 +28,9 @@
 \contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{40}
 \contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{45}
 \contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example, Image from \citep {mortari2000k}\relax }}{49}
+\contentsline {figure}{\numberline {17}{\ignorespaces Designed startracker full program diagram\relax }}{57}
+\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{60}
+\contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{62}
+\contentsline {figure}{\numberline {20}{\ignorespaces Example image input (colors were inverted for better visibility on paper)\relax }}{64}
+\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition\relax }}{65}
+\contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification\relax }}{66}

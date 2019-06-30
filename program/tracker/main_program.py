@@ -1,7 +1,7 @@
 import numpy as np
 
 from program.tracker.image_processor import ImageProcessor
-from program.tracker.orientation_finder import OrientationFinder
+from program.tracker.attitude_finder import AttitudeFinder
 from program.tracker.star_identifier import StarIdentifier
 from program.tracker.tracker import Tracker
 
@@ -12,12 +12,12 @@ class StarTracker:
             self,
             image_processor: ImageProcessor,
             star_identifier: StarIdentifier,
-            orientation_finder: OrientationFinder,
+            attitude_finder: AttitudeFinder,
             tracker: Tracker,
             tracking_mode_enabled: bool):
         self.image_processor = image_processor
         self.star_identifier = star_identifier
-        self.orientation_finder = orientation_finder
+        self.attitude_finder = attitude_finder
         self.tracker = tracker
         self.tracking_mode_enabled = tracking_mode_enabled
 
@@ -33,15 +33,15 @@ class StarTracker:
                 else:
                     identified_stars = self.tracker.track(
                         image_stars, identified_stars)
-                orientation = self.find_orientation(identified_stars)
-                yield identified_stars, orientation
+                attitude = self.find_attitude(identified_stars)
+                yield identified_stars, attitude
         else:
             while True:
                 # LIS mode
                 image_stars = self.get_image_stars()
                 identified_stars = self.identify_stars(image_stars)
-                orientation = self.find_orientation(identified_stars)
-                yield identified_stars, orientation
+                attitude = self.find_attitude(identified_stars)
+                yield identified_stars, attitude
 
     def get_image_stars(self) -> np.ndarray:
         return self.image_processor.get_image_star_vectors()
@@ -49,8 +49,8 @@ class StarTracker:
     def identify_stars(self, image_stars: np.ndarray):
         return self.star_identifier.identify_stars(image_stars)
 
-    def find_orientation(self, identified_stars: np.ndarray):
+    def find_attitude(self, identified_stars: np.ndarray):
 
-        orientation = self.orientation_finder.find_orientation(
+        attitude = self.attitude_finder.find_attitude(
             identified_stars)
-        return orientation
+        return attitude
