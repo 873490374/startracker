@@ -32,5 +32,5 @@
 \contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{60}
 \contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{62}
 \contentsline {figure}{\numberline {20}{\ignorespaces Example image input (colors were inverted for better visibility on paper)\relax }}{64}
-\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition\relax }}{65}
-\contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification\relax }}{66}
+\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition (red indicates image star ID assigned by algorithm)\relax }}{65}
+\contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification (black indicates the Hipparcos star ID found by algorithm, red indicates the real ID, "-1" indicates "false star")\relax }}{68}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  30 JUN 2019 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  2 JUL 2019 00:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1352,16 +1352,31 @@ Package pdftex.def Info: images/example_0.png  used on input line 1416.
 <images/example_1.png, id=256, 642.4pt x 481.8pt>
 File: images/example_1.png Graphic file (type png)
 <use images/example_1.png>
-Package pdftex.def Info: images/example_1.png  used on input line 1424.
+Package pdftex.def Info: images/example_1.png  used on input line 1455.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 1467--1467
+[]\OT1/lmr/m/n/12 image
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1467--1467
+[]\OT1/lmr/m/n/12 number
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1467--1467
+\OT1/lmr/m/n/12 of all
+ []
+
 <images/example_2.png, id=257, 642.4pt x 481.8pt>
 File: images/example_2.png Graphic file (type png)
 <use images/example_2.png>
-Package pdftex.def Info: images/example_2.png  used on input line 1432.
+Package pdftex.def Info: images/example_2.png  used on input line 1573.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
- [63] [64 <./images/example_0.png>]
-[65 <./images/example_1.png (PNG copy)>] [66 <./images/example_2.png>] [67]
-[68] [69] (./praca_magisterska.bbl [70] [71] [72]
+[63] [64 <./images/example_0.png>] [65 <./images/example_1.png>] [66] [67]
+[68 <./images/example_2.png>] [69] [70] [71] (./praca_magisterska.bbl [72]
+[73] [74]
 Overfull \hbox (141.27985pt too wide) in paragraph at lines 236--239
 []\OT1/lmr/m/n/12 ``The Gamma Satel-lite, NASA,'' https://heasarc.gsfc.nasa.gov
 /docs/heasarc/missions/gamma.html,
@@ -1394,7 +1409,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--249
 d:
  []
 
-[73]
+[75]
 Underfull \hbox (badness 1163) in paragraph at lines 263--265
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1474,7 +1489,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 307--310
 
  []
 
-[74]
+[76]
 Underfull \hbox (badness 10000) in paragraph at lines 312--315
 []\OT1/lmr/m/n/12 ``Space Sta-tion Us-ing GPS in At-ti-tude Con-trol,''
  []
@@ -1516,7 +1531,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--346
 []\OT1/lmr/m/n/12 ``NED frame im-age,'' http://www.basicairdata.eu/knowledge-
  []
 
-[75]
+[77]
 Underfull \hbox (badness 10000) in paragraph at lines 413--416
 []\OT1/lmr/m/n/12 ``StarVision Tech-nolo-gies Se-cures Ex-clu-
  []
@@ -1526,25 +1541,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 413--416
 \OT1/lmr/m/n/12 sive Li-cense to Star Iden-ti-fi-ca-tion Soft-ware,''
  []
 
-[76]) [77] (./praca_magisterska.lot)
+[78]) [79] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [78] (./praca_magisterska.lof [79])
+ [80] (./praca_magisterska.lof [81])
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
 
-[80] (./praca_magisterska.aux)
+[82] (./praca_magisterska.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12976 strings out of 492982
- 204035 string characters out of 6134895
- 336569 words of memory out of 5000000
- 16192 multiletter control sequences out of 15000+600000
+ 12981 strings out of 492982
+ 204110 string characters out of 6134895
+ 349614 words of memory out of 5000000
+ 16197 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,15n,96p,2115b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1562,10 +1577,10 @@ ic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on praca_magisterska.pdf (80 pages, 16678943 bytes).
+Output written on praca_magisterska.pdf (82 pages, 16685333 bytes).
 PDF statistics:
- 379 PDF objects out of 1000 (max. 8388607)
- 235 compressed objects within 3 object streams
+ 386 PDF objects out of 1000 (max. 8388607)
+ 239 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  161 words of extra memory for PDF output out of 10000 (max. 10000000)
 
