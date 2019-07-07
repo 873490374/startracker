@@ -524,7 +524,7 @@ q_3
 where $\bm{n} = \frac{\bm{n}}{||\bm{n}||}$.
 
 In code the so called $x,y,z,w$ representation is used, where the scalar part is the last element of the vector:
-\begin{equation}
+\begin{equation} \label{eq:code_quaternion}
 \bm{q} \coloneqq \begin{bmatrix}
 q_1 \\
 q_2 \\
@@ -1377,7 +1377,7 @@ Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, wh
 \includegraphics[scale=0.51]{get_image_stars_diagram.jpg}
 \centering
 \caption{Getting centroids of image stars diagram}
-\label{fig:startracker_diagram}
+\label{fig:get_image_stars_diagram}
 \end{figure}
 
 
@@ -1397,7 +1397,7 @@ Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be
 \includegraphics[scale=0.55]{star_identifier_diagram.jpg}
 \centering
 \caption{Star identification diagram}
-\label{fig:startracker_diagram}
+\label{fig:star_identifier_diagram}
 \end{figure}
 
 
@@ -1419,7 +1419,8 @@ This example is the first scene from "test full startracker" in the code. On the
 \label{fig:example_0}
 \end{figure}
 
-After recognizing stars in image and calculating their centroids, the following data are obtained:
+After recognizing stars in image and calculating their centroids, the data in Table \ref{fig:example_1} are obtained. Each star has assigned its image ID, vector values and image coordinates. 
+The data are visualized in Figure \ref{fig:example_1}, where red numbers indicate image ID of stars in the image.
 
 
 \renewcommand{\arraystretch}{1.5}
@@ -1459,12 +1460,16 @@ image ID & uv1 & uv2 & uv3 & pos x & pos y \\
 \end{figure}
 
 
+Next, for each combination of 3 image stars, eligible star are calculated and added list of eligible stars for each image star. Table \ref{tab:example_2} shows lists of eligible stars after doing it for all combinations. 
+Only 10 most common occurences of Hipparcos star ID are shown in the table due to long list. It is visible clearly, that stars 1 and 2 have significantly smaller number of highest occuring star ID.
+
+
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|p{1.5cm}|p{1.5cm}|p{7cm}|}
 \hline 
-image ID & number of all stars & 10 most common stars (ID: amount)\\ 
+image ID & number of all stars & 10 most common stars (ID: amount), decreasing\\ 
 \hline 
 0 & 42 &  30883: 5, 29655: 3, 29696: 3, 30343: 2, 25737: 1, 26594: 1, 26727: 1, 34059: 1, 38500: 1, 38957: 1, ... \\
 \hline 
@@ -1488,23 +1493,8 @@ image ID & number of all stars & 10 most common stars (ID: amount)\\
 \end{table}
 
 
-
-
-\renewcommand{\arraystretch}{1.5}
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|p{7cm}|}
-\hline 
-26727: 7, 52468: 7, 28734: 2, 29655: 2, 29696: 2, 30343: 2, 30883: 2, 32246: 2 \\
-\hline 
-\end{tabular}
-\caption{Hipparcos IDs of incorrect stars}
-\label{tab:example_3}
-\end{table}
-
-<class 'list'>: [(26727, 7), (52468, 7), (28734, 2), (29655, 2), (29696, 2), (30343, 2), (30883, 2), (32246, 2)]
-
-identified stars before removing incorrect stars:
+After that each image star is being assigned its Hipparcos ID according to algorithm described in previous chapter. 
+The result is visible in Table \ref{tab:example_3}.
 
 
 \renewcommand{\arraystretch}{1.5}
@@ -1532,11 +1522,34 @@ image ID & Hipparcos ID & uv1 & uv2 & uv3 & pos x & pos y \\
 \hline 
 \end{tabular}
 \caption{Result of star identification before removing incorrect stars}
+\label{tab:example_3}
+\end{table}
+
+
+To ensure the correctness of the data, the last part of star identification is executed: removing incorrect stars. 
+Table \ref{tab:example_4} shows the most commonly appearing Hipparcos star IDs that could not be in the same image. 
+Two IDs: 26727 and 52468 appear significantly more often than the rest of IDs, therefore they are going to be removed from the result and marked with ID "-1", because it represents false star. 
+26727 and 52468 happen to be found Hipparcos star ID for image stars 1 and 2, respectively.
+
+The image star 1 was not found, because it is star with Hipparcos ID 29650 and magnitude higher than limiting 5. Therefore program marked this star as false star. 
+Similarly with image star 2 - it is Mars planet, not a star, hence program marked it also as false star.
+
+The final result of star identification is visible in Table \ref{tab:example_5} and is visualized in Figure \ref{fig:example_5}. The red labels in the image are Hipparcos stars IDs and name of the planet Mars.
+
+
+\renewcommand{\arraystretch}{1.5}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|p{7cm}|}
+\hline 
+26727: 7, 52468: 7, 28734: 2, 29655: 2, 29696: 2, 30343: 2, 30883: 2, 32246: 2 \\
+\hline 
+\end{tabular}
+\caption{Hipparcos IDs of incorrect stars}
 \label{tab:example_4}
 \end{table}
 
 
-After star identification and finding corresponding catalog stars:
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[!htbp]
@@ -1567,19 +1580,24 @@ image ID & Hipparcos ID & uv1 & uv2 & uv3 & pos x & pos y \\
 \end{table}
 
 
-
-
 \begin{figure}[!htbp]
 \includegraphics[scale=0.6]{example_2.png}
 \centering
 \caption{Result of star identification (black indicates the Hipparcos star ID found by algorithm, red indicates the real ID, "-1" indicates "false star")}
-\label{fig:example_2}
+\label{fig:example_5}
 \end{figure}
 
-The star number 1 was not found, because it is star with Hipparcos ID 29650 and magnitude higher than limiting 5. Therefore program marked this star as false star. Similarly with star number 2 - it is Mars planet, not a star, hence program marked it also as false star.
 
-$Quaternion = [-0.52101746 -0.15332225 -0.1630307 0.82368324]$
+Finally the identified stars are used for calculating quaternion. The resulting quaternion is visible in Equation \ref{eq:example_6}, where the form of quaternion is described in Equation \ref{eq:code_quaternion}.
 
+\begin{equation} \label{eq:example_6}
+\bm{q} \coloneqq \begin{bmatrix}
+-0.52101746 \\
+-0.15332225 \\
+-0.16303070 \\
+ 0.82368324
+\end{bmatrix}
+\end{equation}
 
 \newpage
 \section{Testing on NVIDIA Jetson TX2}
