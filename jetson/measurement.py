@@ -151,7 +151,7 @@ devices = [
     VDD_SYS_GPU,
     VDD_SYS_SOC,
     # VDD_4V0_WIFI,
-    # VDD_IN,
+    VDD_IN,
     VDD_SYS_CPU,
     # VDD_SYS_DDR,
     # VDD_MUX,
