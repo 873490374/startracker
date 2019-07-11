@@ -174,7 +174,7 @@ if __name__ == '__main__':
                                     quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
         start = time.time()
-        while time.time() - start < 300:
+        while time.time() - start < 75:
             for dev in devices:
                 try:
                     f1 = os.open(dev['rail_name'], os.O_RDONLY | os.O_NONBLOCK)

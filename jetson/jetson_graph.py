@@ -1,4 +1,3 @@
-"""timestamp, name, value"""
 import csv
 import os
 
@@ -7,7 +6,7 @@ import matplotlib.pyplot as plt
 from program.const import MAIN_PATH
 
 
-def make_graph(filename, ylabel, power=1):
+def make_graph(filename, ylabel, power=1, start_after=3, break_after=33):
     with open(
             os.path.join(MAIN_PATH, filename), 'r') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')
@@ -21,17 +20,21 @@ def make_graph(filename, ylabel, power=1):
             res[name] = {'t': [], 'v': []}
         for row in data:
             r = row[0].split(' ')
-            if float(r[0]) > 45:
+            if float(r[0]) > break_after:
                 break
-            res[r[1]]['t'].append(float(r[0]))
+            if float(r[0]) < start_after:
+                continue
+            res[r[1]]['t'].append(float(r[0])-start_after)
             res[r[1]]['v'].append(float(r[2])*power)
 
         plt.plot(
-            res[names[0]]['t'], res[names[0]]['v'], 'r-', label=names[0][4:])
+            res[names[0]]['t'], res[names[0]]['v'], 'g-', label=names[0][4:])
         plt.plot(
-            res[names[1]]['t'], res[names[1]]['v'], 'b-', label=names[1][4:])
+            res[names[1]]['t'], res[names[1]]['v'], 'k-', label=names[1][4:])
         plt.plot(
-            res[names[2]]['t'], res[names[2]]['v'], 'g-', label=names[2][4:])
+            res[names[2]]['t'], res[names[2]]['v'], 'b-', label=names[2][4:])
+        plt.plot(
+            res[names[3]]['t'], res[names[3]]['v'], 'r-', label=names[3][4:])
 
         plt.xlabel('Time [s]')
         plt.ylabel(ylabel)
@@ -41,6 +44,6 @@ def make_graph(filename, ylabel, power=1):
         plt.show()
 
 
-make_graph('measurements_current.csv', 'Current [A]', 10**-3)  # miliampers
-make_graph('measurements_voltage.csv', 'Voltage [V]', 10**-3)  # milivolts
+# make_graph('measurements_current.csv', 'Current [A]', 10**-3)  # miliampers
+# make_graph('measurements_voltage.csv', 'Voltage [V]', 10**-3)  # milivolts
 make_graph('measurements_power.csv', 'Power [W]', 10**-3)  # miliwats
