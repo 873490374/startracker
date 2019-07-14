@@ -1363,7 +1363,7 @@ Centroid algorithm was tested using images created with Stellarium, free planeta
 
 This is the most computation-consuming part of the program, however the usage of GPU made it quite fast.
 
-TODO On Jetson it lasts on average 
+On Jetson Centroiding lasts around 200 ms in most cases, but it can go up higher with more stars in the input image. It will also go much higher in images with higher resolution.
 
 Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, where:
 \begin{itemize}[noitemsep]
@@ -1384,6 +1384,8 @@ Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, wh
 \subsubsection{Star identification}
 After having list of image star centroids in form of unit vectors program enters Star Identification phase. Firstly 3-star combinations are created, and for each combination all eligible stars are being found. It is done by calculating Planar Triangle for each 3-star combination and looking up all triangles in Star Triangle Catalog that are withing area and polar moment ranges. Each image star has a list of eligible stars, which is being extended after each lookup, i.e. each image star in the 3-star combination has added the same eligible stars to their lists. After doing this for all 3-star combinations, each image star has list with all eligible stars and one of the most common star IDs in the list should be Hipparcos star ID. Next step is done for each image star: take 10 most common eligible star IDs. If there are none, then this image star is identified as false star. If there are any eligible stars, then for each eligible star ID it is checked, whether this ID was already assigned to any other image star in this image. If it was not, then this eligible star ID is assigned to this image star as its Hipparcos star ID. If it was, then move to next most common eligible star ID. If this is the last most common eligible star, then this image star is identified as false star. After above steps are done for all image stars, the last step of stars identification takes place: removal of incorrect stars. For each image star with found Hipparcos star ID, those stars are looked up in Star Catalog together with their unit vectors. Next each pair of stars is checked if they actually even could be in the same image scene. This is done the same way as during Triangle Catalog creation, by checking if the dot product of unit vectors is higher or equal to the cosine of FOV. The stars which have been marked as incorrect most times are marked as false, the rest stays the same. After this step is finished, the program already has finished star identification and as result it returns list of image stars with information what is its Hipparcos star ID or if it is false star.
 
+On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can go much higher with more stars in the input image, even to 5 seconds. Possibly rewriting parts of this algorithm to use GPU would make it execue faster.
+
 Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
 Star Identifier algorithm was tested basing on ESA's startracker simulator created for competition needs \cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
@@ -1403,6 +1405,8 @@ Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be
 
 \subsubsection{Finding attiude}
 After having list of image stars with Hipparcos star IDs it is possible to determin attitude. For that there are two ways: in Tracking mode current star vectors are compared with previous star vectors; in LIS mode the current star vectors are compared with corresponding star vectors from Star Catalog. Attitude is calculated using QUEST algorithm. The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
+
+On Jetson Attitude Determination lasts below 10 ms in most cases, but it can go even up to 200 ms. This can happen if high percentage of stars in scene is misidentified and it takes more iterations to converge.
 
 Computational complexity is $O(n)$, where $n$ is number of star vectors.
 
@@ -1604,22 +1608,43 @@ Finally the identified stars are used for calculating quaternion. The resulting 
 
 Testing of full startracker program was done in two ways:
 
-First way of testing was giving on input image of sky and then go through all parts of the program. The images were created using Stellarium program, which imitates part of sky with given FOV and coordinates. The parameters of images used during testing are FOV 10\degree , and resolution of 900x900 pixels.
+First way of testing was to give image of sky on input and then to go through all parts of the program. The images were created using Stellarium program, which imitates part of sky with given FOV and coordinates. The parameters of images used during testing are FOV 10\degree , and resolution of 900x900 pixels.
 
 Second way of testing was showing image of the sky on the separate screen and try to read it with camera on JETSON device. Although program clearly was able to find stars in the camera input, it needs precise configuration in order to find centroids accurately. Example of precise testing was done by \citet{tappe2011star}. Surely such testing will have to be done to test using this startracker program with dedicated camera.
 
+The following results come from first way of testing: simulating input of startracker with already made images. The series of 14 images was run one by one. Figure \ref{fig:power_plot} shows the power consumption of algorithm on Jetson TX2. The values were collected by reading metrics collected by Ubuntu system while running the startracker test. The first peak is the loading of catalogs into the memory. At around 3rd second the first scene is read. Even with the highest load power consumption does not exceed 7 Watts. It is clearly visible that CPU consuption is significantly higher than GPU and is due to the fact that still most of startracker computation is done on CPU. High power consumption peaks in seconds 9-14 and 23-28 are due to the higher amout of stars in input scenes at that time, what leads to longer time of star identification process, which is the CPU consuming process.
 
-Test on JETSON with times per each algorithm!!!!
+Figure \ref{fig:times_plot} shows how much time was neccessary to calculate attitude for each of 14 scenes. Scenes 2 and 12 have higher time of Attitude calculation because in those scenes quite big percentage of stars were misidentified and it took more iterations to finalize calculations. Enormously higher Star Identification times for scenes 10, 11 and 12 come from the much higher amount of stars in the scene image. 
 
+Figure \ref{fig:power_times_plot} shows power consumption with marked times of each section calculation. Red vertical lines mark start of next sequence of 14 input scenes, black vertical lines describe the start of next scene. Scene 10 takes time between 6th and 8th second and it is visible that power consumption raises a little. However in the next scene, scene 11 (seconds 8-13) the power consumption peaks from 5 to nearly 7 Watts. Scene 12 (seconds 13-18) also notes higher consumption, however smaller than previous scene. The next two scenes take a little time and around second 19 the next sequence of 14 images is started (red vertical line).
 
-Voltage, Current, Power!!!!
+It is visible that the higher amout of stars on the input make program work significantly slower. While Cenotriding part needs rather the similar amout of time and Attitude Determination is not computationaly expensive (takes longer only in case of misidentified stars, and still it was at most 200 ms), Star Identification can take even 40 times more than usual. The possible solution would be to rewrite Star Identification algorithm to be computed on GPU, especially because GPU power consumption stays on much lower level than CPU's.
 
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{power_plot.png}
+\centering
+\caption{Power consumption of startracker on Jetson TX2}
+\label{fig:power_plot}
+\end{figure}
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{times_plot.png}
+\centering
+\caption{Startracker execution time of each scene}
+\label{fig:times_plot}
+\end{figure}
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{power_times_plot.png}
+\centering
+\caption{Power consumption with marked scenes' computation times}
+\label{fig:power_times_plot}
+\end{figure}
 
 \newpage
 \section{Summary and future steps}
 
-
-The program was tested using two sources of truth: images from Stellarium program and tests built basing on ESA's startracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that main parts of startracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (QUEST) work with quite high accuracy. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency of at least $1Hz$ for LIS mode, and at least few times more with correctly working Tracking mode.
+The program was tested using two sources of truth: images from Stellarium program and tests built basing on ESA's startracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that main parts of startracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (QUEST) work with quite high accuracy. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency of at around $1Hz$ on average for LIS mode, and at least few times more with correctly working Tracking mode.
 
 In order to use created startracker program on satellite the following things are necessary to be done:
 \begin{itemize}
@@ -1638,9 +1663,9 @@ There exist a number of optional things to explore for bettering existing startr
 \item explore other algorithms, especially for star identification and attitude estimation, because this is area which is being improved mostly.
 \end{itemize}
 
-Although there are few parts which could be improved, the existing startracker program works and could be with only few changes used on the real satellite. 
-TODO JETSON
-Additionally all the work around the startracker program, like tests, can be used for future development of even more accurate programs.
+Although there are few parts which could be improved, the existing startracker program works and could be with only few changes used on the real satellite.
+NVIDIA Jetson TX2 seems to be good candidate to be used in space as the startracker hardware, however not for CubeSats due to their low power budget. It could be used in little larger satellites, like in HyperSat. Jetson's low power consumption and GPU give possibility to create new startracker without spending time and resources on hardware part, but only on software.
+Additionally all the work done around the startracker program, like tests, etc., can be used for future development of even more accurate programs.
 
 
 \newpage

@@ -34,3 +34,6 @@
 \contentsline {figure}{\numberline {20}{\ignorespaces Example image input (colors were inverted for better visibility on paper)\relax }}{64}
 \contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition (red indicates image star ID assigned by algorithm)\relax }}{65}
 \contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification (black indicates the Hipparcos star ID found by algorithm, red indicates the real ID, "-1" indicates "false star")\relax }}{68}
+\contentsline {figure}{\numberline {23}{\ignorespaces Power consumption of startracker on Jetson TX2\relax }}{71}
+\contentsline {figure}{\numberline {24}{\ignorespaces Startracker execution time of each scene\relax }}{72}
+\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption with marked scenes' calculation times\relax }}{72}
