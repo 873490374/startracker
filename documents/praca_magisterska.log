@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  14 JUL 2019 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  17 JUL 2019 22:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1306,60 +1306,60 @@ Package pdftex.def Info: images/planar_triangle_method.jpg  used on input line
 <images/pyramid_method.jpg, id=186, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg  used on input line 974.
+Package pdftex.def Info: images/pyramid_method.jpg  used on input line 967.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
 
 [44] [45 <./images/pyramid_method.jpg>] [46] [47] [48]
 <images/k-vector-example.png, id=202, 577.15625pt x 457.71pt>
 File: images/k-vector-example.png Graphic file (type png)
 <use images/k-vector-example.png>
-Package pdftex.def Info: images/k-vector-example.png  used on input line 1093.
+Package pdftex.def Info: images/k-vector-example.png  used on input line 1086.
 (pdftex.def)             Requested size: 328.98247pt x 260.89742pt.
  [49 <./images/k-vector-example.png>] [50] [51] [52] [53] [54] [55]
 <images/startracker_full_diagram.jpg, id=229, 723.70375pt x 673.51625pt>
 File: images/startracker_full_diagram.jpg Graphic file (type jpg)
 <use images/startracker_full_diagram.jpg>
 Package pdftex.def Info: images/startracker_full_diagram.jpg  used on input lin
-e 1316.
+e 1309.
 (pdftex.def)             Requested size: 383.56116pt x 356.96191pt.
  [56] [57 <./images/startracker_full_diagram.jpg>] [58]
 <images/get_image_stars_diagram.jpg, id=239, 743.77875pt x 783.92876pt>
 File: images/get_image_stars_diagram.jpg Graphic file (type jpg)
 <use images/get_image_stars_diagram.jpg>
 Package pdftex.def Info: images/get_image_stars_diagram.jpg  used on input line
- 1377.
+ 1370.
 (pdftex.def)             Requested size: 379.32214pt x 399.79839pt.
- [59] [60 <./images/get_image_stars_diagram.jpg>]
-<images/star_identifier_diagram.jpg, id=246, 703.62875pt x 683.55376pt>
+ [59] [60 <./images/get_image_stars_diagram.jpg>] [61]
+<images/star_identifier_diagram.jpg, id=251, 703.62875pt x 683.55376pt>
 File: images/star_identifier_diagram.jpg Graphic file (type jpg)
 <use images/star_identifier_diagram.jpg>
 Package pdftex.def Info: images/star_identifier_diagram.jpg  used on input line
- 1397.
+ 1392.
 (pdftex.def)             Requested size: 386.99701pt x 375.95573pt.
- [61]
+
 [62 <./images/star_identifier_diagram.jpg>]
 <images/example_0.png, id=255, 903.375pt x 903.375pt>
 File: images/example_0.png Graphic file (type png)
 <use images/example_0.png>
-Package pdftex.def Info: images/example_0.png  used on input line 1416.
+Package pdftex.def Info: images/example_0.png  used on input line 1413.
 (pdftex.def)             Requested size: 361.3436pt x 361.3436pt.
 <images/example_1.png, id=256, 642.4pt x 481.8pt>
 File: images/example_1.png Graphic file (type png)
 <use images/example_1.png>
-Package pdftex.def Info: images/example_1.png  used on input line 1456.
+Package pdftex.def Info: images/example_1.png  used on input line 1453.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1472--1472
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1469
 []\OT1/lmr/m/n/12 image
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1472--1472
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1469
 []\OT1/lmr/m/n/12 number
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1472--1472
+Underfull \hbox (badness 10000) in paragraph at lines 1469--1469
 \OT1/lmr/m/n/12 of all
  []
 
@@ -1367,28 +1367,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 1472--1472
 <images/example_2.png, id=271, 642.4pt x 481.8pt>
 File: images/example_2.png Graphic file (type png)
 <use images/example_2.png>
-Package pdftex.def Info: images/example_2.png  used on input line 1584.
+Package pdftex.def Info: images/example_2.png  used on input line 1581.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
  [67]
-[68 <./images/example_2.png>] [69] [70]
-<images/power_plot.png, id=286, 642.4pt x 481.8pt>
+[68 <./images/example_2.png>]
+<images/example_3.png, id=280, 863.225pt x 839.135pt>
+File: images/example_3.png Graphic file (type png)
+<use images/example_3.png>
+Package pdftex.def Info: images/example_3.png  used on input line 1610.
+(pdftex.def)             Requested size: 250.32884pt x 243.34291pt.
+<images/example_4.png, id=281, 882.29625pt x 858.20625pt>
+File: images/example_4.png Graphic file (type png)
+<use images/example_4.png>
+Package pdftex.def Info: images/example_4.png  used on input line 1617.
+(pdftex.def)             Requested size: 255.85936pt x 248.87344pt.
+ [69] [70 <./images/example_3.png> <./images/example_4.png>] [71]
+<images/power_plot.png, id=293, 642.4pt x 481.8pt>
 File: images/power_plot.png Graphic file (type png)
 <use images/power_plot.png>
-Package pdftex.def Info: images/power_plot.png  used on input line 1620.
+Package pdftex.def Info: images/power_plot.png  used on input line 1641.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
-<images/times_plot.png, id=287, 642.4pt x 481.8pt>
+<images/times_plot.png, id=294, 642.4pt x 481.8pt>
 File: images/times_plot.png Graphic file (type png)
 <use images/times_plot.png>
-Package pdftex.def Info: images/times_plot.png  used on input line 1627.
+Package pdftex.def Info: images/times_plot.png  used on input line 1648.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
-<images/power_times_plot.png, id=288, 642.4pt x 481.8pt>
+<images/power_times_plot.png, id=295, 642.4pt x 481.8pt>
 File: images/power_times_plot.png Graphic file (type png)
 <use images/power_times_plot.png>
-Package pdftex.def Info: images/power_times_plot.png  used on input line 1634.
+Package pdftex.def Info: images/power_times_plot.png  used on input line 1655.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
- [71 <./images/power_plot.png (PNG copy)>] [72 <./images/times_plot.png> <./ima
-ges/power_times_plot.png (PNG copy)>]
-[73] [74] (./praca_magisterska.bbl [75] [76] [77]
+ [72 <./images/power_plot.png (PNG copy)>] [73 <./images/times_plot.png> <./ima
+ges/power_times_plot.png (PNG copy)>] [74] [75]
+(./praca_magisterska.bbl [76] [77] [78]
 Overfull \hbox (141.27985pt too wide) in paragraph at lines 236--239
 []\OT1/lmr/m/n/12 ``The Gamma Satel-lite, NASA,'' https://heasarc.gsfc.nasa.gov
 /docs/heasarc/missions/gamma.html,
@@ -1421,7 +1432,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 246--249
 d:
  []
 
-[78]
+[79]
 Underfull \hbox (badness 1163) in paragraph at lines 263--265
 []\OT1/lmr/m/n/12 ``BRITE-PL Pier-wszy pol-ski satelita naukowy,'' http://www.b
 rite-
@@ -1501,7 +1512,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 307--310
 
  []
 
-[79]
+[80]
 Underfull \hbox (badness 10000) in paragraph at lines 312--315
 []\OT1/lmr/m/n/12 ``Space Sta-tion Us-ing GPS in At-ti-tude Con-trol,''
  []
@@ -1543,7 +1554,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 343--346
 []\OT1/lmr/m/n/12 ``NED frame im-age,'' http://www.basicairdata.eu/knowledge-
  []
 
-[80]
+[81]
 Underfull \hbox (badness 10000) in paragraph at lines 413--416
 []\OT1/lmr/m/n/12 ``StarVision Tech-nolo-gies Se-cures Ex-clu-
  []
@@ -1553,21 +1564,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 413--416
 \OT1/lmr/m/n/12 sive Li-cense to Star Iden-ti-fi-ca-tion Soft-ware,''
  []
 
-[81]) [82] (./praca_magisterska.lot)
+[82]) [83] (./praca_magisterska.lot)
 \tf@lot=\write4
 \openout4 = `praca_magisterska.lot'.
 
- [83] (./praca_magisterska.lof [84])
+ [84] (./praca_magisterska.lof [85])
 \tf@lof=\write5
 \openout5 = `praca_magisterska.lof'.
 
 
-[85] (./praca_magisterska.aux) ) 
+[86] (./praca_magisterska.aux) ) 
 Here is how much of TeX's memory you used:
- 13003 strings out of 492982
- 204637 string characters out of 6134895
- 344644 words of memory out of 5000000
- 16216 multiletter control sequences out of 15000+600000
+ 13016 strings out of 492982
+ 204905 string characters out of 6134895
+ 344674 words of memory out of 5000000
+ 16227 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  61i,15n,96p,2115b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1586,10 +1597,10 @@ lic/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri12.pfb></usr/share/
 texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
 am10.pfb>
-Output written on praca_magisterska.pdf (85 pages, 16771283 bytes).
+Output written on praca_magisterska.pdf (86 pages, 17289829 bytes).
 PDF statistics:
- 400 PDF objects out of 1000 (max. 8388607)
- 246 compressed objects within 3 object streams
+ 407 PDF objects out of 1000 (max. 8388607)
+ 248 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 186 words of extra memory for PDF output out of 10000 (max. 10000000)
 

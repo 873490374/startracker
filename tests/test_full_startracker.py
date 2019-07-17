@@ -7,6 +7,9 @@ import matplotlib.pyplot as plt
 import mock
 import pytest
 from PIL import Image
+from Quaternion import Quat
+from astropy import units as u
+from astropy.coordinates import Angle
 
 from program.const import MAIN_PATH
 from program.tracker.camera import CameraConnector
@@ -546,7 +549,13 @@ def validate(stars, q, expected):
                         else:
                             bad += 1
 
+        print('')
         print('Quaternion =', q)
+        if q is not None:
+            q = Quat(q)
+            print(Angle('{}d'.format(450 - q.ra)).to_string(unit=u.hour))
+            print(q.dec)
+            print(360-q.roll)
 
         # plot_result(stars, res_x(), res_y())
     return all_, good, bad, not_recognized, attitude_not_found

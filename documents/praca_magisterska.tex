@@ -839,13 +839,6 @@ Similarly as in the previous method, here also polar moment is calculated:
 J = A\frac{(a^2 + b^2 + c^2)}{36}
 \end{equation}
 
-
-
-!!!!!!!!!!!CHANGE EQUATIONS
-
-
-
-
 Since the planar area is a nonlinear function, a linearization must be used to determine its variance. To compute this, the following matrix must be evaluated:
 
 Derivatives
@@ -1603,6 +1596,30 @@ Finally the identified stars are used for calculating quaternion. The resulting 
 \end{bmatrix}
 \end{equation}
 
+The resulting quaternion can be translated to Euler angles as Right Ascension, Declination and Roll of the satellite in J2000 frame (Hipparcos catalog). The Equation \ref{eq:example_7} shows the result quaternion in Euler angles. Right Ascension is given in angle hours for easier applying in Stellarium program, where the result could be visualized. Figure \ref{fig:example_7} shows the attitude of satellite according to startracker, while Figure \ref{fig:example_8} shows the real attitude. The small difference could come from the imperfect transformation from quaternion to Euler angles.
+
+\begin{equation} \label{eq:example_7}
+\begin{split}
+RA = 6h27m34.6927s \\
+DEC = 24.990097882696112 \\
+Roll = 63.100846657835916 \\
+\end{split}
+\end{equation}
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.29]{example_3.png}
+\centering
+\caption{Attitude according to startracker. The square frame is the FOV of startracker's camera}
+\label{fig:example_7}
+\end{figure}
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.29]{example_4.png}
+\centering
+\caption{Real attitude. The square frame is the FOV of startracker's camera}
+\label{fig:example_8}
+\end{figure}
+
 \newpage
 \section{Testing on NVIDIA Jetson TX2}
 
@@ -1664,7 +1681,7 @@ There exist a number of optional things to explore for bettering existing startr
 \end{itemize}
 
 Although there are few parts which could be improved, the existing startracker program works and could be with only few changes used on the real satellite.
-NVIDIA Jetson TX2 seems to be good candidate to be used in space as the startracker hardware, however not for CubeSats due to their low power budget. It could be used in little larger satellites, like in HyperSat. Jetson's low power consumption and GPU give possibility to create new startracker without spending time and resources on hardware part, but only on software.
+NVIDIA Jetson TX2 seems to be good candidate to be used in space as the startracker hardware, however not for CubeSats due to their low power budget. It could be used in little larger satellites, like in HyperSat. Although existing startrackers with dedicated hardware have much lower power consumption, even around 0.65-2.5 W. It is possible that optimization of startracker software would lower the power consumption. Jetson's low power consumption and GPU give possibility to create new startracker without spending time and resources on hardware part, but only on software. Possible Jetson could either be used to test machine learning solutions, or be used as the main on-board computer, what would lower the need for other devices on the satellite therefore lower the power consumption.
 Additionally all the work done around the startracker program, like tests, etc., can be used for future development of even more accurate programs.
 
 
