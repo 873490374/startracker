@@ -1,0 +1,21 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+  - pip install -r requirements_dev.txt
+# command to run tests
+script:
+  - pytest tests/test_quest.py
+
+dist:
+  trusty
+
+addons:
+  sonarcloud:
+    organization: "sonarcloud_organization_key" # the key of the org you chose at step #3
+    token:
+      secure: 0f3ab3d237bc26479eb823444642917245f6e133 # encrypted value of your token
+script:
+  # other script steps might be done before running the actual analysis
+  - sonar-scanner
