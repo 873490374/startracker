@@ -12,6 +12,7 @@ from program.tracker.centroid import CentroidCalculator
 from program.tracker.image_processor import ImageProcessor
 
 
+@pytest.mark.centroid
 class TestCentroid:
     images_path = os.path.join(MAIN_PATH, 'tests/images/')
 
