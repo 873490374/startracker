@@ -2,9 +2,8 @@ language: python
 python:
   - "3.6"
 install:
+  - git fetch --unshallow
   - pip install -r requirements_travis.txt
-script:
-  - pytest tests/test_quest.py
 
 dist:
   trusty
@@ -16,3 +15,4 @@ addons:
       secure: 0f3ab3d237bc26479eb823444642917245f6e133
 script:
   - sonar-scanner
+  - pytest tests/test_quest.py
