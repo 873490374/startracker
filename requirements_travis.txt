@@ -1,0 +1,11 @@
+pandas
+numba
+Quaternion
+scipy
+numpy
+Pillow
+matplotlib
+seaborn
+progress
+pytest
+mock
