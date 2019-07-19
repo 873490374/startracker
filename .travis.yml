@@ -2,7 +2,7 @@ language: python
 python:
   - "3.6"
 install:
-  - pip install -r requirements_travis.txt.txt
+  - pip install -r requirements_travis.txt
 # command to run tests
 script:
   - pytest tests/test_quest.py
