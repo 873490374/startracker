@@ -15,4 +15,4 @@ addons:
       secure: 0f3ab3d237bc26479eb823444642917245f6e133
 script:
   - sonar-scanner
-  - pytest tests/test_quest.py
+  - python -m pytest tests/test_quest.py
