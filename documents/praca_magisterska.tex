@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper,oneside]{article}
+\documentclass[12pt,a4paper,twoside,openleft]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[acronym, toc, nonumberlist, nogroupskip]{glossaries}
 
@@ -37,7 +37,7 @@
 \usepackage{filecontents}
 \glsnoexpandfields
 \usepackage[numbers]{natbib}
-\newcommand{\sectionbreak}{\clearpage}
+\newcommand{\sectionbreak}{\cleardoublepage}
 
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
@@ -47,10 +47,10 @@
 
 \pagestyle{fancy}
 \fancyhf{}
-\rhead{MICHALSKI Sz.}
-\lhead{Star-tracker for small satellites}
-%\lhead{Star-tracker dla małych satelitów}
-\rfoot{\thepage}
+\fancyfoot[LE,RO]{\thepage}
+
+\fancyhead[LE]{Master's thesis - MICHALSKI Sz.}
+\fancyhead[LO]{Star-tracker for small satellites}
 
 \author{Szymon MICHALSKI}
 \title{PROGRAM STAR-TRACKER DLA MAŁYCH SATELITÓW}
@@ -105,9 +105,6 @@
 	INSTITUTE OF CONTROL AND COMPUTATION ENGINEERING\par
 	FACULTY OF ELECTRONICS AND INFORMATION TECHNOLOGY\par
 	WARSAW UNIVERSITY OF TECHNOLOGY\par
-%	INSTYTUT AUTOMATYKI I INFORMATYKI STOSOWANEJ\par
-%	WYDZIAŁ ELEKTRONIKI I TECHNIK INFORMATYJNYCH\par
-%	POLITECHNIKA WARSZAWSKA\par
 	\vspace{0.5cm}
 	\includegraphics[scale=0.3]{logo_WEiTI.jpg}
 	\hspace{1cm}
@@ -117,36 +114,42 @@
 	\par
 	\vspace{2cm}
 	MASTER OF SCIENCE THESIS\par
-%	MAGISTERSKA PRACA DYPLOMOWA\par
 	\vspace{0.2cm}
 	{\huge STAR-TRACKER PROGRAM FOR SMALL SATELLITES\par}
-%	{\huge PROGRAM STAR-TRACKER DLA MAŁYCH SATELITÓW \par}
 	\vspace{0.2cm}
 	{\large Szymon MICHALSKI\par}
 	\vspace{3cm}
 	\begin{flushright}
 	Supervisor:\par
-%	Promotor:\par
 	prof. dr hab. inż. Ryszard Romaniuk\par
 	\end{flushright}
 	\vspace{6cm}
 	{\large Warszawa 2019\par}
 \end{titlepage}
 
-\pagenumbering{arabic}
-\setcounter{page}{2}
 \newpage
+\thispagestyle{empty}
+\phantom{a}
+\vfill
+\newpage
+\thispagestyle{empty}
+
 \begin{abstract}
 Last years directed space industry towards small satellites. Many countries, which did not have possibility to enter this branch of industry before, now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude as well as research of possible usage of off-the-shelf embedded computer with GPU - NVIDIA Jetson TX2. Work contains also description of individual parts and variants of solutions connected with star-tracker.
 \end{abstract}
-\newpage
+
 \begin{otherlanguage}{polish}
 \begin{abstract}
 Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzy własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity, a także zbadanie możliwości użycia gotowego komputera wbudowanego z GPU - NVIDIA Jetson TX2. Praca zawiera też opis poszczególnych części i wariantów rozwiązania problemów związanych ze star-trackerem.
 \end{abstract}
 \end{otherlanguage}
 \newpage
-
+\thispagestyle{empty}
+\phantom{a}
+\vfill
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{3}
 \tableofcontents
 
 \newpage

@@ -2,40 +2,40 @@
 \babel@toc {english}{}
 \babel@toc {polish}{}
 \babel@toc {english}{}
-\contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats.\relax }}{13}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT \cite {pw-sat-image}}}}{13}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \cite {pw-sat2}}}}{13}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz) \cite {brite-pl-gunter}}}}{13}
-\contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE, Image \cite {cubesat-build}\relax }}{14}
-\contentsline {figure}{\numberline {3}{\ignorespaces HyperSat\relax }}{15}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{15}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{15}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype \cite {hypersat}}}}{15}
-\contentsline {figure}{\numberline {4}{\ignorespaces Top: Developer kit, bottom: NVIDIA Jetson TX2 module\cite {nvidia-jetsontx2}\relax }}{20}
-\contentsline {figure}{\numberline {5}{\ignorespaces NVIDIA Jetson TX2 block diagram \cite {nvidia-jetsontx2}\relax }}{21}
-\contentsline {figure}{\numberline {6}{\ignorespaces Earth's satellites navigation orbits \cite {orbits-image}\relax }}{24}
-\contentsline {figure}{\numberline {7}{\ignorespaces ECEF frame, Image from \citet {larson1992space}\relax }}{25}
-\contentsline {figure}{\numberline {8}{\ignorespaces NED frame \cite {ned-frame-image}\relax }}{26}
-\contentsline {figure}{\numberline {9}{\ignorespaces BODY frame, Image from \citet {larson1992space}\relax }}{26}
-\contentsline {figure}{\numberline {10}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{30}
-\contentsline {figure}{\numberline {11}{\ignorespaces Example of centroids' clustering trade-off (in negative colours).\relax }}{35}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{35}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{35}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{35}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{35}
-\contentsline {figure}{\numberline {12}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}\relax }}{36}
-\contentsline {figure}{\numberline {13}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}\relax }}{39}
-\contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{40}
-\contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{45}
-\contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example, Image from \citep {mortari2000k}\relax }}{49}
-\contentsline {figure}{\numberline {17}{\ignorespaces Designed startracker full program diagram\relax }}{57}
-\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{60}
-\contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{62}
-\contentsline {figure}{\numberline {20}{\ignorespaces Example image input (colors were inverted for better visibility on paper)\relax }}{64}
-\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition (red indicates image star ID assigned by algorithm)\relax }}{65}
-\contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification (black indicates the Hipparcos star ID found by algorithm, red indicates the real ID, "-1" indicates "false star")\relax }}{68}
-\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to startracker. The square frame is the FOV of startracker's camera\relax }}{70}
-\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude. The square frame is the FOV of startracker's camera\relax }}{70}
-\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of startracker on Jetson TX2\relax }}{72}
-\contentsline {figure}{\numberline {26}{\ignorespaces Startracker execution time of each scene\relax }}{73}
-\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times\relax }}{73}
+\contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats.\relax }}{12}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT \cite {pw-sat-image}}}}{12}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \cite {pw-sat2}}}}{12}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz) \cite {brite-pl-gunter}}}}{12}
+\contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE, Image \cite {cubesat-build}\relax }}{13}
+\contentsline {figure}{\numberline {3}{\ignorespaces HyperSat\relax }}{14}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{14}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{14}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype \cite {hypersat}}}}{14}
+\contentsline {figure}{\numberline {4}{\ignorespaces Top: Developer kit, bottom: NVIDIA Jetson TX2 module\cite {nvidia-jetsontx2}\relax }}{19}
+\contentsline {figure}{\numberline {5}{\ignorespaces NVIDIA Jetson TX2 block diagram \cite {nvidia-jetsontx2}\relax }}{20}
+\contentsline {figure}{\numberline {6}{\ignorespaces Earth's satellites navigation orbits \cite {orbits-image}\relax }}{23}
+\contentsline {figure}{\numberline {7}{\ignorespaces ECEF frame, Image from \citet {larson1992space}\relax }}{24}
+\contentsline {figure}{\numberline {8}{\ignorespaces NED frame \cite {ned-frame-image}\relax }}{25}
+\contentsline {figure}{\numberline {9}{\ignorespaces BODY frame, Image from \citet {larson1992space}\relax }}{25}
+\contentsline {figure}{\numberline {10}{\ignorespaces Startracker conceptual algorithm diagram\relax }}{29}
+\contentsline {figure}{\numberline {11}{\ignorespaces Example of centroids' clustering trade-off (in negative colours).\relax }}{34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{34}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{34}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{34}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{34}
+\contentsline {figure}{\numberline {12}{\ignorespaces Vector angle method, Image \citet {gottlieb1978star}\relax }}{35}
+\contentsline {figure}{\numberline {13}{\ignorespaces Spherical Triangle Method, Image \citet {cole2004fast}\relax }}{38}
+\contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method, Image \citet {cole2006fast}\relax }}{39}
+\contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart, Image \citet {mortari2004pyramid}\relax }}{44}
+\contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example, Image from \citep {mortari2000k}\relax }}{48}
+\contentsline {figure}{\numberline {17}{\ignorespaces Designed startracker full program diagram\relax }}{56}
+\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{59}
+\contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{61}
+\contentsline {figure}{\numberline {20}{\ignorespaces Example image input (colors were inverted for better visibility on paper)\relax }}{63}
+\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition (red indicates image star ID assigned by algorithm)\relax }}{64}
+\contentsline {figure}{\numberline {22}{\ignorespaces Result of star identification (black indicates the Hipparcos star ID found by algorithm, red indicates the real ID, "-1" indicates "false star")\relax }}{67}
+\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to startracker. The square frame is the FOV of startracker's camera\relax }}{69}
+\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude. The square frame is the FOV of startracker's camera\relax }}{69}
+\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of startracker on Jetson TX2\relax }}{71}
+\contentsline {figure}{\numberline {26}{\ignorespaces Startracker execution time of each scene\relax }}{72}
+\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times\relax }}{72}

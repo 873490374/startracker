@@ -2,65 +2,65 @@
 \babel@toc {english}{}
 \babel@toc {polish}{}
 \babel@toc {english}{}
-\contentsline {section}{Acronyms}{6}
-\contentsline {section}{List of Symbols}{7}
-\contentsline {section}{\numberline {1}Introduction}{8}
-\contentsline {subsection}{\numberline {1.1}Motivation}{8}
-\contentsline {subsection}{\numberline {1.2}Outline of thesis}{9}
-\contentsline {subsection}{\numberline {1.3}Related work}{9}
-\contentsline {subsection}{\numberline {1.4}Small satellites}{11}
-\contentsline {subsection}{\numberline {1.5}Means of attitude determination}{16}
-\contentsline {subsubsection}{\numberline {1.5.1}Inertial Measurement Unit}{16}
-\contentsline {subsubsection}{\numberline {1.5.2}Sun Sensors}{16}
-\contentsline {subsubsection}{\numberline {1.5.3}Star-Tracker}{17}
-\contentsline {subsubsection}{\numberline {1.5.4}Horizon Sensors}{17}
-\contentsline {subsubsection}{\numberline {1.5.5}Magnetometer}{17}
-\contentsline {subsubsection}{\numberline {1.5.6}Global Navigation Satellite System (GNSS)}{17}
-\contentsline {subsubsection}{\numberline {1.5.7}Conclusions}{18}
-\contentsline {subsection}{\numberline {1.6}NVIDIA Jetson TX2}{18}
-\contentsline {section}{\numberline {2}Preliminaries}{22}
-\contentsline {subsection}{\numberline {2.1}Earth's orbits}{22}
-\contentsline {subsection}{\numberline {2.2}Coordinate frames}{23}
-\contentsline {subsubsection}{\numberline {2.2.1}ECEF frame}{23}
-\contentsline {subsubsection}{\numberline {2.2.2}ECI frame}{25}
-\contentsline {subsubsection}{\numberline {2.2.3}NED frame}{25}
-\contentsline {subsubsection}{\numberline {2.2.4}BODY frame}{26}
-\contentsline {subsection}{\numberline {2.3}Attitude representations}{27}
-\contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{27}
-\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{27}
-\contentsline {subsubsection}{\numberline {2.3.3}Advantages of quaternions}{28}
-\contentsline {subsubsection}{\numberline {2.3.4}Wahba's problem}{29}
-\contentsline {section}{\numberline {3}Star-tracker program}{30}
-\contentsline {subsection}{\numberline {3.1}Centroid - star recognition}{31}
-\contentsline {subsection}{\numberline {3.2}Star identification}{34}
-\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{36}
-\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{38}
-\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{40}
-\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{43}
-\contentsline {subsubsection}{\numberline {3.2.5}Voting}{44}
-\contentsline {subsubsection}{\numberline {3.2.6}Grid}{44}
-\contentsline {subsubsection}{\numberline {3.2.7}Other techniques}{46}
-\contentsline {subsubsection}{\numberline {3.2.8}Conclusions}{47}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and database search method}{47}
-\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{47}
-\contentsline {subsubsection}{\numberline {3.3.2}Search Less Algorithm and k-vector}{49}
-\contentsline {subsection}{\numberline {3.4}Attitude Determination}{51}
-\contentsline {subsubsection}{\numberline {3.4.1}TRIAD}{51}
-\contentsline {subsubsection}{\numberline {3.4.2}q-method}{52}
-\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{53}
-\contentsline {subsubsection}{\numberline {3.4.4}Singular Value Decomposition (SVD)}{54}
-\contentsline {subsubsection}{\numberline {3.4.5}Other techniques}{55}
-\contentsline {subsubsection}{\numberline {3.4.6}Conclusions}{55}
-\contentsline {section}{\numberline {4}Startracker program}{56}
-\contentsline {subsection}{\numberline {4.1}Program parts}{56}
-\contentsline {subsubsection}{\numberline {4.1.1}Star Triangle Catalog}{56}
-\contentsline {subsubsection}{\numberline {4.1.2}Star Catalog}{58}
-\contentsline {subsubsection}{\numberline {4.1.3}Getting centroids of image stars}{58}
-\contentsline {subsubsection}{\numberline {4.1.4}Star identification}{59}
-\contentsline {subsubsection}{\numberline {4.1.5}Finding attiude}{62}
-\contentsline {subsection}{\numberline {4.2}Example of working startracker}{63}
-\contentsline {section}{\numberline {5}Testing on NVIDIA Jetson TX2}{71}
-\contentsline {section}{\numberline {6}Summary and future steps}{74}
-\contentsline {section}{References}{76}
-\contentsline {section}{List of Tables}{84}
-\contentsline {section}{List of Figures}{85}
+\contentsline {section}{Acronyms}{5}
+\contentsline {section}{List of Symbols}{6}
+\contentsline {section}{\numberline {1}Introduction}{7}
+\contentsline {subsection}{\numberline {1.1}Motivation}{7}
+\contentsline {subsection}{\numberline {1.2}Outline of thesis}{8}
+\contentsline {subsection}{\numberline {1.3}Related work}{8}
+\contentsline {subsection}{\numberline {1.4}Small satellites}{10}
+\contentsline {subsection}{\numberline {1.5}Means of attitude determination}{15}
+\contentsline {subsubsection}{\numberline {1.5.1}Inertial Measurement Unit}{15}
+\contentsline {subsubsection}{\numberline {1.5.2}Sun Sensors}{15}
+\contentsline {subsubsection}{\numberline {1.5.3}Star-Tracker}{16}
+\contentsline {subsubsection}{\numberline {1.5.4}Horizon Sensors}{16}
+\contentsline {subsubsection}{\numberline {1.5.5}Magnetometer}{16}
+\contentsline {subsubsection}{\numberline {1.5.6}Global Navigation Satellite System (GNSS)}{16}
+\contentsline {subsubsection}{\numberline {1.5.7}Conclusions}{17}
+\contentsline {subsection}{\numberline {1.6}NVIDIA Jetson TX2}{17}
+\contentsline {section}{\numberline {2}Preliminaries}{21}
+\contentsline {subsection}{\numberline {2.1}Earth's orbits}{21}
+\contentsline {subsection}{\numberline {2.2}Coordinate frames}{22}
+\contentsline {subsubsection}{\numberline {2.2.1}ECEF frame}{22}
+\contentsline {subsubsection}{\numberline {2.2.2}ECI frame}{24}
+\contentsline {subsubsection}{\numberline {2.2.3}NED frame}{24}
+\contentsline {subsubsection}{\numberline {2.2.4}BODY frame}{25}
+\contentsline {subsection}{\numberline {2.3}Attitude representations}{26}
+\contentsline {subsubsection}{\numberline {2.3.1}Euler angles}{26}
+\contentsline {subsubsection}{\numberline {2.3.2}Quaternions}{26}
+\contentsline {subsubsection}{\numberline {2.3.3}Advantages of quaternions}{27}
+\contentsline {subsubsection}{\numberline {2.3.4}Wahba's problem}{28}
+\contentsline {section}{\numberline {3}Star-tracker program}{29}
+\contentsline {subsection}{\numberline {3.1}Centroid - star recognition}{30}
+\contentsline {subsection}{\numberline {3.2}Star identification}{33}
+\contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{35}
+\contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{37}
+\contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{39}
+\contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{42}
+\contentsline {subsubsection}{\numberline {3.2.5}Voting}{43}
+\contentsline {subsubsection}{\numberline {3.2.6}Grid}{43}
+\contentsline {subsubsection}{\numberline {3.2.7}Other techniques}{45}
+\contentsline {subsubsection}{\numberline {3.2.8}Conclusions}{46}
+\contentsline {subsection}{\numberline {3.3}Star-catalogue and database search method}{46}
+\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{46}
+\contentsline {subsubsection}{\numberline {3.3.2}Search Less Algorithm and k-vector}{48}
+\contentsline {subsection}{\numberline {3.4}Attitude Determination}{50}
+\contentsline {subsubsection}{\numberline {3.4.1}TRIAD}{50}
+\contentsline {subsubsection}{\numberline {3.4.2}q-method}{51}
+\contentsline {subsubsection}{\numberline {3.4.3}QUEST}{52}
+\contentsline {subsubsection}{\numberline {3.4.4}Singular Value Decomposition (SVD)}{53}
+\contentsline {subsubsection}{\numberline {3.4.5}Other techniques}{54}
+\contentsline {subsubsection}{\numberline {3.4.6}Conclusions}{54}
+\contentsline {section}{\numberline {4}Startracker program}{55}
+\contentsline {subsection}{\numberline {4.1}Program parts}{55}
+\contentsline {subsubsection}{\numberline {4.1.1}Star Triangle Catalog}{55}
+\contentsline {subsubsection}{\numberline {4.1.2}Star Catalog}{57}
+\contentsline {subsubsection}{\numberline {4.1.3}Getting centroids of image stars}{57}
+\contentsline {subsubsection}{\numberline {4.1.4}Star identification}{58}
+\contentsline {subsubsection}{\numberline {4.1.5}Finding attiude}{61}
+\contentsline {subsection}{\numberline {4.2}Example of working startracker}{62}
+\contentsline {section}{\numberline {5}Testing on NVIDIA Jetson TX2}{70}
+\contentsline {section}{\numberline {6}Summary and future steps}{73}
+\contentsline {section}{References}{75}
+\contentsline {section}{List of Tables}{83}
+\contentsline {section}{List of Figures}{84}
