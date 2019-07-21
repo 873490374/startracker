@@ -2,9 +2,9 @@
 \babel@toc {english}{}
 \babel@toc {polish}{}
 \babel@toc {english}{}
-\contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges. Adapted from \citet {hall2003spacecraft} and \citet {larson1992space}\relax }}{18}
-\contentsline {table}{\numberline {2}{\ignorespaces Result of star recognition in the image - stars with unit vectors and image coordinates\relax }}{64}
-\contentsline {table}{\numberline {3}{\ignorespaces Eligible stars after combinations planar triangle\relax }}{65}
-\contentsline {table}{\numberline {4}{\ignorespaces Result of star identification before removing incorrect stars\relax }}{66}
-\contentsline {table}{\numberline {5}{\ignorespaces Hipparcos IDs of incorrect stars\relax }}{66}
-\contentsline {table}{\numberline {6}{\ignorespaces Final result of star identification\relax }}{67}
+\contentsline {table}{\numberline {1}{\ignorespaces Sensor Accuracy Ranges}}{18}{table.caption.9}
+\contentsline {table}{\numberline {2}{\ignorespaces Result of star recognition in the image}}{64}{table.caption.27}
+\contentsline {table}{\numberline {3}{\ignorespaces Eligible stars after combinations planar triangle\relax }}{65}{table.caption.29}
+\contentsline {table}{\numberline {4}{\ignorespaces Result of star identification before removing incorrect stars\relax }}{66}{table.caption.30}
+\contentsline {table}{\numberline {5}{\ignorespaces Hipparcos IDs of incorrect stars\relax }}{66}{table.caption.31}
+\contentsline {table}{\numberline {6}{\ignorespaces Final result of star identification\relax }}{67}{table.caption.32}

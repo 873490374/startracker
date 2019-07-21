@@ -791,7 +791,7 @@
 }
 
 @misc{hypersat-space24,
-	howpublished = "\url{https://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piasecznahttps://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piaseczna}",
+	howpublished = "\url{https://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piaseczna}",
 	note = "Accessed: 2019-06-21",
 	title = "{HyperSat - platforma dla mikrosatelit{\'o}w z Piaseczna, Space24}"
 }
@@ -834,5 +834,17 @@
 	title = "{Propulsion for cubesats}",
 	volume = "134",
 	year = "2017"
+}
+
+@misc{nanosat,
+	howpublished = "\url{http://www.nanosats.eu/tables}",
+	note = "Accessed: 2019-07-21",
+	title = "{CubeSat Tables}"
+}
+
+@misc{cubesat-panels,
+	howpublished = "\url{https://www.isispace.nl/product/isis-cubesat-solar-panels/}",
+	note = "Accessed: 2019-07-21",
+	title = "{CubeSat solar panels, ISIS -- Innovative Solutions In Space}"
 }
 

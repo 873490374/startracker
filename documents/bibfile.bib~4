@@ -791,7 +791,7 @@
 }
 
 @misc{hypersat-space24,
-	howpublished = "\url{https://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piasecznahttps://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piaseczna}",
+	howpublished = "\url{https://www.space24.pl/hypersat-platforma-dla-mikrosatelitow-z-piaseczna}",
 	note = "Accessed: 2019-06-21",
 	title = "{HyperSat - platforma dla mikrosatelit{\'o}w z Piaseczna, Space24}"
 }
@@ -818,5 +818,33 @@
 	howpublished = "\url{https://devblogs.nvidia.com/jetson-tx2-delivers-twice-intelligence-edge/}",
 	note = "Accessed: 2019-06-24",
 	title = "{NVIDIA Jetson TX2 Delivers Twice the Intelligence to the Edge, NVIDIA}"
+}
+
+@misc{jetsontx2-price,
+	howpublished = "\url{https://www.nvidia.com/en-us/autonomous-machines/jetson-store/}",
+	note = "Accessed: 2019-06-24",
+	title = "{Jetson TX2 price, NVIDIA}"
+}
+
+@article{lemmer2017propulsion,
+	author = "Lemmer, Kristina",
+	journal = "Acta Astronautica",
+	pages = "231--243",
+	publisher = "Elsevier",
+	title = "{Propulsion for cubesats}",
+	volume = "134",
+	year = "2017"
+}
+
+@misc{cubesat-panel,
+	howpublished = "\url{https://www.isispace.nl/product/isis-cubesat-solar-panels/",
+	note = "Accessed: 2019-07-21",
+	title = "{CubeSat solar panels, ISIS -- Innovative Solutions In Space}"
+}
+
+@misc{nanosat,
+	howpublished = "\url{http://www.nanosats.eu/tables}",
+	note = "Accessed: 2019-07-21",
+	title = "{CubeSat Tables}"
 }
 
