@@ -1,3 +1,4 @@
+import math
 import os
 
 import numpy as np
@@ -553,7 +554,9 @@ def validate(stars, q, expected):
         print('Quaternion =', q)
         if q is not None:
             q = Quat(q)
-            print(Angle('{}d'.format(450 - q.ra)).to_string(unit=u.hour))
+            xx = (360 - q.ra) + 90
+            print(xx)
+            print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
             print(q.dec)
             print(360-q.roll)
 
