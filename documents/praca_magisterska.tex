@@ -176,7 +176,7 @@ Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajó
 \section{Introduction}
 Stars were used for navigation already ages ago. Together with technological development, spread of sailing and seafaring people started to use more advanced tools helping to more precisely estimate position of ships on sea. In XVIII century new tool was created, named sextant. This device helped to quite precisely calculate angle between the line ship-horizon and ship-star, what let to estimate position.
 
-Nowadays, hundreds of years later, thanks to other technologies like for example \gls{gps} stars are not necessary any more for travelling. As it is commonly known, \gls{gps} technology is based on satellites, and today those satellites need stars for determining their attitude towards Earth.
+Nowadays, hundreds of years later, thanks to other technologies like for example \gls{gps} stars are not necessary any more for traveling. As it is commonly known, \gls{gps} technology is based on satellites, and today those satellites need stars for determining their attitude towards Earth.
 
 With the miniaturization of electronics and batteries new types of smaller satellites were invented: CubeSat and HyperSat. They have now greater sensory and processing power possibilities, previously found only in larger satellites, however they still need cheaper means of accurate attitude determination.
 
@@ -260,7 +260,7 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 Many of those works will be mentioned and cited later in this thesis as they are crucial for this work and describe the ways how star-tracker should be designed. All those main algorithm types, like finding star centroids or star identification, are also described here in full detail in next sections.
 
 It is also interesting to mention one work, which was done at Warsaw University of Technology together with Space Research Centre of Polish Academy of Sciences - Telegwiazda (eng. Telestar, rus. Telezvezda) - star-tracker designed for Gamma satellite, gamma ray telescope, in years 1978-90 \cite{gamma-satellite}. That satellite was joint French-Soviet project with star-tracker made in Poland. Due to superior role of Soviet Union in that project comparing to Poland, the name of the star-tracker was changed to Russian (Telezvezda) and as such exists in international documents. Polish version of name exists only in Polish documents. There were two teams of scientists from Warsaw University of Technology working on this star-tracker: one from Faculty of Precision Mechanics under profesor Romuald Jóźwicki designing optomechanical part of the system, and one from Faculty of Electronics under Grzegorz Czajkowski designing electronical part with on-board computer \cite{wut-space-research}. 
-The star-tracker was analyzing image of sky with FOV 9\degree . Four brightest stars in FOV were followed and their coordinates were sent to Earth, where they were compared with real star map. The software for checking stars' coordinates with real star map was created at Space Research Centre of Polish Academy of Sciences. star-tracker could register stars with magnitude equal or below 7 and with accuracy below 2 arcmin \cite{optical-devices-cbk}. Although the satellite failed shortly after its launch in 1990 due to power failure, star-tracker funcioned properly and was among the few parts of the satellite which were funcioning till the end of satellite's life in 1992. Comparing to Telegwiazda, modern star-trackers do not need to send stars' coordinates to Earth for comparing with sky map, but they can to this by themselves.
+The star-tracker was analyzing image of sky with FOV 9\degree . Four brightest stars in FOV were followed and their coordinates were sent to Earth, where they were compared with real star map. The software for checking stars' coordinates with real star map was created at Space Research Centre of Polish Academy of Sciences. star-tracker could register stars with magnitude equal or below 7 and with accuracy below 2 arcmin \cite{optical-devices-cbk}. Although the satellite failed shortly after its launch in 1990 due to power failure, star-tracker functioned properly and was among the few parts of the satellite which were functioning till the end of satellite's life in 1992. Comparing to Telegwiazda, modern star-trackers do not need to send stars' coordinates to Earth for comparing with sky map, but they can to this by themselves.
 
 
 \subsection{Small satellites}
@@ -313,8 +313,8 @@ Another platform for slightly larger than CubeSat satellites was designed by Pol
 
 \subsection{Means of attitude determination}
 
-Attitude of spaceships must be usually stabilised and controlled for various reasons.
-It is necessary for satellite antenna to be pointing towards Earth for the proper communication, to intelligently control the heat by using the effects of cooling and heating of the shadows and sunlight, as well as to navigate: manoeuvres must be performed in the right direction.
+Attitude of spaceships must be usually stabilized and controlled for various reasons.
+It is necessary for satellite antenna to be pointing towards Earth for the proper communication, to intelligently control the heat by using the effects of cooling and heating of the shadows and sunlight, as well as to navigate: maneuvers must be performed in the right direction.
 
 Attitude is determined between two coordinate systems (where one is reference system) and defines by what angles the coordinate system connected with the researched object has to be shifted in order to cover the reference system.
 Devices such as planes and satellites have so called \gls{adcs}, which controls attitude of object relative to an inertial reference frame or another entity (the celestial sphere, certain areas, the nearby objects, etc.).
@@ -326,7 +326,7 @@ An \gls{imu} detects linear acceleration using one or more accelerometers and ro
 \subsubsection{Sun Sensors}
 Sun sensors typically consist of few sensors oriented perpendicularly, which can tell the angle of the sun. They can give the information how the satellite is oriented towards the sun.
 \subsubsection{Star-Tracker}
-Star-tracker is quite sophisticated device, which consists of camera, processor and memory for database. In the database is catalogue of stars, built basing on data from Earth's observatories. Simply put star-tracker, when in orbit, takes picture of space - stars. Then processes the image to recognize stars in it and compares with data in catalogue or with previous image. When stars are identified star-tracker estimates the attitude of satellite towards Earth. The main advantage over other means: great accuracy and star-tracker can find its location again after satellite was restarted or lost in space.
+Star-tracker is quite sophisticated device, which consists of camera, processor and memory for database. In the database is catalog of stars, built basing on data from Earth's observatories. Simply put star-tracker, when in orbit, takes picture of space - stars. Then processes the image to recognize stars in it and compares with data in catalog or with previous image. When stars are identified star-tracker estimates the attitude of satellite towards Earth. The main advantage over other means: great accuracy and star-tracker can find its location again after satellite was restarted or lost in space.
 \subsubsection{Horizon Sensors}
 Earth horizon sensors use infra-red radiation from the Earth's surface via use of bolometer. The device detects when infra-red signal was first detected and then lost. The time between is used to determine the Earth's width, what later can be used to determine roll angle. In other words device detects the contrast between the cold of deep space and the heat of Earth's atmosphere. Problems of this sensors are the fact that Earth is not perfectly circular and sensors detect infra-red in the atmosphere, which varies depending on the latitude.
 \subsubsection{Magnetometer}
@@ -366,7 +366,7 @@ Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\
 As mentioned before, part of the thesis is to run star-tracker program on off-the-shelf device: NVIDIA Jetson TX2 \cite{nvidia-jetsontx2}. Price of this device is around 479 USD \cite{jetsontx2-price} (around 1800 PLN), what in case of successful experiment would significantly lower the price of star-trackers due to usage of already available components instead of designing new hardware. 
 
 Jetson TX2 runs Linux and provides greater than 1TFLOPS of FP16 compute performance with 7.5 watts of typical energy usage. Module has dimensions of 50 mm x 87 mm, weights 85 grams, and features the following processing components: dual-core NVIDIA Denver2 + quad-core ARM Cortex-A57, 256-core Pascal GPU and 8GB LPDDR4.
-High RAM, fast multi-core CPUs and GPU allow quite complex, computing-demanding calculations to be done quickly, while some parts of star-tracker program could be done parallely. Possibly Jetson TX2 could also be used for machine learning or deep learning star-tracker solutions, as there already exist works exploring that options. Figure \ref{fig:jetson-image} shows NVIDIA Jetson TX2 and Developer kit, while Figure \ref{fig:jetson-diagram-image} shows block diagram.
+High RAM, fast multi-core CPUs and GPU allow quite complex, computing-demanding calculations to be done quickly, while some parts of star-tracker program could be done parallelly. Possibly Jetson TX2 could also be used for machine learning or deep learning star-tracker solutions, as there already exist works exploring that options. Figure \ref{fig:jetson-image} shows NVIDIA Jetson TX2 and Developer kit, while Figure \ref{fig:jetson-diagram-image} shows block diagram.
 
 Low power consumption, low weight, small dimension, low price, already available and powerful computing components make NVIDIA Jetson TX2 good candidate for possible usage on satellites.
 
@@ -444,7 +444,7 @@ This all means that the coordinates move together with Earth's rotation. It is g
 \end{figure}
 
 \subsubsection{ECI frame}
-The Earth Centered Inertial frame is similar to ECEF, with the difference that it is inertial - it does not follow Earth's rotation, but stays the same despite the planet's rotation. The origin of the frame is at the center of the Earth. It is much better frame for representing objects in space\cite{larson1992space}.
+The Earth Centered Inertial frame is similar to ECEF, with the difference that it is inertial - it does not follow Earth's rotation, but stays the same despite the planet's rotation. The origin of the frame is at the center of the Earth. It is much better frame for representing objects in space\cite{larson1992space}. This is the frame used in multiple catalogs, also in Hipparcos catalog used in this work.
 
 \subsubsection{NED frame}
 The North East Down frame is represented in Figure \ref{fig:ned_frame}. Its z-axis points downwards, perpendicular to the tangent plane of Earth. The x-axis points towards true north and the y-axis points East. The NED frame is an inertial frame - not dependent on Earth's rotation.
@@ -457,7 +457,7 @@ The North East Down frame is represented in Figure \ref{fig:ned_frame}. Its z-ax
 \end{figure}
 
 \subsubsection{BODY frame}
-In this frame the origin is the centre of the spacecraft. The moves and rotates with the spacecraft. The x-axis points forward from spacecraft, the y-axis points to the right side and the z-axis points downwards. The frame is represented in Figure \ref{fig:body_frame}.
+In this frame the origin is the center of the spacecraft. The moves and rotates with the spacecraft. The x-axis points forward from spacecraft, the y-axis points to the right side and the z-axis points downwards. The frame is represented in Figure \ref{fig:body_frame}. The result of the star identification is in this frame, later converted into ECI frame.
 
 \begin{figure}[!htb]
 \includegraphics[scale=0.5]{body_frame.jpg}
@@ -543,7 +543,7 @@ q_0
 Quaternions are easier to use in calculations, have more compact notation and errors easier to handle than in matrix representation. Also normalization of quaternions is easier and cheaper computationally than normalization of matrices.
 The most important advantage of quaternions over Euler angles is being safe from gimbal lock. Gimbal lock is the loss of one degree of freedom that occurs when axes of two of three gimbals are driven into a parallel configuration. This could lead to real disaster \citet{shoemake1985animating}.
 
-Quaternions show many advantages, and due to possible spins of satellites, quaternions are the only logical choice to be used for attitude estimation methods.
+Quaternions show many advantages, and due to possible spins of satellites, quaternions are the only logical choice to be used for attitude estimation methods. However the visualization of attitude it is mostly done with Euler angles due to its intuitiveness.
 
 \subsubsection{Wahba's problem}
 
@@ -562,9 +562,9 @@ If the vectors are error-free and the true attitude matrix $A_{true}$ is assumed
 \newpage
 \section{Star-tracker program}
 
-Star-tracker program is designed to determine the attitude of the satellite with the image of the stars made by the satellite camera. Before the start of the mission star catalogue is generated, based on the star catalogues obtained from the observatories on Earth and uploaded to the computer on-board the satellite. 
+Star-tracker program is designed to determine the attitude of the satellite with the image of the stars made by the satellite camera. Before the start of the mission star catalog is generated, based on the star catalogs obtained from the observatories on Earth and uploaded to the computer on-board the satellite. 
 
-After the start, the satellite is released from rocket's tank in space and has no idea where it is. Then the star-tracker on the satellite enters into Lost-In-Space mode (LIS) and analyses the current image of the stars of the camera, and then searches the corresponding result of stars in the on-board star catalogue database. If it finds an entry in the database, the satellite goes into tracking mode. This means each next calculation of the orientation of the satellite attitude is going to be based on a comparison of the current pictures of stars with the preceding ones. If it cannot find the result in the database, this action is repeated from time to time, until a match is found in the database and the program will go into tracking mode.
+After the start, the satellite is released from rocket's tank in space and has no idea where it is. Then the star-tracker on the satellite enters into Lost-In-Space mode (LIS) and analyses the current image of the stars of the camera, and then searches the corresponding result of stars in the on-board star catalog database. If it finds an entry in the database, the satellite goes into tracking mode. This means each next calculation of the orientation of the satellite attitude is going to be based on a comparison of the current pictures of stars with the preceding ones. If it cannot find the result in the database, this action is repeated from time to time, until a match is found in the database and the program will go into tracking mode.
 
 Of course LIS does not happen only at the beginning of the satellite's flight, but can also result from many causes, e.g. a satellite which is for a long time in the darkness may discharge its battery, and during the next entry into sunlit zone will turn on and look again its attitude. Another case is when satellite becomes lost, although once found the orientation and follow her. This happens, because the successive results are based on preceding ones and even the smallest mistake will grow until the satellite will not be able to correctly calculate their attitude. It may also happen that the satellite will rotate around its axis so fast that the program would not keep up with the processing the image and calculations. In this case, the corresponding other satellite's systems should take an action reducing his spin, but this is not part of this work. It is showed in simple conceptual diagram - Figure \ref{fig:star-tracker_conceptual_alg}.
 
@@ -576,12 +576,12 @@ Of course LIS does not happen only at the beginning of the satellite's flight, b
 \end{figure}
 
 Each part - LIS and tracking - consists of smaller algorithms. Lost-In-Space at the beginning of reading an image from the camera, thresholds the image. Thresholding is basically throwing away parts of the image which do not exceed the threshold brightness, making just bright enough stars taken into account. Next it calculates centroid (center of mass) of selected stars, identifies these stars using one of the possible methods (here Planar Triangle, described later) and searches the directory on-board technology (k-vector).
-If the database does not contain corresponding stars, the algorithm returns to the input state and starts analysing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previous image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyses the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
+If the database does not contain corresponding stars, the algorithm returns to the input state and starts analyzing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previous image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyses the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
 
 Generally star-tracker is divided into three main parts \cite{mcbryde2012star}:
 \begin{itemize}
 \item recognizing stars on the image and converting the data into list of star vectors by calculating star centroids;
-\item identifying which star vector represents which real star in catalogue. This is done by comparing star vectors from the image with data in star catalogue, which is generated before space mission;
+\item identifying which star vector represents which real star in catalog. This is done by comparing star vectors from the image with data in star catalog, which is generated before space mission;
 \item estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 
@@ -601,7 +601,23 @@ Please note that $a_{ROI}$ must be a positive odd number for the proper function
 The idea of how to calculate such centroids is adapted from \citet{mcbryde2012star} and described below:
 
 \begin{enumerate}
-\item For each pixel at image coordinates $(x,y)$ it is checked if light intensity is high enough: $I(x,y) > I_{thresh}$, hence only bright points of image are taken into account. Then in order discard stars with magnitude higher than the limit, the sum of light intensity of given amount of pixels around the pixel is calculated, and if it is higher than star magnitude pixel intensity limit algorithm moves forward. Otherwise the pixel is discareded and algorithm moves to another pixel.
+\item For each pixel at image coordinates $(x,y)$ it is checked if:
+\begin{enumerate}
+\item light intensity is high enough: $I(x,y) > I_{thresh}$, hence only bright points of image are taken into account;
+\item the sum of light intensity of given amount of pixels around the pixel is high enough (Equation \ref{eq:centroid_magnitude}), hence only low magnitude stars are taken into account. Describing the equation: it is the pixel intensity sum of vertical, horizontal and both diagonals of pixels around the given pixel, where $lp$ is limit of pixels for magnitude ROI and $I_{thresh_{mag}}$ is limit threshold of star magnitude pixels intensity.
+\begin{equation}
+\begin{gathered}
+\sum_{i=x-lp}^{x+lp} I(x_i,y) +  \\ 
+\sum_{j=y-lp}^{y+lp} I(x,y_j) +  \\ 
+\sum_{i=x-lp}^{x+lp}\sum_{j=y-lp}^{y+lp} I(x_i,y_j) +  \\ 
+\sum_{i=x-lp}^{x+lp}\sum_{j=y+lp}^{y-lp} I(x_i,y_j) \\ 
+> I_{thresh_{mag}}
+\end{gathered}
+\label{eq:centroid_magnitude}
+\end{equation}
+
+\end{enumerate}
+If both above conditions are met, the algorithm moves forward. Otherwise the pixel is discarded and algorithm moves to another pixel.
 In case of success, the ROI for given pixel is defined as the square of pixels with side length $a_{ROI}$ and bottom-left corner at $(x_{start},y_{start})$
 \begin{equation}
 x_{start} = x - \frac{a_{ROI} - 1}{2}
@@ -964,7 +980,7 @@ This method gives similar results as spherical triangle method, but planar trian
 
 \subsubsection{Pyramid}
 
-Pyramid method is described by \citet{mortari2004pyramid}. This algorithm is designed to be used efficiently with 4-star input, however can also function for 3-star input if no more are available. It uses set of star pairs in elementary measured star polygons (3 for a triangle, six for a 4-star pyramid). The vertices between adjacent measured star pairs share a common catalogued star.
+Pyramid method is described by \citet{mortari2004pyramid}. This algorithm is designed to be used efficiently with 4-star input, however can also function for 3-star input if no more are available. It uses set of star pairs in elementary measured star polygons (3 for a triangle, six for a 4-star pyramid). The vertices between adjacent measured star pairs share a common cataloged star.
 
 The Figure \ref{fig:pyramid_method} shows how the algorithm works. If there are less than 3 stars on input, the algorithm returns error, what actually brings back to start of the algorithm with new input data. In case there are three stars only, algorithm gets rid of redundant solutions, and if the solution is unique, the stars are identified and solution is outputted. In case of not finding unique solution, algorithm returns an error, and starts again with new data. If there are more than three stars, algorithm gets three stars for a triangle, and then one reference star. Later it checks pairs of reference star and triangle's vertices. If unique solution is found, it identifies the remaining stars and outputs all the identified stars. If no unique solution has been found, algorithm tries to get new triangle and repeat the steps. There are two possible exits of this loop: the already mentioned finding unique solution, or running out of new triangles. In the last case algorithm removes redundant solutions, then check again if it is unique solution. Finally either unique solution is found and algorithm identifies all other stars from the input and outputs them, or returns an error and stars again with the new input data.
 
@@ -979,7 +995,7 @@ According to authors the algorithm can solve LIS problem and is highly robust. T
 
 
 \subsubsection{Voting}
-Algorithm was presented by \citet{kolomenkin2008geometric}. Pair of stars in the catalogue votes for a pair of stars in the image if angular distance between the stars of both pairs is similar. Since angular distance is a symmetric relationship, each catalogue star in the pair vote for each in the image pair. Then the image star is identified as the catalogue star which gave the most votes.
+Algorithm was presented by \citet{kolomenkin2008geometric}. Pair of stars in the catalog votes for a pair of stars in the image if angular distance between the stars of both pairs is similar. Since angular distance is a symmetric relationship, each catalog star in the pair vote for each in the image pair. Then the image star is identified as the catalog star which gave the most votes.
 
 Authors' testing has shown that the algorithm is as accurate, as fast and more robust than other methods. The authors tested the algorithm in simulation only, and it does not appear to be tested in space yet. Furthermore, all simulations and testing were done on assumption of slow rotation, hence it is not known how it would function in the real environment. The more details about this algorithm can be found in \citet{kolomenkin2008geometric}.
 
@@ -997,7 +1013,7 @@ Other techniques involve:
 \begin{itemize}
 \item Spherical-Polygon (SP) Search by \citet{mortari1999sp}:
 
-The idea of this method is that any star direction can be expressed as a linear combination of two non-parallel star directions (star pair basis) together with their vector cross-product. The star identification problem is transformed into the simpler problem of finding which stars, within a large star catalogue, are admissible with a given direction. This is solved by approximating a cone with a spherical polygon and search for all of the three components of the given direction. 
+The idea of this method is that any star direction can be expressed as a linear combination of two non-parallel star directions (star pair basis) together with their vector cross-product. The star identification problem is transformed into the simpler problem of finding which stars, within a large star catalog, are admissible with a given direction. This is solved by approximating a cone with a spherical polygon and search for all of the three components of the given direction. 
 
 \item Star Neighbourhood Approach by \citet{samaan2005recursive}:
 
@@ -1029,9 +1045,9 @@ From the described techniques the Planar Triangle method was chosen. Comparing t
 Algorithms based on neural networks need significantly more computational power and memory. What is more, no information about the usage of such algorithms on real spacecraft was found.
 As for other algorithms, Star Neighbourhood does not support LIS mode, for Brightness Independent, SP-Search, Voting and Grid methods no information about real-life use was found. Moreover Planar Triangle was tested in at least two other works (but only against Angle and Spherical Triangle Methods), and was chosen as giving the best overall results, and in one work it was chosen for implementation along one other algorithm\cite{huffman2006designing} due to its speed.
 
-\subsection{Star-catalogue and database search method}
+\subsection{Star-catalog and database search method}
 
-\subsubsection{Star Catalogue Generation}
+\subsubsection{Star Catalog Generation}
 
 For each of previously mentioned algorithms it is necessary to match patters, angles, areas, polar moments, etc. with already known data. Such data saved in the database prior to launching the spacecraft. The database is usually made out of star database collected by Earth's observatories. Also for each different star identification method and different FOV the catalog must be recreated.
  
@@ -1047,7 +1063,7 @@ For nearly every start pattern matching it is necessary to convert firstly the s
 
 where $\bm{u}$ is unit vector, $\alpha$ is right ascension and $\delta$ is declination.
 
-Since Planar Triangle method was chosen, the rest of catalogue generation will be described for this method. For each three catalogue stars that are above certain light intensity threshold
+Since Planar Triangle method was chosen, the rest of catalog generation will be described for this method. For each three catalog stars that are above certain light intensity threshold
 \begin{subequations}
 \begin{equation}
 i_a \geq i_{max}
@@ -1081,7 +1097,7 @@ $\bm{u_x^T u_y}$ is equal to cosine of angle between the two unit vectors, there
 
 Search Less Algorithm (SLA) by \citet{mortari1996fast} is special algorithm used to speed up looking up the corresponding stars in the on-board computer. Its heart is k-vector technique. Comparing to binary search technique, k-vector demonstrates high speed gain rate, from 10 to more than 50 times \cite{mortari2000k}.
 
-The k-vector database is built before spacecraft's start. The k-vector table is a structural database of all catalogued star pairs that could possibly fit into the camera FOV over the whole sky. 
+The k-vector database is built before spacecraft's start. The k-vector table is a structural database of all cataloged star pairs that could possibly fit into the camera FOV over the whole sky. 
 The star pairs are ordered with increasing inter-star angle.
 
 The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{I}(i))$, where $\bm{I}$ is the integer vector of the sorting with length $n$ \cite{mortari2013k}.
@@ -1303,7 +1319,7 @@ During star-tracker development it was necessary to firstly create testing envir
 
 During development k-vector algorithm was discarder because results of star identification with k-vector were inconsistent. Moreover for just 1500 stars it didn't give any visible speed advantage. It is possible it would be worth using in case of catalogs with more stars.
 
-The Tracking Mode does not function properly and will have to be rewritten in the future version of star-tracker. Altghough correctly working Tracking Mode would make star-tracker faster, it is possible for it to work all the time in LIS mode.
+The Tracking Mode does not function properly and will have to be rewritten in the future version of star-tracker. Although correctly working Tracking Mode would make star-tracker faster, it is possible for it to work all the time in LIS mode.
 
 Figure \ref{fig:star-tracker_diagram} shows general schema of designed star-tracker program.
 
@@ -1324,9 +1340,9 @@ The star triangle catalog was created with the following parameters:
 - FOV 10\degree
 what gave 1625 stars which gave 44922 triangles.
 
-In other (source) works around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower in testing than in case of smaller catalog, hence the smaller catalog was choosen to be used in this star-tracker program.
+In other work\cite{mortari2004pyramid} around 6000 stars were used to create catalog, hence another catalog was created with stars' magnitude 6.2, what gave 6279 stars and 1160853 triangles. This however proved to be both not accurate and a lot slower in testing than in case of smaller catalog, hence the smaller catalog was chosen to be used in this star-tracker program.
 
-The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky with few magnitude 5 stars program is able to identify stars in around 90\% of cases. It is best if no star with magntide greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
+The small catalog is good enough, because it covers most of the sky with at least 3 stars. Tests prove that in random part of the sky with few magnitude 5 stars program is able to identify stars in around 90\% of cases. It is best if no star with magnitude greater than the given in the catalog would be passed from star centroid algorithm into star identifier, although star identifier can deal with some false stars with quite high accuracy.
 
 The catalog has following columns:
 \begin{enumerate}[noitemsep]
@@ -1352,7 +1368,7 @@ The catalog has following columns:
 
 \subsubsection{Getting centroids of image stars}
 
-First camera reads its input and gets image, which is later converted into matrix of light intensity values per pixel. After that program enters into centroiding algorithm. On GPU, each pixel is checked firstly for its light intensity value, average light intensity of neighbouring pixels and if the pixel is not on the border. If all those conditions are passed, then pixel centroid is calculated for this pixel, according to the instructions in the previous chapter. After that pixel centroids are being clustered in order to merge neighbouring centroids into one star centroid. Finally all found star centroids are converted to unit vectors.
+First camera reads its input and gets image, which is later converted into matrix of light intensity values per pixel. After that program enters into centroiding algorithm. On GPU, each pixel is checked firstly for its light intensity value, average light intensity of neighboring pixels and if the pixel is not on the border. If all those conditions are passed, then pixel centroid is calculated for this pixel, according to the instructions in the previous chapter. After that pixel centroids are being clustered in order to merge neighboring centroids into one star centroid. Finally all found star centroids are converted to unit vectors.
 
 Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock output from star-tracker camera. Images are with following parameters: FOV 10\degree and 900x900 pixels, and imitate parts of that should be visible by star-tracker on the actual orbit.
 
@@ -1379,7 +1395,7 @@ Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, wh
 \subsubsection{Star identification}
 After having list of image star centroids in form of unit vectors program enters Star Identification phase. Firstly 3-star combinations are created, and for each combination all eligible stars are being found. It is done by calculating Planar Triangle for each 3-star combination and looking up all triangles in Star Triangle Catalog that are withing area and polar moment ranges. Each image star has a list of eligible stars, which is being extended after each lookup, i.e. each image star in the 3-star combination has added the same eligible stars to their lists. After doing this for all 3-star combinations, each image star has list with all eligible stars and one of the most common star IDs in the list should be Hipparcos star ID. Next step is done for each image star: take 10 most common eligible star IDs. If there are none, then this image star is identified as false star. If there are any eligible stars, then for each eligible star ID it is checked, whether this ID was already assigned to any other image star in this image. If it was not, then this eligible star ID is assigned to this image star as its Hipparcos star ID. If it was, then move to next most common eligible star ID. If this is the last most common eligible star, then this image star is identified as false star. After above steps are done for all image stars, the last step of stars identification takes place: removal of incorrect stars. For each image star with found Hipparcos star ID, those stars are looked up in Star Catalog together with their unit vectors. Next each pair of stars is checked if they actually even could be in the same image scene. This is done the same way as during Triangle Catalog creation, by checking if the dot product of unit vectors is higher or equal to the cosine of FOV. The stars which have been marked as incorrect most times are marked as false, the rest stays the same. After this step is finished, the program already has finished star identification and as result it returns list of image stars with information what is its Hipparcos star ID or if it is false star.
 
-On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can go much higher with more stars in the input image, even to 5 seconds. Possibly rewriting parts of this algorithm to use GPU would make it execue faster.
+On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can go much higher with more stars in the input image, even to 5 seconds. Possibly rewriting parts of this algorithm to use GPU would make it execute faster.
 
 Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
@@ -1459,7 +1475,7 @@ image ID & uv1 & uv2 & uv3 & pos x & pos y \\
 \end{figure}
 
 Next, for each combination of 3 image stars, eligible star are calculated and added list of eligible stars for each image star. Table \ref{tab:example_2} shows lists of eligible stars after doing it for all combinations. 
-Only 10 most common occurences of Hipparcos star ID are shown in the table due to long list. It is visible clearly, that stars 1 and 2 have significantly smaller number of highest occuring star ID.
+Only 10 most common occurrences of Hipparcos star ID are shown in the table due to long list. It is visible clearly, that stars 1 and 2 have significantly smaller number of highest occurring star ID.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[!htbp]
@@ -1623,13 +1639,13 @@ First way of testing was to give image of sky on input and then to go through al
 
 Second way of testing was showing image of the sky on the separate screen and try to read it with camera on JETSON device. Although program clearly was able to find stars in the camera input, it needs precise configuration in order to find centroids accurately. Example of precise testing was done by \citet{tappe2011star}. Surely such testing will have to be done to test using this star-tracker program with dedicated camera.
 
-The following results come from first way of testing: simulating input of star-tracker with already made images. The series of 14 images was run one by one. Figure \ref{fig:power_plot} shows the power consumption of algorithm on Jetson TX2. The values were collected by reading metrics collected by Ubuntu system while running the star-tracker test. The first peak is the loading of catalogs into the memory. At around 3rd second the first scene is read. Even with the highest load power consumption does not exceed 7 Watts. It is clearly visible that CPU consuption is significantly higher than GPU and is due to the fact that still most of star-tracker computation is done on CPU. High power consumption peaks in seconds 9-14 and 23-28 are due to the higher amout of stars in input scenes at that time, what leads to longer time of star identification process, which is the CPU consuming process.
+The following results come from first way of testing: simulating input of star-tracker with already made images. The series of 14 images was run one by one. Figure \ref{fig:power_plot} shows the power consumption of algorithm on Jetson TX2. The values were collected by reading metrics collected by Ubuntu system while running the star-tracker test. The first peak is the loading of catalogs into the memory. At around 3rd second the first scene is read. Even with the highest load power consumption does not exceed 7 Watts. It is clearly visible that CPU consumption is significantly higher than GPU and is due to the fact that still most of star-tracker computation is done on CPU. High power consumption peaks in seconds 9-14 and 23-28 are due to the higher amount of stars in input scenes at that time, what leads to longer time of star identification process, which is the CPU consuming process.
 
-Figure \ref{fig:times_plot} shows how much time was neccessary to calculate attitude for each of 14 scenes. Scenes 2 and 12 have higher time of Attitude calculation because in those scenes quite big percentage of stars were misidentified and it took more iterations to finalize calculations. Enormously higher Star Identification times for scenes 10, 11 and 12 come from the much higher amount of stars in the scene image. 
+Figure \ref{fig:times_plot} shows how much time was necessary to calculate attitude for each of 14 scenes. Scenes 2 and 12 have higher time of Attitude calculation because in those scenes quite big percentage of stars were misidentified and it took more iterations to finalize calculations. Enormously higher Star Identification times for scenes 10, 11 and 12 come from the much higher amount of stars in the scene image. 
 
 Figure \ref{fig:power_times_plot} shows power consumption with marked times of each section calculation. Scene 10 takes time between 6th and 8th second and it is visible that power consumption raises a little. However in the next scene, scene 11 (seconds 8-13) the power consumption peaks from 5 to nearly 7 Watts. Scene 12 (seconds 13-18) also notes higher consumption, however smaller than previous scene. The next two scenes take very little time and around second 19 the next sequence of 14 images is started (red vertical line).
 
-It is visible that the higher amout of stars on the input make program work significantly slower. While Cenotriding part needs rather the similar amout of time and Attitude Determination is not computationaly expensive (takes longer only in case of misidentified stars, and still it was at most 200 ms), Star Identification can take even 40 times more than usual. The possible solution would be to rewrite Star Identification algorithm to be computed on GPU, especially because GPU power consumption stays on much lower level than CPU's.
+It is visible that the higher amout of stars on the input make program work significantly slower. While Cenotriding part needs rather the similar amount of time and Attitude Determination is not computationally expensive (takes longer only in case of misidentified stars, and still it was at most 200 ms), Star Identification can take even 40 times more than usual. The possible solution would be to rewrite Star Identification algorithm to be computed on GPU, especially because GPU power consumption stays on much lower level than CPU's.
 
 NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tracker hardware, however not for small CubeSats due to their low power budget. It could be used in little larger satellites, like in at least 6U CubeSats or HyperSats. Although existing star-trackers with dedicated hardware have much lower power consumption, even around 0.65-2.5 W, it is possible that optimization of star-tracker software would lower the power consumption. Jetson's low power consumption and GPU give possibility to create new star-tracker without spending time and resources on hardware part, but on software only. Possible Jetson could either be used to test machine learning solutions, or be used as the main on-board computer, what would lower the need for other devices on the satellite therefore lower the power consumption.
 
@@ -1657,7 +1673,7 @@ NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tra
 \newpage
 \section{Summary and future steps}
 
-The program was tested using two sources of truth: images from Stellarium program and tests built basing on ESA's star-tracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that main parts of star-tracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (QUEST) work with quite high accuracy. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency at around $1Hz$ on average for LIS mode, and at least few times more with correctly working Tracking mode.
+The program was tested using two sources of truth: images from Stellarium program and tests built basing on ESA's star-tracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that all parts of star-tracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (QUEST) work with high accuracy separately. The main goal of the thesis - star identification part - was thoroughly tested with few thousands mocked  scenes and few generated taken from Stellaris program. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency at around $1Hz$ on average for LIS mode, and at least few times more with correctly working Tracking mode. The star-tracker is able to find attitude from the image of stars and calculate quaternion from it.
 
 In order to use created star-tracker program on satellite the following things are necessary to be done:
 \begin{itemize}
@@ -1676,9 +1692,8 @@ There exist a number of optional things to explore for bettering existing star-t
 \item explore other algorithms, especially for star identification and attitude estimation, because this is area which is being improved mostly.
 \end{itemize}
 
-Although there are few parts which could be improved, the existing star-tracker program works and could be with only few changes used on the real satellite.
-NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tracker hardware for slightly bigger sattelites. With software optimization it could lower its consumption below 7 Watts, possibly even to around 5 Watts (power consumtion under low CPU load). Other option is to use Jetson also instead of other devices what would lower the need for other components and would lower overall power consumption of satellite. Jetson can also be used for testing machine and deep learning solutions for startrackers.
-Additionally all the work done around the star-tracker program, like tests, etc., can be used for future development of even more accurate programs.
+NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tracker hardware for slightly bigger satellites. With software optimization it could lower its consumption below 7 Watts, possibly even to around 5 Watts (power consumption under low CPU load). Other option is to use Jetson also instead of other devices what would lower the need for other components and would lower overall power consumption of satellite. Jetson can also be used for testing machine and deep learning solutions for star-trackers.
+All goals set for this thesis have been met. Although there are few parts which could be improved, the existing star-tracker program works and could be with only few changes used on the real satellite. Additionally all the work done around the star-tracker program, like tests, etc., can be used for future development of even more accurate programs.
 
 
 \newpage

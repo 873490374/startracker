@@ -32,17 +32,17 @@
 \contentsline {subsubsection}{\numberline {2.3.4}Wahba's problem}{28}{subsubsection.2.3.4}
 \contentsline {section}{\numberline {3}Star-tracker program}{29}{section.3}
 \contentsline {subsection}{\numberline {3.1}Centroid - star recognition}{30}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Star identification}{33}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Star identification}{35}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Angle Matching}{35}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Spherical Triangle Matching}{37}{subsubsection.3.2.2}
 \contentsline {subsubsection}{\numberline {3.2.3}Planar Triangle}{39}{subsubsection.3.2.3}
 \contentsline {subsubsection}{\numberline {3.2.4}Pyramid}{42}{subsubsection.3.2.4}
 \contentsline {subsubsection}{\numberline {3.2.5}Voting}{43}{subsubsection.3.2.5}
-\contentsline {subsubsection}{\numberline {3.2.6}Grid}{43}{subsubsection.3.2.6}
+\contentsline {subsubsection}{\numberline {3.2.6}Grid}{45}{subsubsection.3.2.6}
 \contentsline {subsubsection}{\numberline {3.2.7}Other techniques}{45}{subsubsection.3.2.7}
 \contentsline {subsubsection}{\numberline {3.2.8}Conclusions}{46}{subsubsection.3.2.8}
-\contentsline {subsection}{\numberline {3.3}Star-catalogue and database search method}{46}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Star Catalogue Generation}{46}{subsubsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3}Star-catalog and database search method}{47}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Star Catalog Generation}{47}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Search Less Algorithm and k-vector}{48}{subsubsection.3.3.2}
 \contentsline {subsection}{\numberline {3.4}Attitude Determination}{50}{subsection.3.4}
 \contentsline {subsubsection}{\numberline {3.4.1}TRIAD}{50}{subsubsection.3.4.1}
@@ -51,16 +51,16 @@
 \contentsline {subsubsection}{\numberline {3.4.4}Singular Value Decomposition (SVD)}{53}{subsubsection.3.4.4}
 \contentsline {subsubsection}{\numberline {3.4.5}Other techniques}{54}{subsubsection.3.4.5}
 \contentsline {subsubsection}{\numberline {3.4.6}Conclusions}{54}{subsubsection.3.4.6}
-\contentsline {section}{\numberline {4}Star-tracker program}{55}{section.4}
-\contentsline {subsection}{\numberline {4.1}Program parts}{55}{subsection.4.1}
-\contentsline {subsubsection}{\numberline {4.1.1}Star Triangle Catalog}{55}{subsubsection.4.1.1}
-\contentsline {subsubsection}{\numberline {4.1.2}Star Catalog}{57}{subsubsection.4.1.2}
-\contentsline {subsubsection}{\numberline {4.1.3}Getting centroids of image stars}{58}{subsubsection.4.1.3}
-\contentsline {subsubsection}{\numberline {4.1.4}Star identification}{58}{subsubsection.4.1.4}
-\contentsline {subsubsection}{\numberline {4.1.5}Finding attiude}{61}{subsubsection.4.1.5}
-\contentsline {subsection}{\numberline {4.2}Example of working star-tracker}{63}{subsection.4.2}
-\contentsline {section}{\numberline {5}Testing on NVIDIA Jetson TX2}{70}{section.5}
-\contentsline {section}{\numberline {6}Summary and future steps}{74}{section.6}
-\contentsline {section}{References}{76}{section*.39}
-\contentsline {section}{List of Tables}{84}{section*.40}
-\contentsline {section}{List of Figures}{85}{section*.41}
+\contentsline {section}{\numberline {4}Star-tracker program}{56}{section.4}
+\contentsline {subsection}{\numberline {4.1}Program parts}{56}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Star Triangle Catalog}{56}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}Star Catalog}{58}{subsubsection.4.1.2}
+\contentsline {subsubsection}{\numberline {4.1.3}Getting centroids of image stars}{59}{subsubsection.4.1.3}
+\contentsline {subsubsection}{\numberline {4.1.4}Star identification}{59}{subsubsection.4.1.4}
+\contentsline {subsubsection}{\numberline {4.1.5}Finding attiude}{62}{subsubsection.4.1.5}
+\contentsline {subsection}{\numberline {4.2}Example of working star-tracker}{64}{subsection.4.2}
+\contentsline {section}{\numberline {5}Testing on NVIDIA Jetson TX2}{71}{section.5}
+\contentsline {section}{\numberline {6}Summary and future steps}{75}{section.6}
+\contentsline {section}{References}{77}{section*.39}
+\contentsline {section}{List of Tables}{85}{section*.40}
+\contentsline {section}{List of Figures}{86}{section*.41}
