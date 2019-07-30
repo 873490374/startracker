@@ -62,6 +62,8 @@
 \begin{filecontents}{gloss.tex}
 %================ACRONYMS=================%
 \newacronym{adcs}{ADCS}{Attitude Determination and Control System}
+\newacronym{ccd}{CCD}{Charge-Coupled Device}
+\newacronym{cmos}{CMOS}{Complementary Metal–Oxide–Semiconductor}
 \newacronym{dcm}{DCM}{Direction Cosine Matrix}
 \newacronym{geo}{GEO}{Geostationary Orbit}
 \newacronym{gnss}{GNSS}{Global Navigation Satellite System}
@@ -72,7 +74,6 @@
 \newacronym{lis}{LIS}{Lost-In-Space}
 \newacronym{meo}{MEO}{Medium Earth Orbit}
 \newacronym{svd}{SVD}{Singular Value Decomposition}
-
 %================SYMBOLS=================%
 \newglossaryentry{phi}{type=symbols, name=$\phi$, sort=phi, description={Euler angle, roll}}
 \newglossaryentry{theta}{type=symbols, name=$\theta$, sort=theta, description={Euler angle, pitch}}
@@ -217,7 +218,7 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 \item Planar Triangle - \citet{cole2006fast}, 
 \item Brightness Independent - \citet{dong2006brightness},
 \item Geometric Voting - \citet{kolomenkin2008geometric}, 
-\item Super k-ID and Multi Poles Algorithm created for ESA competition \cite{esa-competition},
+\item Super k-ID and Multi Poles Algorithm created for ESA competition\cite{esa-competition},
 \item use of neural networks: 
 \begin{itemize}[noitemsep]
 \item \citet{lindbladstar},
@@ -237,7 +238,7 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 \item Attitude estimation using Image Matching - \citet{delabie2012highly}, 
 \item QUEST - \citet{shuster1990kalman}, 
 \item Extended Quest - \citet{psiaki1999extended}, 
-\item Singular Value Decomposition - \citet{juang2003efficient},
+\item \gls{svd} - \citet{juang2003efficient},
 \item EQUEST - \citet{rinnan2012development}, 
 \item Optimal Image Matching - \citet{delabie2012highly}
 \item QUEST improvement - \citet{cheng2014improvement}, 
@@ -259,28 +260,28 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 
 Many of those works will be mentioned and cited later in this thesis as they are crucial for this work and describe the ways how star-tracker should be designed. All those main algorithm types, like finding star centroids or star identification, are also described here in full detail in next sections.
 
-It is also interesting to mention one work, which was done at Warsaw University of Technology together with Space Research Centre of Polish Academy of Sciences - Telegwiazda (eng. Telestar, rus. Telezvezda) - star-tracker designed for Gamma satellite, gamma ray telescope, in years 1978-90 \cite{gamma-satellite}. That satellite was joint French-Soviet project with star-tracker made in Poland. Due to superior role of Soviet Union in that project comparing to Poland, the name of the star-tracker was changed to Russian (Telezvezda) and as such exists in international documents. Polish version of name exists only in Polish documents. There were two teams of scientists from Warsaw University of Technology working on this star-tracker: one from Faculty of Precision Mechanics under profesor Romuald Jóźwicki designing optomechanical part of the system, and one from Faculty of Electronics under Grzegorz Czajkowski designing electronical part with on-board computer \cite{wut-space-research}. 
-The star-tracker was analyzing image of sky with FOV 9\degree . Four brightest stars in FOV were followed and their coordinates were sent to Earth, where they were compared with real star map. The software for checking stars' coordinates with real star map was created at Space Research Centre of Polish Academy of Sciences. star-tracker could register stars with magnitude equal or below 7 and with accuracy below 2 arcmin \cite{optical-devices-cbk}. Although the satellite failed shortly after its launch in 1990 due to power failure, star-tracker functioned properly and was among the few parts of the satellite which were functioning till the end of satellite's life in 1992. Comparing to Telegwiazda, modern star-trackers do not need to send stars' coordinates to Earth for comparing with sky map, but they can to this by themselves.
+It is also interesting to mention one work, which was done at Warsaw University of Technology together with Space Research Centre of Polish Academy of Sciences - Telegwiazda (eng. Telestar, rus. Telezvezda) - star-tracker designed for Gamma satellite, gamma ray telescope, in years 1978-90\cite{gamma-satellite}. That satellite was joint French-Soviet project with star-tracker made in Poland. Due to superior role of Soviet Union in that project comparing to Poland, the name of the star-tracker was changed to Russian (Telezvezda) and as such exists in international documents. Polish version of name exists only in Polish documents. There were two teams of scientists from Warsaw University of Technology working on this star-tracker: one from Faculty of Precision Mechanics under profesor Romuald Jóźwicki designing optomechanical part of the system, and one from Faculty of Electronics under Grzegorz Czajkowski designing electronical part with on-board computer\cite{wut-space-research}.
+The star-tracker was analyzing image of sky with FOV 9\degree . Four brightest stars in FOV were followed and their coordinates were sent to Earth, where they were compared with real star map. The software for checking stars' coordinates with real star map was created at Space Research Centre of Polish Academy of Sciences. star-tracker could register stars with magnitude equal or below 7 and with accuracy below 2 arcmin\cite{optical-devices-cbk}. Although the satellite failed shortly after its launch in 1990 due to power failure, star-tracker functioned properly and was among the few parts of the satellite which were functioning till the end of satellite's life in 1992. Comparing to Telegwiazda, modern star-trackers do not need to send stars' coordinates to Earth for comparing with sky map, but they can to this by themselves.
 
 
 \subsection{Small satellites}
 
-In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University \cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg. CubeSat can have very low power supply for small units, but for units 6U and higher it can have from 17 Watts\cite{cubesat-panels} to even 126 Watts\cite{nanosat-tables}.
+In recent years there has been the development of micro-satellites called CubeSats. CubeSat is a standard created in 1999 at the California Polytechnic State University\cite{heidt2000cubesat}, which is used for low-cost micro-satellites. CubeSats are measured in units. Most are 1U, 2U and 3U. CubeSat 1U has a size of 10 cm on each edge and the maximum weight of 1.333 kg, while the CubeSat 2U is 20x10x10 cm and can weigh up to 2.666 kg. CubeSat can have very low power supply for small units, but for units 6U and higher it can have from 17 Watts\cite{cubesat-panels} to even 126 Watts\cite{nanosat-tables}.
 
-The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years \cite{swartwout2011brief}\cite{swartwout2013first}. Till now there were around 1100 CubeSats launched \cite{nanosats}.
+The advantage of the standard is primarily reduction of the price of elevation of such satellites into orbit. Their popularity is evidenced by the fact that the percentage of satellites weighing less than 10 kg has increased to about 60\% of all satellites, and only CubeSats make up about half of the small satellites that were launched in last years\cite{swartwout2011brief}\cite{swartwout2013first}. Till now there were around 1100 CubeSats launched\cite{nanosats}.
 
-There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc. \cite{pw-sat2}.
+There exist wide range of CubeSat examples. Mostly they are scientific and students' satellites, for learning, experimental and science purposes. There are also few Polish examples: PW-SAT (1U) and PW-SAT 2 (2U) designed by students of Warsaw University of Technology, and Lem (8U) and Heweliusz (8U), both made at Polish Academy of Sciences. PW-SAT and PW-SAT 2 were used for learning and experimenting with new technologies, like deorbitation sail, solar sensor, etc.\cite{pw-sat2}.
 Scientific satellites Lem and Heweliusz were built as part of BRITE programme - joint programme of Austria, Canada and Poland. The goal of this programme is to research mechanisms of energy transportation and angular momentum which happen inside hottest stars\cite{brite-pl}.
 
 Typical CubeSat consist of many different components. Quite often it has antennas and radios for communication with mission centre on Earth, Electric Power System (subsystem responsible for managing electric power in the satellite), \gls{adcs} (subsystem responsible for analysing data from sensors and taking decision about trajectory, etc.), magnetometer, star-tracker, sun sensors, payload processor with mission instructions, etc. CubeSats are quite small, hence they usually do not have any propulsion system\cite{lemmer2017propulsion}. Figure \ref{fig:cubesat-build} shows the components of CubeSat on example of NASA's Interplanetary NanoSpacecraft Pathfinder In a Relevant Environment (INSPIRE).
 
 \begin{figure}[!htbp]
   \centering
-  \subfloat[PW-SAT \cite{pw-sat-image}]{\includegraphics[width=0.4\textwidth]{pw-sat.jpg}\label{fig:pw-sat}}
+  \subfloat[PW-SAT\cite{pw-sat-image}]{\includegraphics[width=0.4\textwidth]{pw-sat.jpg}\label{fig:pw-sat}}
   \hfill
-  \subfloat[PW-SAT 2 \cite{pw-sat2}]{\includegraphics[width=0.5\textwidth]{PW-Sat2_2016_16_MSwietlik.png}\label{fig:pw-sat2}}
+  \subfloat[PW-SAT 2\cite{pw-sat2}]{\includegraphics[width=0.5\textwidth]{PW-Sat2_2016_16_MSwietlik.png}\label{fig:pw-sat2}}
   \hfill
-  \subfloat[BRITE-PL (Lem, Heweliusz) \cite{brite-pl-gunter}]
+  \subfloat[BRITE-PL (Lem, Heweliusz)\cite{brite-pl-gunter}]
 {\includegraphics[width=0.5\textwidth]{brite.jpg}\label{fig:brite}}
   \caption{Example of Polish CubeSats}
   \label{fig:satellites-examples}
@@ -290,7 +291,7 @@ Typical CubeSat consist of many different components. Quite often it has antenna
 \begin{figure}[!htbp]
 \includegraphics[scale=0.45]{INSPIRE_JPL.jpg}
 \centering
-\caption[CubeSat build - INSPIRE]{CubeSat build - INSPIRE, Image \cite{cubesat-build}}
+\caption[CubeSat build - INSPIRE]{CubeSat build - INSPIRE, Image\cite{cubesat-build}}
 \label{fig:cubesat-build}
 \end{figure}
 
@@ -301,11 +302,11 @@ Another platform for slightly larger than CubeSat satellites was designed by Pol
 
 \begin{figure}[!htbp]
   \centering
-  \subfloat[HyperSat example \cite{hypersat}]{\includegraphics[width=0.4\textwidth]{Renesans_008.png}\label{fig:hypersat-concept-full}}
+  \subfloat[HyperSat example\cite{hypersat}]{\includegraphics[width=0.4\textwidth]{Renesans_008.png}\label{fig:hypersat-concept-full}}
   \hfill
-  \subfloat[HyperSat example \cite{hypersat}]{\includegraphics[width=0.6\textwidth]{Renesans_010.png}\label{fig:hypersat-concept-inside}}
+  \subfloat[HyperSat example\cite{hypersat}]{\includegraphics[width=0.6\textwidth]{Renesans_010.png}\label{fig:hypersat-concept-inside}}
   \hfill
-  \subfloat[HyperSat prototype \cite{hypersat}]
+  \subfloat[HyperSat prototype\cite{hypersat}]
 {\includegraphics[width=0.7\textwidth]{hypersat_3.jpg}\label{fig:hypersat-prototype}}
   \caption{HyperSat}
   \label{fig:hypersat-examples}
@@ -332,7 +333,7 @@ Earth horizon sensors use infra-red radiation from the Earth's surface via use o
 \subsubsection{Magnetometer}
 The device actually consists of three magnetometers - one for measuring Earth's magnetic field in each direction. Measurements can be compared with known magnetic field given by International Geomagnetic Reference Field model. The problem with this sensors is that they are susceptible to noise and outside of Earth's orbit it is completely unpredictable.
 \subsubsection{Global Navigation Satellite System (GNSS)}
-Nowadays nearly everyone has personal device with \gls{gnss}. They are more commonly known by their implementation by various countries: \gls{gps} by USA, GLONASS by Russia, Galileo by European Union, and in close future BeiDou by China. It is possible to use \gls{gnss} to determine spacecraft's attitude. This is possible when at least four \gls{gnss} satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. \gls{gps} satellites are located on \gls{meo}, around 20,200 km above sea \cite{gps-gov}. It is possible to navigate spacecraft between \gls{leo} (160 to 2,000 km) and \gls{geo} (35,786 km) \cite{nasa-gps-navigation}. For missions beyond Earth's orbit \gls{gnss} navigation is however not useful. Example of \gls{gnss} usage for navigation in space is International Space Station (ISS), which uses \gls{gps}. \cite{iss-gps}. There are however works that claim it could make using \gls{gps} systems possible for attitude determination up to Moon attitude in the future \cite{capuano2014gnss}.
+Nowadays nearly everyone has personal device with \gls{gnss}. They are more commonly known by their implementation by various countries: \gls{gps} by USA, GLONASS by Russia, Galileo by European Union, and in close future BeiDou by China. It is possible to use \gls{gnss} to determine spacecraft's attitude. This is possible when at least four \gls{gnss} satellites are visible by spacecraft, what provides three-dimensional position. Even though it gives quite good accuracy, but it decreases with the altitude. \gls{gps} satellites are located on \gls{meo}, around 20,200 km above sea\cite{gps-gov}. It is possible to navigate spacecraft between \gls{leo} (160 to 2,000 km) and \gls{geo} (35,786 km)\cite{nasa-gps-navigation}. For missions beyond Earth's orbit \gls{gnss} navigation is however not useful. Example of \gls{gnss} usage for navigation in space is International Space Station (ISS), which uses \gls{gps}.\cite{iss-gps} There are however works that claim it could make using \gls{gps} systems possible for attitude determination up to Moon attitude in the future\cite{capuano2014gnss}.
 
 \subsubsection{Conclusions}
 The above means of attitude determination are usually used together with the use of Kalman filter, to compensate errors of one sensor with the other. However none of the means is more accurate than star-trackers.
@@ -363,7 +364,7 @@ Magnetometer & 1.0\degree{} (5000km alt) \newline 5.0\degree{} (200 km alt) \\
 
 \subsection{NVIDIA Jetson TX2}
 
-As mentioned before, part of the thesis is to run star-tracker program on off-the-shelf device: NVIDIA Jetson TX2 \cite{nvidia-jetsontx2}. Price of this device is around 479 USD \cite{jetsontx2-price} (around 1800 PLN), what in case of successful experiment would significantly lower the price of star-trackers due to usage of already available components instead of designing new hardware. 
+As mentioned before, part of the thesis is to run star-tracker program on off-the-shelf device: NVIDIA Jetson TX2\cite{nvidia-jetsontx2}. Price of this device is around 479 USD\cite{jetsontx2-price} (around 1800 PLN), what in case of successful experiment would significantly lower the price of star-trackers due to usage of already available components instead of designing new hardware.
 
 Jetson TX2 runs Linux and provides greater than 1TFLOPS of FP16 compute performance with 7.5 watts of typical energy usage. Module has dimensions of 50 mm x 87 mm, weights 85 grams, and features the following processing components: dual-core NVIDIA Denver2 + quad-core ARM Cortex-A57, 256-core Pascal GPU and 8GB LPDDR4.
 High RAM, fast multi-core CPUs and GPU allow quite complex, computing-demanding calculations to be done quickly, while some parts of star-tracker program could be done parallelly. Possibly Jetson TX2 could also be used for machine learning or deep learning star-tracker solutions, as there already exist works exploring that options. Figure \ref{fig:jetson-image} shows NVIDIA Jetson TX2 and Developer kit, while Figure \ref{fig:jetson-diagram-image} shows block diagram.
@@ -380,7 +381,7 @@ Low power consumption, low weight, small dimension, low price, already available
 \begin{figure}[!htbp]
 \includegraphics[angle=90, scale=0.5]{Tegra_Parker_Block_Diagram-1.png}
 \centering
-\caption[NVIDIA Jetson TX2 block diagram]{NVIDIA Jetson TX2 block diagram \cite{nvidia-jetsontx2}}
+\caption[NVIDIA Jetson TX2 block diagram]{NVIDIA Jetson TX2 block diagram\cite{nvidia-jetsontx2}}
 \label{fig:jetson-diagram-image}
 \end{figure}
 
@@ -423,7 +424,7 @@ The mentioned orbits are visible to some extend in the Figure \ref{fig:orbits-im
 \begin{figure}[!htbp]
 \includegraphics[scale=0.7]{Comparison_satellite_navigation_orbits.png}
 \centering
-\caption[Earth's satellites navigation orbits]{Earth's satellites navigation orbits \cite{orbits-image}}
+\caption[Earth's satellites navigation orbits]{Earth's satellites navigation orbitsorbits-image}}
 \label{fig:orbits-image}
 \end{figure}
 
@@ -452,7 +453,7 @@ The North East Down frame is represented in Figure \ref{fig:ned_frame}. Its z-ax
 \begin{figure}[!htb]
 \includegraphics[scale=0.6]{ned_frame.jpg}
 \centering
-\caption[NED frame]{NED frame \cite{ned-frame-image}}
+\caption[NED frame]{NED frame\cite{ned-frame-image}}
 \label{fig:ned_frame}
 \end{figure}
 
@@ -471,7 +472,7 @@ Attitude is not only were one object is located relative to other, but also how 
 
 \subsubsection{Euler angles}
 
-Euler angles were described by Leonard Euler in 1776 \cite{euler1775formulae}. They are used for representing an orientation of an object.
+Euler angles were described by Leonard Euler in 1776\cite{euler1775formulae}. They are used for representing an orientation of an object.
 To fully understand the orientation between two frames it is necessary to have three parameters: one angle for the rotation around each axis. Those angles are called roll, pitch, yaw typically written as $\phi$, $\theta$ and $\psi$ respectively. The Euler angles are often used for the definition of rotation matrices about the x, y and z-axis. The equations \ref{eq:euler_rx}, \ref{eq:euler_ry} and \ref{eq:euler_rz} describe those rotation matrices.
 
 \begin{equation} \label{eq:euler_rx}
@@ -498,7 +499,7 @@ To fully understand the orientation between two frames it is necessary to have t
 
 \subsubsection{Quaternions}
 
-In 1843 Sir William Rowan Hamilton described quaterions \cite{hamilton1844lxxviii} and in 1845 multiplication of quaternions to describe rotations were published by Arthur Cayley \cite{cayley1845xiii}. Quaternions consist of four elements: three give the coordinates and fourth describing angle of rotation \citet{courant1953methods}.
+In 1843 Sir William Rowan Hamilton described quaterionshamilton1844lxxviii} and in 1845 multiplication of quaternions to describe rotations were published by Arthur Cayley\cite{cayley1845xiii}. Quaternions consist of four elements: three give the coordinates and fourth describing angle of rotation \citet{courant1953methods}.
 A quaternion can be described as a four-dimensional vector:
 \begin{equation}
 \bm{q} \coloneqq \begin{bmatrix}
@@ -578,7 +579,7 @@ Of course LIS does not happen only at the beginning of the satellite's flight, b
 Each part - LIS and tracking - consists of smaller algorithms. Lost-In-Space at the beginning of reading an image from the camera, thresholds the image. Thresholding is basically throwing away parts of the image which do not exceed the threshold brightness, making just bright enough stars taken into account. Next it calculates centroid (center of mass) of selected stars, identifies these stars using one of the possible methods (here Planar Triangle, described later) and searches the directory on-board technology (k-vector).
 If the database does not contain corresponding stars, the algorithm returns to the input state and starts analyzing the next image. If it manages to find the corresponding stars, the program determines the attitude of the satellite (by what angle is satellite shifted comparing to the referenced object - Earth or previous image) and enters tracking mode. Tracking mode is in large part similar to the LIS. The algorithm also first analyses the photo, selects and calculates centroids stars, identifies them, but does not search for stars in the directory board. In this algorithm are compared two images, one following after the other, and on this basis the current attitude is calculated.
 
-Generally star-tracker is divided into three main parts \cite{mcbryde2012star}:
+Generally star-tracker is divided into three main parts\cite{mcbryde2012star}:
 \begin{itemize}
 \item recognizing stars on the image and converting the data into list of star vectors by calculating star centroids;
 \item identifying which star vector represents which real star in catalog. This is done by comparing star vectors from the image with data in star catalog, which is generated before space mission;
@@ -1001,9 +1002,9 @@ Authors' testing has shown that the algorithm is as accurate, as fast and more r
 
 
 \subsubsection{Grid}
-The Grid Algorithm was designed by \citet{padgett1997grid}. The main ideas of the algorithm are to generate a specified pattern database and to construct a grid pattern from the measured star field in the CCD plane. The specified pattern is designed by using grids. Then the measured grid pattern is identified by best matching pattern in the database.According to authors the algorithm is robust and comparable with other methods in terms of accuracy and performance. 
+The Grid Algorithm was designed by \citet{padgett1997grid}. The main ideas of the algorithm are to generate a specified pattern database and to construct a grid pattern from the measured star field in the \gls{ccd} plane. The specified pattern is designed by using grids. Then the measured grid pattern is identified by best matching pattern in the database.According to authors the algorithm is robust and comparable with other methods in terms of accuracy and performance.
 
-This algorithm will not be described in more detail, since it is designed for CCD camera, and this thesis focuses on star-tracker for OBC mentioned before, which uses CMOS camera. More information can be found in \citet{padgett1997grid}.
+This algorithm will not be described in more detail, since it is designed for \gls{ccd} camera, and this thesis focuses on star-tracker for OBC mentioned before, which uses \gls{cmos} camera. More information can be found in \citet{padgett1997grid}.
 
 
 \subsubsection{Other techniques}
@@ -1095,12 +1096,12 @@ $\bm{u_x^T u_y}$ is equal to cosine of angle between the two unit vectors, there
 
 \subsubsection{Search Less Algorithm and k-vector}
 
-Search Less Algorithm (SLA) by \citet{mortari1996fast} is special algorithm used to speed up looking up the corresponding stars in the on-board computer. Its heart is k-vector technique. Comparing to binary search technique, k-vector demonstrates high speed gain rate, from 10 to more than 50 times \cite{mortari2000k}.
+Search Less Algorithm (SLA) by \citet{mortari1996fast} is special algorithm used to speed up looking up the corresponding stars in the on-board computer. Its heart is k-vector technique. Comparing to binary search technique, k-vector demonstrates high speed gain rate, from 10 to more than 50 times\cite{mortari2000k}.
 
 The k-vector database is built before spacecraft's start. The k-vector table is a structural database of all cataloged star pairs that could possibly fit into the camera FOV over the whole sky. 
 The star pairs are ordered with increasing inter-star angle.
 
-The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{I}(i))$, where $\bm{I}$ is the integer vector of the sorting with length $n$ \cite{mortari2013k}.
+The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{I}(i))$, where $\bm{I}$ is the integer vector of the sorting with length $n$\cite{mortari2013k}.
 
 
 \begin{figure}[!htbp]
@@ -1266,7 +1267,7 @@ Firstly the matrix $\bm{B}$ is calculated with $n$ observed stars, where $b_i$ i
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
 \end{equation}
-Secondly singular value decomposition (SVD) of matrix $\bm{B}$ has to be found
+\gls{svd} of matrix $\bm{B}$ has to be found
 \begin{equation}
 \bm{B = USV^T}
 \end{equation}
@@ -1295,8 +1296,8 @@ The \gls{dcm} $\bm{A}$ can be found by:
 \subsubsection{Other techniques}
 There exist also other methods:
 \begin{itemize}
-\item The Fast Optimal Attitude Matrix \cite{markley1993attitude},
-\item Predictive Attitude Determination \cite{crassidis1997predictive}.
+\item The Fast Optimal Attitude Matrix\cite{markley1993attitude},
+\item Predictive Attitude Determination\cite{crassidis1997predictive}.
 \end{itemize}
 
 However they are not very popular and not often used, therefore they will not be described here.
@@ -1306,14 +1307,14 @@ However they are not very popular and not often used, therefore they will not be
 
 From all the presented methods, QUEST was selected due to low computational requirements and good accuracy in attitude estimation.
 
-QUEST outperforms q-method in terms of speed \cite{markley1999estimate}, and while it is less accurate it still qualifies for satellite. Comparing to TRIAD, QUEST is more robust to noise. TRIAD is designed only for two vectors, hence in case of inaccurate measurements, it will yield erroneous result, even if there are more vector that could be used for estimation. According to \citet{ccelik2013comparison} the computational time and accuracy in q-method and TRIAD are comparable, hence QUEST is faster from both of them.
+QUEST outperforms q-method in terms of speed\cite{markley1999estimate}, and while it is less accurate it still qualifies for satellite. Comparing to TRIAD, QUEST is more robust to noise. TRIAD is designed only for two vectors, hence in case of inaccurate measurements, it will yield erroneous result, even if there are more vector that could be used for estimation. According to \citet{ccelik2013comparison} the computational time and accuracy in q-method and TRIAD are comparable, hence QUEST is faster from both of them.
 
 QUEST was also chosen by \citet{huffman2006designing} and \citet{tappe2009development} to be used on satellites' star-trackers.
 
 \newpage
 \section{Star-tracker program}
 
-Star-tracker program was written in Python under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library for easy GPU computation. The program has main file which is responsible for running whole program, and the rest is divided in three parts: star recognition - calculating centroids of stars from image and discarding the ones with too high magnitude; star identification - finding stars' catalog IDs and discarding false stars, using isolated Planar Triangle algorithm; attitude estimation using isolated QUEST algorithm. Additionally there is separate part for catalog generation for Planar Triangle algorithm.
+Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library for easy GPU computation. The program has main file which is responsible for running whole program, and the rest is divided in three parts: star recognition - calculating centroids of stars from image and discarding the ones with too high magnitude; star identification - finding stars' catalog IDs and discarding false stars, using isolated Planar Triangle algorithm; attitude estimation using isolated QUEST algorithm. Additionally there is separate part for catalog generation for Planar Triangle algorithm.
 
 During star-tracker development it was necessary to firstly create testing environment in order to ensure that program will work correctly. Each part of algorithm was tested separately on wide range of examples, then they were together as fully functioning star-tracker program.
 
@@ -1399,7 +1400,7 @@ On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can g
 
 Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
-Star Identifier algorithm was tested basing on ESA's star-tracker simulator created for competition needs \cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
+Star Identifier algorithm was tested basing on ESA's star-tracker simulator created for competition needs\cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
 All tests were done with FOV 10\degree . On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%. Accuracy in this case means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
 Such particular accuracy definition comes from the fact that for given scene no star can be recognized incorrectly in order to get correct result in the next part of program, which is QUEST algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
 
@@ -1415,7 +1416,7 @@ Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be
 
 
 \subsubsection{Finding attiude}
-After having list of image stars with Hipparcos star IDs it is possible to determin attitude. For that there are two ways: in Tracking mode current star vectors are compared with previous star vectors; in LIS mode the current star vectors are compared with corresponding star vectors from Star Catalog. Attitude is calculated using QUEST algorithm. The QUEST algorithm was tested with example given in \cite{hall2003spacecraft} and gives identical result as in the book.
+After having list of image stars with Hipparcos star IDs it is possible to determin attitude. For that there are two ways: in Tracking mode current star vectors are compared with previous star vectors; in LIS mode the current star vectors are compared with corresponding star vectors from Star Catalog. Attitude is calculated using QUEST algorithm. The QUEST algorithm was tested with example given in\cite{hall2003spacecraft} and gives identical result as in the book.
 
 On Jetson Attitude Determination lasts below 10 ms in most cases, but it can go even up to 200 ms. This can happen if high percentage of stars in scene is misidentified and it takes more iterations to converge.
 
