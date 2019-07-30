@@ -156,6 +156,7 @@ def star_tracker(
     )
 
 
+@pytest.mark.cuda
 @pytest.mark.skip('Only ot be tested with camera on test bed')
 class TestStartrackerJetson:
 

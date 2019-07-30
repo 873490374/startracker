@@ -7,5 +7,6 @@ Pillow
 matplotlib
 seaborn
 progress
+Astropy
 pytest
 mock
