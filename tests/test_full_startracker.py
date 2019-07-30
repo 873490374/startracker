@@ -552,13 +552,13 @@ def validate(stars, q, expected):
 
         print('')
         print('Quaternion =', q)
-        if q is not None:
-            q = Quat(q)
-            xx = (360 - q.ra) + 90
-            print(xx)
-            print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
-            print(q.dec)
-            print(360-q.roll)
+        # if q is not None:
+        #     q = Quat(q)
+        #     xx = (360 - q.ra) + 90
+        #     print(xx)
+        #     print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
+        #     print(q.dec)
+        #     print(360-q.roll)
 
         # plot_result(stars, res_x(), res_y())
     return all_, good, bad, not_recognized, attitude_not_found

@@ -10,7 +10,7 @@ install:
   - hash -r
   - conda config --set always_yes yes --set changeps1 no
   - conda update -q conda
-  - pip install -r requirements_travis.txt
+  - conda install --file requirements_travis.txt
 
 dist:
   trusty
