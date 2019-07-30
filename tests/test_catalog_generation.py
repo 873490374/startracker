@@ -2,7 +2,7 @@ import datetime
 
 import numpy as np
 import os
-
+import pytest
 
 from program.catalog.triangle_catalog_generator import (
     TriangleCatalogGeneratorParallel,
@@ -10,6 +10,7 @@ from program.catalog.triangle_catalog_generator import (
 from program.const import MAIN_PATH
 
 
+@pytest.mark.cuda
 class TestCatalogGeneration:
     def test_catalog_generation(self):
         star_catalog_fp = os.path.join(

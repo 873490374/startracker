@@ -4,12 +4,12 @@ python:
 install:
   - git fetch --unshallow
   # Install Anaconda
-  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
-  - bash miniconda.sh -b -p $HOME/miniconda
-  - export PATH="$HOME/miniconda/bin:$PATH"
-  - hash -r
-  - conda config --set always_yes yes --set changeps1 no
-  - conda update -q conda
+#  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+#  - bash miniconda.sh -b -p $HOME/miniconda
+#  - export PATH="$HOME/miniconda/bin:$PATH"
+#  - hash -r
+#  - conda config --set always_yes yes --set changeps1 no
+#  - conda update -q conda
   - pip install -r requirements_travis.txt
 
 dist:
@@ -22,4 +22,4 @@ addons:
       secure: 0f3ab3d237bc26479eb823444642917245f6e133
 script:
   - sonar-scanner
-  - python -m pytest tests/ -v -m "not centroid"
+  - python -m pytest tests/ -v -m "not cuda"

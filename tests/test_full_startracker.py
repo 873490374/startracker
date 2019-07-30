@@ -371,7 +371,7 @@ def star_tracker(
         tracking_mode_enabled=False,
     )
 
-
+@pytest.mark.cuda
 class TestFullStarTracker:
 
     def test_full_startracker(self, star_tracker, image_processor):
