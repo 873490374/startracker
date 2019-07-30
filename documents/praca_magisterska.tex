@@ -85,19 +85,13 @@
 \newglossaryentry{unit_quaterion}{type=symbols, name=$\bm{q}$, sort=unit_quaterion, description={Unit quaternion}}
 \newglossaryentry{scalar_quaternion_part}{type=symbols, name=$q_0$, sort=sigma, description={Scalar part of unit quaternion}}
 \newglossaryentry{vector_quaternion_part}{type=symbols, name=$\bm{q}_{vec}$, sort=scalar_quaternion_part, description={Vector part of unit quaternion}}
-\newglossaryentry{quaternion_matrix}{type=symbols, name=$\bm{Q}$, sort=quaternion_matrix, description={Quaternion matrix}}
 \newglossaryentry{general_euler_angle}{type=symbols, name=$v$, sort=general_euler_angle, description={General Euler angle}}
 \newglossaryentry{unit_vector}{type=symbols, name=$\bm{n}$, sort=unit_vector, description={Unit vector}}
 \newglossaryentry{identity_matrix}{type=symbols, name=$\bm{I}$, sort=identity_matrix, description={Identity matrix}}
-\newglossaryentry{skew_symmetrix_matrix}{type=symbols, name=$\bm{S}(\cdot)$, sort=skew_symmetrix_matrix, description={Skew symmetric matrix}}
+\newglossaryentry{integer_vector}{type=symbols, name=$\bm{J}$, sort=integer_vector, description={Integer vector of the sorting}}
 \newglossaryentry{rotation_matrix}{type=symbols, name=$\bm{R}_n^b$, sort=rotation_matrix, description={Rotation matrix representing a rotation from n to b}}
-\newglossaryentry{least_squares_estimate_rotation_matrix}{type=symbols, name=$\bm{M}$, sort=least_squares_estimate_rotation_matrix, description={Least squares estimate of rotation matrix}}
 \newglossaryentry{unit_vector_inertial}{type=symbols, name=$\bm{r}$, sort=unit_vector_inertial, description={Known directional unit vector in the ECI frame}}
 \newglossaryentry{unit_vector_body}{type=symbols, name=$\bm{b}$, sort=unit_vector_body, description={Known directional unit vector in the BODY frame}}
-
-%================GLOSSARY=================%
-%\newglossaryentry{Centroid}{type=glossary, name=centroid, description={Is a mark up language specially suited for scientific documents}
-%\newglossaryentry{Star ID}{type=glossary, name=starid, description={Is a mark up language specially suited for scientific documents}
 
 \end{filecontents}
 
@@ -1107,7 +1101,7 @@ Search Less Algorithm (SLA) by \citet{mortari1996fast} is special algorithm used
 The k-vector database is built before spacecraft's start. The k-vector table is a structural database of all cataloged star pairs that could possibly fit into the camera \gls{fov} over the whole sky.
 The star pairs are ordered with increasing inter-star angle.
 
-The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{I}(i))$, where $\bm{I}$ is the integer vector of the sorting with length $n$\cite{mortari2013k}.
+The k-vector technique works in the following way: $\bm{y}$ is the data vector of $n$ elements $(n \gg 1)$ and $\bm{s}$ is the same vector but sorted in ascending mode: $\bm{s}(i) \le \bm{s}(i+1)$, and $\bm{s}(i) = \bm{y}(\bm{J}(i))$, where $\bm{J}$ is the integer vector of the sorting with length $n$\cite{mortari2013k}.
 
 
 \begin{figure}[!htbp]
@@ -1138,7 +1132,7 @@ Each other element can be found using the following equation:
 \end{equation}
 or
 \begin{equation}
-\bm{k}(i) = j \hspace{0.5cm} \textnormal{where j is the greatest index such} \hspace{0.5cm} s(j) \leq \bm{y}	(\bm{I}(i)) \hspace{0.5cm} \textnormal{is satisfied.}
+\bm{k}(i) = j \hspace{0.5cm} \textnormal{where j is the greatest index such} \hspace{0.5cm} s(j) \leq \bm{y}	(\bm{J}(i)) \hspace{0.5cm} \textnormal{is satisfied.}
 \end{equation}
 
 At this point k-vector has been built, and further use is quite simple. The equation to find indices identifying in $\bm{s}$ vector all possible data within the range $[y_a, y_b ]$ is following:
@@ -1151,7 +1145,7 @@ In the example of Figure \ref{fig:k-vector-example} it is $j_b = 4$ and $j_t = 9
 k_{start} = \bm{k}(j_b) + 1 \hspace{0.5cm} and \hspace{0.5cm} k_{end} = \bm{k}(j_t)
 \end{equation}
 
-Finally, having found $k_{start}$ and $k_{end}$ it is immediately known, that searched elements are $\bm{y}(i) \in [y_a, y_b]$, which are all the $\bm{y}(\bm{I}(i))$ where $k$ ranges from $k_{start}$ and $k_{end}$.
+Finally, having found $k_{start}$ and $k_{end}$ it is immediately known, that searched elements are $\bm{y}(i) \in [y_a, y_b]$, which are all the $\bm{y}(\bm{J}(i))$ where $k$ ranges from $k_{start}$ and $k_{end}$.
 
 Note that in example the searched elements should be $k_{start} = 4$ and $k_{end} = 8$ while the presented technique returns $k_{start} = 4$ and $k_{end} = 9$. This happens due to fact that $k_{start}$ and $k_{end}$ have $50\%$ possibility to not belong to the $[y_a, z(j_a +1)]$ and $[z(j_b), y_b)]$ ranges respectively.
 
