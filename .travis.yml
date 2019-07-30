@@ -23,4 +23,4 @@ addons:
       secure: 0f3ab3d237bc26479eb823444642917245f6e133
 script:
   - sonar-scanner
-  - python -m pytest tests/ -v -m "not cuda"
+  - python -m pytest tests/no_cuda -v -m "not cuda"

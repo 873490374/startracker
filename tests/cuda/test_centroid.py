@@ -1,5 +1,7 @@
 import numpy as np
 import os
+
+import pytest
 from PIL import Image
 from timeit import default_timer as timer
 
