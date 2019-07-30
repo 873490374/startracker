@@ -86,7 +86,7 @@
 \newglossaryentry{scalar_quaternion_part}{type=symbols, name=$q_0$, sort=sigma, description={Scalar part of unit quaternion}}
 \newglossaryentry{vector_quaternion_part}{type=symbols, name=$\bm{q}_{vec}$, sort=scalar_quaternion_part, description={Vector part of unit quaternion}}
 \newglossaryentry{general_euler_angle}{type=symbols, name=$v$, sort=general_euler_angle, description={General Euler angle}}
-\newglossaryentry{unit_vector}{type=symbols, name=$\bm{n}$, sort=unit_vector, description={Unit vector}}
+\newglossaryentry{unit_vector}{type=symbols, name=$\bm{u}$, sort=unit_vector, description={Unit vector}}
 \newglossaryentry{identity_matrix}{type=symbols, name=$\bm{I}$, sort=identity_matrix, description={Identity matrix}}
 \newglossaryentry{integer_vector}{type=symbols, name=$\bm{J}$, sort=integer_vector, description={Integer vector of the sorting}}
 \newglossaryentry{rotation_matrix}{type=symbols, name=$\bm{R}_n^b$, sort=rotation_matrix, description={Rotation matrix representing a rotation from n to b}}
@@ -516,9 +516,6 @@ where real part can be described using a rotation angle $v$, as follows:
 q_0 = \cos(v/2)
 \end{equation}
 
-\begin{equation}
-\bm{n} = \frac{\bm{n}}{||\bm{n}||}
-\end{equation}
 The imaginary part can be written as a vector:
 \begin{equation}
 \bm{q}_{vec} \coloneqq \begin{bmatrix}
@@ -526,9 +523,9 @@ q_1 \\
 q_2 \\
 q_3
 \end{bmatrix}
-= [\bm{n}\sin(v/2)]
+= [\bm{u}\sin(v/2)]
 \end{equation}
-where $\bm{n} = \frac{\bm{n}}{||\bm{n}||}$.
+where $\bm{u} = \frac{\bm{u}}{||\bm{u}||}$.
 
 In code the so called $x,y,z,w$ representation is used, where the scalar part is the last element of the vector:
 \begin{equation} \label{eq:code_quaternion}
@@ -723,9 +720,9 @@ The Angle Matching is probably the oldest way for identifying stars. It needs at
 The angle between two vectors pointing to the stars is given by:
 
 \begin{equation}
-\theta = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
+\rho = \cos^{-1}(\bm{r}_1 \cdot \bm{r}_2)
 \end{equation}
-where $\bm{r}_1$ and $\bm{r}_2$ are unit vectors pointing to each star. The vectors are given in inertial space. The angle $\theta$ is the same when inertial vectors or body vectors are used. The problem is that the angle measured between stars in the image contain significant measurement error, that cannot be ignored.
+where $\bm{r}_1$ and $\bm{r}_2$ are unit vectors pointing to each star. The vectors are given in inertial space. The angle $\rho$ is the same when inertial vectors or body vectors are used. The problem is that the angle measured between stars in the image contain significant measurement error, that cannot be ignored.
 What is needed by this technique, is the standard deviation of the angle between two stars when each star measurement possesses the error described. It can be used to provide a bound on the expected errors.
 Firstly standard coordinate transformation is necessary:
 \begin{equation}
@@ -810,11 +807,11 @@ c = \cos^{-1} \bigg(\frac{\bm{b}_3 \cdot \bm{b}_1}{|\bm{b}_3||\bm{b}_1|}\bigg)
 \end{subequations}
 The equation is given for the body frame, but can be used in the \gls{eci} frame too. To get a bound for the measurement error, the standard deviation must be calculated.
 
-The polar moment is good supplement to area, because it is possible for two spherical triangles to have the same area but different polar moment, and all way around. This helps to quickly reduce the number of possible solutions.
+The polar moment is good supplement to area, because it is possible for two spherical triangles to have the same area but different polar moment, and all the way around. This helps to quickly reduce the number of possible solutions.
 
 The polar moment can be obtained as follows
 \begin{equation}
-I_p = \sum\theta^2dA
+I_p = \sum\beta^2dA
 \end{equation}
 
 The polar moment of each spherical triangle is calculated by recursive algorithm, which divides the triangle into smaller triangles till the recursion's depth is met.
@@ -976,7 +973,7 @@ Other quantities are given from the area variance calculations. The variance of 
 
 Pivoting works analogically as in the previous methods.
 
-This method gives similar results as spherical triangle method, but planar triangle method does not have to perform recursive calculations of polar moment like the previous method, hence it has lower computational demand for star-identification\cite{alidoost2013review}.	
+This method gives similar results as spherical triangle method, but planar triangle method does not have to perform recursive calculations of polar moment like the previous method, hence it has lower computational demand for star-identification\cite{alidoost2013review}.
 
 
 \subsubsection{Pyramid}
@@ -1079,13 +1076,13 @@ i_c \geq i_{max}
 and in camera's \gls{fov}
 \begin{subequations}
 \begin{equation}
-\bm{u_a^T u_b} \geq \cos \theta_{FOV}
+\bm{u_a^T u_b} \geq \cos \gamma_{FOV}
 \end{equation}
 \begin{equation}
-\bm{u_b^T u_c} \geq \cos \theta_{FOV}
+\bm{u_b^T u_c} \geq \cos \gamma_{FOV}
 \end{equation}
 \begin{equation}
-\bm{u_c^T u_a} \geq \cos \theta_{FOV}
+\bm{u_c^T u_a} \geq \cos \gamma_{FOV}
 \end{equation}
 \label{eq:in_fov}
 \end{subequations}
@@ -1155,22 +1152,21 @@ The last main part of the star-tracker program is attitude determination. After 
 
 The attitude determination methods should be fast and robust. This section describes few most common algorithms designed to solve this problem.
 
-
 \subsubsection{Three Axis Attitude Determination (TRIAD)}
 
 \gls{triad} is based on constructing two triads of orthonormal unit vectors using the vector information from input. Both triads are components of the same reference frame $F_t$ expressed in the body and inertial frames\cite{hall2003spacecraft}.
 
-$\bm{w}_1$ and $\bm{w}_2$ are two vectors in body frame and $\bm{v}_1$ and $\bm{v}_2$ are in reference frame. First step of the algorithm is following:
+$\bm{b}_1$ and $\bm{b}_2$ are two vectors in body frame and $\bm{r}_1$ and $\bm{r}_2$ are in reference frame. First step of the algorithm is following:
 
 \begin{subequations}
 \begin{equation}
-\bm{r}_1 = \bm{w}_1/|\bm{w}_1|
+\bm{bb}_1 = \bm{b}_1/|\bm{b}_1|
 \end{equation}
 \begin{equation}
-\bm{r}_2 = (\bm{r}_1 x \bm{w}_2) /|\bm{r}_1 x \bm{w}_2|
+\bm{bb}_2 = (\bm{bb}_1 x \bm{b}_2) /|\bm{bb}_1 x \bm{b}_2|
 \end{equation}
 \begin{equation}
-\bm{r}_3 = \bm{r}_1 x \bm{r}_2
+\bm{bb}_3 = \bm{bb}_1 x \bm{bb}_2
 \end{equation}
 \end{subequations}
 
@@ -1178,23 +1174,23 @@ and the following matrices in reference frame:
 
 \begin{subequations}
 \begin{equation}
-\bm{s}_1 = \bm{v}_1/|\bm{v}_1|
+\bm{rr}_1 = \bm{r}_1/|\bm{r}_1|
 \end{equation}
 \begin{equation}
-\bm{s}_2 = (\bm{s}_1 x \bm{v}_2) /|\bm{s}_1 x \bm{v}_2|
+\bm{rr}_2 = (\bm{rr}_1 x \bm{r}_2) /|\bm{rr}_1 x \bm{r}_2|
 \end{equation}
 \begin{equation}
-\bm{s}_3 = \bm{s}_1 x \bm{s}_2
+\bm{rr}_3 = \bm{rr}_1 x \bm{rr}_2
 \end{equation}
 \end{subequations}
 
-where $\bm{r}_i, i\in\{1, 2, 3\}$ are matrices in body frame and $\bm{s}_i, i\in\{1, 2, 3\}$ are matrices in reference frame.
+where $\bm{bb}_i, i\in\{1, 2, 3\}$ are matrices in body frame and $\bm{rr}_i, i\in\{1, 2, 3\}$ are matrices in reference frame.
 
 
 Finally the attitude matrix $\bm{A}$ is computed:
 
 \begin{equation}
-\bm{A} = \bm{r}_1 \cdot \bm{s}_1^T + \bm{r}_2 \cdot \bm{s}_2^T + \bm{r}_3 \cdot \bm{s}_3^T 
+\bm{A} = \bm{bb}_1 \cdot \bm{rr}_1^T + \bm{bb}_2 \cdot \bm{rr}_2^T + \bm{bb}_3 \cdot \bm{rr}_3^T
 \end{equation}
 
 
