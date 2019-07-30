@@ -9,4 +9,3 @@ seaborn
 progress
 pytest
 mock
-opencv
