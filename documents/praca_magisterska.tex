@@ -96,10 +96,8 @@
 \newglossaryentry{unit_vector_body}{type=symbols, name=$\bm{b}$, sort=unit_vector_body, description={Known directional unit vector in the BODY frame}}
 
 %================GLOSSARY=================%
-\newglossaryentry{Centroid}{type=glossary, name=centroid, description={Is a mark up language specially suited for scientific documents}
-\newglossaryentry{Star ID}{type=glossary, name=starid, description={Is a mark up language specially suited for scientific documents}
-%\newglossaryentry{Star ID}{type=glossary, name=latex, description={Is a mark up language specially suited for scientific documents}
-}
+%\newglossaryentry{Centroid}{type=glossary, name=centroid, description={Is a mark up language specially suited for scientific documents}
+%\newglossaryentry{Star ID}{type=glossary, name=starid, description={Is a mark up language specially suited for scientific documents}
 
 \end{filecontents}
 
@@ -590,12 +588,12 @@ If the database does not contain corresponding stars, the algorithm returns to t
 
 Generally star-tracker is divided into three main parts\cite{mcbryde2012star}:
 \begin{itemize}
-\item recognizing stars on the image and converting the data into list of star vectors by calculating star centroids;
-\item identifying which star vector represents which real star in catalog. This is done by comparing star vectors from the image with data in star catalog, which is generated before space mission;
-\item estimating the attitude by calculating the displacement between two frames.
+\item Star recognition - recognizing stars on the image and converting the data into list of star vectors by calculating star centroids;
+\item Star identification - identifying which star vector represents which real star in catalog. This is done by comparing star vectors from the image with data in star catalog, which is generated before space mission;
+\item Attitude Estimation - estimating the attitude by calculating the displacement between two frames.
 \end{itemize}
 
-\subsection{Centroid - star recognition}
+\subsection{Star recognition}
 
 The whole star-tracker program is based on very precise calculations. For this reason, the calculation based on the position of the pixels only can give incorrect results. It is necessary to calculate the position of stars with an accuracy exceeding pixels. This is why the calculation of the star centroids is necessary.
 
@@ -1343,6 +1341,15 @@ Figure \ref{fig:star-tracker_diagram} shows general schema of designed star-trac
 
 \subsection{Program parts}
 
+For clarification the following entities will be used in this chapter:
+\begin{itemize}[noitemsep]
+\item image star - star in the image;
+\item image star ID - ID of star recognized in the image (serves as ordinal number);
+\item catalog star - star in the Hipparcos catalog;
+\item Hipparcos star ID - ID of the star in Hipparcos catalog;
+\item false star - object initially recognized as star that is later identified as false star (marked with -1), it can be planet, satellite, star with magnitude higher than in catalog, etc.
+\end{itemize}
+
 \subsubsection{Star Triangle Catalog}
 
 The star triangle catalog was created with the following parameters:
@@ -1376,15 +1383,15 @@ The catalog has following columns:
 \item unit vector 3rd element.
 \end{enumerate}
 
-\subsubsection{Getting centroids of image stars}
+\subsubsection{Star recognition}
 
 First camera reads its input and gets image, which is later converted into matrix of light intensity values per pixel. After that program enters into centroiding algorithm. On GPU, each pixel is checked firstly for its light intensity value, average light intensity of neighboring pixels and if the pixel is not on the border. If all those conditions are passed, then pixel centroid is calculated for this pixel, according to the instructions in the previous chapter. After that pixel centroids are being clustered in order to merge neighboring centroids into one star centroid. Finally all found star centroids are converted to unit vectors.
 
-Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock output from star-tracker camera. Images are with following parameters: \gls{fov} 10\degree and 900x900 pixels, and imitate parts of that should be visible by star-tracker on the actual orbit.
+Centroid algorithm was tested using images created with Stellarium, free planetarium software, which made possible to mock input to star-tracker camera. Images are with following parameters: \gls{fov} 10\degree and 900x900 pixels, and imitate parts of that should be visible by star-tracker on the actual orbit.
 
 This is the most computation-consuming part of the program, however the usage of GPU made it quite fast.
 
-On Jetson Centroiding lasts around 200 ms in most cases, but it can go up higher with more stars in the input image. It will also go much higher in images with higher resolution.
+On Jetson star recognition lasts around 200 ms in most cases, but it can go up higher with more stars in the input image. It will also go much higher in images with higher resolution.
 
 Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, where:
 \begin{itemize}[noitemsep]
@@ -1403,13 +1410,13 @@ Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, wh
 
 
 \subsubsection{Star identification}
-After having list of image star centroids in form of unit vectors program enters Star Identification phase. Firstly 3-star combinations are created, and for each combination all eligible stars are being found. It is done by calculating Planar Triangle for each 3-star combination and looking up all triangles in Star Triangle Catalog that are withing area and polar moment ranges. Each image star has a list of eligible stars, which is being extended after each lookup, i.e. each image star in the 3-star combination has added the same eligible stars to their lists. After doing this for all 3-star combinations, each image star has list with all eligible stars and one of the most common star IDs in the list should be Hipparcos star ID. Next step is done for each image star: take 10 most common eligible star IDs. If there are none, then this image star is identified as false star. If there are any eligible stars, then for each eligible star ID it is checked, whether this ID was already assigned to any other image star in this image. If it was not, then this eligible star ID is assigned to this image star as its Hipparcos star ID. If it was, then move to next most common eligible star ID. If this is the last most common eligible star, then this image star is identified as false star. After above steps are done for all image stars, the last step of stars identification takes place: removal of incorrect stars. For each image star with found Hipparcos star ID, those stars are looked up in Star Catalog together with their unit vectors. Next each pair of stars is checked if they actually even could be in the same image scene. This is done the same way as during Triangle Catalog creation, by checking if the dot product of unit vectors is higher or equal to the cosine of \gls{fov}. The stars which have been marked as incorrect most times are marked as false, the rest stays the same. After this step is finished, the program already has finished star identification and as result it returns list of image stars with information what is its Hipparcos star ID or if it is false star.
+After having list of image star centroids in form of unit vectors program enters Star Identification phase. Firstly 3-star combinations are created, and for each combination all eligible stars are being found. It is done by calculating Planar Triangle for each 3-star combination and looking up all triangles in Star Triangle Catalog that are withing area and polar moment ranges. Each image star has a list of eligible stars, which is being extended after each lookup, i.e. each image star in the 3-star combination has added the same eligible stars to their lists. After doing this for all 3-star combinations, each image star has list with all eligible stars and one of the most common Hipparcos star IDs in the list should be Hipparcos star ID. Next step is done for each image star: take 10 most common eligible Hipparcos star IDs. If there are none, then this image star is identified as false star. If there are any eligible stars, then for each eligible Hipparcos star ID it is checked, whether this ID was already assigned to any other image star in this image. If it was not, then this eligible Hipparcos star ID is assigned to this image star as its Hipparcos star ID. If it was, then move to next most common eligible Hipparcos star ID. If this is the last most common eligible star, then this image star is identified as false star. After above steps are done for all image stars, the last step of stars identification takes place: removal of incorrect stars. For each image star with found Hipparcos star ID, those stars are looked up in Star Catalog together with their unit vectors. Next each pair of stars is checked if they actually even could be in the same image scene. This is done the same way as during Triangle Catalog creation, by checking if the dot product of unit vectors is higher or equal to the cosine of \gls{fov}. The stars which have been marked as incorrect most times are marked as false, the rest stays the same. After this step is finished, the program already has finished star identification and as result it returns list of image stars with information what is its Hipparcos star ID or if it is false star.
 
 On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can go much higher with more stars in the input image, even to 5 seconds. Possibly rewriting parts of this algorithm to use GPU would make it execute faster.
 
 Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
-Star Identifier algorithm was tested basing on \gls{esa}'s star-tracker simulator created for competition needs\cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of Centroiding algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
+Star Identifier algorithm was tested basing on \gls{esa}'s star-tracker simulator created for competition needs\cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of star recognition algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
 All tests were done with \gls{fov} 10\degree . On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%. Accuracy in this case means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
 Such particular accuracy definition comes from the fact that for given scene no star can be recognized incorrectly in order to get correct result in the next part of program, which is \gls{quest} algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
 
@@ -1424,7 +1431,7 @@ Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be
 \end{figure}
 
 
-\subsubsection{Finding attiude}
+\subsubsection{Finding attitude}
 After having list of image stars with Hipparcos star IDs it is possible to determine attitude. For that there are two ways: in Tracking mode current star vectors are compared with previous star vectors; in \gls{lis} mode the current star vectors are compared with corresponding star vectors from Star Catalog. Attitude is calculated using \gls{quest} algorithm. The \gls{quest} algorithm was tested with example given in\cite{hall2003spacecraft} and gives identical result as in the book.
 
 On Jetson Attitude Determination lasts below 10 ms in most cases, but it can go even up to 200 ms. This can happen if high percentage of stars in scene is misidentified and it takes more iterations to converge.
@@ -1484,8 +1491,7 @@ image ID & uv1 & uv2 & uv3 & pos x & pos y \\
 \label{fig:example_1}
 \end{figure}
 
-Next, for each combination of 3 image stars, eligible star are calculated and added list of eligible stars for each image star. Table \ref{tab:example_2} shows lists of eligible stars after doing it for all combinations. 
-Only 10 most common occurrences of Hipparcos star ID are shown in the table due to long list. It is visible clearly, that stars 1 and 2 have significantly smaller number of highest occurring star ID.
+Next, for each combination of 3 image stars, eligible star are calculated and added list of eligible stars for each image star. Table \ref{tab:example_2} shows lists of eligible stars after doing it for all combinations. Only 10 most common occurrences of Hipparcos star ID are shown in the table due to long list. It is clearly visible, that stars 1 and 2 have significantly smaller number of highest occurring Hipparcos star IDs.
 
 \renewcommand{\arraystretch}{1.5}
 \begin{table}[!htbp]
@@ -1515,7 +1521,7 @@ image ID & number of all stars & 10 most common stars (ID: amount), decreasing\\
 \label{tab:example_2}
 \end{table}
 
-After that each image star is being assigned its Hipparcos ID according to algorithm described in previous chapter. 
+After that each image star is being assigned its Hipparcos star ID according to algorithm described in previous chapter.
 The result is visible in Table \ref{tab:example_3}.
 
 \renewcommand{\arraystretch}{1.5}
