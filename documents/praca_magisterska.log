@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  29 JUL 2019 23:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.12.15)  30 JUL 2019 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1109,31 +1109,31 @@ LaTeX Warning: Overwriting file `./gloss.tex'.
 (./gloss.tex) (./praca_magisterska.aux)
 \openout1 = `praca_magisterska.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 102.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 104.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 104.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 102.
-LaTeX Font Info:    ... okay on input line 102.
-LaTeX Font Info:    Try loading font information for OT4+lmr on input line 102.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 104.
+LaTeX Font Info:    ... okay on input line 104.
+LaTeX Font Info:    Try loading font information for OT4+lmr on input line 104.
 
 
 (/usr/share/texmf/tex/latex/lm/ot4lmr.fd
@@ -1141,15 +1141,15 @@ File: ot4lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 \symgns@font=\mathgroup9
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/lmr/m/n --> TS1/lmr/bx/n on input line 102.
-Package gensymb Info: Math companion symbols declared on input line 102.
-LaTeX Info: Redefining \degree on input line 102.
-LaTeX Info: Redefining \celsius on input line 102.
+(Font)                  TS1/lmr/m/n --> TS1/lmr/bx/n on input line 104.
+Package gensymb Info: Math companion symbols declared on input line 104.
+LaTeX Info: Redefining \degree on input line 104.
+LaTeX Info: Redefining \celsius on input line 104.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 102.
-LaTeX Info: Redefining \ohm on input line 102.
-Package gensymb Info: Using \textohm for \ohm on input line 102.
-Package gensymb Info: Using \textmu for \micro on input line 102.
+erthousand on input line 104.
+LaTeX Info: Redefining \ohm on input line 104.
+Package gensymb Info: Using \textohm for \ohm on input line 104.
+Package gensymb Info: Using \textmu for \micro on input line 104.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -1186,7 +1186,7 @@ Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 102.
+Package hyperref Info: Link coloring OFF on input line 104.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -1196,9 +1196,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count160
 )
-LaTeX Info: Redefining \ref on input line 102.
-LaTeX Info: Redefining \pageref on input line 102.
-LaTeX Info: Redefining \nameref on input line 102.
+LaTeX Info: Redefining \ref on input line 104.
+LaTeX Info: Redefining \pageref on input line 104.
+LaTeX Info: Redefining \nameref on input line 104.
 
 (./praca_magisterska.out) (./praca_magisterska.out)
 \@outlinefile=\write3
@@ -1207,17 +1207,17 @@ LaTeX Info: Redefining \nameref on input line 102.
 <images/logo_WEiTI.jpg, id=253, 226.9278pt x 284.9847pt>
 File: images/logo_WEiTI.jpg Graphic file (type jpg)
 <use images/logo_WEiTI.jpg>
-Package pdftex.def Info: images/logo_WEiTI.jpg  used on input line 112.
+Package pdftex.def Info: images/logo_WEiTI.jpg  used on input line 114.
 (pdftex.def)             Requested size: 68.07886pt x 85.49606pt.
 <images/Logo-PW-duze.jpg, id=254, 513.8397pt x 513.8397pt>
 File: images/Logo-PW-duze.jpg Graphic file (type jpg)
 <use images/Logo-PW-duze.jpg>
-Package pdftex.def Info: images/Logo-PW-duze.jpg  used on input line 114.
+Package pdftex.def Info: images/Logo-PW-duze.jpg  used on input line 116.
 (pdftex.def)             Requested size: 102.76611pt x 102.76611pt.
 <images/ia_600_600.png, id=255, 72.27pt x 59.5023pt>
 File: images/ia_600_600.png Graphic file (type png)
 <use images/ia_600_600.png>
-Package pdftex.def Info: images/ia_600_600.png  used on input line 116.
+Package pdftex.def Info: images/ia_600_600.png  used on input line 118.
 (pdftex.def)             Requested size: 72.2698pt x 59.50214pt.
  [1
 
@@ -1277,54 +1277,51 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.158 \newpage
+l.160 \newpage
                [4]
 Using TeX to sort glossary entries---this may take a while
-[5] [6] [7] [8] [9]
-Underfull \vbox (badness 1546) has occurred while \output is active []
-
- [10]
+[5] [6] [7] [8] [9] [10]
 <images/pw-sat.jpg, id=485, 314.17375pt x 330.23375pt>
 File: images/pw-sat.jpg Graphic file (type jpg)
 <use images/pw-sat.jpg>
-Package pdftex.def Info: images/pw-sat.jpg  used on input line 279.
+Package pdftex.def Info: images/pw-sat.jpg  used on input line 281.
 (pdftex.def)             Requested size: 155.99762pt x 163.96758pt.
 <images/PW-Sat2_2016_16_MSwietlik.png, id=488, 2007.5pt x 2007.5pt>
 File: images/PW-Sat2_2016_16_MSwietlik.png Graphic file (type png)
 <use images/PW-Sat2_2016_16_MSwietlik.png>
 Package pdftex.def Info: images/PW-Sat2_2016_16_MSwietlik.png  used on input li
-ne 281.
+ne 283.
 (pdftex.def)             Requested size: 195.0pt x 194.97232pt.
 <images/brite.jpg, id=491, 270.00874pt x 301.125pt>
 File: images/brite.jpg Graphic file (type jpg)
 <use images/brite.jpg>
-Package pdftex.def Info: images/brite.jpg  used on input line 284.
+Package pdftex.def Info: images/brite.jpg  used on input line 286.
 (pdftex.def)             Requested size: 195.0pt x 217.47606pt.
 <images/INSPIRE_JPL.jpg, id=494, 574.145pt x 833.1125pt>
 File: images/INSPIRE_JPL.jpg Graphic file (type jpg)
 <use images/INSPIRE_JPL.jpg>
-Package pdftex.def Info: images/INSPIRE_JPL.jpg  used on input line 291.
+Package pdftex.def Info: images/INSPIRE_JPL.jpg  used on input line 293.
 (pdftex.def)             Requested size: 258.36285pt x 374.89716pt.
-
-[11] [12 <./images/pw-sat.jpg> <./images/PW-Sat2_2016_16_MSwietlik.png> <./imag
-es/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
+ [11] [12 <./images/pw-sat.jpg> <./images/PW-Sat2_2016_16_MSwietlik.png> <./ima
+ges/brite.jpg>] [13 <./images/INSPIRE_JPL.jpg>]
 <images/Renesans_008.png, id=532, 374.90062pt x 325.215pt>
 File: images/Renesans_008.png Graphic file (type png)
 <use images/Renesans_008.png>
-Package pdftex.def Info: images/Renesans_008.png  used on input line 304.
+Package pdftex.def Info: images/Renesans_008.png  used on input line 306.
 (pdftex.def)             Requested size: 155.99762pt x 135.32396pt.
 <images/Renesans_010.png, id=535, 630.85687pt x 393.72093pt>
 File: images/Renesans_010.png Graphic file (type png)
 <use images/Renesans_010.png>
-Package pdftex.def Info: images/Renesans_010.png  used on input line 306.
+Package pdftex.def Info: images/Renesans_010.png  used on input line 308.
 (pdftex.def)             Requested size: 234.00238pt x 146.04092pt.
 <images/hypersat_3.jpg, id=538, 5492.52pt x 3661.68pt>
 File: images/hypersat_3.jpg Graphic file (type jpg)
 <use images/hypersat_3.jpg>
-Package pdftex.def Info: images/hypersat_3.jpg  used on input line 309.
+Package pdftex.def Info: images/hypersat_3.jpg  used on input line 311.
 (pdftex.def)             Requested size: 272.99881pt x 181.97726pt.
- [14 <./images/Renesans_008.png> <./images/Renesans_010.png> <./images/hypersat
-_3.jpg>]
+
+[14 <./images/Renesans_008.png> <./images/Renesans_010.png> <./images/hypersat_
+3.jpg>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15]
@@ -1333,13 +1330,13 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/NVIDIA_Jetson_TX2_Module_Devkit.png Graphic file (type png)
 <use images/NVIDIA_Jetson_TX2_Module_Devkit.png>
 Package pdftex.def Info: images/NVIDIA_Jetson_TX2_Module_Devkit.png  used on in
-put line 374.
+put line 376.
 (pdftex.def)             Requested size: 702.62328pt x 396.48027pt.
 <images/Tegra_Parker_Block_Diagram-1.png, id=588, 1078.78032pt x 630.10406pt>
 File: images/Tegra_Parker_Block_Diagram-1.png Graphic file (type png)
 <use images/Tegra_Parker_Block_Diagram-1.png>
 Package pdftex.def Info: images/Tegra_Parker_Block_Diagram-1.png  used on input
- line 381.
+ line 383.
 (pdftex.def)             Requested size: 1078.77768pt x 630.10252pt.
  [18] [19 <./images/NVIDIA_Jetson_TX2_Module_Devkit.png>] [20 <./images/Tegra_P
 arker_Block_Diagram-1.png>] [21
@@ -1352,200 +1349,189 @@ File: images/Comparison_satellite_navigation_orbits.png Graphic file (type png)
 
 <use images/Comparison_satellite_navigation_orbits.png>
 Package pdftex.def Info: images/Comparison_satellite_navigation_orbits.png  use
-d on input line 424.
+d on input line 426.
 (pdftex.def)             Requested size: 359.74153pt x 359.74153pt.
 <images/eci_frame.jpg, id=617, 496.85625pt x 562.1pt>
 File: images/eci_frame.jpg Graphic file (type jpg)
 <use images/eci_frame.jpg>
-Package pdftex.def Info: images/eci_frame.jpg  used on input line 440.
+Package pdftex.def Info: images/eci_frame.jpg  used on input line 442.
 (pdftex.def)             Requested size: 198.73897pt x 224.83601pt.
  [22] [23 <./images/Comparison_satellite_navigation_orbits.png>]
 <images/ned_frame.jpg, id=634, 301.125pt x 276.03125pt>
 File: images/ned_frame.jpg Graphic file (type jpg)
 <use images/ned_frame.jpg>
-Package pdftex.def Info: images/ned_frame.jpg  used on input line 453.
+Package pdftex.def Info: images/ned_frame.jpg  used on input line 455.
 (pdftex.def)             Requested size: 180.67638pt x 165.62001pt.
  [24 <./images/eci_frame.jpg>]
 <images/body_frame.jpg, id=643, 416.55624pt x 415.5525pt>
 File: images/body_frame.jpg Graphic file (type jpg)
 <use images/body_frame.jpg>
-Package pdftex.def Info: images/body_frame.jpg  used on input line 463.
+Package pdftex.def Info: images/body_frame.jpg  used on input line 465.
 (pdftex.def)             Requested size: 208.2776pt x 207.77574pt.
 
-Underfull \vbox (badness 1881) has occurred while \output is active []
+Underfull \vbox (badness 1360) has occurred while \output is active []
 
  [25 <./images/ned_frame.jpg> <./images/body_frame.jpg>] [26] [27] [28]
-<images/startracker_eng.jpg, id=692, 646.415pt x 119.44624pt>
+<images/startracker_eng.jpg, id=691, 646.415pt x 119.44624pt>
 File: images/startracker_eng.jpg Graphic file (type jpg)
 <use images/startracker_eng.jpg>
-Package pdftex.def Info: images/startracker_eng.jpg  used on input line 572.
+Package pdftex.def Info: images/startracker_eng.jpg  used on input line 571.
 (pdftex.def)             Requested size: 381.38155pt x 70.47266pt.
- [29 <./images/startracker_eng.jpg>] [30]
-Underfull \vbox (badness 1226) has occurred while \output is active []
-
- [31]
-[32]
-<images/centroids_1.jpg, id=733, 234.8775pt x 208.78pt>
+ [29 <./images/startracker_eng.jpg>] [30] [31] [32]
+<images/centroids_1.jpg, id=732, 234.8775pt x 208.78pt>
 File: images/centroids_1.jpg Graphic file (type jpg)
 <use images/centroids_1.jpg>
-Package pdftex.def Info: images/centroids_1.jpg  used on input line 695.
+Package pdftex.def Info: images/centroids_1.jpg  used on input line 693.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-<images/centroids_2.png, id=734, 234.8775pt x 208.78pt>
+<images/centroids_2.png, id=733, 234.8775pt x 208.78pt>
 File: images/centroids_2.png Graphic file (type png)
 <use images/centroids_2.png>
-Package pdftex.def Info: images/centroids_2.png  used on input line 697.
+Package pdftex.def Info: images/centroids_2.png  used on input line 695.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-<images/centroids_3.png, id=735, 234.8775pt x 208.78pt>
+<images/centroids_3.png, id=734, 234.8775pt x 208.78pt>
 File: images/centroids_3.png Graphic file (type png)
 <use images/centroids_3.png>
-Package pdftex.def Info: images/centroids_3.png  used on input line 699.
+Package pdftex.def Info: images/centroids_3.png  used on input line 697.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
-<images/centroids_4.png, id=736, 234.8775pt x 208.78pt>
+<images/centroids_4.png, id=735, 234.8775pt x 208.78pt>
 File: images/centroids_4.png Graphic file (type png)
 <use images/centroids_4.png>
-Package pdftex.def Info: images/centroids_4.png  used on input line 702.
+Package pdftex.def Info: images/centroids_4.png  used on input line 700.
 (pdftex.def)             Requested size: 195.0pt x 173.33192pt.
  [33] [34 <./images/centroids_1.jpg> <./images/centroids_2.png> <./images/centr
 oids_3.png> <./images/centroids_4.png>]
-<images/vector_angle_method.jpg, id=765, 332.24126pt x 233.87375pt>
+<images/vector_angle_method.jpg, id=764, 332.24126pt x 233.87375pt>
 File: images/vector_angle_method.jpg Graphic file (type jpg)
 <use images/vector_angle_method.jpg>
-Package pdftex.def Info: images/vector_angle_method.jpg  used on input line 716
+Package pdftex.def Info: images/vector_angle_method.jpg  used on input line 714
 .
 (pdftex.def)             Requested size: 232.56728pt x 163.71048pt.
  [35 <./images/vector_angle_method.jpg>] [36]
-<images/spherical_triangle_method.jpg, id=793, 831.105pt x 633.36626pt>
+<images/spherical_triangle_method.jpg, id=792, 831.105pt x 633.36626pt>
 File: images/spherical_triangle_method.jpg Graphic file (type jpg)
 <use images/spherical_triangle_method.jpg>
 Package pdftex.def Info: images/spherical_triangle_method.jpg  used on input li
-ne 792.
+ne 790.
 (pdftex.def)             Requested size: 241.01427pt x 183.67151pt.
  [37] [38 <./images/spherical_triangle_method.jpg>]
-<images/planar_triangle_method.jpg, id=810, 831.105pt x 633.36626pt>
+<images/planar_triangle_method.jpg, id=809, 831.105pt x 633.36626pt>
 File: images/planar_triangle_method.jpg Graphic file (type jpg)
 <use images/planar_triangle_method.jpg>
 Package pdftex.def Info: images/planar_triangle_method.jpg  used on input line 
-830.
+828.
 (pdftex.def)             Requested size: 249.33342pt x 190.01134pt.
  [39 <./images/planar_triangle_method.jpg>] [40] [41] [42]
-<images/pyramid_method.jpg, id=875, 566.115pt x 982.67125pt>
+<images/pyramid_method.jpg, id=874, 566.115pt x 982.67125pt>
 File: images/pyramid_method.jpg Graphic file (type jpg)
 <use images/pyramid_method.jpg>
-Package pdftex.def Info: images/pyramid_method.jpg  used on input line 988.
+Package pdftex.def Info: images/pyramid_method.jpg  used on input line 986.
 (pdftex.def)             Requested size: 322.6889pt x 560.12843pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [43]
 [44 <./images/pyramid_method.jpg>] [45]
-Underfull \vbox (badness 3547) has occurred while \output is active []
+Underfull \vbox (badness 1824) has occurred while \output is active []
 
  [46]
 [47]
-<images/k-vector-example.png, id=936, 577.15625pt x 457.71pt>
+<images/k-vector-example.png, id=935, 577.15625pt x 457.71pt>
 File: images/k-vector-example.png Graphic file (type png)
 <use images/k-vector-example.png>
-Package pdftex.def Info: images/k-vector-example.png  used on input line 1107.
+Package pdftex.def Info: images/k-vector-example.png  used on input line 1105.
 (pdftex.def)             Requested size: 328.98247pt x 260.89742pt.
 
 Underfull \vbox (badness 2856) has occurred while \output is active []
 
  [48]
 [49 <./images/k-vector-example.png>] [50] [51] [52] [53] [54] [55]
-<images/startracker_full_diagram.jpg, id=1026, 723.70375pt x 673.51625pt>
+<images/startracker_full_diagram.jpg, id=1025, 723.70375pt x 673.51625pt>
 File: images/startracker_full_diagram.jpg Graphic file (type jpg)
 <use images/startracker_full_diagram.jpg>
 Package pdftex.def Info: images/startracker_full_diagram.jpg  used on input lin
-e 1327.
+e 1324.
 (pdftex.def)             Requested size: 383.56116pt x 356.96191pt.
-
-Underfull \vbox (badness 2653) has occurred while \output is active []
-
  [56]
-[57 <./images/startracker_full_diagram.jpg>]
-Underfull \vbox (badness 2671) has occurred while \output is active []
-
- [58]
-<images/get_image_stars_diagram.jpg, id=1051, 743.77875pt x 783.92876pt>
+[57 <./images/startracker_full_diagram.jpg>] [58] [59]
+<images/get_image_stars_diagram.jpg, id=1055, 743.77875pt x 783.92876pt>
 File: images/get_image_stars_diagram.jpg Graphic file (type jpg)
 <use images/get_image_stars_diagram.jpg>
 Package pdftex.def Info: images/get_image_stars_diagram.jpg  used on input line
- 1388.
+ 1394.
 (pdftex.def)             Requested size: 379.32214pt x 399.79839pt.
-
-[59] [60 <./images/get_image_stars_diagram.jpg>] [61]
-<images/star_identifier_diagram.jpg, id=1068, 703.62875pt x 683.55376pt>
+ [60 <./images/get_image_stars_diagram.jpg>] [61]
+<images/star_identifier_diagram.jpg, id=1067, 703.62875pt x 683.55376pt>
 File: images/star_identifier_diagram.jpg Graphic file (type jpg)
 <use images/star_identifier_diagram.jpg>
 Package pdftex.def Info: images/star_identifier_diagram.jpg  used on input line
- 1410.
+ 1416.
 (pdftex.def)             Requested size: 386.99701pt x 375.95573pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [62]
 [63 <./images/star_identifier_diagram.jpg>]
-<images/example_0.png, id=1080, 903.375pt x 903.375pt>
+<images/example_0.png, id=1079, 903.375pt x 903.375pt>
 File: images/example_0.png Graphic file (type png)
 <use images/example_0.png>
-Package pdftex.def Info: images/example_0.png  used on input line 1431.
+Package pdftex.def Info: images/example_0.png  used on input line 1437.
 (pdftex.def)             Requested size: 361.3436pt x 361.3436pt.
-<images/example_1.png, id=1083, 642.4pt x 481.8pt>
+<images/example_1.png, id=1082, 642.4pt x 481.8pt>
 File: images/example_1.png Graphic file (type png)
 <use images/example_1.png>
-Package pdftex.def Info: images/example_1.png  used on input line 1471.
+Package pdftex.def Info: images/example_1.png  used on input line 1477.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
  [64 <./images/example_0.png>]
 [65 <./images/example_1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1485--1485
+Underfull \hbox (badness 10000) in paragraph at lines 1490--1490
 []\OT1/lmr/m/n/12 image
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1485--1485
+Underfull \hbox (badness 10000) in paragraph at lines 1490--1490
 []\OT1/lmr/m/n/12 number
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1485--1485
+Underfull \hbox (badness 10000) in paragraph at lines 1490--1490
 \OT1/lmr/m/n/12 of all
  []
 
 [66]
-<images/example_2.png, id=1108, 642.4pt x 481.8pt>
+<images/example_2.png, id=1107, 642.4pt x 481.8pt>
 File: images/example_2.png Graphic file (type png)
 <use images/example_2.png>
-Package pdftex.def Info: images/example_2.png  used on input line 1591.
+Package pdftex.def Info: images/example_2.png  used on input line 1596.
 (pdftex.def)             Requested size: 385.44298pt x 289.08221pt.
  [67] [68 <./images/example_2.png>]
-<images/example_3.png, id=1127, 863.225pt x 839.135pt>
+<images/example_3.png, id=1126, 863.225pt x 839.135pt>
 File: images/example_3.png Graphic file (type png)
 <use images/example_3.png>
-Package pdftex.def Info: images/example_3.png  used on input line 1620.
+Package pdftex.def Info: images/example_3.png  used on input line 1625.
 (pdftex.def)             Requested size: 250.32884pt x 243.34291pt.
-<images/example_4.png, id=1128, 882.29625pt x 858.20625pt>
+<images/example_4.png, id=1127, 882.29625pt x 858.20625pt>
 File: images/example_4.png Graphic file (type png)
 <use images/example_4.png>
-Package pdftex.def Info: images/example_4.png  used on input line 1627.
+Package pdftex.def Info: images/example_4.png  used on input line 1632.
 (pdftex.def)             Requested size: 255.85936pt x 248.87344pt.
  [69] [70 <./images/example_3.png> <./images/example_4.png>]
 Underfull \vbox (badness 1622) has occurred while \output is active []
 
  [71]
-<images/power_plot.png, id=1157, 642.4pt x 481.8pt>
+<images/power_plot.png, id=1156, 642.4pt x 481.8pt>
 File: images/power_plot.png Graphic file (type png)
 <use images/power_plot.png>
-Package pdftex.def Info: images/power_plot.png  used on input line 1653.
+Package pdftex.def Info: images/power_plot.png  used on input line 1658.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
-<images/times_plot.png, id=1158, 642.4pt x 481.8pt>
+<images/times_plot.png, id=1157, 642.4pt x 481.8pt>
 File: images/times_plot.png Graphic file (type png)
 <use images/times_plot.png>
-Package pdftex.def Info: images/times_plot.png  used on input line 1660.
+Package pdftex.def Info: images/times_plot.png  used on input line 1665.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
-<images/power_times_plot.png, id=1159, 642.4pt x 481.8pt>
+<images/power_times_plot.png, id=1158, 642.4pt x 481.8pt>
 File: images/power_times_plot.png Graphic file (type png)
 <use images/power_times_plot.png>
-Package pdftex.def Info: images/power_times_plot.png  used on input line 1667.
+Package pdftex.def Info: images/power_times_plot.png  used on input line 1672.
 (pdftex.def)             Requested size: 353.32109pt x 264.99081pt.
 
 [72] [73 <./images/power_plot.png (PNG copy)> <./images/times_plot.png>]
@@ -1670,23 +1656,23 @@ Underfull \vbox (badness 4303) has occurred while \output is active []
 
 
 [87]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1717.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1717.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1722.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1722.
  (./praca_magisterska.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1717.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1717.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1722.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1722.
 
 Package rerunfilecheck Info: File `praca_magisterska.out' has not changed.
-(rerunfilecheck)             Checksum: FAE1A56ABD395750F020D82FE390ADCF;4360.
+(rerunfilecheck)             Checksum: F7406F3F42F635F0BF8BE74AAB9A37B8;4469.
  ) 
 Here is how much of TeX's memory you used:
- 16996 strings out of 492982
- 266021 string characters out of 6134895
- 421187 words of memory out of 5000000
- 19766 multiletter control sequences out of 15000+600000
+ 17181 strings out of 492982
+ 267271 string characters out of 6134895
+ 424441 words of memory out of 5000000
+ 19952 multiletter control sequences out of 15000+600000
  57547 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,15n,96p,2115b,621s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 61i,15n,96p,2194b,621s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dv
 ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/s
 hare/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/l
@@ -1701,10 +1687,10 @@ ic/lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/te
 xmf/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf/fonts/type1/public/lm/lm
 sy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on praca_magisterska.pdf (89 pages, 17321480 bytes).
+Output written on praca_magisterska.pdf (89 pages, 17323053 bytes).
 PDF statistics:
- 1462 PDF objects out of 1728 (max. 8388607)
- 1270 compressed objects within 13 object streams
- 423 named destinations out of 1000 (max. 500000)
+ 1461 PDF objects out of 1728 (max. 8388607)
+ 1269 compressed objects within 13 object streams
+ 422 named destinations out of 1000 (max. 500000)
  682 words of extra memory for PDF output out of 10000 (max. 10000000)
 

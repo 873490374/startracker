@@ -3,14 +3,14 @@
 \babel@toc {polish}{}
 \babel@toc {english}{}
 \contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats\relax }}{12}{figure.caption.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT \cite {pw-sat-image}}}}{12}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2 \cite {pw-sat2}}}}{12}{subfigure.1.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz) \cite {brite-pl-gunter}}}}{12}{subfigure.1.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT\cite {pw-sat-image}}}}{12}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2\cite {pw-sat2}}}}{12}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz)\cite {brite-pl-gunter}}}}{12}{subfigure.1.3}
 \contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE}}{13}{figure.caption.7}
 \contentsline {figure}{\numberline {3}{\ignorespaces HyperSat\relax }}{14}{figure.caption.8}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{14}{subfigure.3.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example \cite {hypersat}}}}{14}{subfigure.3.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype \cite {hypersat}}}}{14}{subfigure.3.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{14}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{14}{subfigure.3.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype\cite {hypersat}}}}{14}{subfigure.3.3}
 \contentsline {figure}{\numberline {4}{\ignorespaces NVIDIA Jetson TX2 module}}{19}{figure.caption.10}
 \contentsline {figure}{\numberline {5}{\ignorespaces NVIDIA Jetson TX2 block diagram}}{20}{figure.caption.11}
 \contentsline {figure}{\numberline {6}{\ignorespaces Earth's satellites navigation orbits}}{23}{figure.caption.12}

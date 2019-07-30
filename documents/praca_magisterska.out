@@ -17,9 +17,9 @@
 \BOOKMARK [1][-]{section.2}{Preliminaries}{}% 17
 \BOOKMARK [2][-]{subsection.2.1}{Earth's orbits}{section.2}% 18
 \BOOKMARK [2][-]{subsection.2.2}{Coordinate frames}{section.2}% 19
-\BOOKMARK [3][-]{subsubsection.2.2.1}{ECEF frame}{subsection.2.2}% 20
-\BOOKMARK [3][-]{subsubsection.2.2.2}{ECI frame}{subsection.2.2}% 21
-\BOOKMARK [3][-]{subsubsection.2.2.3}{NED frame}{subsection.2.2}% 22
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Earth-Centered, Earth-Fixed \(ECEF\) frame}{subsection.2.2}% 20
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Earth-centered inertial \(ECI\) frame}{subsection.2.2}% 21
+\BOOKMARK [3][-]{subsubsection.2.2.3}{North-East Down frame}{subsection.2.2}% 22
 \BOOKMARK [3][-]{subsubsection.2.2.4}{BODY frame}{subsection.2.2}% 23
 \BOOKMARK [2][-]{subsection.2.3}{Attitude representations}{section.2}% 24
 \BOOKMARK [3][-]{subsubsection.2.3.1}{Euler angles}{subsection.2.3}% 25
@@ -27,7 +27,7 @@
 \BOOKMARK [3][-]{subsubsection.2.3.3}{Advantages of quaternions}{subsection.2.3}% 27
 \BOOKMARK [3][-]{subsubsection.2.3.4}{Wahba's problem}{subsection.2.3}% 28
 \BOOKMARK [1][-]{section.3}{Star-tracker program}{}% 29
-\BOOKMARK [2][-]{subsection.3.1}{Centroid - star recognition}{section.3}% 30
+\BOOKMARK [2][-]{subsection.3.1}{Star recognition}{section.3}% 30
 \BOOKMARK [2][-]{subsection.3.2}{Star identification}{section.3}% 31
 \BOOKMARK [3][-]{subsubsection.3.2.1}{Angle Matching}{subsection.3.2}% 32
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Spherical Triangle Matching}{subsection.3.2}% 33
@@ -41,9 +41,9 @@
 \BOOKMARK [3][-]{subsubsection.3.3.1}{Star Catalog Generation}{subsection.3.3}% 41
 \BOOKMARK [3][-]{subsubsection.3.3.2}{Search Less Algorithm and k-vector}{subsection.3.3}% 42
 \BOOKMARK [2][-]{subsection.3.4}{Attitude Determination}{section.3}% 43
-\BOOKMARK [3][-]{subsubsection.3.4.1}{TRIAD}{subsection.3.4}% 44
+\BOOKMARK [3][-]{subsubsection.3.4.1}{Three Axis Attitude Determination \(TRIAD\)}{subsection.3.4}% 44
 \BOOKMARK [3][-]{subsubsection.3.4.2}{q-method}{subsection.3.4}% 45
-\BOOKMARK [3][-]{subsubsection.3.4.3}{QUEST}{subsection.3.4}% 46
+\BOOKMARK [3][-]{subsubsection.3.4.3}{QUaternion ESTimator \(QUEST\)}{subsection.3.4}% 46
 \BOOKMARK [3][-]{subsubsection.3.4.4}{Singular Value Decomposition \(SVD\)}{subsection.3.4}% 47
 \BOOKMARK [3][-]{subsubsection.3.4.5}{Other techniques}{subsection.3.4}% 48
 \BOOKMARK [3][-]{subsubsection.3.4.6}{Conclusions}{subsection.3.4}% 49
@@ -51,9 +51,9 @@
 \BOOKMARK [2][-]{subsection.4.1}{Program parts}{section.4}% 51
 \BOOKMARK [3][-]{subsubsection.4.1.1}{Star Triangle Catalog}{subsection.4.1}% 52
 \BOOKMARK [3][-]{subsubsection.4.1.2}{Star Catalog}{subsection.4.1}% 53
-\BOOKMARK [3][-]{subsubsection.4.1.3}{Getting centroids of image stars}{subsection.4.1}% 54
+\BOOKMARK [3][-]{subsubsection.4.1.3}{Star recognition}{subsection.4.1}% 54
 \BOOKMARK [3][-]{subsubsection.4.1.4}{Star identification}{subsection.4.1}% 55
-\BOOKMARK [3][-]{subsubsection.4.1.5}{Finding attiude}{subsection.4.1}% 56
+\BOOKMARK [3][-]{subsubsection.4.1.5}{Finding attitude}{subsection.4.1}% 56
 \BOOKMARK [2][-]{subsection.4.2}{Example of working star-tracker}{section.4}% 57
 \BOOKMARK [1][-]{section.5}{Testing on NVIDIA Jetson TX2}{}% 58
 \BOOKMARK [1][-]{section.6}{Summary and future steps}{}% 59

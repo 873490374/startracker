@@ -193,6 +193,10 @@ M.~G{\c a}ska, ``{Modu{\l} komputera pok{\l}adowego do satelity CubeSat z
   funkcj{\c a} Star Tracker},'' Master's thesis, Warsaw University of
   Technology, 2016.
 
+\bibitem[Rose(2003)]{rose2003star}
+A.~Rose, ``{STAR integrated tracker},'' \emph{arXiv preprint nucl-ex/0307015},
+  2003.
+
 \bibitem[Huffman et~al.(2006)]{huffman2006designing}
 K.~M. Huffman \emph{et~al.}, ``{Designing star trackers to meet micro-satellite
   requirements},'' Master's thesis, Massachusetts Institute of Technology,
@@ -210,10 +214,6 @@ R.~Kandiyil, ``{Attitude determination software for a star sensor},'' Master's
 D.~Mortari and A.~Romoli, ``{StarNav III: a three fields of view star
   tracker},'' in \emph{{Aerospace Conference Proceedings, 2002. IEEE}},
   vol.~1.\hskip 1em plus 0.5em minus 0.4em\relax IEEE, 2002, pp. 1--57.
-
-\bibitem[Rose(2003)]{rose2003star}
-A.~Rose, ``{STAR integrated tracker},'' \emph{arXiv preprint nucl-ex/0307015},
-  2003.
 
 \bibitem[Cannata et~al.(2007)Cannata, Greene, Mulligan, and
   Popovici]{cannata2007autonomous}
