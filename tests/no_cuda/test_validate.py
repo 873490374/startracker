@@ -177,39 +177,7 @@ class TestValidate:
         print('percent_identified_verify: ', percent_verify)
         assert percent_verify == 97.92
 
-    def test_1000_scenes_mag5_uv(self):
-        input_data, expected = read_scene_uv(
-            os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_5_fov_10_uv')
-        result_verify = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full_area')
-
-        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
-            result_verify, expected)
-        print('in scene good verify: ', in_scene_good_verify)
-        print('in scene bad verify: ', in_scene_bad_verify)
-        assert in_scene_good_verify == 1000
-        assert in_scene_bad_verify == 0
-
-        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
-            result_verify, expected)
-        print('in triangle good verify: ', in_triangle_good_verify)
-        print('in triangle bad verify: ', in_triangle_bad_verify)
-        assert in_triangle_good_verify == 993
-        assert in_triangle_bad_verify == 7
-
-        exact_good_verify, exact_bad_verify = exact_stars(
-            result_verify, expected)
-        print('exact good verify: ', exact_good_verify)
-        print('exact bad verify: ', exact_bad_verify)
-        assert exact_good_verify == 993
-        assert exact_bad_verify == 7
-
-        percent_verify = percent_stars_found(result_verify, expected)
-        print('percent_identified_verify: ', percent_verify)
-        assert percent_verify == 99.17
-
-    def test_1000_scenes_mag4_uv(self):
+    def test_1000_scenes_mag4_uv_cat_mag5(self):
         input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag_4_fov_10_uv')
@@ -241,7 +209,39 @@ class TestValidate:
         print('percent_identified_verify: ', percent_verify)
         assert percent_verify == 99.69
 
-    def test_1000_scenes_mag556_uv(self):
+    def test_1000_scenes_mag5_uv_cat_mag5(self):
+        input_data, expected = read_scene_uv(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10_uv')
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area')
+
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 1000
+        assert in_scene_bad_verify == 0
+
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 993
+        assert in_triangle_bad_verify == 7
+
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 993
+        assert exact_bad_verify == 7
+
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 99.17
+
+    def test_1000_scenes_mag556_uv_cat_mag5(self):
         input_data, expected = read_scene_uv(
             os.path.join(MAIN_PATH, 'tests/scenes'),
             '1000_scenes_mag556_fov_10_uv')
@@ -272,42 +272,6 @@ class TestValidate:
         percent_verify = percent_stars_found(result_verify, expected)
         print('percent_identified_verify: ', percent_verify)
         assert percent_verify == 32.2
-
-    def test_esa_xy(self):
-        camera_fov = 10  # degrees
-        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
-        res_x = 1920  # pixels
-        res_y = 1440  # pixels
-        input_data, expected = read_scene_xy(
-            os.path.join(MAIN_PATH, 'tests/scenes'), 'esa_xy',
-            focal_length, (res_x, res_y))
-        result_verify = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full_area')
-
-        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
-            result_verify, expected)
-        print('in scene good verify: ', in_scene_good_verify)
-        print('in scene bad verify: ', in_scene_bad_verify)
-        assert in_scene_good_verify == 90
-        assert in_scene_bad_verify == 10
-
-        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
-            result_verify, expected)
-        print('in triangle good verify: ', in_triangle_good_verify)
-        print('in triangle bad verify: ', in_triangle_bad_verify)
-        assert in_triangle_good_verify == 90
-        assert in_triangle_bad_verify == 10
-
-        exact_good_verify, exact_bad_verify = exact_stars(
-            result_verify, expected)
-        print('exact good verify: ', exact_good_verify)
-        print('exact bad verify: ', exact_bad_verify)
-        assert exact_good_verify == 90
-        assert exact_bad_verify == 10
-
-        percent_verify = percent_stars_found(result_verify, expected)
-        print('percent_identified_verify: ', percent_verify)
-        assert percent_verify == 44.76
 
     @pytest.mark.skip('Too long test')
     def test_1000_scenes_mag556_uv_cat_mag6(self):
@@ -346,6 +310,153 @@ class TestValidate:
         Total time: 36m 41s
         Average time: 2.193535611206003
         """
+
+    def test_1000_scenes_mag4_xy_cat_mag5(self):
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_4_fov_10_xy_scramble',
+            focal_length, (res_x, res_y))
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area')
+
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 972
+        assert in_scene_bad_verify == 28
+
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 929
+        assert in_triangle_bad_verify == 71
+
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 929
+        assert exact_bad_verify == 71
+
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 95.03
+
+    def test_1000_scenes_mag5_xy_cat_mag5(self):
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10_xy_scramble',
+            focal_length, (res_x, res_y))
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area')
+
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 996
+        assert in_scene_bad_verify == 4
+
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 961
+        assert in_triangle_bad_verify == 39
+
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 960
+        assert exact_bad_verify == 40
+
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 95.89
+
+    def test_1000_scenes_mag5_xy_no_scramble_cat_mag5(self):
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'),
+            '1000_scenes_mag_5_fov_10_xy_no_scramble',
+            focal_length, (res_x, res_y))
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area')
+
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 1000
+        assert in_scene_bad_verify == 0
+
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 990
+        assert in_triangle_bad_verify == 10
+
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 989
+        assert exact_bad_verify == 11
+
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 95.79
+
+    def test_esa_xy_cat_mag5(self):
+        camera_fov = 10  # degrees
+        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
+        res_x = 1920  # pixels
+        res_y = 1440  # pixels
+        input_data, expected = read_scene_xy(
+            os.path.join(MAIN_PATH, 'tests/scenes'), 'esa_xy',
+            focal_length, (res_x, res_y))
+        result_verify = find_stars(
+            input_data, 'triangle_catalog_mag5_fov10_full_area')
+
+        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
+            result_verify, expected)
+        print('in scene good verify: ', in_scene_good_verify)
+        print('in scene bad verify: ', in_scene_bad_verify)
+        assert in_scene_good_verify == 90
+        assert in_scene_bad_verify == 10
+
+        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
+            result_verify, expected)
+        print('in triangle good verify: ', in_triangle_good_verify)
+        print('in triangle bad verify: ', in_triangle_bad_verify)
+        assert in_triangle_good_verify == 90
+        assert in_triangle_bad_verify == 10
+
+        exact_good_verify, exact_bad_verify = exact_stars(
+            result_verify, expected)
+        print('exact good verify: ', exact_good_verify)
+        print('exact bad verify: ', exact_bad_verify)
+        assert exact_good_verify == 90
+        assert exact_bad_verify == 10
+
+        percent_verify = percent_stars_found(result_verify, expected)
+        print('percent_identified_verify: ', percent_verify)
+        assert percent_verify == 44.76
 
     @pytest.mark.skip('Too long test')
     def test_esa_xy_cat_mag6(self):
@@ -388,117 +499,6 @@ class TestValidate:
         Total time: 8m 18s
         Average time: 4.906043362510015
         """
-
-    def test_1000_scenes_mag4_xy(self):
-        camera_fov = 10  # degrees
-        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
-        res_x = 1920  # pixels
-        res_y = 1440  # pixels
-        input_data, expected = read_scene_xy(
-            os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_4_fov_10_xy_scramble',
-            focal_length, (res_x, res_y))
-        result_verify = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full_area')
-
-        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
-            result_verify, expected)
-        print('in scene good verify: ', in_scene_good_verify)
-        print('in scene bad verify: ', in_scene_bad_verify)
-        assert in_scene_good_verify == 972
-        assert in_scene_bad_verify == 28
-
-        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
-            result_verify, expected)
-        print('in triangle good verify: ', in_triangle_good_verify)
-        print('in triangle bad verify: ', in_triangle_bad_verify)
-        assert in_triangle_good_verify == 929
-        assert in_triangle_bad_verify == 71
-
-        exact_good_verify, exact_bad_verify = exact_stars(
-            result_verify, expected)
-        print('exact good verify: ', exact_good_verify)
-        print('exact bad verify: ', exact_bad_verify)
-        assert exact_good_verify == 929
-        assert exact_bad_verify == 71
-
-        percent_verify = percent_stars_found(result_verify, expected)
-        print('percent_identified_verify: ', percent_verify)
-        assert percent_verify == 95.03
-
-    def test_1000_scenes_mag5_xy_no_scramble(self):
-        camera_fov = 10  # degrees
-        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
-        res_x = 1920  # pixels
-        res_y = 1440  # pixels
-        input_data, expected = read_scene_xy(
-            os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_5_fov_10_xy_no_scramble',
-            focal_length, (res_x, res_y))
-        result_verify = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full_area')
-
-        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
-            result_verify, expected)
-        print('in scene good verify: ', in_scene_good_verify)
-        print('in scene bad verify: ', in_scene_bad_verify)
-        assert in_scene_good_verify == 1000
-        assert in_scene_bad_verify == 0
-
-        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
-            result_verify, expected)
-        print('in triangle good verify: ', in_triangle_good_verify)
-        print('in triangle bad verify: ', in_triangle_bad_verify)
-        assert in_triangle_good_verify == 990
-        assert in_triangle_bad_verify == 10
-
-        exact_good_verify, exact_bad_verify = exact_stars(
-            result_verify, expected)
-        print('exact good verify: ', exact_good_verify)
-        print('exact bad verify: ', exact_bad_verify)
-        assert exact_good_verify == 989
-        assert exact_bad_verify == 11
-
-        percent_verify = percent_stars_found(result_verify, expected)
-        print('percent_identified_verify: ', percent_verify)
-        assert percent_verify == 95.79
-
-    def test_1000_scenes_mag5_xy(self):
-        camera_fov = 10  # degrees
-        focal_length = 0.5 / np.tan(np.deg2rad(camera_fov) / 2)  # pixels
-        res_x = 1920  # pixels
-        res_y = 1440  # pixels
-        input_data, expected = read_scene_xy(
-            os.path.join(MAIN_PATH, 'tests/scenes'),
-            '1000_scenes_mag_5_fov_10_xy_scramble',
-            focal_length, (res_x, res_y))
-        result_verify = find_stars(
-            input_data, 'triangle_catalog_mag5_fov10_full_area')
-
-        in_scene_good_verify, in_scene_bad_verify = stars_in_scene(
-            result_verify, expected)
-        print('in scene good verify: ', in_scene_good_verify)
-        print('in scene bad verify: ', in_scene_bad_verify)
-        assert in_scene_good_verify == 996
-        assert in_scene_bad_verify == 4
-
-        in_triangle_good_verify, in_triangle_bad_verify = stars_in_triangle(
-            result_verify, expected)
-        print('in triangle good verify: ', in_triangle_good_verify)
-        print('in triangle bad verify: ', in_triangle_bad_verify)
-        assert in_triangle_good_verify == 961
-        assert in_triangle_bad_verify == 39
-
-        exact_good_verify, exact_bad_verify = exact_stars(
-            result_verify, expected)
-        print('exact good verify: ', exact_good_verify)
-        print('exact bad verify: ', exact_bad_verify)
-        assert exact_good_verify == 960
-        assert exact_bad_verify == 40
-
-        percent_verify = percent_stars_found(result_verify, expected)
-        print('percent_identified_verify: ', percent_verify)
-        assert percent_verify == 95.89
 
     def test_tracker_scene_without_tracking_mode(self):
         camera_fov = 10  # degrees
