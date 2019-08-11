@@ -2,40 +2,40 @@
 \babel@toc {english}{}
 \babel@toc {polish}{}
 \babel@toc {english}{}
-\contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats\relax }}{12}{figure.caption.6}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT\cite {pw-sat-image}}}}{12}{subfigure.1.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2\cite {pw-sat2}}}}{12}{subfigure.1.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz)\cite {brite-pl-gunter}}}}{12}{subfigure.1.3}
-\contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE}}{13}{figure.caption.7}
-\contentsline {figure}{\numberline {3}{\ignorespaces HyperSat\relax }}{14}{figure.caption.8}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{14}{subfigure.3.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{14}{subfigure.3.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype\cite {hypersat}}}}{14}{subfigure.3.3}
-\contentsline {figure}{\numberline {4}{\ignorespaces NVIDIA Jetson TX2 module}}{19}{figure.caption.10}
-\contentsline {figure}{\numberline {5}{\ignorespaces NVIDIA Jetson TX2 block diagram}}{20}{figure.caption.11}
-\contentsline {figure}{\numberline {6}{\ignorespaces Earth's satellites navigation orbits}}{23}{figure.caption.12}
-\contentsline {figure}{\numberline {7}{\ignorespaces ECEF frame}}{24}{figure.caption.13}
-\contentsline {figure}{\numberline {8}{\ignorespaces NED frame}}{25}{figure.caption.14}
-\contentsline {figure}{\numberline {9}{\ignorespaces BODY frame}}{25}{figure.caption.15}
-\contentsline {figure}{\numberline {10}{\ignorespaces Star-tracker conceptual algorithm diagram\relax }}{29}{figure.caption.16}
-\contentsline {figure}{\numberline {11}{\ignorespaces Example of centroids' clustering trade-off}}{34}{figure.caption.17}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{34}{subfigure.11.1}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{34}{subfigure.11.2}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{34}{subfigure.11.3}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{34}{subfigure.11.4}
-\contentsline {figure}{\numberline {12}{\ignorespaces Vector angle method}}{35}{figure.caption.18}
-\contentsline {figure}{\numberline {13}{\ignorespaces Spherical Triangle Method}}{38}{figure.caption.19}
-\contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method}}{39}{figure.caption.20}
-\contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart}}{44}{figure.caption.21}
-\contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example}}{49}{figure.caption.22}
-\contentsline {figure}{\numberline {17}{\ignorespaces Designed star-tracker full program diagram\relax }}{57}{figure.caption.23}
-\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{60}{figure.caption.24}
-\contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{63}{figure.caption.25}
-\contentsline {figure}{\numberline {20}{\ignorespaces Example image input}}{64}{figure.caption.26}
-\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition}}{65}{figure.caption.28}
-\contentsline {figure}{\numberline {22}{\ignorespaces Final result of star identification}}{68}{figure.caption.33}
-\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to star-tracker}}{70}{figure.caption.34}
-\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude}}{70}{figure.caption.35}
-\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of star-tracker on Jetson TX2}}{73}{figure.caption.36}
-\contentsline {figure}{\numberline {26}{\ignorespaces Star-tracker execution time of each scene}}{73}{figure.caption.37}
-\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times}}{74}{figure.caption.38}
+\contentsline {figure}{\numberline {1}{\ignorespaces Example of Polish CubeSats\relax }}{14}{figure.caption.6}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PW-SAT\cite {pw-sat-image}}}}{14}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PW-SAT 2\cite {pw-sat2}}}}{14}{subfigure.1.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {BRITE-PL (Lem, Heweliusz)\cite {brite-pl-gunter}}}}{14}{subfigure.1.3}
+\contentsline {figure}{\numberline {2}{\ignorespaces CubeSat build - INSPIRE}}{15}{figure.caption.7}
+\contentsline {figure}{\numberline {3}{\ignorespaces HyperSat\relax }}{16}{figure.caption.8}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{16}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {HyperSat example\cite {hypersat}}}}{16}{subfigure.3.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {HyperSat prototype\cite {hypersat}}}}{16}{subfigure.3.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces NVIDIA Jetson TX2 module}}{21}{figure.caption.10}
+\contentsline {figure}{\numberline {5}{\ignorespaces NVIDIA Jetson TX2 block diagram}}{22}{figure.caption.11}
+\contentsline {figure}{\numberline {6}{\ignorespaces Earth's satellites navigation orbits}}{25}{figure.caption.12}
+\contentsline {figure}{\numberline {7}{\ignorespaces ECEF frame}}{26}{figure.caption.13}
+\contentsline {figure}{\numberline {8}{\ignorespaces NED frame}}{27}{figure.caption.14}
+\contentsline {figure}{\numberline {9}{\ignorespaces BODY frame}}{27}{figure.caption.15}
+\contentsline {figure}{\numberline {10}{\ignorespaces Star-tracker conceptual algorithm diagram\relax }}{31}{figure.caption.16}
+\contentsline {figure}{\numberline {11}{\ignorespaces Example of centroids' clustering trade-off}}{36}{figure.caption.17}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Original image}}}{36}{subfigure.11.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Too high pixel proximity threshold}}}{36}{subfigure.11.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Too low pixel proximity threshold}}}{36}{subfigure.11.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Ideal result of clustering}}}{36}{subfigure.11.4}
+\contentsline {figure}{\numberline {12}{\ignorespaces Vector angle method}}{37}{figure.caption.18}
+\contentsline {figure}{\numberline {13}{\ignorespaces Spherical Triangle Method}}{40}{figure.caption.19}
+\contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method}}{41}{figure.caption.20}
+\contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart}}{46}{figure.caption.21}
+\contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example}}{51}{figure.caption.22}
+\contentsline {figure}{\numberline {17}{\ignorespaces Designed star-tracker full program diagram\relax }}{58}{figure.caption.23}
+\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{61}{figure.caption.24}
+\contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{64}{figure.caption.25}
+\contentsline {figure}{\numberline {20}{\ignorespaces Example image input}}{65}{figure.caption.26}
+\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition}}{66}{figure.caption.28}
+\contentsline {figure}{\numberline {22}{\ignorespaces Final result of star identification}}{69}{figure.caption.33}
+\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to star-tracker}}{71}{figure.caption.34}
+\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude}}{71}{figure.caption.35}
+\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of star-tracker on Jetson TX2}}{74}{figure.caption.36}
+\contentsline {figure}{\numberline {26}{\ignorespaces Star-tracker execution time of each scene}}{74}{figure.caption.37}
+\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times}}{75}{figure.caption.38}

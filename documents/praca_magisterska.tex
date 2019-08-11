@@ -88,10 +88,28 @@
 \newglossaryentry{general_euler_angle}{type=symbols, name=$v$, sort=general_euler_angle, description={General Euler angle}}
 \newglossaryentry{unit_vector}{type=symbols, name=$\bm{u}$, sort=unit_vector, description={Unit vector}}
 \newglossaryentry{identity_matrix}{type=symbols, name=$\bm{I}$, sort=identity_matrix, description={Identity matrix}}
-\newglossaryentry{integer_vector}{type=symbols, name=$\bm{J}$, sort=integer_vector, description={Integer vector of the sorting}}
 \newglossaryentry{rotation_matrix}{type=symbols, name=$\bm{R}_n^b$, sort=rotation_matrix, description={Rotation matrix representing a rotation from n to b}}
-\newglossaryentry{unit_vector_inertial}{type=symbols, name=$\bm{r}$, sort=unit_vector_inertial, description={Known directional unit vector in the ECI frame}}
+\newglossaryentry{unit_vector_inertial}{type=symbols, name=$\bm{r}$, sort=unit_vector_inertial, description={Known directional unit vector in the inertial (ECI) frame}}
 \newglossaryentry{unit_vector_body}{type=symbols, name=$\bm{b}$, sort=unit_vector_body, description={Known directional unit vector in the BODY frame}}
+
+\newglossaryentry{alpha}{type=symbols, name=$\alpha$, sort=alpha, description={right ascension}}
+\newglossaryentry{delta}{type=symbols, name=$\delta$, sort=delta, description={declination}}
+\newglossaryentry{polar_moment}{type=symbols, name=$J$, sort=polar_moment, description={Polar moment}}
+\newglossaryentry{area}{type=symbols, name=$A$, sort=area, description={Area}}
+\newglossaryentry{camera_pixel_size}{type=symbols, name=$\mu$, sort=camera_pixel_size, description={Camera size in pixels}}
+\newglossaryentry{camera_focal_length}{type=symbols, name=$f$, sort=camera_focal_length, description={Camera focal length}}
+
+
+
+\newglossaryentry{loss_matrix}{type=symbols, name=$\bm{A}$, sort=loss_matrix, description={Proper orthogonal matrix that minimizes the non-negative loss function}}
+\newglossaryentry{loss_function}{type=symbols, name=$L(\bm{A})$, sort=loss_function, description={Loss function}}
+
+\newglossaryentry{a_roi}{type=symbols, name=$a_{ROI}$, sort=a_roi, description={the size of the Region of Interest (ROI) in pixels}}
+\newglossaryentry{a_mag}{type=symbols, name=$a_{MAG}$, sort=a_mag, description={the size of star in pixels (for star magnitude limiting)}}
+\newglossaryentry{i_xy}{type=symbols, name=$I(x y)$, sort=i_xy, description={pixel light intensity at coordinates (x,y)}}
+\newglossaryentry{i_thresh}{type=symbols, name=$I_{thresh}$, sort=i_thresh, description={limiting pixel light intensity for considering only bright enough pixels}}
+\newglossaryentry{i_thresh_mag}{type=symbols, name=$I_{thresh_{mag}}$, sort=i_thresh_mag, description={limiting pixel light intensity for star magnitude limiting}}
+\newglossaryentry{i_max}{type=symbols, name=$i_{max}$, sort=i_max, description={limiting star brightness in star magnitude unit (the higher $i$, the dimmer the star)}}
 
 \end{filecontents}
 
@@ -172,7 +190,7 @@ Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajó
 
 \printnoidxglossary[type=symbols,sort=use]
 
-\newpage
+\cleardoublepage
 
 
 \section{Introduction}
@@ -210,7 +228,7 @@ There exists a number of works connected to topic of star-tracker. Many works ar
 
 \item Algorithms for calculating star centroids: \citet{liebe2002accuracy}, \citet{samaan2002predictive}, \citet{knutson2012fast}, \citet{azizabadi2014vlsi}, \citet{lindh2014development} and \citet{zhang2014brightness}. 
 
-\item Star identification (which star in image corresponds to which star in on-board catalogue) divided by design:
+\item Star identification (which star in image corresponds to which star in on-board catalog) divided by design:
 \begin{itemize}[noitemsep]
 \item Grid Algorithm - \citet{padgett1997grid}, 
 \item SP-Search - \citet{mortari1999sp},
@@ -527,7 +545,7 @@ q_3
 \end{equation}
 where $\bm{u} = \frac{\bm{u}}{||\bm{u}||}$.
 
-In code the so called $x,y,z,w$ representation is used, where the scalar part is the last element of the vector:
+In code the so called $x,y,z,w$ representation is used, where the real part is the last element of the quaternion:
 \begin{equation} \label{eq:code_quaternion}
 \bm{q} \coloneqq \begin{bmatrix}
 q_1 \\
@@ -547,15 +565,15 @@ Quaternions show many advantages, and due to possible spins of satellites, quate
 \subsubsection{Wahba's problem}
 
 
-In 1965 Grace Wahba posed the problem of finding the proper orthogonal matrix $A$ that minimizes the non-negative loss function\cite{wahba1965least}
+In 1965 Grace Wahba posed the problem of finding the proper orthogonal matrix $\bm{A}$ that minimizes the non-negative loss function\cite{wahba1965least}
 
 \begin{equation}
-L(A) = \frac{1}{2} \sum_i^n|\bm{b}_i - \bm{Ar}_i|^2
+L(\bm{A}) = \frac{1}{2} \sum_i^n|\bm{b}_i - \bm{Ar}_i|^2
 \end{equation}
 
 where $\bm{b}_i$ are unit vectors in body frame, $\bm{r}_i$ are the corresponding unit vectors in a reference (\gls{eci}) frame and $n$ is the number of observations.
 
-If the vectors are error-free and the true attitude matrix $A_{true}$ is assumed to be the same for all the measurements, then $\bm{b}_i = A_{true}\bm{r}_i$ for each $i$ and the loss function $L(A) = 0$ for $A = A_{true}$.
+If the vectors are error-free and the true attitude matrix $\bm{A_{true}}$ is assumed to be the same for all the measurements, then $\bm{b}_i = \bm{A_{true}r}_i$ for each $i$ and the loss function $L(\bm{A}) = 0$ for $\bm{A} = \bm{A_{true}}$.
 
 
 \newpage
@@ -602,13 +620,13 @@ The idea of how to calculate such centroids is adapted from \citet{mcbryde2012st
 \item For each pixel at image coordinates $(x,y)$ it is checked if:
 \begin{enumerate}
 \item light intensity is high enough: $I(x,y) > I_{thresh}$, hence only bright points of image are taken into account;
-\item the sum of light intensity of given amount of pixels around the pixel is high enough (Equation \ref{eq:centroid_magnitude}), hence only low magnitude stars are taken into account. Describing the equation: it is the pixel intensity sum of vertical, horizontal and both diagonals of pixels around the given pixel, where $lp$ is limit of pixels for magnitude ROI and $I_{thresh_{mag}}$ is limit threshold of star magnitude pixels intensity.
+\item the sum of light intensity of given amount of pixels around the pixel is high enough (Equation \ref{eq:centroid_magnitude}), hence only low magnitude stars are taken into account. Describing the equation: it is the pixel intensity sum of vertical, horizontal and both diagonals of pixels around the given pixel, where $a_{MAG}$ is limit of pixels for magnitude ROI and $I_{thresh_{mag}}$ is limit threshold of star magnitude pixels intensity.
 \begin{equation}
 \begin{gathered}
-\sum_{i=x-lp}^{x+lp} I(x_i,y) +  \\ 
-\sum_{j=y-lp}^{y+lp} I(x,y_j) +  \\ 
-\sum_{i=x-lp}^{x+lp}\sum_{j=y-lp}^{y+lp} I(x_i,y_j) +  \\ 
-\sum_{i=x-lp}^{x+lp}\sum_{j=y+lp}^{y-lp} I(x_i,y_j) \\ 
+\sum_{i=x-a_{MAG}}^{x+a_{MAG}} I(x_i,y) +  \\ 
+\sum_{j=y-a_{MAG}}^{y+a_{MAG}} I(x,y_j) +  \\ 
+\sum_{i=x-a_{MAG}}^{x+a_{MAG}}\sum_{j=y-a_{MAG}}^{y+a_{MAG}} I(x_i,y_j) +  \\ 
+\sum_{i=x-a_{MAG}}^{x+a_{MAG}}\sum_{j=y+a_{MAG}}^{y-a_{MAG}} I(x_i,y_j) \\ 
 > I_{thresh_{mag}}
 \end{gathered}
 \label{eq:centroid_magnitude}
@@ -698,13 +716,13 @@ The clustering can be accomplished by checking each new centroid against a list 
   \hfill
   \subfloat[Ideal result of clustering]
 {\includegraphics[width=0.5\textwidth]{centroids_4.png}\label{fig:centroids_4}}
-  \caption[Example of centroids' clustering trade-off]{Example of centroids' clustering trade-off (in negative colours)}
+  \caption[Example of centroids' clustering trade-off]{Example of centroids' clustering trade-off (in negative colors)}
   \label{fig:centroids-examples}
 \end{figure}
 
 \subsection{Star identification}
 
-Star identification is the part of star-tracker program, which actually finds out which recognized stars are which. Prior this part it is only known that some stars were read from the image, and now it is the time to identify them by comparing to the on-board star catalogue. There is a number of techniques to do that\cite{spratling2009survey}. In this section most of them will be described.
+Star identification is the part of star-tracker program, which actually finds out which recognized stars are which. Prior this part it is only known that some stars were read from the image, and now it is the time to identify them by comparing to the on-board star catalog. There is a number of techniques to do that\cite{spratling2009survey}. In this section most of them will be described.
 
 
 \subsubsection{Angle Matching}
@@ -728,13 +746,13 @@ Firstly standard coordinate transformation is necessary:
 \begin{equation}
 \bm{b}_i = A\bm{r}_i
 \end{equation}
-where $\bm{r}_i$ is direction the direction of star in the \gls{eci} coordinate system, $A$ is the direction cosine matrix, $\bm{b}_i$ is direction of star in the star-tracker body coordinate system.
+where $\bm{r}_i$ is direction the direction of star in the inertial coordinate system, $\bm{D}$ is the \gls{dcm}, $\bm{b}_i$ is direction of star in the star-tracker body coordinate system.
 
-Nearly all the probability of errors is focused on a very small area about the direction of $A\bm{r}_i$, that the sphere containing that point can be approximated by a tangent plane, characterized by:
+Nearly all the probability of errors is focused on a very small area about the direction of $\bm{D}\bm{r}_i$, that the sphere containing that point can be approximated by a tangent plane, characterized by:
 \begin{equation}
-\tilde{\bm{b}}_i = A\bm{r}_i + \bm{v}_i, \hspace{0.5cm} \bm{v}_i^TA\bm{r}_i = 0
+\tilde{\bm{b}}_i = \bm{D}\bm{r}_i + \bm{v}_i, \hspace{0.5cm} \bm{v}_i^T\bm{D}\bm{r}_i = 0
 \end{equation}
-where $\tilde{\bm{b}}_i$ is the it{i}th measurement and sensor $\bm{v}_i$ is approximately Gaussian, which satisfies
+where $\tilde{\bm{b}}_i$ is the {i}th measurement and sensor error $\bm{v}_i$ is approximately Gaussian, which satisfies
 \begin{subequations}
 \begin{equation}
 E\left\{\bm{v}_i\right\} = 0
@@ -778,13 +796,13 @@ Trace(A\bm{r}_1\bm{r}_1^TR_2) + Trace(A\bm{r}_2\bm{r}_2^TR_1) + Trace(R_1R_2)
 \end{equation}
 where $E\left\{\bm{v}_1\bm{v}_1^T\right\}\equiv R_1$ and $E\left\{\bm{v}_2\bm{v}_2^T\right\}\equiv R_2$.
 
-The effective measurement noise in the dot product consist of both Gaussian and chi-squared distribution, but since the noise is small in comparison to the unit vector observation, the effective noise can be treated as purely Gaussian. As the attitude is not known, the $A\bm{r}_1$ and $A\bm{r}_2$ are replaced by $\tilde{\bm{b}}_1$ and $\tilde{\bm{b}}_2$. Errors introduced in this substitution are second-order in nature, hence the variance is completely independent of the attribute matrix $A$.
+The effective measurement noise in the dot product consist of both Gaussian and chi-squared distribution, but since the noise is small in comparison to the unit vector observation, the effective noise can be treated as purely Gaussian. As the attitude is not known, the $\bm{A}\bm{r}_1$ and $\bm{A}\bm{r}_2$ are replaced by $\tilde{\bm{b}}_1$ and $\tilde{\bm{b}}_2$. Errors introduced in this substitution are second-order in nature, hence the variance is completely independent of the attribute matrix $\bm{A}$.
 
 In case there exist more than one possible solution, so called pivoting is made. This means that if for first angle more than one solution was found, the second angle is selected, that shares one common star with the first angle. When all solutions for second angle are obtained, the solutions not common for those two angles are discarded. If there is still more than one solution, then another pivot is made. Now it compares the second angle with third angle, with a common star. The rest goes analogically. This happens till finally there is only one solution for some two angles, or there are no more angles left in the input, and system enters into \gls{lis} mode.
 
 \subsubsection{Spherical Triangle Matching}
 
-Instead of measuring the inter-star angle, this method creates spherical triangles out of three stars. Due to that more information can be obtained from such triangle than an angle, what enables to identify stars faster and using fewer stars overall than in previous method. In this technique the area and polar moment are used instead of angles. The main disadvantage comparing to angle matching method is that this one requires not two but three stars in order to work properly, however under typical conditions in angle matching it is necessary to use more stars due to measurement error. Also the spherical triangle catalogue is about 10 times larger than angle catalogue\cite{cole2004fast}.
+Instead of measuring the inter-star angle, this method creates spherical triangles out of three stars. Due to that more information can be obtained from such triangle than an angle, what enables to identify stars faster and using fewer stars overall than in previous method. In this technique the area and polar moment are used instead of angles. The main disadvantage comparing to angle matching method is that this one requires not two but three stars in order to work properly, however under typical conditions in angle matching it is necessary to use more stars due to measurement error. Also the spherical triangle catalog is about 10 times larger than angle catalog\cite{cole2004fast}.
 
 \begin{figure}[ht]
 \includegraphics[scale=0.29]{spherical_triangle_method.jpg}
@@ -878,7 +896,7 @@ where
 \bm{h}_3^T \equiv \frac{\delta A}{\delta b}\frac{\delta b}{\delta\bm{b}_3} + \frac{\delta A}{\delta c}\frac{\delta c}{\delta\bm{b}_3} 
 \end{equation}
 \end{subequations}
-To calculate the partials with respect to $a$, $b$ and $c$ serve the following equations:
+To calculate the partials with respect to $a$, $b$ and $c$ the following equations are used:
 \begin{subequations}
 \begin{equation}
 \frac{\delta A}{\delta a} = \frac{u_1 - u_2 + u_3 + u_4}{4A}
@@ -905,7 +923,7 @@ u_3 = s(s - a)(s - c)
 u_4 = s(s - a)(s - b)
 \end{equation}
 \end{subequations}
-The partials with respect to $\bm{b}_1$, $\bm{b}_2$ and $\bm{b}_3$ are calculated formulas
+The partials with respect to $\bm{b}_1$, $\bm{b}_2$ and $\bm{b}_3$ are calculated with formulas:
 \begin{subequations}
 \begin{equation}
 \frac{\delta a}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_2)^T /a, \hspace{0.5cm} \frac{\delta a}{\delta \bm{b}_2} = -\frac{\delta a}{\delta \bm{b}_1}
@@ -917,7 +935,7 @@ The partials with respect to $\bm{b}_1$, $\bm{b}_2$ and $\bm{b}_3$ are calculate
 \frac{\delta c}{\delta \bm{b}_1} = (\bm{b}_1 - \bm{b}_3)^T /c, \hspace{0.5cm} \frac{\delta c}{\delta \bm{b}_3} = -\frac{\delta c}{\delta \bm{b}_1}
 \end{equation}
 \end{subequations}
-The variance of the area is as follows
+The variance of the area is as follows:
 \begin{equation}
 \sigma_A^2 = HRH^T
 \end{equation}
@@ -1049,7 +1067,7 @@ As for other algorithms, Star Neighbourhood does not support \gls{lis} mode, for
 
 For each of previously mentioned algorithms it is necessary to match patters, angles, areas, polar moments, etc. with already known data. Such data saved in the database prior to launching the spacecraft. The database is usually made out of star database collected by Earth's observatories. Also for each different star identification method and different \gls{fov} the catalog must be recreated.
  
-For nearly every start pattern matching it is necessary to convert firstly the star positions to unit vectors. Most star catalogues use right ascension-declination coordinates while for star identification unit vectors must be used\cite{mcbryde2012star}. The following formula transforms the coordinates to unit vectors:
+For nearly every start pattern matching it is necessary to convert firstly the star positions to unit vectors. Most star catalogs use right ascension-declination coordinates while for star identification unit vectors must be used\cite{mcbryde2012star}. The following formula transforms the coordinates to unit vectors:
 
 \begin{equation}
 \bm{u} = \begin{bmatrix}
@@ -1061,7 +1079,7 @@ For nearly every start pattern matching it is necessary to convert firstly the s
 
 where $\bm{u}$ is unit vector, $\alpha$ is right ascension and $\delta$ is declination.
 
-Since Planar Triangle method was chosen, the rest of catalog generation will be described for this method. For each three catalog stars that are above certain light intensity threshold
+Since Planar Triangle method was chosen, the rest of catalog generation will be described for this method. For each three catalog stars that are above certain light intensity threshold (in star magnitude)
 \begin{subequations}
 \begin{equation}
 i_a \geq i_{max}
@@ -1111,7 +1129,7 @@ The k-vector technique works in the following way: $\bm{y}$ is the data vector o
 In the Figure \ref{fig:k-vector-example} it is shown how such k-vector construction looks like. In this example the database has 10 elements. X-axis describes k-vector elements $\bm{k}(i)$ and y-axis describes the sorted values $\bm{s}(i)$ (inter-star angle in this case). The value of $\bm{k}(i)$ represents the number of elements of the database vector $\bm{y}$ below the value $z(i)$.
 The resulting k-vector is $\bm{k} = \{0, 2, 2, 3, 3, 5, 6, 8, 9, 10\}^T$.
 
-The following equations describe how the k-vector database is created. The line connecting two extreme points, $[1, y_{min}]$ and $[n, y_{max}]$, has to be a little stepper and connect points $[1, y_{min}-\delta\epsilon]$ and $[n, y_{max}+\delta\epsilon]$. This assures $\bm{k}(1) = 0$ and $\bm{k}(n	) = n$ and simplifies the code by avoiding many index checks.
+The following equations describe how the k-vector database is created. The line connecting two extreme points, $[1, y_{min}]$ and $[n, y_{max}]$, has to be a little stepper and connect points $[1, y_{min}-\delta\epsilon]$ and $[n, y_{max}+\delta\epsilon]$. This assures $\bm{k}(1) = 0$ and $\bm{k}(n) = n$ and simplifies the code by avoiding many index checks.
 \begin{equation}
 z(x) = mx + q \begin{cases}m = \frac{y_{max} - y_{min} + \delta\epsilon}{n - 1} \\
 q = y_{min} - m - \delta\epsilon \end{cases}
@@ -1148,13 +1166,13 @@ Note that in example the searched elements should be $k_{start} = 4$ and $k_{end
 
 \subsection{Attitude Determination}
 
-The last main part of the star-tracker program is attitude determination. After star pattern is found, there are come two lists of unit vectors. One list is in the body frame while the other is in the inertial frame. In order to find rotation between them and later CubeSat's attitude, an attitude determination method must be applied. A number of techniques were designed to solve this problem. Typically the output can come in the form of a quaternion, Euler angles or a rotation matrix (\gls{dcm}).
+The last main part of the star-tracker program is attitude determination. After star pattern is found, there come two lists of unit vectors. One list is in the body frame while the other is in the inertial frame. In order to find rotation between them and later CubeSat's attitude, an attitude determination method must be applied. A number of techniques were designed to solve this problem. Typically the output can come in the form of a quaternion, Euler angles or a rotation matrix (\gls{dcm}).
 
 The attitude determination methods should be fast and robust. This section describes few most common algorithms designed to solve this problem.
 
 \subsubsection{Three Axis Attitude Determination (TRIAD)}
 
-\gls{triad} is based on constructing two triads of orthonormal unit vectors using the vector information from input. Both triads are components of the same reference frame $F_t$ expressed in the body and inertial frames\cite{hall2003spacecraft}.
+\gls{triad} is based on constructing two triads of orthonormal unit vectors using the vector information from input. Both triads are components of the same reference frame expressed in the body and inertial frames\cite{hall2003spacecraft}.
 
 $\bm{b}_1$ and $\bm{b}_2$ are two vectors in body frame and $\bm{r}_1$ and $\bm{r}_2$ are in reference frame. First step of the algorithm is following:
 
@@ -1163,10 +1181,10 @@ $\bm{b}_1$ and $\bm{b}_2$ are two vectors in body frame and $\bm{r}_1$ and $\bm{
 \bm{bb}_1 = \bm{b}_1/|\bm{b}_1|
 \end{equation}
 \begin{equation}
-\bm{bb}_2 = (\bm{bb}_1 x \bm{b}_2) /|\bm{bb}_1 x \bm{b}_2|
+\bm{P}_2 = (\bm{P}_1 x \bm{b}_2) /|\bm{P}_1 x \bm{b}_2|
 \end{equation}
 \begin{equation}
-\bm{bb}_3 = \bm{bb}_1 x \bm{bb}_2
+\bm{P}_3 = \bm{P}_1 x \bm{P}_2
 \end{equation}
 \end{subequations}
 
@@ -1174,23 +1192,23 @@ and the following matrices in reference frame:
 
 \begin{subequations}
 \begin{equation}
-\bm{rr}_1 = \bm{r}_1/|\bm{r}_1|
+\bm{T}_1 = \bm{r}_1/|\bm{r}_1|
 \end{equation}
 \begin{equation}
-\bm{rr}_2 = (\bm{rr}_1 x \bm{r}_2) /|\bm{rr}_1 x \bm{r}_2|
+\bm{T}_2 = (\bm{T}_1 x \bm{r}_2) /|\bm{T}_1 x \bm{r}_2|
 \end{equation}
 \begin{equation}
-\bm{rr}_3 = \bm{rr}_1 x \bm{rr}_2
+\bm{T}_3 = \bm{T}_1 x \bm{T}_2
 \end{equation}
 \end{subequations}
 
-where $\bm{bb}_i, i\in\{1, 2, 3\}$ are matrices in body frame and $\bm{rr}_i, i\in\{1, 2, 3\}$ are matrices in reference frame.
+where $\bm{P}_i, i\in\{1, 2, 3\}$ are matrices in body frame and $\bm{T}_i, i\in\{1, 2, 3\}$ are matrices in reference frame.
 
 
 Finally the attitude matrix $\bm{A}$ is computed:
 
 \begin{equation}
-\bm{A} = \bm{bb}_1 \cdot \bm{rr}_1^T + \bm{bb}_2 \cdot \bm{rr}_2^T + \bm{bb}_3 \cdot \bm{rr}_3^T
+\bm{A} = \bm{P}_1 \cdot \bm{T}_1^T + \bm{P}_2 \cdot \bm{T}_2^T + \bm{P}_3 \cdot \bm{T}_3^T
 \end{equation}
 
 
@@ -1259,7 +1277,7 @@ Since the needed output from attitude determination must be quaternion, not \gls
  
 The algorithm works as follows:
 
-Firstly the matrix $\bm{B}$ is calculated with $n$ observed stars, where $b_i$ is image star and $r_i$ catalogue star for real star $i$:
+Firstly the matrix $\bm{B}$ is calculated with $n$ observed stars, where $b_i$ is image star and $r_i$ catalog star for real star $i$:
 \begin{equation}
 \bm{B = \sum_{i=1}^nb_ir_i^T}
 \end{equation}
@@ -1284,9 +1302,9 @@ Now the proper orthogonal matrices $\bm{U}_+$ and $\bm{V}_+$ using:
 0 & 0 & det\bm{V}
 \end{bmatrix}
 \end{equation}
-The \gls{dcm} $\bm{A}$ can be found by:
+The \gls{dcm} $\bm{D}$ can be found by:
 \begin{equation}
-\bm{A = U_+V_+^T}
+\bm{D = U_+V_+^T}
 \end{equation}
 
 \subsubsection{Other techniques}
@@ -1382,12 +1400,12 @@ This is the most computation-consuming part of the program, however the usage of
 
 On Jetson star recognition lasts around 200 ms in most cases, but it can go up higher with more stars in the input image. It will also go much higher in images with higher resolution.
 
-Computational complexity is $O(x*y*(\frac{mag_{pix}}{2}+\frac{a_{roi}}{2}))$, where:
+Computational complexity is $O(x*y*(\frac{a_{MAG}}{2}+\frac{a_{ROI}}{2}))$, where:
 \begin{itemize}[noitemsep]
 \item $x$ is number of horizontal pixels,
 \item $y$ is number of vertical pixels,
-\item $mag_{pix}$ is amout of star magnitude pixels,
-\item $a_{roi}$ is amout of ROI.
+\item $a_{MAG}$ is star size limit in pixels,
+\item $a_{ROI}$ is size of ROI in pixels.
 \end{itemize}
 
 \begin{figure}[!htbp]
@@ -1405,18 +1423,12 @@ On Jetson Star Identification lasts up to 100-200 ms in most cases, but it can g
 
 Computational complexity is $O(n^3+n^2)$, where $n$ is number of image stars.
 
-Star Identifier algorithm was tested basing on \gls{esa}'s star-tracker simulator created for competition needs\cite{esa-competition}. This simulator creates sets of data: one that would be the actual output of star recognition algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
-All tests were done with \gls{fov} 10\degree. On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%, visible in Figure \ref{fig:identification_accuracy}. While there is no satandardized deifinition of accuracy in this area, it is assumed that accuracy means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
-Such particular accuracy definition comes from the fact that for given scene no star should be recognized incorrectly in order to get correct result in the next part of program, which is \gls{quest} algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
+Star Identifier algorithm was tested basing on \gls{esa}'s star-tracker simulator created for competition needs\cite{esa-competition}. This simulator creates data two sets of data: one that would be the actual output of star recognition algorithm, i.e. list of stars' centroids and magnitudes (x position, y position, magnitude); and the second set of data - list of stars' ids in Hipparcos catalog.
+All tests were done with \gls{fov} 10\degree . On average algorithm using star triangle catalog of magnitude $\leqslant 5$ has accuracy above 90\%. Accuracy in this case means the percent of scenes in tests where no star was recognized incorrectly. It means that algorithm could also not recognize any star from the input data in given scene.
+Such particular accuracy definition comes from the fact that for given scene no star can be recognized incorrectly in order to get correct result in the next part of program, which is \gls{quest} algorithm. The percent of all identified stars in those test cases is around 95\% for stars within the catalog magnitude.
 
-Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be also as accurate (\~95\%) for input data with stars with magnitude $\leqslant 5.56$, however the time of execution per scene rose significantly (from 50ms to 2.2s, 44 times). The advantage is that algorithm was able to identify significantly more stars - ~95\% versus ~35\% with cataloge magnitude 5. Test cases with input data with stars with magnitude $\leqslant 6$ ("esa" test scenarion) has worsen the accuracy - less scenes without incorrectly identified stars comparing to the same test with catalog magnitude $\leqslant 5$, while time rose significantly (from 200ms to 4.9s, 24.5 times). In order to make this algorithm more accurate on higher magnitude stars it is necessary to explore options of rewriting parts of this algorithm to GPU, using k-vector and finding better constant values for Planar Triangle algorithm.
+Test cases using star triangle catalog with magnitude $\leqslant 6$ proven to be also as accurate (\~95\%) for input data with stars with magnitude $\leqslant 5.56$, however the time of execution per scene rose significantly (from 50ms to 2.2s, 44 times). Test cases with input data with stars with magnitude $\leqslant 6$ has worsen the accuracy - less scenes without incorrectly identified stars comparing to the same test with catalog magnitude $\leqslant 5$, while time rose significantly (from 200ms to 4.9s, 24.5 times). In order to make this algorithm more accurate on higher magnitude stars it is necessary to explore options of rewriting parts of this algorithm to GPU, using k-vector and finding better constant values for Planar Triangle algorithm.
 
-\begin{figure}[!htbp]
-\includegraphics[scale=0.55]{plot_star_identification_tests.png}
-\centering
-\caption[Star identification test results - accuracy and execution time]{Star identification test results - accuracy and execution time. Blue - percentage of scenes, where all identified stars are in the scene or were discarded, orange - percentage of scenes where all stars were correctly identified (star to star) or discarded, green - percent of all identified stars in all scenes and not discarded, red - average time of scene computation. Test scenarios' labels are with the following convention: mag4 means that stars in the input scenes are with magnitude up to 4, cat5 means that catalog used for testing has stars with magnitude up to 5; esa is special test scenario used in competition\cite{esa-competition} with 100 scenes, stars of magnitude up to 6 and multiple false stars. Other scenarions have no false stars and 1000 scenes per test}
-\label{fig:identification_accuracy}
-\end{figure}
 
 \begin{figure}[!htbp]
 \includegraphics[scale=0.55]{star_identifier_diagram.jpg}
@@ -1670,7 +1682,7 @@ NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tra
 \begin{figure}[!htbp]
 \includegraphics[scale=0.55]{times_plot.png}
 \centering
-\caption[Star-tracker execution time of each scene]{Star-tracker execution time of each scene and number of input stars.}
+\caption[Star-tracker execution time of each scene]{Star-tracker execution time of each scene}
 \label{fig:times_plot}
 \end{figure}
 
@@ -1681,7 +1693,7 @@ NVIDIA Jetson TX2 seems to be good candidate to be used in space as the star-tra
 \label{fig:power_times_plot}
 \end{figure}
 
-\newpage
+\cleardoublepage
 \section{Summary and future steps}
 
 The program was tested using two sources of truth: images from Stellarium program and tests built basing on \gls{esa}'s star-tracker simulator created for competition needs, what ensures high quality of tests. Testing indicated that all parts of star-tracker: star recognition in the images (centroiding), star identification with star catalog (planar triangle) and attitude determination (\gls{quest}) work with high accuracy separately. The main goal of the thesis - star identification part - was thoroughly tested with few thousands mocked  scenes and few generated taken from Stellaris program. The speed of execution of the program shows that program could be used on the real satellite with refresh frequency at around $1Hz$ on average for \gls{lis} mode, and at least few times more with correctly working Tracking mode. The star-tracker is able to find attitude from the image of stars and calculate quaternion from it.
