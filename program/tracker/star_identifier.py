@@ -96,9 +96,11 @@ class StarIdentifier:
 
         valid_triangles = self.triangle_catalog[
             (self.triangle_catalog[:, 3] >= area_min) &
-            (self.triangle_catalog[:, 3] <= area_max) &
-            (self.triangle_catalog[:, 4] >= moment_min) &
-            (self.triangle_catalog[:, 4] <= moment_max)]
+            (self.triangle_catalog[:, 3] <= area_max)]
+
+        valid_triangles = valid_triangles[
+            (valid_triangles[:, 4] >= moment_min) &
+            (valid_triangles[:, 4] <= moment_max)]
 
         return valid_triangles
 
