@@ -92,15 +92,15 @@ class StarIdentifier:
         moment_min = triangle[4] - SIG_X * J_dev
         moment_max = triangle[4] + SIG_X * J_dev
 
-        # TODO change to CUDA
-
         valid_triangles = self.triangle_catalog[
-            (self.triangle_catalog[:, 3] >= area_min) &
-            (self.triangle_catalog[:, 3] <= area_max)]
+            np.where(
+                (self.triangle_catalog[:, 3] >= area_min) *
+                (self.triangle_catalog[:, 3] <= area_max))]
 
         valid_triangles = valid_triangles[
-            (valid_triangles[:, 4] >= moment_min) &
-            (valid_triangles[:, 4] <= moment_max)]
+            np.where(
+                (valid_triangles[:, 4] >= moment_min) *
+                (valid_triangles[:, 4] <= moment_max))]
 
         return valid_triangles
 

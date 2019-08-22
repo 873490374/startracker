@@ -41,47 +41,48 @@ class TestTracker:
             triangle_catalog=triangle_catalog,
             star_catalog=star_catalog,
         )
-        times = []
-        lost_attitude_known = 0
-        lost_attitude_unknown = 0
-        scrambled_stars = 0
-        result = star_identifier.identify_stars(input_data[0])
-        for i in range(1, len(input_data)):
-            # print('Frame ', i)
-            # print([int(star[1]) for star in result])
-            if not result or len((set([int(star[1]) for star in result]))) < 3:
-                # print('new star search')
+        for aaa in range(1000):
+            times = []
+            lost_attitude_known = 0
+            lost_attitude_unknown = 0
+            scrambled_stars = 0
+            result = star_identifier.identify_stars(input_data[0])
+            for i in range(1, len(input_data)):
+                # print('Frame ', i)
+                # print([int(star[1]) for star in result])
+                if not result or len((set([int(star[1]) for star in result]))) < 3:
+                    # print('new star search')
+                    start = timer()
+                    result = star_identifier.identify_stars(input_data[i])
+                    times.append(timer() - start)
+                    # print('**** Lost attitude, frame ', i, '****')
+                    lost_attitude_known += 1
+                    continue
                 start = timer()
-                result = star_identifier.identify_stars(input_data[i])
+                # print('tracking mode')
+                result = tracker.track(input_data[i], result)
+                # result = star_identifier.identify_stars(input_data[i])
                 times.append(timer() - start)
-                # print('**** Lost attitude, frame ', i, '****')
-                lost_attitude_known += 1
-                continue
-            start = timer()
-            # print('tracking mode')
-            result = tracker.track(input_data[i], result)
-            # result = star_identifier.identify_stars(input_data[i])
-            times.append(timer() - start)
-            for s in result:
-                try:
-                    assert s[1] in expected[i] or s[1] == -1
-                except AssertionError:
-                    # print('**** Lost attitude not knowing, frame ', i)
-                    lost_attitude_unknown += 1
-                    break
-                try:
-                    assert s[1] == expected[i][int(s[0])] or s[1] == -1
-                except AssertionError:
-                    # print('**** Stars scrambled, frame ', i)
-                    scrambled_stars += 1
-                    break
-        print('Average time: ', np.sum(times) / len(times))
+                for s in result:
+                    try:
+                        assert s[1] in expected[i] or s[1] == -1
+                    except AssertionError:
+                        # print('**** Lost attitude not knowing, frame ', i)
+                        lost_attitude_unknown += 1
+                        break
+                    try:
+                        assert s[1] == expected[i][int(s[0])] or s[1] == -1
+                    except AssertionError:
+                        # print('**** Stars scrambled, frame ', i)
+                        scrambled_stars += 1
+                        break
+            print('Average time: ', np.sum(times) / len(times))
 
-        print('Scrambled stars: ', scrambled_stars)
-        print('Lost attitude knowing: ', lost_attitude_known)
-        print('Lost attitude not knowing: ', lost_attitude_unknown)
-        print('Correctly: ', len(input_data) -
-              scrambled_stars - lost_attitude_known - lost_attitude_unknown)
+            print('Scrambled stars: ', scrambled_stars)
+            print('Lost attitude knowing: ', lost_attitude_known)
+            print('Lost attitude not knowing: ', lost_attitude_unknown)
+            print('Correctly: ', len(input_data) -
+                  scrambled_stars - lost_attitude_known - lost_attitude_unknown)
 
         # 0,03833982454571841 / 0,015765512875077548 = 2,4319
         # 0,015765512875077548 / 0,03833982454571841 = 0,4112

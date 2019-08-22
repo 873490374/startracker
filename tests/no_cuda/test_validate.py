@@ -309,6 +309,8 @@ class TestValidate:
         """
         Total time: 36m 41s
         Average time: 2.193535611206003
+        
+        new total: 17m
         """
 
     def test_1000_scenes_mag4_xy_cat_mag5(self):
@@ -498,6 +500,8 @@ class TestValidate:
         """
         Total time: 8m 18s
         Average time: 4.906043362510015
+        
+        new total: 5m
         """
 
     def test_tracker_scene_without_tracking_mode(self):

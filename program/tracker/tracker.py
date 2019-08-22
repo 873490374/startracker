@@ -100,12 +100,16 @@ class Tracker:
         moment_min = triangle[4] - SIG_X * J_dev
         moment_max = triangle[4] + SIG_X * J_dev
 
-        # TODO change to CUDA
         previous_triangles = np.array(previous_triangles)
+
         valid_triangles = previous_triangles[
-            (previous_triangles[:, 3] >= area_min) &
-            (previous_triangles[:, 3] <= area_max) &
-            (previous_triangles[:, 4] >= moment_min) &
-            (previous_triangles[:, 4] <= moment_max)]
+            np.where(
+                (previous_triangles[:, 3] >= area_min) *
+                (previous_triangles[:, 3] <= area_max))]
+
+        valid_triangles = valid_triangles[
+            np.where(
+                (valid_triangles[:, 4] >= moment_min) *
+                (valid_triangles[:, 4] <= moment_max))]
 
         return valid_triangles
