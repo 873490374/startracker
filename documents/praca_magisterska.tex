@@ -158,12 +158,12 @@
 \thispagestyle{empty}
 
 \begin{abstract}
-Last years directed space industry towards small satellites. Many countries, which did not have possibility to enter this branch of industry before, now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude as well as research of possible usage of off-the-shelf embedded computer with GPU - NVIDIA Jetson TX2. Work contains also description of individual parts and variants of solutions connected with star-tracker.
+Last years directed space industry towards small satellites. Many countries, which did not have possibility to enter this branch of industry before, now create their own solutions. The goal of this work is to create fully functioning star-tracker software eligible to be used in future satellites as Polish solution of determination of satellite attitude as well as research of possible usage of off-the-shelf embedded computer with GPU - NVIDIA Jetson TX2, which will be used on HyperSat satellite platforms for data processing acquired from cameras observing Earth. The use of Jetson module also for star-tracking would eliminate the need for separate star-tracker device. Work contains also description of individual parts and variants of solutions connected with star-tracker.
 \end{abstract}
 
 \begin{otherlanguage}{polish}
 \begin{abstract}
-Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzy własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity, a także zbadanie możliwości użycia gotowego komputera wbudowanego z GPU - NVIDIA Jetson TX2. Praca zawiera też opis poszczególnych części i wariantów rozwiązania problemów związanych ze star-trackerem.
+Ostatnie lata ukierunkowały przemysł kosmiczny na małe satelity. Wiele krajów, które wcześniej nie miały możliwości wejścia w tę gałąź przemysłu, teraz tworzy własne rozwiązania. Celem niniejszej pracy dyplomowej jest stworzenie w pełni działającego oprogramowania star-trackera nadającego się do wykorzystania w przyszłych satelitach jako polskie rozwiązanie problemu określania orientacji satelity, a także zbadanie możliwości użycia gotowego komputera wbudowanego z GPU - NVIDIA Jetson TX2, które będą używane na platformach satelitarnych HyperSat do przetwarzania danych z kamer obserwacji Ziemi. Użycie modułu Jetson pozwoliłoby wyelminować zapotrzebowanie na oddzielne urządzenie star-trackera. Praca zawiera też opis poszczególnych części i wariantów rozwiązania problemów związanych ze star-trackerem.
 \end{abstract}
 \end{otherlanguage}
 \newpage
@@ -316,7 +316,7 @@ Typical CubeSat consist of many different components. Quite often it has antenna
 
 Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and around 70,000 EUR for designing and building the satellite itself\cite{pw-pw-sat2}.
 
-Another platform for slightly larger than CubeSat satellites was designed by Polish company Creotech - HyperSat\cite{hypersat}. It is based on experiences of CubeSat: it is also modular and universal. In the smallest configuration satellite can have dimensions of 30x30x10 cm and weight od 10 kg, while at largest it can have 30x30x60 cm and weight 60 kg. Because of the larger size and weight HyperSat can have more applications than CubeSat, however also lowering the price of satellite design and construction due to the standardization. The first HyperSats can enter the orbit even as soon as in 2020\cite{hypersat-space24}. The HyperSat plan considers to start serial manufacture where platform would be already prepared and configured in 6 months after ordering it\cite{platforma-satelitarna-space24}. Figure \ref{fig:hypersat-examples} shows example and prototype of HyperSat.
+Another platform for slightly larger than CubeSat satellites was designed by Polish company Creotech - HyperSat\cite{hypersat}. It is based on experiences of CubeSat: it is also modular and universal. In the smallest configuration satellite can have dimensions of 30x30x10 cm and weight od 10 kg, while at largest it can have 30x30x60 cm and weight 60 kg. Because of the larger size and weight HyperSat can have more applications than CubeSat, however also lowering the price of satellite design and construction due to the standardization. HyperSats will be equipped with NVIDIA Jetson modules used for data processing acquired from cameras observing Earth. The use of Jetson module also for star-tracking would eliminate the need for separate star-tracker device. The first HyperSats can enter the orbit even as soon as in 2020\cite{hypersat-space24}. The HyperSat plan considers to start serial manufacture where platform would be already prepared and configured in 6 months after ordering it\cite{platforma-satelitarna-space24}. Figure \ref{fig:hypersat-examples} shows example and prototype of HyperSat.
 
 
 \begin{figure}[!htbp]
@@ -1326,9 +1326,27 @@ From all the presented methods, \gls{quest} was selected due to low computationa
 \gls{quest} was also chosen by \citet{huffman2006designing} and \citet{tappe2009development} to be used on satellites' star-trackers.
 
 \newpage
-\section{Star-tracker program}
+\section{Designed star-tracker program}
 
-Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library for easy GPU computation. The program has main file which is responsible for running whole program, and the rest is divided in three parts: star recognition - calculating centroids of stars from image and discarding the ones with too high magnitude; star identification - finding stars' catalog IDs and discarding false stars, using isolated Planar Triangle algorithm; attitude estimation using isolated \gls{quest} algorithm. Additionally there is separate part for catalog generation for Planar Triangle algorithm.
+\subsection{Choice of tools and solutions}
+
+Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library for easy GPU computation. Python was chosen due to simplicity of programming - it is easier and faster to build a program. Additionally due to usage of libraries like numba and numpy it is only few times slower than if it would be written in C++. Of course it is possible to rewrite parts of program to C++ for better performance, however it will be around 5 times with a lot of additional work.
+TODO write why Python is better!!!!!
+numba is as fast as C++
+
+Using CUDA on GPU was chosen because it made program run significantly faster. The exact difference is visible in Figure...
+TODO ADD CUDA vs NO CUDA!!!!!
+
+
+\subsection{Comparison of designed star-tracker with existing solutions}
+- dokladnosc,
+- czasy typu lost in space,
+- tracking,
+- cena?
+
+\subsection{Star-tracker design}
+
+The program has main file which is responsible for running whole program, and the rest is divided in three parts: star recognition - calculating centroids of stars from image and discarding the ones with too high magnitude; star identification - finding stars' catalog IDs and discarding false stars, using isolated Planar Triangle algorithm; attitude estimation using isolated \gls{quest} algorithm. Additionally there is separate part for catalog generation for Planar Triangle algorithm.
 
 During star-tracker development it was necessary to firstly create testing environment in order to ensure that program will work correctly. Each part of algorithm was tested separately on wide range of examples, then they were together as fully functioning star-tracker program.
 
@@ -1344,9 +1362,6 @@ Figure \ref{fig:star-tracker_diagram} shows general schema of designed star-trac
 \caption{Designed star-tracker full program diagram}
 \label{fig:star-tracker_diagram}
 \end{figure}
-
-
-\subsection{Program parts}
 
 For clarification the following entities will be used in this chapter:
 \begin{itemize}[noitemsep]
