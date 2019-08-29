@@ -126,7 +126,8 @@ def pixel_preprocess(
         if (x < half or x > x_size - half or
                 y < half or y > y_size - half):
             return 0, 0
-        sum_ = I[x, y]
+        sum_ = 0
+        sum_ += I[x, y]
         pixels = 1
         for i in range(half):
             sum_ += I[x + i, y + i]

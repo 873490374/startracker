@@ -836,9 +836,35 @@
 	year = "2017"
 }
 
-@misc{nanosat,
+@misc{nanosat-tables,
 	howpublished = "\url{http://www.nanosats.eu/tables}",
 	note = "Accessed: 2019-07-21",
 	title = "{CubeSat Tables}"
+}
+
+@misc{cubesat-panels,
+	howpublished = "\url{https://www.isispace.nl/product/isis-cubesat-solar-panels/}",
+	note = "Accessed: 2019-07-21",
+	title = "{CubeSat solar panels, ISIS -- Innovative Solutions In Space}"
+}
+
+@inproceedings{hypersat-jetson,
+	author = "Czapski, Pawe{\l} and *, Grzegorz Kasprowicz and Zawistowski, Tomasz and Stolarski, Marcin and Hanasz, Stanis{\l}aw and Kuklewski, Micha{\l} and Bieda, Marcin S.",
+	booktitle = "{69th International Astronautical Congress (IAC), Bremen, Germany}",
+	month = oct,
+	title = "{State of The Art of Earth Observation Instruments for Small Satellites}",
+	year = "2018"
+}
+
+@misc{numba1,
+	howpublished = "\url{https://www.ibm.com/developerworks/community/blogs/jfp/entry/A_Comparison_Of_C_Julia_Python_Numba_Cython_Scipy_and_BLAS_on_LU_Factorization?lang=en}",
+	note = "Accessed: 2019-08-29",
+	title = "{A Speed Comparison Of C, Julia, Python, Numba, and Cython on LU Factorization, IBM}"
+}
+
+@misc{numba2,
+	howpublished = "\url{https://murillogroupmsu.com/numba-versus-c/}",
+	note = "Accessed: 2019-08-29",
+	title = "{NUMBA VERSUS C++}"
 }
 

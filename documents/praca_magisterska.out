@@ -47,16 +47,18 @@
 \BOOKMARK [3][-]{subsubsection.3.4.4}{Singular Value Decomposition \(SVD\)}{subsection.3.4}% 47
 \BOOKMARK [3][-]{subsubsection.3.4.5}{Other techniques}{subsection.3.4}% 48
 \BOOKMARK [3][-]{subsubsection.3.4.6}{Conclusions}{subsection.3.4}% 49
-\BOOKMARK [1][-]{section.4}{Star-tracker program}{}% 50
-\BOOKMARK [2][-]{subsection.4.1}{Program parts}{section.4}% 51
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Star Triangle Catalog}{subsection.4.1}% 52
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Star Catalog}{subsection.4.1}% 53
-\BOOKMARK [3][-]{subsubsection.4.1.3}{Star recognition}{subsection.4.1}% 54
-\BOOKMARK [3][-]{subsubsection.4.1.4}{Star identification}{subsection.4.1}% 55
-\BOOKMARK [3][-]{subsubsection.4.1.5}{Finding attitude}{subsection.4.1}% 56
-\BOOKMARK [2][-]{subsection.4.2}{Example of working star-tracker}{section.4}% 57
-\BOOKMARK [1][-]{section.5}{Testing on NVIDIA Jetson TX2}{}% 58
-\BOOKMARK [1][-]{section.6}{Summary and future steps}{}% 59
-\BOOKMARK [1][-]{section*.39}{References}{}% 60
-\BOOKMARK [1][-]{section*.40}{List of Tables}{}% 61
-\BOOKMARK [1][-]{section*.41}{List of Figures}{}% 62
+\BOOKMARK [1][-]{section.4}{Designed star-tracker program}{}% 50
+\BOOKMARK [2][-]{subsection.4.1}{Choice of tools and solutions}{section.4}% 51
+\BOOKMARK [2][-]{subsection.4.2}{Comparison of designed star-tracker with existing solutions}{section.4}% 52
+\BOOKMARK [2][-]{subsection.4.3}{Star-tracker design}{section.4}% 53
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Star Triangle Catalog}{subsection.4.3}% 54
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Star Catalog}{subsection.4.3}% 55
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Star recognition}{subsection.4.3}% 56
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Star identification}{subsection.4.3}% 57
+\BOOKMARK [3][-]{subsubsection.4.3.5}{Finding attitude}{subsection.4.3}% 58
+\BOOKMARK [2][-]{subsection.4.4}{Example of working star-tracker}{section.4}% 59
+\BOOKMARK [1][-]{section.5}{Testing on NVIDIA Jetson TX2}{}% 60
+\BOOKMARK [1][-]{section.6}{Summary and future steps}{}% 61
+\BOOKMARK [1][-]{section*.39}{References}{}% 62
+\BOOKMARK [1][-]{section*.40}{List of Tables}{}% 63
+\BOOKMARK [1][-]{section*.41}{List of Figures}{}% 64

@@ -28,14 +28,14 @@
 \contentsline {figure}{\numberline {14}{\ignorespaces Planar Triangle Method}}{41}{figure.caption.20}
 \contentsline {figure}{\numberline {15}{\ignorespaces Pyramid Method Flowchart}}{46}{figure.caption.21}
 \contentsline {figure}{\numberline {16}{\ignorespaces K-vector technique example}}{51}{figure.caption.22}
-\contentsline {figure}{\numberline {17}{\ignorespaces Designed star-tracker full program diagram\relax }}{58}{figure.caption.23}
-\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{61}{figure.caption.24}
+\contentsline {figure}{\numberline {17}{\ignorespaces Designed star-tracker full program diagram\relax }}{59}{figure.caption.23}
+\contentsline {figure}{\numberline {18}{\ignorespaces Getting centroids of image stars diagram\relax }}{62}{figure.caption.24}
 \contentsline {figure}{\numberline {19}{\ignorespaces Star identification diagram\relax }}{64}{figure.caption.25}
-\contentsline {figure}{\numberline {20}{\ignorespaces Example image input}}{65}{figure.caption.26}
-\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition}}{66}{figure.caption.28}
-\contentsline {figure}{\numberline {22}{\ignorespaces Final result of star identification}}{69}{figure.caption.33}
-\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to star-tracker}}{71}{figure.caption.34}
-\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude}}{71}{figure.caption.35}
-\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of star-tracker on Jetson TX2}}{74}{figure.caption.36}
-\contentsline {figure}{\numberline {26}{\ignorespaces Star-tracker execution time of each scene}}{74}{figure.caption.37}
-\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times}}{75}{figure.caption.38}
+\contentsline {figure}{\numberline {20}{\ignorespaces Example image input}}{66}{figure.caption.26}
+\contentsline {figure}{\numberline {21}{\ignorespaces Result of star recognition}}{67}{figure.caption.28}
+\contentsline {figure}{\numberline {22}{\ignorespaces Final result of star identification}}{70}{figure.caption.33}
+\contentsline {figure}{\numberline {23}{\ignorespaces Attitude according to star-tracker}}{72}{figure.caption.34}
+\contentsline {figure}{\numberline {24}{\ignorespaces Real attitude}}{72}{figure.caption.35}
+\contentsline {figure}{\numberline {25}{\ignorespaces Power consumption of star-tracker on Jetson TX2}}{75}{figure.caption.36}
+\contentsline {figure}{\numberline {26}{\ignorespaces Star-tracker execution time of each scene}}{75}{figure.caption.37}
+\contentsline {figure}{\numberline {27}{\ignorespaces Power consumption with marked scenes' computation times}}{76}{figure.caption.38}

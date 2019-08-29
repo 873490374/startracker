@@ -45,6 +45,8 @@
 \setlength\headheight{15pt}
 \enlargethispage*{0.7\baselineskip}
 
+
+
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot[LE,RO]{\thepage}
@@ -316,7 +318,7 @@ Typical CubeSat consist of many different components. Quite often it has antenna
 
 Costs of such CubeSat satellite on example of PW-SAT 2: 120,000-200,000 EUR for putting the satellite on the orbit and around 70,000 EUR for designing and building the satellite itself\cite{pw-pw-sat2}.
 
-Another platform for slightly larger than CubeSat satellites was designed by Polish company Creotech - HyperSat\cite{hypersat}. It is based on experiences of CubeSat: it is also modular and universal. In the smallest configuration satellite can have dimensions of 30x30x10 cm and weight od 10 kg, while at largest it can have 30x30x60 cm and weight 60 kg. Because of the larger size and weight HyperSat can have more applications than CubeSat, however also lowering the price of satellite design and construction due to the standardization. HyperSats will be equipped with NVIDIA Jetson modules used for data processing acquired from cameras observing Earth. The use of Jetson module also for star-tracking would eliminate the need for separate star-tracker device. The first HyperSats can enter the orbit even as soon as in 2020\cite{hypersat-space24}. The HyperSat plan considers to start serial manufacture where platform would be already prepared and configured in 6 months after ordering it\cite{platforma-satelitarna-space24}. Figure \ref{fig:hypersat-examples} shows example and prototype of HyperSat.
+Another platform for slightly larger than CubeSat satellites was designed by Polish company Creotech - HyperSat\cite{hypersat}. It is based on experiences of CubeSat: it is also modular and universal. In the smallest configuration satellite can have dimensions of 30x30x10 cm and weight od 10 kg, while at largest it can have 30x30x60 cm and weight 60 kg. Because of the larger size and weight HyperSat can have more applications than CubeSat, however also lowering the price of satellite design and construction due to the standardization. HyperSats will be equipped with NVIDIA Jetson modules used for data processing acquired from cameras observing Earth\cite{hypersat-jetson}. The use of Jetson module also for star-tracking would eliminate the need for separate star-tracker device. The first HyperSats can enter the orbit even as soon as in 2020\cite{hypersat-space24}. The HyperSat plan considers to start serial manufacture where platform would be already prepared and configured in 6 months after ordering it\cite{platforma-satelitarna-space24}. Figure \ref{fig:hypersat-examples} shows example and prototype of HyperSat.
 
 
 \begin{figure}[!htbp]
@@ -1330,19 +1332,15 @@ From all the presented methods, \gls{quest} was selected due to low computationa
 
 \subsection{Choice of tools and solutions}
 
-Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library for easy GPU computation. Python was chosen due to simplicity of programming - it is easier and faster to build a program. Additionally due to usage of libraries like numba and numpy it is only few times slower than if it would be written in C++. Of course it is possible to rewrite parts of program to C++ for better performance, however it will be around 5 times with a lot of additional work.
-TODO write why Python is better!!!!!
-numba is as fast as C++
+Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library\footnote{"Numba translates Python functions to optimized machine code at runtime using the industry-standard LLVM compiler library. Numba-compiled numerical algorithms in Python can approach the speeds of C or FORTRAN."\cite{numba}} for easy GPU computation. Python was chosen due to simplicity of programming - it is easier and faster to build a program. Additionally due to usage of libraries like numba and numpy\footnote{"NumPy is the fundamental package for scientific computing with Python. It contains among other things: a powerful N-dimensional array object, sophisticated (broadcasting) functions, tools for integrating C/C++ and Fortran code, useful linear algebra, Fourier transform, and random number capabilities."\cite{numpy}} it is only few times slower than if it would be written in C++\cite{numba1}\cite{numba2}\cite{numpy1}. Of course it is possible to rewrite parts of program to C++ for better performance, however it will be around 2-10 times faster with a lot of additional work.
+
 
 Using CUDA on GPU was chosen because it made program run significantly faster. The exact difference is visible in Figure...
 TODO ADD CUDA vs NO CUDA!!!!!
 
 
 \subsection{Comparison of designed star-tracker with existing solutions}
-- dokladnosc,
-- czasy typu lost in space,
-- tracking,
-- cena?
+
 
 \subsection{Star-tracker design}
 
