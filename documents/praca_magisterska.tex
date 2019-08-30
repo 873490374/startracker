@@ -1334,13 +1334,17 @@ From all the presented methods, \gls{quest} was selected due to low computationa
 
 Star-tracker program was written in Python 3.6 under Anaconda distribution run on ARM processor (on Jetson TX2) with usage of numba library\footnote{"Numba translates Python functions to optimized machine code at runtime using the industry-standard LLVM compiler library. Numba-compiled numerical algorithms in Python can approach the speeds of C or FORTRAN."\cite{numba}} for easy GPU computation. Python was chosen due to simplicity of programming - it is easier and faster to build a program. Additionally due to usage of libraries like numba and numpy\footnote{"NumPy is the fundamental package for scientific computing with Python. It contains among other things: a powerful N-dimensional array object, sophisticated (broadcasting) functions, tools for integrating C/C++ and Fortran code, useful linear algebra, Fourier transform, and random number capabilities."\cite{numpy}} it is only few times slower than if it would be written in C++\cite{numba1}\cite{numba2}\cite{numpy1}. Of course it is possible to rewrite parts of program to C++ for better performance, however it will be around 2-10 times faster with a lot of additional work.
 
+Using CUDA on GPU was chosen because it made program run significantly faster (around 31.6 times faster). The exact difference is visible in Figure \ref{fig:cuda_vs_no_cuda_centroid}.
 
-Using CUDA on GPU was chosen because it made program run significantly faster. The exact difference is visible in Figure...
-TODO ADD CUDA vs NO CUDA!!!!!
-
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{cuda_vs_no_cuda_centroid_plot.png}
+\centering
+\caption{Star recognition (centroid calculation): GPU vs CPU}
+\label{fig:cuda_vs_no_cuda_centroid}
+\end{figure}
 
 \subsection{Comparison of designed star-tracker with existing solutions}
-
+TODO ADD STARTRACKER COMPARISON TABLE!!!
 
 \subsection{Star-tracker design}
 
