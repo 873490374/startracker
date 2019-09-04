@@ -29,7 +29,10 @@ class QuestCalculator:
         self.b = self.calculate_b(self.sigma, Z)
         self.c = self.calculate_c(S, Z)
         self.d = self.calculate_d(S, Z)
-        lamb = self.calculate_lambda(len(v_b_list), self.func)
+        try:
+            lamb = self.calculate_lambda(len(v_b_list), self.func)
+        except RuntimeError:
+            return None, K
         q = self.calculate_q(lamb, self.sigma, S, Z, kappa, delta)
         return q, K
 

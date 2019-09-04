@@ -1,4 +1,3 @@
-import math
 import os
 
 import numpy as np
@@ -9,9 +8,6 @@ import mock
 # noinspection PyPackageRequirements
 import pytest
 from PIL import Image
-from Quaternion import Quat
-from astropy import units as u
-from astropy.coordinates import Angle
 
 from program.const import MAIN_PATH
 from program.tracker.camera import CameraConnector
@@ -23,7 +19,7 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.quest import QuestCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.tracker.tracker import Tracker
-from tests.cuda.expected_results_full_startracker import (
+from tests.expected_results_full_startracker import (
     expected_full,
     expected_moon,
     expected_sun,
@@ -354,13 +350,6 @@ def validate(stars, q, expected):
 
         print('')
         print('Quaternion =', q)
-        # if q is not None:
-        #     q = Quat(q)
-        #     xx = (360 - q.ra) + 90
-        #     print(xx)
-        #     print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
-        #     print(q.dec)
-        #     print(360-q.roll)
 
         # plot_result(stars, res_x(), res_y())
     return all_, good, bad, not_recognized, attitude_not_found

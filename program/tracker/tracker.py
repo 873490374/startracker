@@ -81,7 +81,8 @@ class Tracker:
                             result_ids.append(id_cat)
                             s = new_image_stars[id_]
                             result_stars.append(
-                                np.array([s[0], id_cat, s[1], s[2], s[3]]))
+                                np.array([s[0], id_cat,
+                                          s[1], s[2], s[3], s[4], s[5]]))
                             break
                 except (KeyError, IndexError):
                     continue
@@ -113,3 +114,11 @@ class Tracker:
                 (valid_triangles[:, 4] <= moment_max))]
 
         return valid_triangles
+    #
+    # def get_smaller_catalog(self, previous_found_stars2):
+    #
+    #     return self.triangle_catalog[np.where(
+    #         (np.isin(self.triangle_catalog[:, 0], previous_found_stars2)) |
+    #         (np.isin(self.triangle_catalog[:, 1], previous_found_stars2)) |
+    #         (np.isin(self.triangle_catalog[:, 2], previous_found_stars2))
+    #     )]

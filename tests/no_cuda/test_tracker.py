@@ -3,6 +3,8 @@ import os
 import numpy as np
 from timeit import default_timer as timer
 
+import pytest
+
 from program.const import SENSOR_VARIANCE, MAIN_PATH
 from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.star_identifier import StarIdentifier
@@ -10,6 +12,7 @@ from program.tracker.tracker import Tracker
 from program.utils import read_scene_xy
 
 
+@pytest.mark.skip('Needed better test scenes, those are changing too fast')
 class TestTracker:
 
     def test_tracking(self):
@@ -41,7 +44,7 @@ class TestTracker:
             triangle_catalog=triangle_catalog,
             star_catalog=star_catalog,
         )
-        for aaa in range(1000):
+        for aaa in range(10):
             times = []
             lost_attitude_known = 0
             lost_attitude_unknown = 0
@@ -82,7 +85,9 @@ class TestTracker:
             print('Lost attitude knowing: ', lost_attitude_known)
             print('Lost attitude not knowing: ', lost_attitude_unknown)
             print('Correctly: ', len(input_data) -
-                  scrambled_stars - lost_attitude_known - lost_attitude_unknown)
+                  scrambled_stars -
+                  lost_attitude_known -
+                  lost_attitude_unknown)
 
         # 0,03833982454571841 / 0,015765512875077548 = 2,4319
         # 0,015765512875077548 / 0,03833982454571841 = 0,4112

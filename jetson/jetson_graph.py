@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from program.const import MAIN_PATH
-from tests.cuda.expected_results_full_startracker import expected_full
+from tests.expected_results_full_startracker import expected_full
 
 
 def method_name(break_after, data, power, start_after):
