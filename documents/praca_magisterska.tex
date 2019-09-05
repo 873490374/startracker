@@ -1354,8 +1354,6 @@ During star-tracker development it was necessary to firstly create testing envir
 
 During development k-vector algorithm was discarded because results of star identification with k-vector were inconsistent. Moreover for just 1500 stars it didn't give any visible speed advantage. It is possible it would be worth using in case of catalogs with more stars.
 
-The Tracking Mode does not function properly and will have to be rewritten in the future version of star-tracker. Although correctly working Tracking Mode would make star-tracker faster, it is possible for it to work all the time in \gls{lis} mode.
-
 Figure \ref{fig:star-tracker_diagram} shows general schema of designed star-tracker program.
 
 \begin{figure}[!htbp]
@@ -1463,6 +1461,23 @@ On Jetson Attitude Determination lasts below 10 ms in most cases, but it can go 
 Computational complexity is $O(n)$, where $n$ is number of star vectors.
 
 No block diagram is needed to be presented for this part of the program, because it is just sequential calculating using equations in previous chapter.
+
+
+\subsubsection{Tracking}
+
+Tracking works in the following way: if there are no previously found stars - work with the input frame as in LIS mode, then go to tracking. If there are already previously found stars, then list of  planar triangles from those stars is created, which is used later instead of on-board catalog for searching common triangles. The rest works similarly as in LIS mode: common triangles are found and the best options are chosen. After that the attitude is estimated.
+
+Computational complexity of identifying stars by tracking is $O(n^3+n^2)$, where $n$ is number of star vectors.
+
+Tracking is around twice faster than LIS mode run on the same data, what is visible in Figure \ref{fig:tracking_vs_lis}. The disadvantage of tracking mode is that it has to have at least 3 stars from the last LIS found stars in the new image. The higher speed comes from the fact that in the tracking mode program has significantly lower number of triangles to search in.
+
+\begin{figure}[!htbp]
+\includegraphics[scale=0.55]{tracking_vs_lis_time_plot.png}
+\centering
+\caption{Average time for star identification: Tracking vs LIS modes}
+\label{fig:tracking_vs_lis}
+\end{figure}
+
 
 \subsection{Example of working star-tracker}
 
@@ -1718,16 +1733,16 @@ The program was tested using two sources of truth: images from Stellarium progra
 In order to use created star-tracker program on satellite the following things are necessary to be done:
 \begin{itemize}
 \item test with the dedicated camera,
-\item run program in CPython implementation or rewrite program (or at least GPU parts) to C/C++ because the Python Anaconda distribution for ARM architecture is experimental and it could simply break on the satellite,
+\item rewrite CUDA parts of program to pycuda or to C/C++ because the Python Anaconda distribution for ARM architecture is experimental and it could simply break on satellite,
 \item rerun catalog generation and test for the dedicated set of variables (\gls{fov}, etc.).
 \end{itemize}
 
 There exist a number of optional things to explore for bettering existing star-tracker:
 \begin{itemize}
 \item rewrite star identifier on GPU,
-\item rewrite tracking mode to work more accurately,
+\item rewrite tracking mode to work beyond stars found by LIS mode,
 \item optimize Planar Triangle algorithm,
-\item catalog with more stars,
+\item use catalog with more stars,
 \item use k-vector algorithm for more stars,
 \item explore other algorithms, especially for star identification and attitude estimation, because this is area which is being improved mostly.
 \end{itemize}
