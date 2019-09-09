@@ -28,7 +28,7 @@ images_path = os.path.join(MAIN_PATH, 'tests/images/')
 
 # RA/DEC (J2000.0), z axis should be 0 degrees
 expected_attitude = [
-    # {'RA': '5h31m59.36s', 'DEC': '+2 05 41.3'},  # different z axis (non J2000)
+    {'RA': '5h31m59.36s', 'DEC': '+2 05 41.3'},  # different z axis (non J2000)
     {'RA': '5h31m59.36s', 'DEC': '+2 05 41.3'},
     {'RA': '5h26m02.87s', 'DEC': '+2 35 45.2'},
     {'RA': '5h17m06.08s', 'DEC': '+2 41 45.1'},
@@ -179,10 +179,9 @@ def star_tracker(
     )
 
 
-@pytest.mark.cuda
-class TestTracking:
+class TestAccuracu:
 
-    def test_tracking(self, star_tracker, image_processor):
+    def test_accuracy(self, star_tracker, image_processor):
         all_ = 0
         good = 0
         bad = 0
@@ -190,7 +189,7 @@ class TestTracking:
         attitude_not_found = 0
 
         sg = star_tracker.run()
-        for i in range(1, 7):
+        for i in range(1, 8):
             img_path = os.path.join(
                 images_path, 'test_accuracy_{}.png'.format(i))
             img = Image.open(img_path).transpose(Image.FLIP_TOP_BOTTOM)
@@ -217,20 +216,20 @@ def validate(stars, q, expected):
     if not stars or q is None:
         attitude_not_found += 1
     else:
-        print('')
-        print('Stars ', stars)
-        print('Quaternion =', q)
-        if q is not None:
-            q = Quat(q)
-            print(q.equatorial)
-            xx = (360 - q.ra) + 90
-            # xx = q.ra
-            print(xx)
-            print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
-            print(q.dec)
-            print(q.roll0)
+    #     # print('')
+    #     # print('Stars ', stars)
+    #     # print('Quaternion =', q)
+    #     if q is not None:
+    #         q = Quat(q)
+    #         print(q.equatorial)
+    #         # xx = (360 - q.ra) + 90
+    #         xx = q.ra
+    #         print(xx)
+    #         print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
+    #         print(q.dec)
+    #         print(q.roll)
 
-        # plot_result(stars, 900, 900)
+        plot_result(stars, 900, 900)
     return all_, good, bad, not_recognized, attitude_not_found
 
 

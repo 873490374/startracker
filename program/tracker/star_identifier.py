@@ -50,7 +50,7 @@ class StarIdentifier:
                     if not most_common:
                         s = image_stars[id_]
                         result_stars.append(
-                            np.array([s[0], -1, s[1], s[2], s[3], s[4], s[5]]))
+                            np.array([s[0], -1, s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8]]))
                         continue
                     for i in range(most_common_limit):
                         id_cat = int(most_common[i][0])
@@ -58,12 +58,12 @@ class StarIdentifier:
                             result_ids.append(id_cat)
                             s = image_stars[id_]
                             result_stars.append(
-                                np.array([s[0], id_cat, s[1], s[2], s[3], s[4], s[5]]))
+                                np.array([s[0], id_cat, s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8]]))
                             break
                         if i == most_common_limit and id_cat in result_ids:
                             s = image_stars[id_]
                             result_stars.append(
-                                np.array([s[0], -1, s[1], s[2], s[3], s[4], s[5]]))
+                                np.array([s[0], -1, s[1], s[2], s[3], s[4], s[5], s[6], s[7], s[8]]))
                 except (KeyError, IndexError):
                     continue
             return self.remove_incorrect_stars(result_stars)

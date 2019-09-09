@@ -2,7 +2,6 @@ import itertools
 
 import numpy as np
 from PIL import Image
-from numba import cuda, float64, int32
 
 from program.utils import convert_to_vector
 
@@ -25,7 +24,7 @@ class CentroidCalculator:
 
         star_list = self.preprocess_image_matrix(I)
         star_list = self.clustering(star_list)
-        star_vectors = self.convert_to_vectors(star_list)
+        star_vectors = self.convert_to_vectors(star_list, I.shape)
 
         # self.create_image(I, star_list)
 
@@ -40,27 +39,27 @@ class CentroidCalculator:
         I_norm = np.zeros(
             (x_size, y_size, self.a_roi-2, self.a_roi-2), dtype=np.float64)
 
-        blockdim = (16, 8)
-        griddim = (32, 16)
-        d_img = cuda.to_device(I.astype(np.float64))
-        d_calc = cuda.to_device(calc_img)
-        d_norm = cuda.to_device(I_norm)
-        preprocess_kernel[griddim, blockdim](
-            d_img, d_calc, d_norm, x_size, y_size,
-            self.i_threshold, self.mag_threshold,
-            self.star_mag_pix, self.a_roi)
-        calc_img = d_calc.copy_to_host()
-
-        # calc_img = preprocess_no_gpu(
-        #     I, calc_img, I_norm, x_size, y_size,
+        # blockdim = (16, 8)
+        # griddim = (32, 16)
+        # d_img = cuda.to_device(I.astype(np.float64))
+        # d_calc = cuda.to_device(calc_img)
+        # d_norm = cuda.to_device(I_norm)
+        # preprocess_kernel[griddim, blockdim](
+        #     d_img, d_calc, d_norm, x_size, y_size,
         #     self.i_threshold, self.mag_threshold,
         #     self.star_mag_pix, self.a_roi)
+        # calc_img = d_calc.copy_to_host()
+
+        calc_img = preprocess_no_gpu(
+            I, calc_img, I_norm, x_size, y_size,
+            self.i_threshold, self.mag_threshold,
+            self.star_mag_pix, self.a_roi)
 
         star_list = self.calc_img_to_star_list(calc_img)
 
         return star_list
 
-    def convert_to_vectors(self, star_list):
+    def convert_to_vectors(self, star_list, shape):
         star_vectors = []
         # 7. unit vector u
         i = 0
@@ -68,9 +67,14 @@ class CentroidCalculator:
             u = convert_to_vector(
                 star[0], star[1], self.pixel_size,
                 self.focal_length, self.principal_point)
+            u2 = convert_to_vector(
+                star[0] - shape[1]/2, star[1] - shape[0]/2, self.pixel_size,
+                self.focal_length, self.principal_point)
             # FIXME check if all x-y coordinates all correct till this point
             star_vectors.append(
-                np.array([i, u[0], u[1], u[2], star[1], star[0]]))
+                np.array([
+                    i, u[0], u[1], u[2], star[1], star[0], u2[0], u2[1], u2[2]
+                ]))
             i += 1
         return star_vectors
 
@@ -198,35 +202,35 @@ def pixel_preprocess(
             x_nn += 1
         return x_cm, y_cm
     return 0, 0
-
-
-pixel_preprocess_gpu = cuda.jit(
-    restype=(float64, float64),
-    argtypes=[
-        float64[:, :], float64[:, :, :, :],
-        int32, int32, int32, int32, int32, int32, int32, int32],
-    device=True)(pixel_preprocess)
-
-
-@cuda.jit(argtypes=[
-    float64[:, :], float64[:, :, :], float64[:, :, :, :],
-    int32, int32, int32, int32, int32, int32])
-def preprocess_kernel(
-        image, calc_img, img_norm, x_size, y_size,
-        i_threshold, mag_threshold, star_mag_pix, a_roi):
-
-    start_x, start_y = cuda.grid(2)
-    grid_x = cuda.gridDim.x * cuda.blockDim.x
-    grid_y = cuda.gridDim.y * cuda.blockDim.y
-
-    for x in range(start_x, x_size, grid_x):
-        for y in range(start_y, y_size, grid_y):
-            x_calc, y_calc = pixel_preprocess_gpu(
-                image, img_norm, x, y, x_size, y_size,
-                i_threshold, mag_threshold, star_mag_pix, a_roi)
-
-            calc_img[x][y][0] = x_calc
-            calc_img[x][y][1] = y_calc
+#
+#
+# pixel_preprocess_gpu = cuda.jit(
+#     restype=(float64, float64),
+#     argtypes=[
+#         float64[:, :], float64[:, :, :, :],
+#         int32, int32, int32, int32, int32, int32, int32, int32],
+#     device=True)(pixel_preprocess)
+#
+#
+# @cuda.jit(argtypes=[
+#     float64[:, :], float64[:, :, :], float64[:, :, :, :],
+#     int32, int32, int32, int32, int32, int32])
+# def preprocess_kernel(
+#         image, calc_img, img_norm, x_size, y_size,
+#         i_threshold, mag_threshold, star_mag_pix, a_roi):
+#
+#     start_x, start_y = cuda.grid(2)
+#     grid_x = cuda.gridDim.x * cuda.blockDim.x
+#     grid_y = cuda.gridDim.y * cuda.blockDim.y
+#
+#     for x in range(start_x, x_size, grid_x):
+#         for y in range(start_y, y_size, grid_y):
+#             x_calc, y_calc = pixel_preprocess_gpu(
+#                 image, img_norm, x, y, x_size, y_size,
+#                 i_threshold, mag_threshold, star_mag_pix, a_roi)
+#
+#             calc_img[x][y][0] = x_calc
+#             calc_img[x][y][1] = y_calc
 
 
 def preprocess_no_gpu(

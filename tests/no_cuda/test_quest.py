@@ -89,3 +89,53 @@ class TestQuest:
         R_diff = np.inner(R.T, R_bi_quest_expected)
         assert np.isclose(np.identity(3), R_diff, atol=0.004).all()
         assert np.isclose(R.T, R_bi_quest_expected, atol=0.004).all()
+        print_ori(wahba(vb_list, vi_list, weight_list))
+
+
+def wahba(A, B, weight=[]):
+    """
+    Takes in two matrices of points and finds the attitude matrix needed to
+    transform one onto the other
+    Input:
+        A: nx3 matrix - x,y,z in body frame
+        B: nx3 matrix - x,y,z in eci
+        Note: the "n" dimension of both matrices must match
+    Output:
+        attitude_matrix: returned as a numpy matrix
+    """
+    assert len(A) == len(B)
+    if (len(weight) == 0):
+        weight = np.array([1] * len(A))
+    # dot is matrix multiplication for array
+    H = np.dot(np.transpose(A) * weight, B)
+
+    # calculate attitude matrix
+    # from http://malcolmdshuster.com/FC_MarkleyMortari_Girdwood_1999_AAS.pdf
+    U, S, Vt = np.linalg.svd(H)
+    flip = np.linalg.det(U) * np.linalg.det(Vt)
+
+    # S=np.diag([1,1,flip]); U=np.dot(U,S)
+    U[:, 2] *= flip
+
+    body2ECI = np.dot(U, Vt)
+    return body2ECI
+
+
+def print_ori(body2ECI):
+    # DEC=np.degrees(np.arcsin(body2ECI[2,0]))
+    # rotation about the z axis (-180 to +180)
+    # RA=np.degrees(np.arctan2(body2ECI[1,0],body2ECI[0,0]))
+    # rotation about the camera axis (-180 to +180)
+    #  ORIENTATION=np.degrees(-np.arctan2(body2ECI[1,2],body2ECI[2,2]))
+    DEC = np.degrees(np.arcsin(body2ECI[0, 2]))
+    RA = np.degrees(np.arctan2(body2ECI[0, 1], body2ECI[0, 0]))
+    ORIENTATION = np.degrees(-np.arctan2(body2ECI[1, 2], body2ECI[2, 2]))
+    if ORIENTATION > 180:
+        ORIENTATION = ORIENTATION - 360
+
+    # rotation about the y axis (-90 to +90)
+    print("DEC=" + str(DEC))
+    # rotation about the z axis (-180 to +180)
+    print("RA=" + str(RA))
+    # rotation about the camera axis (-180 to +180)
+    print("ORIENTATION=" + str(ORIENTATION))
