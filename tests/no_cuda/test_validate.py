@@ -81,6 +81,7 @@ def create_image(stars):
         Image.FLIP_TOP_BOTTOM).save('test.png')
 
 
+@pytest.mark.skip
 class TestValidate:
     def test_one_scene_uv(self):
         input_data, expected = read_scene_uv(

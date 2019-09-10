@@ -28,14 +28,38 @@ images_path = os.path.join(MAIN_PATH, 'tests/images/')
 
 # RA/DEC (J2000.0), z axis should be 0 degrees
 expected_attitude = [
-    # {'RA': '5h31m59.36s', 'DEC': '+2 05 41.3'},  # different z axis (non J2000)
-    {'RA': '5h31m59.36s', 'DEC': '+2 05 41.3'},
-    {'RA': '5h26m02.87s', 'DEC': '+2 35 45.2'},
-    {'RA': '5h17m06.08s', 'DEC': '+2 41 45.1'},
-    {'RA': '5h15m10.81s', 'DEC': '+3 05 51.7'},
-    {'RA': '5h10m56.87s', 'DEC': '+3 06 41.7'},
-    {'RA': '5h07m04.35s', 'DEC': '+3 50 02.8'},
-    {'RA': '4h58m50.45s', 'DEC': '+3 20 03.3'},
+    {
+        'RA': Angle('18 30 43.57 hours').degree,
+        'DEC': Angle('-47:53:46.3 degrees').degree
+    },
+    {
+        'RA': Angle('18 29 27.97 hours').degree,
+        'DEC': Angle('-47:50:45.2 degrees').degree
+    },
+    {
+        'RA': Angle('18 28 08.29 hours').degree,
+        'DEC': Angle('-47:34:49.1 degrees').degree
+    },
+    {
+        'RA': Angle('18 26 06.23 hours').degree,
+        'DEC': Angle('-47:19:16.8 degrees').degree
+    },
+    {
+        'RA': Angle('18 24 47.64 hours').degree,
+        'DEC': Angle('-47:06:57.6 degrees').degree
+    },
+    {
+        'RA': Angle('18 24 15.05 hours').degree,
+        'DEC': Angle('-46:56:35.4 degrees').degree
+    },
+    {
+        'RA': Angle('19 41 57.72 hours').degree,
+        'DEC': Angle('20:43:22.2 degrees').degree
+    },
+    {
+        'RA': Angle('6 05 02.30 hours').degree,
+        'DEC': Angle('-63:23:48.4 degrees').degree
+    },
 ]
 
 
@@ -180,9 +204,9 @@ def star_tracker(
 
 
 @pytest.mark.cuda
-class TestTracking:
+class TestAccuracy:
 
-    def test_tracking(self, star_tracker, image_processor):
+    def test_accuracy(self, star_tracker, image_processor):
         all_ = 0
         good = 0
         bad = 0
@@ -190,7 +214,8 @@ class TestTracking:
         attitude_not_found = 0
 
         sg = star_tracker.run()
-        for i in range(1, 7):
+        for i in range(0, 8):
+            print(i)
             img_path = os.path.join(
                 images_path, 'test_accuracy_{}.png'.format(i))
             img = Image.open(img_path).transpose(Image.FLIP_TOP_BOTTOM)
@@ -218,17 +243,19 @@ def validate(stars, q, expected):
         attitude_not_found += 1
     else:
         print('')
-        print('Stars ', stars)
+        # print('Stars ', stars)
         print('Quaternion =', q)
         if q is not None:
             q = Quat(q)
             print(q.equatorial)
-            xx = (360 - q.ra) + 90
-            # xx = q.ra
-            print(xx)
-            print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
-            print(q.dec)
-            print(q.roll0)
+            print(expected['RA'] - q.ra)
+            print(expected['DEC'] - q.dec)
+        #     # xx = (360 - q.ra) + 90
+        #     xx = q.ra
+            # print(xx)
+            # print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
+            # print(q.dec)
+            # print(q.roll0)
 
         # plot_result(stars, 900, 900)
     return all_, good, bad, not_recognized, attitude_not_found

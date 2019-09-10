@@ -82,7 +82,8 @@ class Tracker:
                             s = new_image_stars[id_]
                             result_stars.append(
                                 np.array([s[0], id_cat,
-                                          s[1], s[2], s[3], s[4], s[5]]))
+                                          s[1], s[2], s[3], s[4], s[5],
+                                          s[6], s[7], s[8]]))
                             break
                 except (KeyError, IndexError):
                     continue

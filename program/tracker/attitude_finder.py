@@ -14,8 +14,14 @@ class AttitudeFinder:
             return None
         if not previous_stars:
             previous_stars = self.find_previous_stars(current_stars)
+        current_stars = np.delete(current_stars, 6, 1)
+        current_stars = np.delete(current_stars, 5, 1)
+        current_stars = np.delete(current_stars, 4, 1)
+        current_stars = np.delete(current_stars, 3, 1)
+        current_stars = np.delete(current_stars, 2, 1)
+        current_stars = np.delete(current_stars, 0, 1)
         previous_vectors, current_vectors = self.sort_vectors(
-            np.array(previous_stars), np.array(current_stars)[:, 1:5])
+            np.array(previous_stars), np.array(current_stars))
         weight_list = [1 for _ in range(len(current_stars))]
         q, K_calc = self.quest_calc.calculate_quest(
             weight_list, current_vectors, previous_vectors)
