@@ -22,7 +22,7 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.quest import QuestCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.tracker.tracker import Tracker
-
+from program.utils import vector_to_angles
 
 images_path = os.path.join(MAIN_PATH, 'tests/images/')
 
@@ -30,35 +30,77 @@ images_path = os.path.join(MAIN_PATH, 'tests/images/')
 expected_attitude = [
     {
         'RA': Angle('18 30 43.57 hours').degree,
-        'DEC': Angle('-47:53:46.3 degrees').degree
+        'DEC': Angle('-47:53:46.3 degrees').degree,
+        'AZ': Angle('181:52:53.4 degrees').degree,
+        'ALT': Angle('-9:24:01.9 degrees').degree,
     },
     {
         'RA': Angle('18 29 27.97 hours').degree,
-        'DEC': Angle('-47:50:45.2 degrees').degree
+        'DEC': Angle('-47:50:45.2 degrees').degree,
+        'AZ': Angle('182:05:50.0 degrees').degree,
+        'ALT': Angle('-9:21:25.4 degrees').degree,
     },
     {
         'RA': Angle('18 28 08.29 hours').degree,
-        'DEC': Angle('-47:34:49.1 degrees').degree
+        'DEC': Angle('-47:34:49.1 degrees').degree,
+        'AZ': Angle('182:19:58.9 degrees').degree,
+        'ALT': Angle('-9:05:58.8 degrees').degree,
     },
     {
         'RA': Angle('18 26 06.23 hours').degree,
-        'DEC': Angle('-47:19:16.8 degrees').degree
+        'DEC': Angle('-47:19:16.8 degrees').degree,
+        'AZ': Angle('182:41:12.4 degrees').degree,
+        'ALT': Angle('-8:51:17.3 degrees').degree,
     },
     {
         'RA': Angle('18 24 47.64 hours').degree,
-        'DEC': Angle('-47:06:57.6 degrees').degree
+        'DEC': Angle('-47:06:57.6 degrees').degree,
+        'AZ': Angle('182:55:32.3 degrees').degree,
+        'ALT': Angle('-8:39:34.7 degrees').degree,
     },
     {
         'RA': Angle('18 24 15.05 hours').degree,
-        'DEC': Angle('-46:56:35.4 degrees').degree
-    },
-    {
-        'RA': Angle('19 41 57.72 hours').degree,
-        'DEC': Angle('20:43:22.2 degrees').degree
+        'DEC': Angle('-46:56:35.4 degrees').degree,
+        'AZ': Angle('183:01:38.8 degrees').degree,
+        'ALT': Angle('-8:29:29.1 degrees').degree,
     },
     {
         'RA': Angle('6 05 02.30 hours').degree,
-        'DEC': Angle('-63:23:48.4 degrees').degree
+        'DEC': Angle('-63:23:48.4 degrees').degree,
+        'AZ': Angle('161:16:16.9 degrees').degree,
+        'ALT': Angle('-77:07:22.8 degrees').degree,
+    },
+    {
+        'RA': Angle('5 31 59.36 hours').degree,
+        'DEC': Angle('2:05:41.3 degrees').degree,
+    },
+    {
+        'RA': Angle('5 31 59.36 hours').degree,
+        'DEC': Angle('2:05:41.3 degrees').degree,
+    },
+    {
+        'RA': Angle('5 26 02.87 hours').degree,
+        'DEC': Angle('2:35:45.2 degrees').degree,
+    },
+    {
+        'RA': Angle('5 17 06.08 hours').degree,
+        'DEC': Angle('2:41:45.1 degrees').degree,
+    },
+    {
+        'RA': Angle('5 15 10.81 hours').degree,
+        'DEC': Angle('3:05:51.7 degrees').degree,
+    },
+    {
+        'RA': Angle('5 10 56.87 hours').degree,
+        'DEC': Angle('3:06:41.7 degrees').degree,
+    },
+    {
+        'RA': Angle('5 07 04.35 hours').degree,
+        'DEC': Angle('3:50:02.8 degrees').degree,
+    },
+    {
+        'RA': Angle('4 58 50.45 hours').degree,
+        'DEC': Angle('3:20:03.3 degrees').degree,
     },
 ]
 
@@ -206,7 +248,7 @@ def star_tracker(
 @pytest.mark.cuda
 class TestAccuracy:
 
-    def test_accuracy(self, star_tracker, image_processor):
+    def test_accuracy(self, star_tracker, image_processor, star_catalog):
         all_ = 0
         good = 0
         bad = 0
@@ -214,7 +256,7 @@ class TestAccuracy:
         attitude_not_found = 0
 
         sg = star_tracker.run()
-        for i in range(0, 8):
+        for i in range(0, 14):
             print(i)
             img_path = os.path.join(
                 images_path, 'test_accuracy_{}.png'.format(i))
@@ -224,7 +266,8 @@ class TestAccuracy:
                     image_processor, 'get_image', return_value=img):
 
                 stars, q = next(sg)
-                a, g, b, n, att = validate(stars, q, expected_attitude[i])
+                a, g, b, n, att = validate(
+                    stars, q, expected_attitude[i], star_catalog)
                 all_ += a
                 good += g
                 bad += b
@@ -232,7 +275,7 @@ class TestAccuracy:
                 attitude_not_found += att
 
 
-def validate(stars, q, expected):
+def validate(stars, q, expected, star_catalog):
     all_ = 0
     good = 0
     bad = 0
@@ -242,20 +285,25 @@ def validate(stars, q, expected):
     if not stars or q is None:
         attitude_not_found += 1
     else:
-        print('')
+        # print('')
         # print('Stars ', stars)
-        print('Quaternion =', q)
+        # print('Quaternion =', q)
         if q is not None:
             q = Quat(q)
-            print(q.equatorial)
-            print(expected['RA'] - q.ra)
-            print(expected['DEC'] - q.dec)
-        #     # xx = (360 - q.ra) + 90
-        #     xx = q.ra
-            # print(xx)
-            # print(Angle('{}d'.format(xx)).to_string(unit=u.hour))
-            # print(q.dec)
-            # print(q.roll0)
+            R = q.transform
+            for s in stars:
+                if s[1] == -1:
+                    continue
+                id_ = s[1]
+                siv = star_catalog[star_catalog[:, 0] == id_][0][1:]
+                sbv = np.dot(R, s[2:5])
+                sia = vector_to_angles(siv)
+                sba = vector_to_angles(sbv)
+                # print(sia-sba)
+            att = vector_to_angles(np.dot(R, np.array([0, 0, 1])))
+            print(expected['RA'] - att[0])
+            print(expected['DEC'] - att[1])
+
 
         # plot_result(stars, 900, 900)
     return all_, good, bad, not_recognized, attitude_not_found

@@ -5,6 +5,9 @@ from program.tracker.quest import QuestCalculator
 
 
 # noinspection PyUnusedLocal
+from program.utils import vector_to_angles
+
+
 class TestQuest:
 
     def test_quest(self):
@@ -80,8 +83,6 @@ class TestQuest:
 
         quaternion = Quat(q)
         R = quaternion.transform
-        assert np.isclose(quaternion.ra, 54.95945, rtol=1.e-6, atol=1.e-8)
-        assert np.isclose(quaternion.dec, 14.89439, rtol=1.e-6, atol=1.e-8)
 
         assert np.isclose(vi1, np.dot(R, vb1), atol=0.015).all()
         assert np.isclose(vi2, np.dot(R, vb2), atol=0.018).all()
@@ -89,3 +90,14 @@ class TestQuest:
         R_diff = np.inner(R.T, R_bi_quest_expected)
         assert np.isclose(np.identity(3), R_diff, atol=0.004).all()
         assert np.isclose(R.T, R_bi_quest_expected, atol=0.004).all()
+
+        vi1a = vector_to_angles(vi1)
+        vi2a = vector_to_angles(vi2)
+        vb1a = vector_to_angles(np.dot(R, vb1))
+        vb2a = vector_to_angles(np.dot(R, vb2))
+        vb1exa = vector_to_angles(np.dot(R, vb1_exact))
+        vb2exa = vector_to_angles(np.dot(R, vb2_exact))
+        assert np.isclose(vi1a, vb1a, atol=2).all()
+        assert np.isclose(vi2a, vb2a, atol=2).all()
+        assert np.isclose(vi1a, vb1exa, atol=3).all()
+        assert np.isclose(vi2a, vb2exa, atol=2).all()

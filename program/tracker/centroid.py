@@ -25,7 +25,7 @@ class CentroidCalculator:
 
         star_list = self.preprocess_image_matrix(I)
         star_list = self.clustering(star_list)
-        star_vectors = self.convert_to_vectors(star_list, I.shape)
+        star_vectors = self.convert_to_vectors(star_list)
 
         # self.create_image(I, star_list)
 
@@ -60,7 +60,7 @@ class CentroidCalculator:
 
         return star_list
 
-    def convert_to_vectors(self, star_list, shape):
+    def convert_to_vectors(self, star_list):
         star_vectors = []
         # 7. unit vector u
         i = 0
@@ -68,17 +68,11 @@ class CentroidCalculator:
             u = convert_to_vector(
                 star[0], star[1], self.pixel_size,
                 self.focal_length, self.principal_point)
-            u2 = convert_to_vector(
-                star[0] - shape[1]/2, star[1] - shape[0]/2, self.pixel_size,
-                self.focal_length, self.principal_point)
             # FIXME check if all x-y coordinates all correct till this point
             star_vectors.append(
-                np.array([
-                    i, u[0], u[1], u[2], star[1], star[0], u2[0], u2[1], u2[2]
-                ]))
+                np.array([i, u[0], u[1], u[2], star[1], star[0]]))
             i += 1
         return star_vectors
-
 
     @staticmethod
     def create_image(I, star_list):

@@ -93,6 +93,21 @@ def convert_to_vector(x, y, pixel_size, focal_length, pp):
     return u
 
 
+def vector_to_angles(vector):
+    """Transforms unit-length vectors to the azimuth
+    altitude representation."""
+    x = vector[0]
+    y = vector[1]
+    z = vector[2]
+
+    az = np.rad2deg(np.arctan2(y, x))
+    if az < 0:
+        az = az + 360
+    alt = np.rad2deg(np.arcsin(z / np.sqrt(x**2 + y**2 + z**2)))
+
+    return np.array([az, alt])
+
+
 def convert_star_to_uv(azimuth: float, altitude: float) -> np.ndarray:
     """ Convert star positions to unit vector."""
     caz = np.cos(azimuth)
