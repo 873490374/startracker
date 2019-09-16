@@ -75,20 +75,12 @@ expected_attitude = [
         'DEC': Angle('2:05:41.3 degrees').degree,
     },
     {
-        'RA': Angle('5 31 59.36 hours').degree,
-        'DEC': Angle('2:05:41.3 degrees').degree,
-    },
-    {
         'RA': Angle('5 26 02.87 hours').degree,
         'DEC': Angle('2:35:45.2 degrees').degree,
     },
     {
         'RA': Angle('5 17 06.08 hours').degree,
         'DEC': Angle('2:41:45.1 degrees').degree,
-    },
-    {
-        'RA': Angle('5 15 10.81 hours').degree,
-        'DEC': Angle('3:05:51.7 degrees').degree,
     },
     {
         'RA': Angle('5 10 56.87 hours').degree,
@@ -256,7 +248,7 @@ class TestAccuracy:
         attitude_not_found = 0
 
         sg = star_tracker.run()
-        for i in range(0, 14):
+        for i in range(0, 13):
             print(i)
             img_path = os.path.join(
                 images_path, 'test_accuracy_{}.png'.format(i))
@@ -303,6 +295,7 @@ def validate(stars, q, expected, star_catalog):
             att = vector_to_angles(np.dot(R, np.array([0, 0, 1])))
             print(expected['RA'] - att[0])
             print(expected['DEC'] - att[1])
+            print(q.roll)
 
 
         # plot_result(stars, 900, 900)

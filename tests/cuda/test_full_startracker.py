@@ -8,6 +8,7 @@ import mock
 # noinspection PyPackageRequirements
 import pytest
 from PIL import Image
+from Quaternion import Quat
 
 from program.const import MAIN_PATH
 from program.tracker.camera import CameraConnector
@@ -19,6 +20,7 @@ from program.tracker.planar_triangle_calculator import PlanarTriangleCalculator
 from program.tracker.quest import QuestCalculator
 from program.tracker.star_identifier import StarIdentifier
 from program.tracker.tracker import Tracker
+from program.utils import vector_to_angles
 from tests.expected_results_full_startracker import (
     expected_full,
     expected_moon,
@@ -181,6 +183,7 @@ class TestFullStarTracker:
 
         sg = star_tracker.run()
         for i in range(14):
+            print(i)
             img_path = os.path.join(
                 images_path, 'test_full_{}.png'.format(i))
             img = Image.open(img_path).transpose(Image.FLIP_TOP_BOTTOM)
@@ -350,6 +353,11 @@ def validate(stars, q, expected):
 
         print('')
         print('Quaternion =', q)
+        if q is not None:
+            q = Quat(q)
+            R = q.transform
+            print(vector_to_angles(np.dot(R, np.array([0, 0, 1]))))
+            print(q.roll)
 
         # plot_result(stars, res_x(), res_y())
     return all_, good, bad, not_recognized, attitude_not_found

@@ -159,8 +159,8 @@ class TestUtils:
         for s in expected_attitude:
             uv = convert_star_to_uv(np.deg2rad(s['RA']), np.deg2rad(s['DEC']))
             s2 = vector_to_angles(uv)
-            assert np.isclose(s['RA'], s2[0], atol=1.e-30).all()
-            assert np.isclose(s['DEC'], s2[1], atol=1.e-30).all()
+            assert np.isclose(s['RA'], s2[0], atol=1.e-8)
+            assert np.isclose(s['DEC'], s2[1], atol=1.e-8)
 
 
 class TestStarIdentifier:

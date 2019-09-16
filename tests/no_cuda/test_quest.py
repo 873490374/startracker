@@ -101,3 +101,17 @@ class TestQuest:
         assert np.isclose(vi2a, vb2a, atol=2).all()
         assert np.isclose(vi1a, vb1exa, atol=3).all()
         assert np.isclose(vi2a, vb2exa, atol=2).all()
+
+        vb1 = np.dot(vi1, R_bi_exact.T)
+        vb2 = np.dot(vi2, R_bi_exact.T)
+        q, K_calc = quest_calc.calculate_quest(
+            weight_list, np.array([vb1, vb2]), vi_list)
+        quaternion = Quat(q)
+        R2 = quaternion.transform
+        R_diff = np.inner(R2.T, R_bi_exact)
+        assert np.isclose(np.identity(3), R_diff, atol=0.007).all()
+        assert np.isclose(R2.T, R_bi_exact, atol=0.008).all()
+        vb1a = vector_to_angles(np.dot(R2, vb1))
+        vb2a = vector_to_angles(np.dot(R2, vb2))
+        assert np.isclose(vi1a, vb1a, atol=0.03).all()
+        assert np.isclose(vi2a, vb2a, atol=0.4).all()
